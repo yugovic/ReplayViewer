@@ -1,0 +1,4 @@
+node_modules
+dist
+.DS_Store
+.g3d_key

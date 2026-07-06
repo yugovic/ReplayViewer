@@ -1,0 +1,372 @@
+#!/usr/bin/env python3
+"""Fetch OSM surface features around the Barber circuit into features.json.
+
+Queries Overpass for area-like surface features (gravel/sand/grass runoff,
+paved aprons, woods, water, the pit lane) inside the satellite bbox plus a
+50 m margin, projects them into the viewer's local XZ metres (equirectangular
+projection, origin from track.json) and writes
+public/data/tracks/barber/features.json for FeatureBuilder.ts.
+
+Overpass endpoint/cache conventions follow build_track_osm.py (curl, raw
+response cached at pipeline/cache/osm_features_barber.json), with the retry
+loop of fetch_terrain_tiles.py. If Overpass stays unreachable the script
+exits nonzero and writes nothing — the viewer degrades gracefully without
+features.json.
+
+Notes
+-----
+- Only closed ways and multipolygon *outer* rings are converted; inner holes
+  are skipped (features draw over the satellite photo, so a missing hole just
+  re-tints ground the photo already shows).
+- Open (linear) pit-lane ways are buffered into a ribbon polygon using the
+  OSM width tag (default 7 m); OSM maps pit lanes as lines, not areas.
+- The main raceway itself and buildings are dropped: the road is rendered
+  procedurally, buildings are out of scope.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import subprocess
+import time
+from collections import Counter
+from pathlib import Path
+
+V2_ROOT = Path(__file__).resolve().parents[1]
+BARBER_DIR = V2_ROOT / "public" / "data" / "tracks" / "barber"
+DEFAULT_TRACK = BARBER_DIR / "track.json"
+DEFAULT_SAT_META = BARBER_DIR / "satellite_meta.json"
+DEFAULT_OUT = BARBER_DIR / "features.json"
+CACHE_PATH = Path(__file__).resolve().parent / "cache" / "osm_features_barber.json"
+OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+# overpass-api.de 406s curl's default User-Agent; identify like the terrain fetcher.
+USER_AGENT = "replay-viewer-v2 features fetch/1.0"
+EARTH_METERS_PER_DEGREE = 111_320.0
+MAIN_RACEWAY_WAY_ID = 237456804
+RETRIES = 3
+MIN_POINTS = 3
+MIN_AREA_M2 = 10.0
+DEFAULT_PIT_WIDTH_M = 7.0
+
+KINDS = ("gravel", "sand", "grass", "paved", "pit_lane", "wood", "water")
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Fetch OSM surface features for the Barber viewer")
+    p.add_argument("--track", type=Path, default=DEFAULT_TRACK, help="track.json (projection origin)")
+    p.add_argument("--sat-meta", type=Path, default=DEFAULT_SAT_META, help="satellite_meta.json (bbox)")
+    p.add_argument("--out", type=Path, default=DEFAULT_OUT, help="features.json output path")
+    p.add_argument("--cache", type=Path, default=CACHE_PATH, help="Overpass response cache path")
+    p.add_argument("--margin", type=float, default=50.0, help="bbox margin in metres")
+    p.add_argument("--refresh", action="store_true", help="ignore the cache and re-query Overpass")
+    return p.parse_args()
+
+
+def build_query(south: float, west: float, north: float, east: float) -> str:
+    bb = f"({south:.6f},{west:.6f},{north:.6f},{east:.6f})"
+    selectors = [
+        'way["surface"~"^(gravel|sand|grass|asphalt)$"]',
+        'way["natural"~"^(sand|wood|scrub|water)$"]',
+        'way["landuse"~"^(grass|meadow|forest)$"]',
+        'way["leisure"~"^(pitch|track)$"]',
+        'way["highway"="raceway"]',
+        'relation["surface"~"^(gravel|sand|grass|asphalt)$"]',
+        'relation["natural"~"^(sand|wood|scrub|water)$"]',
+        'relation["landuse"~"^(grass|meadow|forest)$"]',
+        'relation["leisure"~"^(pitch|track)$"]',
+    ]
+    body = "".join(f"  {s}{bb};\n" for s in selectors)
+    return f"[out:json][timeout:60];\n(\n{body});\nout geom;\n"
+
+
+def fetch_overpass(query: str, cache: Path, refresh: bool) -> dict:
+    if cache.exists() and not refresh:
+        print(f"Using cached Overpass response: {cache}")
+        return json.loads(cache.read_text())
+
+    last_err = ""
+    for attempt in range(RETRIES):
+        result = subprocess.run(
+            ["curl", "-sf", "-A", USER_AGENT, OVERPASS_URL, "--data-urlencode", f"data={query}"],
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        if result.returncode == 0:
+            try:
+                raw = json.loads(result.stdout)
+            except json.JSONDecodeError:
+                # Overpass reports dispatcher overload as an HTML error page.
+                last_err = f"non-JSON response (server busy?): {result.stdout[:120]!r}"
+            else:
+                cache.parent.mkdir(parents=True, exist_ok=True)
+                cache.write_text(json.dumps(raw, indent=2) + "\n")
+                print(f"Fetched {len(raw.get('elements', []))} elements from Overpass, cached at {cache}")
+                return raw
+        else:
+            last_err = f"curl exit {result.returncode}: {result.stderr[:200]}"
+        if attempt < RETRIES - 1:
+            time.sleep(2.0 * (attempt + 1))
+    raise SystemExit(
+        f"ERROR: Overpass unreachable after {RETRIES} attempts ({last_err}); features.json not written."
+    )
+
+
+def classify(tags: dict) -> str | None:
+    """Map OSM tags to a feature kind; None = drop (unclassified/out of scope)."""
+    if not tags or tags.get("building"):
+        return None
+    if tags.get("highway") == "raceway":
+        # Barber's pit lane carries no raceway=pit_lane tag, only name="Pit Lane".
+        if tags.get("raceway") == "pit_lane" or tags.get("service") or "pit" in tags.get("name", "").lower():
+            return "pit_lane"
+        if tags.get("area") == "yes":
+            return "paved"  # e.g. the kart/motocross pad; the circuit is a non-area loop
+        return None  # the circuit itself is rendered procedurally
+    if tags.get("natural") == "water" or tags.get("water"):
+        return "water"
+    if tags.get("natural") == "sand" or tags.get("surface") == "sand":
+        return "sand"
+    if tags.get("surface") == "gravel":
+        return "gravel"
+    if tags.get("natural") in ("wood", "scrub") or tags.get("landuse") == "forest":
+        return "wood"
+    if tags.get("landuse") in ("grass", "meadow") or tags.get("leisure") == "pitch" or tags.get("surface") == "grass":
+        return "grass"
+    if tags.get("surface") == "asphalt" or tags.get("leisure") == "track":
+        return "paved"
+    return None
+
+
+def project(lat: float, lng: float, origin: dict[str, float]) -> tuple[float, float]:
+    """ENU, Y-up, right-handed local projection: east -> +x, north -> -z.
+
+    Must agree with src/replay/projection.ts's latLngToLocal() and
+    build_track_osm.py's project(). See those for why north maps to -z.
+    """
+    lng_scale = EARTH_METERS_PER_DEGREE * math.cos(math.radians(origin["lat"]))
+    return (lng - origin["lng"]) * lng_scale, -(lat - origin["lat"]) * EARTH_METERS_PER_DEGREE
+
+
+def polygon_area_m2(xz: list[tuple[float, float]]) -> float:
+    area = 0.0
+    n = len(xz)
+    for i in range(n):
+        x1, z1 = xz[i]
+        x2, z2 = xz[(i + 1) % n]
+        area += x1 * z2 - x2 * z1
+    return abs(area) / 2.0
+
+
+def parse_width(tags: dict, default: float = DEFAULT_PIT_WIDTH_M) -> float:
+    raw = tags.get("width")
+    if not raw:
+        return default
+    try:
+        return float(str(raw).split()[0].replace("m", ""))
+    except ValueError:
+        return default
+
+
+def clip_to_rect(
+    poly: list[tuple[float, float]],
+    x_min: float,
+    z_min: float,
+    x_max: float,
+    z_max: float,
+) -> list[tuple[float, float]]:
+    """Sutherland–Hodgman clip of a polygon to an axis-aligned rectangle.
+
+    Overpass returns the full geometry of every polygon intersecting the query
+    bbox; unclipped forest/lake rings run kilometres past the satellite ground
+    and would hover over the void, so features are cut to the query rect.
+    """
+
+    def x_cross(a: tuple[float, float], b: tuple[float, float], x: float) -> tuple[float, float]:
+        t = (x - a[0]) / (b[0] - a[0])
+        return (x, a[1] + (b[1] - a[1]) * t)
+
+    def z_cross(a: tuple[float, float], b: tuple[float, float], z: float) -> tuple[float, float]:
+        t = (z - a[1]) / (b[1] - a[1])
+        return (a[0] + (b[0] - a[0]) * t, z)
+
+    pts = poly
+    for inside, intersect in (
+        (lambda p: p[0] >= x_min, lambda a, b: x_cross(a, b, x_min)),
+        (lambda p: p[0] <= x_max, lambda a, b: x_cross(a, b, x_max)),
+        (lambda p: p[1] >= z_min, lambda a, b: z_cross(a, b, z_min)),
+        (lambda p: p[1] <= z_max, lambda a, b: z_cross(a, b, z_max)),
+    ):
+        if not pts:
+            return []
+        out: list[tuple[float, float]] = []
+        for i in range(len(pts)):
+            cur, nxt = pts[i], pts[(i + 1) % len(pts)]
+            if inside(cur):
+                out.append(cur)
+                if not inside(nxt):
+                    out.append(intersect(cur, nxt))
+            elif inside(nxt):
+                out.append(intersect(cur, nxt))
+        pts = out
+    return pts
+
+
+def buffer_polyline(xz: list[tuple[float, float]], width: float) -> list[tuple[float, float]]:
+    """Offset an open polyline into a closed ribbon polygon of the given width."""
+    half = width / 2.0
+    n = len(xz)
+    left: list[tuple[float, float]] = []
+    right: list[tuple[float, float]] = []
+    for i in range(n):
+        ax, az = xz[max(0, i - 1)]
+        bx, bz = xz[min(n - 1, i + 1)]
+        tx, tz = bx - ax, bz - az
+        length = math.hypot(tx, tz) or 1.0
+        nx, nz = -tz / length, tx / length
+        x, z = xz[i]
+        left.append((x + nx * half, z + nz * half))
+        right.append((x - nx * half, z - nz * half))
+    return left + right[::-1]
+
+
+def assemble_outer_rings(members: list[dict]) -> list[list[tuple[float, float]]]:
+    """Stitch a multipolygon's outer way segments into closed rings.
+
+    Inner (hole) rings are skipped on purpose. Returns rings as (lat, lng)
+    lists without the duplicated closing coordinate.
+    """
+    segments: list[list[tuple[float, float]]] = []
+    for m in members:
+        if m.get("type") == "way" and m.get("role") in ("outer", "") and m.get("geometry"):
+            segments.append([(g["lat"], g["lon"]) for g in m["geometry"]])
+
+    rings: list[list[tuple[float, float]]] = []
+    while segments:
+        ring = segments.pop(0)
+        progress = True
+        while progress and ring[0] != ring[-1]:
+            progress = False
+            for i, seg in enumerate(segments):
+                if seg[0] == ring[-1]:
+                    ring = ring + seg[1:]
+                elif seg[-1] == ring[-1]:
+                    ring = ring + seg[-2::-1]
+                elif seg[-1] == ring[0]:
+                    ring = seg[:-1] + ring
+                elif seg[0] == ring[0]:
+                    ring = seg[::-1][:-1] + ring
+                else:
+                    continue
+                segments.pop(i)
+                progress = True
+                break
+        if len(ring) >= 4 and ring[0] == ring[-1]:
+            rings.append(ring[:-1])
+    return rings
+
+
+def main() -> int:
+    args = parse_args()
+    if not args.track.exists():
+        raise SystemExit(f"track.json not found: {args.track}")
+    if not args.sat_meta.exists():
+        raise SystemExit(f"satellite_meta.json not found: {args.sat_meta}")
+
+    origin = json.loads(args.track.read_text())["origin"]
+    bbox = json.loads(args.sat_meta.read_text())["bbox"]
+
+    mid_lat = (bbox["minLat"] + bbox["maxLat"]) / 2.0
+    dlat = args.margin / EARTH_METERS_PER_DEGREE
+    dlng = args.margin / (EARTH_METERS_PER_DEGREE * math.cos(math.radians(mid_lat)))
+    south, north = bbox["minLat"] - dlat, bbox["maxLat"] + dlat
+    west, east = bbox["minLng"] - dlng, bbox["maxLng"] + dlng
+    print(f"Query bbox (satellite + {args.margin:.0f} m): ({south:.6f},{west:.6f},{north:.6f},{east:.6f})")
+
+    raw = fetch_overpass(build_query(south, west, north, east), args.cache, args.refresh)
+
+    # Clip rect in local XZ (projection is linear, so the rect stays a rect).
+    # With north -> -z, the southern (smaller-lat) edge now projects to the
+    # LARGER z, so south/west and north/east swap which extremum they feed.
+    x_min, z_max = project(south, west, origin)
+    x_max, z_min = project(north, east, origin)
+
+    features: list[dict] = []
+    counts: Counter[str] = Counter()
+    skipped: Counter[str] = Counter()
+    clipped_count = 0
+
+    def add_feature(fid: str, kind: str, xz: list[tuple[float, float]]) -> None:
+        nonlocal clipped_count
+        if len(xz) < MIN_POINTS:
+            skipped["too_few_points"] += 1
+            return
+        clipped = clip_to_rect(xz, x_min, z_min, x_max, z_max)
+        if clipped != xz:
+            clipped_count += 1
+        if len(clipped) < MIN_POINTS:
+            skipped["outside_bbox"] += 1
+            return
+        if polygon_area_m2(clipped) < MIN_AREA_M2:
+            skipped["too_small"] += 1
+            return
+        features.append({"id": fid, "kind": kind, "outline": [[round(x, 2), round(z, 2)] for x, z in clipped]})
+        counts[kind] += 1
+
+    for el in raw.get("elements", []):
+        tags = el.get("tags") or {}
+        kind = classify(tags)
+        if kind is None:
+            skipped["excluded"] += 1
+            continue
+
+        if el.get("type") == "way":
+            if el.get("id") == MAIN_RACEWAY_WAY_ID:
+                skipped["main_raceway"] += 1
+                continue
+            coords = [(g["lat"], g["lon"]) for g in el.get("geometry") or []]
+            if len(coords) >= 4 and coords[0] == coords[-1]:
+                xz = [project(lat, lng, origin) for lat, lng in coords[:-1]]
+                add_feature(f"way/{el['id']}", kind, xz)
+            elif kind == "pit_lane" and len(coords) >= 2:
+                xz = [project(lat, lng, origin) for lat, lng in coords]
+                add_feature(f"way/{el['id']}", kind, buffer_polyline(xz, parse_width(tags)))
+                print(f"  Buffered open pit-lane way {el['id']} to a {parse_width(tags):.1f} m ribbon")
+            else:
+                skipped["open_way"] += 1
+        elif el.get("type") == "relation":
+            rings = assemble_outer_rings(el.get("members") or [])
+            if not rings:
+                skipped["no_outer_ring"] += 1
+                continue
+            for k, ring in enumerate(rings):
+                xz = [project(lat, lng, origin) for lat, lng in ring]
+                fid = f"relation/{el['id']}" + (f"#{k}" if len(rings) > 1 else "")
+                add_feature(fid, kind, xz)
+
+    out_doc = {"version": 1, "origin": origin, "features": features}
+
+    if args.out.exists():
+        backup = Path(str(args.out) + ".bak")
+        if not backup.exists():
+            backup.write_text(args.out.read_text())
+            print(f"Backed up existing {args.out.name} to {backup.name}")
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.out.write_text(json.dumps(out_doc, separators=(",", ":")) + "\n")
+
+    print(f"Saved {args.out} ({args.out.stat().st_size / 1024:.1f} KB)")
+    print("Feature counts by kind:")
+    for kind in KINDS:
+        print(f"  {kind:9s} {counts.get(kind, 0)}")
+    print(f"  total     {len(features)}")
+    if clipped_count:
+        print(f"Clipped {clipped_count} outlines to the satellite bbox (+margin)")
+    if skipped:
+        print("Skipped: " + ", ".join(f"{k}={v}" for k, v in sorted(skipped.items())))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

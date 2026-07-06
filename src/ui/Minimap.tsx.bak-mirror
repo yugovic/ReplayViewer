@@ -1,0 +1,162 @@
+import { useMemo, type MouseEvent } from "react";
+import { useReplayStore } from "../state/replayStore";
+import { timeAtDist } from "../replay/delta";
+import type { TrackData } from "../replay/types";
+
+const MAP_WIDTH = 190;
+const PADDING = 8;
+const SECTOR_COLORS = ["#f87171", "#4ade80", "#60a5fa"];
+
+interface MapGeometry {
+  height: number;
+  toX: (worldX: number) => number;
+  toY: (worldZ: number) => number;
+  sectorPaths: string[];
+}
+
+function buildGeometry(track: TrackData): MapGeometry {
+  const [minX, maxX] = track.bounds.x;
+  const [minZ, maxZ] = track.bounds.z;
+  const spanX = Math.max(1, maxX - minX);
+  const spanZ = Math.max(1, maxZ - minZ);
+  const scale = (MAP_WIDTH - PADDING * 2) / spanX;
+  const height = spanZ * scale + PADDING * 2;
+
+  const toX = (worldX: number) => PADDING + (worldX - minX) * scale;
+  // World +Z is north → screen up (SVG y grows downward)
+  const toY = (worldZ: number) => height - PADDING - (worldZ - minZ) * scale;
+
+  // Split centerline into 3 sectors by distance, overlapping one point at
+  // boundaries so the strokes connect.
+  const total = track.totalLength;
+  const boundaries = [total / 3, (total * 2) / 3, Infinity];
+  const sectors: string[][] = [[], [], []];
+  const fmt = (p: { x: number; z: number }) => `${toX(p.x).toFixed(1)},${toY(p.z).toFixed(1)}`;
+  let sector = 0;
+  let prev: { x: number; z: number } | null = null;
+  for (const p of track.centerline) {
+    while (sector < 2 && p.dist > boundaries[sector]) {
+      sector += 1;
+      // Repeat the previous point so consecutive sector strokes connect
+      if (prev) sectors[sector].push(fmt(prev));
+    }
+    sectors[sector].push(fmt(p));
+    prev = p;
+  }
+  // Close the loop: connect last sector back to the first point
+  const first = track.centerline[0];
+  if (first) {
+    sectors[2].push(fmt(first));
+  }
+
+  return {
+    height,
+    toX,
+    toY,
+    sectorPaths: sectors.map((pts) => (pts.length > 1 ? `M ${pts.join(" L ")}` : "")),
+  };
+}
+
+export function Minimap() {
+  const track = useReplayStore((state) => state.track);
+  const carPosition = useReplayStore((state) => state.carPosition);
+  const ghostPosition = useReplayStore((state) => state.ghostPosition);
+  const activeLap = useReplayStore((state) => state.activeLap);
+  const showMinimap = useReplayStore((state) => state.showMinimap);
+  const toggleMinimap = useReplayStore((state) => state.toggleMinimap);
+  const seek = useReplayStore((state) => state.seek);
+
+  const geometry = useMemo(() => (track ? buildGeometry(track) : null), [track]);
+
+  if (!track || !geometry) return null;
+
+  const handleClick = (event: MouseEvent<SVGSVGElement>) => {
+    if (!activeLap) return;
+    const svg = event.currentTarget;
+    const rect = svg.getBoundingClientRect();
+    const px = ((event.clientX - rect.left) / rect.width) * MAP_WIDTH;
+    const py = ((event.clientY - rect.top) / rect.height) * geometry.height;
+
+    // Nearest centerline point in map space → seek to its distance
+    let bestDist = Infinity;
+    let bestPoint = track.centerline[0];
+    for (const p of track.centerline) {
+      const dx = geometry.toX(p.x) - px;
+      const dy = geometry.toY(p.z) - py;
+      const d = dx * dx + dy * dy;
+      if (d < bestDist) {
+        bestDist = d;
+        bestPoint = p;
+      }
+    }
+    if (bestPoint && bestDist < 20 * 20) {
+      seek(timeAtDist(activeLap, bestPoint.dist));
+    }
+  };
+
+  return (
+    <div className={`minimap-panel hud-panel${showMinimap ? "" : " minimap-panel--collapsed"}`}>
+      <div className="minimap-header">
+        <span className="hud-label">TRACK MAP</span>
+        <button
+          type="button"
+          className="minimap-toggle"
+          onClick={toggleMinimap}
+          title={showMinimap ? "Collapse minimap" : "Expand minimap"}
+        >
+          {showMinimap ? "\u2013" : "+"}
+        </button>
+      </div>
+      {showMinimap && (
+        <svg
+          className="minimap-svg"
+          viewBox={`0 0 ${MAP_WIDTH} ${geometry.height}`}
+          width={MAP_WIDTH}
+          height={geometry.height}
+          onClick={handleClick}
+          role="img"
+          aria-label="Track minimap"
+        >
+          {/* Sector-coloured centerline */}
+          {geometry.sectorPaths.map((d, i) =>
+            d ? (
+              <path
+                key={i}
+                d={d}
+                fill="none"
+                stroke={SECTOR_COLORS[i]}
+                strokeWidth={2.4}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity={0.85}
+              />
+            ) : null,
+          )}
+          {/* Ghost car (cyan) */}
+          {ghostPosition && (
+            <circle
+              cx={geometry.toX(ghostPosition.x)}
+              cy={geometry.toY(ghostPosition.z)}
+              r={4}
+              fill="#00cfff"
+              stroke="#04222c"
+              strokeWidth={1}
+              opacity={0.9}
+            />
+          )}
+          {/* Main car (yellow) */}
+          {carPosition && (
+            <circle
+              cx={geometry.toX(carPosition.x)}
+              cy={geometry.toY(carPosition.z)}
+              r={4.5}
+              fill="#e8f16c"
+              stroke="#2b2e0d"
+              strokeWidth={1}
+            />
+          )}
+        </svg>
+      )}
+    </div>
+  );
+}

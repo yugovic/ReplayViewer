@@ -1,0 +1,840 @@
+/**
+ * TrackBuilder – creates the full track visual group for Phase 3.
+ *
+ * Components:
+ *  - Asphalt ribbon with UV coordinates and procedural roughness normal-map
+ *  - Red/white kerbs on high-curvature corners
+ *  - Start/finish chequered line
+ *  - 100 m / 50 m braking markers at major corners
+ *  - Satellite imagery as ground plane
+ */
+
+import * as THREE from "three";
+import type { TrackData } from "../../replay/types";
+import { latLngToLocal, localToLatLng } from "../../replay/projection";
+import { projectPointToCenterline, sampleTrackAltitude } from "../../replay/interpolation";
+import { corridorBlendHeight, corridorMask, reblendDrapedHeights, type DrapeCache } from "./groundMath";
+import { TerrainSampler } from "./TerrainSampler";
+import { buildFeaturesGroup, loadFeatures } from "./FeatureBuilder";
+import { buildAsphaltDetailTexture, buildGrassDetailTexture } from "./detailTexture";
+
+const ELEVATION_SCALE = 1;
+
+/** Minimal shape TrackBuilder needs from a terrain heightfield; satisfied by
+ * TerrainSampler and by lightweight test doubles alike. */
+interface HeightSampler {
+  heightAt(lat: number, lng: number): number | null;
+}
+
+function wrapArcLength(dist: number, length: number): number {
+  if (length <= 0) return 0;
+  return ((dist % length) + length) % length;
+}
+
+/**
+ * The projection/sampling half of the drape: centerline projection, road
+ * altitude and terrain height for one vertex. Cached per satellite-ground
+ * vertex so a road toggle can re-blend heights without repeating this work.
+ */
+export function computeDrapeInputs(
+  track: TrackData,
+  x: number,
+  z: number,
+  lat: number,
+  lng: number,
+  sampler: HeightSampler | null,
+): { roadY: number; terrainY: number; lateralDistance: number } {
+  const { arcLength, lateralDistance } = projectPointToCenterline(track, x, z);
+  const roadY = sampleTrackAltitude(track, wrapArcLength(arcLength, track.totalLength)) * ELEVATION_SCALE;
+  const terrainAlt = sampler?.heightAt(lat, lng) ?? null;
+  const terrainY = terrainAlt != null ? (terrainAlt - track.origin.alt) * ELEVATION_SCALE : roadY;
+  return { roadY, terrainY, lateralDistance };
+}
+
+/**
+ * Ground height for one drape vertex: the road surface just under the
+ * asphalt inside the corridor, blending out to the real terrain heightfield
+ * (when available) past the runoff — see corridorBlendHeight().
+ */
+export function computeDrapedGroundHeight(
+  track: TrackData,
+  x: number,
+  z: number,
+  lat: number,
+  lng: number,
+  sampler: HeightSampler | null,
+): number {
+  const { roadY, terrainY, lateralDistance } = computeDrapeInputs(track, x, z, lat, lng, sampler);
+  return corridorBlendHeight({ roadY, terrainY, lateralDistance, halfRoadWidth: track.width / 2 });
+}
+
+// ─── Asphalt ──────────────────────────────────────────────────────────────────
+
+function buildAsphaltMaterial(): THREE.MeshStandardMaterial {
+  // Procedural "noise" normal map for asphalt grain (256×256 canvas)
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+
+  // Fill with neutral normal (0.5, 0.5, 1.0) → flat
+  ctx.fillStyle = "#8080ff";
+  ctx.fillRect(0, 0, size, size);
+
+  // Sprinkle small bumps
+  const rng = mulberry32(0xdeadbeef);
+  for (let i = 0; i < 8000; i++) {
+    const x = Math.floor(rng() * size);
+    const y = Math.floor(rng() * size);
+    const r = 1 + Math.floor(rng() * 2);
+    const ang = rng() * Math.PI * 2;
+    const strength = 0.12 + rng() * 0.12;
+    const nx = 0.5 + Math.cos(ang) * strength;
+    const ny = 0.5 + Math.sin(ang) * strength;
+    ctx.fillStyle = `rgb(${Math.round(nx * 255)},${Math.round(ny * 255)},255)`;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  const normalMap = new THREE.CanvasTexture(canvas);
+  normalMap.wrapS = THREE.RepeatWrapping;
+  normalMap.wrapT = THREE.RepeatWrapping;
+  normalMap.repeat.set(40, 2);
+
+  return new THREE.MeshStandardMaterial({
+    color: 0x252830,
+    roughness: 0.82,
+    metalness: 0.01,
+    normalMap,
+    normalScale: new THREE.Vector2(0.35, 0.35),
+    side: THREE.DoubleSide,
+  });
+}
+
+/** Seeded 32-bit mulberry RNG – deterministic noise, no Math.random() dependency */
+function mulberry32(seed: number) {
+  let s = seed >>> 0;
+  return () => {
+    s += 0x6d2b79f5;
+    let t = Math.imul(s ^ (s >>> 15), 1 | s);
+    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+    return ((t ^ (t >>> 14)) >>> 0) / 0xffffffff;
+  };
+}
+
+function buildRoadMesh(track: TrackData, points: THREE.Vector3[]): THREE.Mesh {
+  const vertices: number[] = [];
+  const uvs: number[] = [];
+  const indices: number[] = [];
+  const halfWidth = track.width / 2;
+  let accDist = 0;
+
+  for (let i = 0; i < points.length; i++) {
+    const point = points[i];
+    const prev = points[Math.max(0, i - 1)];
+    const next = points[Math.min(points.length - 1, i + 1)];
+
+    const tangent = new THREE.Vector3(next.x - prev.x, 0, next.z - prev.z);
+    if (tangent.lengthSq() < 0.0001) tangent.set(0, 0, 1);
+    tangent.normalize();
+    const normal = new THREE.Vector3(-tangent.z, 0, tangent.x);
+
+    const left = point.clone().addScaledVector(normal, halfWidth);
+    const right = point.clone().addScaledVector(normal, -halfWidth);
+
+    if (i > 0) {
+      accDist += points[i].distanceTo(points[i - 1]);
+    }
+    const uv = accDist / track.width; // tile along track length
+
+    vertices.push(left.x, left.y, left.z, right.x, right.y, right.z);
+    uvs.push(0, uv, 1, uv);
+  }
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = i * 2;
+    indices.push(a, a + 1, a + 2, a + 1, a + 3, a + 2);
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
+  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+
+  const mesh = new THREE.Mesh(geometry, buildAsphaltMaterial());
+  mesh.receiveShadow = true;
+  mesh.castShadow = false;
+  return mesh;
+}
+
+// ─── Curvature-based kerb detection ───────────────────────────────────────────
+
+/**
+ * Returns curvature magnitude at each centerline point (0 = straight).
+ *
+ * The raw turn angle between consecutive segments scales with point spacing
+ * (θ ∝ spacing at constant corner radius, and 1-cos θ ≈ θ²/2), so the value
+ * is normalised to a 17 m reference spacing – the spacing the CURV_THRESHOLD
+ * constants were originally tuned for – to stay threshold-compatible when the
+ * centerline is resampled more densely (e.g. the ~7 m OSM-based centerline).
+ */
+function computeCurvatures(points: THREE.Vector3[]): number[] {
+  const REF_SPACING = 17; // metres
+  const curvatures: number[] = new Array(points.length).fill(0);
+  for (let i = 1; i < points.length - 1; i++) {
+    const a = points[i - 1];
+    const b = points[i];
+    const c = points[i + 1];
+    const ab = new THREE.Vector3(b.x - a.x, 0, b.z - a.z);
+    const bc = new THREE.Vector3(c.x - b.x, 0, c.z - b.z);
+    const spacing = (ab.length() + bc.length()) / 2;
+    if (spacing < 0.001) continue;
+    ab.normalize();
+    bc.normalize();
+    const raw = 1 - ab.dot(bc); // 0 for straight, ~2 for 180° turn
+    curvatures[i] = raw * (REF_SPACING / spacing) ** 2;
+  }
+  return curvatures;
+}
+
+function buildKerbs(track: TrackData, points: THREE.Vector3[]): THREE.Mesh[] {
+  const curvatures = computeCurvatures(points);
+  const CURV_THRESHOLD = 0.04;
+  // Wider and slightly taller kerbs for better visibility from above
+  const KERB_WIDTH = 1.6;
+  const KERB_HEIGHT = 0.08;
+  const STRIPE_LEN = 1.4;
+  const halfRoad = track.width / 2;
+
+  // Brighter colours so they are visible from the top-down camera
+  const redMat = new THREE.MeshStandardMaterial({ color: 0xff1111, roughness: 0.5, metalness: 0.0, emissive: 0x330000 });
+  const whiteMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.0 });
+  const meshes: THREE.Mesh[] = [];
+
+  // Collect kerb segments: each "block" is a short ribbon quad
+  const kerbGeo = new THREE.BoxGeometry(KERB_WIDTH, KERB_HEIGHT, STRIPE_LEN);
+
+  let stripeIdx = 0;
+  for (let i = 1; i < points.length - 1; i++) {
+    if (curvatures[i] < CURV_THRESHOLD) continue;
+
+    const point = points[i];
+    const prev = points[Math.max(0, i - 1)];
+    const next = points[Math.min(points.length - 1, i + 1)];
+    const tangent = new THREE.Vector3(next.x - prev.x, 0, next.z - prev.z).normalize();
+    const normal = new THREE.Vector3(-tangent.z, 0, tangent.x);
+
+    // Determine which side curves (cross-product sign of consecutive tangents)
+    const ab = new THREE.Vector3(point.x - prev.x, 0, point.z - prev.z).normalize();
+    const bc = new THREE.Vector3(next.x - point.x, 0, next.z - point.z).normalize();
+    const cross = ab.x * bc.z - ab.z * bc.x;
+    // cross > 0 → right turn → kerb on outside (right side)
+    const side = cross > 0 ? -1 : 1;
+
+    const kerbPos = point.clone().addScaledVector(normal, side * (halfRoad + KERB_WIDTH / 2 - 0.2));
+    kerbPos.y = point.y + KERB_HEIGHT / 2;
+
+    const mat = stripeIdx % 2 === 0 ? redMat : whiteMat;
+    const mesh = new THREE.Mesh(kerbGeo, mat);
+    mesh.position.copy(kerbPos);
+    // Align along tangent
+    const angle = Math.atan2(tangent.x, tangent.z);
+    mesh.rotation.y = angle;
+    mesh.receiveShadow = true;
+    meshes.push(mesh);
+    stripeIdx++;
+  }
+  return meshes;
+}
+
+// ─── Start/Finish chequered line ───────────────────────────────────────────────
+
+function buildStartFinishLine(track: TrackData, points: THREE.Vector3[]): THREE.Mesh {
+  const p0 = points[0];
+  const p1 = points[1] ?? points[0];
+  const tangent = new THREE.Vector3(p1.x - p0.x, 0, p1.z - p0.z).normalize();
+
+  const COLS = 10;
+  const ROWS = 2;
+  const tileW = track.width / COLS;
+  const tileD = 0.9;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = COLS * 32;
+  canvas.height = ROWS * 32;
+  const ctx = canvas.getContext("2d")!;
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      ctx.fillStyle = (row + col) % 2 === 0 ? "#ffffff" : "#000000";
+      ctx.fillRect(col * 32, row * 32, 32, 32);
+    }
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+
+  const geo = new THREE.PlaneGeometry(track.width, tileD * ROWS);
+  const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.55, metalness: 0.0 });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.rotation.x = -Math.PI / 2;
+  mesh.position.set(p0.x, p0.y + 0.02, p0.z);
+  mesh.rotation.z = -Math.atan2(tangent.x, tangent.z);
+  mesh.receiveShadow = true;
+  return mesh;
+}
+
+// ─── Braking markers ──────────────────────────────────────────────────────────
+
+function buildBrakingMarkers(track: TrackData, points: THREE.Vector3[]): THREE.Group {
+  const group = new THREE.Group();
+  const curvatures = computeCurvatures(points);
+  const CURV_THRESHOLD = 0.07; // only major corners
+  const MARKER_DISTS = [100, 50]; // metres before corner
+  const halfRoad = track.width / 2;
+
+  // Accumulate distances along centerline
+  const dists: number[] = [0];
+  for (let i = 1; i < points.length; i++) {
+    dists.push(dists[i - 1] + points[i].distanceTo(points[i - 1]));
+  }
+
+  // Find apex indices (local curvature maxima above threshold)
+  const apexIndices: number[] = [];
+  for (let i = 2; i < points.length - 2; i++) {
+    if (
+      curvatures[i] >= CURV_THRESHOLD &&
+      curvatures[i] >= curvatures[i - 1] &&
+      curvatures[i] >= curvatures[i + 1]
+    ) {
+      // Ensure we're not too close to a previous apex (distance-based so the
+      // rule is independent of centerline point spacing; 8 points ≈ 136 m at
+      // the original 17 m spacing)
+      const last = apexIndices[apexIndices.length - 1];
+      if (last === undefined || dists[i] - dists[last] > 136) {
+        apexIndices.push(i);
+      }
+    }
+  }
+
+  const paintMat100 = buildPaintMaterial("100");
+  const paintMat50 = buildPaintMaterial("50");
+  // Small road-paint marker: 1 m wide × 2 m long, lying flat on the asphalt
+  const paintGeo = new THREE.PlaneGeometry(1.0, 2.0);
+
+  for (const apexIdx of apexIndices) {
+    const apexDist = dists[apexIdx];
+    for (const markerDist of MARKER_DISTS) {
+      const targetDist = apexDist - markerDist;
+      if (targetDist < 0) continue;
+
+      // Find index with closest dist
+      let closest = 0;
+      let minDiff = Infinity;
+      for (let i = 0; i < dists.length; i++) {
+        const diff = Math.abs(dists[i] - targetDist);
+        if (diff < minDiff) { minDiff = diff; closest = i; }
+      }
+      const pt = points[closest];
+      const prev2 = points[Math.max(0, closest - 1)];
+      const next2 = points[Math.min(points.length - 1, closest + 1)];
+      const tangent = new THREE.Vector3(next2.x - prev2.x, 0, next2.z - prev2.z).normalize();
+      const normal = new THREE.Vector3(-tangent.z, 0, tangent.x);
+
+      // Painted on the edge of the asphalt, 2 cm above the surface
+      const paintPos = pt.clone().addScaledVector(normal, halfRoad - 0.8);
+      paintPos.y = pt.y + 0.02;
+
+      const mat = markerDist === 100 ? paintMat100 : paintMat50;
+      const paint = new THREE.Mesh(paintGeo, mat);
+      paint.position.copy(paintPos);
+      // Lie flat and align the long side with the direction of travel
+      paint.rotation.x = -Math.PI / 2;
+      paint.rotation.z = -Math.atan2(tangent.x, tangent.z);
+      paint.receiveShadow = true;
+      group.add(paint);
+    }
+  }
+  return group;
+}
+
+/** Road-paint style distance marker texture: white numeral on a red patch */
+function buildPaintMaterial(label: string): THREE.MeshStandardMaterial {
+  const canvas = document.createElement("canvas");
+  canvas.width = 128;
+  canvas.height = 256;
+  const ctx = canvas.getContext("2d")!;
+  // Red paint patch with slightly rounded look
+  ctx.fillStyle = "#b32014";
+  ctx.fillRect(6, 6, 116, 244);
+  // White border stripe like painted lines
+  ctx.strokeStyle = "#f2f2f2";
+  ctx.lineWidth = 8;
+  ctx.strokeRect(10, 10, 108, 236);
+  // Numeral along the travel direction
+  ctx.fillStyle = "#f2f2f2";
+  ctx.font = "bold 64px monospace";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(label, 64, 128);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return new THREE.MeshStandardMaterial({
+    map: tex,
+    roughness: 0.75,
+    metalness: 0.0,
+    polygonOffset: true,
+    polygonOffsetFactor: -1,
+    polygonOffsetUnits: -1,
+  });
+}
+
+// ─── Satellite ground plane ────────────────────────────────────────────────────
+
+interface SatelliteMeta {
+  imageFile: string;
+  imageWidth: number;
+  imageHeight: number;
+  bbox: { minLng: number; maxLng: number; minLat: number; maxLat: number };
+  mercator: boolean;
+}
+
+const DEG2RAD = Math.PI / 180;
+const RAD2DEG = 180 / Math.PI;
+
+/**
+ * Maps a satellite-texture UV coordinate to the geographic (lat, lng) of the
+ * ground it depicts.
+ *
+ * The satellite image is a stitched Web-Mercator tile mosaic
+ * (see replay-viewer/fetch_satellite_tiles.py): pixel x is linear in
+ * longitude, but pixel y is linear in Mercator y = asinh(tan(lat)) — NOT in
+ * latitude. With flipY=false, v=0 samples the top image row (north edge,
+ * maxLat) and v=1 the bottom row (south edge, minLat).
+ *
+ * Exported for quantitative alignment verification in tests/scripts.
+ */
+export function satelliteUvToLatLng(
+  u: number,
+  v: number,
+  bbox: SatelliteMeta["bbox"],
+  mercator: boolean,
+): { lat: number; lng: number } {
+  const lng = bbox.minLng + u * (bbox.maxLng - bbox.minLng); // Mercator x is linear in lng
+  if (!mercator) {
+    return { lat: bbox.maxLat + v * (bbox.minLat - bbox.maxLat), lng };
+  }
+  const yNorth = Math.asinh(Math.tan(bbox.maxLat * DEG2RAD));
+  const ySouth = Math.asinh(Math.tan(bbox.minLat * DEG2RAD));
+  const lat = Math.atan(Math.sinh(yNorth + v * (ySouth - yNorth))) * RAD2DEG;
+  return { lat, lng };
+}
+
+/** Uniforms exposed by attachGroundDetailShader(), kept live so the effect
+ * can be toggled (setDetailTexture) without recompiling the shader. */
+export interface GroundDetailUniforms {
+  uAsphaltDetail: { value: THREE.Texture };
+  uGrassDetail: { value: THREE.Texture };
+  uDetailStrength: { value: number };
+}
+
+/**
+ * Injects the Plan-A ground detail-texture blend (see detailTexture.ts) into
+ * the satellite material via onBeforeCompile: modulates the photo's albedo
+ * with tileable procedural grayscale noise — asphalt grain inside the road
+ * corridor (per-vertex "corridorMask" attribute), grass mottling outside it —
+ * fading out with distance from the camera so it only sharpens the close-up
+ * view. Luminance-only: it multiplies diffuseColor by a value that averages
+ * to 1.0 (the noise textures are mean-0.5, so `detail.r * 2.0` averages to
+ * 1.0), never invents color or geometry.
+ *
+ * Patches both `#include <common>` (uniform/varying/attribute declarations)
+ * and `#include <begin_vertex>` (bakes vWorldXZ/vCorridorMask) /
+ * `#include <map_fragment>` (applies the modulation right after the photo's
+ * base color is read). vViewPosition, used for the distance fade, is a
+ * standard MeshStandardMaterial fragment varying set unconditionally right
+ * after `#include <project_vertex>` — no extra plumbing needed for it.
+ */
+function attachGroundDetailShader(mat: THREE.MeshStandardMaterial): GroundDetailUniforms {
+  const uniforms: GroundDetailUniforms = {
+    uAsphaltDetail: { value: buildAsphaltDetailTexture() },
+    uGrassDetail: { value: buildGrassDetailTexture() },
+    uDetailStrength: { value: 1 },
+  };
+
+  mat.onBeforeCompile = (shader) => {
+    shader.uniforms.uAsphaltDetail = uniforms.uAsphaltDetail;
+    shader.uniforms.uGrassDetail = uniforms.uGrassDetail;
+    shader.uniforms.uDetailStrength = uniforms.uDetailStrength;
+
+    shader.vertexShader = shader.vertexShader
+      .replace(
+        "#include <common>",
+        `#include <common>
+attribute float corridorMask;
+varying float vCorridorMask;
+varying vec2 vWorldXZ;`,
+      )
+      .replace(
+        "#include <begin_vertex>",
+        `#include <begin_vertex>
+vCorridorMask = corridorMask;
+vWorldXZ = ( modelMatrix * vec4( transformed, 1.0 ) ).xz;`,
+      );
+
+    shader.fragmentShader = shader.fragmentShader
+      .replace(
+        "#include <common>",
+        `#include <common>
+uniform sampler2D uAsphaltDetail;
+uniform sampler2D uGrassDetail;
+uniform float uDetailStrength;
+varying float vCorridorMask;
+varying vec2 vWorldXZ;`,
+      )
+      .replace(
+        "#include <map_fragment>",
+        `#include <map_fragment>
+{
+  vec3 asphaltDetail = texture2D( uAsphaltDetail, vWorldXZ / 0.35 ).rgb;
+  vec3 grassDetail = texture2D( uGrassDetail, vWorldXZ / 0.8 ).rgb;
+  vec3 detail = mix( grassDetail, asphaltDetail, vCorridorMask );
+  float cameraDist = length( vViewPosition );
+  float distanceFade = 1.0 - smoothstep( 40.0, 120.0, cameraDist );
+  float fadedStrength = uDetailStrength * distanceFade;
+  diffuseColor.rgb *= mix( 1.0, detail.r * 2.0, fadedStrength );
+}`,
+      );
+  };
+
+  // The shader edits above are static (no material-state-dependent branches),
+  // so a constant cache key is correct — it just needs to differ from
+  // Three's default '' so this material's compiled program variants never
+  // collide with an unrelated MeshStandardMaterial's onBeforeCompile output.
+  mat.customProgramCacheKey = () => "satellite-ground-detail-v1";
+
+  return uniforms;
+}
+
+function buildSatelliteGround(
+  track: TrackData,
+  meta: SatelliteMeta,
+  texture: THREE.Texture,
+  sampler: HeightSampler | null,
+): { mesh: THREE.Mesh; cache: DrapeCache; detailUniforms: GroundDetailUniforms } {
+  const { bbox } = meta;
+  const origin = track.origin;
+
+  // Grid-warp placement: rather than stretching the (Web-Mercator) image
+  // linearly between its bbox corners in the local equirectangular scene
+  // space, every vertex of a subdivided plane is placed by converting its
+  // UV → (lng, lat) with the exact inverse Mercator mapping and then through
+  // the very same latLngToLocal() projection used for telemetry, centerline
+  // and the road mesh. The image ground position and the scene coordinate
+  // system therefore agree by construction, absorbing any projection
+  // difference in one step (and staying correct for larger bboxes where the
+  // Mercator/equirectangular divergence grows quadratically).
+  const segsX = 192;
+  const segsZ = 192;
+  const geo = new THREE.PlaneGeometry(1, 1, segsX, segsZ);
+  geo.rotateX(-Math.PI / 2);
+
+  // PlaneGeometry's default index winding is only correct for a +Y-up normal
+  // when v increases as local Z decreases (true for the plain rotateX(-90°)
+  // idiom, since its untouched vertex grid ties v to -y before rotation).
+  // Every vertex below is then relocated to its real lat/lng-derived (x, z)
+  // via latLngToLocal, whose north→−Z convention makes v increase as z
+  // INCREASES instead (v runs from the north edge, v=0, down to the south
+  // edge, v=1 — see satelliteUvToLatLng — and north is now -Z). That is a
+  // mirror of the grid's original layout along Z, which flips triangle
+  // winding, so computeVertexNormals() below would otherwise yield -Y
+  // (downward) normals — an invisible/backface-culled ground. Reversing the
+  // last two indices of every triangle compensates, restoring +Y normals
+  // without touching the (correct) vertex positions or the UV↔latlng gluing.
+  const flipIndex = geo.getIndex();
+  if (flipIndex) {
+    const arr = flipIndex.array as Uint16Array | Uint32Array;
+    for (let t = 0; t < arr.length; t += 3) {
+      const tmp = arr[t + 1];
+      arr[t + 1] = arr[t + 2];
+      arr[t + 2] = tmp;
+    }
+    flipIndex.needsUpdate = true;
+  }
+
+  // Drape every satellite vertex just under the asphalt inside the road
+  // corridor, blending out to the real terrain heightfield (if loaded)
+  // beyond the runoff — see corridorBlendHeight(). The per-vertex blend
+  // inputs are cached so the road toggle can re-blend without re-projecting.
+  const posAttr = geo.attributes["position"] as THREE.BufferAttribute;
+  const uvAttr = geo.attributes["uv"] as THREE.BufferAttribute;
+  const halfRoadWidth = track.width / 2;
+  const cache: DrapeCache = {
+    roadY: new Float32Array(posAttr.count),
+    terrainY: new Float32Array(posAttr.count),
+    lateralDistance: new Float32Array(posAttr.count),
+    halfRoadWidth,
+  };
+  // Baked per-vertex mask for the detail-texture blend below: 1 inside the
+  // paved road, 0 past the edge — see corridorMask() in groundMath.ts.
+  const corridorMaskAttr = new Float32Array(posAttr.count);
+  for (let i = 0; i < posAttr.count; i++) {
+    const u = uvAttr.getX(i);
+    const v = uvAttr.getY(i);
+    const { lat, lng } = satelliteUvToLatLng(u, v, bbox, meta.mercator !== false);
+    const local = latLngToLocal(lat, lng, origin);
+    const { roadY, terrainY, lateralDistance } = computeDrapeInputs(track, local.x, local.z, lat, lng, sampler);
+    cache.roadY[i] = roadY;
+    cache.terrainY[i] = terrainY;
+    cache.lateralDistance[i] = lateralDistance;
+    corridorMaskAttr[i] = corridorMask(lateralDistance, halfRoadWidth);
+    const vertexY = corridorBlendHeight({ roadY, terrainY, lateralDistance, halfRoadWidth });
+    posAttr.setXYZ(i, local.x, vertexY, local.z);
+  }
+  posAttr.needsUpdate = true;
+  geo.setAttribute("corridorMask", new THREE.Float32BufferAttribute(corridorMaskAttr, 1));
+  geo.computeVertexNormals();
+  geo.computeBoundingBox();
+  geo.computeBoundingSphere();
+
+  // flipY=false: texture v=0 samples the top image row (north edge), matching
+  // the satelliteUvToLatLng() convention used for vertex placement above.
+  texture.flipY = false;
+  texture.colorSpace = THREE.SRGBColorSpace;
+  // Racing cameras view the ground at grazing angles almost every frame; max
+  // out anisotropic filtering (three clamps to the GPU's supported max).
+  texture.anisotropy = 16;
+
+  const mat = new THREE.MeshStandardMaterial({
+    map: texture,
+    roughness: 0.92,
+    metalness: 0.0,
+    // Extra insurance against Z-fighting: push satellite polygons further back
+    polygonOffset: true,
+    polygonOffsetFactor: 4,
+    polygonOffsetUnits: 4,
+  });
+  const detailUniforms = attachGroundDetailShader(mat);
+  const mesh = new THREE.Mesh(geo, mat);
+  // Vertices are already in world (scene-local) coordinates via latLngToLocal.
+  mesh.position.set(0, 0, 0);
+  mesh.receiveShadow = true;
+  mesh.renderOrder = -1;
+  mesh.name = "satellite-ground";
+  return { mesh, cache, detailUniforms };
+}
+
+// ─── Fallback ground ──────────────────────────────────────────────────────────
+
+function buildFallbackGround(): THREE.Mesh {
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(2000, 2000),
+    new THREE.MeshStandardMaterial({
+      color: 0x263421,
+      roughness: 0.95,
+      polygonOffset: true,
+      polygonOffsetFactor: 4,
+      polygonOffsetUnits: 4,
+    }),
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.set(120, -18.2, 210);
+  ground.receiveShadow = true;
+  ground.renderOrder = -1;
+  ground.name = "fallback-ground";
+  return ground;
+}
+
+// ─── Public API ───────────────────────────────────────────────────────────────
+
+export interface TrackBuildResult {
+  group: THREE.Group;
+  centerline3D: THREE.Vector3[];
+  /** Toggle the procedural road layer and re-drape the satellite ground so
+   * the photo road meets the car while the 3D road is hidden. Safe to call
+   * before the async satellite ground has loaded. */
+  setRoadVisible: (visible: boolean) => void;
+  /** Toggle the OSM surface-feature layer. Safe to call before it loads. */
+  setFeaturesVisible: (visible: boolean) => void;
+  /** Toggle the ground detail-texture blend (Plan A). Safe to call before
+   * the satellite ground has loaded — the desired state is applied once its
+   * material's shader uniforms exist. */
+  setDetailTexture: (enabled: boolean) => void;
+}
+
+/** Ground clearance below the road surface while the procedural road shows. */
+const ROAD_ON_CLEARANCE = 0.6;
+/** Near-zero clearance so the photo road carries the car when hidden. */
+const ROAD_OFF_CLEARANCE = 0.08;
+
+// OSM feature interior sampling: fine near the road corridor (where the
+// drape cuts a cliff below the asphalt), coarse on open terrain — keeps the
+// layer at tens of thousands of vertices instead of millions.
+const FEATURE_FINE_STEP = 10;
+const FEATURE_COARSE_STEP = 32;
+
+/**
+ * Sampling helpers for the OSM feature layer, built around a 30 m spatial
+ * hash of the centerline. Inside the mask (everything within ~60-90 m of
+ * the road) heights use the exact corridor drape and triangles refine at
+ * FEATURE_FINE_STEP; outside it every point is provably past the corridor
+ * blend (>26 m lateral), so the height is pure terrain and triangles refine
+ * coarsely — this keeps the one-time build far below a second.
+ */
+export function createFeatureDrape(
+  track: TrackData,
+  sampler: HeightSampler | null,
+): { stepAt: (x: number, z: number) => number; groundHeightAt: (x: number, z: number) => number } {
+  const CELL = 30;
+  const REACH = 2; // cells; any point in an unmarked cell is >56 m from the road
+  const keyOf = (cx: number, cz: number) => (cx + 512) * 1024 + (cz + 512);
+  const near = new Set<number>();
+  for (const p of track.centerline) {
+    const cx = Math.round(p.x / CELL);
+    const cz = Math.round(p.z / CELL);
+    for (let dx = -REACH; dx <= REACH; dx += 1) {
+      for (let dz = -REACH; dz <= REACH; dz += 1) {
+        near.add(keyOf(cx + dx, cz + dz));
+      }
+    }
+  }
+  const nearRoad = (x: number, z: number) =>
+    near.has(keyOf(Math.round(x / CELL), Math.round(z / CELL)));
+
+  const stepAt = (x: number, z: number) =>
+    nearRoad(x, z) ? FEATURE_FINE_STEP : FEATURE_COARSE_STEP;
+
+  const groundHeightAt = (x: number, z: number) => {
+    const { lat, lng } = localToLatLng(x, z, track.origin);
+    if (!nearRoad(x, z)) {
+      const alt = sampler?.heightAt(lat, lng);
+      if (alt != null) {
+        return (alt - track.origin.alt) * ELEVATION_SCALE;
+      }
+    }
+    return computeDrapedGroundHeight(track, x, z, lat, lng, sampler);
+  };
+
+  return { stepAt, groundHeightAt };
+}
+
+/**
+ * Build the full track visual group synchronously first (road + kerbs + markers),
+ * then asynchronously load the satellite ground and OSM feature layer and
+ * splice them in.
+ */
+export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader): TrackBuildResult {
+  const group = new THREE.Group();
+
+  const points = track.centerline.map(
+    (p) => new THREE.Vector3(p.x, p.y * ELEVATION_SCALE, p.z),
+  );
+
+  // -- Procedural road visuals, grouped so they toggle as one layer
+  const proceduralRoad = new THREE.Group();
+  proceduralRoad.name = "procedural-road";
+  proceduralRoad.add(buildRoadMesh(track, points));
+  buildKerbs(track, points).forEach((k) => proceduralRoad.add(k));
+  proceduralRoad.add(buildStartFinishLine(track, points));
+  proceduralRoad.add(buildBrakingMarkers(track, points));
+  group.add(proceduralRoad);
+
+  // -- Fallback ground first (replaced by satellite if loaded)
+  const fallback = buildFallbackGround();
+  group.add(fallback);
+
+  // Layer state. Both async loads below apply the latest state on arrival,
+  // so the toggles are safe to call at any time.
+  let roadVisible = true;
+  let featuresVisible = true;
+  let detailTextureEnabled = true;
+  let ground: { geometry: THREE.BufferGeometry; cache: DrapeCache; scratchY: Float32Array } | null = null;
+  let featuresGroup: THREE.Group | null = null;
+  let groundDetailUniforms: GroundDetailUniforms | null = null;
+
+  const applyGroundClearance = () => {
+    if (!ground) return;
+    const clearance = roadVisible ? ROAD_ON_CLEARANCE : ROAD_OFF_CLEARANCE;
+    const heights = reblendDrapedHeights(ground.cache, clearance, ground.scratchY);
+    const posAttr = ground.geometry.attributes["position"] as THREE.BufferAttribute;
+    for (let i = 0; i < posAttr.count; i++) {
+      posAttr.setY(i, heights[i]);
+    }
+    posAttr.needsUpdate = true;
+    ground.geometry.computeVertexNormals();
+    ground.geometry.computeBoundingBox();
+    ground.geometry.computeBoundingSphere();
+  };
+
+  const setRoadVisible = (visible: boolean) => {
+    if (visible === roadVisible) return;
+    roadVisible = visible;
+    proceduralRoad.visible = visible;
+    applyGroundClearance();
+  };
+
+  const setFeaturesVisible = (visible: boolean) => {
+    featuresVisible = visible;
+    if (featuresGroup) featuresGroup.visible = visible;
+  };
+
+  const setDetailTexture = (enabled: boolean) => {
+    detailTextureEnabled = enabled;
+    if (groundDetailUniforms) {
+      groundDetailUniforms.uDetailStrength.value = enabled ? 1 : 0;
+    }
+  };
+
+  // -- Async satellite + terrain load, in parallel. Terrain is optional: a
+  // failed/missing fetch resolves to null (TerrainSampler.load never
+  // rejects), and the satellite ground still builds in pure corridor mode.
+  // The OSM feature layer builds afterwards so it can reuse the sampler
+  // (and still builds, sampler-less, if the satellite ground failed).
+  const trackDir = `/data/tracks/${track.trackId ?? "barber"}/`;
+  const satFile = track.satVariant === "sr" ? "satellite_sr.jpg" : "satellite.jpg";
+  const metaUrl = `${trackDir}satellite_meta.json`;
+  const satUrl = `${trackDir}${satFile}`;
+  const terrainMetaUrl = `${trackDir}terrain_meta.json`;
+  const terrainBaseUrl = trackDir;
+  const featuresUrl = `${trackDir}features.json`;
+
+  const satelliteReady = fetch(metaUrl)
+    .then((r) => r.json())
+    .then(
+      (meta: SatelliteMeta) =>
+        new Promise<{ meta: SatelliteMeta; texture: THREE.Texture }>((resolve, reject) => {
+          textureLoader.load(satUrl, (texture) => resolve({ meta, texture }), undefined, reject);
+        }),
+    );
+
+  Promise.all([satelliteReady, TerrainSampler.load(terrainMetaUrl, terrainBaseUrl)])
+    .then(([{ meta, texture }, sampler]) => {
+      const { mesh, cache, detailUniforms } = buildSatelliteGround(track, meta, texture, sampler);
+      // Remove fallback, add satellite
+      group.remove(fallback);
+      fallback.geometry.dispose();
+      group.add(mesh);
+      ground = { geometry: mesh.geometry, cache, scratchY: new Float32Array(cache.roadY.length) };
+      groundDetailUniforms = detailUniforms;
+      groundDetailUniforms.uDetailStrength.value = detailTextureEnabled ? 1 : 0;
+      if (!roadVisible) applyGroundClearance();
+      return sampler;
+    })
+    .catch((err): TerrainSampler | null => {
+      console.warn("Satellite ground load failed:", err);
+      return null;
+    })
+    .then((sampler) =>
+      loadFeatures(featuresUrl).then((data) => {
+        if (!data) return;
+        const { stepAt, groundHeightAt } = createFeatureDrape(track, sampler);
+        featuresGroup = buildFeaturesGroup(data, groundHeightAt, stepAt);
+        featuresGroup.visible = featuresVisible;
+        group.add(featuresGroup);
+      }),
+    )
+    .catch((err) => console.warn("OSM feature layer failed:", err));
+
+  return { group, centerline3D: points, setRoadVisible, setFeaturesVisible, setDetailTexture };
+}

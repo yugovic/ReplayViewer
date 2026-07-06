@@ -1,0 +1,1065 @@
+:root {
+  color: #f4f7f4;
+  background: #101417;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  line-height: 1.4;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+
+.app-shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #101417;
+}
+
+.viewer-canvas,
+.viewer-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.status-panel {
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  color: #dbe7df;
+}
+
+/* ── Shared panel glass ─────────────────────────────────────────── */
+
+.hud-panel {
+  border: 1px solid rgb(255 255 255 / 12%);
+  background: rgb(8 11 14 / 82%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%);
+  backdrop-filter: blur(14px);
+  border-radius: 8px;
+  padding: 10px 14px;
+  pointer-events: auto;
+}
+
+/* ── HUD overlay grid ───────────────────────────────────────────── */
+
+.hud {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-areas:
+    "info  .  cameras"
+    ".     .  layers"
+    "inputs . gmeter";
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 14px;
+  padding: 16px;
+  pointer-events: none;
+}
+
+/* ── Lap info panel (top-left) ──────────────────────────────────── */
+
+.hud-info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 148px;
+}
+
+.hud-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hud-label {
+  color: #8fa4ad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-width: 32px;
+}
+
+.hud-value {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud-laptime {
+  font-size: 16px;
+  color: #e8f16c;
+  letter-spacing: 0.04em;
+}
+
+/* ── Camera buttons (top-right) ─────────────────────────────────── */
+
+.hud-cameras {
+  grid-area: cameras;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: stretch;
+}
+
+.cam-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 5px;
+  background: rgb(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+
+.cam-btn:hover {
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+}
+
+.cam-btn--active {
+  background: rgb(240 241 223 / 14%);
+  border-color: #e8f16c;
+  color: #e8f16c;
+}
+
+.cam-key {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border: 1px solid currentcolor;
+  border-radius: 3px;
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+/* ── Layers panel (top-right, below cameras) ────────────────────── */
+
+.hud-layers {
+  grid-area: layers;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: stretch;
+  align-self: start;
+}
+
+/* ── Satellite-variant sub-group, nested inside the layers panel ───── */
+
+.hud-layers-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: stretch;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+}
+
+.hud-layers-group-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #8fa4ad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Input cluster (bottom-left) ────────────────────────────────── */
+
+.hud-inputs {
+  grid-area: inputs;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-cluster {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.input-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.input-bar-label {
+  color: #8fa4ad;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.input-bar-track {
+  width: 18px;
+  height: 80px;
+  background: rgb(255 255 255 / 8%);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 10%);
+}
+
+.input-bar-fill {
+  width: 100%;
+  border-radius: 3px;
+  transition: height 0.04s linear;
+}
+
+.throttle-fill {
+  background: linear-gradient(to top, #2fe08f, #e8f763);
+}
+
+.brake-fill {
+  background: linear-gradient(to top, #f0b54a, #f04d3f);
+}
+
+.input-cluster-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding-bottom: 4px;
+}
+
+.hud-speed {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.hud-speed-unit {
+  color: #7fa0a8;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.hud-gear {
+  color: #e8f16c;
+  font-size: 26px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-top: 4px;
+  min-width: 28px;
+  text-align: center;
+}
+
+.steering-wheel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.04s linear;
+  will-change: transform;
+}
+
+/* ── G-meter (bottom-right) ─────────────────────────────────────── */
+
+.hud-gmeter {
+  grid-area: gmeter;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gmeter-canvas {
+  display: block;
+}
+
+.gmeter-values {
+  display: flex;
+  gap: 10px;
+  color: #8fa4ad;
+  font-size: 9px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+/* ── Replay controls (bottom-center) ────────────────────────────── */
+
+.controls {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  background: rgb(8 11 14 / 86%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%);
+  backdrop-filter: blur(14px);
+  border-radius: 8px;
+  width: min(740px, calc(100vw - 32px));
+}
+
+.play-button {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  color: #0a0e10;
+  background: #e8f16c;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s;
+}
+
+.play-button:hover {
+  background: #fff;
+}
+
+.clock {
+  flex-shrink: 0;
+  color: #c8d8dc;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+  text-align: center;
+}
+
+.seek {
+  flex: 1;
+  min-width: 60px;
+  accent-color: #e8f16c;
+  cursor: pointer;
+}
+
+.rate-buttons {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.rate-btn {
+  padding: 3px 7px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.rate-btn:hover {
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+}
+
+.rate-btn--active {
+  background: rgb(232 241 108 / 14%);
+  border-color: #e8f16c;
+  color: #e8f16c;
+}
+
+.loop-btn {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 5px;
+  background: rgb(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.loop-btn:hover {
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+}
+
+.loop-btn--active {
+  background: rgb(232 241 108 / 14%);
+  border-color: #e8f16c;
+  color: #e8f16c;
+}
+
+/* ── HUD extras: select button, ghost, delta, sectors ──────────── */
+
+.hud-select-btn {
+  background: none;
+  border: none;
+  color: #8fa4ad;
+  font-size: 9px;
+  cursor: pointer;
+  padding: 0 2px;
+  margin-left: 4px;
+  opacity: 0.7;
+  pointer-events: auto;
+}
+
+.hud-select-btn:hover {
+  color: #e8f16c;
+  opacity: 1;
+}
+
+.hud-ghost-info {
+  margin-top: 2px;
+}
+
+.hud-delta {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255 255 255 / 10%);
+}
+
+.hud-delta .hud-value {
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.hud-sectors {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255 255 255 / 10%);
+}
+
+.hud-sector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.hud-sector-label {
+  color: #8fa4ad;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hud-sector-time {
+  color: #8fa4ad;
+  font-size: 10px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud-sector--active .hud-sector-label,
+.hud-sector--active .hud-sector-time {
+  color: #e8f16c;
+}
+
+.hud-sector--done .hud-sector-time {
+  color: #c8d8dc;
+}
+
+/* ── Lap Selector modal ─────────────────────────────────────────── */
+
+.ls-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0 0 0 / 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+.ls-modal {
+  background: rgb(10 14 18 / 96%);
+  border: 1px solid rgba(255 255 255 / 14%);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0 0 0 / 70%);
+  width: min(480px, calc(100vw - 32px));
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ls-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid rgba(255 255 255 / 10%);
+  flex-shrink: 0;
+}
+
+.ls-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.ls-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.ls-tab {
+  padding: 4px 10px;
+  border: 1px solid rgba(255 255 255 / 12%);
+  border-radius: 5px;
+  background: rgba(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.ls-tab:hover {
+  background: rgba(255 255 255 / 10%);
+  color: #fff;
+}
+
+.ls-tab--active {
+  background: rgba(232 241 108 / 14%);
+  border-color: #e8f16c;
+  color: #e8f16c;
+}
+
+.ls-close {
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(255 255 255 / 12%);
+  border-radius: 5px;
+  background: rgba(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ls-close:hover {
+  background: rgba(255 255 255 / 12%);
+  color: #fff;
+}
+
+.ls-body {
+  overflow-y: auto;
+  padding: 12px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ls-ghost-hint {
+  color: #8fa4ad;
+  font-size: 11px;
+  padding: 6px 10px;
+  background: rgba(0 207 255 / 6%);
+  border: 1px solid rgba(0 207 255 / 18%);
+  border-radius: 5px;
+}
+
+/* ── Track picker ───────────────────────────────────────────────── */
+
+.ls-track-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ls-section-label {
+  color: #8fa4ad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ls-track-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.ls-track-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255 255 255 / 10%);
+  border-radius: 6px;
+  background: rgba(255 255 255 / 3%);
+  color: #c8d8dc;
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+  text-align: left;
+}
+
+.ls-track-row:hover {
+  background: rgba(255 255 255 / 8%);
+  border-color: rgba(255 255 255 / 20%);
+}
+
+.ls-track-row--active,
+.ls-track-row:disabled {
+  background: rgba(232 241 108 / 10%);
+  border-color: #e8f16c;
+  cursor: default;
+}
+
+.ls-track-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ls-track-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ls-track-row--active .ls-track-name {
+  color: #e8f16c;
+}
+
+.ls-track-now {
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: rgba(232 241 108 / 20%);
+  color: #e8f16c;
+  border: 1px solid rgba(232 241 108 / 40%);
+}
+
+.ls-track-race {
+  font-size: 10px;
+  font-weight: 600;
+  color: #8fa4ad;
+}
+
+.ls-vehicle-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ls-vehicle-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255 255 255 / 8%);
+}
+
+.ls-car-number {
+  color: #e8f16c;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ls-vehicle-id {
+  color: #8fa4ad;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ls-lap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ls-lap-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255 255 255 / 8%);
+  border-radius: 5px;
+  background: rgba(255 255 255 / 3%);
+  color: #c8d8dc;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+  text-align: left;
+}
+
+.ls-lap-row:hover {
+  background: rgba(255 255 255 / 8%);
+  border-color: rgba(255 255 255 / 18%);
+}
+
+.ls-lap-row--active {
+  background: rgba(232 241 108 / 10%);
+  border-color: #e8f16c;
+  color: #e8f16c;
+}
+
+.ls-lap-num {
+  min-width: 30px;
+  font-weight: 700;
+}
+
+.ls-lap-time {
+  flex: 1;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.ls-badge {
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ls-badge--overall {
+  background: rgba(232 241 108 / 20%);
+  color: #e8f16c;
+  border: 1px solid rgba(232 241 108 / 40%);
+}
+
+.ls-badge--vehicle {
+  background: rgba(100 180 255 / 14%);
+  color: #80c8ff;
+  border: 1px solid rgba(100 180 255 / 30%);
+}
+
+.ls-loading {
+  padding: 10px 16px;
+  color: #8fa4ad;
+  font-size: 12px;
+}
+
+.ls-error {
+  padding: 10px 16px;
+  color: #f87171;
+  font-size: 12px;
+}
+
+.ls-footer {
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255 255 255 / 10%);
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.ls-clear-ghost {
+  padding: 5px 12px;
+  border: 1px solid rgba(248 113 113 / 30%);
+  border-radius: 5px;
+  background: rgba(248 113 113 / 10%);
+  color: #f87171;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.ls-clear-ghost:hover {
+  background: rgba(248 113 113 / 20%);
+}
+
+/* ── Telemetry panel ────────────────────────────────────────────── */
+
+.telemetry-toggle {
+  position: absolute;
+  bottom: 68px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 14px;
+  border: 1px solid rgba(255 255 255 / 12%);
+  border-radius: 5px;
+  background: rgba(8 11 14 / 82%);
+  color: #8fa4ad;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.1s, color 0.1s;
+  pointer-events: auto;
+}
+
+.telemetry-toggle:hover {
+  background: rgba(8 11 14 / 95%);
+  color: #fff;
+}
+
+.telemetry-panel {
+  position: absolute;
+  bottom: 68px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, calc(100vw - 32px));
+  background: rgb(8 11 14 / 90%);
+  border: 1px solid rgba(255 255 255 / 10%);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0 0 0 / 50%);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.telemetry-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-bottom: 1px solid rgba(255 255 255 / 8%);
+}
+
+.telemetry-title {
+  color: #8fa4ad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.telemetry-xaxis-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.telem-btn {
+  padding: 2px 8px;
+  border: 1px solid rgba(255 255 255 / 12%);
+  border-radius: 4px;
+  background: rgba(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.telem-btn:hover {
+  background: rgba(255 255 255 / 10%);
+  color: #fff;
+}
+
+.telem-btn--active {
+  background: rgba(232 241 108 / 12%);
+  border-color: #e8f16c;
+  color: #e8f16c;
+}
+
+.telemetry-legend {
+  display: flex;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.telemetry-close {
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255 255 255 / 10%);
+  border-radius: 4px;
+  background: rgba(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.telemetry-close:hover {
+  background: rgba(255 255 255 / 12%);
+  color: #fff;
+}
+
+.telemetry-plot-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* uPlot's root defaults to width: min-content; without an explicit width it
+   collapses to 0 when .u-wrap's inline width is overridden. Let uPlot manage
+   .u-wrap sizing (inline styles) and keep the root stretched. */
+.telemetry-plot-container .uplot {
+  width: 100%;
+}
+
+/* ── Minimap (bottom-left, above input cluster) ─────────────────── */
+
+.minimap-panel {
+  position: absolute;
+  left: 16px;
+  bottom: 200px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  pointer-events: auto;
+}
+
+.minimap-panel--collapsed {
+  padding: 6px 10px;
+}
+
+.minimap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.minimap-toggle {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255 255 255 / 14%);
+  border-radius: 4px;
+  background: rgba(255 255 255 / 5%);
+  color: #9fb5bd;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, color 0.1s;
+}
+
+.minimap-toggle:hover {
+  background: rgba(255 255 255 / 12%);
+  color: #fff;
+}
+
+.minimap-svg {
+  display: block;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .minimap-panel {
+    display: none;
+  }
+}
+
+/* ── Data-source credit (bottom-right, unobtrusive) ─────────────── */
+
+.hud-credit {
+  position: absolute;
+  right: 12px;
+  bottom: 3px;
+  z-index: 30;
+  max-width: 46vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(215 227 233 / 62%);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 80%);
+  pointer-events: auto;
+  cursor: default;
+}
+
+.hud-credit:hover {
+  color: rgb(230 240 245 / 92%);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .hud {
+    grid-template-areas:
+      "info cameras"
+      ". layers"
+      "inputs gmeter";
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .hud-cameras {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .hud-layers {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    justify-self: end;
+  }
+
+  .controls {
+    gap: 7px;
+    padding: 8px 10px;
+    bottom: 12px;
+  }
+
+  .rate-buttons {
+    display: none;
+  }
+}

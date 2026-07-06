@@ -1,0 +1,12 @@
+{
+  "imageFile": "satellite.jpg",
+  "imageWidth": 4096,
+  "imageHeight": 3665,
+  "bbox": {
+    "minLng": -86.62582397,
+    "maxLng": -86.61277771,
+    "minLat": 33.52765814,
+    "maxLat": 33.53738841
+  },
+  "mercator": true
+}

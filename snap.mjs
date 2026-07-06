@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ channel: 'chrome' });
+const page = await browser.newPage({ viewport: { width: 1600, height: 900 } });
+await page.goto('http://localhost:5199/', { waitUntil: 'domcontentloaded' });
+await page.waitForTimeout(7000);
+await page.screenshot({ path: '/tmp/fix_chase.png', timeout: 60000 });
+await page.keyboard.press('5');
+await page.waitForTimeout(1500);
+await page.screenshot({ path: '/tmp/fix_tv.png', timeout: 60000 });
+await page.keyboard.press('3');
+await page.waitForTimeout(1000);
+await page.screenshot({ path: '/tmp/fix_top.png', timeout: 60000 });
+await browser.close();
+console.log('done');

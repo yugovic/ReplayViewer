@@ -1,0 +1,48 @@
+import { describe, expect, it } from "vitest";
+import { useReplayStore } from "./replayStore";
+
+describe("scene layer flags", () => {
+  it("defaults all layers to visible", () => {
+    const state = useReplayStore.getState();
+    expect(state.showRoad3d).toBe(true);
+    expect(state.showOsmFeatures).toBe(true);
+    expect(state.showDetailTexture).toBe(true);
+  });
+
+  it("toggleRoad3d flips the flag back and forth", () => {
+    useReplayStore.getState().toggleRoad3d();
+    expect(useReplayStore.getState().showRoad3d).toBe(false);
+    useReplayStore.getState().toggleRoad3d();
+    expect(useReplayStore.getState().showRoad3d).toBe(true);
+  });
+
+  it("toggleOsmFeatures flips the flag back and forth", () => {
+    useReplayStore.getState().toggleOsmFeatures();
+    expect(useReplayStore.getState().showOsmFeatures).toBe(false);
+    useReplayStore.getState().toggleOsmFeatures();
+    expect(useReplayStore.getState().showOsmFeatures).toBe(true);
+  });
+
+  it("toggleDetailTexture flips the flag back and forth", () => {
+    useReplayStore.getState().toggleDetailTexture();
+    expect(useReplayStore.getState().showDetailTexture).toBe(false);
+    useReplayStore.getState().toggleDetailTexture();
+    expect(useReplayStore.getState().showDetailTexture).toBe(true);
+  });
+
+  it("setters apply explicit values", () => {
+    useReplayStore.getState().setShowRoad3d(false);
+    useReplayStore.getState().setShowOsmFeatures(false);
+    useReplayStore.getState().setShowDetailTexture(false);
+    expect(useReplayStore.getState().showRoad3d).toBe(false);
+    expect(useReplayStore.getState().showOsmFeatures).toBe(false);
+    expect(useReplayStore.getState().showDetailTexture).toBe(false);
+
+    useReplayStore.getState().setShowRoad3d(true);
+    useReplayStore.getState().setShowOsmFeatures(true);
+    useReplayStore.getState().setShowDetailTexture(true);
+    expect(useReplayStore.getState().showRoad3d).toBe(true);
+    expect(useReplayStore.getState().showOsmFeatures).toBe(true);
+    expect(useReplayStore.getState().showDetailTexture).toBe(true);
+  });
+});

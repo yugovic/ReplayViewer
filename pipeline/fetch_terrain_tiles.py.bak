@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""Fetch AWS Open Data Terrarium elevation tiles covering the Barber satellite bbox.
+
+Terrarium tiles (https://github.com/tilezen/joerd) encode bare-earth height in
+RGB (USGS 3DEP/NED-derived over the US) and are free, keyless, Web-Mercator
+slippy tiles. This mirrors the tile math/stitching approach of the v1 satellite
+fetcher (../../replay-viewer/fetch_satellite_tiles.py) but additionally crops
+the stitched mosaic to the exact satellite bbox in continuous pixel space, so
+terrain_meta.json can reuse satellite_meta.json's bbox verbatim.
+
+Usage:
+    python3 pipeline/fetch_terrain_tiles.py
+    python3 pipeline/fetch_terrain_tiles.py --zoom 15
+"""
+
+from __future__ import annotations
+
+import argparse
+import io
+import json
+import math
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+try:
+    from PIL import Image
+except ImportError:
+    print("Pillow not found, installing with 'pip3 install --user pillow'...")
+    subprocess.run([sys.executable, "-m", "pip", "install", "--user", "pillow"], check=True)
+    from PIL import Image
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+BARBER_DIR = PROJECT_ROOT / "public" / "data" / "tracks" / "barber"
+SATELLITE_META_PATH = BARBER_DIR / "satellite_meta.json"
+OUT_IMAGE_PATH = BARBER_DIR / "terrain.png"
+OUT_META_PATH = BARBER_DIR / "terrain_meta.json"
+
+TILE_SIZE = 256
+TERRARIUM_URL = "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+USER_AGENT = "replay-viewer-v2 terrain fetch/1.0"
+EARTH_CIRCUMFERENCE_M = 2 * math.pi * 6378137.0
+TARGET_RESOLUTION_M = 6.0  # finest zoom whose ground resolution is no coarser than this
+RETRIES_PER_TILE = 3
+TILE_REQUEST_DELAY_S = 0.05
+
+
+# ---------- Web Mercator tile math (matches replay-viewer/fetch_satellite_tiles.py) ----------
+
+def lng_to_tile_x(lng: float, z: int) -> float:
+    return (lng + 180.0) / 360.0 * (2 ** z)
+
+
+def lat_to_tile_y(lat: float, z: int) -> float:
+    lat_rad = math.radians(lat)
+    return (1.0 - math.asinh(math.tan(lat_rad)) / math.pi) / 2.0 * (2 ** z)
+
+
+def meters_per_pixel(lat: float, z: int) -> float:
+    return EARTH_CIRCUMFERENCE_M * math.cos(math.radians(lat)) / (TILE_SIZE * (2 ** z))
+
+
+def choose_zoom(lat: float, target_m: float = TARGET_RESOLUTION_M) -> int:
+    """Smallest zoom (fewest tiles) whose ground resolution is <= target_m."""
+    z = 0
+    while meters_per_pixel(lat, z) > target_m:
+        z += 1
+    return z
+
+
+# ---------- Tile fetch ----------
+
+def download_tile(z: int, x: int, y: int, retries: int = RETRIES_PER_TILE) -> Image.Image:
+    url = TERRARIUM_URL.format(z=z, x=x, y=y)
+    last_err: Exception | None = None
+    for attempt in range(retries):
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return Image.open(io.BytesIO(response.read())).convert("RGB")
+        except (urllib.error.URLError, urllib.error.HTTPError, OSError) as exc:
+            last_err = exc
+            if attempt < retries - 1:
+                time.sleep(0.5 * (attempt + 1))
+    raise RuntimeError(f"Failed to download tile after {retries} tries: {url} ({last_err})")
+
+
+def fetch_terrain(bbox: dict, zoom: int) -> Image.Image:
+    min_lng, max_lng = bbox["minLng"], bbox["maxLng"]
+    min_lat, max_lat = bbox["minLat"], bbox["maxLat"]
+
+    px_min_lng = lng_to_tile_x(min_lng, zoom) * TILE_SIZE
+    px_max_lng = lng_to_tile_x(max_lng, zoom) * TILE_SIZE
+    px_north = lat_to_tile_y(max_lat, zoom) * TILE_SIZE  # smaller y = further north
+    px_south = lat_to_tile_y(min_lat, zoom) * TILE_SIZE
+
+    x_min = math.floor(px_min_lng / TILE_SIZE)
+    x_max = math.floor(px_max_lng / TILE_SIZE)
+    y_min = math.floor(px_north / TILE_SIZE)
+    y_max = math.floor(px_south / TILE_SIZE)
+
+    n_x = x_max - x_min + 1
+    n_y = y_max - y_min + 1
+    total = n_x * n_y
+    print(f"Tile grid: {n_x} x {n_y} = {total} tiles at zoom {zoom}")
+
+    canvas = Image.new("RGB", (n_x * TILE_SIZE, n_y * TILE_SIZE))
+    done = 0
+    for ty in range(y_min, y_max + 1):
+        for tx in range(x_min, x_max + 1):
+            tile = download_tile(zoom, tx, ty)
+            canvas.paste(tile, ((tx - x_min) * TILE_SIZE, (ty - y_min) * TILE_SIZE))
+            done += 1
+            if done % 5 == 0 or done == total:
+                print(f"  Downloaded {done}/{total} tiles")
+            if done < total:
+                time.sleep(TILE_REQUEST_DELAY_S)
+
+    # Crop the tile-aligned mosaic down to the exact bbox in continuous pixel
+    # space, so terrain_meta.json can reuse satellite_meta.json's bbox as-is.
+    crop_box = (
+        round(px_min_lng - x_min * TILE_SIZE),
+        round(px_north - y_min * TILE_SIZE),
+        round(px_max_lng - x_min * TILE_SIZE),
+        round(px_south - y_min * TILE_SIZE),
+    )
+    cropped = canvas.crop(crop_box)
+    print(f"Cropped to exact bbox: {cropped.size[0]} x {cropped.size[1]}px")
+    return cropped
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Fetch AWS Terrarium terrain tiles for the Barber bbox.")
+    parser.add_argument("--zoom", type=int, default=None, help="Override the auto-selected zoom level.")
+    args = parser.parse_args()
+
+    if not SATELLITE_META_PATH.exists():
+        print(f"ERROR: {SATELLITE_META_PATH} not found.", file=sys.stderr)
+        return 1
+    meta = json.loads(SATELLITE_META_PATH.read_text())
+    bbox = meta["bbox"]
+    center_lat = (bbox["minLat"] + bbox["maxLat"]) / 2.0
+
+    zoom = args.zoom if args.zoom is not None else choose_zoom(center_lat)
+    resolution = meters_per_pixel(center_lat, zoom)
+    print(f"Selected zoom {zoom}: ~{resolution:.2f} m/px at lat {center_lat:.4f}")
+
+    try:
+        image = fetch_terrain(bbox, zoom)
+    except Exception as exc:  # noqa: BLE001 - report and let caller fall back offline
+        print(f"ERROR: terrain tile fetch failed: {exc}", file=sys.stderr)
+        return 1
+
+    BARBER_DIR.mkdir(parents=True, exist_ok=True)
+    image.save(OUT_IMAGE_PATH, "PNG")  # lossless: heights are encoded in RGB
+    print(f"Saved: {OUT_IMAGE_PATH} ({image.size[0]}x{image.size[1]})")
+
+    out_meta = {
+        "imageFile": "terrain.png",
+        "imageWidth": image.size[0],
+        "imageHeight": image.size[1],
+        "bbox": bbox,
+        "mercator": True,
+        "encoding": "terrarium",
+        "zoom": zoom,
+    }
+    OUT_META_PATH.write_text(json.dumps(out_meta, indent=2) + "\n")
+    print(f"Wrote: {OUT_META_PATH}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

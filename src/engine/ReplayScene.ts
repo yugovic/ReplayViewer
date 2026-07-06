@@ -1,0 +1,725 @@
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { sampleReplay } from "../replay/interpolation";
+import type { LapData, ReplaySample, TrackData } from "../replay/types";
+import { ChaseCamera, CinematicCamera, CockpitCamera, FreeCamera, TopCamera, TvCamera } from "./cameras";
+import type { CameraMode, CarCameraState, ReplayCameraController } from "./cameras";
+import { buildTrack, type TrackBuildResult } from "./track/TrackBuilder";
+import type { SatVariantId } from "../replay/satelliteVariants";
+import { LiveDataTrail } from "./DataTrail";
+import { Effects } from "./Effects";
+import { setupSky } from "./Sky";
+import type { QualityPreset } from "./Effects";
+
+const ELEVATION_SCALE = 1;
+const CAR_MODEL_URL = "/assets/RX3_race.glb";
+const HIDE_MODEL_WHEELS = true;
+const WORLD_UP = new THREE.Vector3(0, 1, 0);
+
+// Module-level scratch objects for pose computation (hot path, no allocations)
+const POSE_FORWARD = new THREE.Vector3();
+const POSE_RIGHT = new THREE.Vector3();
+const POSE_UP = new THREE.Vector3();
+const POSE_BASIS = new THREE.Matrix4();
+// Roll is a rotation about the car's own forward axis, which the pose basis
+// maps to the model's local +Z, so we post-multiply a body-frame Z rotation.
+const POSE_LOCAL_FORWARD = new THREE.Vector3(0, 0, 1);
+const POSE_ROLL_QUAT = new THREE.Quaternion();
+
+/** Colour used for the ghost car overlay */
+const GHOST_COLOR = 0x00cfff;
+/** Opacity of the ghost car */
+const GHOST_OPACITY = 0.35;
+
+const CAR_SPEC = {
+  length: 4.0,
+  width: 2.0,
+  height: 0.9,
+  wheelRadius: 0.33,
+  wheelWidth: 0.25,
+  wheelBase: 2.6,
+  trackWidth: 1.6,
+  steeringRatio: 16,
+};
+
+interface WheelAssembly {
+  pivot: THREE.Group;
+  wheel: THREE.Object3D;
+}
+
+interface CarRig {
+  root: THREE.Group;
+  wheels: {
+    frontLeft: WheelAssembly;
+    frontRight: WheelAssembly;
+    rearLeft: WheelAssembly;
+    rearRight: WheelAssembly;
+  };
+  brakeMaterials: THREE.MeshStandardMaterial[];
+  poseQuaternion: THREE.Quaternion;
+  forward: THREE.Vector3;
+  up: THREE.Vector3;
+}
+
+export class ReplayScene {
+  private readonly container: HTMLElement;
+  private readonly scene = new THREE.Scene();
+  private readonly camera = new THREE.PerspectiveCamera(60, 1, 0.1, 5000);
+  private readonly renderer: THREE.WebGLRenderer;
+  private readonly controls: OrbitControls;
+  private cameras: Record<CameraMode, ReplayCameraController>;
+  private readonly resizeObserver: ResizeObserver;
+  private readonly loader = new GLTFLoader();
+  private readonly textureLoader = new THREE.TextureLoader();
+  private trackGroup = new THREE.Group();
+  private trackHandle: TrackBuildResult | null = null;
+  private carRig: CarRig;
+  private ghostRig: CarRig | null = null;
+  private gltfModel: THREE.Object3D | null = null; // cached loaded GLB
+  private liveTrail: LiveDataTrail | null = null;
+  private effects: Effects | null = null;
+  private skydome: THREE.Mesh | null = null;
+  private lap: LapData | null = null;
+  private ghostLap: LapData | null = null;
+  private track: TrackData | null = null;
+  private activeCameraMode: CameraMode | null = null;
+  private lastSampleTime: number | null = null;
+  private trackCenter = new THREE.Vector3();
+  private trackRadius = 300;
+  private disposed = false;
+  private quality: QualityPreset = "high";
+
+  // Hot-path scratch objects – reused every frame to avoid per-frame allocations
+  private readonly _targetPose = new THREE.Quaternion();
+  private readonly _cameraState: CarCameraState = {
+    position: new THREE.Vector3(),
+    quaternion: new THREE.Quaternion(),
+    heading: 0,
+    forward: new THREE.Vector3(0, 0, 1),
+    up: new THREE.Vector3(0, 1, 0),
+    trackCenter: new THREE.Vector3(),
+    trackRadius: 300,
+    telemetry: { speedKmh: 0, aps: 0, brake: 0, dist: 0 },
+  };
+
+  constructor(container: HTMLElement) {
+    this.container = container;
+    this.scene.background = new THREE.Color(0x1a6ba8);
+    this.scene.fog = new THREE.Fog(0xa8c9e0, 900, 2800);
+
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setSize(container.clientWidth, container.clientHeight);
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1.1;
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(this.renderer.domElement);
+
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.05;
+    this.controls.maxPolarAngle = Math.PI / 2.1;
+    this.controls.enabled = false;
+
+    const skySetup = setupSky(this.renderer, this.scene);
+    this.skydome = skySetup.skydome;
+
+    this.cameras = this.buildCameras([]);
+
+    this.camera.position.set(0, 80, -120);
+
+    this.scene.add(new THREE.AmbientLight(0xffffff, 0.15));
+    const sun = new THREE.DirectionalLight(0xfff8e7, 2.4);
+    sun.position.set(-120, 180, -60);
+    sun.castShadow = true;
+    sun.shadow.camera.near = 10;
+    sun.shadow.camera.far = 800;
+    sun.shadow.camera.left = -350;
+    sun.shadow.camera.right = 350;
+    sun.shadow.camera.top = 350;
+    sun.shadow.camera.bottom = -350;
+    sun.shadow.mapSize.set(2048, 2048);
+    this.scene.add(sun);
+
+    this.carRig = this.createCarRig();
+    this.scene.add(this.trackGroup);
+    this.scene.add(this.carRig.root);
+
+    try {
+      this.effects = new Effects(this.renderer, this.scene, this.camera, this.quality);
+    } catch (err) {
+      console.warn("Post-processing unavailable, falling back to raw render:", err);
+      this.effects = null;
+    }
+
+    this.resizeObserver = new ResizeObserver(() => this.resize());
+    this.resizeObserver.observe(container);
+    this.resize();
+    void this.loadGltfCar();
+  }
+
+  private buildCameras(centerline: THREE.Vector3[]): Record<CameraMode, ReplayCameraController> {
+    return {
+      chase: new ChaseCamera(this.camera),
+      cockpit: new CockpitCamera(this.camera),
+      top: new TopCamera(this.camera),
+      free: new FreeCamera(this.camera, this.controls),
+      // Barber is hilly: keep TV cameras high and close to the road corridor so
+      // they never end up buried inside the elevation-draped satellite terrain.
+      tv: new TvCamera(this.camera, centerline, 12, { sideOffset: 14, heightOffset: 11 }),
+      cinematic: new CinematicCamera(this.camera, centerline),
+    };
+  }
+
+  load(track: TrackData, lap: LapData): void {
+    this.track = track;
+    this.lap = lap;
+    this.lastSampleTime = null;
+    this.activeCameraMode = null;
+    this.scene.remove(this.trackGroup);
+    this.disposeObject(this.trackGroup);
+
+    const buildResult = buildTrack(track, this.textureLoader);
+    this.trackHandle = buildResult;
+    this.trackGroup = buildResult.group;
+    const { centerline3D } = buildResult;
+
+    const bbox = new THREE.Box3();
+    centerline3D.forEach((p) => bbox.expandByPoint(p));
+    this.trackCenter = bbox.getCenter(new THREE.Vector3());
+    const size = bbox.getSize(new THREE.Vector3());
+    this.trackRadius = Math.max(size.x, size.z) * 0.7;
+
+    this.scene.add(this.trackGroup);
+
+    const oldActive = this.activeCameraMode;
+    this.cameras = this.buildCameras(centerline3D);
+    this.activeCameraMode = oldActive;
+
+    if (this.liveTrail) {
+      this.scene.remove(this.liveTrail.group);
+      this.liveTrail.dispose();
+    }
+    this.liveTrail = new LiveDataTrail(lap, track);
+    this.scene.add(this.liveTrail.group);
+  }
+
+  /** Toggle the procedural road layer (the satellite ground re-drapes to match). */
+  setRoadVisible(visible: boolean): void {
+    this.trackHandle?.setRoadVisible(visible);
+  }
+
+  /** Toggle the OSM surface-feature layer. */
+  setFeaturesVisible(visible: boolean): void {
+    this.trackHandle?.setFeaturesVisible(visible);
+  }
+
+  /** Toggle the 3D features layer (trees/buildings/barriers). */
+  setFeatures3dVisible(visible: boolean): void {
+    this.trackHandle?.setFeatures3dVisible(visible);
+  }
+
+  /** Toggle the ground detail-texture blend (Plan A). */
+  setDetailTexture(enabled: boolean): void {
+    this.trackHandle?.setDetailTexture(enabled);
+  }
+
+  /** Swap the ground's satellite imagery variant (texture-only, same mesh). */
+  setSatelliteVariant(variant: SatVariantId): void {
+    this.trackHandle?.setSatelliteVariant(variant);
+  }
+
+  /** Set or clear the ghost lap. ghostLap=null removes the ghost. */
+  setGhostLap(ghostLap: LapData | null): void {
+    // Remove existing ghost rig
+    if (this.ghostRig) {
+      this.scene.remove(this.ghostRig.root);
+      this.disposeObject(this.ghostRig.root);
+      this.ghostRig = null;
+    }
+    this.ghostLap = ghostLap;
+    if (ghostLap) {
+      this.ghostRig = this.createGhostRig();
+      this.scene.add(this.ghostRig.root);
+    }
+  }
+
+  update(time: number, ghostTime: number | null, cameraMode: CameraMode, dt: number): ReplaySample | null {
+    if (!this.track || !this.lap) {
+      this.doRender(dt);
+      return null;
+    }
+
+    const sample = sampleReplay(this.lap, this.track, time);
+    const playbackDelta = this.lastSampleTime === null ? 0 : sample.time - this.lastSampleTime;
+    this.lastSampleTime = sample.time;
+    this.updateCar(sample, playbackDelta);
+    this.updateCamera(cameraMode, dt);
+
+    if (this.liveTrail) {
+      this.liveTrail.setTime(time);
+    }
+
+    // Ghost update
+    if (this.ghostRig && this.ghostLap && ghostTime !== null) {
+      const ghostSample = sampleReplay(this.ghostLap, this.track, ghostTime);
+      this.updateGhostCar(ghostSample);
+    }
+
+    this.doRender(dt);
+    return sample;
+  }
+
+  private doRender(dt: number): void {
+    if (this.skydome) {
+      this.skydome.position.copy(this.camera.position);
+    }
+    if (this.effects) {
+      this.effects.render(dt);
+    } else {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
+  setQuality(quality: QualityPreset): void {
+    this.quality = quality;
+    if (this.effects) {
+      this.effects.dispose();
+    }
+    try {
+      this.effects = new Effects(this.renderer, this.scene, this.camera, quality);
+      const { width, height } = this.getSize();
+      this.effects.setSize(width, height);
+    } catch (err) {
+      console.warn("Post-processing rebuild failed:", err);
+      this.effects = null;
+    }
+  }
+
+  dispose(): void {
+    this.disposed = true;
+    this.resizeObserver.disconnect();
+    Object.values(this.cameras).forEach((controller) => controller.dispose?.());
+    this.disposeObject(this.trackGroup);
+    this.disposeObject(this.carRig.root);
+    if (this.ghostRig) this.disposeObject(this.ghostRig.root);
+    if (this.liveTrail) this.liveTrail.dispose();
+    if (this.effects) this.effects.dispose();
+    this.renderer.dispose();
+    this.container.removeChild(this.renderer.domElement);
+  }
+
+  private getSize() {
+    return { width: Math.max(1, this.container.clientWidth), height: Math.max(1, this.container.clientHeight) };
+  }
+
+  private resize(): void {
+    const { width, height } = this.getSize();
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(width, height, false);
+    if (this.effects) this.effects.setSize(width, height);
+  }
+
+  private async loadGltfCar(): Promise<void> {
+    try {
+      const gltf = await this.loader.loadAsync(CAR_MODEL_URL);
+      if (this.disposed) return;
+      const model = gltf.scene || gltf.scenes[0];
+      if (!model) throw new Error("GLB had no scene root");
+
+      model.updateMatrixWorld(true);
+      const preCheck = new THREE.Box3().setFromObject(model);
+      const preSize = preCheck.getSize(new THREE.Vector3());
+      const maxDim = Math.max(preSize.x, preSize.y, preSize.z);
+      if (maxDim < 0.001) {
+        throw new Error(`GLB model bounding box is degenerate (maxDim=${maxDim}); skipping`);
+      }
+
+      this.normalizeCarModel(model);
+      this.applyModelTint(model, 0xff5b24);
+      if (HIDE_MODEL_WHEELS) {
+        model.traverse((object) => {
+          if (object.name && /wheel|tire|tyre/i.test(object.name)) {
+            object.visible = false;
+          }
+        });
+      }
+
+      // Cache the model for ghost usage
+      this.gltfModel = model;
+
+      const nextRig = this.createCarRig(model);
+      nextRig.root.position.copy(this.carRig.root.position);
+      nextRig.root.quaternion.copy(this.carRig.root.quaternion);
+      nextRig.root.visible = this.carRig.root.visible;
+      nextRig.poseQuaternion.copy(this.carRig.poseQuaternion);
+      this.scene.remove(this.carRig.root);
+      this.disposeObject(this.carRig.root);
+      this.carRig = nextRig;
+      this.scene.add(this.carRig.root);
+
+      // If a ghost is already active, rebuild it with the GLB model
+      if (this.ghostLap && this.ghostRig) {
+        this.scene.remove(this.ghostRig.root);
+        this.disposeObject(this.ghostRig.root);
+        this.ghostRig = this.createGhostRig();
+        this.scene.add(this.ghostRig.root);
+      }
+
+      console.log("[ReplayScene] GLB car model loaded and applied successfully.");
+    } catch (err) {
+      console.warn("Car model not loaded; using placeholder geometry.", err);
+    }
+  }
+
+  /** Create a ghost rig – semi-transparent blue tinted car, no trail */
+  private createGhostRig(): CarRig {
+    if (this.gltfModel) {
+      const ghostModel = this.gltfModel.clone(true);
+      this.applyGhostMaterials(ghostModel);
+      return this.createCarRig(ghostModel, true);
+    }
+    // Fallback: placeholder geometry ghost
+    return this.createCarRig(undefined, true);
+  }
+
+  private applyGhostMaterials(model: THREE.Object3D): void {
+    const ghostColor = new THREE.Color(GHOST_COLOR);
+    model.traverse((object) => {
+      if (!(object instanceof THREE.Mesh)) return;
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      const ghostMaterials = materials.map((mat) => {
+        const m = mat.clone() as THREE.MeshStandardMaterial;
+        m.color = ghostColor.clone();
+        m.transparent = true;
+        m.opacity = GHOST_OPACITY;
+        m.depthWrite = false;
+        m.emissive = ghostColor.clone();
+        m.emissiveIntensity = 0.15;
+        return m;
+      });
+      object.material = Array.isArray(object.material) ? ghostMaterials : ghostMaterials[0];
+    });
+  }
+
+  private normalizeCarModel(model: THREE.Object3D): void {
+    model.traverse((object) => {
+      if (object instanceof THREE.Mesh) {
+        object.castShadow = true;
+        object.receiveShadow = true;
+      }
+    });
+    model.position.set(0, 0, 0);
+    model.rotation.set(0, 0, 0);
+    model.scale.set(1, 1, 1);
+    model.updateMatrixWorld(true);
+
+    const bbox0 = new THREE.Box3().setFromObject(model);
+    const size0 = bbox0.getSize(new THREE.Vector3());
+
+    if (size0.x > size0.z * 1.2) {
+      model.rotation.y = -Math.PI / 2;
+    }
+    model.updateMatrixWorld(true);
+
+    const bbox1 = new THREE.Box3().setFromObject(model);
+    const size1 = bbox1.getSize(new THREE.Vector3());
+
+    const dominantLength = Math.max(size1.z, size1.x, 0.5);
+    const scale = CAR_SPEC.length / dominantLength;
+    const safeScale = Math.min(100, Math.max(0.01, scale));
+    model.scale.setScalar(safeScale);
+    model.updateMatrixWorld(true);
+
+    const bbox2 = new THREE.Box3().setFromObject(model);
+    const center = bbox2.getCenter(new THREE.Vector3());
+    model.position.x -= center.x;
+    model.position.z -= center.z;
+    model.updateMatrixWorld(true);
+
+    const bbox3 = new THREE.Box3().setFromObject(model);
+    model.position.y -= bbox3.min.y;
+    model.updateMatrixWorld(true);
+  }
+
+  private applyModelTint(model: THREE.Object3D, colorHex: number): void {
+    const tint = new THREE.Color(colorHex);
+    model.traverse((object) => {
+      if (!(object instanceof THREE.Mesh)) return;
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      const clonedMaterials = materials.map((material) => {
+        const cloned = material.clone();
+        if ("color" in cloned && cloned.color instanceof THREE.Color && !("map" in cloned && cloned.map)) {
+          cloned.color.lerp(tint, 0.2);
+        }
+        return cloned;
+      });
+      object.material = Array.isArray(object.material) ? clonedMaterials : clonedMaterials[0];
+    });
+  }
+
+  private updateCar(sample: ReplaySample, playbackDelta: number): void {
+    this.carRig.root.position.set(sample.x, sample.y * ELEVATION_SCALE, sample.z);
+
+    const targetPose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
+    if (playbackDelta <= 0 || playbackDelta > 0.25) {
+      this.carRig.poseQuaternion.copy(targetPose);
+    } else {
+      const alpha = 1 - Math.exp(-(playbackDelta * 1000) / 140);
+      this.carRig.poseQuaternion.slerp(targetPose, alpha);
+    }
+    this.carRig.root.quaternion.copy(this.carRig.poseQuaternion);
+    this.carRig.forward.set(0, 0, 1).applyQuaternion(this.carRig.poseQuaternion).normalize();
+    this.carRig.up.set(0, 1, 0).applyQuaternion(this.carRig.poseQuaternion).normalize();
+
+    const steerDeg = sample.telemetry.steer ?? 0;
+    const wheelSteerRad = THREE.MathUtils.degToRad(steerDeg / CAR_SPEC.steeringRatio);
+    this.carRig.wheels.frontLeft.pivot.rotation.y = wheelSteerRad;
+    this.carRig.wheels.frontRight.pivot.rotation.y = wheelSteerRad;
+
+    if (playbackDelta > 0 && playbackDelta <= 0.25) {
+      const speedMps = (sample.telemetry.speed ?? 0) / 3.6;
+      const spinRad = (speedMps * playbackDelta) / CAR_SPEC.wheelRadius;
+      this.carRig.wheels.frontLeft.wheel.rotation.x += spinRad;
+      this.carRig.wheels.frontRight.wheel.rotation.x += spinRad;
+      this.carRig.wheels.rearLeft.wheel.rotation.x += spinRad;
+      this.carRig.wheels.rearRight.wheel.rotation.x += spinRad;
+    }
+
+    const brakeAmount = THREE.MathUtils.clamp((sample.telemetry.brake ?? 0) / 100, 0, 1);
+    this.carRig.brakeMaterials.forEach((material) => {
+      material.color.setHex(brakeAmount > 0.03 ? 0xff2c22 : 0x4c0705);
+      material.emissiveIntensity = brakeAmount > 0.03 ? 0.45 + brakeAmount * 4.2 : 0.08;
+    });
+
+    // Feed channel values to the camera state (used by the cinematic director)
+    const camTelemetry = this._cameraState.telemetry!;
+    camTelemetry.speedKmh = sample.telemetry.speed ?? 0;
+    camTelemetry.aps = sample.telemetry.aps ?? 0;
+    camTelemetry.brake = sample.telemetry.brake ?? 0;
+    camTelemetry.dist = sample.telemetry.dist ?? 0;
+  }
+
+  private updateGhostCar(sample: ReplaySample): void {
+    if (!this.ghostRig) return;
+    this.ghostRig.root.position.set(sample.x, sample.y * ELEVATION_SCALE, sample.z);
+    const pose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
+    this.ghostRig.poseQuaternion.copy(pose);
+    this.ghostRig.root.quaternion.copy(pose);
+
+    const steerDeg = sample.telemetry.steer ?? 0;
+    const wheelSteerRad = THREE.MathUtils.degToRad(steerDeg / CAR_SPEC.steeringRatio);
+    this.ghostRig.wheels.frontLeft.pivot.rotation.y = wheelSteerRad;
+    this.ghostRig.wheels.frontRight.pivot.rotation.y = wheelSteerRad;
+  }
+
+  /**
+   * Write the pose quaternion for a heading/pitch/roll into `out` (no
+   * allocations). Roll (bank/camber) is applied last as a body-frame rotation
+   * about the car's forward axis: positive roll leans the car to its right
+   * (left road edge higher) — see ReplaySample.roll / sampleTrackRoll.
+   */
+  private setPoseQuaternion(out: THREE.Quaternion, heading: number, pitch: number, roll = 0): THREE.Quaternion {
+    const forward = POSE_FORWARD.set(Math.sin(heading), 0, Math.cos(heading)).multiplyScalar(Math.cos(pitch));
+    forward.y = Math.sin(pitch);
+    forward.normalize();
+    const right = POSE_RIGHT.crossVectors(WORLD_UP, forward);
+    if (right.lengthSq() < 0.000001) {
+      out.setFromAxisAngle(WORLD_UP, heading);
+    } else {
+      right.normalize();
+      const up = POSE_UP.crossVectors(forward, right).normalize();
+      out.setFromRotationMatrix(POSE_BASIS.makeBasis(right, up, forward));
+    }
+    if (roll !== 0) {
+      out.multiply(POSE_ROLL_QUAT.setFromAxisAngle(POSE_LOCAL_FORWARD, roll));
+    }
+    return out;
+  }
+
+  private updateCamera(mode: CameraMode, dt: number): void {
+    const state = this.createCameraState();
+    if (this.activeCameraMode !== mode) {
+      if (this.activeCameraMode) {
+        this.cameras[this.activeCameraMode].deactivate();
+      }
+      this.cameras[mode].activate(state);
+      this.activeCameraMode = mode;
+    }
+    this.cameras[mode].update(state, dt);
+    const cinematic = this.cameras.cinematic;
+    const cockpitView =
+      mode === "cockpit" ||
+      (mode === "cinematic" && cinematic instanceof CinematicCamera && cinematic.isCockpitShot);
+    this.carRig.root.visible = !cockpitView;
+  }
+
+  /** Fill and return the reusable camera state (hot path, no allocations) */
+  private createCameraState(): CarCameraState {
+    const state = this._cameraState;
+    state.position.copy(this.carRig.root.position);
+    state.quaternion.copy(this.carRig.poseQuaternion);
+    state.heading = Math.atan2(this.carRig.forward.x, this.carRig.forward.z);
+    state.forward.copy(this.carRig.forward);
+    state.up.copy(this.carRig.up);
+    state.trackCenter.copy(this.trackCenter);
+    state.trackRadius = this.trackRadius;
+    return state;
+  }
+
+  private createCarRig(model?: THREE.Object3D, isGhost = false): CarRig {
+    const root = new THREE.Group();
+    if (model) {
+      root.add(model);
+    } else if (isGhost) {
+      this.addPlaceholderBodyGhost(root);
+    } else {
+      this.addPlaceholderBody(root);
+    }
+    const wheels = this.addWheelAssemblies(root, isGhost);
+    const brakeMaterials = isGhost ? [] : this.addBrakeLights(root);
+    return {
+      root,
+      wheels,
+      brakeMaterials,
+      poseQuaternion: new THREE.Quaternion(),
+      forward: new THREE.Vector3(0, 0, 1),
+      up: new THREE.Vector3(0, 1, 0),
+    };
+  }
+
+  private addPlaceholderBody(root: THREE.Group): void {
+    const body = new THREE.Mesh(
+      new THREE.BoxGeometry(CAR_SPEC.width, CAR_SPEC.height, CAR_SPEC.length),
+      new THREE.MeshStandardMaterial({ color: 0xff5b24, roughness: 0.38, metalness: 0.15 }),
+    );
+    body.castShadow = true;
+    body.position.y = CAR_SPEC.wheelRadius + CAR_SPEC.height / 2;
+    root.add(body);
+
+    const cabin = new THREE.Mesh(
+      new THREE.BoxGeometry(1.55, 0.55, 1.65),
+      new THREE.MeshStandardMaterial({ color: 0x11171b, roughness: 0.2, metalness: 0.25 }),
+    );
+    cabin.castShadow = true;
+    cabin.position.set(0, CAR_SPEC.wheelRadius + 1.0, -0.25);
+    root.add(cabin);
+
+    const nose = new THREE.Mesh(
+      new THREE.ConeGeometry(0.35, 0.9, 12),
+      new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.05, roughness: 0.5 }),
+    );
+    nose.castShadow = true;
+    nose.rotation.x = Math.PI / 2;
+    nose.position.set(0, CAR_SPEC.wheelRadius + 0.25, CAR_SPEC.length / 2 + 0.25);
+    root.add(nose);
+  }
+
+  private addPlaceholderBodyGhost(root: THREE.Group): void {
+    const ghostMat = () =>
+      new THREE.MeshStandardMaterial({
+        color: GHOST_COLOR,
+        transparent: true,
+        opacity: GHOST_OPACITY,
+        depthWrite: false,
+        emissive: new THREE.Color(GHOST_COLOR),
+        emissiveIntensity: 0.15,
+      });
+
+    const body = new THREE.Mesh(new THREE.BoxGeometry(CAR_SPEC.width, CAR_SPEC.height, CAR_SPEC.length), ghostMat());
+    body.position.y = CAR_SPEC.wheelRadius + CAR_SPEC.height / 2;
+    root.add(body);
+
+    const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.55, 0.55, 1.65), ghostMat());
+    cabin.position.set(0, CAR_SPEC.wheelRadius + 1.0, -0.25);
+    root.add(cabin);
+  }
+
+  private addWheelAssemblies(root: THREE.Group, isGhost = false): CarRig["wheels"] {
+    const wheelGeometry = new THREE.CylinderGeometry(
+      CAR_SPEC.wheelRadius, CAR_SPEC.wheelRadius, CAR_SPEC.wheelWidth, 16, 1,
+    );
+    wheelGeometry.rotateZ(Math.PI / 2);
+
+    const ghostOpacity = GHOST_OPACITY;
+    const wheelMaterial = isGhost
+      ? new THREE.MeshStandardMaterial({ color: GHOST_COLOR, transparent: true, opacity: ghostOpacity, depthWrite: false })
+      : new THREE.MeshStandardMaterial({ color: 0x0a0a0a, metalness: 0.3, roughness: 0.7 });
+    const rimMaterial = isGhost
+      ? new THREE.MeshStandardMaterial({ color: 0x88ddff, transparent: true, opacity: ghostOpacity, depthWrite: false })
+      : new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.8, roughness: 0.3 });
+    const markerMaterial = isGhost
+      ? null
+      : new THREE.MeshStandardMaterial({ color: 0xcccccc, metalness: 0.6, roughness: 0.3 });
+
+    const makeWheel = () => {
+      const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
+      if (!isGhost) wheel.castShadow = true;
+      const rimGeo = new THREE.CylinderGeometry(CAR_SPEC.wheelRadius * 0.6, CAR_SPEC.wheelRadius * 0.6, CAR_SPEC.wheelWidth * 1.02, 12, 1);
+      rimGeo.rotateZ(Math.PI / 2);
+      wheel.add(new THREE.Mesh(rimGeo, rimMaterial));
+      if (markerMaterial) {
+        const marker = new THREE.Mesh(
+          new THREE.BoxGeometry(CAR_SPEC.wheelWidth * 0.15, CAR_SPEC.wheelRadius * 0.5, 0.06),
+          markerMaterial,
+        );
+        marker.position.set(0, 0, CAR_SPEC.wheelRadius * 0.5);
+        wheel.add(marker);
+      }
+      return wheel;
+    };
+
+    const makeAssembly = (x: number, z: number): WheelAssembly => {
+      const pivot = new THREE.Group();
+      pivot.position.set(x, CAR_SPEC.wheelRadius, z);
+      const wheel = makeWheel();
+      pivot.add(wheel);
+      root.add(pivot);
+      return { pivot, wheel };
+    };
+
+    const frontZ = CAR_SPEC.wheelBase / 2;
+    const rearZ = -CAR_SPEC.wheelBase / 2;
+    const leftX = -CAR_SPEC.trackWidth / 2;
+    const rightX = CAR_SPEC.trackWidth / 2;
+
+    return {
+      frontLeft: makeAssembly(leftX, frontZ),
+      frontRight: makeAssembly(rightX, frontZ),
+      rearLeft: makeAssembly(leftX, rearZ),
+      rearRight: makeAssembly(rightX, rearZ),
+    };
+  }
+
+  private addBrakeLights(root: THREE.Group): THREE.MeshStandardMaterial[] {
+    const leftMaterial = new THREE.MeshStandardMaterial({
+      color: 0x4c0705,
+      emissive: 0xff1b12,
+      emissiveIntensity: 0.08,
+      roughness: 0.28,
+      toneMapped: false,
+    });
+    const rightMaterial = leftMaterial.clone();
+    const geometry = new THREE.BoxGeometry(0.42, 0.18, 0.08);
+    const left = new THREE.Mesh(geometry, leftMaterial);
+    const right = new THREE.Mesh(geometry.clone(), rightMaterial);
+    left.position.set(-0.58, CAR_SPEC.wheelRadius + 0.42, -CAR_SPEC.length / 2 - 0.06);
+    right.position.set(0.58, CAR_SPEC.wheelRadius + 0.42, -CAR_SPEC.length / 2 - 0.06);
+    root.add(left, right);
+    return [leftMaterial, rightMaterial];
+  }
+
+  private disposeObject(object: THREE.Object3D): void {
+    object.traverse((child) => {
+      if (child instanceof THREE.Mesh || child instanceof THREE.Line || child instanceof THREE.Points) {
+        child.geometry.dispose();
+        const materials = Array.isArray(child.material) ? child.material : [child.material];
+        materials.forEach((material) => material.dispose());
+      }
+    });
+  }
+}

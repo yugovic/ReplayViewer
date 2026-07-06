@@ -1,0 +1,31 @@
+{
+  "name": "replay-viewer-v2",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "postprocessing": "^6.37.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.179.0",
+    "uplot": "^1.6.32",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.179.0",
+    "playwright": "^1.61.1",
+    "typescript": "^5.8.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.0.0"
+  }
+}

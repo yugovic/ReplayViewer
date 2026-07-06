@@ -1,0 +1,467 @@
+#!/usr/bin/env python3
+"""Rebuild the Barber track centerline from OpenStreetMap geometry.
+
+The previous track.json centerline was actually a single car's racing line
+(downsampled GPS), which deviates up to ~5 m from the real road centre in
+corners. This script replaces it with the OSM raceway geometry
+(way 237456804, highway=raceway) while preserving:
+
+  - origin (so lap GPS -> local projection stays identical)
+  - width (OSM says 7.3 m but the current 12.0 m is kept)
+  - output schema (same keys as build_track.py output)
+  - elevation profile (transferred from the old centerline by nearest
+    neighbour, then smoothed)
+  - start/finish location (new points are rotated so dist=0 sits next to
+    the old centerline's first point)
+
+The raw Overpass response is cached at pipeline/cache/osm_barber_raceway.json
+and reused on subsequent runs for reproducibility.
+
+GPS-guarded lateral blend
+-------------------------
+The OSM way is accurate to a few metres, but (a) in two corners it sits a
+few metres off the true road centre and (b) the real asphalt is locally much
+wider than the rendered constant-width band (e.g. the esses), so cars whose
+racing line legitimately uses the full pavement would visually leave the
+generated band. As a correction step the script computes, for each
+centerline point, the signed lateral offset of the *median* of all race lap
+GPS points assigned to it. Where |median| exceeds a guard margin the point
+is shifted toward the GPS median by the excess only (never all the way, so
+the line does not degrade into a racing line), and the shifts are smoothed
+along the loop. Cars drive on real asphalt, so the blended line stays on
+the real road while guaranteeing the cars stay inside the rendered band.
+"""
+
+from __future__ import annotations
+
+import argparse
+import glob as globmod
+import json
+import math
+import statistics
+import subprocess
+from pathlib import Path
+
+V2_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_TRACK = V2_ROOT / "public" / "data" / "tracks" / "barber" / "track.json"
+DEFAULT_LAPS_GLOB = str(V2_ROOT / "public" / "data" / "races" / "barber_r1" / "GR86*.json")
+CACHE_PATH = Path(__file__).resolve().parent / "cache" / "osm_barber_raceway.json"
+OSM_WAY_ID = 237456804
+OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+EARTH_METERS_PER_DEGREE = 111_320.0
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Rebuild Barber track.json centerline from OSM")
+    p.add_argument("--track", type=Path, default=DEFAULT_TRACK, help="track.json to write (rebuilt in place)")
+    p.add_argument(
+        "--osm-way",
+        type=int,
+        nargs="+",
+        default=[OSM_WAY_ID],
+        help="OSM way id(s) of the raceway. Pass more than one to stitch several ways into one "
+        "closed loop (endpoint-matched); a single id preserves that way's own node order untouched.",
+    )
+    p.add_argument("--cache", type=Path, default=CACHE_PATH, help="Overpass response cache path (single-way mode)")
+    p.add_argument(
+        "--cache-dir",
+        type=Path,
+        default=None,
+        help="Overpass response cache directory for multi-way mode (default: alongside --cache)",
+    )
+    p.add_argument("--spacing", type=float, default=7.0, help="Resample spacing in metres")
+    p.add_argument("--smooth-window", type=int, default=5, help="Elevation moving-average window (odd)")
+    p.add_argument("--laps-glob", default=DEFAULT_LAPS_GLOB, help="Glob of lap JSON files for the GPS blend")
+    p.add_argument("--guard", type=float, default=3.5, help="Guard margin in metres for the GPS blend")
+    p.add_argument("--blend-window", type=int, default=7, help="Shift smoothing window (odd) for the GPS blend")
+    p.add_argument("--no-gps-blend", action="store_true", help="Skip the GPS-guarded lateral blend")
+
+    # --- Fresh-build support (no pre-existing track.json to source origin/elevation/direction from) ---
+    p.add_argument(
+        "--old-track",
+        type=Path,
+        default=None,
+        help="Existing track.json to source origin, elevation profile and racing direction from. "
+        "Defaults to --track (the original behaviour: rebuild the file in place). If this path does "
+        "not exist, pass --origin-lat/--origin-lng/--origin-alt and --sf-lat/--sf-lng instead to do a "
+        "from-scratch build with a flat (zero) elevation profile that a later terrain-sampling pass fills in.",
+    )
+    p.add_argument("--origin-lat", type=float, default=None, help="Fresh-build origin latitude")
+    p.add_argument("--origin-lng", type=float, default=None, help="Fresh-build origin longitude")
+    p.add_argument("--origin-alt", type=float, default=None, help="Fresh-build origin altitude (m ASL)")
+    p.add_argument("--sf-lat", type=float, default=None, help="Fresh-build start/finish anchor latitude")
+    p.add_argument("--sf-lng", type=float, default=None, help="Fresh-build start/finish anchor longitude")
+    p.add_argument(
+        "--reverse",
+        action="store_true",
+        help="Fresh-build only: reverse the OSM loop direction (no old centerline to auto-detect against)",
+    )
+    p.add_argument("--track-id", default=None, help="Override trackId (default: old_track's, else 'barber')")
+    p.add_argument("--track-name", default=None, help="Override trackName")
+    p.add_argument("--source-track-id", default=None, help="Override sourceTrackId")
+    p.add_argument("--width", type=float, default=None, help="Override track width in metres")
+    return p.parse_args()
+
+
+def fetch_osm_geometry(way_id: int, cache: Path) -> list[dict[str, float]]:
+    """Return list of {lat, lon} for the way, using the cache when present."""
+    if cache.exists():
+        raw = json.loads(cache.read_text())
+    else:
+        query = f"[out:json][timeout:25];way({way_id});out geom;"
+        result = subprocess.run(
+            ["curl", "-sf", OVERPASS_URL, "--data-urlencode", f"data={query}"],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        if result.returncode != 0:
+            raise SystemExit(f"Overpass fetch failed (curl exit {result.returncode}): {result.stderr[:200]}")
+        raw = json.loads(result.stdout)
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(raw, indent=2) + "\n")
+        print(f"Fetched way {way_id} from Overpass, cached at {cache}")
+
+    elements = raw.get("elements") or []
+    if not elements or "geometry" not in elements[0]:
+        raise SystemExit("Overpass response has no way geometry")
+    geom = elements[0]["geometry"]
+    if len(geom) < 4:
+        raise SystemExit("Way geometry too short")
+    return geom
+
+
+def _endpoints_match(a: tuple[float, float], b: tuple[float, float], tol: float = 1e-6) -> bool:
+    return abs(a[0] - b[0]) < tol and abs(a[1] - b[1]) < tol
+
+
+def stitch_ways(way_geoms: list[list[dict[str, float]]]) -> list[dict[str, float]]:
+    """Chain multiple way geometries end-to-end into one ordered node list.
+
+    A single way is returned untouched (its own digitised node order/direction
+    is preserved exactly). With more than one way, each subsequent way is
+    appended to the running chain by matching whichever of its two endpoints
+    is closest to the chain's current tail, flipping the way if its far end
+    matches instead.
+    """
+    if len(way_geoms) == 1:
+        return way_geoms[0]
+
+    remaining = [list(g) for g in way_geoms]
+    chain = remaining.pop(0)
+
+    def pt(node: dict[str, float]) -> tuple[float, float]:
+        return (node["lat"], node["lon"])
+
+    while remaining:
+        tail = pt(chain[-1])
+        best_i, best_flip, best_d = None, False, math.inf
+        for i, seg in enumerate(remaining):
+            for flip, end in ((False, pt(seg[0])), (True, pt(seg[-1]))):
+                d = math.hypot(end[0] - tail[0], end[1] - tail[1])
+                if d < best_d:
+                    best_i, best_flip, best_d = i, flip, d
+        seg = remaining.pop(best_i)
+        if best_flip:
+            seg = seg[::-1]
+        # Drop a duplicated shared node so the chain doesn't get a zero-length segment.
+        if _endpoints_match(pt(seg[0]), tail, tol=1e-7):
+            seg = seg[1:]
+        chain.extend(seg)
+
+    return chain
+
+
+def project(lat: float, lng: float, origin: dict[str, float]) -> tuple[float, float]:
+    lng_scale = EARTH_METERS_PER_DEGREE * math.cos(math.radians(origin["lat"]))
+    return (lng - origin["lng"]) * lng_scale, (lat - origin["lat"]) * EARTH_METERS_PER_DEGREE
+
+
+def unproject(x: float, z: float, origin: dict[str, float]) -> tuple[float, float]:
+    lng_scale = EARTH_METERS_PER_DEGREE * math.cos(math.radians(origin["lat"]))
+    return origin["lat"] + z / EARTH_METERS_PER_DEGREE, origin["lng"] + x / lng_scale
+
+
+def resample_closed(points: list[tuple[float, float]], spacing: float) -> list[tuple[float, float]]:
+    """Linearly resample a closed polyline at fixed spacing (last->first edge included)."""
+    # Drop duplicated closing node if present, we re-close explicitly.
+    if math.hypot(points[0][0] - points[-1][0], points[0][1] - points[-1][1]) < 1e-6:
+        points = points[:-1]
+
+    # Cumulative arc length over the closed loop
+    n = len(points)
+    seg_len = []
+    for i in range(n):
+        a = points[i]
+        b = points[(i + 1) % n]
+        seg_len.append(math.hypot(b[0] - a[0], b[1] - a[1]))
+    total = sum(seg_len)
+
+    count = max(8, round(total / spacing))
+    step = total / count
+    out: list[tuple[float, float]] = []
+    seg = 0
+    seg_start = 0.0
+    for k in range(count):
+        target = k * step
+        while target > seg_start + seg_len[seg] + 1e-9:
+            seg_start += seg_len[seg]
+            seg += 1
+        a = points[seg % n]
+        b = points[(seg + 1) % n]
+        t = 0.0 if seg_len[seg] <= 1e-9 else (target - seg_start) / seg_len[seg]
+        out.append((a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t))
+    return out
+
+
+def rotate_to_start(points: list[tuple[float, float]], sf: tuple[float, float]) -> list[tuple[float, float]]:
+    """Rotate point order so index 0 is nearest to the start/finish position."""
+    best = min(range(len(points)), key=lambda i: (points[i][0] - sf[0]) ** 2 + (points[i][1] - sf[1]) ** 2)
+    return points[best:] + points[:best]
+
+
+def ensure_direction(points: list[tuple[float, float]], old: list[dict[str, float]]) -> list[tuple[float, float]]:
+    """Reverse loop direction if it opposes the old centerline's direction of travel."""
+    ox0, oz0 = old[0]["x"], old[0]["z"]
+    ox1, oz1 = old[1]["x"], old[1]["z"]
+    old_tan = (ox1 - ox0, oz1 - oz0)
+    new_tan = (points[1][0] - points[0][0], points[1][1] - points[0][1])
+    dot = old_tan[0] * new_tan[0] + old_tan[1] * new_tan[1]
+    if dot < 0:
+        points = [points[0]] + points[1:][::-1]
+        print("Reversed OSM loop direction to match racing direction")
+    return points
+
+
+def gps_guarded_blend(
+    points: list[tuple[float, float]],
+    laps_glob: str,
+    origin: dict[str, float],
+    guard: float,
+    window: int,
+) -> list[tuple[float, float]]:
+    """Shift points laterally toward the local lap-GPS median where it exceeds `guard` metres."""
+    lap_files = sorted(globmod.glob(laps_glob))
+    if not lap_files:
+        print(f"WARNING: no lap files match {laps_glob}, skipping GPS blend")
+        return points
+
+    gps: list[tuple[float, float]] = []
+    for path in lap_files:
+        lap = json.loads(Path(path).read_text())
+        for lat, lng in zip(lap["lat"], lap["lng"]):
+            gps.append(project(lat, lng, origin))
+
+    n = len(points)
+
+    def tangent_normal(i: int) -> tuple[float, float]:
+        ax, az = points[(i - 1) % n]
+        bx, bz = points[(i + 1) % n]
+        tx, tz = bx - ax, bz - az
+        length = math.hypot(tx, tz) or 1.0
+        return -tz / length, tx / length  # left-hand normal
+
+    # Assign every GPS point to its nearest centerline vertex, record signed offset
+    buckets: list[list[float]] = [[] for _ in range(n)]
+    for px, pz in gps:
+        bi = min(range(n), key=lambda i: (points[i][0] - px) ** 2 + (points[i][1] - pz) ** 2)
+        nx, nz = tangent_normal(bi)
+        buckets[bi].append((px - points[bi][0]) * nx + (pz - points[bi][1]) * nz)
+
+    shifts: list[float] = []
+    for b in buckets:
+        if not b:
+            shifts.append(0.0)
+            continue
+        med = statistics.median(b)
+        shifts.append(math.copysign(max(0.0, abs(med) - guard), med))
+
+    # Circular moving-average smoothing of the shifts
+    half = max(1, window // 2)
+    smooth = [
+        sum(shifts[(i + j) % n] for j in range(-half, half + 1)) / (2 * half + 1)
+        for i in range(n)
+    ]
+
+    max_shift = max(abs(s) for s in smooth)
+    shifted = sum(1 for s in smooth if abs(s) > 0.05)
+    print(f"GPS blend: {shifted}/{n} points shifted, max shift {max_shift:.1f} m (guard {guard} m)")
+
+    out: list[tuple[float, float]] = []
+    for i, (x, z) in enumerate(points):
+        nx, nz = tangent_normal(i)
+        out.append((x + nx * smooth[i], z + nz * smooth[i]))
+    return out
+
+
+def transfer_elevation(points: list[tuple[float, float]], old: list[dict[str, float]], window: int) -> list[float]:
+    """Nearest-neighbour elevation transfer from old centerline + circular moving average."""
+    raw: list[float] = []
+    for x, z in points:
+        best_y = 0.0
+        best_d = math.inf
+        for p in old:
+            d = (p["x"] - x) ** 2 + (p["z"] - z) ** 2
+            if d < best_d:
+                best_d = d
+                best_y = p["y"]
+        raw.append(best_y)
+
+    if window < 2:
+        return raw
+    half = window // 2
+    n = len(raw)
+    smooth = []
+    for i in range(n):
+        vals = [raw[(i + j) % n] for j in range(-half, half + 1)]
+        smooth.append(sum(vals) / len(vals))
+    return smooth
+
+
+def main() -> None:
+    args = parse_args()
+
+    old_track_path = args.old_track if args.old_track is not None else args.track
+    fresh = not old_track_path.exists()
+
+    if fresh:
+        missing = [
+            name
+            for name, val in (
+                ("--origin-lat", args.origin_lat),
+                ("--origin-lng", args.origin_lng),
+                ("--origin-alt", args.origin_alt),
+                ("--sf-lat", args.sf_lat),
+                ("--sf-lng", args.sf_lng),
+            )
+            if val is None
+        ]
+        if missing:
+            raise SystemExit(
+                f"{old_track_path} not found, and {', '.join(missing)} not provided for a fresh build "
+                "(fresh builds need an explicit origin and start/finish anchor since there is no prior "
+                "track.json to source them from)"
+            )
+        old_track: dict = {}
+        origin = {"lat": args.origin_lat, "lng": args.origin_lng, "alt": args.origin_alt}
+        old_centerline = None
+    else:
+        old_track = json.loads(old_track_path.read_text())
+        origin = old_track["origin"]
+        old_centerline = old_track["centerline"]
+
+    # Single way id: fetch via the original single-file cache path, node order untouched.
+    # Multiple way ids: fetch each into its own cache file and stitch end-to-end.
+    if len(args.osm_way) == 1:
+        geom = fetch_osm_geometry(args.osm_way[0], args.cache)
+    else:
+        cache_dir = args.cache_dir or args.cache.parent
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        way_geoms = [
+            fetch_osm_geometry(way_id, cache_dir / f"osm_way_{way_id}.json") for way_id in args.osm_way
+        ]
+        geom = stitch_ways(way_geoms)
+        print(f"Stitched {len(args.osm_way)} ways into {len(geom)} nodes")
+
+    xy = [project(g["lat"], g["lon"], origin) for g in geom]
+
+    pts = resample_closed(xy, args.spacing)
+    if fresh:
+        sf_xy = project(args.sf_lat, args.sf_lng, origin)
+        pts = rotate_to_start(pts, sf_xy)
+        if args.reverse:
+            pts = [pts[0]] + pts[1:][::-1]
+            print("Reversed OSM loop direction (--reverse)")
+    else:
+        sf_xy = (old_centerline[0]["x"], old_centerline[0]["z"])
+        pts = rotate_to_start(pts, sf_xy)
+        pts = ensure_direction(pts, old_centerline)
+    if not args.no_gps_blend:
+        pts = gps_guarded_blend(pts, args.laps_glob, origin, args.guard, args.blend_window)
+        # Re-anchor S/F after the blend in case shifts moved the nearest point
+        pts = rotate_to_start(pts, sf_xy)
+    if fresh:
+        # No prior centerline to transfer elevation from: leave it flat at the
+        # origin altitude. A later terrain-raster sampling pass (see
+        # populate_terrain_elevation.py) fills in real values, followed by
+        # smooth_elevation.py for gradient clamping.
+        ys = [0.0] * len(pts)
+    else:
+        ys = transfer_elevation(pts, old_centerline, args.smooth_window)
+
+    # Build centerline records; close the loop by repeating the first point.
+    centerline: list[dict[str, float]] = []
+    dist = 0.0
+    for i, ((x, z), y) in enumerate(zip(pts, ys)):
+        if i > 0:
+            dist += math.hypot(x - pts[i - 1][0], z - pts[i - 1][1])
+        lat, lng = unproject(x, z, origin)
+        centerline.append(
+            {
+                "lat": round(lat, 8),
+                "lng": round(lng, 8),
+                "alt": round(origin["alt"] + y, 2),
+                "dist": round(dist, 2),
+                "x": round(x, 3),
+                "y": round(y, 3),
+                "z": round(z, 3),
+            }
+        )
+    total_length = dist + math.hypot(pts[0][0] - pts[-1][0], pts[0][1] - pts[-1][1])
+    closing = dict(centerline[0])
+    closing["dist"] = round(total_length, 2)
+    centerline.append(closing)
+
+    xs = [p["x"] for p in centerline]
+    ys_out = [p["y"] for p in centerline]
+    zs = [p["z"] for p in centerline]
+    lats = [p["lat"] for p in centerline]
+    lngs = [p["lng"] for p in centerline]
+    alts = [p["alt"] for p in centerline]
+
+    track = {
+        "version": old_track.get("version", 1),
+        "trackId": args.track_id if args.track_id is not None else old_track.get("trackId", "barber"),
+        "sourceTrackId": args.source_track_id if args.source_track_id is not None else old_track.get("sourceTrackId"),
+        "trackName": args.track_name if args.track_name is not None else old_track.get("trackName", "Barber Motorsports Park"),
+        "width": args.width if args.width is not None else float(old_track.get("width", 12.0)),
+        "totalLength": round(total_length, 2),
+        "elevationRange": [round(min(alts), 2), round(max(alts), 2)],
+        "origin": origin,
+        "bounds": {
+            "lat": [round(min(lats), 8), round(max(lats), 8)],
+            "lng": [round(min(lngs), 8), round(max(lngs), 8)],
+            "x": [round(min(xs), 3), round(max(xs), 3)],
+            "z": [round(min(zs), 3), round(max(zs), 3)],
+        },
+        "sectors": [
+            {"id": "S1", "startDist": 0.0, "endDist": round(total_length / 3.0, 2)},
+            {"id": "S2", "startDist": round(total_length / 3.0, 2), "endDist": round(total_length * 2.0 / 3.0, 2)},
+            {"id": "S3", "startDist": round(total_length * 2.0 / 3.0, 2), "endDist": round(total_length, 2)},
+        ],
+        "centerline": centerline,
+    }
+
+    # Backup the old (racing-line based) file once, then overwrite. Nothing to
+    # back up on a fresh build (there is no prior file at old_track_path).
+    if not fresh:
+        backup = args.track.with_name("track.racingline.bak.json")
+        if not backup.exists():
+            backup.write_text(json.dumps(old_track, indent=2) + "\n")
+            print(f"Backed up previous track.json to {backup}")
+
+    args.track.parent.mkdir(parents=True, exist_ok=True)
+    args.track.write_text(json.dumps(track, indent=2) + "\n")
+    print(f"Saved {args.track}")
+    print(f"Points: {len(centerline)} (incl. closing point)")
+    print(f"Length: {total_length:.1f} m")
+    if fresh:
+        sf_dist_m = math.hypot(centerline[0]["x"] - sf_xy[0], centerline[0]["z"] - sf_xy[1])
+        print(f"S/F anchor offset (nearest resampled point to --sf-lat/--sf-lng): {sf_dist_m:.1f} m")
+    else:
+        print(f"S/F offset from old start: "
+              f"{math.hypot(centerline[0]['x'] - old_centerline[0]['x'], centerline[0]['z'] - old_centerline[0]['z']):.1f} m")
+
+
+if __name__ == "__main__":
+    main()

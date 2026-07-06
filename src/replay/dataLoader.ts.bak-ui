@@ -1,0 +1,104 @@
+import type { LapData, LapIndexRecord, LapsIndex, LoadedReplay, TrackData } from "./types";
+
+const DEFAULT_TRACK_ID = "barber";
+const DEFAULT_RACE_ID = "barber_r1";
+
+/** Only these characters are allowed in a track/race id (they end up in fetch URLs). */
+const ID_PATTERN = /^[a-z0-9_-]+$/i;
+
+export type SatVariant = "default" | "sr";
+
+export interface ResolvedDataSources {
+  trackId: string;
+  raceId: string;
+  trackUrl: string;
+  raceBaseUrl: string;
+  satVariant: SatVariant;
+}
+
+function sanitizeId(value: string | null, fallback: string): string {
+  if (value && ID_PATTERN.test(value)) {
+    return value;
+  }
+  return fallback;
+}
+
+/**
+ * Resolves track/race/satellite-variant selection from a URL query string
+ * (e.g. `location.search`). Pure and DOM-free so it is unit-testable.
+ * Unknown or malformed values fall back to the defaults that reproduce
+ * today's hardcoded Barber round-1 behavior.
+ */
+export function resolveDataSources(search: string): ResolvedDataSources {
+  const params = new URLSearchParams(search);
+  const trackId = sanitizeId(params.get("track"), DEFAULT_TRACK_ID);
+  const raceId = sanitizeId(params.get("race"), DEFAULT_RACE_ID);
+  const satVariant: SatVariant = params.get("sat") === "sr" ? "sr" : "default";
+
+  return {
+    trackId,
+    raceId,
+    trackUrl: `/data/tracks/${trackId}/track.json`,
+    raceBaseUrl: `/data/races/${raceId}`,
+    satVariant,
+  };
+}
+
+// Resolved once from the page URL (e.g. ?track=...&race=...&sat=sr). Defaults
+// reproduce the previously hardcoded Barber round-1 behavior exactly.
+const SOURCES = resolveDataSources(typeof window !== "undefined" ? window.location.search : "");
+
+async function fetchJson<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${url}: ${response.status}`);
+  }
+  return (await response.json()) as T;
+}
+
+function pickInitialLap(index: LapsIndex): LapIndexRecord {
+  const generated = index.laps.filter((lap) => lap.data_file);
+  if (generated.length === 0) {
+    throw new Error("laps.json has no generated lap data files");
+  }
+  return [...generated].sort((a, b) => a.lap_time_seconds - b.lap_time_seconds)[0];
+}
+
+export async function loadInitialReplay(): Promise<LoadedReplay> {
+  const [track, lapsIndex] = await Promise.all([
+    fetchJson<TrackData>(SOURCES.trackUrl),
+    fetchJson<LapsIndex>(`${SOURCES.raceBaseUrl}/laps.json`),
+  ]);
+  // Stamp the resolved selection onto the track so downstream consumers
+  // (TrackBuilder's satellite/terrain/features asset URLs) key off the id
+  // actually used to fetch this data, not whatever track.json happens to
+  // contain internally.
+  track.trackId = SOURCES.trackId;
+  track.satVariant = SOURCES.satVariant;
+  const activeRecord = pickInitialLap(lapsIndex);
+  const lap = await fetchJson<LapData>(`${SOURCES.raceBaseUrl}/${activeRecord.data_file}`);
+  return { track, lapsIndex, lap, activeRecord };
+}
+
+/**
+ * Loads a lap JSON file by its data_file path.
+ */
+export async function loadLapFile(dataFile: string): Promise<LapData> {
+  return fetchJson<LapData>(`${SOURCES.raceBaseUrl}/${dataFile}`);
+}
+
+/**
+ * Returns laps from the index that have data files available.
+ * Prefer the `selected` array (pre-generated), fall back to laps[] with data_file set.
+ */
+export function getAvailableLaps(index: LapsIndex): LapIndexRecord[] {
+  // Build a set of (vehicle_id, lap) pairs from the selected array
+  const selectedKeys = new Set(
+    index.selected.map((s) => `${s.vehicle_id}::${s.lap}`),
+  );
+
+  return index.laps.filter((rec) => {
+    const key = `${rec.vehicle_id}::${rec.lap}`;
+    return selectedKeys.has(key) && rec.data_file;
+  });
+}

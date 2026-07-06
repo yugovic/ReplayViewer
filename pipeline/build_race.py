@@ -1,0 +1,478 @@
+#!/usr/bin/env python3
+"""Stream Barber telemetry CSV into compact lap JSON payloads.
+
+The telemetry source is long-form and large. This script only keeps rows for
+selected vehicle/lap pairs in memory, while the 1.5GB CSV is read sequentially.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import math
+import re
+from collections import defaultdict
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+V2_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_TELEMETRY = PROJECT_ROOT / "Datasets" / "barber" / "R1_barber_telemetry_data.csv"
+DEFAULT_LAP_TIMES = PROJECT_ROOT / "Datasets" / "barber" / "R1_barber_lap_time.csv"
+DEFAULT_OUTPUT_DIR = V2_ROOT / "public" / "data" / "races" / "barber_r1"
+EARTH_RADIUS_M = 6_378_137.0
+
+CHANNEL_ALIASES = {
+    "VBOX_Lat_Min": "lat",
+    "VBOX_Long_Minutes": "lng",
+    "speed": "speed",
+    "aps": "aps",
+    "pbrake_f": "brake_f",
+    "pbrake_r": "brake_r",
+    "Steering_Angle": "steer",
+    "gear": "gear",
+    "accx_can": "accx",
+    "accy_can": "accy",
+    "Laptrigger_lapdist_dls": "lapdist_raw",
+    "nmot": "rpm",
+}
+
+COMPACT_KEYS = ("t", "lat", "lng", "speed", "aps", "brake", "steer", "gear", "accx", "accy", "dist")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Build compact replay data from long-form telemetry CSV")
+    parser.add_argument("--telemetry", type=Path, default=DEFAULT_TELEMETRY, help="Input telemetry CSV")
+    parser.add_argument("--lap-times", type=Path, default=DEFAULT_LAP_TIMES, help="Lap boundary CSV")
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help="Output race data directory")
+    parser.add_argument("--race-id", default="barber_r1", help="Race/session id for laps.json")
+    parser.add_argument("--track-id", default="barber", help="Track id for metadata")
+    parser.add_argument("--vehicle-id", action="append", default=[], help="Vehicle id to extract; repeatable")
+    parser.add_argument("--lap", action="append", type=int, default=[], help="Lap number to extract; repeatable")
+    parser.add_argument("--lap-start", type=int, default=None, help="Inclusive lap range start")
+    parser.add_argument("--lap-end", type=int, default=None, help="Inclusive lap range end")
+    parser.add_argument("--pair", action="append", default=[], help="Explicit VEHICLE_ID:LAP pair; repeatable")
+    parser.add_argument("--auto-best", type=int, default=2, help="Auto-select fastest unique vehicles from lap index")
+    parser.add_argument(
+        "--time-column",
+        choices=["timestamp", "meta_time"],
+        default="timestamp",
+        help="Telemetry time column used for alignment",
+    )
+    parser.add_argument("--smooth-window", type=int, default=5, help="Odd GPS moving-average window")
+    parser.add_argument("--max-gps-speed-mps", type=float, default=90.0, help="GPS outlier threshold")
+    return parser.parse_args()
+
+
+def parse_iso(ts: str) -> datetime:
+    if not ts:
+        raise ValueError("empty timestamp")
+    return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+
+
+def format_lap_time(seconds: float) -> str:
+    minutes = int(seconds // 60)
+    rem = seconds - minutes * 60
+    return f"{minutes}:{rem:06.3f}"
+
+
+def vehicle_slug(vehicle_id: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_.-]+", "_", vehicle_id)
+
+
+def haversine_m(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    dlat = math.radians(lat2 - lat1)
+    dlng = math.radians(lng2 - lng1)
+    a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng / 2) ** 2
+    return EARTH_RADIUS_M * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+def read_lap_index(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        raise SystemExit(f"Lap time CSV not found: {path}")
+
+    by_vehicle: dict[str, list[dict[str, str]]] = defaultdict(list)
+    with path.open(newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if not row.get("vehicle_id") or not row.get("timestamp") or not row.get("lap", "").isdigit():
+                continue
+            by_vehicle[row["vehicle_id"]].append(row)
+
+    records: list[dict[str, Any]] = []
+    for vehicle_id, rows in by_vehicle.items():
+        rows.sort(key=lambda r: int(r["lap"]))
+        for start, end in zip(rows, rows[1:]):
+            try:
+                lap = int(start["lap"])
+                duration = (parse_iso(end["timestamp"]) - parse_iso(start["timestamp"])).total_seconds()
+            except (KeyError, ValueError):
+                continue
+            if not 70.0 <= duration <= 240.0:
+                continue
+            records.append(
+                {
+                    "vehicle_id": vehicle_id,
+                    "vehicle_number": start.get("vehicle_number", ""),
+                    "lap": lap,
+                    "lap_time_seconds": round(duration, 3),
+                    "lap_time": format_lap_time(duration),
+                    "start_time": start.get("timestamp", ""),
+                    "end_time": end.get("timestamp", ""),
+                    "outing": start.get("outing", ""),
+                    "is_best_vehicle": False,
+                    "is_overall_best": False,
+                }
+            )
+
+    best_by_vehicle: dict[str, dict[str, Any]] = {}
+    for rec in records:
+        current = best_by_vehicle.get(rec["vehicle_id"])
+        if current is None or rec["lap_time_seconds"] < current["lap_time_seconds"]:
+            best_by_vehicle[rec["vehicle_id"]] = rec
+    for rec in best_by_vehicle.values():
+        rec["is_best_vehicle"] = True
+
+    if records:
+        min(records, key=lambda r: r["lap_time_seconds"])["is_overall_best"] = True
+
+    records.sort(key=lambda r: (r["vehicle_id"], r["lap"]))
+    return records
+
+
+def parse_pair(value: str) -> tuple[str, int]:
+    if ":" not in value:
+        raise SystemExit(f"--pair must be VEHICLE_ID:LAP, got {value!r}")
+    vehicle_id, lap_s = value.rsplit(":", 1)
+    try:
+        return vehicle_id, int(lap_s)
+    except ValueError as exc:
+        raise SystemExit(f"Invalid lap in --pair {value!r}") from exc
+
+
+def select_targets(args: argparse.Namespace, lap_records: list[dict[str, Any]]) -> list[tuple[str, int]]:
+    targets: list[tuple[str, int]] = []
+    targets.extend(parse_pair(value) for value in args.pair)
+
+    if args.vehicle_id:
+        if args.lap:
+            laps = args.lap
+        elif args.lap_start is not None and args.lap_end is not None:
+            laps = list(range(args.lap_start, args.lap_end + 1))
+        else:
+            by_vehicle_best = {
+                rec["vehicle_id"]: rec
+                for rec in lap_records
+                if rec["is_best_vehicle"]
+            }
+            laps = []
+            for vehicle_id in args.vehicle_id:
+                best = by_vehicle_best.get(vehicle_id)
+                if best:
+                    targets.append((vehicle_id, int(best["lap"])))
+            if not targets:
+                raise SystemExit("No laps specified and no best-lap records matched --vehicle-id")
+        for vehicle_id in args.vehicle_id:
+            for lap in laps:
+                targets.append((vehicle_id, int(lap)))
+
+    if not targets and args.auto_best > 0:
+        best_records = [rec for rec in lap_records if rec["is_best_vehicle"]]
+        best_records.sort(key=lambda rec: rec["lap_time_seconds"])
+        for rec in best_records[: args.auto_best]:
+            targets.append((rec["vehicle_id"], int(rec["lap"])))
+
+    unique_targets = list(dict.fromkeys(targets))
+    if not unique_targets:
+        raise SystemExit("No target vehicle/lap pairs selected")
+    return unique_targets
+
+
+def stream_telemetry(path: Path, targets: list[tuple[str, int]], time_column: str) -> dict[tuple[str, int], dict[str, dict[str, float]]]:
+    if not path.exists():
+        raise SystemExit(f"Telemetry CSV not found: {path}")
+
+    target_laps_by_vehicle: dict[str, set[int]] = defaultdict(set)
+    for vehicle_id, lap in targets:
+        target_laps_by_vehicle[vehicle_id].add(lap)
+
+    samples: dict[tuple[str, int], dict[str, dict[str, float]]] = {
+        target: defaultdict(dict) for target in targets
+    }
+    rows_seen = 0
+    rows_kept = 0
+
+    print(f"Streaming telemetry: {path}")
+    with path.open(newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            rows_seen += 1
+            if rows_seen % 5_000_000 == 0:
+                print(f"  rows read: {rows_seen:,}; rows kept: {rows_kept:,}")
+
+            vehicle_id = row.get("vehicle_id", "")
+            if vehicle_id not in target_laps_by_vehicle:
+                continue
+            lap_s = row.get("lap", "")
+            if not lap_s.isdigit():
+                continue
+            lap = int(lap_s)
+            if lap not in target_laps_by_vehicle[vehicle_id]:
+                continue
+
+            channel = CHANNEL_ALIASES.get(row.get("telemetry_name", ""))
+            if channel is None:
+                continue
+            ts = row.get(time_column) or row.get("timestamp") or row.get("meta_time")
+            if not ts:
+                continue
+            try:
+                value = float(row.get("telemetry_value", ""))
+            except ValueError:
+                continue
+            if not math.isfinite(value):
+                # Guard against inf/nan telemetry (e.g. sensor dropouts encoded
+                # as inf): json.dump would emit bare Infinity/NaN tokens that
+                # browsers' JSON.parse rejects. Skip like any unparseable row.
+                continue
+
+            samples[(vehicle_id, lap)][ts][channel] = value
+            rows_kept += 1
+
+    print(f"Telemetry rows read: {rows_seen:,}")
+    print(f"Telemetry rows kept: {rows_kept:,}")
+    return samples
+
+
+def moving_average(values: list[float], window: int) -> list[float]:
+    if window <= 1 or len(values) < 3:
+        return values[:]
+    if window % 2 == 0:
+        window += 1
+    radius = window // 2
+    smoothed: list[float] = []
+    for i in range(len(values)):
+        start = max(0, i - radius)
+        end = min(len(values), i + radius + 1)
+        smoothed.append(sum(values[start:end]) / (end - start))
+    return smoothed
+
+
+def filter_gps_outliers(samples: list[dict[str, float]], max_speed_mps: float) -> tuple[list[dict[str, float]], int]:
+    if len(samples) < 2:
+        return samples, 0
+    kept = [samples[0]]
+    removed = 0
+    for sample in samples[1:]:
+        prev = kept[-1]
+        dt = sample["t"] - prev["t"]
+        if dt <= 0:
+            removed += 1
+            continue
+        jump = haversine_m(prev["lat"], prev["lng"], sample["lat"], sample["lng"])
+        if jump <= max(30.0, max_speed_mps * dt):
+            kept.append(sample)
+        else:
+            removed += 1
+    return kept, removed
+
+
+def compact_from_timeseries(
+    vehicle_id: str,
+    lap: int,
+    by_timestamp: dict[str, dict[str, float]],
+    lap_record: dict[str, Any] | None,
+    args: argparse.Namespace,
+) -> dict[str, Any]:
+    rows = []
+    for ts, channels in by_timestamp.items():
+        try:
+            parsed = parse_iso(ts)
+        except ValueError:
+            continue
+        rows.append((parsed, ts, channels))
+    rows.sort(key=lambda item: item[0])
+
+    last = {
+        "speed": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0,
+    }
+    raw_samples: list[dict[str, float]] = []
+    start_time: datetime | None = None
+    first_ts = ""
+    last_ts = ""
+
+    for parsed, ts, channels in rows:
+        for key, value in channels.items():
+            if key in last:
+                last[key] = value
+
+        if "lat" not in channels or "lng" not in channels:
+            continue
+        if start_time is None:
+            start_time = parsed
+            first_ts = ts
+        last_ts = ts
+        brake = max(last["brake_f"], last["brake_r"])
+        raw_samples.append(
+            {
+                "t": (parsed - start_time).total_seconds(),
+                "lat": channels["lat"],
+                "lng": channels["lng"],
+                "speed": last["speed"],
+                "aps": last["aps"],
+                "brake": brake,
+                "steer": last["steer"],
+                "gear": last["gear"],
+                "accx": last["accx"],
+                "accy": last["accy"],
+            }
+        )
+
+    filtered_samples, removed = filter_gps_outliers(raw_samples, args.max_gps_speed_mps)
+    if len(filtered_samples) < 2:
+        raise SystemExit(f"Not enough GPS samples for {vehicle_id} lap {lap}: {len(filtered_samples)}")
+
+    lats = moving_average([s["lat"] for s in filtered_samples], args.smooth_window)
+    lngs = moving_average([s["lng"] for s in filtered_samples], args.smooth_window)
+    start_t = filtered_samples[0]["t"]
+
+    dist = [0.0]
+    for i in range(1, len(filtered_samples)):
+        dist.append(dist[-1] + haversine_m(lats[i - 1], lngs[i - 1], lats[i], lngs[i]))
+
+    compact: dict[str, Any] = {
+        "meta": {
+            "version": 1,
+            "track_id": args.track_id,
+            "race_id": args.race_id,
+            "vehicle_id": vehicle_id,
+            "vehicle_number": (lap_record or {}).get("vehicle_number", ""),
+            "lap": lap,
+            "lap_time_seconds": (lap_record or {}).get("lap_time_seconds"),
+            "lap_time": (lap_record or {}).get("lap_time"),
+            "point_count": len(filtered_samples),
+            "raw_gps_points": len(raw_samples),
+            "gps_outliers_removed": removed,
+            "total_distance_m": round(dist[-1], 2),
+            "source_file": str(args.telemetry),
+            "time_column": args.time_column,
+            "first_sample_time": first_ts,
+            "last_sample_time": last_ts,
+        }
+    }
+    for key in COMPACT_KEYS:
+        compact[key] = []
+
+    for i, sample in enumerate(filtered_samples):
+        compact["t"].append(round(sample["t"] - start_t, 3))
+        compact["lat"].append(round(lats[i], 8))
+        compact["lng"].append(round(lngs[i], 8))
+        compact["speed"].append(round(sample["speed"], 3))
+        compact["aps"].append(round(sample["aps"], 3))
+        compact["brake"].append(round(sample["brake"], 3))
+        compact["steer"].append(round(sample["steer"], 3))
+        compact["gear"].append(int(round(sample["gear"])))
+        compact["accx"].append(round(sample["accx"], 4))
+        compact["accy"].append(round(sample["accy"], 4))
+        compact["dist"].append(round(dist[i], 3))
+
+    return compact
+
+
+def write_outputs(
+    output_dir: Path,
+    race_id: str,
+    targets: list[tuple[str, int]],
+    lap_records: list[dict[str, Any]],
+    telemetry: dict[tuple[str, int], dict[str, dict[str, float]]],
+    args: argparse.Namespace,
+) -> list[dict[str, Any]]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    records_by_key = {(rec["vehicle_id"], int(rec["lap"])): rec for rec in lap_records}
+    generated: list[dict[str, Any]] = []
+
+    for vehicle_id, lap in targets:
+        lap_record = records_by_key.get((vehicle_id, lap))
+        compact = compact_from_timeseries(vehicle_id, lap, telemetry.get((vehicle_id, lap), {}), lap_record, args)
+        filename = f"{vehicle_slug(vehicle_id)}_lap_{lap:03d}.json"
+        path = output_dir / filename
+        with path.open("w") as f:
+            json.dump(compact, f, separators=(",", ":"))
+            f.write("\n")
+        generated.append(
+            {
+                "vehicle_id": vehicle_id,
+                "lap": lap,
+                "data_file": filename,
+                "point_count": compact["meta"]["point_count"],
+                "file_size": path.stat().st_size,
+                "total_distance_m": compact["meta"]["total_distance_m"],
+            }
+        )
+        print(
+            f"Saved {filename}: {compact['meta']['point_count']} points, "
+            f"{path.stat().st_size / 1024:.1f} KB"
+        )
+
+    generated_by_key = {(item["vehicle_id"], item["lap"]): item for item in generated}
+    index_records = []
+    for rec in lap_records:
+        item = dict(rec)
+        generated_item = generated_by_key.get((rec["vehicle_id"], int(rec["lap"])))
+        if generated_item:
+            item["data_file"] = generated_item["data_file"]
+            item["point_count"] = generated_item["point_count"]
+            item["file_size"] = generated_item["file_size"]
+            item["total_distance_m"] = generated_item["total_distance_m"]
+        index_records.append(item)
+
+    laps_index = {
+        "version": 1,
+        "race_id": race_id,
+        "track_id": args.track_id,
+        "source_lap_times": args.lap_times.name,
+        "selected": generated,
+        "laps": index_records,
+    }
+    index_path = output_dir / "laps.json"
+    with index_path.open("w") as f:
+        json.dump(laps_index, f, indent=2)
+        f.write("\n")
+    print(f"Saved {index_path}")
+    return generated
+
+
+def main() -> None:
+    args = parse_args()
+    lap_records = read_lap_index(args.lap_times)
+    targets = select_targets(args, lap_records)
+    print("Selected targets:")
+    for vehicle_id, lap in targets:
+        rec = next((r for r in lap_records if r["vehicle_id"] == vehicle_id and int(r["lap"]) == lap), None)
+        if rec:
+            print(f"  {vehicle_id} lap {lap} ({rec['lap_time']})")
+        else:
+            print(f"  {vehicle_id} lap {lap}")
+
+    telemetry = stream_telemetry(args.telemetry, targets, args.time_column)
+    generated = write_outputs(args.output_dir, args.race_id, targets, lap_records, telemetry, args)
+    print("Generated laps:")
+    for item in generated:
+        print(
+            f"  {item['vehicle_id']} lap {item['lap']}: "
+            f"{item['point_count']} points, {item['file_size'] / 1024:.1f} KB"
+        )
+
+
+if __name__ == "__main__":
+    main()

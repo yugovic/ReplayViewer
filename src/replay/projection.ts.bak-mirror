@@ -1,0 +1,20 @@
+import type { ProjectionOrigin } from "./types";
+
+const METERS_PER_DEGREE = 111_320;
+
+export function latLngToLocal(lat: number, lng: number, origin: ProjectionOrigin) {
+  const lngScale = METERS_PER_DEGREE * Math.cos((origin.lat * Math.PI) / 180);
+  return {
+    x: (lng - origin.lng) * lngScale,
+    z: (lat - origin.lat) * METERS_PER_DEGREE,
+  };
+}
+
+/** Exact inverse of latLngToLocal. */
+export function localToLatLng(x: number, z: number, origin: ProjectionOrigin) {
+  const lngScale = METERS_PER_DEGREE * Math.cos((origin.lat * Math.PI) / 180);
+  return {
+    lat: origin.lat + z / METERS_PER_DEGREE,
+    lng: origin.lng + x / lngScale,
+  };
+}

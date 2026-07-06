@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Build the v2 Barber track payload from the existing track definition.
+
+This script intentionally does not fetch satellite imagery or elevation. Phase 1
+uses the checked-in v1 centerline/elevation JSON as the source of truth.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+from pathlib import Path
+from typing import Any
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+V2_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_INPUT = PROJECT_ROOT / "replay-viewer" / "data" / "tracks" / "barber_motorsports_park.json"
+DEFAULT_OUTPUT = V2_ROOT / "public" / "data" / "tracks" / "barber" / "track.json"
+EARTH_METERS_PER_DEGREE = 111_320.0
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Build replay-viewer-v2 Barber track.json")
+    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT, help="Existing track JSON path")
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="Output v2 track JSON path")
+    parser.add_argument("--track-id", default="barber", help="Stable id used by the viewer")
+    parser.add_argument("--track-name", default=None, help="Override display name")
+    return parser.parse_args()
+
+
+def local_project(lat: float, lng: float, alt: float, origin: dict[str, float]) -> dict[str, float]:
+    lat_scale = EARTH_METERS_PER_DEGREE
+    lng_scale = EARTH_METERS_PER_DEGREE * math.cos(math.radians(origin["lat"]))
+    return {
+        "x": (lng - origin["lng"]) * lng_scale,
+        "y": alt - origin["alt"],
+        "z": (lat - origin["lat"]) * lat_scale,
+    }
+
+
+def main() -> None:
+    args = parse_args()
+    if not args.input.exists():
+        raise SystemExit(f"Track source not found: {args.input}")
+
+    with args.input.open() as f:
+        source: dict[str, Any] = json.load(f)
+
+    raw_centerline = source.get("centerline")
+    if not isinstance(raw_centerline, list) or len(raw_centerline) < 2:
+        raise SystemExit("Input track JSON does not contain a usable centerline")
+
+    first = raw_centerline[0]
+    origin = {
+        "lat": float(first["lat"]),
+        "lng": float(first["lng"]),
+        "alt": float(first.get("alt", 0.0)),
+    }
+
+    centerline: list[dict[str, float]] = []
+    for point in raw_centerline:
+        lat = float(point["lat"])
+        lng = float(point["lng"])
+        alt = float(point.get("alt", origin["alt"]))
+        local = local_project(lat, lng, alt, origin)
+        centerline.append(
+            {
+                "lat": round(lat, 8),
+                "lng": round(lng, 8),
+                "alt": round(alt, 2),
+                "dist": round(float(point.get("dist", 0.0)), 2),
+                "x": round(local["x"], 3),
+                "y": round(local["y"], 3),
+                "z": round(local["z"], 3),
+            }
+        )
+
+    total_length = float(source.get("totalLength") or centerline[-1]["dist"])
+    xs = [p["x"] for p in centerline]
+    ys = [p["y"] for p in centerline]
+    zs = [p["z"] for p in centerline]
+    lats = [p["lat"] for p in centerline]
+    lngs = [p["lng"] for p in centerline]
+
+    track = {
+        "version": 1,
+        "trackId": args.track_id,
+        "sourceTrackId": source.get("trackId"),
+        "trackName": args.track_name or source.get("trackName", "Barber Motorsports Park"),
+        "width": float(source.get("width", 12.0)),
+        "totalLength": round(total_length, 2),
+        "elevationRange": source.get("elevationRange", [round(min(ys), 2), round(max(ys), 2)]),
+        "origin": origin,
+        "bounds": {
+            "lat": [round(min(lats), 8), round(max(lats), 8)],
+            "lng": [round(min(lngs), 8), round(max(lngs), 8)],
+            "x": [round(min(xs), 3), round(max(xs), 3)],
+            "z": [round(min(zs), 3), round(max(zs), 3)],
+        },
+        "sectors": [
+            {"id": "S1", "startDist": 0.0, "endDist": round(total_length / 3.0, 2)},
+            {"id": "S2", "startDist": round(total_length / 3.0, 2), "endDist": round(total_length * 2.0 / 3.0, 2)},
+            {"id": "S3", "startDist": round(total_length * 2.0 / 3.0, 2), "endDist": round(total_length, 2)},
+        ],
+        "centerline": centerline,
+    }
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("w") as f:
+        json.dump(track, f, indent=2)
+        f.write("\n")
+
+    print(f"Saved {args.output}")
+    print(f"Points: {len(centerline)}")
+    print(f"Length: {track['totalLength']:.1f} m")
+
+
+if __name__ == "__main__":
+    main()

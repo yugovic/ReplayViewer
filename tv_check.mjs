@@ -1,0 +1,16 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ channel: 'chrome' });
+const page = await browser.newPage({ viewport: { width: 1600, height: 900 } });
+await page.goto('http://localhost:5199/', { waitUntil: 'domcontentloaded' });
+await page.waitForTimeout(4000);
+await page.locator('.ls-overlay').locator('button', { hasText: '1:37.007' }).click();
+await page.waitForTimeout(1000);
+await page.keyboard.press('5');
+await page.waitForTimeout(2500);
+await page.screenshot({ path: '/tmp/tv_a.png', timeout: 90000 });
+await page.waitForTimeout(9000);
+await page.screenshot({ path: '/tmp/tv_b.png', timeout: 90000 });
+await page.waitForTimeout(12000);
+await page.screenshot({ path: '/tmp/tv_c.png', timeout: 90000 });
+await browser.close();
+console.log('done');

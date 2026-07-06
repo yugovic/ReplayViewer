@@ -1,0 +1,406 @@
+#!/usr/bin/env python3
+"""Convert an AiM data-logger (.xrk) file into the long-form telemetry CSV
+format that pipeline/build_race.py consumes (see its CHANNEL_ALIASES dict
+and stream_telemetry()/read_lap_index() functions).
+
+This script is purely additive: it does not modify build_race.py or any
+existing pipeline file. It requires the `libxrk` package (see
+pipeline/.venv-aim for a prepared virtualenv):
+
+    pipeline/.venv-aim/bin/python pipeline/convert_aim.py \
+        --input "/path/to/log.xrk" \
+        --out pipeline/cache/fuji_aim_converted.csv
+
+Output contract (verified against build_race.py + the real Barber GR86
+telemetry CSV at Datasets/barber/R1_barber_telemetry_data.csv):
+
+  Long-form CSV columns (one row per channel sample):
+    expire_at,lap,meta_event,meta_session,meta_source,meta_time,
+    original_vehicle_id,outing,telemetry_name,telemetry_value,
+    timestamp,vehicle_id,vehicle_number
+
+  telemetry_name values consumed by build_race.py's CHANNEL_ALIASES:
+    VBOX_Lat_Min        -> decimal degrees latitude   (NOT minutes,
+                           despite the name -- the real Barber CSV already
+                           stores decimal degrees under this name, and AiM's
+                           GPS Latitude channel is natively degrees too, so
+                           this is a straight pass-through, no *60 needed)
+    VBOX_Long_Minutes   -> decimal degrees longitude  (same story, sign =
+                           East positive / West negative, matches AiM's
+                           GPS Longitude channel directly)
+    speed               -> km/h (AiM's GPS Speed is m/s -> multiplied by 3.6)
+    aps                 -> throttle/pedal %, 0-100      (from ECU_TPS)
+    pbrake_f / pbrake_r -> brake pressure, bar           (from ECU_BRK_P,
+                           duplicated into both columns since this vehicle
+                           only has a single brake-pressure sensor; the
+                           downstream code takes max(brake_f, brake_r) so
+                           this degrades correctly to a single channel)
+    Steering_Angle      -> degrees                       (from ECU_STEER_ANG)
+    gear                -> integer gear number            (from ECU_GEAR)
+    accx_can / accy_can -> g                              (from InlineAcc /
+                           LateralAcc, AiM's internal-logger IMU channels;
+                           units confirmed "g" via column metadata)
+    nmot                -> rpm (from ECU_RPM). NOTE: build_race.py parses
+                           this alias but never actually reads it into the
+                           compact-lap output (see compact_from_timeseries:
+                           the `last` dict it forward-fills only tracks
+                           speed/aps/brake_f/brake_r/steer/gear/accx/accy;
+                           "rpm" and "lapdist_raw" are parsed but dropped).
+                           Included anyway for completeness / future-proofing.
+
+  Extra (non-CHANNEL_ALIASES) telemetry_name we also emit:
+    GPS_Altitude_m      -> meters, WGS84 ellipsoidal height from AiM's GPS
+                           Altitude channel. build_race.py currently ignores
+                           any telemetry_name it doesn't recognize (its
+                           CHANNEL_ALIASES.get() returns None and the row is
+                           skipped), so this is a safe, harmless bonus column
+                           for future terrain/elevation use.
+
+  lap column: integer lap number per AiM's own `laps` table (num/start_time/
+  end_time), assigned by which [start_time, end_time) window each resampled
+  timestamp falls into. Lap 0 is AiM's out-lap.
+
+A companion lap-times CSV (read_lap_index()'s expected format: vehicle_id,
+timestamp,lap,vehicle_number,outing) is also written next to --out, suffixed
+"_laps.csv", with one row per lap-start marker so that
+build_race.py --lap-times <that file> would compute matching per-lap
+durations if someone chooses to run the real pipeline later. This script
+itself never invokes build_race.py or writes anywhere under public/data/.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import re
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import pyarrow as pa
+from libxrk import aim_xrk
+
+TELEMETRY_CSV_HEADER = [
+    "expire_at",
+    "lap",
+    "meta_event",
+    "meta_session",
+    "meta_source",
+    "meta_time",
+    "original_vehicle_id",
+    "outing",
+    "telemetry_name",
+    "telemetry_value",
+    "timestamp",
+    "vehicle_id",
+    "vehicle_number",
+]
+
+LAP_TIMES_CSV_HEADER = ["expire_at", "lap", "meta_event", "meta_session", "meta_source",
+                         "meta_time", "original_vehicle_id", "outing", "timestamp",
+                         "vehicle_id", "vehicle_number"]
+
+# xrk channel name -> (telemetry_name written to CSV, unit-transform fn, round digits)
+# Transform converts the AiM channel's native unit into exactly what
+# build_race.py / CHANNEL_ALIASES expects (see module docstring above).
+CHANNEL_MAP: list[tuple[str, str, Any, int]] = [
+    ("GPS Latitude", "VBOX_Lat_Min", lambda v: v, 8),
+    ("GPS Longitude", "VBOX_Long_Minutes", lambda v: v, 8),
+    ("GPS Speed", "speed", lambda v: v * 3.6, 3),  # m/s -> km/h
+    ("ECU_TPS", "aps", lambda v: v, 3),
+    ("ECU_BRK_P", "pbrake_f", lambda v: v, 3),
+    ("ECU_BRK_P", "pbrake_r", lambda v: v, 3),  # duplicated: single brake sensor
+    ("ECU_STEER_ANG", "Steering_Angle", lambda v: v, 3),
+    ("ECU_GEAR", "gear", lambda v: round(v), 0),
+    ("InlineAcc", "accx_can", lambda v: v, 5),
+    ("LateralAcc", "accy_can", lambda v: v, 5),
+    ("ECU_RPM", "nmot", lambda v: v, 1),
+    ("GPS Altitude", "GPS_Altitude_m", lambda v: v, 3),  # bonus, ignored by build_race.py today
+]
+
+GPS_FIX_GUARD_CHANNELS = ["GPS Latitude", "GPS Longitude", "GPS_Satellites"]
+
+# --- Non-finite sample repair -------------------------------------------
+# Empirically verified on this logger (Osaki/HMR Demio 101, MXL2): the RAW
+# xrk contains +inf in ECU_BRK_P for 83.9% of samples (13,298/15,844). The
+# ECU only transmits a valid brake pressure while the brake is applied;
+# "no CAN message" decodes to +inf. Finite samples coincide with hard
+# deceleration (86.5% of them, mean -17.6 km/h/s) and the finite values
+# bracketing each inf run are near zero (median 0-1 bar), so a long
+# non-finite gap in ECU_BRK_P physically means "brake released" -> 0.0.
+# Forward-fill would wrongly hold up to ~19 bar across whole straights and
+# interpolation would paint phantom brake ramps, so neither is used there.
+# Every other channel defaults to forward-fill on long gaps. Short gaps
+# (<= NONFINITE_SHORT_GAP_MS, with finite data on both sides) are linearly
+# interpolated for all channels. Finite values are never altered.
+NONFINITE_LONG_GAP_FILL: dict[str, Any] = {
+    "ECU_BRK_P": 0.0,
+}
+NONFINITE_SHORT_GAP_MS = 500.0
+
+
+def repair_non_finite(values: np.ndarray, step_ms: float, long_gap_fill: Any,
+                      short_gap_ms: float = NONFINITE_SHORT_GAP_MS) -> tuple[np.ndarray | None, dict[str, int]]:
+    """Replace every non-finite entry of `values` (a uniform grid with
+    `step_ms` spacing) with a finite one.
+
+    Returns (repaired_copy, stats); repaired_copy is None when the entire
+    channel is non-finite (caller should drop the channel and warn).
+
+    - Non-finite runs spanning <= short_gap_ms with finite neighbours on
+      both sides: linear interpolation.
+    - All other runs: filled with `long_gap_fill` -- a float constant, or
+      the string "ffill" (hold previous finite value; a leading run takes
+      the first finite value that follows it).
+    """
+    v = np.asarray(values, dtype=float).copy()
+    bad = ~np.isfinite(v)
+    stats = {"total_bad": int(bad.sum()), "interp": 0, "filled": 0}
+    if not bad.any():
+        return v, stats
+    if bad.all():
+        return None, stats
+
+    n = len(v)
+    i = 0
+    while i < n:
+        if not bad[i]:
+            i += 1
+            continue
+        j = i
+        while j < n and bad[j]:
+            j += 1
+        run_len = j - i
+        has_left = i > 0
+        has_right = j < n
+        if has_left and has_right and run_len * step_ms <= short_gap_ms:
+            left, right = v[i - 1], v[j]
+            for k in range(run_len):
+                v[i + k] = left + (right - left) * (k + 1) / (run_len + 1)
+            stats["interp"] += run_len
+        elif long_gap_fill == "ffill":
+            fill = v[i - 1] if has_left else v[j]  # leading run -> backfill
+            v[i:j] = fill
+            stats["filled"] += run_len
+        else:
+            v[i:j] = float(long_gap_fill)
+            stats["filled"] += run_len
+        i = j
+    assert np.isfinite(v).all()
+    return v, stats
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Convert an AiM .xrk log into build_race.py-compatible telemetry CSV")
+    p.add_argument("--input", type=Path, required=True, help="Path to the .xrk file")
+    p.add_argument("--out", type=Path, required=True, help="Output long-form telemetry CSV path")
+    p.add_argument("--vehicle-id", default=None, help="Vehicle id to stamp on every row; default derived from metadata")
+    p.add_argument("--vehicle-number", default="", help="Vehicle number to stamp on every row")
+    p.add_argument("--hz", type=float, default=10.0, help="Resample rate in Hz (default 10, matches AiM's native GPS rate)")
+    p.add_argument("--outing", default="0", help="Outing id to stamp on every row")
+    return p.parse_args()
+
+
+def sanitize_id(text: str) -> str:
+    text = (text or "").strip().lower()
+    text = re.sub(r"[^a-z0-9_-]+", "_", text)
+    text = re.sub(r"_+", "_", text).strip("_")
+    return text or "unknown_vehicle"
+
+
+def derive_vehicle_id(metadata: dict[str, Any]) -> str:
+    driver = str(metadata.get("Driver") or "").strip()
+    vehicle = str(metadata.get("Vehicle") or "").strip()
+    combined = "_".join(part for part in (driver, vehicle) if part)
+    return sanitize_id(combined)
+
+
+def derive_anchor_datetime(metadata: dict[str, Any]) -> datetime:
+    """AiM stores Log Date (MM/DD/YYYY) + Log Time (HH:MM:SS) as the
+    absolute wall-clock moment corresponding to timecode 0. We treat it as
+    UTC (build_race.py only ever computes deltas between timestamps within
+    one file, so absolute timezone correctness does not matter here)."""
+    date_s = metadata.get("Log Date")
+    time_s = metadata.get("Log Time")
+    if date_s and time_s:
+        try:
+            return datetime.strptime(f"{date_s} {time_s}", "%m/%d/%Y %H:%M:%S").replace(tzinfo=timezone.utc)
+        except ValueError:
+            pass
+    return datetime(2000, 1, 1, tzinfo=timezone.utc)
+
+
+def ms_to_iso(anchor: datetime, ms: int) -> str:
+    dt = anchor + timedelta(milliseconds=int(ms))
+    # millisecond precision, trailing Z, matches Barber CSV's own format
+    return dt.strftime("%Y-%m-%dT%H:%M:%S.") + f"{dt.microsecond // 1000:03d}Z"
+
+
+def build_lap_lookup(laps_df) -> tuple[np.ndarray, np.ndarray]:
+    starts = laps_df["start_time"].to_numpy()
+    nums = laps_df["num"].to_numpy()
+    order = np.argsort(starts)
+    return starts[order], nums[order]
+
+
+def lap_number_for(t_ms: np.ndarray, starts: np.ndarray, nums: np.ndarray) -> np.ndarray:
+    idx = np.searchsorted(starts, t_ms, side="right") - 1
+    idx = np.clip(idx, 0, len(nums) - 1)
+    return nums[idx]
+
+
+def main() -> None:
+    args = parse_args()
+    if not args.input.exists():
+        raise SystemExit(f"Input xrk not found: {args.input}")
+
+    log = aim_xrk(str(args.input))
+    metadata = log.metadata
+    vehicle_id = args.vehicle_id or derive_vehicle_id(metadata)
+    anchor = derive_anchor_datetime(metadata)
+
+    print(f"Loaded {args.input.name}")
+    print(f"  Driver={metadata.get('Driver')!r} Vehicle={metadata.get('Vehicle')!r} Venue={metadata.get('Venue')!r}")
+    print(f"  vehicle_id={vehicle_id!r} anchor={anchor.isoformat()}")
+
+    available_source_channels = sorted({src for src, *_ in CHANNEL_MAP})
+    missing = [c for c in available_source_channels if c not in log.channels]
+    if missing:
+        print(f"WARNING: channels not found in this xrk, skipping their aliases: {missing}")
+    channel_map = [row for row in CHANNEL_MAP if row[0] not in missing]
+
+    has_sat = "GPS_Satellites" in log.channels
+    resample_channels = sorted(set(available_source_channels) - set(missing))
+    if has_sat:
+        resample_channels = sorted(set(resample_channels) | {"GPS_Satellites"})
+
+    # Build a uniform target timebase at --hz, spanning the full session,
+    # clipped to the intersection of native coverage of all needed channels
+    # (avoids relying on resample_to_timecodes extrapolation behaviour).
+    lo = max(log.channels[c].column("timecodes").to_numpy(zero_copy_only=False).min() for c in resample_channels)
+    hi = min(log.channels[c].column("timecodes").to_numpy(zero_copy_only=False).max() for c in resample_channels)
+    lo = min(lo, 0)  # AiM lap 0 always starts at t=0; make sure we cover it
+    step_ms = round(1000.0 / args.hz)
+    target = pa.array(np.arange(lo, hi + 1, step_ms), type=pa.int64())
+    print(f"  Resampling {len(resample_channels)} channels to {args.hz} Hz ({len(target)} samples, "
+          f"t=[{lo},{hi}] ms)")
+
+    resampled = log.resample_to_timecodes(target, channel_names=resample_channels)
+    df = resampled.get_channels_as_table().to_pandas()
+
+    # --- GPS-fix guard: drop leading/trailing samples with no fix ---
+    lat = df["GPS Latitude"].to_numpy()
+    lon = df["GPS Longitude"].to_numpy()
+    valid = ~((lat == 0) & (lon == 0))
+    if has_sat:
+        valid &= df["GPS_Satellites"].to_numpy() > 0
+    valid_idx = np.flatnonzero(valid)
+    if len(valid_idx) == 0:
+        raise SystemExit("No valid GPS fix found anywhere in the resampled data")
+    first_i, last_i = valid_idx[0], valid_idx[-1]
+    dropped_lead, dropped_trail = first_i, len(df) - 1 - last_i
+    df = df.iloc[first_i:last_i + 1].reset_index(drop=True)
+    if dropped_lead or dropped_trail:
+        print(f"  Dropped {dropped_lead} leading / {dropped_trail} trailing no-fix samples")
+    else:
+        print("  No leading/trailing no-fix samples found (GPS fix valid for entire span)")
+
+    # --- non-finite repair (per source channel, on the uniform grid) ---
+    # The raw AiM stream can contain +/-inf or NaN (seen in the wild:
+    # ECU_BRK_P is +inf whenever the ECU sends no brake message), and the
+    # resampler propagates them. Repair every emitted source channel here
+    # so the CSV is guaranteed all-finite.
+    dropped_channels: set[str] = set()
+    for src in sorted({src for src, *_ in channel_map}):
+        col = df[src].to_numpy()
+        policy = NONFINITE_LONG_GAP_FILL.get(src, "ffill")
+        repaired, stats = repair_non_finite(col, step_ms, policy)
+        if repaired is None:
+            print(f"WARNING: channel {src!r} is 100% non-finite ({stats['total_bad']} samples) -- dropping it")
+            dropped_channels.add(src)
+            continue
+        if stats["total_bad"]:
+            print(f"  Repaired {src}: {stats['total_bad']} non-finite grid samples "
+                  f"({stats['interp']} interpolated across short gaps, "
+                  f"{stats['filled']} filled with "
+                  f"{'previous value' if policy == 'ffill' else policy})")
+        df[src] = repaired
+    if dropped_channels:
+        channel_map = [row for row in channel_map if row[0] not in dropped_channels]
+
+    # --- lap number per row ---
+    laps_df = log.laps.to_pandas()
+    starts, nums = build_lap_lookup(laps_df)
+    t_ms = df["timecodes"].to_numpy()
+    lap_col = lap_number_for(t_ms, starts, nums)
+
+    # --- timestamps ---
+    timestamps = [ms_to_iso(anchor, int(t)) for t in t_ms]
+
+    meta_event = f"AIM_{sanitize_id(str(metadata.get('Venue') or ''))}"
+    meta_session = sanitize_id(str(metadata.get('Session') or ''))
+    meta_source = "aim:xrk"
+
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    rows_written = 0
+    with args.out.open("w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(TELEMETRY_CSV_HEADER)
+        for xrk_name, telemetry_name, transform, ndig in channel_map:
+            col = df[xrk_name].to_numpy()
+            for i in range(len(df)):
+                raw = col[i]
+                if raw is None or not np.isfinite(raw):
+                    # repair_non_finite() guarantees this cannot happen; if it
+                    # does, fail loudly rather than emit inf/nan into the CSV.
+                    raise SystemExit(
+                        f"BUG: non-finite value survived repair in channel {xrk_name!r} "
+                        f"at grid index {i} (t={int(t_ms[i])} ms): {raw!r}"
+                    )
+                value = transform(float(raw))
+                value = round(value, ndig) if ndig > 0 else int(value)
+                ts = timestamps[i]
+                writer.writerow([
+                    "",  # expire_at
+                    int(lap_col[i]),
+                    meta_event,
+                    meta_session,
+                    meta_source,
+                    ts,  # meta_time
+                    vehicle_id,  # original_vehicle_id
+                    args.outing,
+                    telemetry_name,
+                    value,
+                    ts,  # timestamp
+                    vehicle_id,
+                    args.vehicle_number,
+                ])
+                rows_written += 1
+    print(f"Wrote {rows_written:,} telemetry rows -> {args.out}")
+
+    # --- companion lap-times CSV ---
+    lap_times_path = args.out.with_name(args.out.stem + "_laps.csv")
+    with lap_times_path.open("w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(LAP_TIMES_CSV_HEADER)
+        for _, row in laps_df.sort_values("num").iterrows():
+            ts = ms_to_iso(anchor, int(row["start_time"]))
+            writer.writerow([
+                "",
+                int(row["num"]),
+                meta_event,
+                meta_session,
+                meta_source,
+                ts,
+                vehicle_id,
+                args.outing,
+                ts,
+                vehicle_id,
+                args.vehicle_number,
+            ])
+    print(f"Wrote {len(laps_df)} lap-start markers -> {lap_times_path}")
+
+
+if __name__ == "__main__":
+    main()

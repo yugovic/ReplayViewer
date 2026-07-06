@@ -1,0 +1,14 @@
+{
+  "imageFile": "terrain.png",
+  "imageWidth": 451,
+  "imageHeight": 461,
+  "bbox": {
+    "minLng": 138.91723261,
+    "maxLng": 138.93658159,
+    "minLat": 35.36246909,
+    "maxLat": 35.37859744
+  },
+  "mercator": true,
+  "encoding": "terrarium",
+  "zoom": 15
+}

@@ -1,0 +1,15 @@
+{
+  "imageFile": "terrain.png",
+  "imageWidth": 1211,
+  "imageHeight": 1083,
+  "bbox": {
+    "minLng": -86.62582397,
+    "maxLng": -86.61277771,
+    "minLat": 33.52765814,
+    "maxLat": 33.53738841
+  },
+  "mercator": true,
+  "encoding": "terrarium",
+  "zoom": 22,
+  "source": "USGS 3DEP 1m AL_11County_B23"
+}

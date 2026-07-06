@@ -1,0 +1,33 @@
+import { useReplayStore } from "../state/replayStore";
+
+export function LayersPanel() {
+  const showRoad3d = useReplayStore((state) => state.showRoad3d);
+  const showOsmFeatures = useReplayStore((state) => state.showOsmFeatures);
+  const showDetailTexture = useReplayStore((state) => state.showDetailTexture);
+  const toggleRoad3d = useReplayStore((state) => state.toggleRoad3d);
+  const toggleOsmFeatures = useReplayStore((state) => state.toggleOsmFeatures);
+  const toggleDetailTexture = useReplayStore((state) => state.toggleDetailTexture);
+
+  const LAYERS = [
+    { label: "3D Road", key: "7", active: showRoad3d, toggle: toggleRoad3d },
+    { label: "OSM Features", key: "8", active: showOsmFeatures, toggle: toggleOsmFeatures },
+    { label: "Detail Texture", key: "9", active: showDetailTexture, toggle: toggleDetailTexture },
+  ];
+
+  return (
+    <div className="hud-panel hud-layers" role="group" aria-label="Scene layers">
+      {LAYERS.map(({ label, key, active, toggle }) => (
+        <button
+          key={key}
+          type="button"
+          className={`cam-btn${active ? " cam-btn--active" : ""}`}
+          onClick={toggle}
+          aria-pressed={active}
+          title={`Toggle ${label} [${key}]`}
+        >
+          <span className="cam-key">{key}</span> {label}
+        </button>
+      ))}
+    </div>
+  );
+}
