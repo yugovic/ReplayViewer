@@ -3,3 +3,4 @@ dist/
 .npm-cache/
 __pycache__/
 *.pyc
+pipeline/cache/
