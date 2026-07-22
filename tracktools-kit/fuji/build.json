@@ -1,0 +1,21 @@
+{
+  "track": "fuji",
+  "origin": {
+    "lat": 35.3717,
+    "lng": 138.9256,
+    "alt": 580.94
+  },
+  "lidar_source": "VIRTUAL SHIZUOKA 2019 LP Ground (CC BY 4.0, \u9759\u5ca1\u770c)",
+  "terrain_obj": "terrain_lidar.obj",
+  "centerline": "centerline.json",
+  "road": {
+    "width_m": 13.0,
+    "resolution": 2.0,
+    "source_elevation_from_terrain": true
+  },
+  "output": {
+    "scene_glb": "public/data/tracks/fuji/scene.glb",
+    "collision_glb": "public/data/tracks/fuji/road_ac_local.glb"
+  },
+  "notes": "ENU Y-up throughout; no ICP/Z-flip. Blender import OBJ Y-up, export glTF +Y up."
+}

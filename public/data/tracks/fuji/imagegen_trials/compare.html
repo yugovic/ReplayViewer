@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fuji middle-sector enhancement comparison</title>
+  <style>
+    body { margin: 0; padding: 24px; color: #eee; background: #111; font: 14px/1.5 system-ui, sans-serif; }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    p { margin: 0 0 20px; color: #bbb; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px; }
+    figure { margin: 0; padding: 12px; background: #1c1c1c; border: 1px solid #333; border-radius: 8px; }
+    figcaption { margin-bottom: 10px; font-weight: 700; }
+    img { display: block; width: 100%; height: auto; background: #222; image-rendering: auto; }
+    .warn { color: #ffd36a; }
+  </style>
+</head>
+<body>
+  <h1>富士・中盤地点 高精細化比較</h1>
+  <p class="warn">現在のトラック定義から再計算した正しい地点です。高精細化画像は表示品質向上専用で、測量・形状抽出には使用できません。</p>
+  <div class="grid">
+    <figure>
+      <figcaption>元画像（静岡県20cmオルソ、512×512px）</figcaption>
+      <img src="middle-sector-correct-source-512.jpg" alt="Correct middle-sector source crop">
+    </figure>
+    <figure>
+      <figcaption>Replay適用画像（RealPLKSR 4倍・検証済み強度0.45、2048×2048px）</figcaption>
+      <img src="middle-sector-correct-mlsr-2048.png" alt="Correct middle-sector ML super-resolution output">
+    </figure>
+  </div>
+</body>
+</html>

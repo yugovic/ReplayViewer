@@ -1,0 +1,19 @@
+{
+  "imageFile": "satellite_shizuoka.jpg",
+  "imageWidth": 8014,
+  "imageHeight": 8192,
+  "bbox": {
+    "minLng": 138.91723261,
+    "maxLng": 138.93658159,
+    "minLat": 35.36246909,
+    "maxLat": 35.37859744
+  },
+  "mercator": true,
+  "source": "VIRTUAL SHIZUOKA 2019 LP orthophoto 20 cm (CC BY 4.0, Shizuoka Prefecture)",
+  "sourceUrl": "https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud",
+  "license": "CC BY 4.0 / ODbL",
+  "nominalSourceResolutionMetersPerPixel": 0.2,
+  "effectiveResolutionMetersPerPixel": 0.2192,
+  "coverage": 1.0,
+  "toneEnhanced": "gray-world WB + luminance stretch + CLAHE clarity + LAB saturation (grade_ortho.py); pixel-local only, no geometry change"
+}

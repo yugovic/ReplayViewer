@@ -180,3 +180,312 @@ export function buildAsphaltDetailTexture(): THREE.DataTexture {
 export function buildGrassDetailTexture(): THREE.DataTexture {
   return buildDetailTexture(DETAIL_TEXTURE_SIZE, GRASS_DETAIL_OPTIONS);
 }
+
+// ─── Material-response detail (Task 1): colored albedo + normal map ──────────
+//
+// The luminance-only noise above is a near-invisible ±12% brightness wobble.
+// The real requirement is that the road READ AS ASPHALT at chase distance:
+// aggregate grain that reacts to light. That needs (a) a tangent-space normal
+// map so the lighting picks up micro-relief, and (b) a stronger, subtly
+// colored albedo mottling. These generators are the procedural FALLBACK used
+// when the CC0 JPGs under public/data/textures/ are missing/404 at runtime
+// (see loadDetailMaterialTextures in groundDetail.ts). Both are pure DOM-free
+// math so they unit-test (see detailTexture.test.ts).
+
+/** RGB mottling around a neutral base color, mean-preserving so the distant
+ * (faded) view still matches the satellite photo. Two independent noise fields
+ * drive it: a shared-luminance term (all channels move together = light/dark
+ * grain) and a chroma term (channels move oppositely = warm/cool or green
+ * variation). Because generateDetailNoise is mean-0.5, both terms are centered
+ * and every channel's mean equals `base` exactly. */
+export interface ColorNoiseOptions {
+  /** Neutral base color (linear 0..1) each channel is centered on. */
+  base: [number, number, number];
+  /** Seeded luminance-noise config (shared across channels). */
+  luminance: DetailNoiseOptions;
+  /** Seeded chroma-noise config (pushes channels apart). */
+  chroma: DetailNoiseOptions;
+  /** Peak luminance swing added to every channel (linear). */
+  luminanceStrength: number;
+  /** Per-channel chroma tilt (linear); positive R = warmer, positive B = cooler. */
+  chromaTilt: [number, number, number];
+}
+
+/** Cool/warm gray aggregate for asphalt: neutral ~0.5 gray with a faint blue
+ * base and warm/cool mottling so some patches read warmer than others. */
+export const ASPHALT_COLOR_OPTIONS: ColorNoiseOptions = {
+  base: [0.5, 0.5, 0.52],
+  luminance: {
+    seed: 0x41435031,
+    octaves: [
+      { cells: 8, weight: 0.3 },
+      { cells: 16, weight: 0.35 },
+      { cells: 32, weight: 0.35 },
+    ],
+    amplitude: 0.5,
+  },
+  chroma: {
+    seed: 0x41435032,
+    octaves: [
+      { cells: 4, weight: 0.5 },
+      { cells: 8, weight: 0.5 },
+    ],
+    amplitude: 0.5,
+  },
+  luminanceStrength: 0.16,
+  chromaTilt: [0.05, 0.0, -0.05],
+};
+
+/** Green/brown mottling for grass runoff. */
+export const GRASS_COLOR_OPTIONS: ColorNoiseOptions = {
+  base: [0.33, 0.42, 0.22],
+  luminance: {
+    seed: 0x47434c31,
+    octaves: [
+      { cells: 4, weight: 0.45 },
+      { cells: 8, weight: 0.35 },
+      { cells: 16, weight: 0.2 },
+    ],
+    amplitude: 0.5,
+  },
+  chroma: {
+    seed: 0x47434c32,
+    octaves: [
+      { cells: 4, weight: 0.6 },
+      { cells: 8, weight: 0.4 },
+    ],
+    amplitude: 0.5,
+  },
+  luminanceStrength: 0.1,
+  chromaTilt: [0.06, 0.03, -0.04],
+};
+
+/** Generates an RGB detail-albedo field (row-major, 3 floats per texel). Mean
+ * of each channel equals `options.base[channel]` — verified by tests. */
+export function generateColorNoise(size: number, options: ColorNoiseOptions): Float32Array {
+  const { base, luminance, chroma, luminanceStrength, chromaTilt } = options;
+  // Normalized noise fields are centered on 0.5; rescale each by its own
+  // amplitude so the deviation lands in ~[-1, 1] before weighting.
+  const lum = generateDetailNoise(size, luminance);
+  const chr = generateDetailNoise(size, chroma);
+  const invAmpL = luminance.amplitude > 1e-9 ? 1 / luminance.amplitude : 0;
+  const invAmpC = chroma.amplitude > 1e-9 ? 1 / chroma.amplitude : 0;
+  const out = new Float32Array(size * size * 3);
+  for (let i = 0; i < size * size; i++) {
+    const dl = (lum[i] - 0.5) * invAmpL;
+    const dc = (chr[i] - 0.5) * invAmpC;
+    const o = i * 3;
+    out[o] = base[0] + dl * luminanceStrength + dc * chromaTilt[0];
+    out[o + 1] = base[1] + dl * luminanceStrength + dc * chromaTilt[1];
+    out[o + 2] = base[2] + dl * luminanceStrength + dc * chromaTilt[2];
+  }
+  return out;
+}
+
+/** Wrap-around index into a `size`-length axis. */
+function wrapIndex(i: number, size: number): number {
+  return ((i % size) + size) % size;
+}
+
+/**
+ * Tangent-space normal map (row-major, 3 floats per texel in [0, 1]) from a
+ * tileable scalar height field, via central differences with wrap-around so
+ * the map tiles seamlessly. The +Z (blue) component is the surface up-axis and
+ * is always > 0.5 after encoding (nz = 1/‖·‖ > 0) — asserted by tests. `scale`
+ * controls bump steepness (height units are the field's own 0..1 range).
+ */
+export function generateNormalMap(height: Float32Array, size: number, scale: number): Float32Array {
+  const out = new Float32Array(size * size * 3);
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const hL = height[y * size + wrapIndex(x - 1, size)];
+      const hR = height[y * size + wrapIndex(x + 1, size)];
+      const hD = height[wrapIndex(y - 1, size) * size + x];
+      const hU = height[wrapIndex(y + 1, size) * size + x];
+      // Surface normal tilts against the height gradient.
+      const nx = -(hR - hL) * scale;
+      const ny = -(hU - hD) * scale;
+      const nz = 1;
+      const inv = 1 / Math.hypot(nx, ny, nz);
+      const o = (y * size + x) * 3;
+      out[o] = nx * inv * 0.5 + 0.5;
+      out[o + 1] = ny * inv * 0.5 + 0.5;
+      out[o + 2] = nz * inv * 0.5 + 0.5;
+    }
+  }
+  return out;
+}
+
+/** Height field for the procedural asphalt normal map — reuses the seeded,
+ * tileable value-noise generator (a deterministic stand-in for the CC0
+ * NormalGL map, weighted toward high octaves for fine aggregate grain). */
+export const ASPHALT_HEIGHT_OPTIONS: DetailNoiseOptions = {
+  seed: 0x41485448, // "AHTH"
+  octaves: [
+    { cells: 16, weight: 0.25 },
+    { cells: 32, weight: 0.35 },
+    { cells: 64, weight: 0.4 },
+  ],
+  amplitude: 0.5,
+};
+
+/** Softer, broader height field for grass blades and uneven soil. */
+export const GRASS_HEIGHT_OPTIONS: DetailNoiseOptions = {
+  seed: 0x47485448, // "GHTH"
+  octaves: [
+    { cells: 8, weight: 0.35 },
+    { cells: 16, weight: 0.4 },
+    { cells: 32, weight: 0.25 },
+  ],
+  amplitude: 0.5,
+};
+
+function clamp255(v: number): number {
+  return Math.max(0, Math.min(255, Math.round(v * 255)));
+}
+
+function configureTiling(tex: THREE.DataTexture): void {
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  tex.minFilter = THREE.LinearMipmapLinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  tex.generateMipmaps = true;
+  tex.needsUpdate = true;
+}
+
+/** Browser-side: RGBA sRGB DataTexture from an RGB color-noise field. */
+export function buildColorTexture(size: number, options: ColorNoiseOptions): THREE.DataTexture {
+  const rgb = generateColorNoise(size, options);
+  const data = new Uint8Array(size * size * 4);
+  for (let i = 0; i < size * size; i++) {
+    const o = i * 4;
+    const s = i * 3;
+    data[o] = clamp255(rgb[s]);
+    data[o + 1] = clamp255(rgb[s + 1]);
+    data[o + 2] = clamp255(rgb[s + 2]);
+    data[o + 3] = 255;
+  }
+  const tex = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.UnsignedByteType);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  configureTiling(tex);
+  return tex;
+}
+
+/** Browser-side: RGBA linear (NoColorSpace) normal-map DataTexture. */
+export function buildNormalTexture(
+  size: number,
+  heightOptions: DetailNoiseOptions,
+  scale: number,
+): THREE.DataTexture {
+  const height = generateDetailNoise(size, heightOptions);
+  const rgb = generateNormalMap(height, size, scale);
+  const data = new Uint8Array(size * size * 4);
+  for (let i = 0; i < size * size; i++) {
+    const o = i * 4;
+    const s = i * 3;
+    data[o] = clamp255(rgb[s]);
+    data[o + 1] = clamp255(rgb[s + 1]);
+    data[o + 2] = clamp255(rgb[s + 2]);
+    data[o + 3] = 255;
+  }
+  const tex = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.UnsignedByteType);
+  tex.colorSpace = THREE.NoColorSpace;
+  configureTiling(tex);
+  return tex;
+}
+
+export function buildProceduralAsphaltAlbedo(): THREE.DataTexture {
+  return buildColorTexture(DETAIL_TEXTURE_SIZE, ASPHALT_COLOR_OPTIONS);
+}
+
+export function buildProceduralGrassAlbedo(): THREE.DataTexture {
+  return buildColorTexture(DETAIL_TEXTURE_SIZE, GRASS_COLOR_OPTIONS);
+}
+
+export function buildProceduralAsphaltNormal(): THREE.DataTexture {
+  return buildNormalTexture(DETAIL_TEXTURE_SIZE, ASPHALT_HEIGHT_OPTIONS, 2.5);
+}
+
+export function buildProceduralGrassNormal(): THREE.DataTexture {
+  return buildNormalTexture(DETAIL_TEXTURE_SIZE, GRASS_HEIGHT_OPTIONS, 1.8);
+}
+
+// -- Close-range roughness response ------------------------------------------
+
+export interface RoughnessNoiseOptions {
+  /** Mean physical roughness in [0, 1]. */
+  base: number;
+  /** Maximum deviation from base. */
+  variation: number;
+  /** Tileable source field; its configured amplitude is normalized away. */
+  noise: DetailNoiseOptions;
+}
+
+/** Fine aggregate alternates between slightly polished and coarse asphalt. */
+export const ASPHALT_ROUGHNESS_OPTIONS: RoughnessNoiseOptions = {
+  base: 0.82,
+  variation: 0.14,
+  noise: {
+    seed: 0x41524f55, // "AROU"
+    octaves: [
+      { cells: 16, weight: 0.25 },
+      { cells: 32, weight: 0.35 },
+      { cells: 64, weight: 0.4 },
+    ],
+    amplitude: 0.5,
+  },
+};
+
+/** Grass stays broadly matte, with lower-frequency moisture/soil variation. */
+export const GRASS_ROUGHNESS_OPTIONS: RoughnessNoiseOptions = {
+  base: 0.91,
+  variation: 0.07,
+  noise: {
+    seed: 0x47524f55, // "GROU"
+    octaves: [
+      { cells: 8, weight: 0.5 },
+      { cells: 16, weight: 0.3 },
+      { cells: 32, weight: 0.2 },
+    ],
+    amplitude: 0.5,
+  },
+};
+
+/** Mean-preserving physical roughness field. It is independent of the ortho,
+ * so baked shadows and markings can never become false glossy geometry. */
+export function generateRoughnessNoise(size: number, options: RoughnessNoiseOptions): Float32Array {
+  const source = generateDetailNoise(size, options.noise);
+  const invAmplitude = options.noise.amplitude > 1e-9 ? 1 / options.noise.amplitude : 0;
+  const out = new Float32Array(source.length);
+  for (let i = 0; i < source.length; i++) {
+    const normalized = (source[i] - 0.5) * invAmplitude;
+    out[i] = Math.max(0, Math.min(1, options.base + normalized * options.variation));
+  }
+  return out;
+}
+
+/** Browser-side linear grayscale roughness map. */
+export function buildRoughnessTexture(size: number, options: RoughnessNoiseOptions): THREE.DataTexture {
+  const values = generateRoughnessNoise(size, options);
+  const data = new Uint8Array(size * size * 4);
+  for (let i = 0; i < values.length; i++) {
+    const v = clamp255(values[i]);
+    const o = i * 4;
+    data[o] = v;
+    data[o + 1] = v;
+    data[o + 2] = v;
+    data[o + 3] = 255;
+  }
+  const tex = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.UnsignedByteType);
+  tex.colorSpace = THREE.NoColorSpace;
+  configureTiling(tex);
+  return tex;
+}
+
+export function buildProceduralAsphaltRoughness(): THREE.DataTexture {
+  return buildRoughnessTexture(DETAIL_TEXTURE_SIZE, ASPHALT_ROUGHNESS_OPTIONS);
+}
+
+export function buildProceduralGrassRoughness(): THREE.DataTexture {
+  return buildRoughnessTexture(DETAIL_TEXTURE_SIZE, GRASS_ROUGHNESS_OPTIONS);
+}

@@ -43,11 +43,20 @@ export interface TrackData {
   centerline: TrackPoint[];
   /**
    * Satellite image variant to use for this track's ground texture, resolved
-   * from the `?sat=` query param by dataLoader (see satelliteVariants.ts for
-   * the id -> filename mapping). Optional so track.json fixtures/tests that
-   * don't set it keep working; TrackBuilder treats a missing value as "default".
+   * from the developer-only `?dev=1&sat=` query by dataLoader (see
+   * satelliteVariants.ts for the id -> filename mapping). The user-facing
+   * viewer uses one curated per-track variant. Optional so track.json fixtures/tests that
+   * don't set it keep working; TrackBuilder treats a missing value as default.
    */
   satVariant?: SatVariantId;
+  /**
+   * Per-track initial layer state, applied once when the track loads (the
+   * user can still toggle afterwards). Bootstrapped tracks (suzuka/okayama)
+   * set road3d=false so the car runs directly on the aerial imagery instead
+   * of the procedural asphalt ribbon; tracks without the field keep the
+   * store defaults.
+   */
+  defaultLayers?: { road3d?: boolean };
 }
 
 export interface LapMeta {
@@ -149,6 +158,6 @@ export interface LoadedReplay {
   lapsIndex: LapsIndex;
   lap: LapData;
   activeRecord: LapIndexRecord;
-  /** Satellite variant ids probed as available for this track at startup. */
+  /** Developer-mode variant ids; user mode contains only its curated variant. */
   availableSatelliteVariants: SatVariantId[];
 }

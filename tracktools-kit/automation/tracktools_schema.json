@@ -1,0 +1,3305 @@
+{
+  "BARRIER": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "resample curve",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z-offset",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "end lenght",
+        "identifier": "Socket_54",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z offset ends",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth radius",
+        "identifier": "Socket_63",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "switch direction",
+        "identifier": "Socket_57",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "shade smooth",
+        "identifier": "Socket_42",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "shrinkwrap target",
+        "identifier": "Socket_56",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Z offset after shrinkwrap",
+        "identifier": "Socket_97",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "MESH",
+        "identifier": "Socket_69",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "profile mode",
+        "identifier": "Socket_75",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "profile preset",
+        "identifier": "Socket_76",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "shape",
+        "identifier": "Socket_88",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "height",
+        "identifier": "Socket_78",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "width",
+        "identifier": "Socket_77",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "width",
+        "identifier": "Socket_82",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "curb border width",
+        "identifier": "Socket_91",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale by radius",
+        "identifier": "Socket_60",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "bevel count",
+        "identifier": "Socket_80",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "bevel radius",
+        "identifier": "Socket_79",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resolution",
+        "identifier": "Socket_84",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "diameter",
+        "identifier": "Socket_85",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "count",
+        "identifier": "Socket_87",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_86",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "profile curve",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "trim start",
+        "identifier": "Socket_73",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "trim end",
+        "identifier": "Socket_74",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "fill caps",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "gaps",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "INSTANCES",
+        "identifier": "Socket_70",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "instance object",
+        "identifier": "Socket_18",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "rotate instances",
+        "identifier": "Socket_90",
+        "socket_type": "NodeSocketRotation"
+      },
+      {
+        "name": "trim start",
+        "identifier": "Socket_71",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "trim end",
+        "identifier": "Socket_72",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z-up",
+        "identifier": "Socket_58",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "align to next point",
+        "identifier": "Socket_53",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale offset by radius",
+        "identifier": "Socket_62",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "realize instances",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "angle",
+        "identifier": "Socket_50",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "distance",
+        "identifier": "Socket_52",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "ROAD middle curve",
+        "identifier": "Socket_44",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "ROAD border curve",
+        "identifier": "Socket_45",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "EDGE border curve",
+        "identifier": "Socket_46",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "BRIDGE middle curve",
+        "identifier": "Socket_92",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "BRIDGE border curve",
+        "identifier": "Socket_93",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "TUNNEL middle curve",
+        "identifier": "Socket_94",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "TUNNEL border curve",
+        "identifier": "Socket_96",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "any curve",
+        "identifier": "Socket_89",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "filter roadID min",
+        "identifier": "Socket_48",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "filter roadID max",
+        "identifier": "Socket_49",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_67",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_61",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "material",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_59",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "BRIDGE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_73",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_69",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z-smooth curve",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "smooth radius",
+        "identifier": "Socket_78",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "width",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "thickness",
+        "identifier": "Socket_74",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_76",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resolution",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth intersections",
+        "identifier": "Socket_66",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "pillar object",
+        "identifier": "Socket_81",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_83",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_82",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "mask mode",
+        "identifier": "Socket_88",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "mask object",
+        "identifier": "Socket_86",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "mask collection",
+        "identifier": "Socket_87",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "realize instances",
+        "identifier": "Socket_85",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_77",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "bridge material",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_68",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_70",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_71",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_72",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "Curve-To-Mesh Even-Thickness": {
+    "inputs": [
+      {
+        "name": "Curve",
+        "identifier": "Input_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Profile Curve",
+        "identifier": "Input_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Fill Caps",
+        "identifier": "Input_3",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Even-Thickness",
+        "identifier": "Input_4",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "curve radius",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Output_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Curve",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "scaling fac",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketFloat"
+      }
+    ]
+  },
+  "curve_coord": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "center",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "coord",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketFloat"
+      }
+    ]
+  },
+  "curve_corection_tunnel": {
+    "inputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "road width",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth intersections",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "Curve_to_mesh_UV": {
+    "inputs": [
+      {
+        "name": "Curve",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Profile Curve",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Scale",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Fill Caps",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Mesh",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "DUPLICATE_CURVE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "count",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "tilt mode",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "Z factor",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset by radius",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale by radius",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "middle curve",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "border curve",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "edge border curve",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "mirror normal",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "filter roadID min",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "filter roadID max",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketInt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "EDGE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "control curve",
+        "identifier": "Socket_35",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "control curve mode",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "scale by radius",
+        "identifier": "Socket_38",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "resample edge profile",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z-offset",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale ends",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth radius",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "merge",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "profile mode",
+        "identifier": "Socket_30",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "profile",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "profile preset",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "edge width",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "edge height",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "curb border width",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "invert",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "mesh border curve",
+        "identifier": "Socket_42",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "_ROAD border curve",
+        "identifier": "Socket_23",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "_EDGE border curve",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "material",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale UVS",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_28",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "End lenght selection": {
+    "inputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "from max",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "from min",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "1",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "0",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      }
+    ]
+  },
+  "FILTER_PARTS": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "INSTANCES",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "MESH",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "road",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "edge",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "markings",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "posts",
+        "identifier": "Socket_18",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "bridge",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "tunnel",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "tunnel cutter",
+        "identifier": "Socket_28",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "CURVES",
+        "identifier": "Socket_22",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "main",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "road border",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "edge border",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "intersections curve",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "bridge middle curve",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "bridge border curve",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "tunnel curve",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "ISLANDS": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "shrinkwrap object",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Z offset after shrinkwrap",
+        "identifier": "Socket_43",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "outline curve offset",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "BORDER",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "border width",
+        "identifier": "Socket_23",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resample border",
+        "identifier": "Socket_31",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "curb height",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "FILL",
+        "identifier": "Socket_42",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "stripes",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "stripe width",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "rotate",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "displacement height",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "displacement scale",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_35",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "fill material",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "border material",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketVector"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "LABELS": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "top",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketString"
+      },
+      {
+        "name": "bottom",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketString"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "LAYOUTS": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "_ROAD object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "track mesh",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "track curve",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "merge curve",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "layout color",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketColor"
+      },
+      {
+        "name": "STARTING LINE",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "CHECKPOINTS",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "A-B",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "direction",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "offset checkpoints",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset labels",
+        "identifier": "Socket_22",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale labels",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "START",
+        "identifier": "Socket_38",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "rotate start positions",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "stagger",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale labels",
+        "identifier": "Socket_28",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "PITS",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "rotate pits",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale labels",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "LINE",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "line width",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketInt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "time",
+        "identifier": "Socket_30",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "pit",
+        "identifier": "Socket_31",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "start",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "hotlap",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "instance_position",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "instance_rotation",
+        "identifier": "Socket_35",
+        "socket_type": "NodeSocketVector"
+      }
+    ]
+  },
+  "marking_islands": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "curb height",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "stripe width",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "rotate",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "stripes",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "border material",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "fill material",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "generate UVs",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "border",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "fill",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "border width",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "displacement height",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "displacement scale",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "outline offset",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resample border",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "curb bottom",
+        "identifier": "Socket_18",
+        "socket_type": "NodeSocketBool"
+      }
+    ]
+  },
+  "MARKINGS": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "resample",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resample profile",
+        "identifier": "Socket_43",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "line width",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "dashed length",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "gap ratio",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "double line offset",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "shrinkwrap object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "close ends",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "filter roadID min",
+        "identifier": "Socket_30",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "filter roadID max",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "middle line type",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "offset middle",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "border line type",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "offset border",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "intersections line type",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "offset intersection",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_38",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "material",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "PARKING_LINES": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "line width",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Material",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "border",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketVector"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "Poly-Curve Info": {
+    "inputs": [
+      {
+        "name": "Curve",
+        "identifier": "Input_0",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Curve",
+        "identifier": "Output_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Dot",
+        "identifier": "Output_18",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Bisect",
+        "identifier": "Output_19",
+        "socket_type": "NodeSocketVector"
+      }
+    ]
+  },
+  "PROXIMITY": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "Object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Collection",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "attribute name",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketString"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "QUICK_GRID": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "face size",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "rotate",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "RACING_KERB": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "resample",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "face count",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "width",
+        "identifier": "Socket_38",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "kerb type",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "profile object",
+        "identifier": "Socket_45",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "step height",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "kerb height",
+        "identifier": "Socket_43",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "end length",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth radius",
+        "identifier": "Socket_46",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "even steps",
+        "identifier": "Socket_42",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale ends",
+        "identifier": "Socket_44",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_47",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Material",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_48",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_49",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_50",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "ROAD": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_69",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z-smooth curve",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "smooth radius",
+        "identifier": "Socket_73",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "Shrinkwrap",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "reference terrain",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_82",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "road width",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resolution",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth intersections",
+        "identifier": "Socket_66",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "crossfall",
+        "identifier": "Socket_74",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "bridge treshold",
+        "identifier": "Socket_62",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "tunnel treshold",
+        "identifier": "Socket_63",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_78",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "material",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_68",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_70",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_71",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_72",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "road_bool": {
+    "inputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "road width",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resample",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "generate UVs",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "smooth intersections",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_23",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "road mesh",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "main curve",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "intersection edges",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "normal",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketVector"
+      }
+    ]
+  },
+  "road_bool_bridge_test": {
+    "inputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "road width",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resample",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "generate UVs",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "smooth intersections",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_23",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "road mesh",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "main curve",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "intersection curves",
+        "identifier": "Socket_22",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "intersection edges",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "normal",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketVector"
+      }
+    ]
+  },
+  "road_edge": {
+    "inputs": [
+      {
+        "name": "curve",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "border curve full",
+        "identifier": "Socket_31",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "EDGE border curve",
+        "identifier": "Socket_30",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "edge profile",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "profile",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "UV mode",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "offset",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z-offset",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "scale UVS",
+        "identifier": "Socket_22",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "scaleUVs",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "offse UVs",
+        "identifier": "Socket_23",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "edge width",
+        "identifier": "Socket_28",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "curve radius",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth radius",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "radius scaling index",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "scale ends",
+        "identifier": "Socket_35",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "stretch UVs",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "mode index",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketInt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "edge mesh",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "ROAD_POST": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "post object",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "width",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "rotate posts",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketRotation"
+      },
+      {
+        "name": "realize instances",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "ROAD_SIMPLE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "road width",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resolution",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "shrinkwrap target",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Z smooth curve",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "Material",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "SHRINKWRAP_CURVE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "target object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Collection",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "Smooth by Angle": {
+    "inputs": [
+      {
+        "name": "Mesh",
+        "identifier": "Input_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Angle",
+        "identifier": "Input_1",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Ignore Sharpness",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Mesh",
+        "identifier": "Output_2",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "smooth_XY_merge": {
+    "inputs": [
+      {
+        "name": "mesh",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Iterations",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "Selection",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Factor",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "mesh",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "smooth_Z_curve": {
+    "inputs": [
+      {
+        "name": "mesh",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Iterations",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "Selection",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Factor",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "mesh",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "SNAP_TO": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "target object",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "target collection",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "snap to",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "snap distance",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z smooth",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Z smooth Min",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z smooth Max",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "target filter",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketMenu"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "SUBD_CURVE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "subdivide",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "resample",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "store road ID",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "subdivide_selection": {
+    "inputs": [
+      {
+        "name": "geometry",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "selection",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Level",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "enable",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "subdivided selection",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "SURFACE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "transfer UVs",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "edge ID filter",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "merge distance 1",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "subdivision",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "triangulate",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "merge distance 2",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "noise scale",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "bumps scale",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "TERRAIN_GEOMETRY": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "input type",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "road collection",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "road object",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "reference terrain",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "show point count",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "number of ranges",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "range 1",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "range 2",
+        "identifier": "Socket_28",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "range 3",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "range 4",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "range 5",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "range 6",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "delete far",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "invert delete far",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "TERRAIN_SHAPE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "target mode",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "target object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "target collection",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "flatten min",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "flatten max",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_14",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "cut terrain",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "extrude cutter",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "EDGE index",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "show point count",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "TERRAIN_SIMPLE": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "road object",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "road collection",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "flatten min",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "flatten max",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "TRANSFER_UVs": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Target geometry",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "target object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "ray direction",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketMenu"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "TREES": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "delete input",
+        "identifier": "Socket_47",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "distribution mode",
+        "identifier": "Socket_48",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "inner offset",
+        "identifier": "Socket_49",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "outer offset",
+        "identifier": "Socket_50",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "terrain object",
+        "identifier": "Socket_28",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "terrain collection",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "mask object",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "mask collection",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_38",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "instance object",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "number of collections",
+        "identifier": "Socket_56",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "instance collection",
+        "identifier": "Socket_21",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "instance collection 2",
+        "identifier": "Socket_52",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "instance collection 3",
+        "identifier": "Socket_53",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "instance collection 4",
+        "identifier": "Socket_54",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "instance collection 5",
+        "identifier": "Socket_55",
+        "socket_type": "NodeSocketCollection"
+      },
+      {
+        "name": "realize instances",
+        "identifier": "Socket_35",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "mask distance min",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "mask distance max",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "dist. between points",
+        "identifier": "Socket_7",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "density",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "seed",
+        "identifier": "Socket_46",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "height min",
+        "identifier": "Socket_31",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "height max",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "width min",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "width max",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "rotation min",
+        "identifier": "Socket_45",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "rotation max",
+        "identifier": "Socket_42",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "brightness min",
+        "identifier": "Socket_43",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "brightness max",
+        "identifier": "Socket_44",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "TUNNEL": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "mode",
+        "identifier": "Socket_30",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "subdivide input",
+        "identifier": "Socket_20",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "resample",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Z offset ",
+        "identifier": "Socket_19",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "smooth intersections",
+        "identifier": "Socket_34",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "hide walls",
+        "identifier": "Socket_56",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "profile mode",
+        "identifier": "Socket_13",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "profile object",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketObject"
+      },
+      {
+        "name": "width",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "height",
+        "identifier": "Socket_18",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "thickness",
+        "identifier": "Socket_29",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "resample profile",
+        "identifier": "Socket_33",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "bevel radius",
+        "identifier": "Socket_17",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "bevel count",
+        "identifier": "Socket_16",
+        "socket_type": "NodeSocketInt"
+      },
+      {
+        "name": "step",
+        "identifier": "Socket_15",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "step width",
+        "identifier": "Socket_11",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "step height",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "DOOR",
+        "identifier": "Socket_23",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "trim ends",
+        "identifier": "Socket_24",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "spacing",
+        "identifier": "Socket_32",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "door dimensions",
+        "identifier": "Socket_25",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "Z offset",
+        "identifier": "Socket_26",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "UVs",
+        "identifier": "Socket_27",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "material mode",
+        "identifier": "Socket_35",
+        "socket_type": "NodeSocketMenu"
+      },
+      {
+        "name": "main material",
+        "identifier": "Socket_37",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_42",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_43",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_44",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "floor material",
+        "identifier": "Socket_36",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_39",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_40",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_41",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "wall material",
+        "identifier": "Socket_38",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_45",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_46",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_47",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "step material",
+        "identifier": "Socket_48",
+        "socket_type": "NodeSocketMaterial"
+      },
+      {
+        "name": "scale UVs",
+        "identifier": "Socket_49",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "offset UVs",
+        "identifier": "Socket_50",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "rotate UVs",
+        "identifier": "Socket_51",
+        "socket_type": "NodeSocketFloat"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "|DJH_border_curve": {
+    "inputs": [
+      {
+        "name": "road mesh",
+        "identifier": "Socket_12",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "intersection edges",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "normal",
+        "identifier": "Socket_47",
+        "socket_type": "NodeSocketVector"
+      },
+      {
+        "name": "main curve",
+        "identifier": "Socket_48",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "border curve",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "intersection curve",
+        "identifier": "Socket_50",
+        "socket_type": "NodeSocketGeometry"
+      }
+    ]
+  },
+  "|DJH_curve_segment_angle": {
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "Radians",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Degrees",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketFloat"
+      }
+    ]
+  },
+  "ⓤ Angles Of Vert Edges": {
+    "inputs": [
+      {
+        "name": "Max Edges",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketInt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Avg",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Max",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      }
+    ]
+  },
+  "ⓤ Solidify": {
+    "inputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_0",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "Selection",
+        "identifier": "Socket_6",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Offset",
+        "identifier": "Socket_5",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Thickness",
+        "identifier": "Socket_2",
+        "socket_type": "NodeSocketFloat"
+      },
+      {
+        "name": "Even Thickness",
+        "identifier": "Socket_3",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Back",
+        "identifier": "Socket_8",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Sides",
+        "identifier": "Socket_10",
+        "socket_type": "NodeSocketBool"
+      },
+      {
+        "name": "Front",
+        "identifier": "Socket_9",
+        "socket_type": "NodeSocketBool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Geometry",
+        "identifier": "Socket_1",
+        "socket_type": "NodeSocketGeometry"
+      },
+      {
+        "name": "ID",
+        "identifier": "Socket_4",
+        "socket_type": "NodeSocketInt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>トゥーンコリドー改善 前後比較</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; padding: 16px 20px 60px; background: #14171a; color: #dfe5e8;
+         font-family: "Segoe UI", "Hiragino Sans", sans-serif; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  h2 { font-size: 15px; margin: 26px 0 8px; color: #cfe3ec; }
+  .sub { color: #8aa0aa; font-size: 12.5px; margin-bottom: 10px; line-height: 1.6; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border-bottom: 1px solid #2c343a; padding: 6px 8px; font-size: 12.5px;
+           text-align: left; vertical-align: top; }
+  th { color: #9fb4be; position: sticky; top: 0; background: #14171a; }
+  td img { width: 300px; aspect-ratio: 1; object-fit: cover; border-radius: 4px;
+           display: block; cursor: zoom-in; background: #000; }
+  .wide img { width: 100%; max-width: 720px; aspect-ratio: auto; }
+  .fix { color: #7fd0a0; }
+  .id { font-weight: 700; color: #fff; font-size: 14px; }
+  #lb { position: fixed; inset: 0; background: rgba(0 0 0 / 92%); display: none;
+        align-items: center; justify-content: center; z-index: 50; cursor: zoom-out; }
+  #lb.on { display: flex; }
+  #lb img { max-width: 96vw; max-height: 94vh; object-fit: contain; }
+</style>
+</head>
+<body>
+<h1>トゥーンコリドー改善 前後比較</h1>
+<div class="sub">
+  「前」= 初回59窓生成の直後に記録したコンタクトシート（gen_sheet.jpg）からの切り出し。
+  「後」= 現在適用中の再生成版。画像クリックで拡大。
+</div>
+
+<h2>1. 実画面（開始4秒地点、S/Fストレート）— 窓005の濃緑帯</h2>
+<table>
+  <tr><th>前（濃い緑の帯が左に出ている）</th><th>後（#BCCF25 決め打ちで統一）</th></tr>
+  <tr class="wide">
+    <td><img src="ingame_t4_before.png"></td>
+    <td><img src="ingame_t4_after.png"></td>
+  </tr>
+</table>
+
+<h2>2. 個別窓の前後（修正内容つき）</h2>
+<table id="tiles">
+  <tr><th style="width:120px">窓</th><th>前</th><th>後</th><th style="width:220px">修正内容</th></tr>
+</table>
+
+<div id="lb" onclick="this.classList.remove('on')"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
+
+<script>
+const ROWS = [
+  ["005", "濃緑の帯 → 芝を #BCCF25 に決め打ちして統一（今回のトライアル）"],
+  ["006", "濃い緑の芝 → 黄緑へ統一"],
+  ["007", "濃い緑の芝 → 黄緑へ統一"],
+  ["013", "路面上の車両を除去"],
+  ["016", "濃い緑の芝 → 黄緑へ統一"],
+  ["019", "路面上の影を除去"],
+  ["020", "路面を横切る大きな影を除去"],
+  ["023", "濃い緑の芝 → 黄緑へ統一"],
+  ["025", "路面上の車両を除去"],
+  ["027", "路面上の影(ガントリー)を除去"],
+  ["030", "濃緑の芝統一+路面上の車両を除去"],
+  ["031", "濃い緑の芝 → 黄緑へ統一"],
+  ["037", "路面上の影を除去"],
+  ["039", "濃い緑の芝 → 黄緑へ統一"],
+  ["040", "濃い緑の芝 → 黄緑へ統一"],
+  ["044", "路面上の影を除去"],
+  ["046", "路面上の影を除去"],
+  ["049", "路面上の影を除去"],
+  ["052", "濃い緑の芝 → 黄緑へ統一"],
+];
+const t = document.getElementById("tiles");
+for (const [id, note] of ROWS) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td class="id">${id}</td>
+    <td><img loading="lazy" src="before/corridor_${id}_before.png"></td>
+    <td><img loading="lazy" src="gen/corridor_${id}_gen.png"></td>
+    <td class="fix">${note}</td>`;
+  t.appendChild(tr);
+}
+const lb = document.getElementById("lb");
+document.addEventListener("click", (e) => {
+  if (e.target.tagName === "IMG" && !lb.contains(e.target)) {
+    lb.querySelector("img").src = e.target.src;
+    lb.classList.add("on");
+  }
+});
+</script>
+</body>
+</html>

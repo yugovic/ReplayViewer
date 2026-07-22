@@ -1,0 +1,768 @@
+<title>Docs Viewer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --ground: #11151B;
+    --panel: #171D25;
+    --panel-2: #1D242E;
+    --line: #29313C;
+    --ink: #E9E7E2;
+    --muted: #96A1AD;
+    --faint: #6B7683;
+    --curb: #D94F46;
+    --stripe-white: #DDD8CE;
+    --sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", "Consolas", "Courier New", monospace;
+  }
+  html { background: var(--ground); }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  button { font-family: inherit; }
+  a { color: #8FB4D8; }
+
+  .top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 26px 28px 18px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--curb);
+    text-transform: uppercase;
+  }
+  .top h1 { margin: 4px 0 0; font-size: 21px; font-weight: 700; letter-spacing: 0.02em; }
+  .top-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; white-space: nowrap; }
+  .counter { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 22px; }
+  .counter .of { color: var(--faint); font-size: 14px; }
+  .hint { font-size: 11px; color: var(--faint); }
+
+  .rail-wrap { border-block: 1px solid var(--line); background: #141920; }
+  .rail {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  .rail::-webkit-scrollbar { height: 6px; }
+  .rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+  .tab {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 0;
+    padding: 12px 13px 14px;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .tab .idx {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 10px;
+    color: var(--faint);
+    margin-right: 6px;
+  }
+  .tab .lbl { max-width: 10em; overflow: hidden; text-overflow: ellipsis; }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] { color: var(--ink); font-weight: 700; }
+  .tab[aria-selected="true"] .idx { color: var(--curb); }
+  .tab[aria-selected="true"]::after {
+    content: "";
+    position: absolute;
+    left: 10px; right: 10px; bottom: 0;
+    height: 4px;
+    border-radius: 2px 2px 0 0;
+    background: repeating-linear-gradient(90deg, var(--curb) 0 9px, var(--stripe-white) 9px 18px);
+  }
+  .tab:focus-visible, .edge:focus-visible, .card:focus-visible {
+    outline: 2px solid var(--curb);
+    outline-offset: -2px;
+    border-radius: 4px;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) 56px;
+    gap: 4px;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 10px 8px 30px;
+  }
+  .edge {
+    background: none;
+    border: 0;
+    color: var(--faint);
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 0;
+  }
+  .edge:hover { color: var(--ink); background: var(--panel); }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    min-height: 62vh;
+    padding: 34px clamp(20px, 5vw, 56px) 44px;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+  .panel.is-leaving { opacity: 0; transform: translateX(var(--slide, -14px)); transition: none; }
+  @media (prefers-reduced-motion: reduce) { .panel { transition: none; } }
+
+  .doc-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .chip { font-size: 11px; letter-spacing: 0.1em; padding: 2.5px 9px; border-radius: 3px; border: 1px solid; }
+  .f-eval     { color: #E5988D; background: #2B1A18; border-color: #55302C; }
+  .f-research { color: #8FB4D8; background: #16222E; border-color: #2C4258; }
+  .f-impl     { color: #93C29B; background: #182518; border-color: #2F4A33; }
+  .f-cost     { color: #D9B778; background: #291F10; border-color: #52401E; }
+  .f-debate   { color: #B4A3D8; background: #201A2C; border-color: #3E3458; }
+  .f-guide    { color: #7FC0BA; background: #122422; border-color: #2A4A46; }
+  .f-ops      { color: #A5AEB8; background: #1C2127; border-color: #333B45; }
+  .doc-date, .doc-file { font-family: var(--mono); font-size: 11.5px; color: var(--faint); overflow-wrap: anywhere; }
+  .doc-title { margin: 2px 0 14px; font-size: 24px; line-height: 1.45; font-weight: 700; }
+  .doc-body { max-width: 44em; }
+
+  .tldr {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--curb);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 0 0 20px;
+    font-size: 15.5px;
+  }
+  .tldr .tag {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 22px; }
+  .toc a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 2px 11px;
+  }
+  .toc a:hover { color: var(--ink); border-color: var(--faint); }
+
+  .md h1 { font-size: 20px; margin: 26px 0 10px; line-height: 1.5; }
+  .md h2 {
+    font-size: 17px;
+    margin: 30px 0 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    line-height: 1.5;
+  }
+  .md h3 { font-size: 15.5px; margin: 22px 0 8px; }
+  .md h4 { font-size: 14.5px; margin: 18px 0 6px; color: var(--muted); }
+  .md p { margin: 0 0 12px; }
+  .md ul, .md ol { margin: 0 0 14px; padding-left: 1.6em; }
+  .md li { margin-bottom: 4px; }
+  .md li > ul, .md li > ol { margin: 4px 0 4px; }
+  .md code {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.5px 5px;
+  }
+  .md pre {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    margin: 0 0 14px;
+  }
+  .md pre code { background: none; border: 0; padding: 0; font-size: 12.5px; line-height: 1.7; }
+  .md blockquote {
+    margin: 0 0 14px;
+    padding: 2px 16px;
+    border-left: 3px solid var(--line);
+    color: var(--muted);
+  }
+  .md hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+  .tbl { overflow-x: auto; margin: 0 0 16px; }
+  .md table { border-collapse: collapse; font-size: 13.5px; min-width: 50%; }
+  .md th, .md td { border: 1px solid var(--line); padding: 6px 12px; text-align: left; vertical-align: top; }
+  .md th { background: var(--panel-2); font-weight: 700; white-space: nowrap; }
+  .md td { font-variant-numeric: tabular-nums; }
+
+  .notice {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 20px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .notice code { font-family: var(--mono); font-size: 12.5px; color: var(--ink); }
+  iframe.htmldoc {
+    width: 100%;
+    height: 72vh;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    margin-top: 14px;
+  }
+
+  .ov-lede { font-size: 16px; margin: 0 0 20px; max-width: 44em; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 10px;
+    margin: 10px 0 8px;
+  }
+  .card {
+    display: block;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 13px 15px 14px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .card:hover { border-color: var(--faint); }
+  .card .row1 { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .card .idx { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 11px; color: var(--faint); }
+  .card .t { font-size: 14px; font-weight: 700; line-height: 1.55; display: block; }
+  .card .d { font-size: 12.5px; color: var(--muted); line-height: 1.7; display: block; margin-top: 3px; }
+
+  .foot {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 28px 34px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 760px) {
+    .edge { display: none; }
+    .stage { grid-template-columns: minmax(0, 1fr); padding: 10px 12px 26px; }
+    .top { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .top-meta { align-items: flex-start; }
+  }
+</style>
+
+<header class="top">
+  <div>
+    <span class="eyebrow" id="eyebrow">DOCS</span>
+    <h1 id="pageTitle">ドキュメントビューア</h1>
+  </div>
+  <div class="top-meta">
+    <span class="counter" id="counter">--</span>
+    <span class="hint">← → キー・スワイプ・タブで切替</span>
+  </div>
+</header>
+
+<div class="rail-wrap"><nav class="rail" role="tablist" aria-label="ドキュメント" id="rail"></nav></div>
+
+<main class="stage" id="stage">
+  <button class="edge" id="prevBtn" aria-label="前のドキュメント">‹</button>
+  <article class="panel" id="panel" role="tabpanel" tabindex="0" aria-live="polite"></article>
+  <button class="edge" id="nextBtn" aria-label="次のドキュメント">›</button>
+</main>
+
+<footer class="foot" id="foot"></footer>
+
+<script id="__data__">window.__DOCS_PROJECT__="ReplayViewer";</script>
+<script>
+"use strict";
+
+/* ---------- markdown (docs-scale subset) ---------- */
+
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function inlineMd(s, linkResolver) {
+  let out = escapeHtml(s);
+  out = out.replace(/`([^`]+)`/g, (m, c) => "<code>" + c + "</code>");
+  out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  out = out.replace(/(^|[^*])\*([^*\s][^*]*)\*/g, "$1<em>$2</em>");
+  out = out.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, "$1");
+  out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) => {
+    const resolved = linkResolver ? linkResolver(u) : null;
+    if (resolved) return '<a href="' + resolved + '">' + t + "</a>";
+    if (/^https?:/i.test(u)) return '<a href="' + escapeHtml(u) + '" target="_blank" rel="noopener">' + t + "</a>";
+    return t + " <code>" + escapeHtml(u) + "</code>";
+  });
+  return out;
+}
+
+function renderMd(text, linkResolver) {
+  const lines = text.split(/\r?\n/);
+  const html = [];
+  let i = 0;
+  const listStack = []; // {type:'ul'|'ol', indent:number}
+
+  function closeLists(toIndent) {
+    while (listStack.length && listStack[listStack.length - 1].indent >= toIndent) {
+      html.push("</" + listStack.pop().type + ">");
+    }
+  }
+  function closeAllLists() { closeLists(-1); }
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (/^```/.test(line)) {
+      closeAllLists();
+      const buf = [];
+      i += 1;
+      while (i < lines.length && !/^```/.test(lines[i])) { buf.push(lines[i]); i += 1; }
+      i += 1;
+      html.push("<pre><code>" + escapeHtml(buf.join("\n")) + "</code></pre>");
+      continue;
+    }
+
+    const h = line.match(/^(#{1,4})\s+(.*)$/);
+    if (h) {
+      closeAllLists();
+      const level = h[1].length;
+      html.push("<h" + level + ">" + inlineMd(h[2], linkResolver) + "</h" + level + ">");
+      i += 1;
+      continue;
+    }
+
+    if (/^\s*(-{3,}|\*{3,})\s*$/.test(line)) { closeAllLists(); html.push("<hr>"); i += 1; continue; }
+
+    if (/^\s*\|.*\|\s*$/.test(line) && i + 1 < lines.length && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1])) {
+      closeAllLists();
+      const cells = (row) => row.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
+      const head = cells(line);
+      i += 2;
+      const rows = [];
+      while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) { rows.push(cells(lines[i])); i += 1; }
+      let t = '<div class="tbl"><table><thead><tr>';
+      for (const c of head) t += "<th>" + inlineMd(c, linkResolver) + "</th>";
+      t += "</tr></thead><tbody>";
+      for (const r of rows) {
+        t += "<tr>";
+        for (const c of r) t += "<td>" + inlineMd(c, linkResolver) + "</td>";
+        t += "</tr>";
+      }
+      t += "</tbody></table></div>";
+      html.push(t);
+      continue;
+    }
+
+    if (/^\s*>\s?/.test(line)) {
+      closeAllLists();
+      const buf = [];
+      while (i < lines.length && /^\s*>\s?/.test(lines[i])) { buf.push(lines[i].replace(/^\s*>\s?/, "")); i += 1; }
+      html.push("<blockquote>" + renderMd(buf.join("\n"), linkResolver) + "</blockquote>");
+      continue;
+    }
+
+    const li = line.match(/^(\s*)([-*]|\d+[.)])\s+(.*)$/);
+    if (li) {
+      const indent = li[1].replace(/\t/g, "  ").length;
+      const type = /[-*]/.test(li[2]) ? "ul" : "ol";
+      const top = listStack[listStack.length - 1];
+      if (!top || indent > top.indent) {
+        listStack.push({ type, indent });
+        html.push("<" + type + ">");
+      } else if (indent < top.indent) {
+        closeLists(indent + 1);
+        if (!listStack.length || listStack[listStack.length - 1].indent < indent) {
+          listStack.push({ type, indent });
+          html.push("<" + type + ">");
+        }
+      }
+      // continuation lines (hanging indent) belong to this item
+      const buf = [li[3]];
+      i += 1;
+      while (
+        i < lines.length &&
+        lines[i].trim() !== "" &&
+        !/^(\s*)([-*]|\d+[.)])\s+/.test(lines[i]) &&
+        !/^#{1,4}\s/.test(lines[i]) &&
+        !/^\s*\|/.test(lines[i]) &&
+        !/^```/.test(lines[i]) &&
+        /^\s+/.test(lines[i])
+      ) { buf.push(lines[i].trim()); i += 1; }
+      html.push("<li>" + inlineMd(buf.join(" "), linkResolver) + "</li>");
+      continue;
+    }
+
+    if (line.trim() === "") { closeAllLists(); i += 1; continue; }
+
+    closeAllLists();
+    const buf = [line.trim()];
+    i += 1;
+    while (
+      i < lines.length &&
+      lines[i].trim() !== "" &&
+      !/^(#{1,4})\s/.test(lines[i]) &&
+      !/^\s*([-*]|\d+[.)])\s/.test(lines[i]) &&
+      !/^\s*\|/.test(lines[i]) &&
+      !/^```/.test(lines[i]) &&
+      !/^\s*>/.test(lines[i])
+    ) { buf.push(lines[i].trim()); i += 1; }
+    html.push("<p>" + inlineMd(buf.join(" "), linkResolver) + "</p>");
+  }
+  closeAllLists();
+  return html.join("\n");
+}
+
+/* ---------- extraction ---------- */
+
+function famOf(type) {
+  const t = type || "";
+  if (/評価/.test(t)) return "f-eval";
+  if (/研究|調査/.test(t)) return "f-research";
+  if (/試算|費用/.test(t)) return "f-cost";
+  if (/討論|相談|分析|議論/.test(t)) return "f-debate";
+  if (/手順|ガイド/.test(t)) return "f-guide";
+  if (/実装|記録/.test(t)) return "f-impl";
+  return "f-ops";
+}
+
+function parseReadmeRows(readme) {
+  const rows = [];
+  if (!readme) return rows;
+  for (const line of readme.split(/\r?\n/)) {
+    const m = line.match(/^\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]*)\|\s*([^|]*)\|/);
+    if (!m) continue;
+    const file = m[2].trim();
+    if (file.startsWith("../") || /^https?:/i.test(file)) continue;
+    if (!/\.(md|html?)$/i.test(file)) continue;
+    if (/^(viewer|README)\.(md|html)$/i.test(file)) continue;
+    rows.push({ file, linkText: m[1].trim(), type: m[3].trim(), oneliner: m[4].trim() });
+  }
+  return rows;
+}
+
+function extractDoc(file, content, meta) {
+  const isHtml = /\.html?$/i.test(file);
+  const slug = file.replace(/\.[^.]+$/, "").replace(/[^\w぀-ヿ一-鿿-]+/g, "-");
+  const dateM = file.match(/(\d{4}-\d{2}-\d{2})/);
+  let title = meta.linkText || file;
+  let tldrMd = "";
+  let bodyMd = content || "";
+  if (!isHtml && content) {
+    const tm = content.match(/^#\s+(.+)$/m);
+    if (tm) title = tm[1].trim();
+    const lines = content.split(/\r?\n/);
+    let start = -1;
+    for (let k = 0; k < lines.length; k += 1) {
+      if (/^##\s*(要旨|結論|概要|サマリ|まとめ|TL;?DR|Summary)/i.test(lines[k])) { start = k + 1; break; }
+    }
+    if (start !== -1) {
+      const buf = [];
+      for (let k = start; k < lines.length && !/^##\s/.test(lines[k]); k += 1) buf.push(lines[k]);
+      tldrMd = buf.join("\n").trim();
+    } else {
+      const afterTitle = tm ? content.indexOf(tm[0]) + tm[0].length : 0;
+      const paras = content.slice(afterTitle).split(/\r?\n\s*\r?\n/);
+      for (const p of paras) {
+        const t = p.trim();
+        if (t && !/^#/.test(t)) { tldrMd = t; break; }
+      }
+    }
+  }
+  return {
+    slug, file, isHtml,
+    type: meta.type || (isHtml ? "HTML資料" : ""),
+    oneliner: meta.oneliner || "",
+    date: dateM ? dateM[1] : "",
+    title, tldrMd, bodyMd,
+  };
+}
+
+function buildDocs(readme, files, htmlFiles) {
+  const rows = parseReadmeRows(readme);
+  const seen = new Set(rows.map((r) => r.file));
+  for (const name of Object.keys(files)) {
+    if (!seen.has(name)) rows.push({ file: name, linkText: name, type: "", oneliner: "" });
+  }
+  for (const name of htmlFiles || []) {
+    if (!seen.has(name)) rows.push({ file: name, linkText: name, type: "HTML資料", oneliner: "" });
+  }
+  return rows.map((r) => extractDoc(r.file, files[r.file] || "", r));
+}
+
+/* ---------- app ---------- */
+
+const rail = document.getElementById("rail");
+const panel = document.getElementById("panel");
+const counter = document.getElementById("counter");
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let DOCS = [];
+let MODE = { live: true, generatedAt: "", project: "" };
+let current = 0;
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+
+function linkResolverFor(docs) {
+  return (url) => {
+    const clean = url.replace(/^\.\//, "").split("#")[0];
+    const hit = docs.find((d) => d.file === clean);
+    return hit ? "#" + hit.slug : null;
+  };
+}
+
+function chipFor(doc) {
+  return el("span", "chip " + famOf(doc.type), doc.type || "DOC");
+}
+
+function renderOverview() {
+  const frag = document.createDocumentFragment();
+  const head = el("div", "doc-head");
+  head.appendChild(el("span", "chip f-ops", "INDEX"));
+  head.appendChild(el("span", "doc-file",
+    MODE.live ? "live — docs/ を直接読込" : "snapshot " + MODE.generatedAt));
+  frag.appendChild(head);
+  frag.appendChild(el("h1", "doc-title", "docs/ の全体像 — " + DOCS.length + "件"));
+  frag.appendChild(el("p", "ov-lede",
+    "タブ・← →キー・スワイプで1件ずつ切替できます。一覧の並びと種類・概要は docs/README.md の索引から取得しています。"));
+  const cards = el("div", "cards");
+  DOCS.forEach((doc, i) => {
+    const a = el("a", "card");
+    a.href = "#" + doc.slug;
+    const row = el("span", "row1");
+    row.appendChild(el("span", "idx", String(i + 1).padStart(2, "0")));
+    row.appendChild(chipFor(doc));
+    a.appendChild(row);
+    a.appendChild(el("span", "t", doc.title));
+    if (doc.oneliner) a.appendChild(el("span", "d", doc.oneliner));
+    cards.appendChild(a);
+  });
+  frag.appendChild(cards);
+  return frag;
+}
+
+function renderDoc(doc) {
+  const frag = document.createDocumentFragment();
+  const head = el("div", "doc-head");
+  head.appendChild(chipFor(doc));
+  if (doc.date) head.appendChild(el("span", "doc-date", doc.date));
+  head.appendChild(el("span", "doc-file", doc.file));
+  frag.appendChild(head);
+  frag.appendChild(el("h1", "doc-title", doc.title));
+
+  const body = el("div", "doc-body");
+  if (doc.isHtml) {
+    const n = el("div", "notice");
+    n.appendChild(document.createTextNode("HTML資料です。"));
+    if (MODE.live) {
+      n.appendChild(document.createTextNode(" 下に埋め込み表示します（うまく表示されない場合は "));
+      const a = el("a", "", "原本を開く");
+      a.href = doc.file;
+      a.target = "_blank";
+      n.appendChild(a);
+      n.appendChild(document.createTextNode("）。"));
+      body.appendChild(n);
+      const f = document.createElement("iframe");
+      f.className = "htmldoc";
+      f.src = doc.file;
+      body.appendChild(f);
+    } else {
+      n.appendChild(document.createTextNode(" スナップショットには内容を含めていません。ローカルの "));
+      const c = el("code", "", "docs/" + doc.file);
+      n.appendChild(c);
+      n.appendChild(document.createTextNode(" を開いてください。"));
+      body.appendChild(n);
+    }
+    frag.appendChild(body);
+    return frag;
+  }
+
+  const resolver = linkResolverFor(DOCS);
+  if (doc.tldrMd) {
+    const t = el("div", "tldr");
+    t.appendChild(el("span", "tag", "要旨 / ABSTRACT"));
+    const inner = el("div");
+    inner.innerHTML = renderMd(doc.tldrMd, resolver);
+    t.appendChild(inner);
+    body.appendChild(t);
+  }
+  const md = el("div", "md");
+  md.innerHTML = renderMd(doc.bodyMd, resolver);
+  const h2s = md.querySelectorAll("h2");
+  if (h2s.length > 1) {
+    const toc = el("nav", "toc");
+    h2s.forEach((h2el, k) => {
+      h2el.id = doc.slug + "--s" + k;
+      const a = el("a", "", h2el.textContent);
+      a.href = "#" + h2el.id;
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        h2el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      });
+      toc.appendChild(a);
+    });
+    body.appendChild(toc);
+  }
+  body.appendChild(md);
+  frag.appendChild(body);
+  return frag;
+}
+
+function setPanel(i, dir) {
+  panel.style.setProperty("--slide", dir >= 0 ? "-14px" : "14px");
+  if (!reduced) {
+    panel.classList.add("is-leaving");
+    void panel.offsetWidth;
+  }
+  panel.replaceChildren(i === 0 ? renderOverview() : renderDoc(DOCS[i - 1]));
+  window.scrollTo(0, 0);
+  if (!reduced) requestAnimationFrame(() => panel.classList.remove("is-leaving"));
+}
+
+function go(i, fromHash) {
+  const total = DOCS.length + 1;
+  const next = ((i % total) + total) % total;
+  const dir = next - current;
+  current = next;
+  const tabs = rail.querySelectorAll(".tab");
+  tabs.forEach((t, k) => t.setAttribute("aria-selected", String(k === current)));
+  const active = tabs[current];
+  if (active && active.scrollIntoView) {
+    active.scrollIntoView({ inline: "nearest", block: "nearest", behavior: reduced ? "auto" : "smooth" });
+  }
+  counter.replaceChildren(
+    document.createTextNode(String(current + 1).padStart(2, "0") + " "),
+    Object.assign(el("span", "of"), { textContent: "/ " + String(total).padStart(2, "0") }),
+  );
+  setPanel(current, dir);
+  const slug = current === 0 ? "overview" : DOCS[current - 1].slug;
+  if (!fromHash && "#" + slug !== location.hash) history.replaceState(null, "", "#" + slug);
+}
+
+function fromHash() {
+  const h = decodeURIComponent(location.hash.replace("#", ""));
+  if (!h || h === "overview") return 0;
+  const i = DOCS.findIndex((d) => d.slug === h || h.startsWith(d.slug + "--s"));
+  return i === -1 ? 0 : i + 1;
+}
+
+function buildRail() {
+  rail.replaceChildren();
+  const tabs = [{ title: "概要" }, ...DOCS];
+  tabs.forEach((t, i) => {
+    const b = el("button", "tab");
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", "false");
+    b.appendChild(el("span", "idx", i === 0 ? "◇" : String(i).padStart(2, "0")));
+    b.appendChild(el("span", "lbl", t.title));
+    b.addEventListener("click", () => go(i));
+    rail.appendChild(b);
+  });
+}
+
+function initApp() {
+  document.getElementById("pageTitle").textContent = (MODE.project ? MODE.project + " " : "") + "ドキュメントビューア";
+  document.getElementById("eyebrow").textContent = (MODE.project || "PROJECT") + " / DOCS";
+  document.getElementById("foot").textContent = MODE.live
+    ? "live mode — docs/ の現在の内容を直接表示（保存後はリロードで反映） ・ 索引: docs/README.md"
+    : "snapshot " + MODE.generatedAt + " ・ 内容の正は各原本ファイル。原本更新時は再生成が必要";
+  buildRail();
+  go(fromHash(), true);
+  document.title = (MODE.project ? MODE.project + " " : "") + "Docs";
+}
+
+function showFatal(messageNodes) {
+  const n = el("div", "notice");
+  for (const node of messageNodes) n.appendChild(node);
+  panel.replaceChildren(n);
+  counter.textContent = "--";
+}
+
+async function loadLive() {
+  let readme = "";
+  try {
+    const r = await fetch("README.md", { cache: "no-cache" });
+    if (r.ok) readme = await r.text();
+  } catch (e) {
+    showFatal([
+      document.createTextNode("ファイルを読み込めません（file:// 直接オープンでは動きません）。プロジェクトルートで静的サーバを起動してください: "),
+      el("code", "", "python -m http.server 8000"),
+      document.createTextNode(" → http://localhost:8000/docs/viewer.html"),
+    ]);
+    return;
+  }
+  const rows = parseReadmeRows(readme);
+  const files = {};
+  const htmlFiles = [];
+  await Promise.all(rows.map(async (row) => {
+    if (/\.html?$/i.test(row.file)) { htmlFiles.push(row.file); return; }
+    try {
+      const r = await fetch(row.file, { cache: "no-cache" });
+      if (r.ok) files[row.file] = await r.text();
+    } catch (e) { /* leave missing; row still listed */ }
+  }));
+  if (!rows.length) {
+    showFatal([
+      document.createTextNode("docs/README.md の索引テーブル（| [file](file) | 種類 | 概要 | 形式）が見つかりません。索引を作成するか、スナップショット生成をご利用ください。"),
+    ]);
+    return;
+  }
+  MODE = { live: true, generatedAt: "", project: (window.__DOCS_PROJECT__ || "") };
+  DOCS = buildDocs(readme, files, htmlFiles);
+  initApp();
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => go(current - 1));
+document.getElementById("nextBtn").addEventListener("click", () => go(current + 1));
+document.addEventListener("keydown", (e) => {
+  if (e.target instanceof HTMLElement && /^(input|textarea|select)$/i.test(e.target.tagName)) return;
+  if (e.key === "ArrowLeft") { e.preventDefault(); go(current - 1); }
+  if (e.key === "ArrowRight") { e.preventDefault(); go(current + 1); }
+  if (e.key === "Home") { e.preventDefault(); go(0); }
+});
+window.addEventListener("hashchange", () => go(fromHash(), true));
+let touchX = null;
+const stageEl = document.getElementById("stage");
+stageEl.addEventListener("touchstart", (e) => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+stageEl.addEventListener("touchend", (e) => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  touchX = null;
+  if (Math.abs(dx) < 48) return;
+  go(current + (dx < 0 ? 1 : -1));
+}, { passive: true });
+
+if (window.__DOCS_DATA__) {
+  const D = window.__DOCS_DATA__;
+  MODE = { live: false, generatedAt: D.generatedAt || "", project: D.project || "" };
+  DOCS = buildDocs(D.readme || "", D.files || {}, D.htmlFiles || []);
+  initApp();
+} else {
+  loadLive();
+}
+</script>

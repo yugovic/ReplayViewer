@@ -1,0 +1,185 @@
+{
+  "baseline": "shizuoka 20cm SR (RealPLKSR x4->2x s=0.5, graded)",
+  "rows": [
+    {
+      "id": "01",
+      "kind": "on-track",
+      "distM": 0.0,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 59.4,
+          "maniqa": 0.31
+        },
+        "generated": {
+          "musiq": 67.89,
+          "maniqa": 0.4
+        }
+      }
+    },
+    {
+      "id": "02",
+      "kind": "on-track",
+      "distM": 569.6,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 57.3,
+          "maniqa": 0.3
+        },
+        "generated": {
+          "musiq": 66.04,
+          "maniqa": 0.41
+        }
+      }
+    },
+    {
+      "id": "03",
+      "kind": "on-track",
+      "distM": 1139.1,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 56.66,
+          "maniqa": 0.3
+        },
+        "generated": {
+          "musiq": 59.02,
+          "maniqa": 0.36
+        }
+      }
+    },
+    {
+      "id": "04",
+      "kind": "on-track",
+      "distM": 1708.7,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 57.91,
+          "maniqa": 0.25
+        },
+        "generated": {
+          "musiq": 60.63,
+          "maniqa": 0.29
+        }
+      }
+    },
+    {
+      "id": "05",
+      "kind": "on-track",
+      "distM": 2278.2,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 60.49,
+          "maniqa": 0.27
+        },
+        "generated": {
+          "musiq": 65.04,
+          "maniqa": 0.36
+        }
+      }
+    },
+    {
+      "id": "06",
+      "kind": "on-track",
+      "distM": 2847.8,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 59.72,
+          "maniqa": 0.28
+        },
+        "generated": {
+          "musiq": 65.17,
+          "maniqa": 0.35
+        }
+      }
+    },
+    {
+      "id": "07",
+      "kind": "on-track",
+      "distM": 3417.3,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 61.48,
+          "maniqa": 0.28
+        },
+        "generated": {
+          "musiq": 70.1,
+          "maniqa": 0.38
+        }
+      }
+    },
+    {
+      "id": "08",
+      "kind": "on-track",
+      "distM": 3986.9,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 59.08,
+          "maniqa": 0.28
+        },
+        "generated": {
+          "musiq": 66.4,
+          "maniqa": 0.37
+        }
+      }
+    },
+    {
+      "id": "09",
+      "kind": "on-track (既存トライアル地点)",
+      "distM": 1519.2,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 50.08,
+          "maniqa": 0.27
+        },
+        "generated": {
+          "musiq": 65.09,
+          "maniqa": 0.37
+        }
+      }
+    },
+    {
+      "id": "10",
+      "kind": "off-track",
+      "distM": 227.8,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 53.63,
+          "maniqa": 0.32
+        },
+        "generated": {
+          "musiq": 63.93,
+          "maniqa": 0.4
+        }
+      }
+    },
+    {
+      "id": "11",
+      "kind": "off-track",
+      "distM": 2050.4,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 56.94,
+          "maniqa": 0.23
+        },
+        "generated": {
+          "musiq": 66.77,
+          "maniqa": 0.27
+        }
+      }
+    },
+    {
+      "id": "12",
+      "kind": "off-track",
+      "distM": 3645.1,
+      "iqa": {
+        "shizuokaSR": {
+          "musiq": 59.16,
+          "maniqa": 0.25
+        },
+        "generated": {
+          "musiq": 67.32,
+          "maniqa": 0.32
+        }
+      }
+    }
+  ]
+}

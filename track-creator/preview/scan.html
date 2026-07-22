@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Fuji Asset Replay</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #0e1116; }
+      #hud {
+        position: fixed; top: 10px; left: 12px; z-index: 10;
+        color: #d5deea; font: 12px/1.5 ui-monospace, Consolas, monospace;
+        background: rgba(10,13,18,.78); padding: 8px 12px; border-radius: 8px;
+        pointer-events: none; white-space: pre;
+      }
+      #panel {
+        position: fixed; top: 10px; right: 12px; z-index: 10; width: 300px;
+        background: rgba(10,13,18,.88); border: 1px solid #263142;
+        border-radius: 8px; padding: 12px 14px; color: #d5deea;
+        font: 13px/1.6 ui-monospace, Consolas, monospace;
+      }
+      #panel.diagnostic-open { width: 440px; max-height: calc(100vh - 44px); overflow-y: auto; }
+      #panel h2 { font-size: 13px; margin: 0 0 8px; color: #91acd4; }
+      #panel label { display: block; margin: 5px 0 2px; cursor: pointer; }
+      #panel input[type=range] { width: 100%; margin: 7px 0 2px; }
+      #panel select, #panel button, #panel input[type=number] {
+        color: #dce5f2; background: #151b24; border: 1px solid #344154;
+        border-radius: 5px; padding: 5px 8px; font: inherit;
+      }
+      #panel select { width: 100%; }
+      #panel button { cursor: pointer; min-width: 74px; }
+      #panel button:hover { background: #202a38; }
+      #panel button:disabled { opacity: .42; cursor: not-allowed; }
+      #transport { display: flex; gap: 7px; align-items: center; margin-top: 8px; }
+      #timeLabel { margin-left: auto; font-size: 11px; color: #9eadc2; }
+      #alignment { margin-top: 9px; padding-top: 8px; border-top: 1px solid #263142; }
+      #alignment h3 { margin: 0 0 5px; color: #91acd4; font-size: 12px; }
+      .offset-row { display: grid; grid-template-columns: 78px 1fr 30px; gap: 6px; align-items: center; margin: 4px 0; }
+      .offset-row input { width: 100%; box-sizing: border-box; }
+      .offset-row span { color: #8290a4; }
+      .fit-toggle { display: flex !important; align-items: center; gap: 7px; margin: 7px 0 4px !important; }
+      .fit-toggle input { margin: 0; }
+      #panel input:disabled { opacity: .45; cursor: not-allowed; }
+      #alignmentActions { display: flex; gap: 6px; margin-top: 7px; }
+      #alignmentActions button { min-width: 0; flex: 1; }
+      #alignmentHint { margin-top: 5px; color: #8290a4; font-size: 10px; line-height: 1.45; }
+      #diagnosticToggle { margin-top: 9px !important; padding-top: 8px; border-top: 1px solid #263142; color: #86d5e8; }
+      #diagnostics { margin-top: 7px; padding: 9px; background: rgba(19,27,37,.86); border: 1px solid #314156; border-radius: 6px; }
+      #diagnostics[hidden] { display: none; }
+      #diagnostics h3 { margin: 0 0 6px; color: #86d5e8; font-size: 12px; }
+      #diagnostics h4 { margin: 0 0 5px; color: #a8bacf; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+      .diagnostic-section { margin-top: 9px; padding-top: 8px; border-top: 1px solid #2a3748; }
+      .anchor-card { margin: 6px 0; padding: 7px; border: 1px solid #2e3c4f; border-radius: 5px; background: rgba(8,12,17,.32); }
+      .anchor-primary { display: grid; grid-template-columns: minmax(108px, 1fr) 70px 58px 38px; gap: 5px; align-items: center; }
+      .anchor-review { display: grid; grid-template-columns: minmax(130px, 1fr) 78px; gap: 5px; margin-top: 5px; }
+      .anchor-range { display: grid; grid-template-columns: 30px 1fr 14px 1fr 36px 1fr; gap: 4px; align-items: center; margin-top: 5px; color: #8290a4; font-size: 9px; }
+      #panel .anchor-card button, #panel .anchor-card select, #panel .anchor-card input { min-width: 0; width: 100%; box-sizing: border-box; padding: 4px 5px; font-size: 10px; }
+      .anchor-card .anchor-jump { text-align: left; }
+      .anchor-card .anchor-time { font-variant-numeric: tabular-nums; }
+      .anchor-card.unreviewed { border-color: #7b5d33; }
+      .anchor-card.reviewed { border-color: #315a50; }
+      #fitActions, #satelliteActions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+      #fitActions button, #satelliteActions button { min-width: 62px; flex: 1 1 62px; font-size: 10px; }
+      #autoFitBtn { border-color: #4f8794 !important; color: #a5eef8 !important; }
+      #autoFitResult, #satelliteStatus { margin: 6px 0 0; padding: 6px; background: rgba(8,12,17,.45); color: #c9d7e8; font: 9px/1.5 ui-monospace, Consolas, monospace; white-space: pre-wrap; border-radius: 4px; }
+      #satelliteRow { display: grid; grid-template-columns: 1fr 112px; gap: 7px; align-items: center; }
+      #satelliteRow label { margin: 0 !important; }
+      #satelliteSource { width: 100%; font-size: 10px; padding: 4px 5px; }
+      #satelliteOpacity { width: 100%; }
+      #diagnosticLegend { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 7px 0 4px; color: #9eadc2; font-size: 10px; }
+      .legend-swatch { display: inline-block; width: 9px; height: 9px; margin-right: 4px; border-radius: 50%; }
+      .legend-raw { background: #29d9ff; }
+      .legend-aligned { background: #ffb547; }
+      .legend-left { background: #42e88b; }
+      .legend-right { background: #ff625c; }
+      #diagnosticMetrics { margin: 5px 0 0; color: #dce5f2; font: 10px/1.5 ui-monospace, Consolas, monospace; white-space: pre-wrap; }
+      #diagnosticComparison { margin-top: 7px; overflow-x: auto; }
+      #diagnosticComparison table { width: 100%; border-collapse: collapse; font-size: 9px; line-height: 1.35; }
+      #diagnosticComparison th, #diagnosticComparison td { padding: 3px 4px; border-bottom: 1px solid #2a3748; text-align: right; white-space: nowrap; }
+      #diagnosticComparison th:first-child, #diagnosticComparison td:first-child { text-align: left; }
+      #diagnosticComparison .active-lap { background: rgba(134,213,232,.1); color: #eaf8fb; }
+      #diagnosticHint { margin-top: 6px; color: #8290a4; font-size: 9px; line-height: 1.45; }
+      #lapInfo { margin-top: 7px; padding-top: 7px; border-top: 1px solid #263142; font-size: 11px; color: #9eadc2; }
+      #loading {
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        color: #d5deea; font: 16px ui-monospace, Consolas, monospace; z-index: 20;
+      }
+      @media (max-width: 620px) {
+        #panel, #panel.diagnostic-open { left: 8px; right: 8px; width: auto; max-height: calc(100vh - 40px); overflow-y: auto; }
+        #hud { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">Loading Fuji circuit assets...</div>
+    <div id="hud"></div>
+    <div id="panel" style="display:none">
+      <h2>Fuji Asset Replay</h2>
+      <label for="lapSelect">Logger lap</label>
+      <select id="lapSelect"></select>
+      <div id="transport">
+        <button id="playBtn" type="button">Pause</button>
+        <select id="speedSelect" aria-label="Playback speed" style="width:auto">
+          <option value="0.5">0.5x</option>
+          <option value="1" selected>1x</option>
+          <option value="2">2x</option>
+          <option value="4">4x</option>
+        </select>
+        <span id="timeLabel">0:00.0</span>
+      </div>
+      <input type="range" id="timeSlider" min="0" max="1" step="0.01" value="0" aria-label="Replay time" />
+      <label><input type="checkbox" id="followChk" checked /> Follow vehicle</label>
+      <section id="alignment">
+        <h3>Logger alignment</h3>
+        <label class="offset-row" for="offsetX"><span>X (east)</span><input id="offsetX" type="number" step="0.1" value="0.0" /><span>m</span></label>
+        <label class="offset-row" for="offsetZ"><span>Z (south)</span><input id="offsetZ" type="number" step="0.1" value="0.0" /><span>m</span></label>
+        <label class="fit-toggle"><input id="rigidFitChk" type="checkbox" /> 2-point rigid fit</label>
+        <label class="offset-row" for="rotationDeg"><span>Map rot.</span><input id="rotationDeg" type="number" step="0.1" value="0.0" /><span>deg</span></label>
+        <div id="alignmentActions">
+          <button id="topViewBtn" type="button">Top view</button>
+          <button id="applyEstimateBtn" type="button">X/Z estimate</button>
+          <button id="resetOffsetBtn" type="button">Identity</button>
+        </div>
+        <div id="alignmentHint">Map rotation is experimental and stays off by default.<br />Arrow keys: 0.1 m / Shift + arrows: 1 m</div>
+      </section>
+      <label id="diagnosticToggle" class="fit-toggle"><input id="diagnosticChk" type="checkbox" /> Diagnostic mode</label>
+      <section id="diagnostics" hidden>
+        <h3>Three-point anchor audit</h3>
+        <div id="anchorControls">
+          <div id="anchorCardA" class="anchor-card unreviewed">
+            <div class="anchor-primary">
+              <button id="jumpAnchorA" class="anchor-jump" type="button">A Brake</button>
+              <input id="anchorTimeA" class="anchor-time" type="number" min="0" step="0.01" value="12.57" aria-label="Anchor A AiM lap time in seconds" title="AiM video lap timer, seconds" />
+              <select id="anchorSideA" aria-label="Anchor A target side"><option value="left">Left</option><option value="right">Right</option></select>
+              <button id="setAnchorA" type="button" title="Set anchor A to the current replay position">Set</button>
+            </div>
+            <div class="anchor-review">
+              <select id="anchorRelationA" aria-label="Anchor A video curb relation">
+                <option value="unreviewed">Video: unreviewed</option><option value="graze">Grazes boundary</option><option value="on-curb">Tyre on curb</option><option value="over-curb">Beyond curb</option><option value="near">Near, no touch</option><option value="clear">Clear gap</option><option value="custom">Manual range</option>
+              </select>
+              <select id="anchorConfidenceA" aria-label="Anchor A observation confidence"><option value="high">High</option><option value="medium">Medium</option><option value="low" selected>Low</option></select>
+            </div>
+            <div class="anchor-range"><span>gap</span><input id="anchorGapMinA" type="number" step="0.05" value="0.10" aria-label="Anchor A minimum video gap" /><span>to</span><input id="anchorGapMaxA" type="number" step="0.05" value="0.10" aria-label="Anchor A maximum video gap" /><span>+off</span><input id="anchorBoundaryOffsetA" type="number" step="0.05" value="0.00" aria-label="Anchor A video boundary to collision edge offset" /></div>
+          </div>
+          <div id="anchorCardB" class="anchor-card unreviewed">
+            <div class="anchor-primary">
+              <button id="jumpAnchorB" class="anchor-jump" type="button">B T1 clip</button>
+              <input id="anchorTimeB" class="anchor-time" type="number" min="0" step="0.01" value="16.60" aria-label="Anchor B AiM lap time in seconds" title="AiM video lap timer, seconds" />
+              <select id="anchorSideB" aria-label="Anchor B target side"><option value="left">Left</option><option value="right" selected>Right</option></select>
+              <button id="setAnchorB" type="button" title="Set anchor B to the current replay position">Set</button>
+            </div>
+            <div class="anchor-review">
+              <select id="anchorRelationB" aria-label="Anchor B video curb relation">
+                <option value="unreviewed">Video: unreviewed</option><option value="graze">Grazes boundary</option><option value="on-curb">Tyre on curb</option><option value="over-curb">Beyond curb</option><option value="near">Near, no touch</option><option value="clear">Clear gap</option><option value="custom">Manual range</option>
+              </select>
+              <select id="anchorConfidenceB" aria-label="Anchor B observation confidence"><option value="high">High</option><option value="medium">Medium</option><option value="low" selected>Low</option></select>
+            </div>
+            <div class="anchor-range"><span>gap</span><input id="anchorGapMinB" type="number" step="0.05" value="0.10" aria-label="Anchor B minimum video gap" /><span>to</span><input id="anchorGapMaxB" type="number" step="0.05" value="0.10" aria-label="Anchor B maximum video gap" /><span>+off</span><input id="anchorBoundaryOffsetB" type="number" step="0.05" value="0.00" aria-label="Anchor B video boundary to collision edge offset" /></div>
+          </div>
+          <div id="anchorCardC" class="anchor-card unreviewed">
+            <div class="anchor-primary">
+              <button id="jumpAnchorC" class="anchor-jump" type="button">C T2 clip</button>
+              <input id="anchorTimeC" class="anchor-time" type="number" min="0" step="0.01" value="25.97" aria-label="Anchor C AiM lap time in seconds" title="AiM video lap timer, seconds" />
+              <select id="anchorSideC" aria-label="Anchor C target side"><option value="left">Left</option><option value="right" selected>Right</option></select>
+              <button id="setAnchorC" type="button" title="Set anchor C to the current replay position">Set</button>
+            </div>
+            <div class="anchor-review">
+              <select id="anchorRelationC" aria-label="Anchor C video curb relation">
+                <option value="unreviewed">Video: unreviewed</option><option value="graze">Grazes boundary</option><option value="on-curb">Tyre on curb</option><option value="over-curb">Beyond curb</option><option value="near">Near, no touch</option><option value="clear">Clear gap</option><option value="custom">Manual range</option>
+              </select>
+              <select id="anchorConfidenceC" aria-label="Anchor C observation confidence"><option value="high">High</option><option value="medium">Medium</option><option value="low" selected>Low</option></select>
+            </div>
+            <div class="anchor-range"><span>gap</span><input id="anchorGapMinC" type="number" step="0.05" value="0.10" aria-label="Anchor C minimum video gap" /><span>to</span><input id="anchorGapMaxC" type="number" step="0.05" value="0.10" aria-label="Anchor C maximum video gap" /><span>+off</span><input id="anchorBoundaryOffsetC" type="number" step="0.05" value="0.00" aria-label="Anchor C video boundary to collision edge offset" /></div>
+          </div>
+        </div>
+        <div id="fitActions">
+          <button id="autoFitBtn" type="button">Solve X/Z</button>
+          <button id="applyAutoFitBtn" type="button" disabled>Apply preview</button>
+          <button id="undoAutoFitBtn" type="button" disabled>Restore</button>
+          <button id="resetAnchorsBtn" type="button">Defaults</button>
+          <button id="refreshDiagnostics" type="button">Refresh</button>
+        </div>
+        <pre id="autoFitResult" aria-live="polite">Confirm video relation at A/B/C, then solve a translation-only fit.</pre>
+        <div class="diagnostic-section">
+          <h4>Satellite comparison</h4>
+          <div id="satelliteRow">
+            <label class="fit-toggle"><input id="satelliteChk" type="checkbox" /> Photo overlay</label>
+            <select id="satelliteSource" aria-label="Satellite image source">
+              <option value="esri">Esri z19</option>
+              <option value="bing">Bing z19</option>
+            </select>
+          </div>
+          <input id="satelliteOpacity" type="range" min="0.10" max="0.85" step="0.05" value="0.50" aria-label="Satellite overlay opacity" />
+          <div id="satelliteActions"><button id="circuitViewBtn" type="button">Full circuit</button></div>
+          <div id="satelliteStatus">Geo-locked to the GPS origin. Visual validation only; not part of X/Z fitting.</div>
+        </div>
+        <div id="diagnosticLegend">
+          <span><i class="legend-swatch legend-raw"></i>Raw log</span>
+          <span><i class="legend-swatch legend-aligned"></i>Aligned</span>
+          <span><i class="legend-swatch legend-left"></i>Left edge</span>
+          <span><i class="legend-swatch legend-right"></i>Right edge</span>
+        </div>
+        <pre id="diagnosticMetrics" aria-live="polite">Enable an anchor or move the time slider.</pre>
+        <div id="diagnosticComparison">Select A, B or C to compare all laps.</div>
+        <div id="diagnosticHint">AiM time sets the station on the active lap. gap is the video relation range; +off is visible-boundary to collision-edge distance. The solver still measures the 1.695 m envelope against the MOD collision edge and changes only global X/Z.</div>
+      </section>
+      <div id="lapInfo"></div>
+    </div>
+    <script type="module" src="./scan.ts"></script>
+  </body>
+</html>

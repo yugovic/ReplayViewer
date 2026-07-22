@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Gemini トゥーン化パイロット比較 (富士12地点)</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; padding: 16px 20px 60px; background: #14171a; color: #dfe5e8;
+         font-family: "Segoe UI", "Hiragino Sans", sans-serif; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .sub { color: #8aa0aa; font-size: 12.5px; margin-bottom: 14px; line-height: 1.6; }
+  .sub b { color: #cfe3ec; }
+  .row { display: grid; grid-template-columns: 130px repeat(4, minmax(0, 1fr)); gap: 8px;
+         align-items: start; margin-bottom: 14px; }
+  .head { position: sticky; top: 0; background: #14171a; z-index: 5; padding: 6px 0;
+          border-bottom: 1px solid #2c343a; margin-bottom: 10px; }
+  .head .cell { font-size: 12px; color: #9fb4be; font-weight: 600; }
+  .meta { font-size: 12px; line-height: 1.7; padding-top: 4px; }
+  .meta .id { font-size: 15px; font-weight: 700; color: #fff; }
+  .meta .kind { color: #7fd0a0; }
+  .meta .ov { color: #e8f16c; }
+  .meta .note { color: #8aa0aa; }
+  figure { margin: 0; }
+  img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px;
+        display: block; background: #000; cursor: zoom-in; }
+  .missing { width: 100%; aspect-ratio: 1; border: 1px dashed #3a444b; border-radius: 4px;
+             display: flex; align-items: center; justify-content: center;
+             color: #55636c; font-size: 12px; }
+  .hint { font-size: 11px; color: #66757e; margin-top: 3px; text-align: center; }
+  /* lightbox */
+  #lb { position: fixed; inset: 0; background: rgba(0 0 0 / 92%); display: none;
+        align-items: center; justify-content: center; z-index: 50; cursor: zoom-out; }
+  #lb.on { display: flex; }
+  #lb img { max-width: 96vw; max-height: 92vh; width: auto; height: auto;
+            aspect-ratio: auto; object-fit: contain; cursor: zoom-out; }
+  #lb .cap { position: fixed; bottom: 12px; left: 0; right: 0; text-align: center;
+             color: #cfe3ec; font-size: 13px; }
+  kbd { background: #2c343a; border-radius: 3px; padding: 0 5px; font-size: 11px; }
+</style>
+</head>
+<body>
+<h1>Gemini トゥーン化パイロット比較 — 富士 12地点</h1>
+<div class="sub">
+  モデル: <b>gemini-3.1-flash-image</b>（採用列）。スタイル参照 = ai_illustrated_tile_nologo.png。
+  <b>重ね合わせ</b> = 元写真(白黒) + トゥーン版の輪郭(赤)。赤線が写真の地物に乗っていれば位置忠実。
+  <b>edge-overlap</b> = トゥーン輪郭が写真輪郭に載る割合(1.00が最良)。全体シフトは全タイル ≤0.4px@512(≈0.16m)。<br>
+  画像クリックで原寸表示。<b>トゥーン(採用)列は画像の上にマウスを置くと元写真に切り替わります</b>(A/B比較)。
+</div>
+
+<div class="row head">
+  <div class="cell">地点</div>
+  <div class="cell">元写真 (0.2m/px)</div>
+  <div class="cell">トゥーン 採用版 (hover=元写真)</div>
+  <div class="cell">重ね合わせ検証</div>
+  <div class="cell">flash-lite 試作 (1/3価格)</div>
+</div>
+<div id="rows"></div>
+
+<div id="lb" onclick="this.classList.remove('on')"><img id="lbimg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""><div class="cap" id="lbcap"></div></div>
+
+<script>
+const TILES = [
+  { id: "01", kind: "on-track",  note: "S/F・赤シェブロン",        gen: "pilot_01_gen_v2.png", ov: 0.99 },
+  { id: "02", kind: "on-track",  note: "ストレート (v4=ロゴ幻覚修正)", gen: "pilot_02_gen_v4.png", ov: 0.98, lite: 1 },
+  { id: "03", kind: "on-track",  note: "ブリッジ",                gen: "pilot_03_gen_v2.png", ov: 0.99 },
+  { id: "04", kind: "on-track",  note: "林縁カーブ",              gen: "pilot_04_gen_v2.png", ov: 0.91 },
+  { id: "05", kind: "on-track",  note: "緑縁石区間",              gen: "pilot_05_gen_v2.png", ov: 0.98 },
+  { id: "06", kind: "on-track",  note: "ガントリー",              gen: "pilot_06_gen_v2.png", ov: 1.00 },
+  { id: "07", kind: "on-track",  note: "ヘアピン",                gen: "pilot_07_gen_v2.png", ov: 0.99 },
+  { id: "08", kind: "on-track",  note: "複合区間",                gen: "pilot_08_gen_v2.png", ov: 0.98 },
+  { id: "09", kind: "on-track",  note: "コカ・コーラ (ロゴ実在)",   gen: "pilot_09_gen_v2.png", ov: 1.00, lite: 1 },
+  { id: "10", kind: "off-track", note: "パドック建物",             gen: "pilot_10_gen_v2.png", ov: 0.98 },
+  { id: "11", kind: "off-track", note: "森林",                    gen: "pilot_11_gen_v2.png", ov: 1.00, lite: 1 },
+  { id: "12", kind: "off-track", note: "ランオフ (方形パッチは実在)", gen: "pilot_12_gen_v3.png", ov: 0.97 },
+];
+const G = "gemini-3.1-flash-image/", L = "gemini-3.1-flash-lite-image/";
+const rows = document.getElementById("rows");
+for (const t of TILES) {
+  const src = `../pilot_${t.id}_src.png`;
+  const row = document.createElement("div");
+  row.className = "row";
+  row.innerHTML = `
+    <div class="meta">
+      <div class="id">#${t.id}</div>
+      <div class="kind">${t.kind}</div>
+      <div class="ov">overlap ${t.ov.toFixed(2)}</div>
+      <div class="note">${t.note}</div>
+    </div>
+    <figure><img loading="lazy" src="${src}" data-cap="#${t.id} 元写真"></figure>
+    <figure><img loading="lazy" class="ab" src="${G}${t.gen}" data-a="${G}${t.gen}" data-b="${src}"
+                 data-cap="#${t.id} トゥーン (${t.gen})"><div class="hint">hoverで元写真</div></figure>
+    <figure><img loading="lazy" src="overlay_${t.id}.png" data-cap="#${t.id} 重ね合わせ (赤=トゥーン輪郭)"></figure>
+    ${t.lite
+      ? `<figure><img loading="lazy" src="${L}pilot_${t.id}_gen_lite.png" data-cap="#${t.id} flash-lite"></figure>`
+      : `<div class="missing">lite未生成</div>`}
+  `;
+  rows.appendChild(row);
+}
+document.querySelectorAll(".ab").forEach((img) => {
+  img.addEventListener("mouseenter", () => { img.src = img.dataset.b; });
+  img.addEventListener("mouseleave", () => { img.src = img.dataset.a; });
+});
+const lb = document.getElementById("lb"), lbimg = document.getElementById("lbimg"),
+      lbcap = document.getElementById("lbcap");
+document.querySelectorAll("img[data-cap]").forEach((img) => {
+  img.addEventListener("click", () => {
+    lbimg.src = img.src; lbcap.textContent = img.dataset.cap; lb.classList.add("on");
+  });
+});
+</script>
+</body>
+</html>

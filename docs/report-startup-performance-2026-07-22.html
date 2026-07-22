@@ -1,0 +1,200 @@
+<title>ReplayViewer 起動パフォーマンス実測レポート 2026-07-22</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--line:#262b36;--fg:#e7ebf2;--mut:#9aa4b2;--accent:#4fa3ff;--warn:#ffb454;--bad:#ff6b6b;--good:#5ad19a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:"Segoe UI",Meiryo,system-ui,sans-serif;line-height:1.7;font-size:15px}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:26px;margin:0 0 4px}
+  h2{font-size:20px;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  h3{font-size:16px;margin:24px 0 8px;color:var(--accent)}
+  .sub{color:var(--mut);margin:0 0 24px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+  .kpi{flex:1 1 150px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kpi .n{font-size:24px;font-weight:700}
+  .kpi .l{color:var(--mut);font-size:12px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  .scroll{overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:right;white-space:nowrap}
+  th{background:#1d222b;text-align:right}
+  td.l,th.l{text-align:left}
+  tr:nth-child(even) td{background:#141821}
+  .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid var(--line)}
+  .t-bad{color:var(--bad);border-color:#5a2b2b}
+  .t-warn{color:var(--warn);border-color:#5a4626}
+  .t-good{color:var(--good);border-color:#2b5a45}
+  .t-mut{color:var(--mut)}
+  code{background:#0b0d11;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+  ul{margin:8px 0 8px 0;padding-left:22px}
+  li{margin:5px 0}
+  /* waterfall */
+  .wf{margin:8px 0}
+  .wf .row{display:flex;align-items:center;gap:8px;margin:3px 0}
+  .wf .lab{width:220px;flex:0 0 220px;font-size:12px;color:var(--mut);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .wf .track{position:relative;flex:1;height:16px;background:#0b0d11;border:1px solid var(--line);border-radius:3px}
+  .wf .bar{position:absolute;top:1px;height:12px;border-radius:2px;background:var(--accent)}
+  .wf .bar.big{background:var(--bad)}
+  .wf .bar.mid{background:var(--warn)}
+  .wf .val{font-size:11px;color:var(--mut);width:70px;flex:0 0 70px}
+  .axis{display:flex;justify-content:space-between;color:var(--mut);font-size:11px;margin-left:228px;border-top:1px solid var(--line);padding-top:2px}
+  .note{color:var(--mut);font-size:12.5px}
+  .bar-legend{display:flex;gap:16px;font-size:12px;color:var(--mut);margin:6px 0 0 228px}
+  .sw{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:middle;margin-right:4px}
+</style>
+
+<div class="wrap">
+<h1>ReplayViewer 起動パフォーマンス実測レポート</h1>
+<p class="sub">対象: Fuji（<code>?track=fuji&amp;race=fuji_aim_01</code>、ユーザーモード） · 計測日 2026-07-22 · Playwright(Chromium) · Vite devサーバ(:5199)</p>
+
+<h2>要旨</h2>
+<div class="card">
+<ul>
+<li><b>起動の体感遅延を支配しているのは1ファイル、<code>satellite_shizuoka.jpg（29.76&nbsp;MB）</code></b>。地上（衛星）テクスチャで、これがダウンロード完了するまで地面はフォールバック表示のまま。ダウンロードだけで <b>約2.0秒（cold）</b>、しかも <b>読み込み開始が起動から約1.5秒後</b>（JSONの直列依存待ち）なので、地面が正しく描かれるのは <b>起動から約3.5秒後（cold）</b>。</li>
+<li>アプリ全体の初期転送量は約 <b>41.6&nbsp;MB</b>。うち <b>約72%（29.76&nbsp;MB）が上記1ファイル</b>。次点は terrain.png 3.64&nbsp;MB、JSバンドル約5&nbsp;MB（<span class="t-mut">dev限定・本番は圧縮で大幅減</span>）、RX3_race.glb 1.46&nbsp;MB、features3d.json 1.06&nbsp;MB。</li>
+<li><b>ローディング表示（スピナー）自体は約0.2秒で消える</b>。onReady は最初の描画フレームで発火し、重いアセットの到着を待たない（<code>ViewerCanvas.tsx:87</code>）。つまり「起動が遅い」の実体は <b>スピナーの時間ではなく、地面テクスチャのポップイン</b>。</li>
+<li><b>朗報（懸念の否定）</b>: <code>scene.glb（40MB）/scene.mod.glb（56MB）</code>、<code>imagegen_trials（440MB, 91枚）</code>、<code>corridor_x2 SRタイル（141枚）</code>、他の衛星バリアント（bing 等）は <b>起動時に一切ダウンロードされない</b>（遅延/視錐台ゲート/プローブ無効化により回避済み）。実測でこれらの取得は0件。</li>
+<li><b>無駄な読み込み</b>: ユーザーモードで OFF のレイヤーの資産が取得されている。最大は <code>features3d.json（1.06&nbsp;MB）</code>（表示は <code>showFeatures3d:false</code> なのに常に fetch）。加えて dev の StrictMode 二重マウントで各種JSONが2〜4回取得される（<span class="t-mut">本番では発生しない</span>）。</li>
+<li><b>削減の第一候補は明確</b>: 29MB衛星画像の軽量化（再圧縮/縮小/WebP・KTX2、または低解像プレースホルダ先行）で <b>−18〜22&nbsp;MB / −1.2〜1.5秒</b> が見込める。並行取得化でさらに <b>−0.5〜1秒</b>。</li>
+</ul>
+</div>
+
+<h2>計測方法</h2>
+<div class="card note">
+<ul>
+<li>Playwright(Chromium, headless, 1600×900) で <code>?track=fuji&amp;race=fuji_aim_01</code> を開き、<code>performance.getEntriesByType("resource"/"navigation")</code> と <code>page.on("response")</code> で全リクエストの URL・転送量・開始/終了時刻を採取。スピナー消滅は <code>.loading-screen</code> 要素の消失で判定。networkidle + 4秒 静定後にスナップショット。</li>
+<li>スクリプト: <code>Temp/measure_startup.mjs</code> / 集計: <code>Temp/analyze.mjs</code> / 生データ: <code>Temp/startup-cold.json</code>, <code>Temp/startup-warm.json</code>。cold=新規コンテキスト（ブラウザキャッシュ空）、warm=直後の再計測。</li>
+<li><b>注意（未検証事項）</b>: 計測は <b>Vite開発サーバ</b>で実施。本番ビルド（<code>vite build</code>+preview）ではJS転送量・圧縮・キャッシュ挙動・StrictMode二重実行が異なる。<b>データアセット（衛星/terrain/glb/json）の傾向は本番でも同一</b>だが、JS系の数値と二重fetchは本番非該当。本番previewでの再計測は未実施。</li>
+<li>アプリ既定のトラックは <code>barber</code>（<code>dataLoader.ts:4</code>）で、Fuji はピッカー/クエリ選択時のみ。重量級アセットは Fuji 側なので Fuji を対象とした。</li>
+</ul>
+</div>
+
+<h2>主要指標（cold / warm）</h2>
+<div class="kpis">
+  <div class="kpi"><div class="n">3.5&nbsp;s</div><div class="l">地面テクスチャ完了まで（cold, 実質コンテンツ完了）</div></div>
+  <div class="kpi"><div class="n">0.2&nbsp;s</div><div class="l">スピナー消滅（cold, onReady=初フレーム）</div></div>
+  <div class="kpi"><div class="n">41.6&nbsp;MB</div><div class="l">初期転送量（うち29.8MBが衛星1枚）</div></div>
+  <div class="kpi"><div class="n">~72%</div><div class="l">総転送に占める satellite_shizuoka.jpg</div></div>
+  <div class="kpi"><div class="n">0&nbsp;件</div><div class="l">起動時の scene.glb / trials / SRタイル取得</div></div>
+</div>
+
+<h2>ウォーターフォール（cold・主要アセット）</h2>
+<div class="card">
+<div class="wf" id="wf"></div>
+<div class="axis"><span>0</span><span>0.9s</span><span>1.8s</span><span>2.7s</span><span>3.6s</span></div>
+<div class="bar-legend">
+  <span><span class="sw" style="background:var(--bad)"></span>&gt;10MB</span>
+  <span><span class="sw" style="background:var(--warn)"></span>1–10MB</span>
+  <span><span class="sw" style="background:var(--accent)"></span>&lt;1MB</span>
+</div>
+<p class="note" style="margin-left:0">注目: 29MB衛星画像は <b>開始が t≈1.5s</b>（JSON依存チェーン後）で、そこから約2.0s。JSバンドル→<code>loadInitialReplay</code>のJSON（track/laps/lap）直列→<code>satellite_meta.json</code>→テクスチャ、という直列鎖が「開始の遅れ」を生む。</p>
+</div>
+
+<h2>転送量が大きい順（cold）</h2>
+<div class="card scroll">
+<table>
+<thead><tr><th class="l">リソース</th><th>転送量</th><th>DL時間</th><th>完了時刻</th><th class="l">分類 / 備考</th></tr></thead>
+<tbody>
+<tr><td class="l">data/tracks/fuji/<b>satellite_shizuoka.jpg</b></td><td>29.76 MB</td><td>1986 ms</td><td>3495 ms</td><td class="l"><span class="tag t-bad">支配的</span> 地上テクスチャ（必須だが過大）</td></tr>
+<tr><td class="l">data/tracks/fuji/<b>terrain.png</b></td><td>3.64 MB</td><td>20–393 ms</td><td>3515 ms</td><td class="l"><span class="tag t-warn">要検討</span> ドレープ標高（レイヤ非依存で必須）</td></tr>
+<tr><td class="l">node_modules/.vite/deps/chunk-*.js</td><td>1.62 MB</td><td>20 ms</td><td>456 ms</td><td class="l"><span class="tag t-mut">dev限定</span> three等（本番は圧縮）</td></tr>
+<tr><td class="l">assets/<b>RX3_race.glb</b></td><td>1.46 MB</td><td>6 ms</td><td>1344 ms</td><td class="l"><span class="tag t-good">必須</span> 車両モデル</td></tr>
+<tr><td class="l">data/tracks/fuji/<b>features3d.json</b></td><td>1.06 MB</td><td>4 ms</td><td>1413 ms</td><td class="l"><span class="tag t-bad">無駄</span> レイヤOFFなのに取得</td></tr>
+<tr><td class="l">node_modules/.vite/deps/react-dom_client.js</td><td>1.01 MB</td><td>10 ms</td><td>210 ms</td><td class="l"><span class="tag t-mut">dev限定</span></td></tr>
+<tr><td class="l">postprocessing.js</td><td>0.61 MB</td><td>19 ms</td><td>460 ms</td><td class="l"><span class="tag t-mut">dev限定</span></td></tr>
+<tr><td class="l">その他 JS（~60ファイル）</td><td>~1.8 MB</td><td>—</td><td>&lt;500 ms</td><td class="l"><span class="tag t-mut">dev限定</span> 本番はバンドル圧縮で激減</td></tr>
+<tr><td class="l">track.json / laps.json / lap.json / *_meta.json / overlays / road_edges / ac_overlay</td><td>~0.6 MB</td><td>—</td><td>~1400 ms</td><td class="l"><span class="tag t-warn">一部無駄</span> OFFレイヤの小JSONも取得</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>ダウンロード時間が長い順（cold）</h2>
+<div class="card scroll">
+<table>
+<thead><tr><th class="l">リソース</th><th>DL時間</th><th>開始</th><th>完了</th><th class="l">意味</th></tr></thead>
+<tbody>
+<tr><td class="l">satellite_shizuoka.jpg</td><td><b>1986 ms</b></td><td>1509 ms</td><td>3495 ms</td><td class="l">単独で起動時間の実体。開始も遅い</td></tr>
+<tr><td class="l">terrain.png（warm実測）</td><td>393 ms</td><td>2123 ms</td><td>2516 ms</td><td class="l">衛星の後ろに直列で続く</td></tr>
+<tr><td class="l">各 .ts/.js モジュール（dev変換）</td><td>~50 ms 台</td><td>~335 ms</td><td>~390 ms</td><td class="l"><span class="t-mut">dev変換のオンザフライ・本番非該当</span></td></tr>
+</tbody>
+</table>
+<p class="note" style="margin-left:0">他アセットは個別DLが数〜20ms程度で、時間軸上は衛星画像が突出。warm(再訪)では satellite が memory/disk キャッシュに載るため体感は改善するが、キャッシュ前提にできない初回訪問が問題。</p>
+</div>
+
+<h2>無駄な読み込み（コード根拠つき）</h2>
+<div class="card">
+<h3>1. features3d.json（1.06 MB）— レイヤOFFでも常に取得 <span class="tag t-bad">検証済</span></h3>
+<ul>
+<li>ユーザープリセットは <code>showFeatures3d: false</code>（<code>src/state/replayStore.ts:21</code>）。3Dフィーチャ層は初期非表示。</li>
+<li>しかし <code>TrackBuilder.ts:953</code> <code>loadFeatures3d(features3dUrl)</code> は<b>可視状態に関係なく必ず実行</b>され、取得後に <code>features3dGroup.visible = features3dVisible</code> を適用（表示だけ後で切るが、fetchは走る）。</li>
+<li>実測でも <code>features3d.json</code> を取得（cold/warmとも）。ユーザーモードでは <b>約1.06MBが丸ごと無駄</b>。</li>
+</ul>
+<h3>2. OFFレイヤの小JSONも取得（road_edges / overlays / ac_overlay / features）<span class="tag t-warn">検証済</span></h3>
+<ul>
+<li><code>showTrackLines:false</code>・<code>showAcOverlay:false</code>（<code>replayStore.ts:23-24</code>）でも、<code>overlays.json</code>（<code>TrackBuilder.ts:978</code>）・<code>road_edges.json</code>（<code>TrackBuilder.ts:882</code>）・<code>ac_overlay.json</code>（<code>ReplayScene.ts:227</code>、可視性に無関係で常時 fetch）を取得。<code>features.json</code>(OSM) も <code>TrackBuilder.ts:942</code> で常時取得（OSM層もOFF）。</li>
+<li>各々は数十KB以下で影響は小さいが、ユーザーモードでは論理的に不要。</li>
+</ul>
+<h3>3. StrictMode 二重マウントによる二重〜四重 fetch <span class="tag t-mut">dev限定・本番非該当</span></h3>
+<ul>
+<li><code>src/main.tsx:7</code> の <code>&lt;StrictMode&gt;</code> により、開発時は effect が2回走る。実測で <code>track.json/laps.json/lap.json/satellite_meta/features3d.json</code> が各2回、<code>terrain_meta.json</code> は4回取得。</li>
+<li><b>本番ビルドでは StrictMode の二重実行は起きない</b>ため、これは開発体験上の話。ただし二重マウント時に TrackBuilder が2度組まれる点は開発時の負荷源。</li>
+</ul>
+</div>
+
+<h2>起動時に「読み込まれていない」もの（懸念の否定・検証済）</h2>
+<div class="card">
+<ul>
+<li><b>scene.glb（40MB）/ scene.mod.glb（56MB）</b>: 取得0件。「drive on AC」有効化時にのみ遅延取得（<code>ReplayScene.ts:239–255, 374</code> <code>ensureAcAssets</code>）。ユーザープリセットは <code>driveOnAc:false</code>。</li>
+<li><b>imagegen_trials（440MB, 91タイル）/ corridor_x2 SRタイル（141枚）</b>: 取得0件。<code>EnhancedCorridorGround.update()</code>（<code>EnhancedCorridorGround.ts:206–242</code>）が視錐台内かつ画面占有 <code>≥64px</code>・距離 <code>≤200m</code> のタイルのみ逐次取得。起動直後のカメラ位置では対象0。マニフェスト(小)のみ取得。</li>
+<li><b>他の衛星バリアント（satellite.jpg 3.5MB, bing 8MB, bing_sr 9.9MB, sr 等）</b>: 取得0件。ユーザーモードは可用性プローブを行わず、許可された1枚（<code>shizuoka_x2</code>→実体 <code>satellite_shizuoka.jpg</code>）のみ（<code>dataLoader.ts:150–152</code>、<code>satelliteVariants.ts:33–39,66</code>）。2026-07-17の調査で指摘された「29MBファイルへのHEADプローブが5.8〜8.9sブロック」は<b>解消済み</b>を確認。</li>
+</ul>
+</div>
+
+<h2>削減候補（優先度つき・推定効果）</h2>
+<div class="card scroll">
+<table>
+<thead><tr><th>優先</th><th class="l">施策</th><th class="l">根拠</th><th>推定削減</th></tr></thead>
+<tbody>
+<tr><td><span class="tag t-bad">P1</span></td><td class="l"><b>satellite_shizuoka.jpg の軽量化</b>（JPEG再圧縮/解像度見直し、WebP化、または GPU圧縮 KTX2/Basis）。あるいは低解像プレースホルダを先行表示し高解像を後追い差し替え（<code>setSatelliteVariant</code> の差し替え機構が既存）。</td><td class="l">29.76MBが総転送の72%・DL約2.0s</td><td>−18〜22 MB<br>−1.2〜1.5 s</td></tr>
+<tr><td><span class="tag t-bad">P1</span></td><td class="l"><b>衛星テクスチャ取得の前倒し・並行化</b>。現状は JS→track/laps/lap JSON→satellite_meta→テクスチャの直列で、DL開始が t≈1.5s。meta と画像取得を初期JSONと並行起動する。</td><td class="l">開始遅延1.5s（<code>dataLoader.ts:153–167</code>→<code>TrackBuilder.ts:870–877</code>）</td><td>−0.5〜1.0 s</td></tr>
+<tr><td><span class="tag t-warn">P2</span></td><td class="l"><b>features3d.json の取得をレイヤ表示に連動</b>（<code>showFeatures3d</code> が false の間は fetch しない／初回表示時に遅延取得）。</td><td class="l"><code>TrackBuilder.ts:953</code> が無条件fetch</td><td>−1.06 MB</td></tr>
+<tr><td><span class="tag t-warn">P2</span></td><td class="l"><b>terrain.png の軽量化</b>（16bitグレースケール/縮小、必要域クロップ）。ドレープ用途で画質要件は低い。</td><td class="l">3.64MB・衛星の直後に直列</td><td>−1〜2 MB</td></tr>
+<tr><td><span class="tag t-good">P3</span></td><td class="l"><b>OFFレイヤの小JSON取得を各フラグに連動</b>（overlays/road_edges/ac_overlay/features をユーザーモードで遅延化）。</td><td class="l"><code>TrackBuilder.ts:942,978,882</code>、<code>ReplayScene.ts:227</code></td><td>−数十〜数百 KB</td></tr>
+<tr><td><span class="tag t-mut">dev</span></td><td class="l">StrictMode 二重fetchは本番非該当。必要なら開発時のみ TrackBuilder の再入をガード。</td><td class="l"><code>main.tsx:7</code></td><td>本番影響なし</td></tr>
+</tbody>
+</table>
+<p class="note" style="margin-left:0">P1の2施策だけで初回起動の「地面が出るまで」を <b>約3.5s → 約1.5〜2.0s</b> に短縮できる見込み（推定・本番未計測）。JSバンドル約5MBは本番ビルドで大幅圧縮されるため、本レポートの削減候補からは除外。</p>
+</div>
+
+<h2>付録: 参考リンク</h2>
+<div class="card note">
+<ul>
+<li>先行調査: <code>docs/investigation-load-time-2026-07-17.md</code>（当時のボトルネックはHEADプローブ、本レポートで解消を確認）。</li>
+<li>生データ: <code>Temp/startup-cold.json</code> / <code>Temp/startup-warm.json</code>、計測: <code>Temp/measure_startup.mjs</code>。</li>
+</ul>
+</div>
+
+</div>
+
+<script>
+// Waterfall: [label, startMs, durationMs, sizeMB], scale 0..3600ms
+const SCALE=3600;
+const rows=[
+ ["JS bundle (vite deps)",120,340,1.6],
+ ["track/laps/lap JSON",900,500,0.3],
+ ["RX3_race.glb",1338,6,1.46],
+ ["features3d.json (無駄)",1409,4,1.06],
+ ["satellite_meta.json",1470,10,0.01],
+ ["satellite_shizuoka.jpg",1509,1986,29.76],
+ ["terrain.png",2123,393,3.64],
+];
+const host=document.getElementById("wf");
+for(const [lab,st,du,mb] of rows){
+  const row=document.createElement("div");row.className="row";
+  const cls=mb>10?"big":(mb>=1?"mid":"");
+  const left=Math.min(100,st/SCALE*100), w=Math.max(0.6,du/SCALE*100);
+  row.innerHTML=`<div class="lab" title="${lab}">${lab}</div>`+
+    `<div class="track"><div class="bar ${cls}" style="left:${left}%;width:${w}%"></div></div>`+
+    `<div class="val">${mb>=1?mb.toFixed(1)+'MB':(mb*1000).toFixed(0)+'KB'}</div>`;
+  host.appendChild(row);
+}
+</script>

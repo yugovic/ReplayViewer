@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fuji 走行ライン位置補正 検証サマリ</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172027;
+      --muted: #61707a;
+      --paper: #f5f1e8;
+      --panel: #fffdf7;
+      --line: #d9d1c2;
+      --accent: #d94b35;
+      --accent-dark: #8f271b;
+      --ok: #1e6a50;
+      --warn: #8a5a13;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(217, 75, 53, 0.08) 1px, transparent 1px) 0 0 / 42px 42px,
+        linear-gradient(rgba(23, 32, 39, 0.05) 1px, transparent 1px) 0 0 / 42px 42px,
+        var(--paper);
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      line-height: 1.75;
+    }
+
+    main { width: min(1040px, calc(100% - 32px)); margin: 34px auto 64px; }
+    header {
+      padding: 30px 34px;
+      color: #fffaf0;
+      background: var(--ink);
+      border-top: 7px solid var(--accent);
+    }
+    header p { margin: 8px 0 0; color: #bdc7cc; }
+    h1, h2 { line-height: 1.3; }
+    h1 { margin: 0; font-size: clamp(25px, 4vw, 42px); letter-spacing: 0.03em; }
+    h2 { margin: 0 0 14px; font-size: 21px; }
+    section {
+      margin-top: 18px;
+      padding: 24px 28px;
+      background: rgba(255, 253, 247, 0.94);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(30, 34, 36, 0.06);
+    }
+    .conclusion { border-left: 7px solid var(--accent); }
+    .conclusion strong { color: var(--accent-dark); }
+    .lead { margin: 0; font-size: 19px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
+    .metric { padding: 14px; background: #f1ede3; border-top: 3px solid var(--ink); }
+    .metric span { display: block; color: var(--muted); font-size: 12px; }
+    .metric b { display: block; margin-top: 2px; font: 700 20px/1.3 Consolas, monospace; }
+    table { width: 100%; border-collapse: collapse; font-family: "Yu Gothic", sans-serif; font-size: 14px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+    th { color: #fff; background: #303b42; }
+    code { padding: 2px 5px; background: #ece7dc; font-family: Consolas, monospace; }
+    .status-bad { color: var(--accent-dark); font-weight: 700; }
+    .status-ok { color: var(--ok); font-weight: 700; }
+    .note { color: var(--muted); font-family: "Yu Gothic", sans-serif; font-size: 13px; }
+    ul { margin-bottom: 0; padding-left: 1.4em; }
+
+    @media (max-width: 760px) {
+      main { width: min(100% - 18px, 1040px); margin-top: 10px; }
+      header, section { padding: 20px 18px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 670px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Fuji 走行ライン位置補正 検証サマリ</h1>
+      <p>オンボード動画OCR同期 / A・B・C境界判定 / 衝突メッシュoffset / X・Z最適化</p>
+    </header>
+
+    <section class="conclusion">
+      <h2>結論</h2>
+      <p class="lead">
+        実データから支持できる<strong>単一の最終X/Zは存在しない</strong>。
+        最小残差候補はコース外走行を増やすため不採用とし、現状は
+        <code>X=-3.5m / Z=-4.4m</code>を安全な暫定値として維持する。
+      </p>
+      <div class="metrics">
+        <div class="metric"><span>不採用候補 X</span><b>-11.76 m</b></div>
+        <div class="metric"><span>不採用候補 Z</span><b>+0.68 m</b></div>
+        <div class="metric"><span>RMSE</span><b>0.65 m</b></div>
+        <div class="metric"><span>路面内率</span><b>64%</b></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>動画同期と判定</h2>
+      <p>実写側のAiM表示をOCRし、概ね <code>AiM時刻 = 比較動画時刻 + 8.57秒</code> と確認した。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>地点</th><th>比較動画</th><th>AiM Lap 6</th><th>判定</th><th>信頼度</th></tr></thead>
+          <tbody>
+            <tr><td>A ホームストレート</td><td>4.00秒</td><td>12.57秒</td><td>左境界をgraze</td><td>高（ユーザー観察を含む）</td></tr>
+            <tr><td>B 1コーナー</td><td>8.03秒</td><td>16.62秒</td><td>右境界をgraze / near</td><td>低（タイヤが見えない）</td></tr>
+            <tr><td>C 2コーナー後</td><td>17.40秒</td><td>25.97秒</td><td>右境界をgraze</td><td>高（ユーザー観察を含む）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>境界offset</h2>
+      <p>可視トラック境界線と衝突メッシュ端との差を、各地点の補正項として計測した。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>地点</th><th>境界offset</th><th>対象側</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td>+0.35 m</td><td>左</td></tr>
+            <tr><td>B</td><td>-0.06 m</td><td>右</td></tr>
+            <tr><td>C</td><td>+0.43 m</td><td>右</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">これはAC authored edgeを可視境界の代理として測った値であり、オンボード映像だけから得た絶対測量値ではない。</p>
+    </section>
+
+    <section>
+      <h2>X/Z最適化結果</h2>
+      <ul>
+        <li><code>X=-11.76m / Z=+0.68m</code>: RMSE 0.65m、路面内率64%で<span class="status-bad">不採用</span>。</li>
+        <li>Bをnear扱いに変更しても<code>X=-11.95m / Z=+0.48m</code>、路面内率63%で<span class="status-bad">不採用</span>。</li>
+        <li>現在値<code>X=-3.5m / Z=-4.4m</code>: 路面内率96%を維持するため<span class="status-ok">暫定維持</span>。</li>
+      </ul>
+      <div class="table-wrap" style="margin-top: 18px;">
+        <table>
+          <thead><tr><th>拘束点</th><th>要求X</th><th>要求Z</th></tr></thead>
+          <tbody>
+            <tr><td>A + B</td><td>-10.12 m</td><td>-0.30 m</td></tr>
+            <tr><td>B + C</td><td>-12.03 m</td><td>-0.91 m</td></tr>
+            <tr><td>A + C</td><td>-17.34 m</td><td>+5.56 m</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">地点ペアごとの要求値が大きく異なるため、平行移動だけでは3地点を同時に再現できない。</p>
+    </section>
+
+    <section>
+      <h2>次に行う検証</h2>
+      <p>
+        元ログは変更せず、ログ座標からCG座標への変換をコース距離に応じて滑らかに変化させる。
+        A/B/Cを拘束点とした区間別位置補正を作り、路面内率91%以上を制約として再評価する。
+      </p>
+      <p class="note">元のSCHD0624.MOVは指定パスで見つからなかったため、今回の解析にはcomparison_fuji_lap6_vs_cg.mp4を使用した。</p>
+    </section>
+  </main>
+</body>
+</html>

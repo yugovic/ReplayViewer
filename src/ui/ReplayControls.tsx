@@ -21,6 +21,15 @@ export function ReplayControls() {
 
   return (
     <section className="controls" aria-label="Replay controls">
+      <button
+        type="button"
+        className="loop-btn"
+        onClick={() => seek(0)}
+        aria-label="Restart from the beginning"
+        title="Restart from the beginning"
+      >
+        ⏮
+      </button>
       <button className="play-button" type="button" onClick={togglePlaying} aria-label={playing ? "Pause" : "Play"}>
         {playing ? "⏸" : "▶"}
       </button>

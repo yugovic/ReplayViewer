@@ -385,3 +385,170 @@ describe("sampleReplay", () => {
     expect(maxErr, `max grounding error ${maxErr.toFixed(4)} m`).toBeLessThanOrEqual(0.05);
   });
 });
+
+describe("smooth playback interpolation (10 Hz stutter fix)", () => {
+  // Long east-heading straight; lap sampled at 1 Hz with ACCELERATING speed
+  // (10 → 20 → 30 m/s), so plain linear interpolation would have a 10 m/s
+  // velocity jump at every knot.
+  const straight = makeTrack([
+    { x: -50, z: 0, dist: 0 },
+    { x: 150, z: 0, dist: 200 },
+  ]);
+  const acceleratingLap = makeLapFromLocalPoints(straight, [
+    { x: 0, z: 0 },
+    { x: 10, z: 0 },
+    { x: 30, z: 0 },
+    { x: 60, z: 0 },
+  ]);
+
+  it("passes exactly through every GPS sample", () => {
+    for (const [time, expectedX] of [
+      [0, 0],
+      [1, 10],
+      [2, 30],
+      [3, 60],
+    ] as const) {
+      const sample = sampleReplay(acceleratingLap, straight, time);
+      expect(sample.x).toBeCloseTo(expectedX, 6);
+      expect(sample.z).toBeCloseTo(0, 6);
+    }
+  });
+
+  it("keeps velocity continuous across a sample boundary (C1, no 100 ms stutter)", () => {
+    const eps = 1e-4;
+    const before =
+      (sampleReplay(acceleratingLap, straight, 2).x - sampleReplay(acceleratingLap, straight, 2 - eps).x) / eps;
+    const after =
+      (sampleReplay(acceleratingLap, straight, 2 + eps).x - sampleReplay(acceleratingLap, straight, 2).x) / eps;
+    // Linear interpolation gives before=20, after=30 (a 10 m/s step). The
+    // Hermite tangent at the knot is (60-10)/2 = 25 m/s on both sides.
+    expect(before).toBeCloseTo(25, 2);
+    expect(after).toBeCloseTo(25, 2);
+  });
+
+  it("interpolates heading continuously between samples (no per-segment snapping)", () => {
+    // Gentle right-hand arc so per-sample headings differ.
+    const arcTrack = makeTrack([
+      { x: -50, z: -50, dist: 0 },
+      { x: 150, z: 150, dist: 283 },
+    ]);
+    const arcLap = makeLapFromLocalPoints(
+      arcTrack,
+      Array.from({ length: 20 }, (_, i) => {
+        const a = (i / 19) * (Math.PI / 2);
+        return { x: 100 * Math.sin(a), z: 100 * (1 - Math.cos(a)) };
+      }),
+    );
+    // Max heading step between two *frames* (1/60 s apart) must be far below
+    // one sample-to-sample heading step (~4.7° here) — piecewise-constant
+    // heading failed this by snapping the whole step at the knot.
+    const dtFrame = 1 / 60;
+    let maxFrameStep = 0;
+    for (let t = 5; t < 14; t += dtFrame) {
+      const h0 = sampleReplay(arcLap, arcTrack, t).heading;
+      const h1 = sampleReplay(arcLap, arcTrack, t + dtFrame).heading;
+      const step = Math.abs(Math.atan2(Math.sin(h1 - h0), Math.cos(h1 - h0)));
+      maxFrameStep = Math.max(maxFrameStep, step);
+    }
+    expect(maxFrameStep).toBeLessThan(0.01); // < 0.6°/frame
+  });
+
+  it("crosses the ±π heading seam the short way (northbound wiggle)", () => {
+    // North = −z, so heading ≈ ±π; tiny x wiggles flip the sign each sample.
+    const northTrack = makeTrack([
+      { x: 0, z: 50, dist: 0 },
+      { x: 0, z: -150, dist: 200 },
+    ]);
+    const northLap = makeLapFromLocalPoints(northTrack, [
+      { x: 0, z: 0 },
+      { x: 0.05, z: -10 },
+      { x: -0.05, z: -20 },
+      { x: 0.05, z: -30 },
+      { x: -0.05, z: -40 },
+    ]);
+    for (let t = 0.5; t < 3.5; t += 0.25) {
+      const heading = sampleReplay(northLap, northTrack, t).heading;
+      // Interpolating ±(π−ε) values the "long way" would pass through 0.
+      expect(Math.abs(heading)).toBeGreaterThan(3.0);
+    }
+  });
+});
+
+describe("projectPointToCenterline spatial-grid path (≥64 segments)", () => {
+  // Reference: the original brute-force scan (first strict improvement wins).
+  function bruteForce(track: TrackData, x: number, z: number) {
+    const points = track.centerline;
+    let bestDistSq = Number.POSITIVE_INFINITY;
+    let bestArcLength = points[0].dist;
+    let bestSignedLateral = 0;
+    for (let i = 0; i < points.length - 1; i += 1) {
+      const a = points[i];
+      const b = points[i + 1];
+      const dx = b.x - a.x;
+      const dz = b.z - a.z;
+      const segmentLengthSq = dx * dx + dz * dz;
+      const t =
+        segmentLengthSq > 0
+          ? Math.min(1, Math.max(0, ((x - a.x) * dx + (z - a.z) * dz) / segmentLengthSq))
+          : 0;
+      const offsetX = x - (a.x + dx * t);
+      const offsetZ = z - (a.z + dz * t);
+      const distSq = offsetX * offsetX + offsetZ * offsetZ;
+      if (distSq < bestDistSq) {
+        bestDistSq = distSq;
+        bestArcLength = a.dist + (b.dist - a.dist) * t;
+        const segLen = Math.sqrt(segmentLengthSq);
+        bestSignedLateral = segLen > 0 ? (dx / segLen) * offsetZ - (dz / segLen) * offsetX : Math.sqrt(distSq);
+      }
+    }
+    return {
+      arcLength: bestArcLength,
+      lateralDistance: Math.sqrt(bestDistSq),
+      signedLateralDistance: bestSignedLateral,
+    };
+  }
+
+  // Closed wiggly loop with 400 points: radius oscillates so distinct track
+  // sections come close together (the ambiguous regions the grid must not
+  // get wrong), well above the 64-segment brute-force cutoff.
+  const points: Array<{ x: number; z: number; dist: number }> = [];
+  let dist = 0;
+  let prevX = Number.NaN;
+  let prevZ = 0;
+  for (let i = 0; i <= 400; i += 1) {
+    const a = (i / 400) * Math.PI * 2;
+    const r = 600 + 180 * Math.sin(5 * a);
+    const x = r * Math.cos(a);
+    const z = r * Math.sin(a);
+    if (!Number.isNaN(prevX)) dist += Math.hypot(x - prevX, z - prevZ);
+    points.push({ x, z, dist });
+    prevX = x;
+    prevZ = z;
+  }
+  const track = makeTrack(points);
+
+  it("matches the brute-force result everywhere, including far outside the loop", () => {
+    // Deterministic pseudo-random queries spanning inside, near-edge and
+    // far-outside-the-grid positions.
+    let seed = 42;
+    const rand = () => {
+      seed = (seed * 1103515245 + 12345) % 2147483648;
+      return seed / 2147483648;
+    };
+    for (let q = 0; q < 2000; q += 1) {
+      const x = (rand() - 0.5) * 3600;
+      const z = (rand() - 0.5) * 3600;
+      const fast = projectPointToCenterline(track, x, z);
+      const ref = bruteForce(track, x, z);
+      expect(fast.lateralDistance, `lateral @ (${x.toFixed(1)}, ${z.toFixed(1)})`).toBeCloseTo(
+        ref.lateralDistance,
+        9,
+      );
+      expect(fast.arcLength, `arc @ (${x.toFixed(1)}, ${z.toFixed(1)})`).toBeCloseTo(ref.arcLength, 9);
+      expect(fast.signedLateralDistance, `signed @ (${x.toFixed(1)}, ${z.toFixed(1)})`).toBeCloseTo(
+        ref.signedLateralDistance,
+        9,
+      );
+    }
+  });
+});

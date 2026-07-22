@@ -9,6 +9,8 @@ import type { LapData, TrackData } from "../replay/types";
 interface ViewerCanvasProps {
   track: TrackData;
   lap: LapData;
+  developerMode?: boolean;
+  onReady?: () => void;
 }
 
 const KEY_CAMERA_MAP: Record<string, CameraMode> = {
@@ -20,9 +22,22 @@ const KEY_CAMERA_MAP: Record<string, CameraMode> = {
   "6": "cinematic",
 };
 
-export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
+export function ViewerCanvas({
+  track,
+  lap,
+  developerMode = false,
+  onReady,
+}: ViewerCanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sceneRef = useRef<ReplayScene | null>(null);
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
+  // The rAF tick below closes over refs (not props) so the scene-building
+  // effect can key on [track] alone: picking another lap swaps replay data via
+  // setLap() instead of tearing down the WebGL context and re-draping the
+  // whole track (measured ~8 s per lap click before the split).
+  const lapRef = useRef(lap);
+  lapRef.current = lap;
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -31,17 +46,27 @@ export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
 
     const replayScene = new ReplayScene(containerRef.current);
     sceneRef.current = replayScene;
-    replayScene.load(track, lap);
+    if (import.meta.env.DEV) {
+      const w = window as unknown as { __replayScene?: ReplayScene; __replayStore?: typeof useReplayStore };
+      w.__replayScene = replayScene;
+      w.__replayStore = useReplayStore;
+    }
+    replayScene.load(track, lapRef.current);
     // Restore ghost / layer visibility already selected in the store
     replayScene.setGhostLap(useReplayStore.getState().ghostLap);
     replayScene.setRoadVisible(useReplayStore.getState().showRoad3d);
     replayScene.setFeaturesVisible(useReplayStore.getState().showOsmFeatures);
     replayScene.setFeatures3dVisible(useReplayStore.getState().showFeatures3d);
     replayScene.setDetailTexture(useReplayStore.getState().showDetailTexture);
+    replayScene.setTrackLines(useReplayStore.getState().showTrackLines);
     replayScene.setSatelliteVariant(useReplayStore.getState().satelliteVariant);
+    replayScene.setAcOverlayVisible(useReplayStore.getState().showAcOverlay);
+    replayScene.setTrialTilesVisible(useReplayStore.getState().showTrialTiles);
+    replayScene.setDriveOnAc(useReplayStore.getState().driveOnAc);
     let frame = 0;
     let last = performance.now();
     let lastTelemetryUpdate = 0;
+    let readyReported = false;
 
     const tick = (now: number) => {
       const dt = (now - last) / 1000;
@@ -55,10 +80,14 @@ export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
       // Compute distance-aligned ghost time
       let ghostTime: number | null = null;
       if (nextStore.ghostLap) {
-        ghostTime = ghostTimeForMainTime(lap, nextStore.ghostLap, nextStore.currentTime);
+        ghostTime = ghostTimeForMainTime(lapRef.current, nextStore.ghostLap, nextStore.currentTime);
       }
 
       const sample = replayScene.update(nextStore.currentTime, ghostTime, nextStore.cameraMode, dt);
+      if (!readyReported) {
+        readyReported = true;
+        onReadyRef.current?.();
+      }
       if (sample && now - lastTelemetryUpdate > 50) {
         useReplayStore.getState().setTelemetry(sample.telemetry);
         // Minimap positions (throttled with telemetry)
@@ -85,6 +114,11 @@ export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
         useReplayStore.getState().setCameraMode(cameraMode);
         return;
       }
+      // Scene-layer and texture shortcuts are developer tooling. User mode
+      // keeps only the replay controls (including Space) and camera keys.
+      if (!developerMode && e.code !== "Space") {
+        return;
+      }
       if (e.key === "7") {
         useReplayStore.getState().toggleRoad3d();
         return;
@@ -103,8 +137,26 @@ export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
         useReplayStore.getState().toggleDetailTexture();
         return;
       }
+      if (e.key === "l" || e.key === "L") {
+        // Vector track markings (white edge lines + curbs, Task 2).
+        useReplayStore.getState().toggleTrackLines();
+        return;
+      }
+      if (e.key === "i" || e.key === "I") {
+        // Trial tiles (imagegen_trials): in-place A/B vs the standard SR look.
+        useReplayStore.getState().toggleTrialTiles();
+        return;
+      }
       if (e.key === "0") {
         useReplayStore.getState().cycleSatelliteVariant();
+        return;
+      }
+      if (e.key === "a" || e.key === "A") {
+        useReplayStore.getState().toggleAcOverlay();
+        return;
+      }
+      if (e.key === "m" || e.key === "M") {
+        useReplayStore.getState().toggleDriveOnAc();
         return;
       }
       if (e.code === "Space") {
@@ -121,7 +173,14 @@ export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
       replayScene.dispose();
       sceneRef.current = null;
     };
-  }, [track, lap]);
+    // lap intentionally omitted: lap switches go through the setLap effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [developerMode, track]);
+
+  // Lap switch: swap replay data only — no track/WebGL rebuild.
+  useEffect(() => {
+    sceneRef.current?.setLap(lap);
+  }, [lap]);
 
   // Sync ghost lap changes into the Three.js scene
   const ghostLap = useReplayStore((state) => state.ghostLap);
@@ -150,10 +209,30 @@ export function ViewerCanvas({ track, lap }: ViewerCanvasProps) {
     sceneRef.current?.setDetailTexture(showDetailTexture);
   }, [showDetailTexture]);
 
+  const showTrackLines = useReplayStore((state) => state.showTrackLines);
+  useEffect(() => {
+    sceneRef.current?.setTrackLines(showTrackLines);
+  }, [showTrackLines]);
+
   const satelliteVariant = useReplayStore((state) => state.satelliteVariant);
   useEffect(() => {
     sceneRef.current?.setSatelliteVariant(satelliteVariant);
   }, [satelliteVariant]);
+
+  const showAcOverlay = useReplayStore((state) => state.showAcOverlay);
+  useEffect(() => {
+    sceneRef.current?.setAcOverlayVisible(showAcOverlay);
+  }, [showAcOverlay]);
+
+  const driveOnAc = useReplayStore((state) => state.driveOnAc);
+  useEffect(() => {
+    sceneRef.current?.setDriveOnAc(driveOnAc);
+  }, [driveOnAc]);
+
+  const showTrialTiles = useReplayStore((state) => state.showTrialTiles);
+  useEffect(() => {
+    sceneRef.current?.setTrialTilesVisible(showTrialTiles);
+  }, [showTrialTiles]);
 
   return <div className="viewer-canvas" ref={containerRef} />;
 }

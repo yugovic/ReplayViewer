@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "_comment": "Vector overlay spans for Fuji Speedway (Task 2b). 'side' is relative to increasing centerline distance: 'right' = driver's right (inside of Turn 1), 'left' = driver's left (outside). Distances in metres of arc-length. Turn 1 was located by computing per-point curvature along track.json: the main straight runs dead-straight across the S/F line (~dist 4100 -> 0 -> 826), and the first heavy corner is a RIGHT-hander at dist ~840-945 m (peak curvature ~900-924). These are first-pass estimates; tune startDist/endDist/side/width by editing this file.",
+  "curbs": [
+    {
+      "_label": "T1 apex (inside / right) through the corner",
+      "startDist": 850,
+      "endDist": 950,
+      "side": "right",
+      "width": 1.5,
+      "stripeLength": 2.5
+    },
+    {
+      "_label": "T1 exit (outside / left) after the apex",
+      "startDist": 915,
+      "endDist": 1010,
+      "side": "left",
+      "width": 1.3,
+      "stripeLength": 2.5
+    },
+    {
+      "_label": "Pit-straight edge near start/finish (first-pass, right edge)",
+      "startDist": 40,
+      "endDist": 110,
+      "side": "right",
+      "width": 1.0,
+      "stripeLength": 2.0
+    }
+  ]
+}

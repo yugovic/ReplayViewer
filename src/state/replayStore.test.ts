@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { useReplayStore } from "./replayStore";
 
 describe("scene layer flags", () => {
-  it("defaults all layers to visible", () => {
+  it("defaults layers to visible except OSM features (covers the satellite photo)", () => {
     const state = useReplayStore.getState();
     expect(state.showRoad3d).toBe(true);
-    expect(state.showOsmFeatures).toBe(true);
+    expect(state.showOsmFeatures).toBe(false);
     expect(state.showDetailTexture).toBe(true);
   });
 
@@ -18,9 +18,9 @@ describe("scene layer flags", () => {
 
   it("toggleOsmFeatures flips the flag back and forth", () => {
     useReplayStore.getState().toggleOsmFeatures();
-    expect(useReplayStore.getState().showOsmFeatures).toBe(false);
-    useReplayStore.getState().toggleOsmFeatures();
     expect(useReplayStore.getState().showOsmFeatures).toBe(true);
+    useReplayStore.getState().toggleOsmFeatures();
+    expect(useReplayStore.getState().showOsmFeatures).toBe(false);
   });
 
   it("toggleDetailTexture flips the flag back and forth", () => {
@@ -28,6 +28,47 @@ describe("scene layer flags", () => {
     expect(useReplayStore.getState().showDetailTexture).toBe(false);
     useReplayStore.getState().toggleDetailTexture();
     expect(useReplayStore.getState().showDetailTexture).toBe(true);
+  });
+
+  it("showTrackLines defaults on and toggles back and forth", () => {
+    expect(useReplayStore.getState().showTrackLines).toBe(true);
+    useReplayStore.getState().toggleTrackLines();
+    expect(useReplayStore.getState().showTrackLines).toBe(false);
+    useReplayStore.getState().toggleTrackLines();
+    expect(useReplayStore.getState().showTrackLines).toBe(true);
+    useReplayStore.getState().setShowTrackLines(false);
+    expect(useReplayStore.getState().showTrackLines).toBe(false);
+    useReplayStore.getState().setShowTrackLines(true);
+  });
+
+  it("driveOnAc defaults off and toggles", () => {
+    expect(useReplayStore.getState().driveOnAc).toBe(false);
+    useReplayStore.getState().toggleDriveOnAc();
+    expect(useReplayStore.getState().driveOnAc).toBe(true);
+    useReplayStore.getState().setDriveOnAc(false);
+    expect(useReplayStore.getState().driveOnAc).toBe(false);
+  });
+
+  it("applies an imagery-only user preset and restores developer layers", () => {
+    useReplayStore.getState().applyViewerModePreset(false);
+    const user = useReplayStore.getState();
+    expect(user.showRoad3d).toBe(false);
+    expect(user.showOsmFeatures).toBe(false);
+    expect(user.showFeatures3d).toBe(false);
+    expect(user.showDetailTexture).toBe(false);
+    expect(user.showTrackLines).toBe(false);
+    expect(user.showAcOverlay).toBe(false);
+    expect(user.driveOnAc).toBe(false);
+    expect(user.showTrialTiles).toBe(true);
+
+    useReplayStore.getState().applyViewerModePreset(true);
+    const developer = useReplayStore.getState();
+    expect(developer.showRoad3d).toBe(true);
+    expect(developer.showFeatures3d).toBe(true);
+    expect(developer.showDetailTexture).toBe(true);
+    expect(developer.showTrackLines).toBe(true);
+    expect(developer.showAcOverlay).toBe(true);
+    expect(developer.showTrialTiles).toBe(true);
   });
 
   it("setters apply explicit values", () => {

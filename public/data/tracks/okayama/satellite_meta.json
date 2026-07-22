@@ -1,0 +1,38 @@
+{
+  "imageFile": "satellite.jpg",
+  "imageWidth": 5014,
+  "imageHeight": 7521,
+  "bbox": {
+    "minLng": 134.2144775390625,
+    "maxLng": 134.22821044921875,
+    "minLat": 34.907331655053845,
+    "maxLat": 34.92422301690581
+  },
+  "mercator": true,
+  "source": "おかやまインフラボックス（岡山県_3次元点群_オルソ画像_2024）を加工して作成",
+  "sourceUrl": "https://i-box.pref.okayama.jp/datasets/250",
+  "license": "CC BY 4.0",
+  "attribution": "「おかやまインフラボックス（岡山県_3次元点群_オルソ画像_2024）」（岡山県）を加工して作成（CC BY 4.0）",
+  "sourceMeshFrames": [
+    "05ND9734",
+    "05ND9743",
+    "05OD0712",
+    "05OD0714",
+    "05OD0721",
+    "05OD0723"
+  ],
+  "sourceCrs": "EPSG:2447 (JGD2000 / Japan Plane Rectangular CS V)",
+  "nominalSourceResolutionMetersPerPixel": 0.25,
+  "effectiveResolutionMetersPerPixel": 0.25,
+  "coverage": 1.0,
+  "toneEnhanced": "gray-world WB + luminance stretch + CLAHE clarity + LAB saturation (grade_ortho.py); pixel-local only, no geometry change",
+  "gradeParams": {
+    "wbGainLimit": 0.08,
+    "blackPercentile": 0.4,
+    "whitePercentile": 99.6,
+    "stretchStrength": 0.85,
+    "claheClip": 1.8,
+    "claheTilePx": 128,
+    "saturation": 1.12
+  }
+}

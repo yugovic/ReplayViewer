@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "race_id": "suzuka_preview",
+  "track_id": "suzuka",
+  "source_lap_times": "synthetic centerline preview",
+  "laps": [
+    {
+      "vehicle_id": "course_preview",
+      "vehicle_number": "0",
+      "lap": 1,
+      "lap_time_seconds": 174.318,
+      "lap_time": "2:54.318",
+      "start_time": "2026-01-01T00:00:00.000Z",
+      "end_time": null,
+      "outing": "0",
+      "is_best_vehicle": true,
+      "is_overall_best": true,
+      "data_file": "course_preview_lap_001.json",
+      "point_count": 1744,
+      "total_distance_m": 5810.6
+    }
+  ],
+  "selected": [
+    {
+      "vehicle_id": "course_preview",
+      "lap": 1,
+      "data_file": "course_preview_lap_001.json",
+      "point_count": 1744,
+      "file_size": 116780,
+      "total_distance_m": 5810.6
+    }
+  ]
+}

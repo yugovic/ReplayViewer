@@ -1,0 +1,919 @@
+{
+  "calls": [
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.6,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1444,
+        "totalTokenCount": 2156,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "09",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_09_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.9,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1512,
+        "totalTokenCount": 2224,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "01",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_01_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.3,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1553,
+        "totalTokenCount": 2265,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "02",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_02_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 12.5,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1444,
+        "totalTokenCount": 2156,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "03",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_03_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.7,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1496,
+        "totalTokenCount": 2208,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "04",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_04_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 10.0,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1507,
+        "totalTokenCount": 2219,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "05",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_05_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.4,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1448,
+        "totalTokenCount": 2160,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "06",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_06_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 14.3,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1523,
+        "totalTokenCount": 2235,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "07",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_07_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 13.4,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1560,
+        "totalTokenCount": 2272,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "08",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_08_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 9.5,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1444,
+        "totalTokenCount": 2156,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "09",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_09_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.0,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1551,
+        "totalTokenCount": 2263,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "10",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_10_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 12.5,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1555,
+        "totalTokenCount": 2267,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "11",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_11_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.9,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1497,
+        "totalTokenCount": 2209,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "12",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_12_gen.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 12.0,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1481,
+        "totalTokenCount": 2193,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "01",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_01_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.1,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1451,
+        "totalTokenCount": 2163,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "02",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_02_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.0,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1520,
+        "totalTokenCount": 2232,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "03",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_03_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 27.8,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1493,
+        "totalTokenCount": 2205,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "04",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_04_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.3,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1463,
+        "totalTokenCount": 2175,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "05",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_05_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 12.1,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1448,
+        "totalTokenCount": 2160,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "06",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_06_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.2,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1488,
+        "totalTokenCount": 2200,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "07",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_07_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.5,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1509,
+        "totalTokenCount": 2221,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "08",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_08_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 9.8,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1465,
+        "totalTokenCount": 2177,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "09",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_09_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.6,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1510,
+        "totalTokenCount": 2222,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "10",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_10_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.5,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1495,
+        "totalTokenCount": 2207,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "11",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_11_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 13.6,
+      "usage": {
+        "promptTokenCount": 712,
+        "candidatesTokenCount": 1490,
+        "totalTokenCount": 2202,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 196
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "12",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_12_gen_v2.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 429,
+      "seconds": 1.1,
+      "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+      "tile": "02",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_02_gen_v3.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 429,
+      "seconds": 0.5,
+      "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+      "tile": "12",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_12_gen_v3.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 9.8,
+      "usage": {
+        "promptTokenCount": 774,
+        "candidatesTokenCount": 1458,
+        "totalTokenCount": 2232,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 258
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "02",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_02_gen_v3.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 11.3,
+      "usage": {
+        "promptTokenCount": 774,
+        "candidatesTokenCount": 1525,
+        "totalTokenCount": 2299,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 258
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "12",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_12_gen_v3.png"
+    },
+    {
+      "model": "gemini-3.1-flash-image",
+      "status": 200,
+      "seconds": 13.1,
+      "usage": {
+        "promptTokenCount": 815,
+        "candidatesTokenCount": 1475,
+        "totalTokenCount": 2290,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 299
+          },
+          {
+            "modality": "IMAGE",
+            "tokenCount": 516
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "02",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-image\\pilot_02_gen_v4.png"
+    },
+    {
+      "model": "gemini-3.1-flash-lite-image",
+      "status": 200,
+      "seconds": 6.4,
+      "usage": {
+        "promptTokenCount": 2498,
+        "candidatesTokenCount": 1460,
+        "totalTokenCount": 3958,
+        "promptTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 2240
+          },
+          {
+            "modality": "TEXT",
+            "tokenCount": 258
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "02",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-lite-image\\pilot_02_gen_lite.png"
+    },
+    {
+      "model": "gemini-3.1-flash-lite-image",
+      "status": 200,
+      "seconds": 5.1,
+      "usage": {
+        "promptTokenCount": 2498,
+        "candidatesTokenCount": 1516,
+        "totalTokenCount": 4014,
+        "promptTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 2240
+          },
+          {
+            "modality": "TEXT",
+            "tokenCount": 258
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "09",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-lite-image\\pilot_09_gen_lite.png"
+    },
+    {
+      "model": "gemini-3.1-flash-lite-image",
+      "status": 200,
+      "seconds": 5.6,
+      "usage": {
+        "promptTokenCount": 2498,
+        "candidatesTokenCount": 1440,
+        "totalTokenCount": 3938,
+        "promptTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 2240
+          },
+          {
+            "modality": "TEXT",
+            "tokenCount": 258
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "IMAGE",
+            "tokenCount": 1120
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "tile": "11",
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\gemini\\gemini-3.1-flash-lite-image\\pilot_11_gen_lite.png"
+    }
+  ]
+}

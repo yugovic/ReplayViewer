@@ -1,0 +1,271 @@
+{
+  "purpose": "ImageGen fidelity pilot (12 crops). Visualization research only.",
+  "source": "VIRTUAL SHIZUOKA 2019 LP orthophoto 20 cm (CC BY 4.0, Shizuoka Prefecture)",
+  "license": "CC BY 4.0 / ODbL",
+  "sourceImage": "native_mosaic_graded.png",
+  "toneEnhanced": "gray-world WB + luminance stretch + CLAHE clarity + LAB saturation (grade_ortho.py); pixel-local only, no geometry change",
+  "metersPerPixel": 0.2,
+  "gates": {
+    "lrConsistencyMinPsnrDb": 30.0,
+    "blockShiftMaxP95Px": 0.5,
+    "meanColorDeltaMax": 8.0,
+    "contrastRatioRange": [
+      0.8,
+      1.2
+    ]
+  },
+  "spots": [
+    {
+      "id": "01",
+      "source": "pilot_01_src.png",
+      "kind": "on-track",
+      "distM": 0.0,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 3664,
+        "y": 3757,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.4172170348439991,
+        "v0": 0.4185139801715495,
+        "u1": 0.4755181052152129,
+        "v1": 0.4755486242620029
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "48f036682c01ad484814c171279179601e07c19a8278de073cb6ec6c84bbe2ce"
+    },
+    {
+      "id": "02",
+      "source": "pilot_02_src.png",
+      "kind": "on-track",
+      "distM": 569.6,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 5884,
+        "y": 1973,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.6700068321566841,
+        "v0": 0.219783892168876,
+        "u1": 0.728307902527898,
+        "v1": 0.2768185362593294
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "ee056f97cd41d6454f2d856e4aa085ee9ba3447bd63b639367bfe33a96a35f2d"
+    },
+    {
+      "id": "03",
+      "source": "pilot_03_src.png",
+      "kind": "on-track",
+      "distM": 1139.1,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 6936,
+        "y": 2078,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.7897973126850376,
+        "v0": 0.23148045003898854,
+        "u1": 0.8480983830562514,
+        "v1": 0.28851509412944193
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "e501cab659252e77d2c0f481d13a76183de4c7f08edcce203e9add351e658421"
+    },
+    {
+      "id": "04",
+      "source": "pilot_04_src.png",
+      "kind": "on-track",
+      "distM": 1708.7,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 6269,
+        "y": 4529,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.7138465042131633,
+        "v0": 0.5045115294641862,
+        "u1": 0.7721475745843771,
+        "v1": 0.5615461735546396
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "cd44b068d66bf0a297ddb3b3103f89c727b7e5f83fd1628ecf7cccb908680b76"
+    },
+    {
+      "id": "05",
+      "source": "pilot_05_src.png",
+      "kind": "on-track",
+      "distM": 2278.2,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 4410,
+        "y": 4704,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.5021635162833068,
+        "v0": 0.5240057925810404,
+        "u1": 0.5604645866545206,
+        "v1": 0.5810404366714939
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "b89ddca0ca6888669fbae3f2a4307de16067c3ae2b5c1cd3d2380008539e73b9"
+    },
+    {
+      "id": "06",
+      "source": "pilot_06_src.png",
+      "kind": "on-track",
+      "distM": 2847.8,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 3334,
+        "y": 7112,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.37964017308130266,
+        "v0": 0.792246853068954,
+        "u1": 0.4379412434525165,
+        "v1": 0.8492814971594074
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "74746fc5f9695d0458ce7bda6dfa28a9f76729fbfb0217ad65ccefc39a4d7f88"
+    },
+    {
+      "id": "07",
+      "source": "pilot_07_src.png",
+      "kind": "on-track",
+      "distM": 3417.3,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 2227,
+        "y": 6260,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.2535868822591665,
+        "v0": 0.697337640637184,
+        "u1": 0.3118879526303803,
+        "v1": 0.7543722847276373
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "d5996e28449d2aa0952991519fb0ea6bfb105adbb6bed392dfdfd95c39bf0263"
+    },
+    {
+      "id": "08",
+      "source": "pilot_08_src.png",
+      "kind": "on-track",
+      "distM": 3986.9,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 1444,
+        "y": 5539,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.16442723753131405,
+        "v0": 0.6170212765957447,
+        "u1": 0.2227283079025279,
+        "v1": 0.674055920686198
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "0267bd6c0505d34c2316c30b0a81543acc263e9f4fe1001fa03cdf07e1914340"
+    },
+    {
+      "id": "09",
+      "source": "pilot_09_src.png",
+      "kind": "on-track (既存トライアル地点)",
+      "distM": 1519.2,
+      "lateralM": 0.0,
+      "rectPixel": {
+        "x": 6079,
+        "y": 3628,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.6922113413800957,
+        "v0": 0.404143923359697,
+        "u1": 0.7505124117513094,
+        "v1": 0.4611785674501504
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "7f39c3da76fc825e595e7f22f6439ffb87a337fdc20f7bad84b3da06c4bb56ee"
+    },
+    {
+      "id": "10",
+      "source": "pilot_10_src.png",
+      "kind": "off-track",
+      "distM": 227.8,
+      "lateralM": 70.0,
+      "rectPixel": {
+        "x": 4771,
+        "y": 3316,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.5432703256661353,
+        "v0": 0.369388437117077,
+        "u1": 0.6015713960373491,
+        "v1": 0.42642308120753036
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "deb74b1698e7ad7053f911e1520119943c3eaf2d77c7d0a53cfb445c306d2c1a"
+    },
+    {
+      "id": "11",
+      "source": "pilot_11_src.png",
+      "kind": "off-track",
+      "distM": 2050.4,
+      "lateralM": 70.0,
+      "rectPixel": {
+        "x": 5308,
+        "y": 4340,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.6044181279890686,
+        "v0": 0.48345772529798375,
+        "u1": 0.6627191983602824,
+        "v1": 0.5404923693884371
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "a993f9ea21e24dc891b0a2835f92abbfa33aaebf8ddda6e6fa70085d65aae6bc"
+    },
+    {
+      "id": "12",
+      "source": "pilot_12_src.png",
+      "kind": "off-track",
+      "distM": 3645.1,
+      "lateralM": -70.0,
+      "rectPixel": {
+        "x": 2089,
+        "y": 6079,
+        "w": 512,
+        "h": 512
+      },
+      "uv": {
+        "u0": 0.23787292188567524,
+        "v0": 0.6771750027848947,
+        "u1": 0.2961739922568891,
+        "v1": 0.7342096468753481
+      },
+      "groundMetersPerSide": 102.4,
+      "sha256": "c8d68741cf345b73d1971554b1a7494f12037860c2a8a7cf06755fe58adbf52b"
+    }
+  ]
+}

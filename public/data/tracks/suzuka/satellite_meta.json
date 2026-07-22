@@ -1,0 +1,29 @@
+{
+  "imageFile": "satellite.jpg",
+  "imageWidth": 5632,
+  "imageHeight": 3840,
+  "bbox": {
+    "minLng": 136.51748657226562,
+    "maxLng": 136.54769897460938,
+    "minLat": 34.83522280367884,
+    "maxLat": 34.85212898939811
+  },
+  "mercator": true,
+  "source": "国土地理院 全国最新写真（シームレス）",
+  "sourceUrl": "https://maps.gsi.go.jp/development/ichiran.html#seamlessphoto",
+  "license": "国土地理院コンテンツ利用規約（出典明示）。固定画像化の測量法上の扱いは docs の確認状況を参照",
+  "gsiTileZoom": 18,
+  "nominalSourceResolutionMetersPerPixel": 0.4901,
+  "effectiveResolutionMetersPerPixel": 0.4901,
+  "coverage": 1.0,
+  "toneEnhanced": "gray-world WB + luminance stretch + CLAHE clarity + LAB saturation (grade_ortho.py); pixel-local only, no geometry change",
+  "gradeParams": {
+    "wbGainLimit": 0.08,
+    "blackPercentile": 0.4,
+    "whitePercentile": 99.6,
+    "stretchStrength": 0.85,
+    "claheClip": 1.8,
+    "claheTilePx": 128,
+    "saturation": 1.12
+  }
+}

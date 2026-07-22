@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8">
+<title>ImageGen pilot sources</title>
+<style>body{background:#111;color:#eee;font:14px sans-serif;margin:20px}
+figure{display:inline-block;margin:8px;width:264px}img{width:256px;image-rendering:pixelated}
+figcaption{font-size:12px;color:#bbb}pre{white-space:pre-wrap;background:#1c2228;padding:12px}</style>
+<h1>ImageGen 12枚パイロット — ソース画像</h1>
+<p>各画像を生成ツールへアップロードし、下のプロンプトで編集。結果はこのフォルダへ
+<b>pilot_XX_gen.png</b>（XXは番号）として保存 → <code>pipeline/imagegen_pilot.py evaluate</code>。</p>
+<pre>[JA] この航空写真を、写っている内容を一切変えずに高解像度化・鮮明化してください。
+厳守事項:
+- 道路・白線・縁石・路面標示・建物・フェンスの位置と形状を1ピクセルも動かさない
+- 新しい物体・模様・文字・車両・影を追加しない/既存物を消さない
+- 構図・縮尺・回転を変えない（出力は入力と同じ範囲の正方形）
+- 色調・明るさは入力に厳密に合わせる（グレーディング済みのため変更不要）
+- 質感（アスファルトの粒、芝、砂利）のみを自然に精細化する
+出力はできるだけ高解像度（2048px以上推奨）でお願いします。
+
+[EN] Upscale and sharpen this aerial photo WITHOUT changing its content.
+Strict rules: do not move or reshape any road, line, curb, marking, building
+or fence by even one pixel; do not add or remove any object, pattern, text,
+vehicle or shadow; keep composition, scale and rotation identical (square
+output, same extent); match the input's colour and brightness exactly; only
+refine the natural textures (asphalt grain, grass, gravel). Highest possible
+resolution (2048px+) please.
+</pre>
+<figure><img src="pilot_01_src.png"><figcaption>#01 on-track / d=0.0m / 保存名: pilot_01_gen.png</figcaption></figure>
+<figure><img src="pilot_02_src.png"><figcaption>#02 on-track / d=569.6m / 保存名: pilot_02_gen.png</figcaption></figure>
+<figure><img src="pilot_03_src.png"><figcaption>#03 on-track / d=1139.1m / 保存名: pilot_03_gen.png</figcaption></figure>
+<figure><img src="pilot_04_src.png"><figcaption>#04 on-track / d=1708.7m / 保存名: pilot_04_gen.png</figcaption></figure>
+<figure><img src="pilot_05_src.png"><figcaption>#05 on-track / d=2278.2m / 保存名: pilot_05_gen.png</figcaption></figure>
+<figure><img src="pilot_06_src.png"><figcaption>#06 on-track / d=2847.8m / 保存名: pilot_06_gen.png</figcaption></figure>
+<figure><img src="pilot_07_src.png"><figcaption>#07 on-track / d=3417.3m / 保存名: pilot_07_gen.png</figcaption></figure>
+<figure><img src="pilot_08_src.png"><figcaption>#08 on-track / d=3986.9m / 保存名: pilot_08_gen.png</figcaption></figure>
+<figure><img src="pilot_09_src.png"><figcaption>#09 on-track (既存トライアル地点) / d=1519.2m / 保存名: pilot_09_gen.png</figcaption></figure>
+<figure><img src="pilot_10_src.png"><figcaption>#10 off-track / d=227.8m / 保存名: pilot_10_gen.png</figcaption></figure>
+<figure><img src="pilot_11_src.png"><figcaption>#11 off-track / d=2050.4m / 保存名: pilot_11_gen.png</figcaption></figure>
+<figure><img src="pilot_12_src.png"><figcaption>#12 off-track / d=3645.1m / 保存名: pilot_12_gen.png</figcaption></figure>

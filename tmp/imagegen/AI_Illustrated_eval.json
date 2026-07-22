@@ -1,0 +1,29 @@
+{
+  "source": "tmp\\imagegen\\fuji-middle-correct-source-512.jpg",
+  "generated": "tmp\\imagegen\\AI_Illustrated.jpg",
+  "genSize": [
+    1024,
+    1024
+  ],
+  "checks": {
+    "lrConsistencyDb": 12.8,
+    "blockShiftP95Px": 0.4469,
+    "meanColorDelta": 68.18,
+    "contrastRatio": 1.764
+  },
+  "gates": {
+    "lrConsistencyMinPsnrDb": 30.0,
+    "blockShiftMaxP95Px": 0.5,
+    "meanColorDeltaMax": 8.0,
+    "contrastRatioRange": [
+      0.8,
+      1.2
+    ]
+  },
+  "passed": false,
+  "postColorMatch": {
+    "lrConsistencyDb": 20.07,
+    "blockShiftP95Px": 0.428,
+    "meanColorDelta": 1.02
+  }
+}

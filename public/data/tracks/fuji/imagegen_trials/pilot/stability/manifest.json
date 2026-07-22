@@ -1,0 +1,740 @@
+{
+  "calls": [
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/structure",
+      "status": 200,
+      "seconds": 12.8,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "control_strength": "0.8"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "structure",
+      "strength": 0.8,
+      "credits_spent": 0.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\structure_0.8\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 14.4,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 5.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 10.8,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 0.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.5,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 0.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 15.3,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "01",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 0.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_01_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.8,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "02",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_02_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 10.6,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "03",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_03_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 10.7,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "04",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_04_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.7,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "05",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_05_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.7,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "06",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_06_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.7,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "07",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_07_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 14.0,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "08",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_08_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.8,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.1,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "10",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_10_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.4,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "11",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_11_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.5,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "12",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_12_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.2,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "01",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_01_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.3,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "02",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_02_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.4,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "03",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_03_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 10.9,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "04",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_04_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.9,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "05",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_05_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.4,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "06",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_06_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.4,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "07",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_07_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.3,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "08",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_08_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.6,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.0,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "10",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_10_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.8,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "11",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_11_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.7,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.5",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "12",
+      "system": "style",
+      "strength": 0.5,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.5\\pilot_12_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.7,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "01",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_01_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.3,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "02",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_02_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.4,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "03",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_03_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.8,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "04",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_04_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.2,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "05",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_05_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 14.5,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "06",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_06_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.0,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "07",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_07_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.9,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "08",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_08_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 13.5,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_09_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 15.6,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "10",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_10_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 11.0,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "11",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_11_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.5,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.8",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "12",
+      "system": "style",
+      "strength": 0.8,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.8\\pilot_12_gen.png"
+    },
+    {
+      "url": "https://api.stability.ai/v2beta/stable-image/control/style-transfer",
+      "status": 200,
+      "seconds": 12.0,
+      "params": {
+        "seed": "42",
+        "output_format": "png",
+        "style_strength": "0.3",
+        "composition_fidelity": "0.95"
+      },
+      "finish_reason": "SUCCESS",
+      "response_seed": "42",
+      "tile": "09",
+      "system": "style",
+      "strength": 0.3,
+      "credits_spent": 8.0,
+      "output": "public\\data\\tracks\\fuji\\imagegen_trials\\pilot\\stability\\style_0.3\\pilot_09_gen_repeat.png"
+    }
+  ]
+}

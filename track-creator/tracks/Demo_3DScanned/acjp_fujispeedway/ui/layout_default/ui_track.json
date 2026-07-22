@@ -1,0 +1,18 @@
+{
+	"name": "富士スピードウェイ",
+	"description": "Fuji International Speedway 2020",
+	"tags" : ["circuit","original","drift","Japan"],
+	  "geotags": [
+		 "35° 22′ 18″ N",
+		"138°55′ 36″ E"
+	],
+	"country": "Japan",
+	"city": "Shizuoka",
+	"length": "4563",
+	"width": "15",
+	"pitboxes": "42",
+	"run": "時計回り",
+	 "author": "iida&matsumoto",
+ 	"version": "1.19",
+	 "url": "http://assettocorsa.games.dmm.com/"
+}

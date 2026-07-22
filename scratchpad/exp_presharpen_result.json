@@ -1,0 +1,50 @@
+[
+  {
+    "amount": 0.0,
+    "selStrength": 0.6,
+    "bestDISTS": 0.081481,
+    "bestLPIPS": 0.106433,
+    "lrDb": 34.0529,
+    "shiftP95": 0.1062,
+    "passed": true,
+    "musiqEnh": 59.55,
+    "maniqaEnh": 0.347,
+    "musiqLanc": 46.72
+  },
+  {
+    "amount": 0.3,
+    "selStrength": 0.55,
+    "bestDISTS": 0.079823,
+    "bestLPIPS": 0.106269,
+    "lrDb": 34.8937,
+    "shiftP95": 0.094,
+    "passed": true,
+    "musiqEnh": 58.61,
+    "maniqaEnh": 0.3398,
+    "musiqLanc": 46.72
+  },
+  {
+    "amount": 0.5,
+    "selStrength": 0.5,
+    "bestDISTS": 0.080184,
+    "bestLPIPS": 0.111006,
+    "lrDb": 35.0487,
+    "shiftP95": 0.0877,
+    "passed": true,
+    "musiqEnh": 57.49,
+    "maniqaEnh": 0.329,
+    "musiqLanc": 46.72
+  },
+  {
+    "amount": 0.7,
+    "selStrength": 0.5,
+    "bestDISTS": 0.080479,
+    "bestLPIPS": 0.108685,
+    "lrDb": 34.0149,
+    "shiftP95": 0.0914,
+    "passed": true,
+    "musiqEnh": 57.44,
+    "maniqaEnh": 0.3371,
+    "musiqLanc": 46.72
+  }
+]

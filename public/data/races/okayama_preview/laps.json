@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "race_id": "okayama_preview",
+  "track_id": "okayama",
+  "source_lap_times": "synthetic centerline preview",
+  "laps": [
+    {
+      "vehicle_id": "course_preview",
+      "vehicle_number": "0",
+      "lap": 1,
+      "lap_time_seconds": 111.0,
+      "lap_time": "1:51.000",
+      "start_time": "2026-01-01T00:00:00.000Z",
+      "end_time": null,
+      "outing": "0",
+      "is_best_vehicle": true,
+      "is_overall_best": true,
+      "data_file": "course_preview_lap_001.json",
+      "point_count": 1110,
+      "total_distance_m": 3700.0
+    }
+  ],
+  "selected": [
+    {
+      "vehicle_id": "course_preview",
+      "lap": 1,
+      "data_file": "course_preview_lap_001.json",
+      "point_count": 1110,
+      "file_size": 74000,
+      "total_distance_m": 3700.0
+    }
+  ]
+}

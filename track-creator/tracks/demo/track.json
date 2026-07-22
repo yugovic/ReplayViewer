@@ -1,0 +1,52 @@
+{
+  "name": "demo",
+  "closed": true,
+  "controlPoints": [
+    { "x": 0, "z": 0 },
+    { "x": 120, "z": -10 },
+    { "x": 250, "z": -12 },
+    { "x": 500, "z": 0 },
+    { "x": 560, "z": 42 },
+    { "x": 585, "z": 120 },
+    { "x": 525, "z": 185 },
+    { "x": 405, "z": 165 },
+    { "x": 300, "z": 228 },
+    { "x": 200, "z": 182 },
+    { "x": 120, "z": 265 },
+    { "x": 40, "z": 305 },
+    { "x": -45, "z": 245 },
+    { "x": -65, "z": 120 },
+    { "x": -45, "z": 45 }
+  ],
+  "elevation": {
+    "source": "synthetic",
+    "step": 5,
+    "smooth": 9
+  },
+  "road": {
+    "width": 12,
+    "step": 2,
+    "widthProfile": [
+      { "dist": 0, "width": 12 },
+      { "dist": 500, "width": 12 },
+      { "dist": 620, "width": 14.5 },
+      { "dist": 720, "width": 12 },
+      { "dist": 1280, "width": 12 },
+      { "dist": 1330, "width": 14 },
+      { "dist": 1380, "width": 12 }
+    ]
+  },
+  "curbs": [
+    { "startDist": 545, "endDist": 640, "side": "left", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 600, "endDist": 690, "side": "right", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 715, "endDist": 795, "side": "right", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 840, "endDist": 915, "side": "left", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 965, "endDist": 1045, "side": "right", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 1080, "endDist": 1150, "side": "left", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 1195, "endDist": 1270, "side": "right", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 1290, "endDist": 1365, "side": "left", "width": 1.5, "stripeLength": 4 },
+    { "startDist": 1395, "endDist": 1465, "side": "right", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 1525, "endDist": 1595, "side": "left", "width": 1.2, "stripeLength": 4 },
+    { "startDist": 1615, "endDist": 1690, "side": "right", "width": 1.2, "stripeLength": 4 }
+  ]
+}

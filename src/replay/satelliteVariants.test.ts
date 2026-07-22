@@ -4,6 +4,7 @@ import {
   parseSatVariantParam,
   probeSatelliteVariants,
   satelliteFilename,
+  satelliteMetadataFilename,
   SATELLITE_VARIANTS,
   type SatVariantId,
   type VariantProbe,
@@ -41,7 +42,9 @@ describe("isImageResponseAvailable", () => {
 });
 
 describe("parseSatVariantParam", () => {
-  it("resolves sr, bing and bing_sr", () => {
+  it("resolves shizuoka, shizuoka_x2, sr, bing and bing_sr", () => {
+    expect(parseSatVariantParam("shizuoka")).toBe("shizuoka");
+    expect(parseSatVariantParam("shizuoka_x2")).toBe("shizuoka_x2");
     expect(parseSatVariantParam("sr")).toBe("sr");
     expect(parseSatVariantParam("bing")).toBe("bing");
     expect(parseSatVariantParam("bing_sr")).toBe("bing_sr");
@@ -56,11 +59,16 @@ describe("parseSatVariantParam", () => {
 });
 
 describe("satelliteFilename", () => {
-  it("maps every known variant id to its filename", () => {
+  it("maps every known variant id to its filename and metadata", () => {
     expect(satelliteFilename("default")).toBe("satellite.jpg");
+    expect(satelliteFilename("shizuoka")).toBe("satellite_shizuoka.jpg");
+    expect(satelliteFilename("shizuoka_x2")).toBe("satellite_shizuoka.jpg");
     expect(satelliteFilename("sr")).toBe("satellite_sr.jpg");
     expect(satelliteFilename("bing")).toBe("satellite_bing.jpg");
     expect(satelliteFilename("bing_sr")).toBe("satellite_bing_sr.jpg");
+    expect(satelliteMetadataFilename("shizuoka")).toBe("satellite_shizuoka_meta.json");
+    expect(satelliteMetadataFilename("shizuoka_x2")).toBe("satellite_shizuoka_meta.json");
+    expect(satelliteMetadataFilename("bing_sr")).toBe("satellite_bing_meta.json");
   });
 });
 
@@ -78,9 +86,11 @@ describe("probeSatelliteVariants", () => {
     const probe = fakeProbe({
       "satellite.jpg": { status: 200, contentType: "image/jpeg" },
       "satellite_bing.jpg": { status: 200, contentType: "image/jpeg" },
-      // satellite_sr.jpg and satellite_bing_sr.jpg absent -> SPA fallback
+      // optional variants absent -> SPA fallback
+      "satellite_shizuoka.jpg": { status: 200, contentType: "text/html" },
       "satellite_sr.jpg": { status: 200, contentType: "text/html" },
       "satellite_bing_sr.jpg": { status: 200, contentType: "text/html" },
+      "manifest.json": { status: 200, contentType: "text/html" },
     });
 
     const result = await probeSatelliteVariants("/data/tracks/barber", probe);
@@ -90,6 +100,8 @@ describe("probeSatelliteVariants", () => {
   it("preserves SATELLITE_VARIANTS order regardless of probe resolution order", async () => {
     const probe = fakeProbe({
       "satellite.jpg": { status: 200, contentType: "image/jpeg" },
+      "satellite_shizuoka.jpg": { status: 200, contentType: "image/jpeg" },
+      "manifest.json": { status: 200, contentType: "application/json" },
       "satellite_sr.jpg": { status: 200, contentType: "image/jpeg" },
       "satellite_bing.jpg": { status: 200, contentType: "image/jpeg" },
       "satellite_bing_sr.jpg": { status: 200, contentType: "image/jpeg" },
@@ -113,18 +125,22 @@ describe("probeSatelliteVariants", () => {
       if (url.endsWith("satellite_bing.jpg")) {
         throw new Error("boom");
       }
-      return { status: 200, contentType: "image/jpeg" };
+      return url.endsWith("manifest.json")
+        ? { status: 200, contentType: "application/json" }
+        : { status: 200, contentType: "image/jpeg" };
     };
 
     const result = await probeSatelliteVariants("/data/tracks/barber", probe);
-    expect(result).toEqual(["default", "sr", "bing_sr"] as SatVariantId[]);
+    expect(result).toEqual(["default", "shizuoka", "shizuoka_x2", "sr", "bing_sr"] as SatVariantId[]);
   });
 
   it("normalizes a trackDir without a trailing slash", async () => {
     const seen: string[] = [];
     const probe: VariantProbe = async (url) => {
       seen.push(url);
-      return { status: 200, contentType: "image/jpeg" };
+      return url.endsWith("manifest.json")
+        ? { status: 200, contentType: "application/json" }
+        : { status: 200, contentType: "image/jpeg" };
     };
 
     await probeSatelliteVariants("/data/tracks/barber", probe);

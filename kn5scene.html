@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>kn5 textured scene</title>
+<style>html,body{margin:0;height:100%;background:#8fb8d8;overflow:hidden}
+#t{position:fixed;left:10px;top:8px;font:12px ui-monospace,monospace;color:#fff;z-index:2;text-shadow:0 1px 2px #000}</style></head>
+<body><div id="t">loading…</div>
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+const r = new THREE.WebGLRenderer({ antialias:true }); r.setSize(innerWidth,innerHeight); r.setPixelRatio(Math.min(devicePixelRatio,2));
+r.outputColorSpace = THREE.SRGBColorSpace; document.body.appendChild(r.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x8fb8d8);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x445533, 1.1));
+const sun = new THREE.DirectionalLight(0xffffff, 2.0); sun.position.set(1,2,1); scene.add(sun);
+const cam = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 1, 30000);
+const ctl = new OrbitControls(cam, r.domElement);
+new GLTFLoader().load("/fuji_scene.glb", (gltf)=>{
+  scene.add(gltf.scene);
+  let tris=0; gltf.scene.traverse(o=>{ if(o.isMesh){ o.material.map && (o.material.map.colorSpace=THREE.SRGBColorSpace); tris += (o.geometry.index?o.geometry.index.count:0)/3; }});
+  // frame on the origin (viewer-local track center) at a fixed close height,
+  // robust to far-away outlier geometry inflating the bbox.
+  ctl.target.set(0, -10, 0);
+  cam.position.set(120, 180, 260); cam.far = 20000; cam.updateProjectionMatrix(); ctl.update();
+  document.getElementById("t").textContent = `fuji_scene.glb — ${gltf.scene.children.length} nodes, ${(tris/1000)|0}k tris`;
+  window.__ok = true;
+}, undefined, e=>{ document.getElementById("t").textContent="ERROR "+e; window.__ok="err"; });
+r.setAnimationLoop(()=>{ ctl.update(); r.render(scene,cam); });
+</script></body></html>

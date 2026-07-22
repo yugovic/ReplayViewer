@@ -1,0 +1,34 @@
+{
+  "id": "10",
+  "generated": "pilot_10_gen.png",
+  "genSize": [
+    1254,
+    1254
+  ],
+  "checks": {
+    "lrConsistencyDb": 23.34,
+    "blockShiftP95Px": 0.3047,
+    "meanColorDelta": 22.18,
+    "contrastRatio": 0.977
+  },
+  "gates": {
+    "lrConsistencyMinPsnrDb": 30.0,
+    "blockShiftMaxP95Px": 0.5,
+    "meanColorDeltaMax": 8.0,
+    "contrastRatioRange": [
+      0.8,
+      1.2
+    ]
+  },
+  "passed": false,
+  "iqa": {
+    "lanczos2x": {
+      "musiq": 53.102,
+      "maniqa": 0.343
+    },
+    "generated": {
+      "musiq": 65.578,
+      "maniqa": 0.384
+    }
+  }
+}

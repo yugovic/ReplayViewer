@@ -50,6 +50,49 @@ input {
   color: #dbe7df;
 }
 
+.loading-screen {
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    radial-gradient(circle at 50% 42%, rgb(28 72 91 / 32%), transparent 34%),
+    #071014;
+  color: #e7f4ef;
+}
+
+.loading-screen--overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.loading-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgb(255 255 255 / 16%);
+  border-top-color: #74d9bd;
+  border-radius: 50%;
+  box-shadow: 0 0 28px rgb(84 213 180 / 18%);
+  animation: replay-loading-spin 0.8s linear infinite;
+}
+
+@keyframes replay-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* ── Shared panel glass ─────────────────────────────────────────── */
 
 .hud-panel {
@@ -115,6 +158,12 @@ input {
   font-size: 16px;
   color: #e8f16c;
   letter-spacing: 0.04em;
+}
+
+.hud-best-lapnum {
+  color: #8fa4ad;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 /* ── Camera buttons (top-right) ─────────────────────────────────── */

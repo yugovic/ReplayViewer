@@ -6,6 +6,9 @@ import type { LapData, ReplaySample, TrackData } from "../replay/types";
 import { ChaseCamera, CinematicCamera, CockpitCamera, FreeCamera, TopCamera, TvCamera } from "./cameras";
 import type { CameraMode, CarCameraState, ReplayCameraController } from "./cameras";
 import { buildTrack, type TrackBuildResult } from "./track/TrackBuilder";
+import { loadAcOverlay, type AcOverlayHandle } from "./track/AcOverlay";
+import { loadAcTrackMesh, type AcTrackMeshHandle } from "./track/AcTrackMesh";
+import { loadAcScene, type AcSceneHandle } from "./track/AcScene";
 import type { SatVariantId } from "../replay/satelliteVariants";
 import { LiveDataTrail } from "./DataTrail";
 import { Effects } from "./Effects";
@@ -70,6 +73,7 @@ export class ReplayScene {
   private readonly controls: OrbitControls;
   private cameras: Record<CameraMode, ReplayCameraController>;
   private readonly resizeObserver: ResizeObserver;
+  private viewportHeight = 1;
   private readonly loader = new GLTFLoader();
   private readonly textureLoader = new THREE.TextureLoader();
   private trackGroup = new THREE.Group();
@@ -78,6 +82,13 @@ export class ReplayScene {
   private ghostRig: CarRig | null = null;
   private gltfModel: THREE.Object3D | null = null; // cached loaded GLB
   private liveTrail: LiveDataTrail | null = null;
+  private acOverlay: AcOverlayHandle | null = null;
+  private acOverlayVisible = true;
+  private acOverlayRequested = false;
+  private acTrackMesh: AcTrackMeshHandle | null = null;
+  private acScene: AcSceneHandle | null = null;
+  private acAssetsRequested = false;
+  private driveOnAc = false;
   private effects: Effects | null = null;
   private skydome: THREE.Mesh | null = null;
   private lap: LapData | null = null;
@@ -85,6 +96,7 @@ export class ReplayScene {
   private track: TrackData | null = null;
   private activeCameraMode: CameraMode | null = null;
   private lastSampleTime: number | null = null;
+  private lastSample: ReplaySample | null = null;
   private trackCenter = new THREE.Vector3();
   private trackRadius = 300;
   private disposed = false;
@@ -179,6 +191,7 @@ export class ReplayScene {
     this.lap = lap;
     this.lastSampleTime = null;
     this.activeCameraMode = null;
+    this.trackHandle?.dispose();
     this.scene.remove(this.trackGroup);
     this.disposeObject(this.trackGroup);
 
@@ -205,6 +218,214 @@ export class ReplayScene {
     }
     this.liveTrail = new LiveDataTrail(lap, track);
     this.scene.add(this.liveTrail.group);
+
+    // AC MOD verification overlay (only tracks shipping ac_overlay.json get
+    // one). Fetched lazily — the ac_overlay.json is only pulled once the "AC
+    // Overlay" layer or "Drive on AC" is first enabled (both drive it through
+    // the setters ReplayScene's owner calls right after load()), so a user-mode
+    // startup with both off never requests it.
+    if (this.acOverlay) {
+      this.scene.remove(this.acOverlay.group);
+      this.acOverlay.dispose();
+      this.acOverlay = null;
+    }
+    this.acOverlayRequested = false;
+
+    // The built track world (scene.glb, ~16 MB) and its collision ribbon are
+    // only fetched once "drive on AC" is first enabled — they are invisible
+    // until then, and parsing them up front measurably delays first render.
+    if (this.acTrackMesh) {
+      this.scene.remove(this.acTrackMesh.group);
+      this.acTrackMesh.dispose();
+      this.acTrackMesh = null;
+    }
+    if (this.acScene) {
+      this.scene.remove(this.acScene.group);
+      this.acScene.dispose();
+      this.acScene = null;
+    }
+    this.acAssetsRequested = false;
+    if (this.driveOnAc) {
+      this.ensureAcAssets();
+    }
+  }
+
+  /** Swap the replayed lap WITHOUT rebuilding the track world. Everything
+   * else in load() (procedural track, satellite drape, AC assets, cameras) is
+   * per-track; a lap only owns the sampled telemetry and its data trail, so
+   * the lap picker must not pay the multi-second scene rebuild. */
+  setLap(lap: LapData): void {
+    if (!this.track) return;
+    this.lap = lap;
+    this.lastSampleTime = null;
+    if (this.liveTrail) {
+      this.scene.remove(this.liveTrail.group);
+      this.liveTrail.dispose();
+    }
+    this.liveTrail = new LiveDataTrail(lap, this.track);
+    this.scene.add(this.liveTrail.group);
+  }
+
+  /** Fetch the AC MOD verification overlay (ac_overlay.json) once, the first
+   * time it is needed (AC-Overlay layer on, or drive-on-AC, which uses the CSV
+   * ribbon as a ground-Y fallback). Idempotent; a track without the file is a
+   * silent no-op (loadAcOverlay resolves null). */
+  private ensureAcOverlay(): void {
+    if (this.acOverlayRequested || !this.track) return;
+    this.acOverlayRequested = true;
+    const track = this.track;
+    void loadAcOverlay(track.trackId).then((handle) => {
+      if (this.disposed || !handle) return;
+      // A newer load() may have swapped the track out from under this promise.
+      if (this.track !== track) {
+        handle.dispose();
+        return;
+      }
+      handle.setVisible(this.acOverlayVisible);
+      this.acOverlay = handle;
+      this.scene.add(handle.group);
+    });
+  }
+
+  /** Kick off the drive-on-AC asset loads for the current track (idempotent).
+   * Called on load() when the mode is already on, and on the first enable. */
+  private ensureAcAssets(): void {
+    if (this.acAssetsRequested || !this.track) return;
+    this.acAssetsRequested = true;
+    const track = this.track;
+
+    // Road collision geometry. Drives the car onto the built surface.
+    void loadAcTrackMesh(track.trackId).then((handle) => {
+      if (this.disposed || !handle) return;
+      if (this.track !== track) {
+        handle.dispose();
+        return;
+      }
+      // Collision surface only — used by heightAt(); never drawn (the textured
+      // AcScene provides the visible road).
+      handle.setVisible(false);
+      this.acTrackMesh = handle;
+      this.scene.add(handle.group);
+    });
+
+    // Full textured track world (road/kerbs/terrain). Shown while "drive on
+    // AC" is enabled.
+    void loadAcScene(track.trackId).then((handle) => {
+      if (this.disposed || !handle) return;
+      if (this.track !== track) {
+        handle.dispose();
+        return;
+      }
+      handle.setVisible(this.driveOnAc);
+      this.acScene = handle;
+      this.scene.add(handle.group);
+    });
+  }
+
+  /** Current car world-space Y (ground-contact height). Read-only; handy for
+   * verification of the drive-on-AC placement. */
+  get carWorldY(): number {
+    return this.carRig.root.position.y;
+  }
+
+  /** Whether the async AC overlay has finished loading for the current track. */
+  get acOverlayReady(): boolean {
+    return this.acOverlay !== null;
+  }
+
+  /** Whether the async real AC MOD road mesh has finished loading. */
+  get acTrackMeshReady(): boolean {
+    return this.acTrackMesh !== null;
+  }
+
+  /** Whether the async textured AC MOD scene has finished loading. */
+  get acSceneReady(): boolean {
+    return this.acScene !== null;
+  }
+
+  /** Raycast the real AC mesh at an explicit (x,z) — for localizing alignment. */
+  debugMeshProbe(x: number, z: number): { y: number | null; bbox: number[] | undefined } {
+    return {
+      y: this.acTrackMesh?.heightAt(x, z) ?? null,
+      bbox: (this.acTrackMesh?.group.userData as { bbox?: number[] } | undefined)?.bbox,
+    };
+  }
+
+  /** Ground heights at the current car XZ from each source — for verifying that
+   * "drive on AC" is riding the real mesh (mesh non-null) vs falling back. */
+  debugGroundInfo(): {
+    recon: number;
+    mesh: number | null;
+    ribbon: number | null;
+    terrain: number | null;
+  } | null {
+    const s = this.lastSample;
+    if (!s) return null;
+    return {
+      recon: s.y * ELEVATION_SCALE,
+      mesh: this.acTrackMesh?.heightAt(s.x, s.z) ?? null,
+      ribbon: this.acOverlay?.heightAt(s.x, s.z) ?? null,
+      terrain: this.trackHandle?.terrainHeightAt(s.x, s.z) ?? null,
+    };
+  }
+
+  /** Toggle the AC MOD track-edge verification overlay (no-op when absent). */
+  setAcOverlayVisible(visible: boolean): void {
+    this.acOverlayVisible = visible;
+    if (visible) this.ensureAcOverlay(); // lazy first fetch of ac_overlay.json
+    this.acOverlay?.setVisible(visible);
+  }
+
+  /** Toggle the experimental trial tiles (imagegen_trials override manifest)
+   * for in-place A/B against the standard 静岡20cm SR tiles. */
+  setTrialTilesVisible(visible: boolean): void {
+    this.trackHandle?.setTrialTilesVisible(visible);
+  }
+
+  /** When enabled, the car (and ghost) ground-contact Y is taken from the AC
+   * MOD surface instead of the analytic reconstruction, and the real MOD road
+   * geometry is shown. Applied next frame; no-op on tracks without AC data. */
+  setDriveOnAc(enabled: boolean): void {
+    this.driveOnAc = enabled;
+    if (enabled) {
+      this.ensureAcAssets(); // lazy first fetch of scene.glb + collision
+      this.ensureAcOverlay(); // CSV ribbon used as a ground-Y fallback below
+    }
+    this.acScene?.setVisible(enabled);
+    // Show the textured MOD world in place of the reconstruction ground so the
+    // two don't z-fight; the car rides the AC road collision surface meanwhile.
+    this.trackGroup.visible = !enabled;
+  }
+
+  /** Car/ghost world Y for a replay sample when "drive on AC" is on: the real
+   * road mesh where it covers the point, else the aligned CSV ribbon, else the
+   * terrain heightfield, else the analytic reconstruction. The terrain step
+   * matters for run-off: the analytic profile clamps to the road edge, which
+   * off-track can sit metres above the visible ground (the car appeared to
+   * fly). The heightfield keeps it on the dirt instead. */
+  private groundedY(sample: ReplaySample): number {
+    const reconstructionY = sample.y * ELEVATION_SCALE;
+    if (this.driveOnAc) {
+      if (this.acTrackMesh) {
+        const meshY = this.acTrackMesh.heightAt(sample.x, sample.z);
+        if (meshY !== null) return meshY;
+      }
+      const terrainY = this.trackHandle?.terrainHeightAt(sample.x, sample.z) ?? null;
+      // Off the road surface: ride the terrain heightfield. A disagreement
+      // beyond ±8 m vs the analytic profile is treated as heightfield error
+      // (Terrarium tiles vs LiDAR diverge in forest), not a real drop.
+      if (terrainY !== null && Math.abs(terrainY - reconstructionY) <= 8) {
+        return terrainY;
+      }
+      // The AC MOD CSV ribbon is measurably offset from the built world (up
+      // to ~4 m vertically at t=90 on fuji) — falling back onto it made the
+      // car jump into the air when it left the road. Last resort only.
+      if (this.acOverlay) {
+        const ribbonY = this.acOverlay.heightAt(sample.x, sample.z);
+        if (ribbonY !== null) return ribbonY;
+      }
+    }
+    return reconstructionY;
   }
 
   /** Toggle the procedural road layer (the satellite ground re-drapes to match). */
@@ -225,6 +446,11 @@ export class ReplayScene {
   /** Toggle the ground detail-texture blend (Plan A). */
   setDetailTexture(enabled: boolean): void {
     this.trackHandle?.setDetailTexture(enabled);
+  }
+
+  /** Toggle the vector track markings (white edge lines + curbs, Task 2). */
+  setTrackLines(enabled: boolean): void {
+    this.trackHandle?.setTrackLines(enabled);
   }
 
   /** Swap the ground's satellite imagery variant (texture-only, same mesh). */
@@ -258,6 +484,7 @@ export class ReplayScene {
     this.lastSampleTime = sample.time;
     this.updateCar(sample, playbackDelta);
     this.updateCamera(cameraMode, dt);
+    this.trackHandle?.updateGround(this.camera, this.viewportHeight, cameraMode === "top");
 
     if (this.liveTrail) {
       this.liveTrail.setTime(time);
@@ -303,10 +530,15 @@ export class ReplayScene {
     this.disposed = true;
     this.resizeObserver.disconnect();
     Object.values(this.cameras).forEach((controller) => controller.dispose?.());
+    this.trackHandle?.dispose();
+    this.trackHandle = null;
     this.disposeObject(this.trackGroup);
     this.disposeObject(this.carRig.root);
     if (this.ghostRig) this.disposeObject(this.ghostRig.root);
     if (this.liveTrail) this.liveTrail.dispose();
+    if (this.acOverlay) this.acOverlay.dispose();
+    if (this.acTrackMesh) this.acTrackMesh.dispose();
+    if (this.acScene) this.acScene.dispose();
     if (this.effects) this.effects.dispose();
     this.renderer.dispose();
     this.container.removeChild(this.renderer.domElement);
@@ -318,6 +550,7 @@ export class ReplayScene {
 
   private resize(): void {
     const { width, height } = this.getSize();
+    this.viewportHeight = height;
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height, false);
@@ -463,7 +696,8 @@ export class ReplayScene {
   }
 
   private updateCar(sample: ReplaySample, playbackDelta: number): void {
-    this.carRig.root.position.set(sample.x, sample.y * ELEVATION_SCALE, sample.z);
+    this.lastSample = sample;
+    this.carRig.root.position.set(sample.x, this.groundedY(sample), sample.z);
 
     const targetPose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
     if (playbackDelta <= 0 || playbackDelta > 0.25) {
@@ -506,7 +740,7 @@ export class ReplayScene {
 
   private updateGhostCar(sample: ReplaySample): void {
     if (!this.ghostRig) return;
-    this.ghostRig.root.position.set(sample.x, sample.y * ELEVATION_SCALE, sample.z);
+    this.ghostRig.root.position.set(sample.x, this.groundedY(sample), sample.z);
     const pose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
     this.ghostRig.poseQuaternion.copy(pose);
     this.ghostRig.root.quaternion.copy(pose);

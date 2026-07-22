@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>track-creator editor</title>
+    <style>
+      :root {
+        --bg: #0e1116;
+        --panel: #151a22;
+        --panel2: #1c232e;
+        --text: #cfd6e0;
+        --dim: #7d8794;
+        --accent: #4da3ff;
+        --danger: #ff5d6e;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); }
+      body { display: flex; font: 13px/1.5 "Segoe UI", system-ui, sans-serif; color: var(--text); }
+
+      #panel {
+        width: 320px; min-width: 320px; height: 100%; overflow-y: auto;
+        background: var(--panel); border-right: 1px solid #232b37; padding: 12px;
+        display: flex; flex-direction: column; gap: 12px;
+      }
+      #view { flex: 1; position: relative; }
+      #view canvas { display: block; }
+
+      h1 { font-size: 14px; margin: 0; display: flex; align-items: center; gap: 8px; }
+      h1 .dirty { color: var(--accent); font-size: 11px; }
+      section { background: var(--panel2); border-radius: 8px; padding: 10px; }
+      section h2 { font-size: 12px; margin: 0 0 8px; color: var(--dim); letter-spacing: 0.05em; }
+
+      button {
+        background: #2a3342; color: var(--text); border: 1px solid #38455a;
+        border-radius: 6px; padding: 5px 10px; cursor: pointer; font-size: 12px;
+      }
+      button:hover { background: #344054; }
+      button.primary { background: #1f4d80; border-color: #2c66a6; }
+      button.primary:hover { background: #275f9d; }
+      button.active { background: var(--accent); color: #08111d; border-color: var(--accent); font-weight: 600; }
+      button.small { padding: 2px 7px; font-size: 11px; }
+      button.danger:hover { background: #5a2530; border-color: var(--danger); }
+
+      .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+      .grow { flex: 1; }
+      label.chk { display: flex; gap: 6px; align-items: center; cursor: pointer; user-select: none; }
+      input[type="number"], select {
+        background: #10151d; color: var(--text); border: 1px solid #303b4c;
+        border-radius: 5px; padding: 3px 6px; width: 64px; font-size: 12px;
+      }
+      input[type="range"] { width: 100%; }
+      select { width: auto; }
+
+      .list { display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow-y: auto; }
+      .item {
+        display: flex; gap: 5px; align-items: center; padding: 4px 6px;
+        border-radius: 6px; background: #10151d; border: 1px solid transparent; cursor: pointer;
+      }
+      .item.selected { border-color: var(--accent); }
+      .item .tag {
+        font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; cursor: pointer;
+      }
+      .tag.L { background: #274d33; color: #8fe3a8; }
+      .tag.R { background: #4d2733; color: #e38fa8; }
+      .item input[type="number"] { width: 52px; padding: 2px 4px; }
+      .muted { color: var(--dim); font-size: 11px; }
+      .colorchip { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+      #status {
+        margin-top: auto; font-size: 11px; color: var(--dim); white-space: pre-wrap;
+        border-top: 1px solid #232b37; padding-top: 8px; min-height: 34px;
+      }
+      #attrib {
+        position: absolute; right: 8px; bottom: 6px; font-size: 11px; color: #aab4c0;
+        background: rgba(10, 13, 18, 0.6); padding: 2px 8px; border-radius: 4px; display: none;
+      }
+      #hint {
+        position: absolute; left: 10px; top: 8px; font-size: 12px; color: #cfd6e0;
+        background: rgba(10, 13, 18, 0.65); padding: 4px 10px; border-radius: 6px; pointer-events: none;
+      }
+      #traceToggle {
+        position: absolute; right: 10px; top: 8px; font-size: 12px; font-weight: 700;
+        color: #cfd6e0; background: rgba(10, 13, 18, 0.65); border: 1px solid #3a4656;
+        padding: 4px 12px; border-radius: 6px; cursor: pointer;
+      }
+      #traceToggle:hover { border-color: #6b7a8f; }
+      #traceToggle.active { color: #ffd24d; border-color: #ffd24d; }
+    </style>
+  </head>
+  <body>
+    <div id="panel"></div>
+    <div id="view">
+      <div id="hint"></div>
+      <button id="traceToggle" title="航空写真を路面より手前に表示(トレース用)。キー: T">📷 手前表示 (T)</button>
+      <div id="attrib">地図: 国土地理院(地理院タイル・全国最新写真)</div>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "track-corridor-enhancement",
+  "visualizationOnly": true,
+  "note": "AI illustrated middle-sector comparison tile. Visualization only; geometry shift gate passed, strict photo-fidelity gate failed.",
+  "bbox": {
+    "minLng": 138.91723261,
+    "maxLng": 138.93658159,
+    "minLat": 35.36246909,
+    "maxLat": 35.37859744
+  },
+  "mercator": true,
+  "tileCount": 1,
+  "tiles": [
+    {
+      "file": "ai_illustrated_tile.png?v=20260721T215141",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6894185175942101,
+        "v0": 0.4013671875,
+        "u1": 0.7533067132518093,
+        "v1": 0.4638671875
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit illustrated style (manual app upload by user)",
+        "sourceCrop": "tmp/imagegen/fuji-middle-correct-source-512.jpg",
+        "sourceSha256": "b4550360b4eec69d399d005bb953f7c3f03ddcbd001be42c239f45a710725c6b",
+        "generatedFile": "AI_Illustrated.jpg",
+        "colorMatched": true,
+        "featherPx": 24,
+        "postMatchChecks": {
+          "lrConsistencyDb": 20.07,
+          "blockShiftP95Px": 0.428,
+          "meanColorDelta": 1.02
+        },
+        "visualizationOnly": true,
+        "gatePassed": false
+      }
+    }
+  ]
+}

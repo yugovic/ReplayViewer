@@ -63,11 +63,116 @@ function wrapTrackArcLength(dist: number, length: number): number {
  * pinned by the chirality unit tests and must match bake_road_camber.py's
  * left/right edge assignment.
  */
+interface CenterlineProjection {
+  arcLength: number;
+  lateralDistance: number;
+  signedLateralDistance: number;
+}
+
+/** Uniform grid over centerline segments. Queries expand outward ring by ring
+ * and stop once the best hit provably beats every unscanned cell, so results
+ * are bit-identical to the brute-force scan (ties resolve to the lowest
+ * segment index, matching the old first-wins loop). Built lazily per track:
+ * the satellite/feature drape projects tens of thousands of points and the
+ * brute-force scan over all segments dominated scene-build time (~17 s
+ * measured on fuji's 193×193 drape grid × 651 segments). */
+interface CenterlineIndex {
+  cellSize: number;
+  minX: number;
+  minZ: number;
+  cols: number;
+  rows: number;
+  cells: Map<number, number[]>;
+}
+
+const centerlineIndexCache = new WeakMap<TrackData, CenterlineIndex>();
+
+function buildCenterlineIndex(track: TrackData): CenterlineIndex {
+  const points = track.centerline;
+  let minX = Infinity;
+  let minZ = Infinity;
+  let maxX = -Infinity;
+  let maxZ = -Infinity;
+  for (const p of points) {
+    if (p.x < minX) minX = p.x;
+    if (p.x > maxX) maxX = p.x;
+    if (p.z < minZ) minZ = p.z;
+    if (p.z > maxZ) maxZ = p.z;
+  }
+  const totalLength = points[points.length - 1].dist - points[0].dist;
+  const avgSegment = totalLength > 0 ? totalLength / (points.length - 1) : 1;
+  const cellSize = Math.max(16, avgSegment * 4);
+  const cols = Math.max(1, Math.ceil((maxX - minX) / cellSize));
+  const rows = Math.max(1, Math.ceil((maxZ - minZ) / cellSize));
+  const cells = new Map<number, number[]>();
+  for (let i = 0; i < points.length - 1; i += 1) {
+    const a = points[i];
+    const b = points[i + 1];
+    const cx0 = clamp(Math.floor((Math.min(a.x, b.x) - minX) / cellSize), 0, cols - 1);
+    const cx1 = clamp(Math.floor((Math.max(a.x, b.x) - minX) / cellSize), 0, cols - 1);
+    const cz0 = clamp(Math.floor((Math.min(a.z, b.z) - minZ) / cellSize), 0, rows - 1);
+    const cz1 = clamp(Math.floor((Math.max(a.z, b.z) - minZ) / cellSize), 0, rows - 1);
+    for (let cx = cx0; cx <= cx1; cx += 1) {
+      for (let cz = cz0; cz <= cz1; cz += 1) {
+        const key = cx * rows + cz;
+        const bucket = cells.get(key);
+        if (bucket) {
+          bucket.push(i);
+        } else {
+          cells.set(key, [i]);
+        }
+      }
+    }
+  }
+  return { cellSize, minX, minZ, cols, rows, cells };
+}
+
+/** Exact point-to-segment test shared by both search strategies. Updates and
+ * returns the running best. Tie-break on equal distance goes to the LOWER
+ * segment index — the brute-force loop kept the first strict improvement, and
+ * grid rings visit segments out of order. */
+function testSegment(
+  points: TrackData["centerline"],
+  i: number,
+  x: number,
+  z: number,
+  best: { distSq: number; index: number; arcLength: number; signedLateral: number },
+): void {
+  const a = points[i];
+  const b = points[i + 1];
+  const dx = b.x - a.x;
+  const dz = b.z - a.z;
+  const segmentLengthSq = dx * dx + dz * dz;
+  const t =
+    segmentLengthSq > 0 ? clamp(((x - a.x) * dx + (z - a.z) * dz) / segmentLengthSq, 0, 1) : 0;
+  const projectedX = a.x + dx * t;
+  const projectedZ = a.z + dz * t;
+  const offsetX = x - projectedX;
+  const offsetZ = z - projectedZ;
+  const distSq = offsetX * offsetX + offsetZ * offsetZ;
+
+  if (distSq < best.distSq || (distSq === best.distSq && i < best.index)) {
+    best.distSq = distSq;
+    best.index = i;
+    best.arcLength = a.dist + (b.dist - a.dist) * t;
+    // Signed lateral = T×O with T the unit tangent (increasing dist). For an
+    // interior projection O ⊥ T so |T×O| == |O|; +ve is the driver's right.
+    const segLen = Math.sqrt(segmentLengthSq);
+    if (segLen > 0) {
+      const tx = dx / segLen;
+      const tz = dz / segLen;
+      best.signedLateral = tx * offsetZ - tz * offsetX;
+    } else {
+      best.signedLateral = Math.sqrt(distSq);
+    }
+  }
+}
+
 export function projectPointToCenterline(
   track: TrackData,
   x: number,
   z: number,
-): { arcLength: number; lateralDistance: number; signedLateralDistance: number } {
+): CenterlineProjection {
   const points = track.centerline;
   if (points.length === 0) {
     return { arcLength: 0, lateralDistance: 0, signedLateralDistance: 0 };
@@ -77,44 +182,84 @@ export function projectPointToCenterline(
     return { arcLength: points[0].dist, lateralDistance: d, signedLateralDistance: d };
   }
 
-  let bestDistSq = Number.POSITIVE_INFINITY;
-  let bestArcLength = points[0].dist;
-  let bestSignedLateral = 0;
+  const best = {
+    distSq: Number.POSITIVE_INFINITY,
+    index: Number.MAX_SAFE_INTEGER,
+    arcLength: points[0].dist,
+    signedLateral: 0,
+  };
 
-  for (let i = 0; i < points.length - 1; i += 1) {
-    const a = points[i];
-    const b = points[i + 1];
-    const dx = b.x - a.x;
-    const dz = b.z - a.z;
-    const segmentLengthSq = dx * dx + dz * dz;
-    const t =
-      segmentLengthSq > 0 ? clamp(((x - a.x) * dx + (z - a.z) * dz) / segmentLengthSq, 0, 1) : 0;
-    const projectedX = a.x + dx * t;
-    const projectedZ = a.z + dz * t;
-    const offsetX = x - projectedX;
-    const offsetZ = z - projectedZ;
-    const distSq = offsetX * offsetX + offsetZ * offsetZ;
+  let useBruteForce = points.length - 1 < 64;
+  let index: CenterlineIndex | undefined;
+  let homeX = 0;
+  let homeZ = 0;
+  if (!useBruteForce) {
+    index = centerlineIndexCache.get(track);
+    if (!index) {
+      index = buildCenterlineIndex(track);
+      centerlineIndexCache.set(track, index);
+    }
+    // Unclamped home cell: correct ring-distance bounds even for points just
+    // outside the grid (out-of-range cells simply miss the map).
+    homeX = Math.floor((x - index.minX) / index.cellSize);
+    homeZ = Math.floor((z - index.minZ) / index.cellSize);
+    // Far outside the grid the ring walk degrades to O(distance²) — the
+    // feature drape queries points kilometres off-track, and that pathology
+    // measured ~10 s per scene build. The plain scan is O(#segments) no
+    // matter where the query sits, so it wins out there.
+    const margin = 8;
+    if (
+      homeX < -margin ||
+      homeX >= index.cols + margin ||
+      homeZ < -margin ||
+      homeZ >= index.rows + margin
+    ) {
+      useBruteForce = true;
+    }
+  }
 
-    if (distSq < bestDistSq) {
-      bestDistSq = distSq;
-      bestArcLength = a.dist + (b.dist - a.dist) * t;
-      // Signed lateral = T×O with T the unit tangent (increasing dist). For an
-      // interior projection O ⊥ T so |T×O| == |O|; +ve is the driver's right.
-      const segLen = Math.sqrt(segmentLengthSq);
-      if (segLen > 0) {
-        const tx = dx / segLen;
-        const tz = dz / segLen;
-        bestSignedLateral = tx * offsetZ - tz * offsetX;
-      } else {
-        bestSignedLateral = Math.sqrt(distSq);
+  if (useBruteForce) {
+    for (let i = 0; i < points.length - 1; i += 1) {
+      testSegment(points, i, x, z, best);
+    }
+  } else {
+    const { cellSize, cols, rows, cells } = index!;
+    const maxRing =
+      Math.max(Math.abs(homeX), Math.abs(homeX - (cols - 1))) +
+      Math.max(Math.abs(homeZ), Math.abs(homeZ - (rows - 1)));
+
+    for (let ring = 0; ring <= maxRing; ring += 1) {
+      const x0 = homeX - ring;
+      const x1 = homeX + ring;
+      const z0 = homeZ - ring;
+      const z1 = homeZ + ring;
+      for (let cx = x0; cx <= x1; cx += 1) {
+        if (cx < 0 || cx >= cols) continue;
+        const onXEdge = cx === x0 || cx === x1;
+        for (let cz = z0; cz <= z1; cz += 1) {
+          if (cz < 0 || cz >= rows) continue;
+          if (!onXEdge && cz !== z0 && cz !== z1) continue; // ring perimeter only
+          const bucket = cells.get(cx * rows + cz);
+          if (!bucket) continue;
+          for (const i of bucket) {
+            testSegment(points, i, x, z, best);
+          }
+        }
+      }
+      // Every unscanned cell (Chebyshev ring ≥ ring+1) is at least
+      // ring·cellSize from the query point, so a hit within that radius is
+      // provably the global minimum.
+      const safeRadius = ring * cellSize;
+      if (best.distSq <= safeRadius * safeRadius) {
+        break;
       }
     }
   }
 
   return {
-    arcLength: bestArcLength,
-    lateralDistance: Math.sqrt(bestDistSq),
-    signedLateralDistance: bestSignedLateral,
+    arcLength: best.arcLength,
+    lateralDistance: Math.sqrt(best.distSq),
+    signedLateralDistance: best.signedLateral,
   };
 }
 
@@ -190,6 +335,28 @@ export function findSegmentIndex(times: number[], time: number): number {
   return clamp(low, 0, lastSegment);
 }
 
+/** Binary search for the centerline segment containing arc length `dist`
+ * (dist values are sorted). Returns the index i with points[i].dist <= dist
+ * <= points[i+1].dist. Callers guarantee dist is within [first, last]. These
+ * samplers run per drape vertex and per replay frame; the previous linear
+ * scans measured whole seconds per scene build. */
+function centerlineSegmentAt(points: TrackData["centerline"], dist: number): number {
+  let low = 0;
+  let high = points.length - 2;
+  while (low <= high) {
+    const mid = (low + high) >> 1;
+    if (points[mid].dist <= dist) {
+      if (dist <= points[mid + 1].dist) {
+        return mid;
+      }
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    }
+  }
+  return Math.max(0, Math.min(points.length - 2, low));
+}
+
 export function sampleTrackAltitude(track: TrackData, dist: number): number {
   const points = track.centerline;
   if (points.length === 0) {
@@ -202,16 +369,12 @@ export function sampleTrackAltitude(track: TrackData, dist: number): number {
   if (dist >= last.dist) {
     return last.y;
   }
-  for (let i = 0; i < points.length - 1; i += 1) {
-    const a = points[i];
-    const b = points[i + 1];
-    if (a.dist <= dist && dist <= b.dist) {
-      const span = b.dist - a.dist;
-      const ratio = span > 0 ? (dist - a.dist) / span : 0;
-      return a.y + (b.y - a.y) * ratio;
-    }
-  }
-  return 0;
+  const i = centerlineSegmentAt(points, dist);
+  const a = points[i];
+  const b = points[i + 1];
+  const span = b.dist - a.dist;
+  const ratio = span > 0 ? (dist - a.dist) / span : 0;
+  return a.y + (b.y - a.y) * ratio;
 }
 
 /** True when the track carries baked road-edge elevations (P2 camber). */
@@ -227,18 +390,14 @@ function sampleEdgeAlt(track: TrackData, dist: number, key: "altLeft" | "altRigh
   if (dist <= points[0].dist) return (points[0][key] as number) ?? points[0].alt;
   const last = points[points.length - 1];
   if (dist >= last.dist) return (last[key] as number) ?? last.alt;
-  for (let i = 0; i < points.length - 1; i += 1) {
-    const a = points[i];
-    const b = points[i + 1];
-    if (a.dist <= dist && dist <= b.dist) {
-      const span = b.dist - a.dist;
-      const ratio = span > 0 ? (dist - a.dist) / span : 0;
-      const av = (a[key] as number) ?? a.alt;
-      const bv = (b[key] as number) ?? b.alt;
-      return av + (bv - av) * ratio;
-    }
-  }
-  return 0;
+  const i = centerlineSegmentAt(points, dist);
+  const a = points[i];
+  const b = points[i + 1];
+  const span = b.dist - a.dist;
+  const ratio = span > 0 ? (dist - a.dist) / span : 0;
+  const av = (a[key] as number) ?? a.alt;
+  const bv = (b[key] as number) ?? b.alt;
+  return av + (bv - av) * ratio;
 }
 
 /**
@@ -271,49 +430,147 @@ export function sampleTrackRoll(track: TrackData, dist: number): number {
   return clamp(roll, -MAX_VEHICLE_ROLL, MAX_VEHICLE_ROLL);
 }
 
+/** Per-lap motion arrays for smooth playback. 10 Hz GPS through plain linear
+ * interpolation renders as a visible 100 ms stutter: velocity is constant
+ * inside a segment and jumps at every knot, and the old pose window only
+ * changed value when the segment index changed (piecewise-constant heading).
+ * Positions are therefore sampled with a C1 cubic Hermite (finite-difference
+ * tangents = non-uniform Catmull-Rom, passing exactly through every GPS
+ * sample) and heading/pitch are interpolated between per-sample values
+ * (headings unwrapped so the lerp never crosses the ±π seam). Cached by lap
+ * identity like the projected-arc-length cache above. */
+interface LapMotionArrays {
+  xs: Float64Array;
+  zs: Float64Array;
+  headings: Float64Array;
+  pitches: Float64Array;
+}
+
+const lapMotionCache = new WeakMap<LapData, LapMotionArrays>();
+
+const POSE_WINDOW = 6;
+
+function getLapMotionArrays(lap: LapData, track: TrackData): LapMotionArrays {
+  const cached = lapMotionCache.get(lap);
+  if (cached) {
+    return cached;
+  }
+  const count = lap.t.length;
+  const xs = new Float64Array(count);
+  const zs = new Float64Array(count);
+  for (let i = 0; i < count; i += 1) {
+    const local = latLngToLocal(lap.lat[i] ?? 0, lap.lng[i] ?? 0, track.origin);
+    xs[i] = local.x;
+    zs[i] = local.z;
+  }
+  const projected = getProjectedLapArcLengths(lap, track);
+  const headings = new Float64Array(count);
+  const pitches = new Float64Array(count);
+  let previousHeading = 0;
+  for (let i = 0; i < count; i += 1) {
+    const s = Math.max(0, i - POSE_WINDOW);
+    const e = Math.min(count - 1, i + POSE_WINDOW);
+    const dx = xs[e] - xs[s];
+    const dz = zs[e] - zs[s];
+    const horizontal = Math.hypot(dx, dz);
+    // Stationary stretch: hold the previous pose instead of snapping to 0.
+    let heading = previousHeading;
+    let pitch = i > 0 ? pitches[i - 1] : 0;
+    if (horizontal >= 0.001) {
+      heading = Math.atan2(dx, dz);
+      // Unwrap onto the previous sample so linear interpolation between
+      // consecutive headings never takes the long way around the circle.
+      while (heading - previousHeading > Math.PI) heading -= 2 * Math.PI;
+      while (heading - previousHeading < -Math.PI) heading += 2 * Math.PI;
+      const startS = wrapTrackArcLength(projected[s] ?? 0, track.totalLength);
+      const endS = wrapTrackArcLength(projected[e] ?? 0, track.totalLength);
+      const startY = sampleTrackAltitude(track, startS);
+      const endY = sampleTrackAltitude(track, endS);
+      pitch = clamp(Math.atan2(endY - startY, horizontal), -MAX_VEHICLE_PITCH, MAX_VEHICLE_PITCH);
+    }
+    headings[i] = heading;
+    pitches[i] = pitch;
+    previousHeading = heading;
+  }
+  const arrays: LapMotionArrays = { xs, zs, headings, pitches };
+  lapMotionCache.set(lap, arrays);
+  return arrays;
+}
+
+/** Finite-difference tangent at sample `i` (non-uniform Catmull-Rom). */
+function sampleTangent(times: number[], values: Float64Array, i: number): number {
+  const prev = Math.max(0, i - 1);
+  const next = Math.min(values.length - 1, i + 1);
+  const span = times[next] - times[prev];
+  return span > 0 ? (values[next] - values[prev]) / span : 0;
+}
+
+/** C1 cubic Hermite between samples `index` and `index + 1` at `time`. */
+function sampleHermite(times: number[], values: Float64Array, index: number, time: number): number {
+  const t0 = times[index];
+  const t1 = times[index + 1];
+  const span = t1 - t0;
+  if (!(span > 0)) {
+    return values[index];
+  }
+  const u = clamp((time - t0) / span, 0, 1);
+  const u2 = u * u;
+  const u3 = u2 * u;
+  const m0 = sampleTangent(times, values, index) * span;
+  const m1 = sampleTangent(times, values, index + 1) * span;
+  return (
+    (2 * u3 - 3 * u2 + 1) * values[index] +
+    (u3 - 2 * u2 + u) * m0 +
+    (-2 * u3 + 3 * u2) * values[index + 1] +
+    (u3 - u2) * m1
+  );
+}
+
 function samplePosition(lap: LapData, track: TrackData, time: number) {
   const clampedTime = clamp(time, 0, lapDuration(lap));
-  const lat = interpolateNumberSeries(lap.t, lap.lat, clampedTime);
-  const lng = interpolateNumberSeries(lap.t, lap.lng, clampedTime);
+  const count = lap.t.length;
+  const motion = getLapMotionArrays(lap, track);
+  let x = 0;
+  let z = 0;
+  if (count > 0) {
+    if (count === 1 || clampedTime <= lap.t[0]) {
+      x = motion.xs[0];
+      z = motion.zs[0];
+    } else if (clampedTime >= lap.t[count - 1]) {
+      x = motion.xs[count - 1];
+      z = motion.zs[count - 1];
+    } else {
+      const index = findSegmentIndex(lap.t, clampedTime);
+      x = sampleHermite(lap.t, motion.xs, index, clampedTime);
+      z = sampleHermite(lap.t, motion.zs, index, clampedTime);
+    }
+  }
   const dist = interpolateNumberSeries(lap.t, lap.dist, clampedTime);
   const projectedArcLengths = getProjectedLapArcLengths(lap, track);
   const projectedDist = interpolateNumberSeries(lap.t, projectedArcLengths, clampedTime);
   const wrappedProjectedDist = wrapTrackArcLength(projectedDist, track.totalLength);
-  const local = latLngToLocal(lat, lng, track.origin);
   // Instantaneous signed lateral of the actual line from the centerline, so
   // the car sits on the correct point of the (cambered) road surface.
-  const { signedLateralDistance } = projectPointToCenterline(track, local.x, local.z);
+  const { signedLateralDistance } = projectPointToCenterline(track, x, z);
   return {
-    x: local.x,
+    x,
     y: sampleTrackSurface(track, wrappedProjectedDist, signedLateralDistance),
-    z: local.z,
+    z,
     dist,
     arcLength: wrappedProjectedDist,
   };
 }
 
 function samplePose(lap: LapData, track: TrackData, time: number) {
-  const index = findSegmentIndex(lap.t, time);
-  const startIndex = Math.max(0, index - 6);
-  const endIndex = Math.min(lap.t.length - 1, index + 6);
-  const start = latLngToLocal(lap.lat[startIndex], lap.lng[startIndex], track.origin);
-  const end = latLngToLocal(lap.lat[endIndex], lap.lng[endIndex], track.origin);
-  const dx = end.x - start.x;
-  const dz = end.z - start.z;
-  const horizontal = Math.hypot(dx, dz);
-  if (horizontal < 0.001) {
+  if (lap.t.length === 0) {
     return { heading: 0, pitch: 0 };
   }
-  const projectedArcLengths = getProjectedLapArcLengths(lap, track);
-  const startS = wrapTrackArcLength(projectedArcLengths[startIndex] ?? 0, track.totalLength);
-  const endS = wrapTrackArcLength(projectedArcLengths[endIndex] ?? 0, track.totalLength);
-  const startY = sampleTrackAltitude(track, startS);
-  const endY = sampleTrackAltitude(track, endS);
-  const pitch = clamp(Math.atan2(endY - startY, horizontal), -MAX_VEHICLE_PITCH, MAX_VEHICLE_PITCH);
-  return {
-    heading: Math.atan2(dx, dz),
-    pitch,
-  };
+  const motion = getLapMotionArrays(lap, track);
+  const heading = interpolateNumberSeries(lap.t, motion.headings, time);
+  const pitch = interpolateNumberSeries(lap.t, motion.pitches, time);
+  // Unwrapped headings can drift beyond ±π after enough same-direction turns;
+  // renormalize for consumers that expect atan2 range.
+  return { heading: Math.atan2(Math.sin(heading), Math.cos(heading)), pitch };
 }
 
 export function sampleReplay(lap: LapData, track: TrackData, time: number): ReplaySample {

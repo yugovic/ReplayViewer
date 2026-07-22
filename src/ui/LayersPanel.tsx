@@ -6,10 +6,18 @@ export function LayersPanel() {
   const showOsmFeatures = useReplayStore((state) => state.showOsmFeatures);
   const showFeatures3d = useReplayStore((state) => state.showFeatures3d);
   const showDetailTexture = useReplayStore((state) => state.showDetailTexture);
+  const showTrackLines = useReplayStore((state) => state.showTrackLines);
+  const showAcOverlay = useReplayStore((state) => state.showAcOverlay);
+  const driveOnAc = useReplayStore((state) => state.driveOnAc);
+  const showTrialTiles = useReplayStore((state) => state.showTrialTiles);
   const toggleRoad3d = useReplayStore((state) => state.toggleRoad3d);
   const toggleOsmFeatures = useReplayStore((state) => state.toggleOsmFeatures);
   const toggleFeatures3d = useReplayStore((state) => state.toggleFeatures3d);
   const toggleDetailTexture = useReplayStore((state) => state.toggleDetailTexture);
+  const toggleTrackLines = useReplayStore((state) => state.toggleTrackLines);
+  const toggleAcOverlay = useReplayStore((state) => state.toggleAcOverlay);
+  const toggleDriveOnAc = useReplayStore((state) => state.toggleDriveOnAc);
+  const toggleTrialTiles = useReplayStore((state) => state.toggleTrialTiles);
 
   const satelliteVariant = useReplayStore((state) => state.satelliteVariant);
   const availableSatelliteVariants = useReplayStore((state) => state.availableSatelliteVariants);
@@ -20,6 +28,10 @@ export function LayersPanel() {
     { label: "OSM Features", key: "8", active: showOsmFeatures, toggle: toggleOsmFeatures },
     { label: "3D Features", key: "9", active: showFeatures3d, toggle: toggleFeatures3d },
     { label: "Detail Texture", key: "D", active: showDetailTexture, toggle: toggleDetailTexture },
+    { label: "Track lines", key: "L", active: showTrackLines, toggle: toggleTrackLines },
+    { label: "AC Overlay", key: "A", active: showAcOverlay, toggle: toggleAcOverlay },
+    { label: "Trial tiles", key: "I", active: showTrialTiles, toggle: toggleTrialTiles },
+    { label: "Drive on AC", key: "M", active: driveOnAc, toggle: toggleDriveOnAc },
   ];
 
   // Only offer variants the availability probe found on the current track

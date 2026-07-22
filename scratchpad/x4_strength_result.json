@@ -1,0 +1,37 @@
+[
+  {
+    "strength": 0.6,
+    "lrMean": 33.435,
+    "lrMin": 32.056,
+    "shiftP95": 0.5785,
+    "pass": false
+  },
+  {
+    "strength": 0.55,
+    "lrMean": 33.762,
+    "lrMin": 32.396,
+    "shiftP95": 0.5536,
+    "pass": false
+  },
+  {
+    "strength": 0.5,
+    "lrMean": 34.072,
+    "lrMin": 32.721,
+    "shiftP95": 0.5311,
+    "pass": false
+  },
+  {
+    "strength": 0.45,
+    "lrMean": 34.355,
+    "lrMin": 33.023,
+    "shiftP95": 0.3091,
+    "pass": true
+  },
+  {
+    "strength": 0.4,
+    "lrMean": 34.601,
+    "lrMin": 33.286,
+    "shiftP95": 0.1342,
+    "pass": true
+  }
+]

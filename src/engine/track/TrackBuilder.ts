@@ -3,7 +3,6 @@
  *
  * Components:
  *  - Asphalt ribbon with UV coordinates and procedural roughness normal-map
- *  - Red/white kerbs on high-curvature corners
  *  - Start/finish chequered line
  *  - 100 m / 50 m braking markers at major corners
  *  - Satellite imagery as ground plane
@@ -17,8 +16,16 @@ import { corridorBlendHeight, corridorMask, reblendDrapedHeights, type DrapeCach
 import { TerrainSampler } from "./TerrainSampler";
 import { buildFeaturesGroup, loadFeatures } from "./FeatureBuilder";
 import { buildFeatures3dGroup, loadFeatures3d, type Features3DStats } from "./Features3DBuilder";
-import { buildAsphaltDetailTexture, buildGrassDetailTexture } from "./detailTexture";
+import {
+  attachGroundDetailShader,
+  createGroundDetailUniforms,
+  type GroundDetailUniforms,
+} from "./groundDetail";
+import { loadOverlays } from "./overlays";
+import { buildCurbsGroup, type CurbCenterlinePoint } from "./curbBuilder";
 import { satelliteFilename, type SatVariantId } from "../../replay/satelliteVariants";
+import { EnhancedCorridorGround } from "./EnhancedCorridorGround";
+import { buildRoadEdgeLinesGroup, loadRoadEdgeProfile } from "./RoadEdgeLines";
 
 const ELEVATION_SCALE = 1;
 
@@ -202,7 +209,7 @@ function buildRoadMesh(track: TrackData, points: THREE.Vector3[]): THREE.Mesh {
   return mesh;
 }
 
-// ─── Curvature-based kerb detection ───────────────────────────────────────────
+// ─── Centerline curvature (drives braking-marker placement) ────────────────────
 
 /**
  * Returns curvature magnitude at each centerline point (0 = straight).
@@ -232,59 +239,10 @@ function computeCurvatures(points: THREE.Vector3[]): number[] {
   return curvatures;
 }
 
-function buildKerbs(track: TrackData, points: THREE.Vector3[]): THREE.Mesh[] {
-  const curvatures = computeCurvatures(points);
-  const CURV_THRESHOLD = 0.04;
-  // Wider and slightly taller kerbs for better visibility from above
-  const KERB_WIDTH = 1.6;
-  const KERB_HEIGHT = 0.08;
-  const STRIPE_LEN = 1.4;
-  const halfRoad = track.width / 2;
-
-  // Brighter colours so they are visible from the top-down camera
-  const redMat = new THREE.MeshStandardMaterial({ color: 0xff1111, roughness: 0.5, metalness: 0.0, emissive: 0x330000 });
-  const whiteMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.0 });
-  const meshes: THREE.Mesh[] = [];
-
-  // Collect kerb segments: each "block" is a short ribbon quad
-  const kerbGeo = new THREE.BoxGeometry(KERB_WIDTH, KERB_HEIGHT, STRIPE_LEN);
-
-  let stripeIdx = 0;
-  for (let i = 1; i < points.length - 1; i++) {
-    if (curvatures[i] < CURV_THRESHOLD) continue;
-
-    const point = points[i];
-    const prev = points[Math.max(0, i - 1)];
-    const next = points[Math.min(points.length - 1, i + 1)];
-    const tangent = new THREE.Vector3(next.x - prev.x, 0, next.z - prev.z).normalize();
-    const normal = new THREE.Vector3(-tangent.z, 0, tangent.x);
-
-    // Determine which side curves (cross-product sign of consecutive tangents)
-    const ab = new THREE.Vector3(point.x - prev.x, 0, point.z - prev.z).normalize();
-    const bc = new THREE.Vector3(next.x - point.x, 0, next.z - point.z).normalize();
-    const cross = ab.x * bc.z - ab.z * bc.x;
-    // cross > 0 → right turn → kerb on outside (right side)
-    const side = cross > 0 ? -1 : 1;
-
-    const kerbPos = point.clone().addScaledVector(normal, side * (halfRoad + KERB_WIDTH / 2 - 0.2));
-    // Follow the adjacent road edge's height (P2 camber): +normal (side>0) is
-    // the driver's RIGHT edge, -normal the LEFT — see buildRoadMesh.
-    const edge = roadEdgeY(track, i, point.y);
-    const edgeY = side > 0 ? edge.right : edge.left;
-    kerbPos.y = edgeY + KERB_HEIGHT / 2;
-
-    const mat = stripeIdx % 2 === 0 ? redMat : whiteMat;
-    const mesh = new THREE.Mesh(kerbGeo, mat);
-    mesh.position.copy(kerbPos);
-    // Align along tangent
-    const angle = Math.atan2(tangent.x, tangent.z);
-    mesh.rotation.y = angle;
-    mesh.receiveShadow = true;
-    meshes.push(mesh);
-    stripeIdx++;
-  }
-  return meshes;
-}
+// NOTE: the old curvature-triggered red/white box kerbs were removed
+// (2026-07-13): sampled per centerline point they rendered as sparse floating
+// plates beside the road (persona-test P0-4). Proper curbs come from
+// overlays.json via curbBuilder (the "Track lines" layer).
 
 // ─── Start/Finish chequered line ───────────────────────────────────────────────
 
@@ -481,92 +439,6 @@ export function satelliteUvToLatLng(
   return { lat, lng };
 }
 
-/** Uniforms exposed by attachGroundDetailShader(), kept live so the effect
- * can be toggled (setDetailTexture) without recompiling the shader. */
-export interface GroundDetailUniforms {
-  uAsphaltDetail: { value: THREE.Texture };
-  uGrassDetail: { value: THREE.Texture };
-  uDetailStrength: { value: number };
-}
-
-/**
- * Injects the Plan-A ground detail-texture blend (see detailTexture.ts) into
- * the satellite material via onBeforeCompile: modulates the photo's albedo
- * with tileable procedural grayscale noise — asphalt grain inside the road
- * corridor (per-vertex "corridorMask" attribute), grass mottling outside it —
- * fading out with distance from the camera so it only sharpens the close-up
- * view. Luminance-only: it multiplies diffuseColor by a value that averages
- * to 1.0 (the noise textures are mean-0.5, so `detail.r * 2.0` averages to
- * 1.0), never invents color or geometry.
- *
- * Patches both `#include <common>` (uniform/varying/attribute declarations)
- * and `#include <begin_vertex>` (bakes vWorldXZ/vCorridorMask) /
- * `#include <map_fragment>` (applies the modulation right after the photo's
- * base color is read). vViewPosition, used for the distance fade, is a
- * standard MeshStandardMaterial fragment varying set unconditionally right
- * after `#include <project_vertex>` — no extra plumbing needed for it.
- */
-function attachGroundDetailShader(mat: THREE.MeshStandardMaterial): GroundDetailUniforms {
-  const uniforms: GroundDetailUniforms = {
-    uAsphaltDetail: { value: buildAsphaltDetailTexture() },
-    uGrassDetail: { value: buildGrassDetailTexture() },
-    uDetailStrength: { value: 1 },
-  };
-
-  mat.onBeforeCompile = (shader) => {
-    shader.uniforms.uAsphaltDetail = uniforms.uAsphaltDetail;
-    shader.uniforms.uGrassDetail = uniforms.uGrassDetail;
-    shader.uniforms.uDetailStrength = uniforms.uDetailStrength;
-
-    shader.vertexShader = shader.vertexShader
-      .replace(
-        "#include <common>",
-        `#include <common>
-attribute float corridorMask;
-varying float vCorridorMask;
-varying vec2 vWorldXZ;`,
-      )
-      .replace(
-        "#include <begin_vertex>",
-        `#include <begin_vertex>
-vCorridorMask = corridorMask;
-vWorldXZ = ( modelMatrix * vec4( transformed, 1.0 ) ).xz;`,
-      );
-
-    shader.fragmentShader = shader.fragmentShader
-      .replace(
-        "#include <common>",
-        `#include <common>
-uniform sampler2D uAsphaltDetail;
-uniform sampler2D uGrassDetail;
-uniform float uDetailStrength;
-varying float vCorridorMask;
-varying vec2 vWorldXZ;`,
-      )
-      .replace(
-        "#include <map_fragment>",
-        `#include <map_fragment>
-{
-  vec3 asphaltDetail = texture2D( uAsphaltDetail, vWorldXZ / 0.35 ).rgb;
-  vec3 grassDetail = texture2D( uGrassDetail, vWorldXZ / 0.8 ).rgb;
-  vec3 detail = mix( grassDetail, asphaltDetail, vCorridorMask );
-  float cameraDist = length( vViewPosition );
-  float distanceFade = 1.0 - smoothstep( 40.0, 120.0, cameraDist );
-  float fadedStrength = uDetailStrength * distanceFade;
-  diffuseColor.rgb *= mix( 1.0, detail.r * 2.0, fadedStrength );
-}`,
-      );
-  };
-
-  // The shader edits above are static (no material-state-dependent branches),
-  // so a constant cache key is correct — it just needs to differ from
-  // Three's default '' so this material's compiled program variants never
-  // collide with an unrelated MeshStandardMaterial's onBeforeCompile output.
-  mat.customProgramCacheKey = () => "satellite-ground-detail-v1";
-
-  return uniforms;
-}
-
 function buildSatelliteGround(
   track: TrackData,
   meta: SatelliteMeta,
@@ -644,6 +516,9 @@ function buildSatelliteGround(
   }
   posAttr.needsUpdate = true;
   geo.setAttribute("corridorMask", new THREE.Float32BufferAttribute(corridorMaskAttr, 1));
+  // Per-vertex lateral distance to the centerline (baked from the DrapeCache),
+  // consumed by the white edge-line shader (Task 2a, attachGroundDetailShader).
+  geo.setAttribute("lateralDistance", new THREE.Float32BufferAttribute(cache.lateralDistance.slice(), 1));
   geo.computeVertexNormals();
   geo.computeBoundingBox();
   geo.computeBoundingSphere();
@@ -661,7 +536,15 @@ function buildSatelliteGround(
     polygonOffsetFactor: 4,
     polygonOffsetUnits: 4,
   });
-  const detailUniforms = attachGroundDetailShader(mat);
+  // Shared close-range detail response (see groundDetail.ts): this ground
+  // uses the baked per-vertex corridor mask and keeps the legacy edge-line
+  // band for tracks without a measured edge profile.
+  const detailUniforms = createGroundDetailUniforms(halfRoadWidth);
+  attachGroundDetailShader(mat, detailUniforms, {
+    maskMode: "vertexCorridor",
+    edgeLines: true,
+    cacheKey: "satellite-ground-detail-v3",
+  });
   const mesh = new THREE.Mesh(geo, mat);
   // Vertices are already in world (scene-local) coordinates via latLngToLocal.
   mesh.position.set(0, 0, 0);
@@ -718,8 +601,29 @@ export interface TrackBuildResult {
    * safe to call again mid-load (only the most recently requested variant
    * is ever applied to the material — "last click wins"). Swaps `map` on the
    * existing material instance, so the ground-detail onBeforeCompile shader
-   * (attachGroundDetailShader) keeps working unchanged. */
+  * (attachGroundDetailShader) keeps working unchanged. */
   setSatelliteVariant: (variant: SatVariantId) => void;
+  /** Update camera-dependent high-resolution ground tiles. */
+  updateGround: (camera: THREE.Camera, viewportHeightPx: number, overview?: boolean) => void;
+  /** Toggle the vector track markings (Task 2): the shader white edge lines on
+   * the satellite ground AND the overlays.json curb ribbons, as one layer. Safe
+   * to call before the ground/curbs have loaded — the state is applied on
+   * arrival. */
+  setTrackLines: (enabled: boolean) => void;
+  /** Show/hide the trial tiles from the imagegen_trials override manifest —
+   * the in-app A/B switch between the shipped 静岡20cm SR look and the
+   * experimental patches. Standard SR tiles are unaffected. Safe to call
+   * before the corridor layer has loaded. */
+  setTrialTilesVisible: (visible: boolean) => void;
+  /** Terrain heightfield sample (scene Y) at a scene-local (x, z), from the
+   * same TerrainSampler the satellite drape uses. null until the async terrain
+   * load resolves or when (x, z) falls outside the heightfield bbox. Used as
+   * the drive-on-AC ground fallback once the car leaves the road collision
+   * mesh — off-track the road-clamped analytic profile can differ from the
+   * visible terrain by metres (the car appeared to hover). */
+  terrainHeightAt: (x: number, z: number) => number | null;
+  /** Dispose network-backed resources that are not owned by Object3D. */
+  dispose: () => void;
 }
 
 /** Ground clearance below the road surface while the procedural road shows. */
@@ -779,11 +683,14 @@ export function createFeatureDrape(
 }
 
 /**
- * Build the full track visual group synchronously first (road + kerbs + markers),
+ * Build the full track visual group synchronously first (road + markers),
  * then asynchronously load the satellite ground and OSM feature layer and
  * splice them in.
  */
-export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader): TrackBuildResult {
+export function buildTrack(
+  track: TrackData,
+  textureLoader: THREE.TextureLoader,
+): TrackBuildResult {
   const group = new THREE.Group();
 
   const points = track.centerline.map(
@@ -794,7 +701,6 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
   const proceduralRoad = new THREE.Group();
   proceduralRoad.name = "procedural-road";
   proceduralRoad.add(buildRoadMesh(track, points));
-  buildKerbs(track, points).forEach((k) => proceduralRoad.add(k));
   proceduralRoad.add(buildStartFinishLine(track, points));
   proceduralRoad.add(buildBrakingMarkers(track, points));
   group.add(proceduralRoad);
@@ -809,10 +715,32 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
   let featuresVisible = true;
   let features3dVisible = true;
   let detailTextureEnabled = true;
+  // Vector track markings (Task 2): white edge lines (shader uniform on the
+  // ground) + overlays.json curb ribbons, toggled together as one layer.
+  let trackLinesEnabled = true;
   let ground: { geometry: THREE.BufferGeometry; cache: DrapeCache; scratchY: Float32Array } | null = null;
   let featuresGroup: THREE.Group | null = null;
   let features3dGroup: THREE.Group | null = null;
+  let curbsGroup: THREE.Group | null = null;
+  let edgeLinesGroup: THREE.Group | null = null;
   let groundDetailUniforms: GroundDetailUniforms | null = null;
+  let enhancedGround: EnhancedCorridorGround | null = null;
+  let disposed = false;
+
+  // Lazy-load bookkeeping: the OSM-feature, 3D-feature and track-line assets
+  // (features.json ~tens of KB, features3d.json ~1 MB, features/road_edges +
+  // overlays) are only fetched when their layer is (or becomes) visible, so a
+  // user-mode startup with every one of them off pays for none of them. Each
+  // load is idempotent (the *Requested guards) so repeated toggles never
+  // refetch. The feature drape (createFeatureDrape) needed by the OSM/3D
+  // feature builders is only ready after the async satellite+terrain load;
+  // ensureOsmFeatures/ensureFeatures3d defer until then and are re-checked
+  // once it resolves.
+  let featureDrape: { stepAt: (x: number, z: number) => number; groundHeightAt: (x: number, z: number) => number } | null =
+    null;
+  let osmFeaturesRequested = false;
+  let features3dRequested = false;
+  let trackLinesRequested = false;
 
   // Satellite variant state: the ground material instance (set once built),
   // a per-variant texture cache (so switching back is instant and nothing
@@ -821,6 +749,18 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
   let satelliteMaterial: THREE.MeshStandardMaterial | null = null;
   const satelliteTextureCache = new Map<SatVariantId, THREE.Texture>();
   let latestSatVariant: SatVariantId = track.satVariant ?? "default";
+
+  const baseSatelliteVariant = (variant: SatVariantId): SatVariantId =>
+    variant === "shizuoka_x2" ? "shizuoka" : variant;
+
+  // Which satellite variant carries the SR corridor layer: fuji pairs it
+  // with the Shizuoka imagery variant; GSI-bootstrapped tracks (suzuka,
+  // okayama, ...) build their corridor from the default base itself. Tracks
+  // without a corridor manifest just log a warn on the first enable.
+  const corridorVariant: SatVariantId = (track.trackId ?? "barber") === "fuji" ? "shizuoka_x2" : "default";
+  const applyEnhancedVisibility = () => {
+    enhancedGround?.setEnabled(latestSatVariant === corridorVariant);
+  };
 
   const applyGroundClearance = () => {
     if (!ground) return;
@@ -841,15 +781,22 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
     roadVisible = visible;
     proceduralRoad.visible = visible;
     applyGroundClearance();
+    enhancedGround?.setRoadVisible(visible);
+  };
+
+  const updateGround = (camera: THREE.Camera, viewportHeightPx: number, overview = false) => {
+    enhancedGround?.update(camera, viewportHeightPx, overview);
   };
 
   const setFeaturesVisible = (visible: boolean) => {
     featuresVisible = visible;
+    if (visible) ensureOsmFeatures();
     if (featuresGroup) featuresGroup.visible = visible;
   };
 
   const setFeatures3dVisible = (visible: boolean) => {
     features3dVisible = visible;
+    if (visible) ensureFeatures3d();
     if (features3dGroup) features3dGroup.visible = visible;
   };
 
@@ -858,6 +805,24 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
     if (groundDetailUniforms) {
       groundDetailUniforms.uDetailStrength.value = enabled ? 1 : 0;
     }
+  };
+
+  let trialTilesVisible = true;
+  const setTrialTilesVisible = (visible: boolean) => {
+    trialTilesVisible = visible;
+    enhancedGround?.setOverrideTilesVisible(visible);
+  };
+
+  const setTrackLines = (enabled: boolean) => {
+    trackLinesEnabled = enabled;
+    if (enabled) ensureTrackLines();
+    if (groundDetailUniforms) {
+      // Profile-driven ribbons stay above local high-resolution imagery. Keep
+      // the symmetric shader only as a fallback for tracks without a profile.
+      groundDetailUniforms.uEdgeLines.value = enabled && !edgeLinesGroup ? 1 : 0;
+    }
+    if (edgeLinesGroup) edgeLinesGroup.visible = enabled;
+    if (curbsGroup) curbsGroup.visible = enabled;
   };
 
   // -- Async satellite + terrain load, in parallel. Terrain is optional: a
@@ -874,13 +839,90 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
   const terrainBaseUrl = trackDir;
   const featuresUrl = `${trackDir}features.json`;
   const features3dUrl = `${trackDir}features3d.json`;
+  const roadEdgesUrl = `${trackDir}road_edges.json`;
+  const overlaysUrl = `${trackDir}overlays.json`;
+
+  // -- Lazy layer loaders (only fetch when the layer is visible) --------------
+
+  /** Fetch + build the OSM surface-feature layer (features.json) once, when its
+   * layer is on. Needs the feature drape from the satellite/terrain load; if
+   * that is not ready yet this is a no-op and the drape-ready step re-invokes
+   * it when featuresVisible. */
+  const ensureOsmFeatures = (): void => {
+    if (osmFeaturesRequested || disposed || !featureDrape) return;
+    osmFeaturesRequested = true;
+    const drape = featureDrape;
+    void loadFeatures(featuresUrl)
+      .then((data) => {
+        if (disposed || !data) return;
+        featuresGroup = buildFeaturesGroup(data, drape.groundHeightAt, drape.stepAt);
+        featuresGroup.visible = featuresVisible;
+        group.add(featuresGroup);
+      })
+      .catch((err) => console.warn("OSM feature layer failed:", err));
+  };
+
+  /** Fetch + build the 3D feature layer (features3d.json, ~1 MB) once, when its
+   * layer is on. Same drape dependency as ensureOsmFeatures. */
+  const ensureFeatures3d = (): void => {
+    if (features3dRequested || disposed || !featureDrape) return;
+    features3dRequested = true;
+    const drape = featureDrape;
+    void loadFeatures3d(features3dUrl)
+      .then((data3d) => {
+        if (disposed || !data3d) return;
+        const { group: g, stats } = buildFeatures3dGroup(data3d, drape.groundHeightAt);
+        features3dGroup = g;
+        features3dGroup.visible = features3dVisible;
+        group.add(features3dGroup);
+        logFeatures3dStats(stats);
+      })
+      .catch((err) => console.warn("3D feature layer failed:", err));
+  };
+
+  /** Fetch the vector track-marking data (road_edges.json edge lines +
+   * overlays.json curb ribbons) once, when the "Track lines" layer is on.
+   * Independent of the satellite/terrain drape, so it can run immediately. A
+   * missing file (e.g. Barber) is a silent no-op. */
+  const ensureTrackLines = (): void => {
+    if (trackLinesRequested || disposed) return;
+    trackLinesRequested = true;
+    void loadRoadEdgeProfile(roadEdgesUrl)
+      .then((roadEdges) => {
+        if (disposed || !roadEdges) return;
+        edgeLinesGroup = buildRoadEdgeLinesGroup(track, roadEdges);
+        edgeLinesGroup.visible = trackLinesEnabled;
+        group.add(edgeLinesGroup);
+        // Profile-driven ribbons replace the symmetric shader fallback lines.
+        if (groundDetailUniforms) groundDetailUniforms.uEdgeLines.value = 0;
+      })
+      .catch((err) => console.warn("Road edge lines failed:", err));
+
+    const curbCenterline: CurbCenterlinePoint[] = track.centerline.map((p) => ({
+      x: p.x,
+      z: p.z,
+      y: p.y * ELEVATION_SCALE,
+      dist: p.dist,
+    }));
+    void loadOverlays(overlaysUrl)
+      .then((overlays) => {
+        if (disposed || !overlays || overlays.curbs.length === 0) return;
+        curbsGroup = buildCurbsGroup(curbCenterline, overlays.curbs, {
+          halfRoadWidth: track.width / 2,
+        });
+        curbsGroup.visible = trackLinesEnabled;
+        group.add(curbsGroup);
+      })
+      .catch((err) => console.warn("Curb overlay layer failed:", err));
+  };
 
   /** Loads (or reuses the cache for) `variant` and, if it's still the most
    * recently requested one once the load resolves, swaps it onto the live
    * ground material. A later call's texture always wins a race — this one
    * silently drops its own result onto the cache without touching `map`. */
   const loadOrApplySatelliteVariant = (variant: SatVariantId) => {
-    const cached = satelliteTextureCache.get(variant);
+    const textureVariant = baseSatelliteVariant(variant);
+    const cached = satelliteTextureCache.get(textureVariant);
     if (cached) {
       if (satelliteMaterial) {
         satelliteMaterial.map = cached;
@@ -888,12 +930,12 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
       }
       return;
     }
-    const url = `${trackDir}${satelliteFilename(variant)}`;
+    const url = `${trackDir}${satelliteFilename(textureVariant)}`;
     textureLoader.load(
       url,
       (texture) => {
         applySatelliteTextureSettings(texture);
-        satelliteTextureCache.set(variant, texture);
+        satelliteTextureCache.set(textureVariant, texture);
         if (variant === latestSatVariant && satelliteMaterial) {
           satelliteMaterial.map = texture;
           satelliteMaterial.needsUpdate = true;
@@ -907,6 +949,15 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
   const setSatelliteVariant = (variant: SatVariantId) => {
     latestSatVariant = variant;
     loadOrApplySatelliteVariant(variant);
+    applyEnhancedVisibility();
+  };
+
+  let terrainSamplerLive: HeightSampler | null = null;
+  const terrainHeightAt = (x: number, z: number): number | null => {
+    if (!terrainSamplerLive) return null;
+    const { lat, lng } = localToLatLng(x, z, track.origin);
+    const alt = terrainSamplerLive.heightAt(lat, lng);
+    return alt != null ? (alt - track.origin.alt) * ELEVATION_SCALE : null;
   };
 
   const satelliteReady = fetch(metaUrl)
@@ -918,8 +969,15 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
         }),
     );
 
-  Promise.all([satelliteReady, TerrainSampler.load(terrainMetaUrl, terrainBaseUrl)])
+  Promise.all([
+    satelliteReady,
+    TerrainSampler.load(terrainMetaUrl, terrainBaseUrl),
+  ])
     .then(([{ meta, texture }, sampler]) => {
+      if (disposed) {
+        texture.dispose();
+        return sampler;
+      }
       const { mesh, cache, detailUniforms } = buildSatelliteGround(track, meta, texture, sampler);
       // Remove fallback, add satellite
       group.remove(fallback);
@@ -928,18 +986,37 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
       ground = { geometry: mesh.geometry, cache, scratchY: new Float32Array(cache.roadY.length) };
       groundDetailUniforms = detailUniforms;
       groundDetailUniforms.uDetailStrength.value = detailTextureEnabled ? 1 : 0;
+      // The road_edges.json edge lines load lazily via ensureTrackLines (only
+      // when the Track-lines layer is on); until/unless they arrive, the
+      // symmetric shader fallback carries the edge lines when the layer is on.
+      groundDetailUniforms.uEdgeLines.value = trackLinesEnabled && !edgeLinesGroup ? 1 : 0;
       if (!roadVisible) applyGroundClearance();
 
       // Wire up variant switching onto the material this ground just built,
       // caching the texture that was already loaded to build it.
       satelliteMaterial = mesh.material as THREE.MeshStandardMaterial;
-      satelliteTextureCache.set(initialSatVariant, texture);
+      satelliteTextureCache.set(baseSatelliteVariant(initialSatVariant), texture);
       // A setSatelliteVariant() call could have arrived while this initial
       // load was still in flight; apply whatever is currently the latest
       // request now that the material exists (a no-op if nothing changed).
       if (latestSatVariant !== initialSatVariant) {
         loadOrApplySatelliteVariant(latestSatVariant);
       }
+
+      enhancedGround = new EnhancedCorridorGround({
+        manifestUrl: `${trackDir}satellite_corridor_x2/manifest.json`,
+        overrideManifestUrl: `${trackDir}imagegen_trials/manifest.json`,
+        track,
+        drapeInputs: (x, z, lat, lng) => computeDrapeInputs(track, x, z, lat, lng, sampler),
+        // SR tiles cover exactly the corridor the chase camera looks at, so
+        // they need the same close-range material response as the base ground
+        // (photo-derived zone mask — tiles have no baked corridor attributes).
+        detailUniforms,
+      });
+      group.add(enhancedGround.group);
+      enhancedGround.setRoadVisible(roadVisible);
+      enhancedGround.setOverrideTilesVisible(trialTilesVisible);
+      applyEnhancedVisibility();
       return sampler;
     })
     .catch((err): TerrainSampler | null => {
@@ -947,35 +1024,22 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
       return null;
     })
     .then((sampler) => {
+      terrainSamplerLive = sampler;
       // One drape shared by the flat OSM polygons and the 3D features, so both
-      // sit on the exact post-drape ground the satellite photo uses.
-      const { stepAt, groundHeightAt } = createFeatureDrape(track, sampler);
-
-      const osmDone = loadFeatures(featuresUrl)
-        .then((data) => {
-          if (!data) return;
-          featuresGroup = buildFeaturesGroup(data, groundHeightAt, stepAt);
-          featuresGroup.visible = featuresVisible;
-          group.add(featuresGroup);
-        })
-        .catch((err) => console.warn("OSM feature layer failed:", err));
-
-      // P3b: 3D features (trees/buildings/barriers). Missing/corrupt data is a
-      // no-op — loadFeatures3d resolves null and the scene is left untouched.
-      const feat3dDone = loadFeatures3d(features3dUrl)
-        .then((data3d) => {
-          if (!data3d) return;
-          const { group: g, stats } = buildFeatures3dGroup(data3d, groundHeightAt);
-          features3dGroup = g;
-          features3dGroup.visible = features3dVisible;
-          group.add(features3dGroup);
-          logFeatures3dStats(stats);
-        })
-        .catch((err) => console.warn("3D feature layer failed:", err));
-
-      return Promise.all([osmDone, feat3dDone]);
+      // sit on the exact post-drape ground the satellite photo uses. Store it
+      // so the lazy loaders can build their layers on demand, then kick off
+      // any feature layer whose toggle is already on.
+      featureDrape = createFeatureDrape(track, sampler);
+      if (featuresVisible) ensureOsmFeatures();
+      if (features3dVisible) ensureFeatures3d();
     })
-    .catch((err) => console.warn("OSM feature layer failed:", err));
+    .catch((err) => console.warn("Feature drape setup failed:", err));
+
+  // Track lines (road_edges.json edge lines + overlays.json curbs) load lazily
+  // via ensureTrackLines the first time the "Track lines" layer is switched on.
+  // ReplayScene calls setTrackLines() with the store's initial value right after
+  // load(), so developer mode (Track-lines on) still fetches at startup while
+  // user mode (off) skips both files entirely.
 
   return {
     group,
@@ -985,6 +1049,15 @@ export function buildTrack(track: TrackData, textureLoader: THREE.TextureLoader)
     setFeatures3dVisible,
     setDetailTexture,
     setSatelliteVariant,
+    updateGround,
+    setTrackLines,
+    setTrialTilesVisible,
+    terrainHeightAt,
+    dispose: () => {
+      disposed = true;
+      enhancedGround?.dispose();
+      enhancedGround = null;
+    },
   };
 }
 

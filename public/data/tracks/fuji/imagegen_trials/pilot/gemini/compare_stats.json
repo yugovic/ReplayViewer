@@ -1,0 +1,50 @@
+{
+ "01": {
+  "file": "pilot_01_gen_v2.png",
+  "overlap": 0.99
+ },
+ "02": {
+  "file": "pilot_02_gen_v4.png",
+  "overlap": 0.98
+ },
+ "03": {
+  "file": "pilot_03_gen_v2.png",
+  "overlap": 0.99
+ },
+ "04": {
+  "file": "pilot_04_gen_v2.png",
+  "overlap": 0.91
+ },
+ "05": {
+  "file": "pilot_05_gen_v2.png",
+  "overlap": 0.98
+ },
+ "06": {
+  "file": "pilot_06_gen_v2.png",
+  "overlap": 1.0
+ },
+ "07": {
+  "file": "pilot_07_gen_v2.png",
+  "overlap": 0.99
+ },
+ "08": {
+  "file": "pilot_08_gen_v2.png",
+  "overlap": 0.98
+ },
+ "09": {
+  "file": "pilot_09_gen_v2.png",
+  "overlap": 1.0
+ },
+ "10": {
+  "file": "pilot_10_gen_v2.png",
+  "overlap": 0.98
+ },
+ "11": {
+  "file": "pilot_11_gen_v2.png",
+  "overlap": 1.0
+ },
+ "12": {
+  "file": "pilot_12_gen_v3.png",
+  "overlap": 0.97
+ }
+}

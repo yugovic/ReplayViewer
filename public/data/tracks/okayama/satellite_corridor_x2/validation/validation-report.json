@@ -1,0 +1,710 @@
+{
+  "purpose": "visual validation only; not surveyed truth or measurement data",
+  "engine": "spandrel",
+  "model": {
+    "name": "4xNomosWebPhoto_RealPLKSR",
+    "file": "4xNomosWebPhoto_RealPLKSR.pth",
+    "sha256": "a9db66c9b674c6a5025b6ef3bee71a57c33b8605d8a2de0980470f89002efbbe",
+    "license": "CC BY 4.0",
+    "url": "https://github.com/Phhofm/models/releases/download/4xNomosWebPhoto_RealPLKSR/4xNomosWebPhoto_RealPLKSR.pth"
+  },
+  "sourceResolutionMetersPerPixel": 0.25,
+  "outputGridMetersPerPixel": 0.125,
+  "selectionRule": "argmin mean DISTS over strengths, LPIPS tie-break",
+  "preSharpen": {
+    "amount": 0.0,
+    "radius": 1.0
+  },
+  "gates": {
+    "lrConsistencyMinPsnrDb": 30.0,
+    "lineShiftMaxP95Px": 0.5
+  },
+  "initialSelectedStrength": 0.85,
+  "recommendedSrStrength": 0.85,
+  "gateHistory": [
+    {
+      "strength": 0.85,
+      "lrConsistencyPsnrDb": 35.4003,
+      "lineShiftP95Px": 0.1348,
+      "passed": true
+    }
+  ],
+  "baselineLanczosMean": {
+    "psnrDb": 24.5696,
+    "ssim": 0.741943,
+    "lpips": 0.373548,
+    "dists": 0.163163
+  },
+  "meanStrengthCurve": [
+    {
+      "strength": 0.0,
+      "psnrDb": 24.5696,
+      "ssim": 0.741943,
+      "lpips": 0.373548,
+      "dists": 0.163163
+    },
+    {
+      "strength": 0.05,
+      "psnrDb": 24.721733,
+      "ssim": 0.745708,
+      "lpips": 0.364098,
+      "dists": 0.160488
+    },
+    {
+      "strength": 0.1,
+      "psnrDb": 24.870433,
+      "ssim": 0.749161,
+      "lpips": 0.347511,
+      "dists": 0.15629
+    },
+    {
+      "strength": 0.15,
+      "psnrDb": 25.008767,
+      "ssim": 0.752077,
+      "lpips": 0.328265,
+      "dists": 0.152136
+    },
+    {
+      "strength": 0.2,
+      "psnrDb": 25.137267,
+      "ssim": 0.754464,
+      "lpips": 0.307496,
+      "dists": 0.147077
+    },
+    {
+      "strength": 0.25,
+      "psnrDb": 25.254033,
+      "ssim": 0.756374,
+      "lpips": 0.286674,
+      "dists": 0.141959
+    },
+    {
+      "strength": 0.3,
+      "psnrDb": 25.359067,
+      "ssim": 0.757756,
+      "lpips": 0.266246,
+      "dists": 0.137136
+    },
+    {
+      "strength": 0.35,
+      "psnrDb": 25.4517,
+      "ssim": 0.758931,
+      "lpips": 0.247686,
+      "dists": 0.132807
+    },
+    {
+      "strength": 0.4,
+      "psnrDb": 25.528467,
+      "ssim": 0.759089,
+      "lpips": 0.228892,
+      "dists": 0.127806
+    },
+    {
+      "strength": 0.45,
+      "psnrDb": 25.5917,
+      "ssim": 0.759133,
+      "lpips": 0.212287,
+      "dists": 0.123018
+    },
+    {
+      "strength": 0.5,
+      "psnrDb": 25.636967,
+      "ssim": 0.758138,
+      "lpips": 0.196546,
+      "dists": 0.117784
+    },
+    {
+      "strength": 0.55,
+      "psnrDb": 25.6676,
+      "ssim": 0.756827,
+      "lpips": 0.182577,
+      "dists": 0.112465
+    },
+    {
+      "strength": 0.6,
+      "psnrDb": 25.6822,
+      "ssim": 0.755398,
+      "lpips": 0.170846,
+      "dists": 0.108498
+    },
+    {
+      "strength": 0.65,
+      "psnrDb": 25.675933,
+      "ssim": 0.752771,
+      "lpips": 0.160268,
+      "dists": 0.104687
+    },
+    {
+      "strength": 0.7,
+      "psnrDb": 25.657967,
+      "ssim": 0.750631,
+      "lpips": 0.152166,
+      "dists": 0.102152
+    },
+    {
+      "strength": 0.75,
+      "psnrDb": 25.6191,
+      "ssim": 0.747278,
+      "lpips": 0.145088,
+      "dists": 0.099892
+    },
+    {
+      "strength": 0.8,
+      "psnrDb": 25.5647,
+      "ssim": 0.743689,
+      "lpips": 0.139777,
+      "dists": 0.09843
+    },
+    {
+      "strength": 0.85,
+      "psnrDb": 25.492567,
+      "ssim": 0.739251,
+      "lpips": 0.135852,
+      "dists": 0.097976
+    },
+    {
+      "strength": 0.9,
+      "psnrDb": 25.404733,
+      "ssim": 0.73445,
+      "lpips": 0.133164,
+      "dists": 0.098343
+    },
+    {
+      "strength": 0.95,
+      "psnrDb": 25.296833,
+      "ssim": 0.728361,
+      "lpips": 0.131426,
+      "dists": 0.100414
+    },
+    {
+      "strength": 1.0,
+      "psnrDb": 25.194333,
+      "ssim": 0.725084,
+      "lpips": 0.131324,
+      "dists": 0.101366
+    }
+  ],
+  "noReferenceRealScale": [
+    {
+      "name": "home_straight",
+      "lanczos": {
+        "musiq": 54.8507,
+        "maniqa": 0.3522
+      },
+      "enhanced": {
+        "musiq": 63.2624,
+        "maniqa": 0.4269
+      }
+    },
+    {
+      "name": "middle_sector",
+      "lanczos": {
+        "musiq": 51.7463,
+        "maniqa": 0.2602
+      },
+      "enhanced": {
+        "musiq": 61.9175,
+        "maniqa": 0.41
+      }
+    },
+    {
+      "name": "final_sector",
+      "lanczos": {
+        "musiq": 49.5322,
+        "maniqa": 0.3404
+      },
+      "enhanced": {
+        "musiq": 60.4731,
+        "maniqa": 0.4333
+      }
+    }
+  ],
+  "samples": [
+    {
+      "name": "home_straight",
+      "centerPixel": [
+        2062.9,
+        4165.32
+      ],
+      "baselineLanczos": {
+        "psnrDb": 23.779,
+        "ssim": 0.714549,
+        "lpips": 0.397107,
+        "dists": 0.15667
+      },
+      "strengthCurve": [
+        {
+          "strength": 0.0,
+          "psnrDb": 23.779,
+          "ssim": 0.714549,
+          "lpips": 0.397107,
+          "dists": 0.15667
+        },
+        {
+          "strength": 0.05,
+          "psnrDb": 23.913,
+          "ssim": 0.718042,
+          "lpips": 0.387415,
+          "dists": 0.154735
+        },
+        {
+          "strength": 0.1,
+          "psnrDb": 24.0432,
+          "ssim": 0.721058,
+          "lpips": 0.370951,
+          "dists": 0.151907
+        },
+        {
+          "strength": 0.15,
+          "psnrDb": 24.164,
+          "ssim": 0.723547,
+          "lpips": 0.352233,
+          "dists": 0.148657
+        },
+        {
+          "strength": 0.2,
+          "psnrDb": 24.277,
+          "ssim": 0.725634,
+          "lpips": 0.332246,
+          "dists": 0.14495
+        },
+        {
+          "strength": 0.25,
+          "psnrDb": 24.3797,
+          "ssim": 0.727254,
+          "lpips": 0.31224,
+          "dists": 0.141132
+        },
+        {
+          "strength": 0.3,
+          "psnrDb": 24.4724,
+          "ssim": 0.728347,
+          "lpips": 0.292534,
+          "dists": 0.137335
+        },
+        {
+          "strength": 0.35,
+          "psnrDb": 24.5552,
+          "ssim": 0.729293,
+          "lpips": 0.274291,
+          "dists": 0.134048
+        },
+        {
+          "strength": 0.4,
+          "psnrDb": 24.625,
+          "ssim": 0.729241,
+          "lpips": 0.255326,
+          "dists": 0.129649
+        },
+        {
+          "strength": 0.45,
+          "psnrDb": 24.6834,
+          "ssim": 0.729081,
+          "lpips": 0.238155,
+          "dists": 0.125961
+        },
+        {
+          "strength": 0.5,
+          "psnrDb": 24.7278,
+          "ssim": 0.727988,
+          "lpips": 0.221869,
+          "dists": 0.121906
+        },
+        {
+          "strength": 0.55,
+          "psnrDb": 24.76,
+          "ssim": 0.726564,
+          "lpips": 0.206931,
+          "dists": 0.117281
+        },
+        {
+          "strength": 0.6,
+          "psnrDb": 24.7794,
+          "ssim": 0.725002,
+          "lpips": 0.194206,
+          "dists": 0.112787
+        },
+        {
+          "strength": 0.65,
+          "psnrDb": 24.7828,
+          "ssim": 0.722326,
+          "lpips": 0.182544,
+          "dists": 0.108272
+        },
+        {
+          "strength": 0.7,
+          "psnrDb": 24.7767,
+          "ssim": 0.720137,
+          "lpips": 0.173516,
+          "dists": 0.10537
+        },
+        {
+          "strength": 0.75,
+          "psnrDb": 24.7541,
+          "ssim": 0.716844,
+          "lpips": 0.165535,
+          "dists": 0.102894
+        },
+        {
+          "strength": 0.8,
+          "psnrDb": 24.719,
+          "ssim": 0.713318,
+          "lpips": 0.1591,
+          "dists": 0.100672
+        },
+        {
+          "strength": 0.85,
+          "psnrDb": 24.6699,
+          "ssim": 0.709076,
+          "lpips": 0.154031,
+          "dists": 0.099914
+        },
+        {
+          "strength": 0.9,
+          "psnrDb": 24.6079,
+          "ssim": 0.704394,
+          "lpips": 0.150058,
+          "dists": 0.099532
+        },
+        {
+          "strength": 0.95,
+          "psnrDb": 24.528,
+          "ssim": 0.698221,
+          "lpips": 0.147114,
+          "dists": 0.101334
+        },
+        {
+          "strength": 1.0,
+          "psnrDb": 24.4538,
+          "ssim": 0.695145,
+          "lpips": 0.145954,
+          "dists": 0.101662
+        }
+      ]
+    },
+    {
+      "name": "middle_sector",
+      "centerPixel": [
+        1665.76,
+        4711.81
+      ],
+      "baselineLanczos": {
+        "psnrDb": 24.277,
+        "ssim": 0.761584,
+        "lpips": 0.385719,
+        "dists": 0.160159
+      },
+      "strengthCurve": [
+        {
+          "strength": 0.0,
+          "psnrDb": 24.277,
+          "ssim": 0.761584,
+          "lpips": 0.385719,
+          "dists": 0.160159
+        },
+        {
+          "strength": 0.05,
+          "psnrDb": 24.4957,
+          "ssim": 0.767619,
+          "lpips": 0.374542,
+          "dists": 0.155771
+        },
+        {
+          "strength": 0.1,
+          "psnrDb": 24.714,
+          "ssim": 0.773573,
+          "lpips": 0.353783,
+          "dists": 0.149051
+        },
+        {
+          "strength": 0.15,
+          "psnrDb": 24.924,
+          "ssim": 0.778929,
+          "lpips": 0.329499,
+          "dists": 0.141972
+        },
+        {
+          "strength": 0.2,
+          "psnrDb": 25.1256,
+          "ssim": 0.783706,
+          "lpips": 0.303762,
+          "dists": 0.134087
+        },
+        {
+          "strength": 0.25,
+          "psnrDb": 25.316,
+          "ssim": 0.787913,
+          "lpips": 0.277775,
+          "dists": 0.127128
+        },
+        {
+          "strength": 0.3,
+          "psnrDb": 25.4948,
+          "ssim": 0.79156,
+          "lpips": 0.253015,
+          "dists": 0.121427
+        },
+        {
+          "strength": 0.35,
+          "psnrDb": 25.6604,
+          "ssim": 0.794899,
+          "lpips": 0.230879,
+          "dists": 0.116326
+        },
+        {
+          "strength": 0.4,
+          "psnrDb": 25.8086,
+          "ssim": 0.797311,
+          "lpips": 0.20962,
+          "dists": 0.111089
+        },
+        {
+          "strength": 0.45,
+          "psnrDb": 25.9406,
+          "ssim": 0.799452,
+          "lpips": 0.190936,
+          "dists": 0.106506
+        },
+        {
+          "strength": 0.5,
+          "psnrDb": 26.0504,
+          "ssim": 0.800514,
+          "lpips": 0.173489,
+          "dists": 0.101311
+        },
+        {
+          "strength": 0.55,
+          "psnrDb": 26.1406,
+          "ssim": 0.801142,
+          "lpips": 0.158628,
+          "dists": 0.096656
+        },
+        {
+          "strength": 0.6,
+          "psnrDb": 26.2095,
+          "ssim": 0.801591,
+          "lpips": 0.146349,
+          "dists": 0.093375
+        },
+        {
+          "strength": 0.65,
+          "psnrDb": 26.2504,
+          "ssim": 0.800836,
+          "lpips": 0.135742,
+          "dists": 0.089915
+        },
+        {
+          "strength": 0.7,
+          "psnrDb": 26.2727,
+          "ssim": 0.800335,
+          "lpips": 0.127864,
+          "dists": 0.088675
+        },
+        {
+          "strength": 0.75,
+          "psnrDb": 26.2659,
+          "ssim": 0.798529,
+          "lpips": 0.121635,
+          "dists": 0.08778
+        },
+        {
+          "strength": 0.8,
+          "psnrDb": 26.2355,
+          "ssim": 0.796393,
+          "lpips": 0.117182,
+          "dists": 0.087469
+        },
+        {
+          "strength": 0.85,
+          "psnrDb": 26.1795,
+          "ssim": 0.793316,
+          "lpips": 0.114288,
+          "dists": 0.08735
+        },
+        {
+          "strength": 0.9,
+          "psnrDb": 26.0995,
+          "ssim": 0.789774,
+          "lpips": 0.112571,
+          "dists": 0.088646
+        },
+        {
+          "strength": 0.95,
+          "psnrDb": 25.9925,
+          "ssim": 0.785009,
+          "lpips": 0.111883,
+          "dists": 0.091138
+        },
+        {
+          "strength": 1.0,
+          "psnrDb": 25.8844,
+          "ssim": 0.78265,
+          "lpips": 0.112371,
+          "dists": 0.093001
+        }
+      ]
+    },
+    {
+      "name": "final_sector",
+      "centerPixel": [
+        3395.17,
+        1508.53
+      ],
+      "baselineLanczos": {
+        "psnrDb": 25.6528,
+        "ssim": 0.749696,
+        "lpips": 0.337818,
+        "dists": 0.172661
+      },
+      "strengthCurve": [
+        {
+          "strength": 0.0,
+          "psnrDb": 25.6528,
+          "ssim": 0.749696,
+          "lpips": 0.337818,
+          "dists": 0.172661
+        },
+        {
+          "strength": 0.05,
+          "psnrDb": 25.7565,
+          "ssim": 0.751464,
+          "lpips": 0.330336,
+          "dists": 0.170959
+        },
+        {
+          "strength": 0.1,
+          "psnrDb": 25.8541,
+          "ssim": 0.752851,
+          "lpips": 0.317798,
+          "dists": 0.167913
+        },
+        {
+          "strength": 0.15,
+          "psnrDb": 25.9383,
+          "ssim": 0.753754,
+          "lpips": 0.303063,
+          "dists": 0.165779
+        },
+        {
+          "strength": 0.2,
+          "psnrDb": 26.0092,
+          "ssim": 0.754053,
+          "lpips": 0.286479,
+          "dists": 0.162193
+        },
+        {
+          "strength": 0.25,
+          "psnrDb": 26.0664,
+          "ssim": 0.753955,
+          "lpips": 0.270007,
+          "dists": 0.157617
+        },
+        {
+          "strength": 0.3,
+          "psnrDb": 26.11,
+          "ssim": 0.753362,
+          "lpips": 0.25319,
+          "dists": 0.152645
+        },
+        {
+          "strength": 0.35,
+          "psnrDb": 26.1395,
+          "ssim": 0.752601,
+          "lpips": 0.237888,
+          "dists": 0.148047
+        },
+        {
+          "strength": 0.4,
+          "psnrDb": 26.1518,
+          "ssim": 0.750714,
+          "lpips": 0.221731,
+          "dists": 0.14268
+        },
+        {
+          "strength": 0.45,
+          "psnrDb": 26.1511,
+          "ssim": 0.748867,
+          "lpips": 0.207771,
+          "dists": 0.136588
+        },
+        {
+          "strength": 0.5,
+          "psnrDb": 26.1327,
+          "ssim": 0.745911,
+          "lpips": 0.19428,
+          "dists": 0.130135
+        },
+        {
+          "strength": 0.55,
+          "psnrDb": 26.1022,
+          "ssim": 0.742776,
+          "lpips": 0.182171,
+          "dists": 0.123457
+        },
+        {
+          "strength": 0.6,
+          "psnrDb": 26.0577,
+          "ssim": 0.739602,
+          "lpips": 0.171983,
+          "dists": 0.119333
+        },
+        {
+          "strength": 0.65,
+          "psnrDb": 25.9946,
+          "ssim": 0.73515,
+          "lpips": 0.162517,
+          "dists": 0.115873
+        },
+        {
+          "strength": 0.7,
+          "psnrDb": 25.9245,
+          "ssim": 0.731421,
+          "lpips": 0.155117,
+          "dists": 0.112412
+        },
+        {
+          "strength": 0.75,
+          "psnrDb": 25.8373,
+          "ssim": 0.726462,
+          "lpips": 0.148095,
+          "dists": 0.109003
+        },
+        {
+          "strength": 0.8,
+          "psnrDb": 25.7396,
+          "ssim": 0.721355,
+          "lpips": 0.143049,
+          "dists": 0.107148
+        },
+        {
+          "strength": 0.85,
+          "psnrDb": 25.6283,
+          "ssim": 0.715362,
+          "lpips": 0.139236,
+          "dists": 0.106663
+        },
+        {
+          "strength": 0.9,
+          "psnrDb": 25.5068,
+          "ssim": 0.709181,
+          "lpips": 0.136864,
+          "dists": 0.10685
+        },
+        {
+          "strength": 0.95,
+          "psnrDb": 25.37,
+          "ssim": 0.701853,
+          "lpips": 0.13528,
+          "dists": 0.108771
+        },
+        {
+          "strength": 1.0,
+          "psnrDb": 25.2448,
+          "ssim": 0.697457,
+          "lpips": 0.135646,
+          "dists": 0.109436
+        }
+      ]
+    }
+  ]
+}

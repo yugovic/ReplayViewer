@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "kind": "track-corridor-enhancement",
+  "visualizationOnly": true,
+  "bbox": {
+    "minLng": 138.91723261,
+    "maxLng": 138.93658159,
+    "minLat": 35.36246909,
+    "maxLat": 35.37859744
+  },
+  "mercator": true,
+  "tileCount": 1,
+  "tiles": [
+    {
+      "file": "middle-sector-correct-mlsr-2048.png",
+      "outputPixel": {
+        "width": 2048,
+        "height": 2048
+      },
+      "uv": {
+        "u0": 0.6894185175942101,
+        "v0": 0.4013671875,
+        "u1": 0.7533067132518093,
+        "v1": 0.4638671875
+      },
+      "priority": 10
+    }
+  ]
+}

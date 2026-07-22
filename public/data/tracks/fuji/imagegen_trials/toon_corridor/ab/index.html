@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>実写 vs トゥーン — 実画面比較(富士)</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; padding: 16px 20px 60px; background: #14171a; color: #dfe5e8;
+         font-family: "Segoe UI", "Hiragino Sans", sans-serif; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .sub { color: #8aa0aa; font-size: 12.5px; margin-bottom: 16px; line-height: 1.7; }
+  .pair { margin-bottom: 26px; }
+  .cap { font-size: 13.5px; font-weight: 600; color: #cfe3ec; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid div { font-size: 11.5px; color: #9fb4be; }
+  img { width: 100%; border-radius: 5px; display: block; cursor: zoom-in; background: #000; }
+  .swap { border: 1px solid #3a444b; border-radius: 5px; }
+  .hint { text-align: center; margin-top: 3px; }
+  #lb { position: fixed; inset: 0; background: rgba(0 0 0 / 93%); display: none;
+        align-items: center; justify-content: center; z-index: 50; cursor: zoom-out; }
+  #lb.on { display: flex; }
+  #lb img { max-width: 97vw; max-height: 95vh; object-fit: contain; }
+</style>
+</head>
+<body>
+<h1>実写 vs トゥーン — 同一視点の実画面比較(富士)</h1>
+<div class="sub">
+  各地点とも完全に同じリプレイ時刻・同じカメラ。左 =
+  <b>実写(静岡県20cmオルソ+SR)</b>、右 = <b>トゥーンコリドー適用</b>。
+  右の画像は<b>マウスを乗せると実写に切り替わります</b>(その場でA/B)。クリックで拡大。
+</div>
+<div id="pairs"></div>
+<div id="lb" onclick="this.classList.remove('on')"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
+<script>
+const SPOTS = [
+  ["top",  "全体俯瞰(Top ビュー)"],
+  ["t4",   "0:04 — S/Fストレート(窓005: 芝#BCCF25決め打ち修正済み)"],
+  ["t30",  "0:30 — 1コーナー進入"],
+  ["t52",  "0:52 — コカ・コーラコーナー(旧: 路面横断影 → 除去済み)"],
+  ["t80",  "1:20 — 中盤セクター"],
+  ["t110", "1:50 — 最終セクター"],
+];
+const root = document.getElementById("pairs");
+for (const [id, cap] of SPOTS) {
+  const d = document.createElement("div");
+  d.className = "pair";
+  d.innerHTML = `
+    <p class="cap">${cap}</p>
+    <div class="grid">
+      <div><img loading="lazy" src="${id}_photo.png"><div class="hint">実写</div></div>
+      <div><img loading="lazy" class="swap" src="${id}_toon.png"
+                data-a="${id}_toon.png" data-b="${id}_photo.png">
+           <div class="hint">トゥーン (hover=実写)</div></div>
+    </div>`;
+  root.appendChild(d);
+}
+document.querySelectorAll(".swap").forEach((img) => {
+  img.addEventListener("mouseenter", () => { img.src = img.dataset.b; });
+  img.addEventListener("mouseleave", () => { img.src = img.dataset.a; });
+});
+const lb = document.getElementById("lb");
+document.addEventListener("click", (e) => {
+  if (e.target.tagName === "IMG" && !lb.contains(e.target)) {
+    lb.querySelector("img").src = e.target.src;
+    lb.classList.add("on");
+  }
+});
+</script>
+</body>
+</html>

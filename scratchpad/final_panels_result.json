@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "crop": "home_straight",
+      "old_x2_musiq": 30.65,
+      "new_x4_musiq": 35.65,
+      "old_x2_maniqa": 0.2227,
+      "new_x4_maniqa": 0.216
+    },
+    {
+      "crop": "middle_sector",
+      "old_x2_musiq": 33.62,
+      "new_x4_musiq": 47.29,
+      "old_x2_maniqa": 0.2343,
+      "new_x4_maniqa": 0.2049
+    },
+    {
+      "crop": "final_sector",
+      "old_x2_musiq": 33.78,
+      "new_x4_musiq": 43.62,
+      "old_x2_maniqa": 0.1923,
+      "new_x4_maniqa": 0.1704
+    }
+  ],
+  "mean": {
+    "old_x2_musiq": 32.68,
+    "new_x4_musiq": 42.19,
+    "old_x2_maniqa": 0.2164,
+    "new_x4_maniqa": 0.1971
+  }
+}

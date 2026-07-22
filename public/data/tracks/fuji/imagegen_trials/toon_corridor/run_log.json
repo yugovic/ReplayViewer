@@ -1,0 +1,2976 @@
+{
+ "calls": [
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.9,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1564,
+    "totalTokenCount": 2338,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_000",
+   "attempt": 0,
+   "edgeOverlap": 0.992
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1528,
+    "totalTokenCount": 2302,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_001",
+   "attempt": 0,
+   "edgeOverlap": 0.992
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 12.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1507,
+    "totalTokenCount": 2281,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_002",
+   "attempt": 0,
+   "edgeOverlap": 0.993
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 14.7,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1472,
+    "totalTokenCount": 2246,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_003",
+   "attempt": 0,
+   "edgeOverlap": 0.973
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1527,
+    "totalTokenCount": 2301,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_004",
+   "attempt": 0,
+   "edgeOverlap": 0.963
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1538,
+    "totalTokenCount": 2312,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_005",
+   "attempt": 0,
+   "edgeOverlap": 0.978
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.1,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1582,
+    "totalTokenCount": 2356,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_006",
+   "attempt": 0,
+   "edgeOverlap": 0.949
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1523,
+    "totalTokenCount": 2297,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_007",
+   "attempt": 0,
+   "edgeOverlap": 0.898
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1523,
+    "totalTokenCount": 2297,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_007",
+   "attempt": 1,
+   "edgeOverlap": 0.882
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 17.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1485,
+    "totalTokenCount": 2259,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_008",
+   "attempt": 0,
+   "edgeOverlap": 0.996
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 12.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1496,
+    "totalTokenCount": 2270,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_009",
+   "attempt": 0,
+   "edgeOverlap": 0.994
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.1,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1516,
+    "totalTokenCount": 2290,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_010",
+   "attempt": 0,
+   "edgeOverlap": 0.982
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1496,
+    "totalTokenCount": 2270,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_011",
+   "attempt": 0,
+   "edgeOverlap": 0.996
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1519,
+    "totalTokenCount": 2293,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_012",
+   "attempt": 0,
+   "edgeOverlap": 0.945
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.7,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1495,
+    "totalTokenCount": 2269,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_013",
+   "attempt": 0,
+   "edgeOverlap": 0.891
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.0,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1452,
+    "totalTokenCount": 2226,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_013",
+   "attempt": 1,
+   "edgeOverlap": 0.96
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 25.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 4136,
+    "totalTokenCount": 4910,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_014",
+   "attempt": 0,
+   "edgeOverlap": 0.847
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 22.7,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 4136,
+    "totalTokenCount": 4910,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_014",
+   "attempt": 1,
+   "edgeOverlap": 0.939
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1494,
+    "totalTokenCount": 2268,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_015",
+   "attempt": 0,
+   "edgeOverlap": 0.995
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1472,
+    "totalTokenCount": 2246,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_016",
+   "attempt": 0,
+   "edgeOverlap": 0.99
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1504,
+    "totalTokenCount": 2278,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_017",
+   "attempt": 0,
+   "edgeOverlap": 0.99
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 219.7,
+   "error": "no image in response: {\"candidates\": [{\"content\": {}, \"finishReason\": \"NO_IMAGE\", \"index\": 0}], \"usageMetadata\": {\"promptTokenCount\": 774, \"totalTokenCount\": 774, \"promptTokensDetails\": [{\"modality\": \"TEXT\", \"tokenCount\": 258}, {\"modality\": \"IMAGE\", \"tokenCount\": 516}], \"serviceTier\": \"standard\"}, \"modelVersion\": \"gemini-3.1-flash-image\", \"responseId\": \"EOtfaq_SN_Smvr0PqrnD0AQ\"}",
+   "id": "corridor_018",
+   "attempt": 0
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1498,
+    "totalTokenCount": 2272,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_018",
+   "attempt": 1,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1466,
+    "totalTokenCount": 2240,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_019",
+   "attempt": 0,
+   "edgeOverlap": 0.963
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1506,
+    "totalTokenCount": 2280,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_020",
+   "attempt": 0,
+   "edgeOverlap": 0.997
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1569,
+    "totalTokenCount": 2343,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_021",
+   "attempt": 0,
+   "edgeOverlap": 0.866
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1569,
+    "totalTokenCount": 2343,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_021",
+   "attempt": 1,
+   "edgeOverlap": 0.871
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 17.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1586,
+    "totalTokenCount": 2360,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_022",
+   "attempt": 0,
+   "edgeOverlap": 0.96
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1491,
+    "totalTokenCount": 2265,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_023",
+   "attempt": 0,
+   "edgeOverlap": 0.992
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1471,
+    "totalTokenCount": 2245,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_024",
+   "attempt": 0,
+   "edgeOverlap": 0.791
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.1,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1468,
+    "totalTokenCount": 2242,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_024",
+   "attempt": 1,
+   "edgeOverlap": 0.791
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.9,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1504,
+    "totalTokenCount": 2278,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_025",
+   "attempt": 0,
+   "edgeOverlap": 0.99
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.7,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1521,
+    "totalTokenCount": 2295,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_026",
+   "attempt": 0,
+   "edgeOverlap": 0.982
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1485,
+    "totalTokenCount": 2259,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_027",
+   "attempt": 0,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.1,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1479,
+    "totalTokenCount": 2253,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_028",
+   "attempt": 0,
+   "edgeOverlap": 0.973
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.0,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1470,
+    "totalTokenCount": 2244,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_029",
+   "attempt": 0,
+   "edgeOverlap": 0.984
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1460,
+    "totalTokenCount": 2234,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_030",
+   "attempt": 0,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1480,
+    "totalTokenCount": 2254,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_031",
+   "attempt": 0,
+   "edgeOverlap": 0.995
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1496,
+    "totalTokenCount": 2270,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_032",
+   "attempt": 0,
+   "edgeOverlap": 0.996
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1492,
+    "totalTokenCount": 2266,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_033",
+   "attempt": 0,
+   "edgeOverlap": 0.995
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1464,
+    "totalTokenCount": 2238,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_034",
+   "attempt": 0,
+   "edgeOverlap": 0.989
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1540,
+    "totalTokenCount": 2314,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_035",
+   "attempt": 0,
+   "edgeOverlap": 0.837
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1479,
+    "totalTokenCount": 2253,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_035",
+   "attempt": 1,
+   "edgeOverlap": 0.994
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 15.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1590,
+    "totalTokenCount": 2364,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_036",
+   "attempt": 0,
+   "edgeOverlap": 0.747
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1523,
+    "totalTokenCount": 2297,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_036",
+   "attempt": 1,
+   "edgeOverlap": 0.988
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1488,
+    "totalTokenCount": 2262,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_037",
+   "attempt": 0,
+   "edgeOverlap": 0.952
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.1,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1579,
+    "totalTokenCount": 2353,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_038",
+   "attempt": 0,
+   "edgeOverlap": 0.849
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1527,
+    "totalTokenCount": 2301,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_038",
+   "attempt": 1,
+   "edgeOverlap": 0.986
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.0,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1521,
+    "totalTokenCount": 2295,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_039",
+   "attempt": 0,
+   "edgeOverlap": 0.959
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1522,
+    "totalTokenCount": 2296,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_040",
+   "attempt": 0,
+   "edgeOverlap": 0.986
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1542,
+    "totalTokenCount": 2316,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_041",
+   "attempt": 0,
+   "edgeOverlap": 0.99
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1528,
+    "totalTokenCount": 2302,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_042",
+   "attempt": 0,
+   "edgeOverlap": 0.971
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.4,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1563,
+    "totalTokenCount": 2337,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_043",
+   "attempt": 0,
+   "edgeOverlap": 0.956
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1510,
+    "totalTokenCount": 2284,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_044",
+   "attempt": 0,
+   "edgeOverlap": 0.971
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1493,
+    "totalTokenCount": 2267,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_045",
+   "attempt": 0,
+   "edgeOverlap": 0.974
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1461,
+    "totalTokenCount": 2235,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_046",
+   "attempt": 0,
+   "edgeOverlap": 0.944
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1467,
+    "totalTokenCount": 2241,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_047",
+   "attempt": 0,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1520,
+    "totalTokenCount": 2294,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_048",
+   "attempt": 0,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1564,
+    "totalTokenCount": 2338,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_049",
+   "attempt": 0,
+   "edgeOverlap": 0.983
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 8.8,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1462,
+    "totalTokenCount": 2236,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_050",
+   "attempt": 0,
+   "edgeOverlap": 0.955
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.9,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1492,
+    "totalTokenCount": 2266,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_051",
+   "attempt": 0,
+   "edgeOverlap": 0.971
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.0,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1526,
+    "totalTokenCount": 2300,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_052",
+   "attempt": 0,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1500,
+    "totalTokenCount": 2274,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_053",
+   "attempt": 0,
+   "edgeOverlap": 0.987
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 16.6,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1607,
+    "totalTokenCount": 2381,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_054",
+   "attempt": 0,
+   "edgeOverlap": 0.981
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 14.2,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1611,
+    "totalTokenCount": 2385,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_055",
+   "attempt": 0,
+   "edgeOverlap": 0.94
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1462,
+    "totalTokenCount": 2236,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_056",
+   "attempt": 0,
+   "edgeOverlap": 0.976
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.9,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1526,
+    "totalTokenCount": 2300,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_057",
+   "attempt": 0,
+   "edgeOverlap": 0.991
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.0,
+   "usage": {
+    "promptTokenCount": 774,
+    "candidatesTokenCount": 1489,
+    "totalTokenCount": 2263,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 258
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_058",
+   "attempt": 0,
+   "edgeOverlap": 0.996
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.8,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_006",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.7,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_007",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_013",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_016",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.7,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_019",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_020",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_023",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 1.0,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_025",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_027",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_030",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_031",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_037",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_039",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_040",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_044",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.7,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_046",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.7,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_049",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 429,
+   "seconds": 0.5,
+   "error": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. \",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+   "id": "corridor_052",
+   "pass": "cleanup-v2"
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.8,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1483,
+    "totalTokenCount": 2381,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_006",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.989
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.0,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1436,
+    "totalTokenCount": 2334,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_007",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.977
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1488,
+    "totalTokenCount": 2386,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_013",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.992
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.1,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1460,
+    "totalTokenCount": 2358,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_016",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.992
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.3,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1479,
+    "totalTokenCount": 2377,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_019",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.998
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.1,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1430,
+    "totalTokenCount": 2328,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_020",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.996
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.7,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1501,
+    "totalTokenCount": 2399,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_023",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.968
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.2,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1459,
+    "totalTokenCount": 2357,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_025",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.974
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 16.1,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1643,
+    "totalTokenCount": 2541,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_027",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.982
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 8.6,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1456,
+    "totalTokenCount": 2354,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_030",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.981
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 8.4,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1417,
+    "totalTokenCount": 2315,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_031",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.99
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1545,
+    "totalTokenCount": 2443,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_037",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.984
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1498,
+    "totalTokenCount": 2396,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_039",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.991
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.2,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1493,
+    "totalTokenCount": 2391,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_040",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.939
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.3,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1485,
+    "totalTokenCount": 2383,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_044",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.973
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.7,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1425,
+    "totalTokenCount": 2323,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_046",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.976
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 8.9,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1448,
+    "totalTokenCount": 2346,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_049",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.993
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.4,
+   "usage": {
+    "promptTokenCount": 898,
+    "candidatesTokenCount": 1487,
+    "totalTokenCount": 2385,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 382
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_052",
+   "pass": "cleanup-v2",
+   "edgeOverlap": 0.989
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.5,
+   "usage": {
+    "promptTokenCount": 880,
+    "candidatesTokenCount": 1511,
+    "totalTokenCount": 2391,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 364
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_005",
+   "pass": "color-pin-trial",
+   "edgeOverlap": 0.976
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.3,
+   "usage": {
+    "promptTokenCount": 890,
+    "candidatesTokenCount": 1462,
+    "totalTokenCount": 2352,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 374
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_019",
+   "pass": "color-pin-turf",
+   "edgeOverlap": 0.999
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.4,
+   "usage": {
+    "promptTokenCount": 890,
+    "candidatesTokenCount": 1480,
+    "totalTokenCount": 2370,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 374
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_020",
+   "pass": "color-pin-turf",
+   "edgeOverlap": 0.994
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 9.8,
+   "usage": {
+    "promptTokenCount": 890,
+    "candidatesTokenCount": 1521,
+    "totalTokenCount": 2411,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 374
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_021",
+   "pass": "color-pin-turf",
+   "edgeOverlap": 0.977
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 16.5,
+   "usage": {
+    "promptTokenCount": 845,
+    "candidatesTokenCount": 1613,
+    "totalTokenCount": 2458,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 329
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_100",
+   "pass": "coca-inner-fill",
+   "edgeOverlap": 0.997
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 11.1,
+   "usage": {
+    "promptTokenCount": 845,
+    "candidatesTokenCount": 1525,
+    "totalTokenCount": 2370,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 329
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_101",
+   "pass": "coca-inner-fill",
+   "edgeOverlap": 0.991
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.4,
+   "usage": {
+    "promptTokenCount": 832,
+    "candidatesTokenCount": 1523,
+    "totalTokenCount": 2355,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 316
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_200",
+   "pass": "inner-fill-100R",
+   "edgeOverlap": 0.973
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.5,
+   "usage": {
+    "promptTokenCount": 832,
+    "candidatesTokenCount": 1460,
+    "totalTokenCount": 2292,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 316
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_201",
+   "pass": "inner-fill-100R",
+   "edgeOverlap": 0.995
+  },
+  {
+   "model": "gemini-3.1-flash-image",
+   "status": 200,
+   "seconds": 10.2,
+   "usage": {
+    "promptTokenCount": 832,
+    "candidatesTokenCount": 1466,
+    "totalTokenCount": 2298,
+    "promptTokensDetails": [
+     {
+      "modality": "TEXT",
+      "tokenCount": 316
+     },
+     {
+      "modality": "IMAGE",
+      "tokenCount": 516
+     }
+    ],
+    "candidatesTokensDetails": [
+     {
+      "modality": "IMAGE",
+      "tokenCount": 1120
+     }
+    ],
+    "serviceTier": "standard"
+   },
+   "id": "corridor_202",
+   "pass": "inner-fill-100R",
+   "edgeOverlap": 0.975
+  }
+ ]
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { satelliteMetadataFilename } from "../replay/satelliteVariants";
 import { useReplayStore } from "../state/replayStore";
 import { buildCreditLine, type CreditLine } from "./credits";
 
@@ -14,15 +15,11 @@ async function fetchSource(url: string): Promise<string | null> {
   }
 }
 
-/**
- * Small always-on data-attribution line in a screen corner (CC BY 4.0 /
- * OpenStreetMap requirement). Text is assembled from the track's
- * terrain_meta.json + features3d.json `source` fields (see buildCreditLine),
- * so it is correct for any track with no per-track code. Hover shows the full
- * multi-source text.
- */
+/** Always-on attribution for the active imagery, terrain, and feature data. */
 export function CreditOverlay() {
   const trackId = useReplayStore((state) => state.track?.trackId ?? null);
+  const satelliteVariant = useReplayStore((state) => state.satelliteVariant);
+  const showFeatures3d = useReplayStore((state) => state.showFeatures3d);
   const [credit, setCredit] = useState<CreditLine | null>(null);
 
   useEffect(() => {
@@ -32,10 +29,19 @@ export function CreditOverlay() {
     }
     let cancelled = false;
     const dir = `/data/tracks/${trackId}/`;
-    Promise.all([fetchSource(`${dir}terrain_meta.json`), fetchSource(`${dir}features3d.json`)])
-      .then(([terrainSource, features3dSource]) => {
-        if (cancelled) return;
-        setCredit(buildCreditLine({ terrainSource, features3dSource }));
+    const imageryMeta = satelliteMetadataFilename(satelliteVariant);
+    // The 3D-feature attribution lives inside features3d.json (~1 MB), so only
+    // pull it when that layer is actually displayed — a user-mode startup with
+    // the 3D features off must not download the whole file just for a credit
+    // string. The credit re-resolves (adding "Features: …") the moment the
+    // layer is toggled on.
+    Promise.all([
+      fetchSource(`${dir}${imageryMeta}`),
+      fetchSource(`${dir}terrain_meta.json`),
+      showFeatures3d ? fetchSource(`${dir}features3d.json`) : Promise.resolve(null),
+    ])
+      .then(([imagerySource, terrainSource, features3dSource]) => {
+        if (!cancelled) setCredit(buildCreditLine({ imagerySource, terrainSource, features3dSource }));
       })
       .catch(() => {
         if (!cancelled) setCredit(null);
@@ -43,13 +49,8 @@ export function CreditOverlay() {
     return () => {
       cancelled = true;
     };
-  }, [trackId]);
+  }, [trackId, satelliteVariant, showFeatures3d]);
 
   if (!credit) return null;
-
-  return (
-    <div className="hud-credit" title={credit.full}>
-      {credit.visible}
-    </div>
-  );
+  return <div className="hud-credit" title={credit.full}>{credit.visible}</div>;
 }

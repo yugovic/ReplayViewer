@@ -1,0 +1,1876 @@
+{
+  "schemaVersion": 1,
+  "kind": "track-corridor-enhancement",
+  "visualizationOnly": true,
+  "note": "Gemini toon corridor, offline-stitched into 93 opaque grid tiles. Visualization only.",
+  "bbox": {
+    "minLng": 138.91723261,
+    "maxLng": 138.93658159,
+    "minLat": 35.36246909,
+    "maxLat": 35.37859744
+  },
+  "mercator": true,
+  "tileCount": 93,
+  "tiles": [
+    {
+      "file": "toon_corridor/tiles2/grid_00_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.1206416397460176,
+        "u1": 0.756889091323161,
+        "v1": 0.177676283836471
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_00_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.1206416397460176,
+        "u1": 0.8151901616943749,
+        "v1": 0.177676283836471
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_00_12.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.8151901616943749,
+        "v0": 0.1206416397460176,
+        "u1": 0.8734912320655888,
+        "v1": 0.177676283836471
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_00_13.png",
+      "outputPixel": {
+        "width": 208,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.8734912320655887,
+        "v0": 0.1206416397460176,
+        "u1": 0.8853336369847414,
+        "v1": 0.177676283836471
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_01_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.177676283836471,
+        "u1": 0.6985880209519473,
+        "v1": 0.23471092792692438
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_01_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.177676283836471,
+        "u1": 0.756889091323161,
+        "v1": 0.23471092792692438
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_01_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.177676283836471,
+        "u1": 0.8151901616943749,
+        "v1": 0.23471092792692438
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_01_12.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.8151901616943749,
+        "v0": 0.177676283836471,
+        "u1": 0.8734912320655888,
+        "v1": 0.23471092792692438
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_01_13.png",
+      "outputPixel": {
+        "width": 208,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.8734912320655887,
+        "v0": 0.177676283836471,
+        "u1": 0.8853336369847414,
+        "v1": 0.23471092792692438
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_02_08.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5819858802095195,
+        "v0": 0.23471092792692436,
+        "u1": 0.6402869505807334,
+        "v1": 0.2917455720173777
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_02_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.23471092792692436,
+        "u1": 0.6985880209519473,
+        "v1": 0.2917455720173777
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_02_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.23471092792692436,
+        "u1": 0.756889091323161,
+        "v1": 0.2917455720173777
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_02_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.23471092792692436,
+        "u1": 0.8151901616943749,
+        "v1": 0.2917455720173777
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_02_12.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.8151901616943749,
+        "v0": 0.23471092792692436,
+        "u1": 0.8734912320655888,
+        "v1": 0.2917455720173777
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.2917455720173777,
+        "u1": 0.5236848098383056,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.2917455720173777,
+        "u1": 0.5819858802095195,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_08.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5819858802095195,
+        "v0": 0.2917455720173777,
+        "u1": 0.6402869505807334,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.2917455720173777,
+        "u1": 0.6985880209519473,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.2917455720173777,
+        "u1": 0.756889091323161,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.2917455720173777,
+        "u1": 0.8151901616943749,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_03_12.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.8151901616943749,
+        "v0": 0.2917455720173777,
+        "u1": 0.8734912320655888,
+        "v1": 0.3487802161078311
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.3487802161078311,
+        "u1": 0.4653837394670918,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.3487802161078311,
+        "u1": 0.5236848098383056,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.3487802161078311,
+        "u1": 0.5819858802095195,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_08.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5819858802095195,
+        "v0": 0.3487802161078311,
+        "u1": 0.6402869505807334,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.3487802161078311,
+        "u1": 0.6985880209519473,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.3487802161078311,
+        "u1": 0.756889091323161,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_04_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.3487802161078311,
+        "u1": 0.8151901616943749,
+        "v1": 0.4058148601982845
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_04.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.3487815987246641,
+        "v0": 0.4058148601982845,
+        "u1": 0.4070826690958779,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.4058148601982845,
+        "u1": 0.4653837394670918,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.4058148601982845,
+        "u1": 0.5236848098383056,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.4058148601982845,
+        "u1": 0.5819858802095195,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.4058148601982845,
+        "u1": 0.6985880209519473,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.4058148601982845,
+        "u1": 0.756889091323161,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_05_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.4058148601982845,
+        "u1": 0.8151901616943749,
+        "v1": 0.4628495042887379
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.4628495042887379,
+        "u1": 0.3487815987246641,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_04.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.3487815987246641,
+        "v0": 0.4628495042887379,
+        "u1": 0.4070826690958779,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.4628495042887379,
+        "u1": 0.4653837394670918,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.4628495042887379,
+        "u1": 0.5236848098383056,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.4628495042887379,
+        "u1": 0.5819858802095195,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_08.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5819858802095195,
+        "v0": 0.4628495042887379,
+        "u1": 0.6402869505807334,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.4628495042887379,
+        "u1": 0.6985880209519473,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.4628495042887379,
+        "u1": 0.756889091323161,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_06_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.4628495042887379,
+        "u1": 0.8151901616943749,
+        "v1": 0.5198841483791913
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_02.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.23217945798223638,
+        "v0": 0.5198841483791913,
+        "u1": 0.29048052835345023,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.5198841483791913,
+        "u1": 0.3487815987246641,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_04.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.3487815987246641,
+        "v0": 0.5198841483791913,
+        "u1": 0.4070826690958779,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.5198841483791913,
+        "u1": 0.4653837394670918,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.5198841483791913,
+        "u1": 0.5236848098383056,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.5198841483791913,
+        "u1": 0.5819858802095195,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_08.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5819858802095195,
+        "v0": 0.5198841483791913,
+        "u1": 0.6402869505807334,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.5198841483791913,
+        "u1": 0.6985880209519473,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.5198841483791913,
+        "u1": 0.756889091323161,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_07_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.5198841483791913,
+        "u1": 0.8151901616943749,
+        "v1": 0.5769187924696446
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_00.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.1155773172398087,
+        "v0": 0.5769187924696446,
+        "u1": 0.17387838761102253,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_01.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.17387838761102253,
+        "v0": 0.5769187924696446,
+        "u1": 0.23217945798223638,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_02.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.23217945798223638,
+        "v0": 0.5769187924696446,
+        "u1": 0.29048052835345023,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.5769187924696446,
+        "u1": 0.3487815987246641,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.5769187924696446,
+        "u1": 0.4653837394670918,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.5769187924696446,
+        "u1": 0.5236848098383056,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.5769187924696446,
+        "u1": 0.5819858802095195,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_08.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5819858802095195,
+        "v0": 0.5769187924696446,
+        "u1": 0.6402869505807334,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_09.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6402869505807334,
+        "v0": 0.5769187924696446,
+        "u1": 0.6985880209519473,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_10.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.6985880209519472,
+        "v0": 0.5769187924696446,
+        "u1": 0.756889091323161,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_08_11.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.756889091323161,
+        "v0": 0.5769187924696446,
+        "u1": 0.8151901616943749,
+        "v1": 0.633953436560098
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_09_00.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.1155773172398087,
+        "v0": 0.6339534365600981,
+        "u1": 0.17387838761102253,
+        "v1": 0.6909880806505514
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_09_01.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.17387838761102253,
+        "v0": 0.6339534365600981,
+        "u1": 0.23217945798223638,
+        "v1": 0.6909880806505514
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_09_02.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.23217945798223638,
+        "v0": 0.6339534365600981,
+        "u1": 0.29048052835345023,
+        "v1": 0.6909880806505514
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_09_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.6339534365600981,
+        "u1": 0.3487815987246641,
+        "v1": 0.6909880806505514
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_09_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.6339534365600981,
+        "u1": 0.5236848098383056,
+        "v1": 0.6909880806505514
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_09_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.6339534365600981,
+        "u1": 0.5819858802095195,
+        "v1": 0.6909880806505514
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_00.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.1155773172398087,
+        "v0": 0.6909880806505514,
+        "u1": 0.17387838761102253,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_01.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.17387838761102253,
+        "v0": 0.6909880806505514,
+        "u1": 0.23217945798223638,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_02.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.23217945798223638,
+        "v0": 0.6909880806505514,
+        "u1": 0.29048052835345023,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.6909880806505514,
+        "u1": 0.3487815987246641,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.6909880806505514,
+        "u1": 0.4653837394670918,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.6909880806505514,
+        "u1": 0.5236848098383056,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_10_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.6909880806505514,
+        "u1": 0.5819858802095195,
+        "v1": 0.7480227247410047
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_01.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.17387838761102253,
+        "v0": 0.7480227247410048,
+        "u1": 0.23217945798223638,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_02.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.23217945798223638,
+        "v0": 0.7480227247410048,
+        "u1": 0.29048052835345023,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.7480227247410048,
+        "u1": 0.3487815987246641,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_04.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.3487815987246641,
+        "v0": 0.7480227247410048,
+        "u1": 0.4070826690958779,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.7480227247410048,
+        "u1": 0.4653837394670918,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.7480227247410048,
+        "u1": 0.5236848098383056,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_11_07.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.5236848098383057,
+        "v0": 0.7480227247410048,
+        "u1": 0.5819858802095195,
+        "v1": 0.8050573688314582
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_12_01.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.17387838761102253,
+        "v0": 0.8050573688314582,
+        "u1": 0.23217945798223638,
+        "v1": 0.8620920129219115
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_12_02.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.23217945798223638,
+        "v0": 0.8050573688314582,
+        "u1": 0.29048052835345023,
+        "v1": 0.8620920129219115
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_12_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.8050573688314582,
+        "u1": 0.3487815987246641,
+        "v1": 0.8620920129219115
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_12_04.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.3487815987246641,
+        "v0": 0.8050573688314582,
+        "u1": 0.4070826690958779,
+        "v1": 0.8620920129219115
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_12_05.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4070826690958779,
+        "v0": 0.8050573688314582,
+        "u1": 0.4653837394670918,
+        "v1": 0.8620920129219115
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_12_06.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 1024
+      },
+      "uv": {
+        "u0": 0.4653837394670918,
+        "v0": 0.8050573688314582,
+        "u1": 0.5236848098383056,
+        "v1": 0.8620920129219115
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_13_03.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 356
+      },
+      "uv": {
+        "u0": 0.29048052835345023,
+        "v0": 0.8620920129219115,
+        "u1": 0.3487815987246641,
+        "v1": 0.8819204634064832
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    },
+    {
+      "file": "toon_corridor/tiles2/grid_13_04.png",
+      "outputPixel": {
+        "width": 1024,
+        "height": 356
+      },
+      "uv": {
+        "u0": 0.3487815987246641,
+        "v0": 0.8620920129219115,
+        "u1": 0.4070826690958779,
+        "v1": 0.8819204634064832
+      },
+      "priority": 10,
+      "provenance": {
+        "kind": "generative-edit toon style (Gemini gemini-3.1-flash-image API), offline-stitched",
+        "styleRef": "ai_illustrated_tile_nologo.png",
+        "featherPx": 96,
+        "visualizationOnly": true
+      }
+    }
+  ]
+}

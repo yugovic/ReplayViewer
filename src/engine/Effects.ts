@@ -42,9 +42,9 @@ export class Effects {
     this.composer.addPass(renderPass);
 
     const bloom = new BloomEffect({
-      luminanceThreshold: 0.62,
-      luminanceSmoothing: 0.08,
-      intensity: 1.8,
+      luminanceThreshold: 0.92,
+      luminanceSmoothing: 0.025,
+      intensity: 0.7,
       blendFunction: BlendFunction.ADD,
     });
 

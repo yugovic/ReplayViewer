@@ -4,6 +4,28 @@ import type { CameraMode } from "../engine/cameras";
 import type { QualityPreset } from "../engine/Effects";
 import { SATELLITE_VARIANTS, type SatVariantId } from "../replay/satelliteVariants";
 
+const DEVELOPER_VIEW_LAYER_PRESET = {
+  showRoad3d: true,
+  showOsmFeatures: false,
+  showFeatures3d: true,
+  showDetailTexture: true,
+  showTrackLines: true,
+  showAcOverlay: true,
+  driveOnAc: false,
+  showTrialTiles: true,
+};
+
+const USER_VIEW_LAYER_PRESET = {
+  showRoad3d: false,
+  showOsmFeatures: false,
+  showFeatures3d: false,
+  showDetailTexture: false,
+  showTrackLines: false,
+  showAcOverlay: false,
+  driveOnAc: false,
+  showTrialTiles: true,
+};
+
 interface ReplayState {
   // Playback
   playing: boolean;
@@ -44,6 +66,19 @@ interface ReplayState {
   showOsmFeatures: boolean;
   showFeatures3d: boolean;
   showDetailTexture: boolean;
+  /** Vector track markings: shader white edge lines + overlays.json curbs
+   * (Task 2), toggled as one layer. */
+  showTrackLines: boolean;
+  /** AC MOD track-edge overlay (verification reference; only present for tracks
+   * that ship an ac_overlay.json). No-op on tracks without the data file. */
+  showAcOverlay: boolean;
+  /** Car ground-contact Y comes from the AC MOD surface instead of the analytic
+   * reconstruction. No-op on tracks without ac_overlay.json. */
+  driveOnAc: boolean;
+  /** Experimental trial tiles (imagegen_trials override manifest) shown on top
+   * of the standard 静岡20cm SR tiles — the in-place A/B switch. No-op on
+   * tracks without an override manifest. */
+  showTrialTiles: boolean;
 
   // Satellite imagery variant (mutually-exclusive selection)
   satelliteVariant: SatVariantId;
@@ -81,14 +116,23 @@ interface ReplayState {
   toggleMinimap: () => void;
 
   // Actions – scene layers
+  applyViewerModePreset: (developerMode: boolean) => void;
   setShowRoad3d: (show: boolean) => void;
   setShowOsmFeatures: (show: boolean) => void;
   setShowFeatures3d: (show: boolean) => void;
   setShowDetailTexture: (show: boolean) => void;
+  setShowTrackLines: (show: boolean) => void;
   toggleRoad3d: () => void;
   toggleOsmFeatures: () => void;
   toggleFeatures3d: () => void;
   toggleDetailTexture: () => void;
+  toggleTrackLines: () => void;
+  setShowAcOverlay: (show: boolean) => void;
+  toggleAcOverlay: () => void;
+  setDriveOnAc: (on: boolean) => void;
+  toggleDriveOnAc: () => void;
+  setShowTrialTiles: (show: boolean) => void;
+  toggleTrialTiles: () => void;
 
   // Actions – satellite variant
   setSatelliteVariant: (variant: SatVariantId) => void;
@@ -144,10 +188,7 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   showMinimap: true,
 
   // Scene layers
-  showRoad3d: true,
-  showOsmFeatures: true,
-  showFeatures3d: true,
-  showDetailTexture: true,
+  ...DEVELOPER_VIEW_LAYER_PRESET,
 
   // Satellite imagery variant
   satelliteVariant: "default",
@@ -225,6 +266,9 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
 
   // ── Scene layers ──────────────────────────────────────────────────────────
 
+  applyViewerModePreset: (developerMode) =>
+    set(developerMode ? DEVELOPER_VIEW_LAYER_PRESET : USER_VIEW_LAYER_PRESET),
+
   setShowRoad3d: (show) => set({ showRoad3d: show }),
 
   setShowOsmFeatures: (show) => set({ showOsmFeatures: show }),
@@ -233,6 +277,8 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
 
   setShowDetailTexture: (show) => set({ showDetailTexture: show }),
 
+  setShowTrackLines: (show) => set({ showTrackLines: show }),
+
   toggleRoad3d: () => set((state) => ({ showRoad3d: !state.showRoad3d })),
 
   toggleOsmFeatures: () => set((state) => ({ showOsmFeatures: !state.showOsmFeatures })),
@@ -240,6 +286,18 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   toggleFeatures3d: () => set((state) => ({ showFeatures3d: !state.showFeatures3d })),
 
   toggleDetailTexture: () => set((state) => ({ showDetailTexture: !state.showDetailTexture })),
+
+  toggleTrackLines: () => set((state) => ({ showTrackLines: !state.showTrackLines })),
+
+  setShowAcOverlay: (show) => set({ showAcOverlay: show }),
+  setShowTrialTiles: (show) => set({ showTrialTiles: show }),
+  toggleTrialTiles: () => set((state) => ({ showTrialTiles: !state.showTrialTiles })),
+
+  toggleAcOverlay: () => set((state) => ({ showAcOverlay: !state.showAcOverlay })),
+
+  setDriveOnAc: (on) => set({ driveOnAc: on }),
+
+  toggleDriveOnAc: () => set((state) => ({ driveOnAc: !state.driveOnAc })),
 
   // ── Satellite variant ────────────────────────────────────────────────────
 

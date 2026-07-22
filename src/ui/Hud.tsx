@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useReplayStore } from "../state/replayStore";
+import { getVehicleBestLap } from "../replay/dataLoader";
 import { computeDeltaAtDist, buildSectorBoundaries, computeSectorTimes, getSectorIndex } from "../replay/delta";
 import { LayersPanel } from "./LayersPanel";
 
@@ -159,7 +160,11 @@ function SectorDisplay({
   );
 }
 
-export function Hud() {
+interface HudProps {
+  developerMode?: boolean;
+}
+
+export function Hud({ developerMode = false }: HudProps) {
   const lapMeta = useReplayStore((state) => state.lapMeta);
   const currentTime = useReplayStore((state) => state.currentTime);
   const telemetry = useReplayStore((state) => state.telemetry);
@@ -169,6 +174,10 @@ export function Hud() {
   const activeLap = useReplayStore((state) => state.activeLap);
   const ghostLap = useReplayStore((state) => state.ghostLap);
   const ghostRecord = useReplayStore((state) => state.ghostRecord);
+  const lapsIndex = useReplayStore((state) => state.lapsIndex);
+
+  const vehicleBest =
+    lapsIndex && lapMeta ? getVehicleBestLap(lapsIndex, lapMeta.vehicle_id) : null;
 
   const gx = telemetry.accx ?? 0;
   const gy = telemetry.accy ?? 0;
@@ -223,8 +232,17 @@ export function Hud() {
         </div>
         {lapMeta?.lap_time && (
           <div className="hud-row">
-            <span className="hud-label">BEST</span>
+            <span className="hud-label" title="Total time of the lap being replayed">LAP TIME</span>
             <strong className="hud-value">{lapMeta.lap_time}</strong>
+          </div>
+        )}
+        {vehicleBest?.lap_time && (
+          <div className="hud-row">
+            <span className="hud-label" title="This car's best lap of the session">BEST</span>
+            <strong className="hud-value">
+              {vehicleBest.lap_time}
+              <span className="hud-best-lapnum"> L{vehicleBest.lap}</span>
+            </strong>
           </div>
         )}
 
@@ -261,7 +279,7 @@ export function Hud() {
       </div>
 
       {/* Top-right, below cameras: scene layer toggles */}
-      <LayersPanel />
+      {developerMode && <LayersPanel />}
 
       {/* Bottom-left: input cluster + speed + gear */}
       <div className="hud-panel hud-inputs">

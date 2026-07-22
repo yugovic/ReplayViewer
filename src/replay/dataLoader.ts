@@ -4,6 +4,11 @@ import { parseSatVariantParam, probeSatelliteVariantsForTrack, type SatVariantId
 const DEFAULT_TRACK_ID = "barber";
 const DEFAULT_RACE_ID = "barber_r1";
 
+/** Curated imagery shown by the user-facing viewer without variant probing. */
+const USER_SATELLITE_VARIANT_BY_TRACK: Readonly<Partial<Record<string, SatVariantId>>> = {
+  fuji: "shizuoka_x2",
+};
+
 /** Only these characters are allowed in a track/race id (they end up in fetch URLs). */
 const ID_PATTERN = /^[a-z0-9_-]+$/i;
 
@@ -37,7 +42,25 @@ export const TRACK_CATALOG: TrackCatalogEntry[] = [
     trackId: "fuji",
     raceId: "fuji_aim_01",
     trackName: "Fuji Speedway",
-    raceLabel: "AiM · Demio",
+    raceLabel: "AiM · Demio (7/29)",
+  },
+  {
+    trackId: "fuji",
+    raceId: "fuji_aim_2020_07_30",
+    trackName: "Fuji Speedway",
+    raceLabel: "AiM · Demio (7/30)",
+  },
+  {
+    trackId: "suzuka",
+    raceId: "suzuka_preview",
+    trackName: "Suzuka Circuit",
+    raceLabel: "コース確認 · 合成走行",
+  },
+  {
+    trackId: "okayama",
+    raceId: "okayama_preview",
+    trackName: "Okayama International Circuit",
+    raceLabel: "コース確認 · 合成走行",
   },
 ];
 
@@ -50,6 +73,7 @@ export interface ResolvedDataSources {
   trackUrl: string;
   raceBaseUrl: string;
   satVariant: SatVariantId;
+  developerMode: boolean;
 }
 
 function sanitizeId(value: string | null, fallback: string): string {
@@ -65,17 +89,18 @@ function sanitizeId(value: string | null, fallback: string): string {
  * Unknown or malformed values fall back to the defaults that reproduce
  * today's hardcoded Barber round-1 behavior.
  *
- * `sat` accepts `sr | bing | bing_sr` as the requested INITIAL variant; any
- * other value (including no param) resolves to "default" (satellite.jpg).
- * This only resolves the *requested* variant from the URL — whether that
- * file actually exists is checked later by loadInitialReplay(), which falls
- * back to "default" silently if it's unavailable.
+ * `?dev=1` enables the developer-only texture and layer tooling. The `sat`
+ * parameter is intentionally ignored outside that mode so the user-facing
+ * viewer always loads the single curated texture for the selected track.
  */
 export function resolveDataSources(search: string): ResolvedDataSources {
   const params = new URLSearchParams(search);
   const trackId = sanitizeId(params.get("track"), DEFAULT_TRACK_ID);
   const raceId = sanitizeId(params.get("race"), DEFAULT_RACE_ID);
-  const satVariant = parseSatVariantParam(params.get("sat"));
+  const developerMode = params.get("dev") === "1";
+  const satVariant = developerMode
+    ? parseSatVariantParam(params.get("sat"))
+    : (USER_SATELLITE_VARIANT_BY_TRACK[trackId] ?? "default");
 
   return {
     trackId,
@@ -83,6 +108,7 @@ export function resolveDataSources(search: string): ResolvedDataSources {
     trackUrl: `/data/tracks/${trackId}/track.json`,
     raceBaseUrl: `/data/races/${raceId}`,
     satVariant,
+    developerMode,
   };
 }
 
@@ -93,6 +119,11 @@ const SOURCES = resolveDataSources(typeof window !== "undefined" ? window.locati
 /** The track/race ids actually in use for the current page load. */
 export function getCurrentSelection(): { trackId: string; raceId: string } {
   return { trackId: SOURCES.trackId, raceId: SOURCES.raceId };
+}
+
+/** Whether this page load explicitly opted into the developer controls. */
+export function isDeveloperMode(): boolean {
+  return SOURCES.developerMode;
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
@@ -113,14 +144,16 @@ function pickInitialLap(index: LapsIndex): LapIndexRecord {
 
 export async function loadInitialReplay(): Promise<LoadedReplay> {
   const trackDir = `/data/tracks/${SOURCES.trackId}/`;
+  // Availability probing is development tooling. In the user-facing viewer,
+  // resolve immediately with the one texture it is allowed to display; this
+  // removes the six large-file HEAD requests from the initial critical path.
+  const availableVariantsPromise = SOURCES.developerMode
+    ? probeSatelliteVariantsForTrack(trackDir)
+    : Promise.resolve<SatVariantId[]>([SOURCES.satVariant]);
   const [track, lapsIndex, availableSatelliteVariants] = await Promise.all([
     fetchJson<TrackData>(SOURCES.trackUrl),
     fetchJson<LapsIndex>(`${SOURCES.raceBaseUrl}/laps.json`),
-    // Probed up front (in parallel with the fetches above) so the initial
-    // variant choice below never asks TrackBuilder to load a file that
-    // doesn't exist — that's what keeps ?sat=bing_sr silent when the file is
-    // absent, instead of surfacing a console warning from a failed texture load.
-    probeSatelliteVariantsForTrack(trackDir),
+    availableVariantsPromise,
   ]);
   // Stamp the resolved selection onto the track so downstream consumers
   // (TrackBuilder's satellite/terrain/features asset URLs) key off the id
@@ -140,6 +173,23 @@ export async function loadInitialReplay(): Promise<LoadedReplay> {
  */
 export async function loadLapFile(dataFile: string): Promise<LapData> {
   return fetchJson<LapData>(`${SOURCES.raceBaseUrl}/${dataFile}`);
+}
+
+/**
+ * The vehicle's best lap of the session: the record flagged upstream as
+ * `is_best_vehicle`, falling back to the smallest positive lap_time_seconds.
+ * Considers every timed lap in the index (not just ones with data files), so
+ * the HUD "BEST" stays the true session best even while a slower lap is being
+ * replayed. Null when the vehicle has no timed laps.
+ */
+export function getVehicleBestLap(index: LapsIndex, vehicleId: string): LapIndexRecord | null {
+  const timed = index.laps.filter(
+    (rec) => rec.vehicle_id === vehicleId && rec.lap_time_seconds > 0,
+  );
+  if (timed.length === 0) return null;
+  const flagged = timed.find((rec) => rec.is_best_vehicle);
+  if (flagged) return flagged;
+  return timed.reduce((best, rec) => (rec.lap_time_seconds < best.lap_time_seconds ? rec : best));
 }
 
 /**
