@@ -7,6 +7,22 @@
 
 ---
 
+## 2026-07-23 — ランドマークビルダー（グランドスタンド/キャノピー）実装
+
+- ユーザー方針「グランドスタンド風アセットを配置できるビルダー。検討=Fable、
+  実装=Opus」。Fableが既存資産を調査（features3dのタグ経路・押し出し基盤が
+  流用可、grandstandタグ1棟/roofタグ3棟）し設計、Opusサブエージェントが実装。
+- 新規 `src/engine/track/LandmarkBuilder.ts`: 最小外接矩形+中心線ヒントで
+  向きを決め、grandstand=観客席ティア6段(色ストライプ)+背面壁+柱付き屋根
+  スラブ、roof=柱+屋根のみのキャノピー。Features3DBuilder がタグで分岐、
+  全建物で「メッシュ1+輪郭線1」の2ドローコール維持。
+  buildFeatures3dGroup に省略可能な frontHintAt を追加（互換維持）。
+- 検証: tsc 0エラー、全35ファイル308テストPASS（+4本）、Playwright実画面で
+  S/F左手に「段々の観客席+片持ち屋根」を確認（Temp/landmark-t4.png）。
+  コミット 8a33edb。
+- 未解決: 屋根/座席のトゥーンテクスチャ化（任意）、他トラックへの適用
+  （タグがあれば自動で効く）。
+
 ## 2026-07-23 — 建物地形修正ステップ3（3D箱の建物化+ユーザー表示ON）完了
 
 - Features3DBuilder.buildBuildings を強化（コミット 5eacdf8）:
