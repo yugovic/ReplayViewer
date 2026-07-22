@@ -7,6 +7,96 @@
 
 ---
 
+## 2026-07-23 — 建物地形修正ステップ3（3D箱の建物化+ユーザー表示ON）完了
+
+- Features3DBuilder.buildBuildings を強化（コミット 5eacdf8）:
+  ①トゥーン風シルエット（EdgesGeometry の輪郭線、+1ドローコールのみ）
+  ②castShadow 有効化（地面への落ち影で設置感）
+  ③壁の基部を暗くする頂点AO ④日陰面が真っ黒になるのを防ぐ微小emissive。
+  戻り値 Mesh→Group 化に伴いテスト更新（全304テストPASS、tscエラー0）。
+- USER_VIEW_LAYER_PRESET の showFeatures3d を true に変更 — ステップ1/2で
+  写真の屋根を除去した今、3D箱が唯一の建物表現のため必須。
+- 実画面確認: S/Fストレートで「写真の丘」だった左手が灰色の建物ボリューム+
+  輪郭線に置換。右手の並木・ピット建物も良好（Temp/step3c-t4.png）。
+- 残る磨き込み候補（任意）: 屋根へのトゥーンテクスチャ（Gemini数枚≈$0.5）、
+  グランドスタンド観客席テラスの表現、SR/トゥーンタイル内の建物像の扱い、
+  鈴鹿・岡山への同処理適用。
+
+## 2026-07-23 — 建物地形修正ステップ2（衛星写真から屋根をインペイント除去）
+
+- 新規 `pipeline/neutralize_building_roofs.py`: features3d の91フットプリント
+  （2mバッファ+北西6mの焼き込み影ストリップ）をマスクし、周囲から
+  インペイント（TELEA+ソフト化）。対象は satellite_shizuoka.jpg と 4k webp
+  （バックアップ *.pre-neutralize.*）。コミット e399bd5。
+- 実画面確認（t=4）: ピット・小建物の屋根写真は消滅。S/F左手の段々の稜線は
+  **グランドスタンドの観客席テラス**で、地形としては実在（座席段が正しく
+  地表扱い）+座席の写真テクスチャのため大きくは変わらず。屋根キャノピー分は
+  ステップ1+2で除去済み。
+- 既知の限界: インペイント跡は至近距離では灰色スマッジ（走行距離では目立たず）。
+  SRコリドータイル・トゥーンタイル内の建物は未処理（ステップ3の3D箱と
+  合わせて要判断）。
+- 未解決: ステップ3（3D箱の建物らしさ強化+ユーザーモードでの表示方針）。
+
+## 2026-07-23 05:45 — P1起動最適化: ベース地面テクスチャ(satellite_shizuoka)のWebP軽量化
+
+- 依頼: 起動時に取得する29.8MBのベース地面テクスチャ
+  `satellite_shizuoka.jpg`(8014×8192, ~0.22m/px)を縮小/再圧縮して起動を軽くする。
+  **原本は残し、原本↔最適版を比較できるようにする**。
+- 生成した最適版: `public/data/tracks/fuji/satellite_shizuoka_4k.webp`
+  (4007×4096, WebP q80, method6, **5.20MB** ← 29.76MBから約5.7分の1)。
+  Pillow 12.2.0(`pipeline/.venv-sr`)でLanczos縮小。原本jpgは無変更で保持。
+  併せて `satellite_shizuoka_4k_meta.json` を新設(bboxは原本と同一、
+  imageWidth/Height=4007/4096, derivedFrom注記, effectiveRes~0.44m/px)。
+  ※ satelliteの地面ジオメトリはbboxのみ使用(TrackBuilder buildSatelliteGround)。
+  imageWidth/HeightはTerrainSamplerが別ファイル(terrain_meta)で使うだけで、
+  satellite画像の画素寸法は幾何に影響しない → 寸法変更は安全と確認。
+- 配線 (`src/replay/satelliteVariants.ts`):
+  - variant "shizuoka" と "shizuoka_x2"(ユーザー既定=fuji preset)の filename を
+    webp / meta を4k_metaへ変更 → **ユーザーモード起動は自動でwebpを取得**。
+  - 比較用に新variant **"shizuoka_orig"**(label「静岡 20cm 原寸」)を追加。原本jpgを指す。
+    SatVariantId型・SAT_PARAM_TO_VARIANT に追加。
+  - **原本への切替え方法**: devモードでURLに `?dev=1&sat=shizuoka_orig` を付ける
+    (例 `http://localhost:5199/?track=fuji&race=fuji_aim_01&dev=1&sat=shizuoka_orig`)。
+    通常ユーザーモードは常にwebpを表示。
+  - three.js TextureLoaderはWebP対応(拡張子ハードコード依存なし)を確認。
+- 変更ファイル: satelliteVariants.ts, satelliteVariants.test.ts(期待値更新),
+  新規 satellite_shizuoka_4k.webp / satellite_shizuoka_4k_meta.json。
+- 検証(実施済み): `npx tsc --noEmit` 通過、`npx vitest run` 35ファイル304テスト成功。
+  Playwright(:5199, `Temp/verify_sat_optim.mjs`):
+  - **ユーザーモード起動でwebp(5.20MB)を1回取得のみ、jpgは取得0、consoleエラー0**。
+  - devモードの原本比較でjpg(29.76MB)取得を確認(比較用途)。
+  - 削減量: 起動クリティカルパスから **約24.6MB削減(~82.5%)**。ローカルdev鯖のため
+    秒数は代表性低いが、初回レスポンス開始はwebp t≈383ms(jpgは全転送が重い)。
+  - 証跡: `Temp/sat-opt-top.png`/`sat-opt-chase.png`(最適版)、
+    `sat-orig-top.png`/`sat-orig-chase.png`(原本)、`Temp/sat-optim-report.json`。
+    ※chase比較はdevプリセットの追加レイヤ(3D地物/木)差でシーンが異なる点に注意
+    (ベーステクスチャ単体の差ではない)。
+- 画質評価(正直): 2倍ダウンスケール+webp q80で、原本対比 PSNR≈27.3dB /
+  平均絶対差 7.7/255(~3%)。**高周波の細部(個々の木・地面のざらつき)は softening**
+  するが、色調・大局形状はほぼ保存。このベース写真は走路±51〜140mでSRトゥーン
+  コリドーに不透明に覆われ、実際に見えるのはコリドー外の遠景のみ。遠景は視距離が
+  大きくソフト化はほぼ知覚不能で、通常視聴では劣化は目立たない。
+- 未解決: 本番previewビルドでの総転送量再実測、原本jpgのgit LFS/除外方針は未検討
+  (現状は両ファイルとも public に存在)。コミットは未実施(依頼どおり)。
+
+## 2026-07-23 — チェックポイントコミット + 建物地形修正ステップ1（DTM平坦化）
+
+- ユーザー指示「全部コミットしてロールバック可能にしてから着手」→
+  Temp/ を .gitignore に追加のうえ全1,236ファイル(約1GB)をコミット
+  （b7d56e9 + 23208ce）。git identity をローカル設定（yugovic）。
+  ロールバックは `git reset --hard 23208ce`。
+- ステップ1実装: 新規 `pipeline/flatten_buildings_dtm.py` —
+  features3d.json の建物フットプリント内の DTM セルを外周リング(5px)の
+  地表高中央値で置換（2pxバッファ+3pxフェザー、bump<0.3mはスキップ）。
+  出力は同じ terrain.png（Terrarium）でビューア無改修、バックアップ
+  terrain.pre-flatten.png。コミット b55caa5。
+- 結果: 21/91棟に混入bump検出・平坦化（最大=メイングランドスタンド
+  19,673セル・平均1.68m）。実画面 t=4 前後比較（Temp/flatten_compare_t4.png）
+  で左手の稜線が低減。ただし**残る"山"の大部分は実地形の斜面+写真の
+  屋根ドレープ**であり、ステップ2（屋根像の除去）・3（3D箱仕上げ）で
+  本命の改善が出る見込み。
+- 未解決: ステップ2/3 の実装、鈴鹿・岡山への適用要否。
+
 ## 2026-07-22 12:10 — 「建物が丘に見える」問題のbest-of-N提案（Opus×3並列）
 
 - ユーザー依頼「建物が山のようになる地形の改善方法を複数案で（/bestofn 相当）」。
