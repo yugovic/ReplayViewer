@@ -18,6 +18,16 @@
  */
 
 import * as THREE from "three";
+import {
+  buildCanopy,
+  buildGrandstand,
+  computeFootprintOrientation,
+  type LandmarkGeometry,
+} from "./LandmarkBuilder";
+
+/** Nearest track-centreline point to (x, z), used to orient a grandstand's
+ * front (course-facing) side. Supplied by TrackBuilder; optional. */
+export type FrontHintFn = (x: number, z: number) => { x: number; z: number };
 
 // ─── Schema (mirrors specs/p3a_features3d_extraction.md) ────────────────────
 
@@ -270,12 +280,21 @@ const BUILDING_OUTLINE_COLOR = 0x41464a;
 /** Crease threshold for the silhouette lines (degrees). */
 const BUILDING_OUTLINE_ANGLE = 25;
 
-function buildBuildings(buildings: Building3D[], groundHeightAt: GroundHeightFn): THREE.Group | null {
+function buildBuildings(
+  buildings: Building3D[],
+  groundHeightAt: GroundHeightFn,
+  frontHintAt?: FrontHintFn,
+): THREE.Group | null {
   const positions: number[] = [];
   const colors: number[] = [];
   const wall = new THREE.Color();
   const roof = new THREE.Color();
   const scratch = new THREE.Vector3();
+
+  const mergeLandmark = (g: LandmarkGeometry) => {
+    for (const v of g.positions) positions.push(v);
+    for (const c of g.colors) colors.push(c);
+  };
 
   let built = 0;
   for (let b = 0; b < buildings.length; b += 1) {
@@ -285,6 +304,30 @@ function buildBuildings(buildings: Building3D[], groundHeightAt: GroundHeightFn)
     const height = clamp(building.height ?? 6, 1.5, 120);
     const baseY = computeBuildingBaseY(footprint, groundHeightAt);
     if (!Number.isFinite(baseY)) continue;
+
+    // Tagged landmarks (grandstand / pit-garage roof) get purpose-built shapes
+    // merged into the same soups; everything else stays an extruded box.
+    const buildingTag = building.tags?.building;
+    if (buildingTag === "grandstand") {
+      let cx = 0;
+      let cz = 0;
+      for (const [x, z] of footprint) {
+        cx += x;
+        cz += z;
+      }
+      cx /= footprint.length;
+      cz /= footprint.length;
+      const front = frontHintAt ? frontHintAt(cx, cz) : null;
+      const orientation = computeFootprintOrientation(footprint, front);
+      mergeLandmark(buildGrandstand(footprint, height, baseY, orientation));
+      built += 1;
+      continue;
+    }
+    if (buildingTag === "roof") {
+      mergeLandmark(buildCanopy(footprint, height, baseY));
+      built += 1;
+      continue;
+    }
 
     // Shape space uses (x, -z) so a CCW world-XZ footprint stays consistent
     // through ExtrudeGeometry (extrudes +Z) → rotateX(-90°) (maps +Z → world
@@ -526,6 +569,7 @@ function buildBarriers(barriers: Barrier3D[], groundHeightAt: GroundHeightFn): T
 export function buildFeatures3dGroup(
   data: Features3DData,
   groundHeightAt: GroundHeightFn,
+  frontHintAt?: FrontHintFn,
 ): { group: THREE.Group; stats: Features3DStats } {
   const group = new THREE.Group();
   group.name = "features3d";
@@ -535,7 +579,7 @@ export function buildFeatures3dGroup(
   const barriers = Array.isArray(data.barriers) ? data.barriers : [];
 
   const treeMeshes = buildTrees(trees, groundHeightAt);
-  const buildingGroup = buildBuildings(buildings, groundHeightAt);
+  const buildingGroup = buildBuildings(buildings, groundHeightAt, frontHintAt);
   const barrierMeshes = buildBarriers(barriers, groundHeightAt);
 
   treeMeshes.forEach((m) => group.add(m));

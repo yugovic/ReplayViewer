@@ -11,6 +11,7 @@ import {
   treeCrownColor,
   type Features3DData,
 } from "./Features3DBuilder";
+import { computeFootprintOrientation } from "./LandmarkBuilder";
 
 describe("hash01", () => {
   it("is deterministic for the same index/salt", () => {
@@ -245,6 +246,108 @@ describe("buildFeatures3dGroup", () => {
     expect(group.children).toHaveLength(0);
     expect(stats.drawCalls).toBe(0);
     expect(stats.vertices).toBe(0);
+  });
+
+  const boxBuilding: Array<[number, number]> = [[0, 0], [20, 0], [20, 8], [0, 8]];
+
+  function buildingMeshVertexCount(data: Features3DData): number {
+    const { group } = buildFeatures3dGroup(data, groundY);
+    const bg = group.children.find((c) => c.name === "features3d-buildings-group") as
+      | THREE.Group
+      | undefined;
+    const mesh = bg?.children.find(
+      (c) => c instanceof THREE.Mesh && !(c instanceof THREE.InstancedMesh),
+    ) as THREE.Mesh | undefined;
+    const pos = mesh?.geometry.getAttribute("position") as THREE.BufferAttribute | undefined;
+    return pos ? pos.count : 0;
+  }
+
+  function meshBounds(data: Features3DData): { maxY: number; minY: number } {
+    const { group } = buildFeatures3dGroup(data, groundY);
+    const bg = group.children.find((c) => c.name === "features3d-buildings-group") as THREE.Group;
+    const mesh = bg.children.find(
+      (c) => c instanceof THREE.Mesh && !(c instanceof THREE.InstancedMesh),
+    ) as THREE.Mesh;
+    const pos = mesh.geometry.getAttribute("position") as THREE.BufferAttribute;
+    let maxY = -Infinity;
+    let minY = Infinity;
+    for (let i = 0; i < pos.count; i += 1) {
+      const y = pos.getY(i);
+      if (y > maxY) maxY = y;
+      if (y < minY) minY = y;
+    }
+    return { maxY, minY };
+  }
+
+  it("builds a stepped grandstand (more verts than a box, top at height)", () => {
+    const height = 15;
+    const grandstand: Features3DData = {
+      version: 1,
+      origin: { lat: 0, lng: 0, alt: 0 },
+      source: "test",
+      trees: [],
+      buildings: [{ footprint: boxBuilding, height, tags: { building: "grandstand" } }],
+      barriers: [],
+    };
+    const plainBox: Features3DData = { ...grandstand, buildings: [{ footprint: boxBuilding, height }] };
+
+    const gsVerts = buildingMeshVertexCount(grandstand);
+    const boxVerts = buildingMeshVertexCount(plainBox);
+    // Tiers + wall + roof + columns → far more geometry than one extruded box.
+    expect(gsVerts).toBeGreaterThan(boxVerts);
+
+    // Roof slab reaches the measured height (baseY = -0.5 here, so top ≈ 14.5).
+    const { maxY } = meshBounds(grandstand);
+    expect(maxY).toBeCloseTo(height - 0.5, 1);
+  });
+
+  it("orients the grandstand along the footprint's long axis", () => {
+    // Long axis along X (length 40) vs short along Z (width 6). The front hint
+    // sits on the -Z side, so tiers must rise toward +Z, not along X.
+    const footprint: Array<[number, number]> = [[0, 0], [40, 0], [40, 6], [0, 6]];
+    const o = computeFootprintOrientation(footprint, { x: 20, z: -50 });
+    expect(Math.abs(o.ux)).toBeGreaterThan(Math.abs(o.uz)); // long axis ≈ X
+    expect(o.halfLen).toBeCloseTo(20, 3);
+    expect(o.halfWid).toBeCloseTo(3, 3);
+    // +v (rising / back) points away from the front hint (toward +Z).
+    expect(o.vz).toBeGreaterThan(0);
+  });
+
+  it("builds a wall-less canopy for a roof tag (little vertical side area)", () => {
+    const height = 6;
+    const roof: Features3DData = {
+      version: 1,
+      origin: { lat: 0, lng: 0, alt: 0 },
+      source: "test",
+      trees: [],
+      buildings: [{ footprint: boxBuilding, height, tags: { building: "roof" } }],
+      barriers: [],
+    };
+    const grandstand: Features3DData = {
+      ...roof,
+      buildings: [{ footprint: boxBuilding, height, tags: { building: "grandstand" } }],
+    };
+    // Canopy = thin slab + slim columns: fewer verts than the tiered grandstand.
+    expect(buildingMeshVertexCount(roof)).toBeLessThan(buildingMeshVertexCount(grandstand));
+    // Roof slab sits at the top; the columns are the only full-height geometry.
+    const { maxY } = meshBounds(roof);
+    expect(maxY).toBeCloseTo(height - 0.5, 1);
+  });
+
+  it("keeps untagged buildings as plain extruded boxes (24 verts)", () => {
+    const data: Features3DData = {
+      version: 1,
+      origin: { lat: 0, lng: 0, alt: 0 },
+      source: "test",
+      trees: [],
+      buildings: [{ footprint: boxBuilding, height: 8 }],
+      barriers: [],
+    };
+    // One rectangular prism = 12 tris × 3 = 36 verts (ExtrudeGeometry caps + walls).
+    // Assert it is unchanged and modest vs. the grandstand.
+    const boxVerts = buildingMeshVertexCount(data);
+    expect(boxVerts).toBeGreaterThan(0);
+    expect(boxVerts).toBeLessThan(200);
   });
 
   it("skips buildings with degenerate footprints", () => {

@@ -871,7 +871,26 @@ export function buildTrack(
     void loadFeatures3d(features3dUrl)
       .then((data3d) => {
         if (disposed || !data3d) return;
-        const { group: g, stats } = buildFeatures3dGroup(data3d, drape.groundHeightAt);
+        // Front hint: nearest centreline point, so a grandstand faces the
+        // track. Linear scan over the (few-hundred-point) centreline is cheap
+        // and only runs per landmark building.
+        const frontHintAt = (x: number, z: number): { x: number; z: number } => {
+          let bestX = points[0].x;
+          let bestZ = points[0].z;
+          let bestD = Infinity;
+          for (const p of points) {
+            const dx = p.x - x;
+            const dz = p.z - z;
+            const d = dx * dx + dz * dz;
+            if (d < bestD) {
+              bestD = d;
+              bestX = p.x;
+              bestZ = p.z;
+            }
+          }
+          return { x: bestX, z: bestZ };
+        };
+        const { group: g, stats } = buildFeatures3dGroup(data3d, drape.groundHeightAt, frontHintAt);
         features3dGroup = g;
         features3dGroup.visible = features3dVisible;
         group.add(features3dGroup);
