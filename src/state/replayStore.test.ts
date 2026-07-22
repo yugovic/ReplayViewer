@@ -54,7 +54,9 @@ describe("scene layer flags", () => {
     const user = useReplayStore.getState();
     expect(user.showRoad3d).toBe(false);
     expect(user.showOsmFeatures).toBe(false);
-    expect(user.showFeatures3d).toBe(false);
+    // 3D features stay on for users: the extruded boxes are the only
+    // building representation since the building/terrain fix.
+    expect(user.showFeatures3d).toBe(true);
     expect(user.showDetailTexture).toBe(false);
     expect(user.showTrackLines).toBe(false);
     expect(user.showAcOverlay).toBe(false);

@@ -185,7 +185,7 @@ describe("buildFeatures3dGroup", () => {
     expect(stats.drawCalls).toBe(2);
   });
 
-  it("merges all buildings into a single mesh (one draw call)", () => {
+  it("merges all buildings into a single mesh + one outline (two draw calls)", () => {
     const data: Features3DData = {
       version: 1,
       origin: { lat: 0, lng: 0, alt: 0 },
@@ -198,12 +198,19 @@ describe("buildFeatures3dGroup", () => {
       barriers: [],
     };
     const { group, stats } = buildFeatures3dGroup(data, groundY);
-    const meshes = group.children.filter(
+    const buildingGroup = group.children.find((c) => c.name === "features3d-buildings-group");
+    expect(buildingGroup).toBeInstanceOf(THREE.Group);
+    const meshes = (buildingGroup as THREE.Group).children.filter(
       (c) => c instanceof THREE.Mesh && !(c instanceof THREE.InstancedMesh),
     );
+    const outlines = (buildingGroup as THREE.Group).children.filter(
+      (c) => c instanceof THREE.LineSegments,
+    );
     expect(meshes).toHaveLength(1);
+    expect(outlines).toHaveLength(1);
+    expect((meshes[0] as THREE.Mesh).castShadow).toBe(true);
     expect(stats.buildings).toBe(2);
-    expect(stats.drawCalls).toBe(1);
+    expect(stats.drawCalls).toBe(2);
   });
 
   it("splits barriers into opaque + translucent meshes (≤2 draw calls)", () => {

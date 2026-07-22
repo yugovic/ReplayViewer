@@ -264,8 +264,13 @@ export function computeBuildingBaseY(
 
 const BUILDING_WALL = new THREE.Color(0x9a9a95);
 const BUILDING_ROOF = new THREE.Color(0xb0b1ac);
+/** Wall vertices darken toward the ground by this factor (cheap baked AO). */
+const BUILDING_BASE_AO = 0.72;
+const BUILDING_OUTLINE_COLOR = 0x41464a;
+/** Crease threshold for the silhouette lines (degrees). */
+const BUILDING_OUTLINE_ANGLE = 25;
 
-function buildBuildings(buildings: Building3D[], groundHeightAt: GroundHeightFn): THREE.Mesh | null {
+function buildBuildings(buildings: Building3D[], groundHeightAt: GroundHeightFn): THREE.Group | null {
   const positions: number[] = [];
   const colors: number[] = [];
   const wall = new THREE.Color();
@@ -303,11 +308,17 @@ function buildBuildings(buildings: Building3D[], groundHeightAt: GroundHeightFn)
     const posAttr = flat.getAttribute("position") as THREE.BufferAttribute;
     const normAttr = flat.getAttribute("normal") as THREE.BufferAttribute;
     for (let i = 0; i < posAttr.count; i += 1) {
-      positions.push(posAttr.getX(i), posAttr.getY(i), posAttr.getZ(i));
+      const y = posAttr.getY(i);
+      positions.push(posAttr.getX(i), y, posAttr.getZ(i));
       // Roof faces point up (world +Y); walls are ~horizontal.
       const ny = normAttr ? normAttr.getY(i) : 0;
-      const c = ny > 0.5 ? roof : wall;
-      colors.push(c.r, c.g, c.b);
+      const isRoof = ny > 0.5;
+      const c = isRoof ? roof : wall;
+      // Baked AO: wall bases sink toward the ground shade so the block reads
+      // as sitting on the terrain instead of floating on it.
+      const t = clamp((y - baseY) / height, 0, 1);
+      const ao = isRoof ? 1 : BUILDING_BASE_AO + (1 - BUILDING_BASE_AO) * t;
+      colors.push(c.r * ao, c.g * ao, c.b * ao);
       void scratch;
     }
     flat.dispose();
@@ -327,12 +338,32 @@ function buildBuildings(buildings: Building3D[], groundHeightAt: GroundHeightFn)
     roughness: 0.82,
     metalness: 0.0,
     flatShading: true,
+    // The scene's ambient light is very low (0.15); without a floor the
+    // sun-averted walls of tall buildings (main grandstand) render near
+    // black. This constant lift keeps shaded faces readable while the sun
+    // still models the volume.
+    emissive: new THREE.Color(0x868782),
+    emissiveIntensity: 0.35,
   });
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = "features3d-buildings";
-  mesh.castShadow = false;
+  mesh.castShadow = true;
   mesh.receiveShadow = false;
-  return mesh;
+
+  // Toon-style silhouette: crease/border edges as one extra draw call.
+  const edges = new THREE.EdgesGeometry(geometry, BUILDING_OUTLINE_ANGLE);
+  const outline = new THREE.LineSegments(
+    edges,
+    new THREE.LineBasicMaterial({ color: BUILDING_OUTLINE_COLOR }),
+  );
+  outline.name = "features3d-building-outline";
+  outline.renderOrder = 2;
+
+  const group = new THREE.Group();
+  group.name = "features3d-buildings-group";
+  group.add(mesh);
+  group.add(outline);
+  return group;
 }
 
 // ─── Barriers ─────────────────────────────────────────────────────────────────
@@ -504,11 +535,11 @@ export function buildFeatures3dGroup(
   const barriers = Array.isArray(data.barriers) ? data.barriers : [];
 
   const treeMeshes = buildTrees(trees, groundHeightAt);
-  const buildingMesh = buildBuildings(buildings, groundHeightAt);
+  const buildingGroup = buildBuildings(buildings, groundHeightAt);
   const barrierMeshes = buildBarriers(barriers, groundHeightAt);
 
   treeMeshes.forEach((m) => group.add(m));
-  if (buildingMesh) group.add(buildingMesh);
+  if (buildingGroup) group.add(buildingGroup);
   barrierMeshes.forEach((m) => group.add(m));
 
   let vertices = 0;
@@ -519,7 +550,7 @@ export function buildFeatures3dGroup(
     if (posAttr) vertices += posAttr.count;
   });
 
-  const drawCalls = treeMeshes.length + (buildingMesh ? 1 : 0) + barrierMeshes.length;
+  const drawCalls = treeMeshes.length + (buildingGroup ? 2 : 0) + barrierMeshes.length;
 
   return {
     group,
@@ -527,7 +558,7 @@ export function buildFeatures3dGroup(
       drawCalls,
       vertices,
       trees: trees.length,
-      buildings: buildingMesh ? buildings.filter((b) => Array.isArray(b.footprint) && b.footprint.length >= 3).length : 0,
+      buildings: buildingGroup ? buildings.filter((b) => Array.isArray(b.footprint) && b.footprint.length >= 3).length : 0,
       barriers: barriers.length,
     },
   };

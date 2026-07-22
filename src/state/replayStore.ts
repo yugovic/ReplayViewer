@@ -18,7 +18,12 @@ const DEVELOPER_VIEW_LAYER_PRESET = {
 const USER_VIEW_LAYER_PRESET = {
   showRoad3d: false,
   showOsmFeatures: false,
-  showFeatures3d: false,
+  // Buildings/trees on by default: after the building/terrain fix
+  // (docs/proposal-building-terrain-2026-07-22.md) the extruded boxes ARE
+  // the building representation — the photo roofs were flattened out of the
+  // DTM and inpainted out of the imagery, so without this layer buildings
+  // would vanish entirely.
+  showFeatures3d: true,
   showDetailTexture: false,
   showTrackLines: false,
   showAcOverlay: false,
