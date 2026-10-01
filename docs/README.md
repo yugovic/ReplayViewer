@@ -14,6 +14,8 @@ ReplayViewer のドキュメント置き場。**このファイルが docs/ の�
 
 | ファイル | 種類 | 概要 |
 |----------|------|------|
+| [fuji-gps-investigator-handoff-2026-10-01.md](fuji-gps-investigator-handoff-2026-10-01.md) | GPS調査引き継ぎ | 別端末での読み順、Git内の証拠地図、SHA検証、原媒体が必要な工程、次の独立検証手順 |
+| [fuji-gps-investigation-history-2026-10-01.md](fuji-gps-investigation-history-2026-10-01.md) | GPS調査の経緯・採否 | 9/8〜10/1の固定移動・2軸・地点別・全周推定の判断履歴と、後で撤回した解釈 |
 | [fuji-gps-accuracy-improvement-2026-09-22.md](fuji-gps-accuracy-improvement-2026-09-22.md) | GPS・CG精度改善の実施結果 | 端点処理4.93m→3.2cm、Mazda2寸法/道路境界を統一し全10周再推定。半周CV20/20改善、実Chrome確認。映像1294時計点と原GPSパケット監査、日差4.821mの感度解析、測定限界と不採用判断 |
 | [policy-gps-cg-alignment-2026-09-20.md](policy-gps-cg-alignment-2026-09-20.md) | GPS位置合わせ方針（9/22改訂） | 修正済み入力のラップ単位平行移動、寸法/道路の共通化、3入力SHA検証。絶対精度・映像距離・型式の旧断定を訂正。完了報告を正本として参照 |
 | [viewer.html](viewer.html) | ツール | docs閲覧用DocsViewer（ライブ表示）。この索引と各docの`## 要旨`から自動生成。`python -m http.server` 等で `docs/viewer.html` を開く。更新は `/docs-viewer` スキル（共有用スナップショットのURLは `.docsviewer-url`） |
