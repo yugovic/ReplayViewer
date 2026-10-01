@@ -1,0 +1,37 @@
+{
+  "raceId": "fuji_aim_01",
+  "vehicleId": "osaki_hmr_demio_101",
+  "lap": 3,
+  "offsetMeters": [
+    -3.309,
+    1.531
+  ],
+  "windowSeconds": [
+    40,
+    46,
+    73,
+    79
+  ],
+  "status": "visual-fit",
+  "sourceVideo": "SCHD0613.MOV",
+  "sourceSha256": "972dd5fede59e549caf06c791d226235388ace5e991d1c287b62e98e3e5a84fb",
+  "method": "Two visual constraints: preserve lateral position at 47 s; place vehicle centre approximately 2.2 m inside right edge at 55 s. Constant XZ translation throughout 47..72 s with smooth fades outside. Not GPS calibration, not a surveyed vehicle trajectory. Constant interval extends to 46..73 s to keep the existing +/-0.6s heading window rigid throughout the 47..72s review.",
+  "constraints": [
+    {
+      "time": 47,
+      "lateralChangeMeters": 0,
+      "reason": "No clear contradictory lateral placement in this view; keep as weak prior."
+    },
+    {
+      "time": 55,
+      "estimatedRightEdgeClearanceMeters": 2.2,
+      "reason": "Video shows vehicle on pavement inside right kerb. 2.2 m is a visual-fit choice, not measured from the monocular image."
+    }
+  ],
+  "limits": [
+    "Absolute GPS bias versus map bias not uniquely identifiable from this video.",
+    "No road snapping or trajectory reshaping; original coordinates/telemetry preserved.",
+    "Only the identified lap and CG study use this profile; raw display remains available.",
+    "Window boundary fading is a presentation choice, not a correction inferred for the rest of the lap."
+  ]
+}

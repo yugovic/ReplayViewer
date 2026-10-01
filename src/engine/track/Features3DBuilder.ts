@@ -18,8 +18,10 @@
  */
 
 import * as THREE from "three";
+import { excludedFujiTreeZone, isFujiStudyTree, FUJI_NO_TREE_ZONES } from "./FujiReferenceStudy";
 import {
   buildCanopy,
+  buildControlTower,
   buildGrandstand,
   computeFootprintOrientation,
   type LandmarkGeometry,
@@ -174,13 +176,23 @@ export function treeCrownColor(index: number, target: THREE.Color): THREE.Color 
   return target.setHSL(h, s, l);
 }
 
-function buildTrees(trees: Tree3D[], groundHeightAt: GroundHeightFn): THREE.InstancedMesh[] {
+function buildTrees(trees: Tree3D[], groundHeightAt: GroundHeightFn, detailed = false, naturalPalette = false): THREE.InstancedMesh[] {
   if (trees.length === 0) return [];
 
   // Unit geometries (base at y=0, extent 1) reused across every instance.
   const trunkGeo = new THREE.CylinderGeometry(0.8, 1.0, 1, 5, 1);
   trunkGeo.translate(0, 0.5, 0);
-  const crownGeo = new THREE.IcosahedronGeometry(1, 0); // 12 verts, faceted blob
+  const crownGeo = new THREE.IcosahedronGeometry(1, detailed ? 2 : 0);
+  if (detailed) {
+    const p = crownGeo.attributes.position as THREE.BufferAttribute;
+    for (let i = 0; i < p.count; i++) {
+      const x=p.getX(i), y=p.getY(i), z=p.getZ(i);
+      // Crown silhouette detail only: never changes a tree's mapped position.
+      const r=1+.085*Math.sin(x*11+z*4)*Math.sin(y*9-z*6);
+      p.setXYZ(i,x*r,y*r,z*r);
+    }
+    crownGeo.computeVertexNormals();
+  }
 
   const trunkMat = new THREE.MeshStandardMaterial({
     color: 0x5a4334,
@@ -192,17 +204,17 @@ function buildTrees(trees: Tree3D[], groundHeightAt: GroundHeightFn): THREE.Inst
     color: 0xffffff, // multiplied by per-instance colour
     roughness: 0.9,
     metalness: 0.0,
-    flatShading: true,
+    flatShading: !detailed,
   });
 
   const trunkMesh = new THREE.InstancedMesh(trunkGeo, trunkMat, trees.length);
   const crownMesh = new THREE.InstancedMesh(crownGeo, crownMat, trees.length);
   trunkMesh.name = "features3d-tree-trunks";
   crownMesh.name = "features3d-tree-crowns";
-  trunkMesh.castShadow = false;
-  crownMesh.castShadow = false;
-  trunkMesh.receiveShadow = false;
-  crownMesh.receiveShadow = false;
+  trunkMesh.castShadow = detailed;
+  crownMesh.castShadow = detailed;
+  trunkMesh.receiveShadow = detailed;
+  crownMesh.receiveShadow = detailed;
 
   const matrix = new THREE.Matrix4();
   const pos = new THREE.Vector3();
@@ -228,7 +240,9 @@ function buildTrees(trees: Tree3D[], groundHeightAt: GroundHeightFn): THREE.Inst
     scale.set(p.crownRadius, p.crownHalfHeight, p.crownRadius);
     matrix.compose(pos, quat, scale);
     crownMesh.setMatrixAt(i, matrix);
-    crownMesh.setColorAt(i, treeCrownColor(i, color));
+    crownMesh.setColorAt(i, naturalPalette
+      ? color.setHSL(.24 + hash01(i, 2) * .025, .20 + hash01(i, 3) * .08, .16 + hash01(i, 4) * .075)
+      : treeCrownColor(i, color));
   }
 
   trunkMesh.instanceMatrix.needsUpdate = true;
@@ -308,7 +322,7 @@ function buildBuildings(
     // Tagged landmarks (grandstand / pit-garage roof) get purpose-built shapes
     // merged into the same soups; everything else stays an extruded box.
     const buildingTag = building.tags?.building;
-    if (buildingTag === "grandstand") {
+    if (buildingTag === "grandstand" || buildingTag === "control_tower") {
       let cx = 0;
       let cz = 0;
       for (const [x, z] of footprint) {
@@ -319,7 +333,11 @@ function buildBuildings(
       cz /= footprint.length;
       const front = frontHintAt ? frontHintAt(cx, cz) : null;
       const orientation = computeFootprintOrientation(footprint, front);
-      mergeLandmark(buildGrandstand(footprint, height, baseY, orientation));
+      mergeLandmark(
+        buildingTag === "grandstand"
+          ? buildGrandstand(footprint, height, baseY, orientation)
+          : buildControlTower(footprint, height, baseY, orientation),
+      );
       built += 1;
       continue;
     }
@@ -414,34 +432,81 @@ function buildBuildings(
 const BARRIER_SINK = 0.1;
 const BARRIER_THICKNESS = 0.14;
 
+// Colours follow the real circuit hardware (fuji reference photos/ortho):
+// white W-beam guard rails, light concrete walls, green debris-fence mesh.
 const BARRIER_COLORS: Record<string, THREE.Color> = {
-  guard_rail: new THREE.Color(0xb9bbbf),
-  wall: new THREE.Color(0x9c968a),
-  retaining_wall: new THREE.Color(0x9c968a),
-  fence: new THREE.Color(0xc2c7ca),
+  guard_rail: new THREE.Color(0xe2e3df),
+  wall: new THREE.Color(0xd4d0c6),
+  retaining_wall: new THREE.Color(0xb3ada1),
+  fence: new THREE.Color(0x51684f),
 };
 const BARRIER_DEFAULT_COLOR = new THREE.Color(0xa9adb0);
+const BARRIER_POST_COLOR = new THREE.Color(0x757a78);
+
+/** Rail beam band height (real W-beam ≈ 0.3 m tall, mounted on posts). */
+const GUARD_RAIL_BEAM = 0.31;
+const BARRIER_POST_SPACING = 4;
+const BARRIER_POST_SIZE = 0.16;
 
 function isTranslucentBarrier(type: string): boolean {
   return type === "fence";
 }
 
+/** Axis-aligned little post box (4 sides + top) into a soup. */
+function pushPost(
+  positions: number[],
+  colors: number[],
+  x: number,
+  z: number,
+  y0: number,
+  y1: number,
+  color: THREE.Color,
+): void {
+  const h = BARRIER_POST_SIZE / 2;
+  const c = [
+    [x - h, z - h],
+    [x + h, z - h],
+    [x + h, z + h],
+    [x - h, z + h],
+  ];
+  const quad = (ax: number, az: number, bx: number, bz: number) => {
+    positions.push(ax, y0, az, bx, y0, bz, bx, y1, bz, ax, y0, az, bx, y1, bz, ax, y1, az);
+    for (let k = 0; k < 6; k += 1) colors.push(color.r, color.g, color.b);
+  };
+  for (let i = 0; i < 4; i += 1) {
+    const [ax, az] = c[i];
+    const [bx, bz] = c[(i + 1) % 4];
+    quad(ax, az, bx, bz);
+  }
+  positions.push(
+    c[0][0], y1, c[0][1], c[1][0], y1, c[1][1], c[2][0], y1, c[2][1],
+    c[0][0], y1, c[0][1], c[2][0], y1, c[2][1], c[3][0], y1, c[3][1],
+  );
+  for (let k = 0; k < 6; k += 1) colors.push(color.r, color.g, color.b);
+}
+
 /**
- * Append one polyline barrier as a thin vertical box ribbon (a wall with
- * BARRIER_THICKNESS depth) following the ground, into the given position/color
- * soups. Height comes from the record; the top tracks ground + height.
+ * Append one polyline barrier into the given position/color soups. The ribbon
+ * shape depends on the type: walls are solid ground→top slabs; guard rails
+ * are a floating white W-beam band on posts; fences are a full-height
+ * translucent mesh on posts. Posts always go into `postPositions` (the opaque
+ * merge) so the translucent fence mesh keeps its own draw call.
  */
 function appendBarrierRibbon(
   barrier: Barrier3D,
   groundHeightAt: GroundHeightFn,
   positions: number[],
   colors: number[],
+  postPositions?: number[],
+  postColors?: number[],
 ): boolean {
   const pts = barrier.points;
   if (!Array.isArray(pts) || pts.length < 2) return false;
   const height = clamp(barrier.height ?? 1, 0.3, 6);
   const half = BARRIER_THICKNESS / 2;
   const color = BARRIER_COLORS[barrier.type] ?? BARRIER_DEFAULT_COLOR;
+  const isRail = barrier.type === "guard_rail";
+  const hasPosts = (isRail || barrier.type === "fence") && postPositions && postColors;
 
   // Precompute the four longitudinal rails (bottomA/B, topA/B) per node,
   // offset ±half along the horizontal segment normal.
@@ -480,11 +545,21 @@ function appendBarrierRibbon(
     for (let k = 0; k < 3; k += 1) colors.push(color.r, color.g, color.b);
   };
 
+  // Adjacent barrier nodes are a few metres apart; a ground-height jump of
+  // several metres between them means the polyline crosses a terrain-drape
+  // cliff (e.g. an infield bank). A real barrier never does that — drop the
+  // segment instead of rendering a stretched, crumpled quad down the cliff.
+  const MAX_SEGMENT_GROUND_JUMP = 4;
+
+  // The beam band floats for guard rails; walls and fences reach the ground.
+  const bottomAt = (gy: number) => (isRail ? gy + height - GUARD_RAIL_BEAM : gy - BARRIER_SINK);
+
   for (let i = 0; i < rails.length - 1; i += 1) {
     const r0 = rails[i];
     const r1 = rails[i + 1];
-    const b0 = r0.gy - BARRIER_SINK;
-    const b1 = r1.gy - BARRIER_SINK;
+    if (Math.abs(r1.gy - r0.gy) > MAX_SEGMENT_GROUND_JUMP) continue;
+    const b0 = bottomAt(r0.gy);
+    const b1 = bottomAt(r1.gy);
     const t0 = r0.gy + height;
     const t1 = r1.gy + height;
 
@@ -497,6 +572,38 @@ function appendBarrierRibbon(
     // Top cap
     pushTri(r0.ax, t0, r0.az, r0.bx, t0, r0.bz, r1.ax, t1, r1.az);
     pushTri(r0.bx, t0, r0.bz, r1.bx, t1, r1.bz, r1.ax, t1, r1.az);
+  }
+
+  // Posts along the polyline (guard rails + fences), skipping cliff segments.
+  if (hasPosts) {
+    let carry = 0;
+    for (let i = 0; i < rails.length - 1; i += 1) {
+      const r0 = rails[i];
+      const r1 = rails[i + 1];
+      const [x0, z0] = pts[i];
+      const [x1, z1] = pts[i + 1];
+      const segLen = Math.hypot(x1 - x0, z1 - z0);
+      if (Math.abs(r1.gy - r0.gy) > MAX_SEGMENT_GROUND_JUMP) {
+        carry = 0; // restart spacing after a gap
+        continue;
+      }
+      let d = BARRIER_POST_SPACING - carry;
+      while (d <= segLen) {
+        const t = d / segLen;
+        const gy = r0.gy + (r1.gy - r0.gy) * t;
+        pushPost(
+          postPositions,
+          postColors,
+          x0 + (x1 - x0) * t,
+          z0 + (z1 - z0) * t,
+          gy - BARRIER_SINK,
+          gy + height - (isRail ? 0.02 : 0),
+          BARRIER_POST_COLOR,
+        );
+        d += BARRIER_POST_SPACING;
+      }
+      carry = (carry + segLen) % BARRIER_POST_SPACING;
+    }
   }
   return true;
 }
@@ -522,6 +629,10 @@ function buildBarrierMesh(
     transparent: translucent,
     opacity: translucent ? 0.55 : 1,
     depthWrite: !translucent,
+    // Same shaded-face lift as the buildings: the scene's ambient is very low
+    // (0.15), so sun-averted barrier faces would otherwise render near black.
+    emissive: new THREE.Color(0x8b8c88),
+    emissiveIntensity: 0.35,
   });
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = name;
@@ -538,9 +649,10 @@ function buildBarriers(barriers: Barrier3D[], groundHeightAt: GroundHeightFn): T
 
   for (const barrier of barriers) {
     if (isTranslucentBarrier(barrier.type)) {
-      appendBarrierRibbon(barrier, groundHeightAt, fencePos, fenceCol);
+      // Fence mesh is translucent, but its posts merge into the opaque soup.
+      appendBarrierRibbon(barrier, groundHeightAt, fencePos, fenceCol, opaquePos, opaqueCol);
     } else {
-      appendBarrierRibbon(barrier, groundHeightAt, opaquePos, opaqueCol);
+      appendBarrierRibbon(barrier, groundHeightAt, opaquePos, opaqueCol, opaquePos, opaqueCol);
     }
   }
 
@@ -570,15 +682,25 @@ export function buildFeatures3dGroup(
   data: Features3DData,
   groundHeightAt: GroundHeightFn,
   frontHintAt?: FrontHintFn,
+  referenceStudy = false,
 ): { group: THREE.Group; stats: Features3DStats } {
   const group = new THREE.Group();
   group.name = "features3d";
 
-  const trees = Array.isArray(data.trees) ? data.trees : [];
+  const originalTrees = Array.isArray(data.trees) ? data.trees : [];
+  const trees = referenceStudy ? originalTrees.filter(t => !excludedFujiTreeZone(t)) : originalTrees;
+  group.userData.removedUnverifiedTrees = originalTrees.length - trees.length;
+  if (referenceStudy) group.userData.exclusionZones = FUJI_NO_TREE_ZONES;
+  group.userData.placementNote = referenceStudy
+    ? "Reviewed no-tree zones removed; retained forest locations remain approximate legacy data."
+    : "Legacy OSM/LiDAR grid placement";
   const buildings = Array.isArray(data.buildings) ? data.buildings : [];
   const barriers = Array.isArray(data.barriers) ? data.barriers : [];
 
-  const treeMeshes = buildTrees(trees, groundHeightAt);
+  const treeMeshes = referenceStudy
+    ? [...buildTrees(trees.filter(t => !isFujiStudyTree(t)), groundHeightAt, false, true),
+       ...buildTrees(trees.filter(isFujiStudyTree), groundHeightAt, true, true)]
+    : buildTrees(trees, groundHeightAt);
   const buildingGroup = buildBuildings(buildings, groundHeightAt, frontHintAt);
   const barrierMeshes = buildBarriers(barriers, groundHeightAt);
 

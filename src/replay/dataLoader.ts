@@ -1,5 +1,7 @@
 import type { LapData, LapIndexRecord, LapsIndex, LoadedReplay, TrackData } from "./types";
+import { resolveShowcase } from "./showcase";
 import { parseSatVariantParam, probeSatelliteVariantsForTrack, type SatVariantId } from "./satelliteVariants";
+import { parseGpsRegistration, registrationLimitsUrl, withRegistration, type GpsRegistrationFile } from "./gpsRegistration";
 
 const DEFAULT_TRACK_ID = "barber";
 const DEFAULT_RACE_ID = "barber_r1";
@@ -134,6 +136,63 @@ async function fetchJson<T>(url: string): Promise<T> {
   return (await response.json()) as T;
 }
 
+/** Optional asset: a missing file is a 404 on static hosting but a 200 with
+ * index.html under Vite's SPA fallback, so a JSON parse failure also means
+ * "absent". */
+async function fetchOptionalJson(url: string): Promise<unknown> {
+  try {
+    const response = await fetch(url);
+    return response.ok ? await response.json() : null;
+  } catch {
+    return null;
+  }
+}
+
+/** SHA-256 of the served bytes, so a lap regenerated after its registration
+ * was fitted is detected. Null where WebCrypto is unavailable (plain http on a
+ * non-localhost host): the check is then skipped, not failed. */
+async function sha256Hex(text: string): Promise<string | null> {
+  const subtle = globalThis.crypto?.subtle;
+  if (!subtle) return null;
+  try {
+    const digest = await subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
+  } catch {
+    return null;
+  }
+}
+
+async function fetchHashedJson<T>(url: string): Promise<{ data: T; sha256: string | null }> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${url}: ${response.status}`);
+  }
+  const text = await response.text();
+  return { data: JSON.parse(text) as T, sha256: await sha256Hex(text) };
+}
+
+// Race-level GPS registration, fetched once with the initial replay and then
+// stamped on every lap this page loads (main and ghost).
+let gpsRegistration: GpsRegistrationFile | null = null;
+let gpsLimitsSha256: string | null = null;
+let gpsTrackSha256: string | null = null;
+
+async function fetchRegistrationLimitsHash(file: GpsRegistrationFile | null): Promise<string | null> {
+  const url = file && registrationLimitsUrl(file);
+  if (!url) return null;
+  try {
+    const response = await fetch(url);
+    return response.ok ? await sha256Hex(await response.text()) : null;
+  } catch {
+    return null;
+  }
+}
+
+/** `?gps=raw` starts with the registration switched off (it stays toggleable). */
+export function gpsRegistrationInitiallyEnabled(search: string): boolean {
+  return new URLSearchParams(search).get("gps") !== "raw";
+}
+
 function pickInitialLap(index: LapsIndex): LapIndexRecord {
   const generated = index.laps.filter((lap) => lap.data_file);
   if (generated.length === 0) {
@@ -150,29 +209,55 @@ export async function loadInitialReplay(): Promise<LoadedReplay> {
   const availableVariantsPromise = SOURCES.developerMode
     ? probeSatelliteVariantsForTrack(trackDir)
     : Promise.resolve<SatVariantId[]>([SOURCES.satVariant]);
-  const [track, lapsIndex, availableSatelliteVariants] = await Promise.all([
-    fetchJson<TrackData>(SOURCES.trackUrl),
+  const search = typeof window !== "undefined" ? window.location.search : "";
+  const alignment = new URLSearchParams(search).get("alignment");
+  const [fetchedTrack, lapsIndex, availableSatelliteVariants, registration] = await Promise.all([
+    fetchHashedJson<TrackData>(SOURCES.trackUrl),
     fetchJson<LapsIndex>(`${SOURCES.raceBaseUrl}/laps.json`),
     availableVariantsPromise,
+    // The dated `alignment=` studies are defined against raw GPS; keep them so.
+    alignment ? Promise.resolve(null) : fetchOptionalJson(`${SOURCES.raceBaseUrl}/gps_registration.json`),
   ]);
+  const track = fetchedTrack.data;
+  gpsTrackSha256 = fetchedTrack.sha256;
+  gpsRegistration = parseGpsRegistration(registration, SOURCES.raceId, SOURCES.trackId);
   // Stamp the resolved selection onto the track so downstream consumers
   // (TrackBuilder's satellite/terrain/features asset URLs) key off the id
   // actually used to fetch this data, not whatever track.json happens to
   // contain internally.
   track.trackId = SOURCES.trackId;
+  if (typeof window !== "undefined") {
+    const look = resolveShowcase(window.location.search);
+    if (look === "reference" || look === "cg") track.visualProfile = look;
+    // The full-lap CG trial is also available without the excerpt window.
+    if (SOURCES.trackId === "fuji" && new URLSearchParams(window.location.search).get("look") === "cg") track.visualProfile = "cg";
+  }
+  if (track.trackId === "fuji" && track.visualProfile === "cg" && SOURCES.raceId === "fuji_aim_01") {
+    if (alignment === "visual") {
+      track.replayAlignment = await fetchJson<import("./visualAlignment").ReplayAlignment>(`${trackDir}/cg_study/replay-alignment.json`);
+    } else if (alignment === "local" || alignment === "local-raw") {
+      const profile = await fetchJson<import("./visualAlignment").LocalReplayAlignment>(`${trackDir}/cg_study/local-replay-alignment.json`);
+      track.replayAlignment = { ...profile, enabled: alignment === "local" };
+    }
+  }
   track.satVariant = availableSatelliteVariants.includes(SOURCES.satVariant)
     ? SOURCES.satVariant
     : "default";
   const activeRecord = pickInitialLap(lapsIndex);
-  const lap = await fetchJson<LapData>(`${SOURCES.raceBaseUrl}/${activeRecord.data_file}`);
+  const fetched = await fetchHashedJson<LapData>(`${SOURCES.raceBaseUrl}/${activeRecord.data_file}`);
+  gpsLimitsSha256 = await fetchRegistrationLimitsHash(gpsRegistration);
+  const lap = withRegistration(fetched.data, gpsRegistration, gpsRegistrationInitiallyEnabled(search),
+    fetched.sha256, gpsLimitsSha256, gpsTrackSha256);
   return { track, lapsIndex, lap, activeRecord, availableSatelliteVariants };
 }
 
 /**
- * Loads a lap JSON file by its data_file path.
+ * Loads a lap JSON file by its data_file path. `registrationEnabled` is the
+ * viewer's current raw/registered choice so a newly picked lap matches it.
  */
-export async function loadLapFile(dataFile: string): Promise<LapData> {
-  return fetchJson<LapData>(`${SOURCES.raceBaseUrl}/${dataFile}`);
+export async function loadLapFile(dataFile: string, registrationEnabled = true): Promise<LapData> {
+  const fetched = await fetchHashedJson<LapData>(`${SOURCES.raceBaseUrl}/${dataFile}`);
+  return withRegistration(fetched.data, gpsRegistration, registrationEnabled, fetched.sha256, gpsLimitsSha256, gpsTrackSha256);
 }
 
 /**

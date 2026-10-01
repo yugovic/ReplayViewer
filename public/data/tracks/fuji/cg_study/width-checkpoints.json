@@ -1,0 +1,154 @@
+{
+  "source": "VIRTUAL SHIZUOKA 2019 native orthophoto; CC BY 4.0 / ODbL as source metadata",
+  "sourceImage": "pipeline/cache/shizuoka_ortho/native_mosaic.png",
+  "sourceUrl": "https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud",
+  "method": "Visual reading of source-only perpendicular cross sections, red/white curb body excluding adjacent road marking and green runoff. Approximate image readings, not independent survey. Coordinates of each reading frame were frozen before final geometry repair.",
+  "perBoundaryImageReadingToleranceMeters": 0.25,
+  "surveyTruth": false,
+  "checkpoints": [
+    {
+      "id": 1,
+      "side": "left",
+      "station": 1983.0,
+      "originXZ": [
+        328.01599999999996,
+        253.618
+      ],
+      "outwardNormalXZ": [
+        -0.8007805711701846,
+        0.598957825590711
+      ],
+      "sourceInnerOuterMeters": [
+        -0.7,
+        0.55
+      ],
+      "sourceWidthMeters": 1.25
+    },
+    {
+      "id": 2,
+      "side": "left",
+      "station": 2028.0,
+      "originXZ": [
+        301.2375,
+        217.4445
+      ],
+      "outwardNormalXZ": [
+        -0.8035723207328463,
+        0.5952071281092217
+      ],
+      "sourceInnerOuterMeters": [
+        -0.65,
+        0.55
+      ],
+      "sourceWidthMeters": 1.2
+    },
+    {
+      "id": 3,
+      "side": "right",
+      "station": 2059.5,
+      "originXZ": [
+        295.54999999999995,
+        182.558
+      ],
+      "outwardNormalXZ": [
+        0.8032911292811667,
+        -0.595586569373578
+      ],
+      "sourceInnerOuterMeters": [
+        -0.5,
+        0.4
+      ],
+      "sourceWidthMeters": 0.9
+    },
+    {
+      "id": 4,
+      "side": "left",
+      "station": 2160.5,
+      "originXZ": [
+        226.1815,
+        136.68900000000002
+      ],
+      "outwardNormalXZ": [
+        0.29545747604994677,
+        0.955355891721088
+      ],
+      "sourceInnerOuterMeters": [
+        -0.4,
+        0.4
+      ],
+      "sourceWidthMeters": 0.8
+    },
+    {
+      "id": 5,
+      "side": "right",
+      "station": 2252.0,
+      "originXZ": [
+        167.846,
+        196.3425
+      ],
+      "outwardNormalXZ": [
+        -0.9854112152930738,
+        -0.1701902957710205
+      ],
+      "sourceInnerOuterMeters": [
+        -0.6,
+        0.55
+      ],
+      "sourceWidthMeters": 1.15
+    },
+    {
+      "id": 6,
+      "side": "left",
+      "station": 2378.0,
+      "originXZ": [
+        191.7275,
+        322.39700000000005
+      ],
+      "outwardNormalXZ": [
+        0.9904790213262304,
+        -0.13766375090281704
+      ],
+      "sourceInnerOuterMeters": [
+        -0.55,
+        0.4
+      ],
+      "sourceWidthMeters": 0.95
+    },
+    {
+      "id": 7,
+      "side": "right",
+      "station": 2458.0,
+      "originXZ": [
+        181.9145,
+        402.69899999999996
+      ],
+      "outwardNormalXZ": [
+        -0.9892768541979154,
+        -0.14605240754015744
+      ],
+      "sourceInnerOuterMeters": [
+        -0.45,
+        0.45
+      ],
+      "sourceWidthMeters": 0.9
+    },
+    {
+      "id": 8,
+      "side": "left",
+      "station": 2550.0,
+      "originXZ": [
+        161.0445,
+        492.831
+      ],
+      "outwardNormalXZ": [
+        0.8952822792110438,
+        0.4454993159710558
+      ],
+      "sourceInnerOuterMeters": [
+        -0.4,
+        0.4
+      ],
+      "sourceWidthMeters": 0.8
+    }
+  ]
+}

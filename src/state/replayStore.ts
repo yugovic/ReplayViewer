@@ -3,6 +3,8 @@ import type { LapData, LapIndexRecord, LapMeta, LapsIndex, ReplayTelemetry, Trac
 import type { CameraMode } from "../engine/cameras";
 import type { QualityPreset } from "../engine/Effects";
 import { SATELLITE_VARIANTS, type SatVariantId } from "../replay/satelliteVariants";
+import { advanceInWindow, type PlaybackWindow } from "../replay/showcase";
+import { setRegistrationEnabled } from "../replay/gpsRegistration";
 
 const DEVELOPER_VIEW_LAYER_PRESET = {
   showRoad3d: true,
@@ -32,6 +34,8 @@ const USER_VIEW_LAYER_PRESET = {
 };
 
 interface ReplayState {
+  playbackWindow: PlaybackWindow | null;
+  setPlaybackWindow: (window: PlaybackWindow | null) => void;
   // Playback
   playing: boolean;
   currentTime: number;
@@ -56,6 +60,9 @@ interface ReplayState {
   // Ghost lap (optional)
   ghostRecord: LapIndexRecord | null;
   ghostLap: LapData | null;
+
+  /** Raw GPS vs track-limit registration; applied to main and ghost alike. */
+  gpsRegistrationEnabled: boolean;
 
   // Live world positions for the minimap (throttled updates)
   carPosition: { x: number; z: number } | null;
@@ -110,6 +117,7 @@ interface ReplayState {
   setActiveLap: (record: LapIndexRecord, lap: LapData) => void;
   setGhostLap: (record: LapIndexRecord | null, lap: LapData | null) => void;
   clearGhost: () => void;
+  setGpsRegistrationEnabled: (enabled: boolean) => void;
   setMapPositions: (
     car: { x: number; z: number } | null,
     ghost: { x: number; z: number } | null,
@@ -158,6 +166,8 @@ const emptyTelemetry: ReplayTelemetry = {
 };
 
 export const useReplayStore = create<ReplayState>((set, get) => ({
+  playbackWindow: null,
+  setPlaybackWindow: (window) => set({ playbackWindow: window }),
   // Playback
   playing: true,
   currentTime: 0,
@@ -182,6 +192,9 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   // Ghost
   ghostRecord: null,
   ghostLap: null,
+
+  gpsRegistrationEnabled:
+    typeof window === "undefined" || new URLSearchParams(window.location.search).get("gps") !== "raw",
 
   // Map positions
   carPosition: null,
@@ -209,12 +222,19 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
 
   seek: (time) => {
     const duration = get().duration;
-    set({ currentTime: Math.min(duration, Math.max(0, time)) });
+    const range = get().playbackWindow;
+    set({ currentTime: Math.min(range?.end ?? duration, Math.max(range?.start ?? 0, time)) });
   },
 
   advance: (deltaSeconds) => {
     const { currentTime, duration, playbackRate, loop } = get();
     if (duration <= 0) return;
+    const range = get().playbackWindow;
+    if (range) {
+      const next = advanceInWindow(currentTime, deltaSeconds * playbackRate, range, loop);
+      set({ currentTime: next.time, playing: next.playing });
+      return;
+    }
     const nextTime = currentTime + deltaSeconds * playbackRate;
     if (nextTime > duration) {
       if (loop) {
@@ -248,15 +268,26 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   setLapsIndex: (lapsIndex) => set({ lapsIndex }),
 
   setActiveLap: (record, lap) =>
-    set({
+    set((state) => ({
       activeRecord: record,
-      activeLap: lap,
+      activeLap: setRegistrationEnabled(lap, state.gpsRegistrationEnabled),
       lapMeta: lap.meta,
-    }),
+    })),
 
-  setGhostLap: (record, lap) => set({ ghostRecord: record, ghostLap: lap }),
+  setGhostLap: (record, lap) => set((state) => ({
+    ghostRecord: record,
+    ghostLap: lap && setRegistrationEnabled(lap, state.gpsRegistrationEnabled),
+  })),
 
   clearGhost: () => set({ ghostRecord: null, ghostLap: null }),
+
+  // New lap objects on purpose: the per-lap position caches are keyed by
+  // identity, so the scene re-derives the line without a track rebuild.
+  setGpsRegistrationEnabled: (enabled) => set((state) => ({
+    gpsRegistrationEnabled: enabled,
+    activeLap: state.activeLap && setRegistrationEnabled(state.activeLap, enabled),
+    ghostLap: state.ghostLap && setRegistrationEnabled(state.ghostLap, enabled),
+  })),
 
   setMapPositions: (car, ghost) => set({ carPosition: car, ghostPosition: ghost }),
 

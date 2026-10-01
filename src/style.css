@@ -50,6 +50,25 @@ input {
   color: #dbe7df;
 }
 
+.showcase-panel {
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; gap: 7px; width: max-content;
+  max-width: calc(100vw - 360px); padding: 14px 20px;
+  background: rgb(12 20 23 / 88%); border: 1px solid #516165;
+  border-radius: 6px; color: #eef2ed; z-index: 4;
+}
+.showcase-eyebrow { font-size: 10px; letter-spacing: .2em; color: #b3c8bf; }
+.showcase-panel strong { font-weight: 500; font-size: 16px; }
+.showcase-actions { display: flex; align-items: center; gap: 14px; font-size: 11px; }
+.showcase-actions a { color: #d3e591; text-underline-offset: 3px; }
+.showcase-actions button { color: #edf2df; background: #354237; border: 1px solid #69775f; border-radius: 3px; padding: 4px 8px; cursor: pointer; }
+.showcase-panel small { font-size: 10px; color: #abb9b5; }
+.showcase-panel small a { color: inherit; text-underline-offset: 2px; }
+@media(max-width: 800px) {
+  .showcase-panel { top: 150px; max-width: calc(100vw - 32px); }
+  .showcase-actions { gap: 7px; flex-wrap: wrap; }
+}
+
 .loading-screen {
   display: grid;
   place-items: center;
@@ -500,6 +519,44 @@ input {
 .hud-select-btn:hover {
   color: #e8f16c;
   opacity: 1;
+}
+
+.hud-gps {
+  margin-top: 2px;
+  align-items: center;
+}
+
+.hud-gps-btn {
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 6%);
+  color: #c9d5da;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hud-gps-btn--on {
+  border-color: #5fb98a;
+  background: rgb(95 185 138 / 18%);
+  color: #b8f0d2;
+}
+
+.hud-gps-btn:hover {
+  color: #fff;
+}
+
+.hud-gps-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hud-gps-offset {
+  color: #8fa4ad;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
 }
 
 .hud-ghost-info {
@@ -1112,3 +1169,18 @@ input {
     display: none;
   }
 }
+
+.cg-adjustment fieldset { border: 1px solid #687b73; border-radius: 6px; padding: 10px; margin: 8px 0; }
+.cg-adjustment label { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 7px 0; font-size: 12px; }
+.cg-adjustment select { flex: 1; min-width: 0; color: #e9eee8; background: #243238; padding: 5px; }
+.cg-adjustment input[type=range] { flex: 1; min-width: 100px; accent-color: #e5ee81; }
+.cg-adjustment output { min-width: 48px; font-variant-numeric: tabular-nums; }
+.cg-adjustment button { cursor: pointer; padding: 5px 8px; }
+.showcase-panel:has(.cg-adjustment fieldset) { max-height: 70vh; overflow-y: auto; }
+
+/* Reviewed Fuji registration, full-lap playback and same-width raw comparison. */
+.local-alignment-panel { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 15; width: min(400px, 44vw); padding: 12px 16px; border: 1px solid #6c929c; border-radius: 8px; background: #10252ceb; color: #edf4f6; display: grid; gap: 7px; font-size: 13px; }
+.local-alignment-panel small { color: #bacbd0; font-size: 11px; }
+.local-alignment-panel a { color: #b5e3f2; }
+.local-alignment-panel button { cursor: pointer; color: #edf4f6; background: #29454e; border: 1px solid #5e7b86; border-radius: 4px; padding: 4px 6px; margin: 2px; }
+@media (max-width: 650px) { .local-alignment-panel { top: auto; bottom: 105px; width: min(350px, 94vw); padding: 8px; font-size: 11px; } }

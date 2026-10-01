@@ -12,6 +12,7 @@ import csv
 import json
 import math
 import re
+import statistics
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -198,6 +199,13 @@ def stream_telemetry(path: Path, targets: list[tuple[str, int]], time_column: st
     target_laps_by_vehicle: dict[str, set[int]] = defaultdict(set)
     for vehicle_id, lap in targets:
         target_laps_by_vehicle[vehicle_id].add(lap)
+    # Keep GPS from immediate neighbour laps even when only one lap is selected.
+    # Cutting before smoothing otherwise moves the first/last point along the
+    # trajectory by one sample interval (about 5 m at Fuji's start/finish line).
+    context_laps_by_vehicle = {
+        vehicle_id: {nearby for lap in laps for nearby in (lap - 1, lap + 1)}
+        for vehicle_id, laps in target_laps_by_vehicle.items()
+    }
 
     samples: dict[tuple[str, int], dict[str, dict[str, float]]] = {
         target: defaultdict(dict) for target in targets
@@ -220,11 +228,14 @@ def stream_telemetry(path: Path, targets: list[tuple[str, int]], time_column: st
             if not lap_s.isdigit():
                 continue
             lap = int(lap_s)
-            if lap not in target_laps_by_vehicle[vehicle_id]:
+            is_target = lap in target_laps_by_vehicle[vehicle_id]
+            if not is_target and lap not in context_laps_by_vehicle[vehicle_id]:
                 continue
 
             channel = CHANNEL_ALIASES.get(row.get("telemetry_name", ""))
             if channel is None:
+                continue
+            if not is_target and channel not in ("lat", "lng"):
                 continue
             ts = row.get(time_column) or row.get("timestamp") or row.get("meta_time")
             if not ts:
@@ -239,7 +250,7 @@ def stream_telemetry(path: Path, targets: list[tuple[str, int]], time_column: st
                 # browsers' JSON.parse rejects. Skip like any unparseable row.
                 continue
 
-            samples[(vehicle_id, lap)][ts][channel] = value
+            samples.setdefault((vehicle_id, lap), defaultdict(dict))[ts][channel] = value
             rows_kept += 1
 
     print(f"Telemetry rows read: {rows_seen:,}")
@@ -280,12 +291,69 @@ def filter_gps_outliers(samples: list[dict[str, float]], max_speed_mps: float) -
     return kept, removed
 
 
+def smooth_with_lap_context(
+    samples: list[dict[str, float]],
+    context: dict[str, dict[str, float]],
+    start_time: datetime,
+    window: int,
+    max_speed_mps: float,
+) -> tuple[list[float], list[float], dict[str, Any]]:
+    """Use continuous neighbouring GPS without changing this lap's timebase.
+
+    Context only supplies up to half a window on either side. Do not average
+    across a missing-sample gap, non-finite fix or implausible jump. At a real
+    session endpoint the available-window mean is retained and documented.
+    """
+    window = max(1, window + (window % 2 == 0))
+    radius = window // 2 if len(samples) >= 3 else 0
+    times = [sample["t"] for sample in samples]
+    cadence = statistics.median(b - a for a, b in zip(times, times[1:]))
+    candidates = []
+    for ts, channels in context.items():
+        if not all(key in channels and math.isfinite(channels[key]) for key in ("lat", "lng")):
+            continue
+        try:
+            t = (parse_iso(ts) - start_time).total_seconds()
+        except ValueError:
+            continue
+        if t < times[0] or t > times[-1]:
+            candidates.append({"t": t, "lat": channels["lat"], "lng": channels["lng"]})
+    candidates.sort(key=lambda sample: sample["t"])
+
+    def continuous_neighbours(pool: list[dict[str, float]], anchor: dict[str, float]) -> list[dict[str, float]]:
+        result = []
+        for sample in pool[:radius]:
+            dt = abs(sample["t"] - anchor["t"])
+            jump = haversine_m(anchor["lat"], anchor["lng"], sample["lat"], sample["lng"])
+            if not 0 < dt <= cadence * 1.5 or jump > max(30.0, max_speed_mps * dt):
+                break
+            result.append(sample)
+            anchor = sample
+        return result
+
+    before = continuous_neighbours([s for s in candidates if s["t"] < times[0]][::-1], samples[0])[::-1]
+    after = continuous_neighbours([s for s in candidates if s["t"] > times[-1]], samples[-1])
+    padded = before + samples + after
+    offset = len(before)
+    lats = moving_average([s["lat"] for s in padded], window)[offset:offset + len(samples)]
+    lngs = moving_average([s["lng"] for s in padded], window)[offset:offset + len(samples)]
+    return lats, lngs, {
+        "method": "centered_moving_average",
+        "window_points": window,
+        "boundary_policy": "continuous_adjacent_lap_gps",
+        "context_points_before": len(before),
+        "context_points_after": len(after),
+        "complete_boundary_windows": len(before) == radius and len(after) == radius,
+    }
+
+
 def compact_from_timeseries(
     vehicle_id: str,
     lap: int,
     by_timestamp: dict[str, dict[str, float]],
     lap_record: dict[str, Any] | None,
     args: argparse.Namespace,
+    gps_context: dict[str, dict[str, float]] | None = None,
 ) -> dict[str, Any]:
     rows = []
     for ts, channels in by_timestamp.items():
@@ -342,8 +410,10 @@ def compact_from_timeseries(
     if len(filtered_samples) < 2:
         raise SystemExit(f"Not enough GPS samples for {vehicle_id} lap {lap}: {len(filtered_samples)}")
 
-    lats = moving_average([s["lat"] for s in filtered_samples], args.smooth_window)
-    lngs = moving_average([s["lng"] for s in filtered_samples], args.smooth_window)
+    lats, lngs, gps_processing = smooth_with_lap_context(
+        filtered_samples, gps_context or {}, start_time,
+        args.smooth_window, args.max_gps_speed_mps,
+    )
     start_t = filtered_samples[0]["t"]
 
     dist = [0.0]
@@ -368,6 +438,12 @@ def compact_from_timeseries(
             "time_column": args.time_column,
             "first_sample_time": first_ts,
             "last_sample_time": last_ts,
+            "gps_processing": gps_processing,
+            "lap_start_time": (lap_record or {}).get("start_time"),
+            "first_sample_after_lap_start_seconds": (
+                round((start_time - parse_iso(lap_record["start_time"])).total_seconds(), 6)
+                if lap_record and lap_record.get("start_time") else None
+            ),
         }
     }
     for key in COMPACT_KEYS:
@@ -403,7 +479,14 @@ def write_outputs(
 
     for vehicle_id, lap in targets:
         lap_record = records_by_key.get((vehicle_id, lap))
-        compact = compact_from_timeseries(vehicle_id, lap, telemetry.get((vehicle_id, lap), {}), lap_record, args)
+        gps_context = {
+            ts: channels
+            for neighbour in (lap - 1, lap + 1)
+            for ts, channels in telemetry.get((vehicle_id, neighbour), {}).items()
+        }
+        compact = compact_from_timeseries(
+            vehicle_id, lap, telemetry.get((vehicle_id, lap), {}), lap_record, args, gps_context,
+        )
         filename = f"{vehicle_slug(vehicle_id)}_lap_{lap:03d}.json"
         path = output_dir / filename
         with path.open("w") as f:

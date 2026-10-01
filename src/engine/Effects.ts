@@ -35,6 +35,7 @@ export class Effects {
     scene: THREE.Scene,
     camera: THREE.Camera,
     quality: QualityPreset = "high",
+    referenceStudy = false,
   ) {
     this.composer = new EffectComposer(renderer);
 
@@ -44,7 +45,7 @@ export class Effects {
     const bloom = new BloomEffect({
       luminanceThreshold: 0.92,
       luminanceSmoothing: 0.025,
-      intensity: 0.7,
+      intensity: referenceStudy ? 0.15 : 0.7,
       blendFunction: BlendFunction.ADD,
     });
 
@@ -61,7 +62,7 @@ export class Effects {
       });
       const vignette = new VignetteEffect({
         offset: 0.42,
-        darkness: 0.72,
+        darkness: referenceStudy ? 0.22 : 0.72,
       });
       this.composer.addPass(new EffectPass(camera, bloom, ssao, smaa, vignette));
     } else {

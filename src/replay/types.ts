@@ -28,6 +28,9 @@ export interface TrackPoint {
 }
 
 export interface TrackData {
+  replayAlignment?: import("./visualAlignment").ReplayAlignment;
+  /** Opt-in, evidence-reviewed visual study; never changes telemetry. */
+  visualProfile?: "reference" | "cg";
   version: number;
   trackId: string;
   trackName: string;
@@ -80,6 +83,9 @@ export interface LapMeta {
 
 export interface LapData {
   meta: LapMeta;
+  /** Display-only track-limit registration stamped by the loader; the raw
+   * lat/lng below are never modified (see gpsRegistration.ts). */
+  registration?: import("./gpsRegistration").LapRegistration;
   t: number[];
   lat: number[];
   lng: number[];

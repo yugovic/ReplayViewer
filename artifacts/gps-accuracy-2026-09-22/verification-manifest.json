@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "races": {
+    "fuji_aim_01": {
+      "registrationSha256": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+      "inputs": [
+        {
+          "source": "public/data/tracks/fuji/cg_study/geometry.json",
+          "sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/tracks/fuji/track.json",
+          "sha256": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+          "sha256": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+          "sha256": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+          "sha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+          "sha256": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+          "matchesRegistration": true
+        }
+      ]
+    },
+    "fuji_aim_2020_07_30": {
+      "registrationSha256": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+      "inputs": [
+        {
+          "source": "public/data/tracks/fuji/cg_study/geometry.json",
+          "sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/tracks/fuji/track.json",
+          "sha256": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+          "sha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+          "sha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+          "sha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+          "sha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+          "sha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+          "matchesRegistration": true
+        },
+        {
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+          "sha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+          "matchesRegistration": true
+        }
+      ]
+    }
+  },
+  "allInputHashesMatch": true,
+  "allShippedKpisReproducible": true,
+  "runtimeComplete": true
+}

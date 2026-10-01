@@ -26,6 +26,8 @@ import { buildCurbsGroup, type CurbCenterlinePoint } from "./curbBuilder";
 import { satelliteFilename, type SatVariantId } from "../../replay/satelliteVariants";
 import { EnhancedCorridorGround } from "./EnhancedCorridorGround";
 import { buildRoadEdgeLinesGroup, loadRoadEdgeProfile } from "./RoadEdgeLines";
+import { buildFujiReferenceRoad } from "./FujiReferenceStudy";
+import { buildFujiCgTrack } from "./FujiCgStudy";
 
 const ELEVATION_SCALE = 1;
 
@@ -691,6 +693,7 @@ export function buildTrack(
   track: TrackData,
   textureLoader: THREE.TextureLoader,
 ): TrackBuildResult {
+  if (track.trackId === "fuji" && track.visualProfile === "cg") return buildFujiCgTrack(track, textureLoader);
   const group = new THREE.Group();
 
   const points = track.centerline.map(
@@ -834,7 +837,8 @@ export function buildTrack(
   const initialSatVariant: SatVariantId = track.satVariant ?? "default";
   const satFile = satelliteFilename(initialSatVariant);
   const metaUrl = `${trackDir}satellite_meta.json`;
-  const satUrl = `${trackDir}${satFile}`;
+  const referenceStudy = track.visualProfile === "reference";
+  const satUrl = `${trackDir}${referenceStudy ? "reference_study/base_4k.webp" : satFile}`;
   const terrainMetaUrl = `${trackDir}terrain_meta.json`;
   const terrainBaseUrl = trackDir;
   const featuresUrl = `${trackDir}features.json`;
@@ -890,7 +894,7 @@ export function buildTrack(
           }
           return { x: bestX, z: bestZ };
         };
-        const { group: g, stats } = buildFeatures3dGroup(data3d, drape.groundHeightAt, frontHintAt);
+        const { group: g, stats } = buildFeatures3dGroup(data3d, drape.groundHeightAt, frontHintAt, track.visualProfile === "reference");
         features3dGroup = g;
         features3dGroup.visible = features3dVisible;
         group.add(features3dGroup);
@@ -1023,8 +1027,8 @@ export function buildTrack(
       }
 
       enhancedGround = new EnhancedCorridorGround({
-        manifestUrl: `${trackDir}satellite_corridor_x2/manifest.json`,
-        overrideManifestUrl: `${trackDir}imagegen_trials/manifest.json`,
+        manifestUrl: `${trackDir}${referenceStudy ? "reference_study" : "satellite_corridor_x2"}/manifest.json`,
+        overrideManifestUrl: referenceStudy ? undefined : `${trackDir}imagegen_trials/manifest.json`,
         track,
         drapeInputs: (x, z, lat, lng) => computeDrapeInputs(track, x, z, lat, lng, sampler),
         // SR tiles cover exactly the corridor the chase camera looks at, so
@@ -1051,6 +1055,12 @@ export function buildTrack(
       featureDrape = createFeatureDrape(track, sampler);
       if (featuresVisible) ensureOsmFeatures();
       if (features3dVisible) ensureFeatures3d();
+      if (track.visualProfile === "reference") {
+        void loadRoadEdgeProfile(roadEdgesUrl).then(profile => {
+          if (disposed || !profile) return;
+          group.add(buildFujiReferenceRoad(track, profile, satelliteMaterial?.map ?? undefined));
+        }).catch(err => console.warn("Reference road failed:", err));
+      }
     })
     .catch((err) => console.warn("Feature drape setup failed:", err));
 
@@ -1074,6 +1084,7 @@ export function buildTrack(
     terrainHeightAt,
     dispose: () => {
       disposed = true;
+      group.getObjectByName("fuji-reference-road")?.userData.dispose?.();
       enhancedGround?.dispose();
       enhancedGround = null;
     },

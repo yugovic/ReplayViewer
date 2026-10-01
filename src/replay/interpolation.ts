@@ -1,4 +1,4 @@
-import { latLngToLocal } from "./projection";
+import { displayedLapPoint } from "./visualAlignment";
 import type { LapData, ReplaySample, TrackData } from "./types";
 
 export const MAX_VEHICLE_PITCH = (8 * Math.PI) / 180;
@@ -40,7 +40,7 @@ export function interpolateNumberSeries(times: ArrayLike<number>, values: ArrayL
   return values[lastIndex] ?? 0;
 }
 
-const projectedArcLengthCache = new WeakMap<LapData, Float64Array>();
+const projectedArcLengthCache = new WeakMap<LapData, WeakMap<TrackData, Float64Array>>();
 
 function wrapTrackArcLength(dist: number, length: number): number {
   if (length <= 0) {
@@ -268,7 +268,7 @@ export function projectPointToCenterlineArcLength(track: TrackData, x: number, z
 }
 
 export function getProjectedLapArcLengths(lap: LapData, track: TrackData): Float64Array {
-  const cached = projectedArcLengthCache.get(lap);
+  const cached = projectedArcLengthCache.get(lap)?.get(track);
   if (cached) {
     return cached;
   }
@@ -276,7 +276,7 @@ export function getProjectedLapArcLengths(lap: LapData, track: TrackData): Float
   const projectedArcLengths = new Float64Array(lap.t.length);
   const trackLength = track.totalLength;
   for (let i = 0; i < projectedArcLengths.length; i += 1) {
-    const local = latLngToLocal(lap.lat[i] ?? 0, lap.lng[i] ?? 0, track.origin);
+    const local = displayedLapPoint(lap, track, i);
     const rawArcLength = projectPointToCenterlineArcLength(track, local.x, local.z);
     if (i === 0 || trackLength <= 0) {
       projectedArcLengths[i] = rawArcLength;
@@ -299,7 +299,9 @@ export function getProjectedLapArcLengths(lap: LapData, track: TrackData): Float
     projectedArcLengths[i] = bestArcLength;
   }
 
-  projectedArcLengthCache.set(lap, projectedArcLengths);
+  let byTrack = projectedArcLengthCache.get(lap);
+  if (!byTrack) { byTrack = new WeakMap(); projectedArcLengthCache.set(lap, byTrack); }
+  byTrack.set(track, projectedArcLengths);
   return projectedArcLengths;
 }
 
@@ -446,12 +448,12 @@ interface LapMotionArrays {
   pitches: Float64Array;
 }
 
-const lapMotionCache = new WeakMap<LapData, LapMotionArrays>();
+const lapMotionCache = new WeakMap<LapData, WeakMap<TrackData, LapMotionArrays>>();
 
 const POSE_WINDOW = 6;
 
 function getLapMotionArrays(lap: LapData, track: TrackData): LapMotionArrays {
-  const cached = lapMotionCache.get(lap);
+  const cached = lapMotionCache.get(lap)?.get(track);
   if (cached) {
     return cached;
   }
@@ -459,7 +461,7 @@ function getLapMotionArrays(lap: LapData, track: TrackData): LapMotionArrays {
   const xs = new Float64Array(count);
   const zs = new Float64Array(count);
   for (let i = 0; i < count; i += 1) {
-    const local = latLngToLocal(lap.lat[i] ?? 0, lap.lng[i] ?? 0, track.origin);
+    const local = displayedLapPoint(lap, track, i);
     xs[i] = local.x;
     zs[i] = local.z;
   }
@@ -493,7 +495,9 @@ function getLapMotionArrays(lap: LapData, track: TrackData): LapMotionArrays {
     previousHeading = heading;
   }
   const arrays: LapMotionArrays = { xs, zs, headings, pitches };
-  lapMotionCache.set(lap, arrays);
+  let byTrack = lapMotionCache.get(lap);
+  if (!byTrack) { byTrack = new WeakMap(); lapMotionCache.set(lap, byTrack); }
+  byTrack.set(track, arrays);
   return arrays;
 }
 

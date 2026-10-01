@@ -5,7 +5,7 @@
  * TrackBuilder.buildSatelliteGround for how the texture is applied.
  */
 
-export type SatVariantId = "default" | "shizuoka" | "shizuoka_x2" | "sr" | "bing" | "bing_sr";
+export type SatVariantId = "default" | "shizuoka" | "shizuoka_orig" | "shizuoka_x2" | "sr" | "bing" | "bing_sr";
 
 export interface SatelliteVariantDef {
   id: SatVariantId;
@@ -24,16 +24,26 @@ export interface SatelliteVariantDef {
 export const SATELLITE_VARIANTS: readonly SatelliteVariantDef[] = [
   { id: "default", label: "Esri", filename: "satellite.jpg", metaFilename: "satellite_meta.json" },
   {
+    // Optimized base ground texture: 4096px WebP q80 (~5.2 MB) derived from the
+    // 29.8 MB source JPG. This is the default the user-facing viewer loads; the
+    // full-res original is still selectable as "shizuoka_orig" (dev ?sat=).
     id: "shizuoka",
     label: "静岡県 20cm",
+    filename: "satellite_shizuoka_4k.webp",
+    metaFilename: "satellite_shizuoka_4k_meta.json",
+  },
+  {
+    // Full-resolution original (8014x8192, 29.8 MB JPG), kept for A/B comparison.
+    id: "shizuoka_orig",
+    label: "静岡 20cm 原寸",
     filename: "satellite_shizuoka.jpg",
     metaFilename: "satellite_shizuoka_meta.json",
   },
   {
     id: "shizuoka_x2",
     label: "静岡 20cm SR",
-    filename: "satellite_shizuoka.jpg",
-    metaFilename: "satellite_shizuoka_meta.json",
+    filename: "satellite_shizuoka_4k.webp",
+    metaFilename: "satellite_shizuoka_4k_meta.json",
     probeFilename: "satellite_corridor_x2/manifest.json",
     probeContentType: "json",
   },
@@ -48,6 +58,7 @@ const DEFAULT_VARIANT: SatVariantId = "default";
  * absence of the param (or an unrecognized value) already resolves to it. */
 const SAT_PARAM_TO_VARIANT: Record<string, SatVariantId> = {
   shizuoka: "shizuoka",
+  shizuoka_orig: "shizuoka_orig",
   shizuoka_x2: "shizuoka_x2",
   sr: "sr",
   bing: "bing",

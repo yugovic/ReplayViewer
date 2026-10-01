@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { sampleReplay } from "../replay/interpolation";
+import { sampleReplay, projectPointToCenterline, sampleTrackSurface, sampleTrackRoll } from "../replay/interpolation";
+import { registeredVehicleGeometry, registeredVehicleWidth } from "../replay/visualAlignment";
 import type { LapData, ReplaySample, TrackData } from "../replay/types";
 import { ChaseCamera, CinematicCamera, CockpitCamera, FreeCamera, TopCamera, TvCamera } from "./cameras";
 import type { CameraMode, CarCameraState, ReplayCameraController } from "./cameras";
@@ -14,9 +15,10 @@ import { LiveDataTrail } from "./DataTrail";
 import { Effects } from "./Effects";
 import { setupSky } from "./Sky";
 import type { QualityPreset } from "./Effects";
+import { applyVehicleRigGeometry, GENERIC_WHEEL_DIMENSIONS } from "./vehicleRigGeometry";
 
 const ELEVATION_SCALE = 1;
-const CAR_MODEL_URL = "/assets/RX3_race.glb";
+const CAR_MODEL_URL = "/assets/MIDSHIP_ROADSTER.glb";
 const HIDE_MODEL_WHEELS = true;
 const WORLD_UP = new THREE.Vector3(0, 1, 0);
 
@@ -39,20 +41,22 @@ const CAR_SPEC = {
   length: 4.0,
   width: 2.0,
   height: 0.9,
-  wheelRadius: 0.33,
-  wheelWidth: 0.25,
-  wheelBase: 2.6,
-  trackWidth: 1.6,
+  wheelRadius: GENERIC_WHEEL_DIMENSIONS.radius,
+  wheelWidth: GENERIC_WHEEL_DIMENSIONS.width,
+  wheelBase: GENERIC_WHEEL_DIMENSIONS.wheelbase,
+  trackWidth: GENERIC_WHEEL_DIMENSIONS.track,
   steeringRatio: 16,
 };
 
 interface WheelAssembly {
   pivot: THREE.Group;
   wheel: THREE.Object3D;
+  tyreWidthMeters: number;
 }
 
 interface CarRig {
   root: THREE.Group;
+  body: THREE.Group;
   wheels: {
     frontLeft: WheelAssembly;
     frontRight: WheelAssembly;
@@ -81,6 +85,20 @@ export class ReplayScene {
   private carRig: CarRig;
   private ghostRig: CarRig | null = null;
   private gltfModel: THREE.Object3D | null = null; // cached loaded GLB
+  private normalizedVehicleWidth = CAR_SPEC.width;
+  private normalizedBodyWidth = CAR_SPEC.width;
+  private vehicleStudy: { widthMeters: number; offsetX: number; offsetZ: number; time: number } | null = null;
+
+  /** Isolated, frozen-frame dimensional study. Raw lap arrays stay untouched. */
+  configureVehicleStudy(options: { widthMeters: number; offsetX: number; offsetZ: number; time: number } | null): void {
+    if (options && (!this.track || this.track.trackId !== "fuji" || this.track.visualProfile !== "cg" || this.track.replayAlignment)) {
+      throw new Error("Vehicle study requires the Fuji CG with raw GPS");
+    }
+    if (options && (![options.widthMeters, options.offsetX, options.offsetZ, options.time].every(Number.isFinite) || options.widthMeters <= 0)) {
+      throw new Error("Invalid vehicle study dimensions or position");
+    }
+    this.vehicleStudy = options ? { ...options } : null;
+  }
   private liveTrail: LiveDataTrail | null = null;
   private acOverlay: AcOverlayHandle | null = null;
   private acOverlayVisible = true;
@@ -101,6 +119,7 @@ export class ReplayScene {
   private trackRadius = 300;
   private disposed = false;
   private quality: QualityPreset = "high";
+  private sun: THREE.DirectionalLight;
 
   // Hot-path scratch objects – reused every frame to avoid per-frame allocations
   private readonly _targetPose = new THREE.Quaternion();
@@ -122,7 +141,8 @@ export class ReplayScene {
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    this.renderer.setSize(container.clientWidth, container.clientHeight);
+    // CSS owns canvas dimensions; inline pixel sizes otherwise survive resize.
+    this.renderer.setSize(container.clientWidth, container.clientHeight, false);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.1;
@@ -145,6 +165,7 @@ export class ReplayScene {
 
     this.scene.add(new THREE.AmbientLight(0xffffff, 0.15));
     const sun = new THREE.DirectionalLight(0xfff8e7, 2.4);
+    this.sun = sun;
     sun.position.set(-120, 180, -60);
     sun.castShadow = true;
     sun.shadow.camera.near = 10;
@@ -188,6 +209,7 @@ export class ReplayScene {
 
   load(track: TrackData, lap: LapData): void {
     this.track = track;
+    if ((track.visualProfile === "reference" || track.visualProfile === "cg")) this.setQuality(this.quality);
     this.lap = lap;
     this.lastSampleTime = null;
     this.activeCameraMode = null;
@@ -217,6 +239,7 @@ export class ReplayScene {
       this.liveTrail.dispose();
     }
     this.liveTrail = new LiveDataTrail(lap, track);
+    this.liveTrail.group.visible = !(track.visualProfile === "reference" || track.visualProfile === "cg");
     this.scene.add(this.liveTrail.group);
 
     // AC MOD verification overlay (only tracks shipping ac_overlay.json get
@@ -263,6 +286,7 @@ export class ReplayScene {
       this.liveTrail.dispose();
     }
     this.liveTrail = new LiveDataTrail(lap, this.track);
+    this.liveTrail.group.visible = !(this.track.visualProfile === "reference" || this.track.visualProfile === "cg");
     this.scene.add(this.liveTrail.group);
   }
 
@@ -479,7 +503,14 @@ export class ReplayScene {
       return null;
     }
 
-    const sample = sampleReplay(this.lap, this.track, time);
+    const sample = sampleReplay(this.lap, this.track, this.vehicleStudy?.time ?? time);
+    if (this.vehicleStudy) {
+      sample.x += this.vehicleStudy.offsetX;
+      sample.z += this.vehicleStudy.offsetZ;
+      const projection = projectPointToCenterline(this.track, sample.x, sample.z);
+      sample.y = sampleTrackSurface(this.track, projection.arcLength, projection.signedLateralDistance);
+      sample.roll = sampleTrackRoll(this.track, projection.arcLength);
+    }
     const playbackDelta = this.lastSampleTime === null ? 0 : sample.time - this.lastSampleTime;
     this.lastSampleTime = sample.time;
     this.updateCar(sample, playbackDelta);
@@ -501,6 +532,21 @@ export class ReplayScene {
   }
 
   private doRender(dt: number): void {
+    if ((this.track?.visualProfile === "reference" || this.track?.visualProfile === "cg")) {
+      // A 700m shadow frustum gave a car only ~12 texels along its length.
+      // Keep the light direction fixed and move a 100m shadow volume with it.
+      const p = this.carRig.root.position;
+      this.sun.position.set(p.x - 120, p.y + 180, p.z - 60);
+      this.sun.target.position.copy(p);
+      this.sun.target.updateMatrixWorld();
+      const c = this.sun.shadow.camera;
+      if (c.right !== 50) {
+        c.left = c.bottom = -50; c.right = c.top = 50;
+        c.near = 1; c.far = 400; c.updateProjectionMatrix();
+        this.sun.shadow.normalBias = 0.025;
+        this.sun.shadow.bias = -0.00008;
+      }
+    }
     if (this.skydome) {
       this.skydome.position.copy(this.camera.position);
     }
@@ -517,7 +563,7 @@ export class ReplayScene {
       this.effects.dispose();
     }
     try {
-      this.effects = new Effects(this.renderer, this.scene, this.camera, quality);
+      this.effects = new Effects(this.renderer, this.scene, this.camera, quality, (this.track?.visualProfile === "reference" || this.track?.visualProfile === "cg"));
       const { width, height } = this.getSize();
       this.effects.setSize(width, height);
     } catch (err) {
@@ -573,6 +619,7 @@ export class ReplayScene {
       }
 
       this.normalizeCarModel(model);
+      this.normalizedVehicleWidth = new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).x;
       this.applyModelTint(model, 0xff5b24);
       if (HIDE_MODEL_WHEELS) {
         model.traverse((object) => {
@@ -581,6 +628,20 @@ export class ReplayScene {
           }
         });
       }
+
+      // The hidden authored wheels must not determine the visual body width:
+      // fitted wheel centres/widths belong to the independent metre-based rig.
+      const visibleBounds = new THREE.Box3();
+      model.updateMatrixWorld(true);
+      model.traverseVisible((object) => {
+        if (!(object instanceof THREE.Mesh)) return;
+        if (!object.geometry.boundingBox) object.geometry.computeBoundingBox();
+        if (object.geometry.boundingBox) {
+          visibleBounds.union(object.geometry.boundingBox.clone().applyMatrix4(object.matrixWorld));
+        }
+      });
+      const visibleWidth = visibleBounds.getSize(new THREE.Vector3()).x;
+      if (Number.isFinite(visibleWidth) && visibleWidth > 0) this.normalizedBodyWidth = visibleWidth;
 
       // Cache the model for ghost usage
       this.gltfModel = model;
@@ -657,6 +718,10 @@ export class ReplayScene {
     if (size0.x > size0.z * 1.2) {
       model.rotation.y = -Math.PI / 2;
     }
+    // The Midship Roadster is authored facing the opposite longitudinal axis
+    // to replay samples. Turn only the visual model around; the car rig,
+    // telemetry, and cameras continue to use their existing +Z-forward basis.
+    model.rotation.y += Math.PI;
     model.updateMatrixWorld(true);
 
     const bbox1 = new THREE.Box3().setFromObject(model);
@@ -697,6 +762,11 @@ export class ReplayScene {
 
   private updateCar(sample: ReplaySample, playbackDelta: number): void {
     this.lastSample = sample;
+    const width = this.vehicleStudy?.widthMeters ??
+      (this.lap && this.track ? registeredVehicleWidth(this.lap, this.track) : null);
+    const geometry = !this.vehicleStudy && this.lap && this.track
+      ? registeredVehicleGeometry(this.lap, this.track) : null;
+    applyVehicleRigGeometry(this.carRig, geometry, geometry ? this.normalizedBodyWidth : this.normalizedVehicleWidth, width);
     this.carRig.root.position.set(sample.x, this.groundedY(sample), sample.z);
 
     const targetPose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
@@ -740,6 +810,9 @@ export class ReplayScene {
 
   private updateGhostCar(sample: ReplaySample): void {
     if (!this.ghostRig) return;
+    const width = this.ghostLap && this.track ? registeredVehicleWidth(this.ghostLap, this.track) : null;
+    const geometry = this.ghostLap && this.track ? registeredVehicleGeometry(this.ghostLap, this.track) : null;
+    applyVehicleRigGeometry(this.ghostRig, geometry, geometry ? this.normalizedBodyWidth : this.normalizedVehicleWidth, width);
     this.ghostRig.root.position.set(sample.x, this.groundedY(sample), sample.z);
     const pose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
     this.ghostRig.poseQuaternion.copy(pose);
@@ -807,17 +880,22 @@ export class ReplayScene {
 
   private createCarRig(model?: THREE.Object3D, isGhost = false): CarRig {
     const root = new THREE.Group();
+    const body = new THREE.Group();
+    root.add(body);
     if (model) {
-      root.add(model);
+      body.add(model);
     } else if (isGhost) {
-      this.addPlaceholderBodyGhost(root);
+      this.addPlaceholderBodyGhost(body);
     } else {
-      this.addPlaceholderBody(root);
+      this.addPlaceholderBody(body);
     }
     const wheels = this.addWheelAssemblies(root, isGhost);
-    const brakeMaterials = isGhost ? [] : this.addBrakeLights(root);
+    // The supplied GLB already has tail-light geometry. Do not attach the
+    // generic rectangular lamps outside its rear bumper in the visual study.
+    const brakeMaterials = isGhost || (model && (this.track?.visualProfile === "reference" || this.track?.visualProfile === "cg")) ? [] : this.addBrakeLights(body);
     return {
       root,
+      body,
       wheels,
       brakeMaterials,
       poseQuaternion: new THREE.Quaternion(),
@@ -913,7 +991,7 @@ export class ReplayScene {
       const wheel = makeWheel();
       pivot.add(wheel);
       root.add(pivot);
-      return { pivot, wheel };
+      return { pivot, wheel, tyreWidthMeters: CAR_SPEC.wheelWidth };
     };
 
     const frontZ = CAR_SPEC.wheelBase / 2;

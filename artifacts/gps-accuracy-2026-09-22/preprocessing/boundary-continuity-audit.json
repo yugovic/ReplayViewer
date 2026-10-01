@@ -1,0 +1,77 @@
+{
+  "scope": "Adjacent lap samples are 0.1 seconds apart. Speed comparison checks continuity only, not absolute position.",
+  "boundaries": [
+    {
+      "raceId": "fuji_aim_01",
+      "fromLap": 1,
+      "toLap": 2,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.101929714731217,
+      "afterStepMeters": 4.702297246550205,
+      "loggedSpeedExpectedStepMeters": 4.700597222222222
+    },
+    {
+      "raceId": "fuji_aim_01",
+      "fromLap": 2,
+      "toLap": 3,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.424755988660493,
+      "afterStepMeters": 4.812013750926298,
+      "loggedSpeedExpectedStepMeters": 4.803277777777779
+    },
+    {
+      "raceId": "fuji_aim_01",
+      "fromLap": 3,
+      "toLap": 4,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.452222218992613,
+      "afterStepMeters": 4.81598180570089,
+      "loggedSpeedExpectedStepMeters": 4.828236111111112
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "fromLap": 1,
+      "toLap": 2,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.746824807997433,
+      "afterStepMeters": 4.915596611977426,
+      "loggedSpeedExpectedStepMeters": 4.910944444444444
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "fromLap": 2,
+      "toLap": 3,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.586929821491482,
+      "afterStepMeters": 4.861849311249067,
+      "loggedSpeedExpectedStepMeters": 4.843333333333334
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "fromLap": 3,
+      "toLap": 4,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.450310440896429,
+      "afterStepMeters": 4.816067798703746,
+      "loggedSpeedExpectedStepMeters": 4.813041666666667
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "fromLap": 4,
+      "toLap": 5,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.611341679204136,
+      "afterStepMeters": 4.871151603911148,
+      "loggedSpeedExpectedStepMeters": 4.858361111111112
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "fromLap": 5,
+      "toLap": 6,
+      "deltaTimeSeconds": 0.1,
+      "beforeStepMeters": 14.593005724725579,
+      "afterStepMeters": 4.862699335382013,
+      "loggedSpeedExpectedStepMeters": 4.8522083333333335
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "source": "VIRTUAL SHIZUOKA 2019 LP orthophoto 20 cm (CC BY 4.0, Shizuoka Prefecture)",
+  "sourceUrl": "https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud",
+  "sourceSha256": "baf1f220d6d1a809e12a3ad39b11f089945d67c8ac1566951b45b4796befdb6f",
+  "license": "CC BY 4.0 / ODbL",
+  "reviewedWindows": [
+    {
+      "side": "left",
+      "start": 82.0,
+      "end": 88.0,
+      "innerOffsetRange": [
+        0.6,
+        1.6
+      ],
+      "reason": "Starting-grid white box competes with a continuously visible road-edge line.",
+      "evidence": "review-left-85.png",
+      "unobservedStations": []
+    },
+    {
+      "side": "right",
+      "start": 1288.0,
+      "end": 1296.0,
+      "innerOffsetRange": [
+        0.8,
+        1.8
+      ],
+      "reason": "Isolated road-side white candidate before the curb competes with the continuous edge. Broad white curb onset can leave an unobserved section.",
+      "evidence": "review-right-1291.png",
+      "unobservedStations": [
+        1291.0,
+        1291.5,
+        1292.0,
+        1292.5,
+        1293.0,
+        1296.0
+      ]
+    }
+  ],
+  "unchangedCurbs": true,
+  "invertedCells": 0,
+  "sides": {
+    "left": {
+      "changedStations": 19,
+      "affectedStationRange": [
+        80.0,
+        89.0
+      ],
+      "maxShiftMeters": 2.0819570120441964,
+      "image": "fixed-left-85.png",
+      "beforeMaximumChordDepartureMeters": 2.030729893023628,
+      "afterMaximumChordDepartureMeters": 0.0699034671110173
+    },
+    "right": {
+      "changedStations": 18,
+      "affectedStationRange": [
+        1285.0,
+        1293.5
+      ],
+      "maxShiftMeters": 0.8035178902800012,
+      "image": "fixed-right-1291.png",
+      "beforeMaximumChordDepartureMeters": 0.9101062491597934,
+      "afterMaximumChordDepartureMeters": 0.1455634585265106
+    }
+  },
+  "limitations": "Chord departure quantifies removal of the local notch, not absolute road error. Orange=pixel-centre-only baseline, cyan=reviewed candidate fix. Only two licensed-source reviewed windows changed. Existing filters have finite support outside selection windows."
+}

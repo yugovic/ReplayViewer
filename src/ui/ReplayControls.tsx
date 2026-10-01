@@ -12,6 +12,7 @@ export function ReplayControls() {
   const playing = useReplayStore((state) => state.playing);
   const currentTime = useReplayStore((state) => state.currentTime);
   const duration = useReplayStore((state) => state.duration);
+  const range = useReplayStore((state) => state.playbackWindow);
   const playbackRate = useReplayStore((state) => state.playbackRate);
   const loop = useReplayStore((state) => state.loop);
   const togglePlaying = useReplayStore((state) => state.togglePlaying);
@@ -24,7 +25,7 @@ export function ReplayControls() {
       <button
         type="button"
         className="loop-btn"
-        onClick={() => seek(0)}
+        onClick={() => seek(range?.start ?? 0)}
         aria-label="Restart from the beginning"
         title="Restart from the beginning"
       >
@@ -38,13 +39,13 @@ export function ReplayControls() {
         aria-label="Replay time"
         className="seek"
         type="range"
-        min={0}
-        max={Math.max(duration, 0.01)}
+        min={range?.start ?? 0}
+        max={range?.end ?? Math.max(duration, 0.01)}
         step={0.01}
         value={Math.min(currentTime, duration)}
         onChange={(event) => seek(Number(event.target.value))}
       />
-      <span className="clock">{formatClock(duration)}</span>
+      <span className="clock">{formatClock(range?.end ?? duration)}</span>
       <div className="rate-buttons" role="group" aria-label="Playback speed">
         {PLAYBACK_RATES.map((rate) => (
           <button

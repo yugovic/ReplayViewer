@@ -14,6 +14,9 @@ ReplayViewer のドキュメント置き場。**このファイルが docs/ の�
 
 | ファイル | 種類 | 概要 |
 |----------|------|------|
+| [fuji-gps-accuracy-improvement-2026-09-22.md](fuji-gps-accuracy-improvement-2026-09-22.md) | GPS・CG精度改善の実施結果 | 端点処理4.93m→3.2cm、Mazda2寸法/道路境界を統一し全10周再推定。半周CV20/20改善、実Chrome確認。映像1294時計点と原GPSパケット監査、日差4.821mの感度解析、測定限界と不採用判断 |
+| [policy-gps-cg-alignment-2026-09-20.md](policy-gps-cg-alignment-2026-09-20.md) | GPS位置合わせ方針（9/22改訂） | 修正済み入力のラップ単位平行移動、寸法/道路の共通化、3入力SHA検証。絶対精度・映像距離・型式の旧断定を訂正。完了報告を正本として参照 |
+| [viewer.html](viewer.html) | ツール | docs閲覧用DocsViewer（ライブ表示）。この索引と各docの`## 要旨`から自動生成。`python -m http.server` 等で `docs/viewer.html` を開く。更新は `/docs-viewer` スキル（共有用スナップショットのURLは `.docsviewer-url`） |
 | [report-startup-performance-2026-07-22.html](report-startup-performance-2026-07-22.html) | 実測レポート | 起動遅延のPlaywright実測（Fujiユーザーモード）。支配要因=satellite_shizuoka.jpg 29.76MB（総転送の72%・地面が出るまでcold約3.5s）。scene.glb/trials/SRタイル/他バリアントは起動時0件（遅延・視錐台ゲート・プローブ無効化で回避済）。無駄=features3d.json 1.06MB（OFFでも取得）他。削減候補P1=衛星軽量化と並行化で−18〜22MB/−1.2〜2.5s |
 | [proposal-building-terrain-2026-07-22.md](proposal-building-terrain-2026-07-22.md) | 方針提案（best-of-N統合） | 「建物が丘に見える」問題。Opus3体の独立調査を統合: 真因=LP点群2クラス分類で大型屋根がDTMに誤混入+写真ドレープ。既存資産（建物footprint91件+3D箱押し出し）で解決可。推奨=①フットプリントでDTM平坦化②屋根像の除去③3D箱の輪郭・影・トゥーン屋根で仕上げ。総工数3〜5日・API費$5未満 |
 | [report-toon-corridor-gemini-2026-07-22.md](report-toon-corridor-gemini-2026-07-22.md) | 実装レポート | トゥーンコリドー全周完成の総括。Stability 2方式不合格→Gemini 3.1-flash-image 採用（シフト≤0.4px・重なり91〜100%）、59窓+クリーン化17窓、黒帯はオフライン合成で解消、芝色#BCCF25決め打ちの実証、総コスト≈$10、残課題7件 |

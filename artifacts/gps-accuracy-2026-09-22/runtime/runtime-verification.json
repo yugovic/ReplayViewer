@@ -1,0 +1,2034 @@
+{
+  "generated": "2026-10-01T12:26:03.207Z",
+  "definition": "Tyre bottom outer section point of the displayed rig, including steering/pitch/roll; signed lateral gap to the rendered road world borders. Nominal tyre width is not a measured contact patch.",
+  "races": {
+    "fuji_aim_01": {
+      "surface": "wet",
+      "laps": {
+        "1": {
+          "offsetMeters": [
+            -1.224,
+            2.315
+          ],
+          "raw": {
+            "seconds": 9.1,
+            "maxMeters": 3.301,
+            "samples": 1446
+          },
+          "registered": {
+            "seconds": 2.9,
+            "maxMeters": 0.819,
+            "samples": 1446
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 9.2,
+              "maxBeyondLimitMeters": 3.302,
+              "samples": 1446
+            },
+            "registered": {
+              "secondsBeyondLimit": 2.9,
+              "maxBeyondLimitMeters": 0.819,
+              "samples": 1446
+            }
+          },
+          "maxDeviation": 5.46229728115577e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000043,
+              "rearTrackMeters": 1.4799999999999802,
+              "wheelbaseMeters": 2.569999999999987,
+              "frontTyreWidthMeters": 0.18500000000002265,
+              "rearTyreWidthMeters": 0.18500000000001343
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.495,
+              "rearTrackMeters": 1.480000000000004,
+              "wheelbaseMeters": 2.570000000000002,
+              "frontTyreWidthMeters": 0.1849999999999859,
+              "rearTyreWidthMeters": 0.18500000000001682
+            }
+          }
+        },
+        "2": {
+          "offsetMeters": [
+            -1.677,
+            1.976
+          ],
+          "raw": {
+            "seconds": 6,
+            "maxMeters": 2.548,
+            "samples": 1446
+          },
+          "registered": {
+            "seconds": 0.1,
+            "maxMeters": 0.149,
+            "samples": 1446
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 6,
+              "maxBeyondLimitMeters": 2.551,
+              "samples": 1446
+            },
+            "registered": {
+              "secondsBeyondLimit": 0.1,
+              "maxBeyondLimitMeters": 0.153,
+              "samples": 1446
+            }
+          },
+          "maxDeviation": 5.595524044110789e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000114,
+              "rearTrackMeters": 1.4799999999999982,
+              "wheelbaseMeters": 2.5700000000000083,
+              "frontTyreWidthMeters": 0.18500000000001743,
+              "rearTyreWidthMeters": 0.18500000000000588
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000134,
+              "rearTrackMeters": 1.4800000000000073,
+              "wheelbaseMeters": 2.5699999999999896,
+              "frontTyreWidthMeters": 0.1850000000000086,
+              "rearTyreWidthMeters": 0.18499999999998287
+            }
+          }
+        },
+        "3": {
+          "offsetMeters": [
+            -1.638,
+            1.75
+          ],
+          "raw": {
+            "seconds": 3.6,
+            "maxMeters": 2.232,
+            "samples": 1414
+          },
+          "registered": {
+            "seconds": 0.3,
+            "maxMeters": 0.176,
+            "samples": 1414
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 3.6,
+              "maxBeyondLimitMeters": 2.233,
+              "samples": 1414
+            },
+            "registered": {
+              "secondsBeyondLimit": 0.3,
+              "maxBeyondLimitMeters": 0.177,
+              "samples": 1414
+            }
+          },
+          "maxDeviation": 5.684341886080802e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999934,
+              "rearTrackMeters": 1.4799999999999986,
+              "wheelbaseMeters": 2.5699999999999945,
+              "frontTyreWidthMeters": 0.18499999999999298,
+              "rearTyreWidthMeters": 0.18500000000000852
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000068,
+              "rearTrackMeters": 1.4800000000000106,
+              "wheelbaseMeters": 2.569999999999997,
+              "frontTyreWidthMeters": 0.1850000000000074,
+              "rearTyreWidthMeters": 0.18499999999999484
+            }
+          },
+          "keyTimes": {
+            "18": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 4.159220366826422,
+                  "limitGap": 4.159220366826422,
+                  "station": 911,
+                  "point": [
+                    735.277043085934,
+                    -507.06778052236825
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 9.080961637434344,
+                  "limitGap": 5.834873032651175,
+                  "station": 908.8175395525677,
+                  "point": [
+                    736.1702472213407,
+                    -508.48832310888105
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 4.1195342994902235,
+                  "limitGap": 4.1195342994902235,
+                  "station": 907.0804024763012,
+                  "point": [
+                    733.0979539650515,
+                    -508.3940584872131
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 9.182630693036979,
+                  "limitGap": 5.784035733045642,
+                  "station": 906,
+                  "point": [
+                    733.9615543094557,
+                    -509.8172570839373
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 1.789034800831261,
+                  "limitGap": 1.789034800831261,
+                  "station": 910.5,
+                  "point": [
+                    733.6382524790776,
+                    -505.318259592985
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 11.45173454298724,
+                  "limitGap": 3.4665627837748842,
+                  "station": 908.1004636798118,
+                  "point": [
+                    734.5316750700821,
+                    -506.7386686944553
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 1.7603965724571862,
+                  "limitGap": 1.7603965724571862,
+                  "station": 906.462762938607,
+                  "point": [
+                    731.4605199302807,
+                    -506.6437166400218
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 11.549630995946298,
+                  "limitGap": 3.422518981336452,
+                  "station": 905.6354444894235,
+                  "point": [
+                    732.3243511023413,
+                    -508.06677427493753
+                  ]
+                }
+              }
+            },
+            "22": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 12.525694647427907,
+                  "limitGap": 2.141196850192379,
+                  "station": 989.459457039636,
+                  "point": [
+                    746.1649412852081,
+                    -432.1300606188191
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 0.46468151726430446,
+                  "limitGap": 0.46468151726430446,
+                  "station": 989.548066245978,
+                  "point": [
+                    747.8139715053458,
+                    -431.811570370755
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.66683732166985,
+                  "limitGap": 2.045723274287504,
+                  "station": 986.9058225139636,
+                  "point": [
+                    746.6484504433713,
+                    -434.64277960196193
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.3824182273563704,
+                  "limitGap": 0.3824182273563704,
+                  "station": 987.0032134619125,
+                  "point": [
+                    748.2832373161812,
+                    -434.3295766085772
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 11.138210043552892,
+                  "limitGap": 3.5377422382559907,
+                  "station": 991.4152013451973,
+                  "point": [
+                    744.5269246919363,
+                    -430.37997767424065
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 1.8602421817453536,
+                  "limitGap": 1.8602421817453536,
+                  "station": 991.5351387832468,
+                  "point": [
+                    746.1759623812028,
+                    -430.06151752540296
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 11.279334281728321,
+                  "limitGap": 3.3887243488066696,
+                  "station": 988.8578438733226,
+                  "point": [
+                    745.0104595883123,
+                    -432.89283251548795
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 1.7258545602626723,
+                  "limitGap": 1.7258545602626723,
+                  "station": 988.9648301389051,
+                  "point": [
+                    746.6452538886548,
+                    -432.5796594849818
+                  ]
+                }
+              }
+            },
+            "55": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": -2.083762475060451,
+                  "limitGap": -2.083762475060451,
+                  "station": 2091.012678284302,
+                  "point": [
+                    278.2739096172711,
+                    156.141553427196
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 15.27521105879999,
+                  "limitGap": -0.4058985114955125,
+                  "station": 2091.0676954296014,
+                  "point": [
+                    276.90648550713826,
+                    157.11426839454523
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": -2.0319746531911,
+                  "limitGap": -2.0319746531911,
+                  "station": 2088.451449827383,
+                  "point": [
+                    279.7546893285992,
+                    158.24394092959116
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 15.24928740497016,
+                  "limitGap": -0.3689839835261396,
+                  "station": 2088.50188000336,
+                  "point": [
+                    278.396380385155,
+                    159.20373484786495
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 0.27285877234697825,
+                  "limitGap": 0.27285877234697825,
+                  "station": 2090.5749264989954,
+                  "point": [
+                    276.63592202633413,
+                    157.89154406976564
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 12.920922922227604,
+                  "limitGap": 1.9507657992457026,
+                  "station": 2090.6409883435517,
+                  "point": [
+                    275.2684784835754,
+                    158.86428535133697
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 0.3228790397687746,
+                  "limitGap": 0.3228790397687746,
+                  "station": 2088.00431039298,
+                  "point": [
+                    278.1166962603456,
+                    159.99392408192705
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 12.895596342753631,
+                  "limitGap": 1.9859006443332652,
+                  "station": 2088.090897243657,
+                  "point": [
+                    276.75836806790863,
+                    160.9537440961677
+                  ]
+                }
+              }
+            },
+            "76": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 10.700696677999904,
+                  "limitGap": 4.129713486644143,
+                  "station": 2831.103091487592,
+                  "point": [
+                    -24.897382923995586,
+                    699.9443471434066
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 2.450304477832679,
+                  "limitGap": 2.450304477832679,
+                  "station": 2830.848346343464,
+                  "point": [
+                    -23.879416171098743,
+                    701.28021420435
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 10.671175828749355,
+                  "limitGap": 4.175263640642009,
+                  "station": 2828.150948843016,
+                  "point": [
+                    -22.85159546715723,
+                    698.3905275615903
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 2.5116199632780747,
+                  "limitGap": 2.5116199632780747,
+                  "station": 2828.331844200873,
+                  "point": [
+                    -21.841211704420367,
+                    699.7133286881542
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 11.120971261255141,
+                  "limitGap": 3.684876997706618,
+                  "station": 2833.38320230033,
+                  "point": [
+                    -26.535397695387847,
+                    701.6943623144166
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 2.0053912727190504,
+                  "limitGap": 2.0053912727190504,
+                  "station": 2833.1920202008873,
+                  "point": [
+                    -25.51741320885941,
+                    703.0302080570806
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 11.102767183633501,
+                  "limitGap": 3.7289291578544668,
+                  "station": 2830.9086623850676,
+                  "point": [
+                    -24.489598354617552,
+                    700.140533617065
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 2.064536113598046,
+                  "limitGap": 2.064536113598046,
+                  "station": 2830.636913539992,
+                  "point": [
+                    -23.479197007807134,
+                    701.4633136089388
+                  ]
+                }
+              }
+            },
+            "84": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 8.329247767318293,
+                  "limitGap": 6.4422215672934255,
+                  "station": 3022.728695533496,
+                  "point": [
+                    -161.33303597823655,
+                    736.9384343740063
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 4.785300043797953,
+                  "limitGap": 4.785300043797953,
+                  "station": 3022.1972983971523,
+                  "point": [
+                    -162.97066277132743,
+                    737.307609964976
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 7.791102851595281,
+                  "limitGap": 6.7969029722374446,
+                  "station": 3019.9509645792978,
+                  "point": [
+                    -160.7980368329437,
+                    739.4591027811141
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 5.150937559889056,
+                  "limitGap": 5.150937559889056,
+                  "station": 3019.349453697876,
+                  "point": [
+                    -162.42481966776492,
+                    739.810376078039
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 9.979671967555555,
+                  "limitGap": 4.6852130075225,
+                  "station": 3020.7598795883664,
+                  "point": [
+                    -162.97112232633447,
+                    738.688383489631
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 3.024769375221214,
+                  "limitGap": 3.024769375221214,
+                  "station": 3020.161626745351,
+                  "point": [
+                    -164.60860573233572,
+                    739.0575246293099
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 9.400905816329535,
+                  "limitGap": 5.062938970799436,
+                  "station": 3018.3141286334767,
+                  "point": [
+                    -162.43609317231528,
+                    741.2091883691252
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 3.422973356867335,
+                  "limitGap": 3.422973356867335,
+                  "station": 3017.9677252056995,
+                  "point": [
+                    -164.06273401928715,
+                    741.5604267100692
+                  ]
+                }
+              }
+            },
+            "85": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 10.50714163419525,
+                  "limitGap": 4.33792716503053,
+                  "station": 3040.211176310785,
+                  "point": [
+                    -168.0802536857317,
+                    722.3888460654381
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 2.6594303493846723,
+                  "limitGap": 2.6594303493846723,
+                  "station": 3040.0937181501986,
+                  "point": [
+                    -169.4258161999611,
+                    723.3927142739135
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 10.29450657492524,
+                  "limitGap": 4.49588168801085,
+                  "station": 3037.174925065743,
+                  "point": [
+                    -166.57071747126795,
+                    724.4793494212585
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 2.847041752317271,
+                  "limitGap": 2.847041752317271,
+                  "station": 3037.135251327721,
+                  "point": [
+                    -167.91823219823,
+                    725.4572694391754
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 12.854547993345406,
+                  "limitGap": 1.9936659829588605,
+                  "station": 3039.220455009915,
+                  "point": [
+                    -169.71814655957374,
+                    724.1389879226608
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 0.31653131897550346,
+                  "limitGap": 0.31653131897550346,
+                  "station": 3039.4677228023183,
+                  "point": [
+                    -171.06370269650387,
+                    725.1428762590626
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.554458561865246,
+                  "limitGap": 2.2415929543712965,
+                  "station": 3036.382652465852,
+                  "point": [
+                    -168.20883189261,
+                    726.2291862182188
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.6093047736675382,
+                  "limitGap": 0.6093047736675382,
+                  "station": 3036.2506219351117,
+                  "point": [
+                    -169.5563384065032,
+                    727.2071287998432
+                  ]
+                }
+              }
+            },
+            "97": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 1.0677843754976775,
+                  "limitGap": 1.0677843754976775,
+                  "station": 3307.238293197682,
+                  "point": [
+                    -348.01467185192246,
+                    601.1776251946097
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 12.114124091854194,
+                  "limitGap": 2.745096978848504,
+                  "station": 3304.7566388763717,
+                  "point": [
+                    -349.57194586685495,
+                    600.551453439905
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 0.9680726474402135,
+                  "limitGap": 0.9680726474402135,
+                  "station": 3304.344246496017,
+                  "point": [
+                    -348.9474445326057,
+                    603.5602430754781
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 12.226747576677033,
+                  "limitGap": 2.63257192234747,
+                  "station": 3302.592293023417,
+                  "point": [
+                    -350.4994247012217,
+                    602.9585774897781
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 1.858728948456671,
+                  "limitGap": 1.858728948456671,
+                  "station": 3304.7192880177176,
+                  "point": [
+                    -349.65270722850454,
+                    602.9275993440292
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 11.317967994183377,
+                  "limitGap": 3.5370569000894028,
+                  "station": 3302.8312692972036,
+                  "point": [
+                    -351.2099748079425,
+                    602.3016448944575
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 1.927141759782955,
+                  "limitGap": 1.927141759782955,
+                  "station": 3301.705821655387,
+                  "point": [
+                    -350.58541582494945,
+                    605.3100531839513
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 11.26029367804623,
+                  "limitGap": 3.587299956744394,
+                  "station": 3299.7212866720947,
+                  "point": [
+                    -352.13738909120815,
+                    604.7086017773329
+                  ]
+                }
+              }
+            },
+            "122": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 10.86553562033781,
+                  "limitGap": 4.265913100036907,
+                  "station": 3928.0684977374513,
+                  "point": [
+                    -465.6180020753381,
+                    427.7131615059862
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 2.5905922660096454,
+                  "limitGap": 2.5905922660096454,
+                  "station": 3928.082486990119,
+                  "point": [
+                    -466.7455343132377,
+                    426.469771120068
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 10.68385180532984,
+                  "limitGap": 4.490651705307137,
+                  "station": 3925.5084585280824,
+                  "point": [
+                    -467.519896573641,
+                    429.4380892126583
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 2.834051693245696,
+                  "limitGap": 2.834051693245696,
+                  "station": 3925.592361323493,
+                  "point": [
+                    -468.6409132902179,
+                    428.2089573602136
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 10.501064196976094,
+                  "limitGap": 4.669874773228281,
+                  "station": 3925.7004471674168,
+                  "point": [
+                    -467.2560149430559,
+                    429.46313141188915
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 2.998036772817326,
+                  "limitGap": 2.998036772817326,
+                  "station": 3925.7908910588394,
+                  "point": [
+                    -468.38351970406484,
+                    428.21979962549915
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 10.319379929319071,
+                  "limitGap": 4.836399679351611,
+                  "station": 3923.1404055439784,
+                  "point": [
+                    -469.1579110590429,
+                    431.1880609662896
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 3.176081538402488,
+                  "limitGap": 3.176081538402488,
+                  "station": 3923.135016838597,
+                  "point": [
+                    -470.2789005462711,
+                    429.95898719524826
+                  ]
+                }
+              }
+            },
+            "132": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 12.529291411377862,
+                  "limitGap": 2.7490529195244675,
+                  "station": 4272.5155485619125,
+                  "point": [
+                    -196.34928164623972,
+                    211.88221234690798
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 1.0700077219707498,
+                  "limitGap": 1.0700077219707498,
+                  "station": 4273.268249652498,
+                  "point": [
+                    -197.3936221337255,
+                    210.56727403556616
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.547206199235392,
+                  "limitGap": 2.7228825196981763,
+                  "station": 4271.387214881586,
+                  "point": [
+                    -198.3650927594305,
+                    213.475595170267
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 1.0586761590535696,
+                  "limitGap": 1.0586761590535696,
+                  "station": 4270.710728866271,
+                  "point": [
+                    -199.4008931790811,
+                    212.17301764696802
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 12.178404321331596,
+                  "limitGap": 3.0809447794445743,
+                  "station": 4271.5,
+                  "point": [
+                    -197.9872850151632,
+                    213.6322081102964
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 1.401760849088885,
+                  "limitGap": 1.401760849088885,
+                  "station": 4270.909304110387,
+                  "point": [
+                    -199.031618764802,
+                    212.3172782721777
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.371445727571931,
+                  "limitGap": 3.0615107583689247,
+                  "station": 4267.824990793039,
+                  "point": [
+                    -200.0030960982798,
+                    215.2255909714755
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 1.3973143200704654,
+                  "limitGap": 1.3973143200704654,
+                  "station": 4268.338364061471,
+                  "point": [
+                    -201.0388898402318,
+                    213.92302184575954
+                  ]
+                }
+              }
+            },
+            "107.6": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 11.809347059620654,
+                  "limitGap": 3.293459608363387,
+                  "station": 3571.3399238798174,
+                  "point": [
+                    -288.43235254547096,
+                    410.5538425796465
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 1.6303851400830525,
+                  "limitGap": 1.6303851400830525,
+                  "station": 3570.6963073793654,
+                  "point": [
+                    -288.3268564698172,
+                    412.22902507941507
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 11.489264616107725,
+                  "limitGap": 3.529960702784384,
+                  "station": 3568.4369314004884,
+                  "point": [
+                    -285.858044124148,
+                    410.42769347291295
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 1.8730495024017868,
+                  "limitGap": 1.8730495024017868,
+                  "station": 3567,
+                  "point": [
+                    -285.7739373764281,
+                    412.090133267488
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 13.435602153770052,
+                  "limitGap": 1.5236521888130214,
+                  "station": 3573.864707387,
+                  "point": [
+                    -290.0701526370102,
+                    412.3038435850372
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -0.154751044483465,
+                  "limitGap": -0.154751044483465,
+                  "station": 3573.013616499701,
+                  "point": [
+                    -289.9647898520566,
+                    413.97901029652877
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 13.389459245115399,
+                  "limitGap": 1.7355381170301414,
+                  "station": 3569.6952766174313,
+                  "point": [
+                    -287.49611235774756,
+                    412.1777082458918
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.07889329995303761,
+                  "limitGap": 0.07889329995303761,
+                  "station": 3569.0687167569413,
+                  "point": [
+                    -287.4121356690499,
+                    413.84013227200484
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "4": {
+          "offsetMeters": [
+            -1.777,
+            1.735
+          ],
+          "raw": {
+            "seconds": 5.5,
+            "maxMeters": 1.666,
+            "samples": 1438
+          },
+          "registered": {
+            "seconds": 0.4,
+            "maxMeters": 0.136,
+            "samples": 1438
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 5.5,
+              "maxBeyondLimitMeters": 1.666,
+              "samples": 1438
+            },
+            "registered": {
+              "secondsBeyondLimit": 0.4,
+              "maxBeyondLimitMeters": 0.136,
+              "samples": 1438
+            }
+          },
+          "maxDeviation": 4.374278717023117e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999912,
+              "rearTrackMeters": 1.4799999999999986,
+              "wheelbaseMeters": 2.5700000000000087,
+              "frontTyreWidthMeters": 0.1849999999999927,
+              "rearTyreWidthMeters": 0.18500000000000177
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999934,
+              "rearTrackMeters": 1.4800000000000046,
+              "wheelbaseMeters": 2.56999999999999,
+              "frontTyreWidthMeters": 0.18500000000000894,
+              "rearTyreWidthMeters": 0.18499999999999325
+            }
+          }
+        }
+      }
+    },
+    "fuji_aim_2020_07_30": {
+      "surface": "dry",
+      "laps": {
+        "1": {
+          "offsetMeters": [
+            -0.084,
+            -2.783
+          ],
+          "raw": {
+            "seconds": 10.8,
+            "maxMeters": 2.976,
+            "samples": 1336
+          },
+          "registered": {
+            "seconds": 1.2,
+            "maxMeters": 0.313,
+            "samples": 1336
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 10.8,
+              "maxBeyondLimitMeters": 2.979,
+              "samples": 1336
+            },
+            "registered": {
+              "secondsBeyondLimit": 1.2,
+              "maxBeyondLimitMeters": 0.314,
+              "samples": 1336
+            }
+          },
+          "maxDeviation": 5.3665405452818504e-14,
+          "smoothBoundaryCheck": 0.00005232893238105163,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000065,
+              "rearTrackMeters": 1.4800000000000069,
+              "wheelbaseMeters": 2.5700000000000056,
+              "frontTyreWidthMeters": 0.18500000000000366,
+              "rearTyreWidthMeters": 0.18500000000001263
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000043,
+              "rearTrackMeters": 1.4799999999999947,
+              "wheelbaseMeters": 2.5699999999999945,
+              "frontTyreWidthMeters": 0.1850000000000099,
+              "rearTyreWidthMeters": 0.18500000000000763
+            }
+          }
+        },
+        "2": {
+          "offsetMeters": [
+            -0.432,
+            -2.612
+          ],
+          "raw": {
+            "seconds": 9.3,
+            "maxMeters": 2.605,
+            "samples": 1318
+          },
+          "registered": {
+            "seconds": 1.9,
+            "maxMeters": 0.582,
+            "samples": 1318
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 9.3,
+              "maxBeyondLimitMeters": 2.605,
+              "samples": 1318
+            },
+            "registered": {
+              "secondsBeyondLimit": 1.9,
+              "maxBeyondLimitMeters": 0.583,
+              "samples": 1318
+            }
+          },
+          "maxDeviation": 3.375077994860476e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999894,
+              "rearTrackMeters": 1.480000000000013,
+              "wheelbaseMeters": 2.570000000000011,
+              "frontTyreWidthMeters": 0.18500000000000819,
+              "rearTyreWidthMeters": 0.18500000000000968
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000054,
+              "rearTrackMeters": 1.4799999999999947,
+              "wheelbaseMeters": 2.5700000000000176,
+              "frontTyreWidthMeters": 0.18499999999997946,
+              "rearTyreWidthMeters": 0.18500000000001218
+            }
+          }
+        },
+        "3": {
+          "offsetMeters": [
+            -0.329,
+            -2.511
+          ],
+          "raw": {
+            "seconds": 9.8,
+            "maxMeters": 2.088,
+            "samples": 1318
+          },
+          "registered": {
+            "seconds": 0.5,
+            "maxMeters": 0.288,
+            "samples": 1318
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 9.8,
+              "maxBeyondLimitMeters": 2.09,
+              "samples": 1318
+            },
+            "registered": {
+              "secondsBeyondLimit": 0.5,
+              "maxBeyondLimitMeters": 0.288,
+              "samples": 1318
+            }
+          },
+          "maxDeviation": 4.912736883966318e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999932,
+              "rearTrackMeters": 1.48000000000001,
+              "wheelbaseMeters": 2.570000000000002,
+              "frontTyreWidthMeters": 0.18499999999999436,
+              "rearTyreWidthMeters": 0.1850000000000102
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000054,
+              "rearTrackMeters": 1.480000000000001,
+              "wheelbaseMeters": 2.5699999999999994,
+              "frontTyreWidthMeters": 0.1850000000000158,
+              "rearTyreWidthMeters": 0.18499999999998706
+            }
+          }
+        },
+        "4": {
+          "offsetMeters": [
+            -0.031,
+            -3.034
+          ],
+          "raw": {
+            "seconds": 9.5,
+            "maxMeters": 3.104,
+            "samples": 1308
+          },
+          "registered": {
+            "seconds": 1.5,
+            "maxMeters": 0.488,
+            "samples": 1308
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 9.5,
+              "maxBeyondLimitMeters": 3.103,
+              "samples": 1308
+            },
+            "registered": {
+              "secondsBeyondLimit": 1.5,
+              "maxBeyondLimitMeters": 0.488,
+              "samples": 1308
+            }
+          },
+          "maxDeviation": 5.0931481254679056e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999954,
+              "rearTrackMeters": 1.4799999999999933,
+              "wheelbaseMeters": 2.570000000000011,
+              "frontTyreWidthMeters": 0.18500000000001332,
+              "rearTyreWidthMeters": 0.18500000000000874
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.494999999999985,
+              "rearTrackMeters": 1.4799999999999986,
+              "wheelbaseMeters": 2.570000000000009,
+              "frontTyreWidthMeters": 0.18499999999999653,
+              "rearTyreWidthMeters": 0.1849999999999954
+            }
+          }
+        },
+        "5": {
+          "offsetMeters": [
+            -0.298,
+            -2.558
+          ],
+          "raw": {
+            "seconds": 7.4,
+            "maxMeters": 1.605,
+            "samples": 1308
+          },
+          "registered": {
+            "seconds": 0.6,
+            "maxMeters": 0.086,
+            "samples": 1308
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 7.4,
+              "maxBeyondLimitMeters": 1.608,
+              "samples": 1308
+            },
+            "registered": {
+              "secondsBeyondLimit": 0.6,
+              "maxBeyondLimitMeters": 0.083,
+              "samples": 1308
+            }
+          },
+          "maxDeviation": 7.105427357601002e-15,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999986,
+              "rearTrackMeters": 1.4800000000000004,
+              "wheelbaseMeters": 2.5699999999999954,
+              "frontTyreWidthMeters": 0.1849999999999893,
+              "rearTyreWidthMeters": 0.18500000000001887
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4950000000000063,
+              "rearTrackMeters": 1.4799999999999893,
+              "wheelbaseMeters": 2.5700000000000114,
+              "frontTyreWidthMeters": 0.18499999999998643,
+              "rearTyreWidthMeters": 0.1850000000000093
+            }
+          },
+          "keyTimes": {
+            "72": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 14.582386426608181,
+                  "limitGap": 1.1754101222831892,
+                  "station": 2897.47473052114,
+                  "point": [
+                    -76.58898322320432,
+                    742.0379991724926
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -1.3683441576155586,
+                  "limitGap": -0.5041205622058942,
+                  "station": 2897.4806300507594,
+                  "point": [
+                    -75.61958741024102,
+                    743.4095412319006
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 14.619116863213502,
+                  "limitGap": 1.159437404406062,
+                  "station": 2894.8839937954717,
+                  "point": [
+                    -74.48807284188135,
+                    740.5594902059299
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": -1.3929178576652392,
+                  "limitGap": -0.5051090644749134,
+                  "station": 2894.9127380198415,
+                  "point": [
+                    -73.52585831236559,
+                    741.917753387248
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 12.336771890009919,
+                  "limitGap": 3.4343185963971363,
+                  "station": 2896.1940168031406,
+                  "point": [
+                    -76.88698279829127,
+                    739.4799982116992
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 0.8724732046273207,
+                  "limitGap": 1.7548138396627253,
+                  "station": 2896.236822226871,
+                  "point": [
+                    -75.91758931215769,
+                    740.8515432385857
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.373340767460167,
+                  "limitGap": 3.424894299100073,
+                  "station": 2893.646785866218,
+                  "point": [
+                    -74.78607095086343,
+                    738.0014882128511
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.8403178261743605,
+                  "limitGap": 1.7605027154906403,
+                  "station": 2893.701373042043,
+                  "point": [
+                    -73.82385872637992,
+                    739.3597543344351
+                  ]
+                }
+              }
+            },
+            "17.2": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": -1.9493996896309906,
+                  "limitGap": -1.2725068851852477,
+                  "station": 905.3421078485824,
+                  "point": [
+                    728.779068082647,
+                    -503.99494862762566
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 15.190721542609861,
+                  "limitGap": 0.4053737726019484,
+                  "station": 903.2614965273516,
+                  "point": [
+                    729.4924097588215,
+                    -505.5140961928494
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": -1.7842025586914807,
+                  "limitGap": -1.211991461484283,
+                  "station": 900.6830352976444,
+                  "point": [
+                    726.456776410587,
+                    -505.0477482679384
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 15.060791893230961,
+                  "limitGap": 0.43850086454098397,
+                  "station": 900.0706277167994,
+                  "point": [
+                    727.1424478487831,
+                    -506.56467411174395
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 0.23191873614875094,
+                  "limitGap": 0.8665905060798264,
+                  "station": 902.9270972107848,
+                  "point": [
+                    728.4822217656922,
+                    -506.55243416275937
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 12.944814424004221,
+                  "limitGap": 2.543391807605807,
+                  "station": 901.5939374403187,
+                  "point": [
+                    729.1952646247184,
+                    -508.0717064395055
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 0.5743704443070728,
+                  "limitGap": 1.1776360402665293,
+                  "station": 899.5489214360326,
+                  "point": [
+                    726.1579298021439,
+                    -507.6061342647733
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 12.758013062631093,
+                  "limitGap": 2.8172200309098154,
+                  "station": 898.7346892611142,
+                  "point": [
+                    726.843285908284,
+                    -509.12319233311933
+                  ]
+                }
+              }
+            },
+            "33.3": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 13.852165965125838,
+                  "limitGap": 1.4239871581307737,
+                  "station": 1456.297202575199,
+                  "point": [
+                    494.78620024177854,
+                    -48.3957972625696
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -0.7465970506339186,
+                  "limitGap": -0.2521212348923143,
+                  "station": 1458.331127186364,
+                  "point": [
+                    496.4414991528248,
+                    -48.11282605420441
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 13.924732599919581,
+                  "limitGap": 1.476136234033847,
+                  "station": 1452.018272963812,
+                  "point": [
+                    495.24195656531913,
+                    -50.92963588575987
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": -0.7470113499137037,
+                  "limitGap": -0.177418894742566,
+                  "station": 1454.2987133904069,
+                  "point": [
+                    496.88110128200964,
+                    -50.64009599751639
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 13.185710089032659,
+                  "limitGap": 2.2079295291139185,
+                  "station": 1453.729109273722,
+                  "point": [
+                    494.48821274244887,
+                    -50.95379788793967
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -0.02476214302959943,
+                  "limitGap": 0.5381948389684396,
+                  "station": 1454.5885490118264,
+                  "point": [
+                    496.1434815008062,
+                    -50.670796310291955
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.904852863757089,
+                  "limitGap": 2.6419063848826276,
+                  "station": 1449.9674985344188,
+                  "point": [
+                    494.9439740940166,
+                    -53.48766554828594
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.4409250690617434,
+                  "limitGap": 1.0331703863209902,
+                  "station": 1450.6012996363418,
+                  "point": [
+                    496.5830889046605,
+                    -53.198095453532716
+                  ]
+                }
+              }
+            },
+            "52.6": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 19.791652107515507,
+                  "limitGap": 0.07011904790920888,
+                  "station": 2142.7184154603056,
+                  "point": [
+                    232.2149477725124,
+                    136.08828033491466
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -2.2700273569847025,
+                  "limitGap": -1.605207790175945,
+                  "station": 2147.149857622204,
+                  "point": [
+                    232.20396418991746,
+                    137.76357121886434
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 18.686498755925413,
+                  "limitGap": 0.14988935244098572,
+                  "station": 2140,
+                  "point": [
+                    234.7908728162791,
+                    136.13328500584174
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": -2.1149147213540798,
+                  "limitGap": -1.4803274099983124,
+                  "station": 2141.026376894779,
+                  "point": [
+                    234.76736468279233,
+                    137.79386663771857
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 17.552095663702822,
+                  "limitGap": 2.627674689845282,
+                  "station": 2144.7433385526247,
+                  "point": [
+                    231.91694278536502,
+                    133.53027383963638
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 0.27660029894699,
+                  "limitGap": 0.952640458999508,
+                  "station": 2147.6905270456086,
+                  "point": [
+                    231.9059711840979,
+                    135.20557774354918
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 16.54250317960498,
+                  "limitGap": 2.666951007693273,
+                  "station": 2141.337653538974,
+                  "point": [
+                    234.49286586910787,
+                    133.57527853752464
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.3835042131675032,
+                  "limitGap": 1.0090912160519303,
+                  "station": 2143.7419574400906,
+                  "point": [
+                    234.46936962293051,
+                    135.23587307662913
+                  ]
+                }
+              }
+            },
+            "79.6": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 15.530480939981548,
+                  "limitGap": 0.3643937094955276,
+                  "station": 3055.9047009130786,
+                  "point": [
+                    -181.72169269794213,
+                    717.3005850227909
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -1.9945001622817176,
+                  "limitGap": -1.312746848787672,
+                  "station": 3058.046714268729,
+                  "point": [
+                    -182.38795831706335,
+                    718.8418919139702
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 15.398168463943327,
+                  "limitGap": 0.5144563536012625,
+                  "station": 3052.6377229286027,
+                  "point": [
+                    -179.37068031498364,
+                    718.3370406316825
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": -2.047752776321384,
+                  "limitGap": -1.1316266040510117,
+                  "station": 3054.1857706733053,
+                  "point": [
+                    -180.04043046470917,
+                    719.8607688311499
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 13.248468863880278,
+                  "limitGap": 2.69284481994266,
+                  "station": 3058.3661624389924,
+                  "point": [
+                    -182.0200540407506,
+                    714.7424446496626
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 0.25871451436466436,
+                  "limitGap": 1.033068052836311,
+                  "station": 3059.6624009283414,
+                  "point": [
+                    -182.6862121536316,
+                    716.2837631826278
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 13.273334249156449,
+                  "limitGap": 2.599088473408788,
+                  "station": 3054.6689058576158,
+                  "point": [
+                    -179.66842478718044,
+                    715.7791699478553
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.12544598106089777,
+                  "limitGap": 0.9429238136914301,
+                  "station": 3056.253506942827,
+                  "point": [
+                    -180.33807081313563,
+                    717.3029086194477
+                  ]
+                }
+              }
+            },
+            "98.4": {
+              "raw": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 15.450480401228713,
+                  "limitGap": 0.22941387665884183,
+                  "station": 3572.242907648083,
+                  "point": [
+                    -288.66322290400683,
+                    414.2108540502851
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": -2.048506568333149,
+                  "limitGap": -1.4458176611669382,
+                  "station": 3571.188972999026,
+                  "point": [
+                    -288.727363481781,
+                    415.888344133683
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 15.403813841267244,
+                  "limitGap": 0.2236736519777392,
+                  "station": 3568.2768560954128,
+                  "point": [
+                    -286.09110719354203,
+                    414.34145774290533
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": -2.0488929651056353,
+                  "limitGap": -1.4261256678956624,
+                  "station": 3566.93391303888,
+                  "point": [
+                    -286.1730413181119,
+                    416.0040112727009
+                  ]
+                }
+              },
+              "registered": {
+                "frontLeft": {
+                  "side": "right",
+                  "roadGap": 12.87876744074926,
+                  "limitGap": 2.794369162493677,
+                  "station": 3572.6416369965536,
+                  "point": [
+                    -288.96165067356253,
+                    411.65284420170866
+                  ]
+                },
+                "frontRight": {
+                  "side": "left",
+                  "roadGap": 0.48889970160900637,
+                  "limitGap": 1.1194462560970488,
+                  "station": 3571.5502716827905,
+                  "point": [
+                    -289.0256321268325,
+                    413.3303205269424
+                  ]
+                },
+                "rearLeft": {
+                  "side": "right",
+                  "roadGap": 12.892743691873873,
+                  "limitGap": 2.7054947973825563,
+                  "station": 3568.795980869556,
+                  "point": [
+                    -286.3888353916042,
+                    411.7834814116338
+                  ]
+                },
+                "rearRight": {
+                  "side": "left",
+                  "roadGap": 0.5043736910145559,
+                  "limitGap": 1.0465682006199561,
+                  "station": 3567.849909794674,
+                  "point": [
+                    -286.47061670544264,
+                    413.44602105928954
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "6": {
+          "offsetMeters": [
+            -0.316,
+            -2.446
+          ],
+          "raw": {
+            "seconds": 5,
+            "maxMeters": 2.206,
+            "samples": 1211
+          },
+          "registered": {
+            "seconds": 0.8,
+            "maxMeters": 0.179,
+            "samples": 1211
+          },
+          "fitInputSummary": {
+            "raw": {
+              "secondsBeyondLimit": 5,
+              "maxBeyondLimitMeters": 2.207,
+              "samples": 1211
+            },
+            "registered": {
+              "secondsBeyondLimit": 0.8,
+              "maxBeyondLimitMeters": 0.179,
+              "samples": 1211
+            }
+          },
+          "maxDeviation": 3.091971123581061e-14,
+          "smoothBoundaryCheck": null,
+          "dimensions": {
+            "registered": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.4949999999999872,
+              "rearTrackMeters": 1.4800000000000006,
+              "wheelbaseMeters": 2.5700000000000127,
+              "frontTyreWidthMeters": 0.1850000000000114,
+              "rearTyreWidthMeters": 0.18500000000000996
+            },
+            "raw": {
+              "bodyWidthMeters": 1.695,
+              "frontTrackMeters": 1.495000000000013,
+              "rearTrackMeters": 1.479999999999992,
+              "wheelbaseMeters": 2.5700000000000065,
+              "frontTyreWidthMeters": 0.18499999999999694,
+              "rearTyreWidthMeters": 0.18499999999998276
+            }
+          }
+        }
+      }
+    }
+  },
+  "errors": [],
+  "hud": {
+    "initial": "位置合わせ ON",
+    "offset": "西1.64m・南1.75m",
+    "afterClick": "元GPS",
+    "clickMovedCarBy": [
+      -1.638,
+      1.75
+    ]
+  },
+  "legacyStudyHasRegistration": false,
+  "gpsRawParam": {
+    "offsetMeters": [
+      -1.638,
+      1.75
+    ],
+    "sigmaMeters": [
+      0.048,
+      0.12
+    ],
+    "vehicleWidthMeters": 1.695,
+    "vehicleGeometry": {
+      "id": "mazda2-dj",
+      "bodyWidthMeters": 1.695,
+      "wheelbaseMeters": 2.57,
+      "frontTrackMeters": 1.495,
+      "rearTrackMeters": 1.48,
+      "frontTyreWidthMeters": 0.185,
+      "rearTyreWidthMeters": 0.185
+    },
+    "antennaMeters": null,
+    "verified": true,
+    "inputVerification": {
+      "lap": true,
+      "limits": true,
+      "referenceTrack": true
+    },
+    "enabled": false
+  },
+  "staleInputs": {
+    "limits": {
+      "before": {
+        "offsetMeters": [
+          -1.638,
+          1.75
+        ],
+        "sigmaMeters": [
+          0.048,
+          0.12
+        ],
+        "vehicleWidthMeters": 1.695,
+        "vehicleGeometry": {
+          "id": "mazda2-dj",
+          "bodyWidthMeters": 1.695,
+          "wheelbaseMeters": 2.57,
+          "frontTrackMeters": 1.495,
+          "rearTrackMeters": 1.48,
+          "frontTyreWidthMeters": 0.185,
+          "rearTyreWidthMeters": 0.185
+        },
+        "antennaMeters": null,
+        "verified": false,
+        "inputVerification": {
+          "lap": true,
+          "limits": false,
+          "referenceTrack": true
+        },
+        "enabled": false
+      },
+      "after": {
+        "offsetMeters": [
+          -1.638,
+          1.75
+        ],
+        "sigmaMeters": [
+          0.048,
+          0.12
+        ],
+        "vehicleWidthMeters": 1.695,
+        "vehicleGeometry": {
+          "id": "mazda2-dj",
+          "bodyWidthMeters": 1.695,
+          "wheelbaseMeters": 2.57,
+          "frontTrackMeters": 1.495,
+          "rearTrackMeters": 1.48,
+          "frontTyreWidthMeters": 0.185,
+          "rearTyreWidthMeters": 0.185
+        },
+        "antennaMeters": null,
+        "verified": false,
+        "inputVerification": {
+          "lap": true,
+          "limits": false,
+          "referenceTrack": true
+        },
+        "enabled": false
+      }
+    },
+    "referenceTrack": {
+      "before": {
+        "offsetMeters": [
+          -1.638,
+          1.75
+        ],
+        "sigmaMeters": [
+          0.048,
+          0.12
+        ],
+        "vehicleWidthMeters": 1.695,
+        "vehicleGeometry": {
+          "id": "mazda2-dj",
+          "bodyWidthMeters": 1.695,
+          "wheelbaseMeters": 2.57,
+          "frontTrackMeters": 1.495,
+          "rearTrackMeters": 1.48,
+          "frontTyreWidthMeters": 0.185,
+          "rearTyreWidthMeters": 0.185
+        },
+        "antennaMeters": null,
+        "verified": false,
+        "inputVerification": {
+          "lap": true,
+          "limits": true,
+          "referenceTrack": false
+        },
+        "enabled": false
+      },
+      "after": {
+        "offsetMeters": [
+          -1.638,
+          1.75
+        ],
+        "sigmaMeters": [
+          0.048,
+          0.12
+        ],
+        "vehicleWidthMeters": 1.695,
+        "vehicleGeometry": {
+          "id": "mazda2-dj",
+          "bodyWidthMeters": 1.695,
+          "wheelbaseMeters": 2.57,
+          "frontTrackMeters": 1.495,
+          "rearTrackMeters": 1.48,
+          "frontTyreWidthMeters": 0.185,
+          "rearTyreWidthMeters": 0.185
+        },
+        "antennaMeters": null,
+        "verified": false,
+        "inputVerification": {
+          "lap": true,
+          "limits": true,
+          "referenceTrack": false
+        },
+        "enabled": false
+      }
+    }
+  },
+  "completed": true
+}

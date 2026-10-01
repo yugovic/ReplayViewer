@@ -1,0 +1,20 @@
+{
+  "imageFile": "satellite_shizuoka_4k.webp",
+  "imageWidth": 4007,
+  "imageHeight": 4096,
+  "bbox": {
+    "minLng": 138.91723261,
+    "maxLng": 138.93658159,
+    "minLat": 35.36246909,
+    "maxLat": 35.37859744
+  },
+  "mercator": true,
+  "source": "VIRTUAL SHIZUOKA 2019 LP orthophoto 20 cm (CC BY 4.0, Shizuoka Prefecture)",
+  "sourceUrl": "https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud",
+  "license": "CC BY 4.0 / ODbL",
+  "nominalSourceResolutionMetersPerPixel": 0.2,
+  "effectiveResolutionMetersPerPixel": 0.4384,
+  "coverage": 1.0,
+  "derivedFrom": "satellite_shizuoka.jpg (8014x8192); downscaled to 4096px longest side + WebP q80 for faster startup (P1 optimization 2026-07-23). Base ground texture is mostly hidden under the SR toon corridor near the track; only far surroundings show this image.",
+  "toneEnhanced": "gray-world WB + luminance stretch + CLAHE clarity + LAB saturation (grade_ortho.py); pixel-local only, no geometry change"
+}

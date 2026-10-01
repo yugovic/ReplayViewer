@@ -334,6 +334,34 @@ describe("buildFeatures3dGroup", () => {
     expect(maxY).toBeCloseTo(height - 0.5, 1);
   });
 
+  it("builds a control tower with an antenna mast above the measured height", () => {
+    const height = 15;
+    const tower: Features3DData = {
+      version: 1,
+      origin: { lat: 0, lng: 0, alt: 0 },
+      source: "test",
+      trees: [],
+      buildings: [{ footprint: boxBuilding, height, tags: { building: "control_tower" } }],
+      barriers: [],
+    };
+    const plainBox: Features3DData = { ...tower, buildings: [{ footprint: boxBuilding, height }] };
+
+    // Podium + shaft + glass room + roof + mast → more geometry than one box.
+    expect(buildingMeshVertexCount(tower)).toBeGreaterThan(buildingMeshVertexCount(plainBox));
+
+    // The mast tops out at ~1.25× the tower height; a 15 m measurement is
+    // lifted to the 20 m visual minimum (baseY = -0.5 here).
+    const { maxY } = meshBounds(tower);
+    expect(maxY).toBeCloseTo(20 * 1.25 - 0.5, 1);
+
+    // A tower measured above the minimum keeps its measured height.
+    const tall: Features3DData = {
+      ...tower,
+      buildings: [{ footprint: boxBuilding, height: 30, tags: { building: "control_tower" } }],
+    };
+    expect(meshBounds(tall).maxY).toBeCloseTo(30 * 1.25 - 0.5, 1);
+  });
+
   it("keeps untagged buildings as plain extruded boxes (24 verts)", () => {
     const data: Features3DData = {
       version: 1,

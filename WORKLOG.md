@@ -7,6 +7,16 @@
 
 ---
 
+## 2026-10-01 21:37 — GPS原因追及と精度改善の実施（9/22開始、完了）
+
+- 依頼/目的: 富士CGとGPSのズレの原因を追い、確認できる実装誤差を修正して精度向上施策を完遂する。アンテナは両日共通、車両はMazda2諸元、映像とロガーはおおむね同期というユーザー情報を作業前提とした。追加質問「これらはGit管理か」についても実態を確認した。
+- 2026-09-22 15:30以降の実施順: 変更前データを `artifacts/gps-accuracy-2026-09-22/baseline/` に保存→ラップ端GPSの前後文脈を使う平滑化へ修正→出典とライセンスを記録した静岡県オルソだけで画素中心/局所白線候補を修正→Mazda2車輪寸法を推定/描画に共通化→実道路world境界へのラップ単位位置合わせと配布入力SHA失効検査を追加→動画タイマー/元XRKパケット時計を監査→全10周・半周CV・実Chromeを評価した。Googleタイルは処理していない。
+- 2026-10-01 21:20以降の追加判断: 中心線の最近傍station切替で境界評価が1mmの車両移動に対し約23cm飛ぶ例を確認し、道路/縁石の描画線分への連続距離でPython推定とChrome評価を統一。保存した補正値（小数3桁）で配布JSONの評価値を再算出。全境界からの最近傍距離を総当たり計算した400点監査でも最大誤差は約5.6e-14m。
+- 証拠/結果: ラップ端処理由来変位の最大4.928→0.0316m。補正セッションは7/29（東−1.627,南+1.931）m、7/30（東−0.221,南−2.680）mで差4.821m。全10周の実Chrome道路外超過はwet24.2→3.7秒、dry51.8→6.5秒。半周hold-out 20/20改善、中央値93.6%、最小53.0%のコスト減。同じアンテナ仮定を両日に使う例と両日同じ路面条件でも4m超の日差が残る。これらはトレース道路への整合性であり、真位置誤差や日差の固有原因の証明ではない。映像タイマーとログの同期はおおむね成立したが、カメラ未校正のため独立したメートル級距離真値には使えない。GPS時刻の任意のシフトと時間変動位置補正は証拠不足で不採用。
+- 主な変更/生成ファイル: `pipeline/build_race.py`, `pipeline/register_gps_to_track.py`, `pipeline/test_*.py`, `scripts/quality/build_fuji_cg.py`, `scripts/quality/road_edge_candidates.py`, `scripts/quality/verify-fuji-gps-registration.mjs`, `src/replay/gpsRegistration.ts`, `src/replay/dataLoader.ts`, `public/data/vehicles/mazda2-dj.json`, 富士2レースの`laps.json`/全10lap JSON/`gps_registration.json`, `public/data/tracks/fuji/cg_study/geometry.json`, `docs/fuji-gps-accuracy-improvement-2026-09-22.md`, `docs/policy-gps-cg-alignment-2026-09-20.md`, `docs/README.md`, `docs/viewer.html`, `BACKLOG.md`, `artifacts/gps-accuracy-2026-09-22/`の監査記録とスナップショット。
+- 検証: Python pipeline 33件・道路候補3件、Vitest 48ファイル368件、本番build成功。実Chrome全10周0.1秒刻みの位置/車輪/元GPS切替、ハッシュ失効、ページエラー0、66画面を確認。配布入力SHAと保存補正の評価値を全件再照合し `verification-manifest.json` に保存。DocsViewerライブ版とローカルスナップショット（35 md + 24 html）を再生成した。
+- Git状態/未解決: リポジトリ自体はGit管理。旧ラップJSONや`pipeline/build_race.py`等は追跡済みで変更中だが、新しい文書・登録スクリプト・補正JSON・車両プロファイル・生成`artifacts/`等は未追跡。2026-10-01 21:37の調査完了時点ではステージ/コミットしていない。`artifacts/`には動画由来画像や大きい中間データを含むため一括追加しない。DocsViewerのArtifact再公開はこのCodex環境では対応ツールがなく、既存`.docsviewer-url`先は今回のスナップショットへ更新できていない。絶対精度の確定にはアンテナ実測、カメラ校正、独立測量/高精度GNSSが必要。
+
 ## 2026-07-23 — ランドマークビルダー（グランドスタンド/キャノピー）実装
 
 - ユーザー方針「グランドスタンド風アセットを配置できるビルダー。検討=Fable、

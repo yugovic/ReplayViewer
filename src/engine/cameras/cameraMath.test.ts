@@ -123,3 +123,8 @@ describe("computeTvZoomFov", () => {
     expect(computeTvZoomFov(100000)).toBeGreaterThanOrEqual(TV_ZOOM_MIN_FOV);
   });
 });
+
+it('rotates the cockpit eye with the same yaw as the vehicle',()=>{
+ const heading=Math.PI/2;const state=makeState({heading,forward:new THREE.Vector3(1,0,0),quaternion:new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),heading)});
+ const frame=computeCockpitCameraFrame(state);expect(frame.position.x).toBeCloseTo(-.55);expect(frame.position.z).toBeCloseTo(.28);
+});

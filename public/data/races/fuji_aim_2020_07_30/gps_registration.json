@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "kind": "lap-translation",
+  "status": "track-limit-fit",
+  "raceId": "fuji_aim_2020_07_30",
+  "trackId": "fuji",
+  "frame": "viewer local XZ metres: +x east, +z south; added after latLngToLocal. A non-zero antenna offset is subtracted in the body frame first.",
+  "definition": "Display-only rigid translation per lap. Estimated so the four tyre contact points respect the traced road limits over the whole lap. Raw lat/lng are unchanged. Not a survey.",
+  "method": {
+    "tool": "pipeline/register_gps_to_track.py",
+    "surface": "dry",
+    "curbUse": 1.0,
+    "bufferMeters": 0.0,
+    "vehicleWidthMeters": 1.695,
+    "wheelbaseMeters": 2.57,
+    "vehicleGeometry": {
+      "id": "mazda2-dj",
+      "bodyWidthMeters": 1.695,
+      "wheelbaseMeters": 2.57,
+      "frontTrackMeters": 1.495,
+      "rearTrackMeters": 1.48,
+      "frontTyreWidthMeters": 0.185,
+      "rearTyreWidthMeters": 0.185,
+      "status": "manufacturer-specification-assumption",
+      "source": "https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification_202003.pdf",
+      "provenance": {
+        "basis": "User states the vehicle matches Mazda2 specifications; March 2020 DJ manufacturer dimensions are the working baseline for both 2020 Fuji sessions.",
+        "tyres": "185 mm is the nominal section width of the 185/65R15 and 185/60R16 standard options in the March 2020 specification. 195/55R16 is another listed option. This is not a measured loaded contact patch or confirmed 2020 racing tyre fitment.",
+        "scope": "Only the matching vehicle/laps explicitly carrying this geometry in gps_registration.json use these dimensions.",
+        "limitations": "The March 2020 manufacturer specification does not establish this vehicle's exact grade, wheel offset, installed tyres, or antenna position. Rendered body styling remains a generic proxy."
+      }
+    },
+    "antennaOffsetMeters": {
+      "right": 0.0,
+      "forward": 0.0
+    },
+    "huberDeltaMeters": 0.75,
+    "lapShrink": 1.5,
+    "edgeMedianWindowMeters": 0.0,
+    "boundaryMeasurement": "continuous-nearest-rendered-segment-v1",
+    "pitExcludeBeyondMeters": 4.0
+  },
+  "limits": {
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+  },
+  "referenceTrack": {
+    "source": "public/data/tracks/fuji/track.json",
+    "sha256": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3"
+  },
+  "uncertainty": {
+    "jackknifeMeaning": "Conditional sensitivity to omitting one 250 m block, with the full-data session prior fixed; not independent CV or an absolute position confidence interval.",
+    "absolutePositionAccuracyVerified": false,
+    "antennaPositionMeasured": false
+  },
+  "sessionOffsetMeters": [
+    -0.221,
+    -2.68
+  ],
+  "laps": [
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 1,
+      "dataFile": "osaki_hmr_demio_101_lap_001.json",
+      "dataSha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+      "offsetMeters": [
+        -0.084,
+        -2.783
+      ],
+      "jackknifeSigmaMeters": [
+        0.157,
+        0.191
+      ],
+      "raw": {
+        "secondsBeyondLimit": 10.8,
+        "maxBeyondLimitMeters": 2.979,
+        "samples": 1336
+      },
+      "registered": {
+        "secondsBeyondLimit": 1.2,
+        "maxBeyondLimitMeters": 0.314,
+        "samples": 1336
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 2,
+      "dataFile": "osaki_hmr_demio_101_lap_002.json",
+      "dataSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "offsetMeters": [
+        -0.432,
+        -2.612
+      ],
+      "jackknifeSigmaMeters": [
+        0.293,
+        0.296
+      ],
+      "raw": {
+        "secondsBeyondLimit": 9.3,
+        "maxBeyondLimitMeters": 2.605,
+        "samples": 1318
+      },
+      "registered": {
+        "secondsBeyondLimit": 1.9,
+        "maxBeyondLimitMeters": 0.583,
+        "samples": 1318
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 3,
+      "dataFile": "osaki_hmr_demio_101_lap_003.json",
+      "dataSha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+      "offsetMeters": [
+        -0.329,
+        -2.511
+      ],
+      "jackknifeSigmaMeters": [
+        0.106,
+        0.098
+      ],
+      "raw": {
+        "secondsBeyondLimit": 9.8,
+        "maxBeyondLimitMeters": 2.09,
+        "samples": 1318
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.5,
+        "maxBeyondLimitMeters": 0.288,
+        "samples": 1318
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 4,
+      "dataFile": "osaki_hmr_demio_101_lap_004.json",
+      "dataSha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+      "offsetMeters": [
+        -0.031,
+        -3.034
+      ],
+      "jackknifeSigmaMeters": [
+        0.246,
+        0.377
+      ],
+      "raw": {
+        "secondsBeyondLimit": 9.5,
+        "maxBeyondLimitMeters": 3.103,
+        "samples": 1308
+      },
+      "registered": {
+        "secondsBeyondLimit": 1.5,
+        "maxBeyondLimitMeters": 0.488,
+        "samples": 1308
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 5,
+      "dataFile": "osaki_hmr_demio_101_lap_005.json",
+      "dataSha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+      "offsetMeters": [
+        -0.298,
+        -2.558
+      ],
+      "jackknifeSigmaMeters": [
+        0.086,
+        0.08
+      ],
+      "raw": {
+        "secondsBeyondLimit": 7.4,
+        "maxBeyondLimitMeters": 1.608,
+        "samples": 1308
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.6,
+        "maxBeyondLimitMeters": 0.083,
+        "samples": 1308
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 6,
+      "dataFile": "osaki_hmr_demio_101_lap_006.json",
+      "dataSha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+      "offsetMeters": [
+        -0.316,
+        -2.446
+      ],
+      "jackknifeSigmaMeters": [
+        0.133,
+        0.126
+      ],
+      "raw": {
+        "secondsBeyondLimit": 5.0,
+        "maxBeyondLimitMeters": 2.207,
+        "samples": 1211
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.8,
+        "maxBeyondLimitMeters": 0.179,
+        "samples": 1211
+      }
+    }
+  ]
+}

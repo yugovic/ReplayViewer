@@ -1,0 +1,17 @@
+{
+  "id": "mazda2-dj",
+  "bodyWidthMeters": 1.695,
+  "wheelbaseMeters": 2.570,
+  "frontTrackMeters": 1.495,
+  "rearTrackMeters": 1.480,
+  "frontTyreWidthMeters": 0.185,
+  "rearTyreWidthMeters": 0.185,
+  "status": "manufacturer-specification-assumption",
+  "source": "https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification_202003.pdf",
+  "provenance": {
+    "basis": "User states the vehicle matches Mazda2 specifications; March 2020 DJ manufacturer dimensions are the working baseline for both 2020 Fuji sessions.",
+    "tyres": "185 mm is the nominal section width of the 185/65R15 and 185/60R16 standard options in the March 2020 specification. 195/55R16 is another listed option. This is not a measured loaded contact patch or confirmed 2020 racing tyre fitment.",
+    "scope": "Only the matching vehicle/laps explicitly carrying this geometry in gps_registration.json use these dimensions.",
+    "limitations": "The March 2020 manufacturer specification does not establish this vehicle's exact grade, wheel offset, installed tyres, or antenna position. Rendered body styling remains a generic proxy."
+  }
+}

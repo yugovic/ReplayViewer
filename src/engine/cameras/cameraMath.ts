@@ -19,8 +19,8 @@ export function computeChaseCameraFrame(state: CarCameraState): CameraFrame {
 export function computeCockpitCameraFrame(state: CarCameraState): CameraFrame {
   const cosY = Math.cos(state.heading);
   const sinY = Math.sin(state.heading);
-  const eyeX = COCKPIT_EYE_OFFSET.x * cosY - COCKPIT_EYE_OFFSET.z * sinY;
-  const eyeZ = COCKPIT_EYE_OFFSET.x * sinY + COCKPIT_EYE_OFFSET.z * cosY;
+  const eyeX = COCKPIT_EYE_OFFSET.x * cosY + COCKPIT_EYE_OFFSET.z * sinY;
+  const eyeZ = -COCKPIT_EYE_OFFSET.x * sinY + COCKPIT_EYE_OFFSET.z * cosY;
   const position = state.position.clone().add(new THREE.Vector3(eyeX, COCKPIT_EYE_OFFSET.y, eyeZ));
   const target = position.clone().add(state.forward.clone().multiplyScalar(COCKPIT_LOOK_DISTANCE));
   return { position, target, fov: COCKPIT_FOV };

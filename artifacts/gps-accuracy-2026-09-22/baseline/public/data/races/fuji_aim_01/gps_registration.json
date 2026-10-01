@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "kind": "lap-translation",
+  "status": "track-limit-fit",
+  "raceId": "fuji_aim_01",
+  "trackId": "fuji",
+  "frame": "viewer local XZ metres: +x east, +z south; added after latLngToLocal. A non-zero antenna offset is subtracted in the body frame first.",
+  "definition": "Display-only rigid translation per lap. Estimated so the four tyre contact points respect the traced road limits over the whole lap. Raw lat/lng are unchanged. Not a survey.",
+  "method": {
+    "tool": "pipeline/register_gps_to_track.py",
+    "surface": "wet",
+    "curbUse": 0.0,
+    "bufferMeters": 0.0,
+    "vehicleWidthMeters": 1.7,
+    "wheelbaseMeters": 2.6,
+    "antennaOffsetMeters": {
+      "right": 0.0,
+      "forward": 0.0
+    },
+    "huberDeltaMeters": 0.75,
+    "lapShrink": 1.5,
+    "edgeMedianWindowMeters": 10.0,
+    "pitExcludeBeyondMeters": 4.0
+  },
+  "limits": {
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "sha256": "8de6ce879ac9d3dc3620143e3f62f3d3b1f864b365d86f36173a0b530d94d2c5"
+  },
+  "sessionOffsetMeters": [
+    -1.73,
+    1.761
+  ],
+  "laps": [
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 1,
+      "dataFile": "osaki_hmr_demio_101_lap_001.json",
+      "dataSha256": "5e8347c63c1a449aaac473312f65a3d019d2019e9ff46e314dae4f8c1fa9fc02",
+      "offsetMeters": [
+        -1.223,
+        2.29
+      ],
+      "jackknifeSigmaMeters": [
+        0.785,
+        0.301
+      ],
+      "raw": {
+        "secondsBeyondLimit": 9.8,
+        "maxBeyondLimitMeters": 3.395,
+        "samples": 1446
+      },
+      "registered": {
+        "secondsBeyondLimit": 3.4,
+        "maxBeyondLimitMeters": 0.867,
+        "samples": 1446
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 2,
+      "dataFile": "osaki_hmr_demio_101_lap_002.json",
+      "dataSha256": "f6455e05f4a6bc9b4c93250b9043f7dfb5dfc3bcd58c91efe6dd57f1c1d49028",
+      "offsetMeters": [
+        -1.793,
+        1.814
+      ],
+      "jackknifeSigmaMeters": [
+        0.063,
+        0.024
+      ],
+      "raw": {
+        "secondsBeyondLimit": 6.2,
+        "maxBeyondLimitMeters": 2.562,
+        "samples": 1446
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.2,
+        "maxBeyondLimitMeters": 0.123,
+        "samples": 1446
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 3,
+      "dataFile": "osaki_hmr_demio_101_lap_003.json",
+      "dataSha256": "e1b2c67ea535897349d25ac9a6f78d3f65c9502cadab603076810ad693b0b20b",
+      "offsetMeters": [
+        -1.638,
+        1.58
+      ],
+      "jackknifeSigmaMeters": [
+        0.064,
+        0.081
+      ],
+      "raw": {
+        "secondsBeyondLimit": 4.6,
+        "maxBeyondLimitMeters": 2.332,
+        "samples": 1414
+      },
+      "registered": {
+        "secondsBeyondLimit": 1.3,
+        "maxBeyondLimitMeters": 0.267,
+        "samples": 1414
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 4,
+      "dataFile": "osaki_hmr_demio_101_lap_004.json",
+      "dataSha256": "4102e3d8d472145d2c15ce899510e556d804f06cef1c5935bb58a9b2acffbdf4",
+      "offsetMeters": [
+        -1.863,
+        1.595
+      ],
+      "jackknifeSigmaMeters": [
+        0.057,
+        0.07
+      ],
+      "raw": {
+        "secondsBeyondLimit": 6.4,
+        "maxBeyondLimitMeters": 1.741,
+        "samples": 1437
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.4,
+        "maxBeyondLimitMeters": 0.127,
+        "samples": 1437
+      }
+    }
+  ]
+}

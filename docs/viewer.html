@@ -208,6 +208,12 @@
     color: var(--muted);
   }
   .md hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+  .md .fig { display: block; margin: 16px 0 18px; }
+  .md .fig img {
+    display: block; max-width: 100%; height: auto;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2);
+  }
+  .md .fig .cap { display: block; margin-top: 6px; font-size: 12.5px; color: var(--faint); }
   .tbl { overflow-x: auto; margin: 0 0 16px; }
   .md table { border-collapse: collapse; font-size: 13.5px; min-width: 50%; }
   .md th, .md td { border: 1px solid var(--line); padding: 6px 12px; text-align: left; vertical-align: top; }
@@ -308,7 +314,12 @@ function inlineMd(s, linkResolver) {
   out = out.replace(/`([^`]+)`/g, (m, c) => "<code>" + c + "</code>");
   out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   out = out.replace(/(^|[^*])\*([^*\s][^*]*)\*/g, "$1<em>$2</em>");
-  out = out.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, "$1");
+  out = out.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, alt, u) => {
+    // live mode resolves relative paths against docs/; snapshots carry data: URIs
+    if (!/^(https?:|data:image\/|\.{0,2}\/|[\w.-]+(\/[\w.-]+)*$)/i.test(u)) return alt;
+    return '<span class="fig"><img src="' + escapeHtml(u) + '" alt="' + alt + '" decoding="async">' +
+           (alt ? '<span class="cap">' + alt + '</span>' : '') + '</span>';
+  });
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) => {
     const resolved = linkResolver ? linkResolver(u) : null;
     if (resolved) return '<a href="' + resolved + '">' + t + "</a>";

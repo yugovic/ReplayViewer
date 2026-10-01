@@ -10,6 +10,9 @@ import { LapSelector } from "./ui/LapSelector";
 import { TelemetryPanel } from "./ui/TelemetryPanel";
 import { Minimap } from "./ui/Minimap";
 import { CreditOverlay } from "./ui/CreditOverlay";
+import { FUJI_SHOWCASE, resolveShowcase } from "./replay/showcase";
+import { LocalAlignmentPanel } from "./ui/LocalAlignmentPanel";
+import { ShowcasePanel } from "./ui/ShowcasePanel";
 
 const DEVELOPER_MODE = isDeveloperMode();
 
@@ -23,6 +26,9 @@ function LoadingIndicator() {
 }
 
 export function App() {
+  const alignmentMode = new URLSearchParams(window.location.search).get("alignment");
+  const showcase = alignmentMode === "local" || alignmentMode === "local-raw"
+    ? null : resolveShowcase(window.location.search);
   const [bundle, setBundle] = useState<LoadedReplay | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sceneReady, setSceneReady] = useState(false);
@@ -58,9 +64,19 @@ export function App() {
         setAvailableSatelliteVariants(loaded.availableSatelliteVariants);
         setSatelliteVariant(loaded.track.satVariant ?? "default");
         setDuration(lapDuration(loaded.lap));
-        seek(0);
+        useReplayStore.getState().setPlaybackWindow(showcase ? FUJI_SHOWCASE : null);
+        const localStudy = loaded.track.replayAlignment?.kind === "local-windows";
+        if (localStudy) useReplayStore.getState().setPlaying(false);
+        const requestedTime = Number(new URLSearchParams(window.location.search).get("time") ?? 55);
+        seek(showcase ? FUJI_SHOWCASE.start : localStudy && Number.isFinite(requestedTime)
+          ? Math.max(0, Math.min(lapDuration(loaded.lap), requestedTime)) : 0);
+        if (showcase === "reference") {
+          const s = useReplayStore.getState();
+          s.setShowTrialTiles(false);
+          s.setShowDetailTexture(true);
+        }
         // Show lap selector on startup so user can choose/configure
-        setShowLapSelector(true);
+        setShowLapSelector(!showcase && !localStudy);
       })
       .catch((err: unknown) => {
         if (!cancelled) {
@@ -71,6 +87,7 @@ export function App() {
       cancelled = true;
     };
   }, [
+    showcase,
     applyViewerModePreset,
     seek,
     setDuration,
@@ -98,7 +115,7 @@ export function App() {
   const currentLap = storeLap ?? bundle.lap;
 
   return (
-    <main className="app-shell">
+    <main className="app-shell" data-showcase={showcase ?? undefined}>
       <ViewerCanvas
         track={bundle.track}
         lap={currentLap}
@@ -111,6 +128,8 @@ export function App() {
       <LapSelector />
       <TelemetryPanel lap={currentLap} />
       <CreditOverlay />
+      {showcase && bundle.track.replayAlignment?.kind !== "local-windows" && <ShowcasePanel look={showcase} />}
+      <LocalAlignmentPanel />
       {!sceneReady && (
         <div className="loading-screen loading-screen--overlay">
           <LoadingIndicator />

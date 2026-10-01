@@ -6,6 +6,8 @@
  *    wall + a thin cantilever roof slab on columns. Seat treads carry a muted
  *    2-3 colour stripe (vertex colour) so it reads as a grandstand, not a wedge.
  *  - buildCanopy: a wall-less "columns + roof slab" only (pit-garage 'roof').
+ *  - buildControlTower: podium + slimmer shaft + wider glass control room with
+ *    an overhanging roof slab and a thin antenna mast (race-control tower).
  *
  * Both bake flat-shaded geometry into plain position+color soups so the caller
  * can merge them into the SAME BufferGeometry as the box buildings, keeping the
@@ -288,6 +290,77 @@ export function buildGrandstand(
     const a = -L + t * (2 * L);
     pushBox(o, baseY, a - colW, a + colW, colB - colW * 2, colB, 0, height - roofT, STRUCT_WALL, out);
   }
+
+  return out;
+}
+
+// ─── Control tower ──────────────────────────────────────────────────────────
+
+/** Glass band of the control room: subdued blue, clearly "windows" next to the
+ * grey structural palette. */
+const TOWER_GLASS: [number, number, number] = [0.32, 0.47, 0.62];
+
+/**
+ * Race-control tower: a full-footprint podium, a slimmer shaft, then a wider
+ * all-round-glass control room under an overhanging roof slab, topped by a
+ * thin antenna mast. The control room sits slightly toward the front (-v,
+ * course-facing) edge so the tower reads as overlooking the track.
+ */
+export function buildControlTower(
+  footprint: Array<[number, number]>,
+  height: number,
+  baseY: number,
+  orientation: FootprintOrientation,
+): LandmarkGeometry {
+  const out: LandmarkGeometry = { positions: [], colors: [] };
+  const o = orientation;
+  const L = o.halfLen;
+  const W = o.halfWid;
+
+  // nDSM height for a slender tower averages in lower surroundings (fuji's
+  // control centre measures 15.3 m yet clearly tops the 17 m pit roofline in
+  // photos). Give the landmark a minimum visual height so it reads as the
+  // tower it is — visualization choice, not surveyed truth.
+  const h = Math.max(height, 20);
+  const podiumTop = h * 0.34;
+  const shaftTop = h * 0.66;
+  const glassTop = h * 0.9;
+
+  // Podium: the whole footprint, two-storey block.
+  pushBox(o, baseY, -L, L, -W, W, 0, podiumTop, STRUCT_WALL, out);
+
+  // Shaft: slimmer, biased toward the front (course) edge.
+  const shaftL = L * 0.55;
+  const shaftFront = -W;
+  const shaftBack = W * 0.45;
+  pushBox(o, baseY, -shaftL, shaftL, shaftFront, shaftBack, podiumTop, shaftTop, STRUCT_WALL, out);
+
+  // Control room: wider than the shaft with an all-round glass band.
+  const roomL = Math.min(L * 0.8, shaftL + Math.min(2.5, L * 0.25));
+  const roomFront = -W * 1.08; // slight cantilever over the course side
+  const roomBack = W * 0.6;
+  pushBox(o, baseY, -roomL, roomL, roomFront, roomBack, shaftTop, glassTop, TOWER_GLASS, out);
+
+  // Overhanging roof slab.
+  const roofT = Math.min(0.6, h * 0.05);
+  pushBox(
+    o,
+    baseY,
+    -roomL * 1.12,
+    roomL * 1.12,
+    roomFront - W * 0.08,
+    roomBack + W * 0.08,
+    glassTop,
+    glassTop + roofT,
+    STRUCT_ROOF,
+    out,
+  );
+
+  // Antenna mast: thin, on one roof corner, up to ~1.25× the tower height.
+  const mastR = 0.2;
+  const mastA = roomL * 0.7;
+  const mastB = (roomFront + roomBack) / 2;
+  pushBox(o, baseY, mastA - mastR, mastA + mastR, mastB - mastR, mastB + mastR, glassTop + roofT, h * 1.25, STRUCT_WALL, out);
 
   return out;
 }

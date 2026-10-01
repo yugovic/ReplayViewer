@@ -44,6 +44,7 @@ describe("isImageResponseAvailable", () => {
 describe("parseSatVariantParam", () => {
   it("resolves shizuoka, shizuoka_x2, sr, bing and bing_sr", () => {
     expect(parseSatVariantParam("shizuoka")).toBe("shizuoka");
+    expect(parseSatVariantParam("shizuoka_orig")).toBe("shizuoka_orig");
     expect(parseSatVariantParam("shizuoka_x2")).toBe("shizuoka_x2");
     expect(parseSatVariantParam("sr")).toBe("sr");
     expect(parseSatVariantParam("bing")).toBe("bing");
@@ -61,13 +62,15 @@ describe("parseSatVariantParam", () => {
 describe("satelliteFilename", () => {
   it("maps every known variant id to its filename and metadata", () => {
     expect(satelliteFilename("default")).toBe("satellite.jpg");
-    expect(satelliteFilename("shizuoka")).toBe("satellite_shizuoka.jpg");
-    expect(satelliteFilename("shizuoka_x2")).toBe("satellite_shizuoka.jpg");
+    expect(satelliteFilename("shizuoka")).toBe("satellite_shizuoka_4k.webp");
+    expect(satelliteFilename("shizuoka_orig")).toBe("satellite_shizuoka.jpg");
+    expect(satelliteFilename("shizuoka_x2")).toBe("satellite_shizuoka_4k.webp");
     expect(satelliteFilename("sr")).toBe("satellite_sr.jpg");
     expect(satelliteFilename("bing")).toBe("satellite_bing.jpg");
     expect(satelliteFilename("bing_sr")).toBe("satellite_bing_sr.jpg");
-    expect(satelliteMetadataFilename("shizuoka")).toBe("satellite_shizuoka_meta.json");
-    expect(satelliteMetadataFilename("shizuoka_x2")).toBe("satellite_shizuoka_meta.json");
+    expect(satelliteMetadataFilename("shizuoka")).toBe("satellite_shizuoka_4k_meta.json");
+    expect(satelliteMetadataFilename("shizuoka_orig")).toBe("satellite_shizuoka_meta.json");
+    expect(satelliteMetadataFilename("shizuoka_x2")).toBe("satellite_shizuoka_4k_meta.json");
     expect(satelliteMetadataFilename("bing_sr")).toBe("satellite_bing_meta.json");
   });
 });
@@ -100,6 +103,7 @@ describe("probeSatelliteVariants", () => {
   it("preserves SATELLITE_VARIANTS order regardless of probe resolution order", async () => {
     const probe = fakeProbe({
       "satellite.jpg": { status: 200, contentType: "image/jpeg" },
+      "satellite_shizuoka_4k.webp": { status: 200, contentType: "image/webp" },
       "satellite_shizuoka.jpg": { status: 200, contentType: "image/jpeg" },
       "manifest.json": { status: 200, contentType: "application/json" },
       "satellite_sr.jpg": { status: 200, contentType: "image/jpeg" },
@@ -131,7 +135,7 @@ describe("probeSatelliteVariants", () => {
     };
 
     const result = await probeSatelliteVariants("/data/tracks/barber", probe);
-    expect(result).toEqual(["default", "shizuoka", "shizuoka_x2", "sr", "bing_sr"] as SatVariantId[]);
+    expect(result).toEqual(["default", "shizuoka", "shizuoka_orig", "shizuoka_x2", "sr", "bing_sr"] as SatVariantId[]);
   });
 
   it("normalizes a trackDir without a trailing slash", async () => {

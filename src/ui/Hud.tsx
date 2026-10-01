@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useReplayStore } from "../state/replayStore";
 import { getVehicleBestLap } from "../replay/dataLoader";
 import { computeDeltaAtDist, buildSectorBoundaries, computeSectorTimes, getSectorIndex } from "../replay/delta";
+import { describeOffset } from "../replay/gpsRegistration";
 import { LayersPanel } from "./LayersPanel";
 
 function formatLapTime(seconds: number): string {
@@ -175,6 +176,8 @@ export function Hud({ developerMode = false }: HudProps) {
   const ghostLap = useReplayStore((state) => state.ghostLap);
   const ghostRecord = useReplayStore((state) => state.ghostRecord);
   const lapsIndex = useReplayStore((state) => state.lapsIndex);
+  const setGpsRegistrationEnabled = useReplayStore((state) => state.setGpsRegistrationEnabled);
+  const registration = activeLap?.registration ?? null;
 
   const vehicleBest =
     lapsIndex && lapMeta ? getVehicleBestLap(lapsIndex, lapMeta.vehicle_id) : null;
@@ -243,6 +246,27 @@ export function Hud({ developerMode = false }: HudProps) {
               {vehicleBest.lap_time}
               <span className="hud-best-lapnum"> L{vehicleBest.lap}</span>
             </strong>
+          </div>
+        )}
+
+        {/* Track-limit GPS registration: one rigid shift per lap, raw kept */}
+        {registration && (
+          <div className="hud-row hud-gps">
+            <span className="hud-label">GPS</span>
+            <button
+              type="button"
+              className={`hud-gps-btn${registration.enabled ? " hud-gps-btn--on" : ""}`}
+              aria-pressed={registration.enabled}
+              disabled={registration.verified === false}
+              onClick={() => setGpsRegistrationEnabled(!registration.enabled)}
+              title={registration.verified === false
+                ? "走行データまたは道路形状が位置合わせの計算時と一致しません。元GPSを表示しています"
+                : `${registration.verified === null ? "入力データの一致を検証できていません。" : ""}コース端との整合から推定した、このラップ全体の平行移動（${describeOffset(registration.offsetMeters)}）。元のGPS値は変更しません。[G]で切替`}
+            >
+              {registration.verified === false ? "補正値が古い" : registration.enabled ? "位置合わせ ON" : "元GPS"}
+              {registration.verified === null && "・未検証"}
+            </button>
+            <span className="hud-gps-offset">{describeOffset(registration.offsetMeters)}</span>
           </div>
         )}
 

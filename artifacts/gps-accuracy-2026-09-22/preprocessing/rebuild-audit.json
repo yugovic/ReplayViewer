@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "scope": "Deterministic lap-cut smoothing error; not surveyed position accuracy",
+  "sessions": [
+    {
+      "raceId": "fuji_aim_01",
+      "rawXrkSha256": "18055a88997fe1475bcaa94fe0081e26da83c0bf900162ca578e4d5a0d441a43",
+      "convertedCsv": "artifacts/gps-accuracy-2026-09-22/preprocessing/fuji_aim_converted.csv",
+      "convertedCsvSha256": "16da931682528beb4fd4dd3b6fa14d6ef9d9046694f74473def7d8280d8c6c35",
+      "lapTimesSha256": "4509122fafc234efb20cfcfa9c49b023877475dc731c736040e9e5031d08d8a7"
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "rawXrkSha256": "5dc8ece620a19ca2c89fac4064aed373511d2f516bb1a27f75223eec203d455a",
+      "convertedCsv": "pipeline/cache/osaki_hmr_demio_101_fuji_generic_testing_a_1741_converted.csv",
+      "convertedCsvSha256": "6b96baf1bf1bbe8aa3335ce5d7d0d38083ac9b41c95f49655ff0dde76584749a",
+      "lapTimesSha256": "78a2c3f06340ca4cae3876af4f599a7851e4a8c80269ec2753674252118c19e4"
+    }
+  ],
+  "laps": [
+    {
+      "raceId": "fuji_aim_01",
+      "lap": 1,
+      "pointCount": 1446,
+      "dataFile": "osaki_hmr_demio_101_lap_001.json",
+      "beforeSha256": "5e8347c63c1a449aaac473312f65a3d019d2019e9ff46e314dae4f8c1fa9fc02",
+      "afterSha256": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+      "firstSampleAfterLapStartSeconds": 0.007,
+      "legacyEndpointRoundingDifferences": [
+        {
+          "channel": "lng",
+          "index": 1,
+          "published": 138.92712528,
+          "reconstructed": 138.92712527
+        }
+      ],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.43,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.730082363927915,
+          "afterVsRawGridMeters": 0.011131949209416398,
+          "appliedChangeMeters": 4.73699106148567
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.3779611143991866,
+          "afterVsRawGridMeters": 0.006196409970639079,
+          "appliedChangeMeters": 2.372367825139541
+        },
+        {
+          "time": 144.4,
+          "beforeVsRawGridMeters": 2.33990281682734,
+          "afterVsRawGridMeters": 0.007034840038754114,
+          "appliedChangeMeters": 2.346937209439051
+        },
+        {
+          "time": 144.5,
+          "beforeVsRawGridMeters": 4.698194777541733,
+          "afterVsRawGridMeters": 0.012085026434056853,
+          "appliedChangeMeters": 4.697363218287904
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_01",
+      "lap": 2,
+      "pointCount": 1446,
+      "dataFile": "osaki_hmr_demio_101_lap_002.json",
+      "beforeSha256": "f6455e05f4a6bc9b4c93250b9043f7dfb5dfc3bcd58c91efe6dd57f1c1d49028",
+      "afterSha256": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+      "firstSampleAfterLapStartSeconds": 0.051,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.51,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.712784871999131,
+          "afterVsRawGridMeters": 0.011403383266549005,
+          "appliedChangeMeters": 4.702269697791329
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.3623948330374422,
+          "afterVsRawGridMeters": 0.01011042908519595,
+          "appliedChangeMeters": 2.3525265938019904
+        },
+        {
+          "time": 144.4,
+          "beforeVsRawGridMeters": 2.3968369265690526,
+          "afterVsRawGridMeters": 0.005055220250662948,
+          "appliedChangeMeters": 2.4017700687662082
+        },
+        {
+          "time": 144.5,
+          "beforeVsRawGridMeters": 4.814836215588841,
+          "afterVsRawGridMeters": 0.009671943102546099,
+          "appliedChangeMeters": 4.805663896701702
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_01",
+      "lap": 3,
+      "pointCount": 1414,
+      "dataFile": "osaki_hmr_demio_101_lap_003.json",
+      "beforeSha256": "e1b2c67ea535897349d25ac9a6f78d3f65c9502cadab603076810ad693b0b20b",
+      "afterSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "firstSampleAfterLapStartSeconds": 0.016,
+      "legacyEndpointRoundingDifferences": [
+        {
+          "channel": "lng",
+          "index": 1412,
+          "published": 138.92696198,
+          "reconstructed": 138.92696197
+        }
+      ],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.62,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.817683131408036,
+          "afterVsRawGridMeters": 0.012008413335190026,
+          "appliedChangeMeters": 4.807078600157583
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.4200749689276986,
+          "afterVsRawGridMeters": 0.014783574332990365,
+          "appliedChangeMeters": 2.405297555870889
+        },
+        {
+          "time": 141.2,
+          "beforeVsRawGridMeters": 2.3892432249274616,
+          "afterVsRawGridMeters": 0.016489766715551028,
+          "appliedChangeMeters": 2.4034412806102154
+        },
+        {
+          "time": 141.3,
+          "beforeVsRawGridMeters": 4.801179474402456,
+          "afterVsRawGridMeters": 0.012232209464929339,
+          "appliedChangeMeters": 4.813178692175613
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_01",
+      "lap": 4,
+      "pointCount": 1647,
+      "dataFile": "osaki_hmr_demio_101_lap_004.json",
+      "beforeSha256": "4102e3d8d472145d2c15ce899510e556d804f06cef1c5935bb58a9b2acffbdf4",
+      "afterSha256": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+      "firstSampleAfterLapStartSeconds": 0.031,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 5.98,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.832807108249471,
+          "afterVsRawGridMeters": 0.011709110559281439,
+          "appliedChangeMeters": 4.823062149993778
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.4232990760302253,
+          "afterVsRawGridMeters": 0.012756587691614961,
+          "appliedChangeMeters": 2.4139900753650707
+        },
+        {
+          "time": 164.5,
+          "beforeVsRawGridMeters": 0.5916323302947392,
+          "afterVsRawGridMeters": 0.007034845367990729,
+          "appliedChangeMeters": 0.5845974924795595
+        },
+        {
+          "time": 164.6,
+          "beforeVsRawGridMeters": 1.1763572517632421,
+          "afterVsRawGridMeters": 0.02098865282942635,
+          "appliedChangeMeters": 1.1572638350897393
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "lap": 1,
+      "pointCount": 1336,
+      "dataFile": "osaki_hmr_demio_101_lap_001.json",
+      "beforeSha256": "d4c067e6d1e92f13c17c9cb1f6dcfd403075cd55ebd7ceeafe0d71cb31b91c37",
+      "afterSha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+      "firstSampleAfterLapStartSeconds": 0.057,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.72,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.807117923052412,
+          "afterVsRawGridMeters": 0.003797655239749759,
+          "appliedChangeMeters": 4.8035872522208205
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.408095044122466,
+          "afterVsRawGridMeters": 0.004808637828238457,
+          "appliedChangeMeters": 2.4038932837550986
+        },
+        {
+          "time": 133.4,
+          "beforeVsRawGridMeters": 2.449015255045271,
+          "afterVsRawGridMeters": 0.005055218594349016,
+          "appliedChangeMeters": 2.4539536885986215
+        },
+        {
+          "time": 133.5,
+          "beforeVsRawGridMeters": 4.902275613248668,
+          "afterVsRawGridMeters": 0.010651427649577248,
+          "appliedChangeMeters": 4.912808666400132
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "lap": 2,
+      "pointCount": 1318,
+      "dataFile": "osaki_hmr_demio_101_lap_002.json",
+      "beforeSha256": "d9f45157d6ec3d074d829737449060a72a117fde096c6c791d0ff0be50bcb6f7",
+      "afterSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "firstSampleAfterLapStartSeconds": 0.022,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.78,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.928210370449273,
+          "afterVsRawGridMeters": 0.010998810412527003,
+          "appliedChangeMeters": 4.918419746672144
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.4643949226521684,
+          "afterVsRawGridMeters": 0.0072129550893106995,
+          "appliedChangeMeters": 2.462354400539269
+        },
+        {
+          "time": 131.6,
+          "beforeVsRawGridMeters": 2.423526611976566,
+          "afterVsRawGridMeters": 0.0063581180808185145,
+          "appliedChangeMeters": 2.429855278242921
+        },
+        {
+          "time": 131.7,
+          "beforeVsRawGridMeters": 4.857604548452861,
+          "afterVsRawGridMeters": 0.00379765582168623,
+          "appliedChangeMeters": 4.861128732241151
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "lap": 3,
+      "pointCount": 1318,
+      "dataFile": "osaki_hmr_demio_101_lap_003.json",
+      "beforeSha256": "ea10c59b58a7de11e2a584c9452a0228e0181b1d1fcc700a2bb1a012602b547b",
+      "afterSha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+      "firstSampleAfterLapStartSeconds": 0.08,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.68,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.866118737858974,
+          "afterVsRawGridMeters": 0.009149425961047718,
+          "appliedChangeMeters": 4.863952407489948
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.4355056633940073,
+          "afterVsRawGridMeters": 0.002723126398061158,
+          "appliedChangeMeters": 2.4333851121016496
+        },
+        {
+          "time": 131.6,
+          "beforeVsRawGridMeters": 2.412948661279707,
+          "afterVsRawGridMeters": 0.0045443565444926275,
+          "appliedChangeMeters": 2.4108435055600106
+        },
+        {
+          "time": 131.7,
+          "beforeVsRawGridMeters": 4.82872107150719,
+          "afterVsRawGridMeters": 0.008618178896247384,
+          "appliedChangeMeters": 4.820283331944212
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "lap": 4,
+      "pointCount": 1308,
+      "dataFile": "osaki_hmr_demio_101_lap_004.json",
+      "beforeSha256": "5f8eaea3e917f987735e2611d6c5641da2d6aa5dc4f8212a3b6dddd17a0725cc",
+      "afterSha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+      "firstSampleAfterLapStartSeconds": 0.097,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.69,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.807646948642922,
+          "afterVsRawGridMeters": 0.008001043186924123,
+          "appliedChangeMeters": 4.813959957660186
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.387651975130136,
+          "afterVsRawGridMeters": 0.016677570714673226,
+          "appliedChangeMeters": 2.4038149150979886
+        },
+        {
+          "time": 130.6,
+          "beforeVsRawGridMeters": 2.425734224890826,
+          "afterVsRawGridMeters": 0.00563482677666379,
+          "appliedChangeMeters": 2.431364636664554
+        },
+        {
+          "time": 130.7,
+          "beforeVsRawGridMeters": 4.862033911835357,
+          "afterVsRawGridMeters": 0.006196410122404472,
+          "appliedChangeMeters": 4.867635403931966
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "lap": 5,
+      "pointCount": 1308,
+      "dataFile": "osaki_hmr_demio_101_lap_005.json",
+      "beforeSha256": "104a7a5fa97d4f9fbbe39f9f28c83388644a0f99052ae40028e3292104ebfb8c",
+      "afterSha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+      "firstSampleAfterLapStartSeconds": 0.037,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 9.74,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.883774964267994,
+          "afterVsRawGridMeters": 0.011863739440286125,
+          "appliedChangeMeters": 4.872554678749793
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.444708726869044,
+          "afterVsRawGridMeters": 0.006358114678401215,
+          "appliedChangeMeters": 2.438383139164723
+        },
+        {
+          "time": 130.6,
+          "beforeVsRawGridMeters": 2.4180722360681313,
+          "afterVsRawGridMeters": 0.014108283852919663,
+          "appliedChangeMeters": 2.4299464265923305
+        },
+        {
+          "time": 130.7,
+          "beforeVsRawGridMeters": 4.854957000035223,
+          "afterVsRawGridMeters": 0.007758876116374219,
+          "appliedChangeMeters": 4.862700338005275
+        }
+      ]
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "lap": 6,
+      "pointCount": 1405,
+      "dataFile": "osaki_hmr_demio_101_lap_006.json",
+      "beforeSha256": "e171d1ecdfce761e41028e4bc36f4cef2913b9d91d422f141a784adde6197fb4",
+      "afterSha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+      "firstSampleAfterLapStartSeconds": 0.015,
+      "legacyEndpointRoundingDifferences": [],
+      "interiorUnchanged": true,
+      "timeAndSensorsUnchanged": true,
+      "changedCoordinateCount": 4,
+      "distanceChangeMeters": 6.11,
+      "endpoints": [
+        {
+          "time": 0.0,
+          "beforeVsRawGridMeters": 4.870414799679087,
+          "afterVsRawGridMeters": 0.002872725244277138,
+          "appliedChangeMeters": 4.867606268573082
+        },
+        {
+          "time": 0.1,
+          "beforeVsRawGridMeters": 2.436941282916444,
+          "afterVsRawGridMeters": 0.003460746322877712,
+          "appliedChangeMeters": 2.4355613703025583
+        },
+        {
+          "time": 140.3,
+          "beforeVsRawGridMeters": 0.6345450933987068,
+          "afterVsRawGridMeters": 0.010438909321896396,
+          "appliedChangeMeters": 0.6247156737873705
+        },
+        {
+          "time": 140.4,
+          "beforeVsRawGridMeters": 1.2578495445194693,
+          "afterVsRawGridMeters": 0.031641696013686986,
+          "appliedChangeMeters": 1.2425219957279363
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "legacyReconstructionWithinOneCoordinateRoundingUnit": true,
+    "allInteriorCoordinatesExactlyUnchanged": true,
+    "allTimeAndSensorArraysExactlyUnchanged": true,
+    "sourceFilesUnchanged": true
+  },
+  "summary": {
+    "lapCount": 10,
+    "changedCoordinateCount": 40,
+    "maxEndpointDisplacementBeforeMeters": 4.928210370449273,
+    "maxEndpointDisplacementAfterMeters": 0.031641696013686986,
+    "timeOriginOffsetsSeconds": [
+      0.007,
+      0.051,
+      0.016,
+      0.031,
+      0.057,
+      0.022,
+      0.08,
+      0.097,
+      0.037,
+      0.015
+    ]
+  },
+  "applied": true
+}

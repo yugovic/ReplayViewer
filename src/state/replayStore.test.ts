@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { useReplayStore } from "./replayStore";
+import type { LapData, LapIndexRecord } from "../replay/types";
 
 describe("scene layer flags", () => {
   it("defaults layers to visible except OSM features (covers the satellite photo)", () => {
@@ -133,5 +134,45 @@ describe("satellite variant selection", () => {
     useReplayStore.getState().cycleSatelliteVariant();
     expect(useReplayStore.getState().satelliteVariant).toBe("default");
     useReplayStore.getState().setAvailableSatelliteVariants(["default"]);
+  });
+});
+
+describe("GPS registration toggle", () => {
+  const meta = { race_id: "r", vehicle_id: "v", lap: 1 } as LapData["meta"];
+  const stamped = (lap: number): LapData => ({
+    meta: { ...meta, lap }, t: [0], lat: [0], lng: [0], speed: [0], aps: [0], brake: [0], steer: [0], gear: [0], accx: [0], accy: [0], dist: [0],
+    registration: { offsetMeters: [-1.6, 1.6], sigmaMeters: null, vehicleWidthMeters: 1.7, antennaMeters: null, verified: true, enabled: true },
+  });
+  const record = (lap: number) => ({ vehicle_id: "v", lap }) as LapIndexRecord;
+
+  it("defaults on, flips main and ghost together, and new laps follow the current choice", () => {
+    const main = stamped(1), ghost = stamped(2);
+    expect(useReplayStore.getState().gpsRegistrationEnabled).toBe(true);
+    useReplayStore.getState().setActiveLap(record(1), main);
+    useReplayStore.getState().setGhostLap(record(2), ghost);
+    expect(useReplayStore.getState().activeLap).toBe(main);
+
+    useReplayStore.getState().setGpsRegistrationEnabled(false);
+    const off = useReplayStore.getState();
+    expect(off.activeLap).not.toBe(main); // new identity: position caches must miss
+    expect(off.activeLap?.registration?.enabled).toBe(false);
+    expect(off.ghostLap?.registration?.enabled).toBe(false);
+    expect(main.registration?.enabled).toBe(true); // inputs are never mutated
+
+    useReplayStore.getState().setActiveLap(record(3), stamped(3));
+    expect(useReplayStore.getState().activeLap?.registration?.enabled).toBe(false);
+
+    useReplayStore.getState().setGpsRegistrationEnabled(true);
+    expect(useReplayStore.getState().activeLap?.registration?.enabled).toBe(true);
+    expect(useReplayStore.getState().ghostLap?.registration?.enabled).toBe(true);
+    useReplayStore.getState().clearGhost();
+  });
+
+  it("leaves laps without a registration untouched", () => {
+    const plain = { ...stamped(4), registration: undefined };
+    useReplayStore.getState().setActiveLap(record(4), plain);
+    useReplayStore.getState().setGpsRegistrationEnabled(false);
+    expect(useReplayStore.getState().activeLap).toBe(plain);
+    useReplayStore.getState().setGpsRegistrationEnabled(true);
   });
 });

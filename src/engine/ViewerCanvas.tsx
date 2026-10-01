@@ -114,6 +114,13 @@ export function ViewerCanvas({
         useReplayStore.getState().setCameraMode(cameraMode);
         return;
       }
+      if (e.key === "g" || e.key === "G") {
+        // Raw GPS <-> track-limit registration: an evidence check for every
+        // user, not developer tooling. No-op for laps without a registration.
+        const s = useReplayStore.getState();
+        s.setGpsRegistrationEnabled(!s.gpsRegistrationEnabled);
+        return;
+      }
       // Scene-layer and texture shortcuts are developer tooling. User mode
       // keeps only the replay controls (including Space) and camera keys.
       if (!developerMode && e.code !== "Space") {

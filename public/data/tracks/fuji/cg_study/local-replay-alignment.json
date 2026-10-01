@@ -1,0 +1,42 @@
+{
+  "kind": "local-windows",
+  "raceId": "fuji_aim_01",
+  "vehicleId": "osaki_hmr_demio_101",
+  "lap": 3,
+  "status": "visual-fit",
+  "widthMeters": 1.7,
+  "segments": [
+    {
+      "id": "100r-exit",
+      "offsetMeters": [
+        -1.7072747136989908,
+        1.2503089910732386
+      ],
+      "windowSeconds": [
+        40,
+        51,
+        59,
+        70
+      ]
+    },
+    {
+      "id": "chicane-left",
+      "offsetMeters": [
+        -1.7072747136989908,
+        1.2503089910732386
+      ],
+      "windowSeconds": [
+        78,
+        82,
+        87,
+        94
+      ]
+    }
+  ],
+  "evidence": {
+    "report": "/docs/fuji-local-alignment-2026-09-19.html",
+    "video": "SCHD0613.MOV",
+    "videoTimeOffsetSeconds": 458.9,
+    "definition": "Display-only local visual fit, not surveyed GPS correction. Preserve raw 22/76/122s. 55s right front grazes road-side kerb edge; 84s left front road-edge gap matches user-preferred prior translation. No longitudinal scoring. Unknown tyre track, antenna and camera calibration."
+  }
+}

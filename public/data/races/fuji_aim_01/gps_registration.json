@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "kind": "lap-translation",
+  "status": "track-limit-fit",
+  "raceId": "fuji_aim_01",
+  "trackId": "fuji",
+  "frame": "viewer local XZ metres: +x east, +z south; added after latLngToLocal. A non-zero antenna offset is subtracted in the body frame first.",
+  "definition": "Display-only rigid translation per lap. Estimated so the four tyre contact points respect the traced road limits over the whole lap. Raw lat/lng are unchanged. Not a survey.",
+  "method": {
+    "tool": "pipeline/register_gps_to_track.py",
+    "surface": "wet",
+    "curbUse": 0.0,
+    "bufferMeters": 0.0,
+    "vehicleWidthMeters": 1.695,
+    "wheelbaseMeters": 2.57,
+    "vehicleGeometry": {
+      "id": "mazda2-dj",
+      "bodyWidthMeters": 1.695,
+      "wheelbaseMeters": 2.57,
+      "frontTrackMeters": 1.495,
+      "rearTrackMeters": 1.48,
+      "frontTyreWidthMeters": 0.185,
+      "rearTyreWidthMeters": 0.185,
+      "status": "manufacturer-specification-assumption",
+      "source": "https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification_202003.pdf",
+      "provenance": {
+        "basis": "User states the vehicle matches Mazda2 specifications; March 2020 DJ manufacturer dimensions are the working baseline for both 2020 Fuji sessions.",
+        "tyres": "185 mm is the nominal section width of the 185/65R15 and 185/60R16 standard options in the March 2020 specification. 195/55R16 is another listed option. This is not a measured loaded contact patch or confirmed 2020 racing tyre fitment.",
+        "scope": "Only the matching vehicle/laps explicitly carrying this geometry in gps_registration.json use these dimensions.",
+        "limitations": "The March 2020 manufacturer specification does not establish this vehicle's exact grade, wheel offset, installed tyres, or antenna position. Rendered body styling remains a generic proxy."
+      }
+    },
+    "antennaOffsetMeters": {
+      "right": 0.0,
+      "forward": 0.0
+    },
+    "huberDeltaMeters": 0.75,
+    "lapShrink": 1.5,
+    "edgeMedianWindowMeters": 0.0,
+    "boundaryMeasurement": "continuous-nearest-rendered-segment-v1",
+    "pitExcludeBeyondMeters": 4.0
+  },
+  "limits": {
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+  },
+  "referenceTrack": {
+    "source": "public/data/tracks/fuji/track.json",
+    "sha256": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3"
+  },
+  "uncertainty": {
+    "jackknifeMeaning": "Conditional sensitivity to omitting one 250 m block, with the full-data session prior fixed; not independent CV or an absolute position confidence interval.",
+    "absolutePositionAccuracyVerified": false,
+    "antennaPositionMeasured": false
+  },
+  "sessionOffsetMeters": [
+    -1.627,
+    1.931
+  ],
+  "laps": [
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 1,
+      "dataFile": "osaki_hmr_demio_101_lap_001.json",
+      "dataSha256": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+      "offsetMeters": [
+        -1.224,
+        2.315
+      ],
+      "jackknifeSigmaMeters": [
+        0.707,
+        0.406
+      ],
+      "raw": {
+        "secondsBeyondLimit": 9.2,
+        "maxBeyondLimitMeters": 3.302,
+        "samples": 1446
+      },
+      "registered": {
+        "secondsBeyondLimit": 2.9,
+        "maxBeyondLimitMeters": 0.819,
+        "samples": 1446
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 2,
+      "dataFile": "osaki_hmr_demio_101_lap_002.json",
+      "dataSha256": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+      "offsetMeters": [
+        -1.677,
+        1.976
+      ],
+      "jackknifeSigmaMeters": [
+        0.048,
+        0.043
+      ],
+      "raw": {
+        "secondsBeyondLimit": 6.0,
+        "maxBeyondLimitMeters": 2.551,
+        "samples": 1446
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.1,
+        "maxBeyondLimitMeters": 0.153,
+        "samples": 1446
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 3,
+      "dataFile": "osaki_hmr_demio_101_lap_003.json",
+      "dataSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "offsetMeters": [
+        -1.638,
+        1.75
+      ],
+      "jackknifeSigmaMeters": [
+        0.048,
+        0.12
+      ],
+      "raw": {
+        "secondsBeyondLimit": 3.6,
+        "maxBeyondLimitMeters": 2.233,
+        "samples": 1414
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.3,
+        "maxBeyondLimitMeters": 0.177,
+        "samples": 1414
+      }
+    },
+    {
+      "vehicleId": "osaki_hmr_demio_101",
+      "lap": 4,
+      "dataFile": "osaki_hmr_demio_101_lap_004.json",
+      "dataSha256": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+      "offsetMeters": [
+        -1.777,
+        1.735
+      ],
+      "jackknifeSigmaMeters": [
+        0.062,
+        0.084
+      ],
+      "raw": {
+        "secondsBeyondLimit": 5.5,
+        "maxBeyondLimitMeters": 1.666,
+        "samples": 1438
+      },
+      "registered": {
+        "secondsBeyondLimit": 0.4,
+        "maxBeyondLimitMeters": 0.136,
+        "samples": 1438
+      }
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "definition": "Re-fitted session translation sensitivity; no absolute error estimate.",
+  "inputs": {
+    "limitsSha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "trackSha256": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "vehicleGeometry": {
+      "id": "mazda2-dj",
+      "bodyWidthMeters": 1.695,
+      "wheelbaseMeters": 2.57,
+      "frontTrackMeters": 1.495,
+      "rearTrackMeters": 1.48,
+      "frontTyreWidthMeters": 0.185,
+      "rearTyreWidthMeters": 0.185,
+      "status": "manufacturer-specification-assumption",
+      "source": "https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification_202003.pdf",
+      "provenance": {
+        "basis": "User states the vehicle matches Mazda2 specifications; March 2020 DJ manufacturer dimensions are the working baseline for both 2020 Fuji sessions.",
+        "tyres": "185 mm is the nominal section width of the 185/65R15 and 185/60R16 standard options in the March 2020 specification. 195/55R16 is another listed option. This is not a measured loaded contact patch or confirmed 2020 racing tyre fitment.",
+        "scope": "Only the matching vehicle/laps explicitly carrying this geometry in gps_registration.json use these dimensions.",
+        "limitations": "The March 2020 manufacturer specification does not establish this vehicle's exact grade, wheel offset, installed tyres, or antenna position. Rendered body styling remains a generic proxy."
+      }
+    }
+  },
+  "races": {
+    "fuji_aim_01": {
+      "ablation": {
+        "baseline": [
+          -1.73,
+          1.761
+        ],
+        "final": [
+          -1.627,
+          1.931
+        ],
+        "continuousPreprocessingOnly": [
+          -1.7301,
+          1.7614
+        ],
+        "plusMazda2Geometry": [
+          -1.7186,
+          1.7735
+        ]
+      },
+      "antennaSensitivity": {
+        "right=0,forward=0": [
+          -1.6265,
+          1.9311
+        ],
+        "right=0.5,forward=0": [
+          -1.4147,
+          1.7291
+        ],
+        "right=-0.5,forward=0": [
+          -1.7933,
+          2.0797
+        ],
+        "right=0,forward=1": [
+          -1.6151,
+          1.9336
+        ],
+        "right=0,forward=-1": [
+          -1.6133,
+          1.9459
+        ]
+      },
+      "surfaceSensitivity": {
+        "0": [
+          -1.6265,
+          1.9311
+        ],
+        "1": [
+          -1.9828,
+          2.016
+        ]
+      },
+      "commonMetricLaps": [
+        {
+          "lap": 1,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 2.9,
+            "maxBeyondLimitMeters": 0.836,
+            "samples": 1446
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 2.9,
+            "maxBeyondLimitMeters": 0.819,
+            "samples": 1446
+          }
+        },
+        {
+          "lap": 2,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.2,
+            "maxBeyondLimitMeters": 0.127,
+            "samples": 1446
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.1,
+            "maxBeyondLimitMeters": 0.153,
+            "samples": 1446
+          }
+        },
+        {
+          "lap": 3,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 1.2,
+            "maxBeyondLimitMeters": 0.131,
+            "samples": 1414
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.3,
+            "maxBeyondLimitMeters": 0.177,
+            "samples": 1414
+          }
+        },
+        {
+          "lap": 4,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.0,
+            "maxBeyondLimitMeters": 0.0,
+            "samples": 1438
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.4,
+            "maxBeyondLimitMeters": 0.136,
+            "samples": 1438
+          }
+        }
+      ]
+    },
+    "fuji_aim_2020_07_30": {
+      "ablation": {
+        "baseline": [
+          -0.478,
+          -2.801
+        ],
+        "final": [
+          -0.221,
+          -2.68
+        ],
+        "continuousPreprocessingOnly": [
+          -0.4782,
+          -2.8008
+        ],
+        "plusMazda2Geometry": [
+          -0.478,
+          -2.852
+        ]
+      },
+      "antennaSensitivity": {
+        "right=0,forward=0": [
+          -0.221,
+          -2.6798
+        ],
+        "right=0.5,forward=0": [
+          -0.1405,
+          -2.4865
+        ],
+        "right=-0.5,forward=0": [
+          -0.1963,
+          -2.494
+        ],
+        "right=0,forward=1": [
+          -0.2082,
+          -2.6716
+        ],
+        "right=0,forward=-1": [
+          -0.2044,
+          -2.6864
+        ]
+      },
+      "surfaceSensitivity": {
+        "0": [
+          -0.1718,
+          -2.6564
+        ],
+        "1": [
+          -0.221,
+          -2.6798
+        ]
+      },
+      "commonMetricLaps": [
+        {
+          "lap": 1,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 1.0,
+            "maxBeyondLimitMeters": 0.552,
+            "samples": 1336
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 1.2,
+            "maxBeyondLimitMeters": 0.314,
+            "samples": 1336
+          }
+        },
+        {
+          "lap": 2,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 2.5,
+            "maxBeyondLimitMeters": 0.574,
+            "samples": 1318
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 1.9,
+            "maxBeyondLimitMeters": 0.583,
+            "samples": 1318
+          }
+        },
+        {
+          "lap": 3,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.1,
+            "maxBeyondLimitMeters": 0.485,
+            "samples": 1318
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.5,
+            "maxBeyondLimitMeters": 0.288,
+            "samples": 1318
+          }
+        },
+        {
+          "lap": 4,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 3.5,
+            "maxBeyondLimitMeters": 0.487,
+            "samples": 1308
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 1.5,
+            "maxBeyondLimitMeters": 0.488,
+            "samples": 1308
+          }
+        },
+        {
+          "lap": 5,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 1.2,
+            "maxBeyondLimitMeters": 0.228,
+            "samples": 1308
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.6,
+            "maxBeyondLimitMeters": 0.083,
+            "samples": 1308
+          }
+        },
+        {
+          "lap": 6,
+          "oldOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.8,
+            "maxBeyondLimitMeters": 0.385,
+            "samples": 1211
+          },
+          "newOffsetOnFinalInputs": {
+            "secondsBeyondLimit": 0.8,
+            "maxBeyondLimitMeters": 0.179,
+            "samples": 1211
+          }
+        }
+      ]
+    }
+  },
+  "dayDifferenceMeters": {
+    "baseline": 4.7306815576616446,
+    "final": 4.820597162178147,
+    "continuousPreprocessingOnly": 4.730847963103444,
+    "plusMazda2Geometry": 4.788980957364521
+  },
+  "dayDifferenceSameSurfaceMeters": {
+    "0": 4.8126196961738,
+    "1": 5.015423898336012
+  },
+  "dayDifferenceCommonAntennaMeters": {
+    "right=0,forward=0": 4.820355698493628,
+    "right=0.5,forward=0": 4.403960603820157,
+    "right=-0.5,forward=0": 4.84449591701758,
+    "right=0,forward=1": 4.815312518414563,
+    "right=0,forward=-1": 4.841818098607175
+  },
+  "limitations": [
+    "Antenna offsets are sensitivity scenarios, not measurements and not applied to shipped data.",
+    "Same-surface test separates changed kerb-use assumptions from day-dependent fitted translation.",
+    "Ablation is order-dependent; estimated translations absorb common map/antenna bias."
+  ]
+}
