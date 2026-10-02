@@ -1,0 +1,60 @@
+tc0: {"fuji_aim_01/lap1": {"tc0_ms": 180700.0, "speed_rms_kmh": 0.0003}, "fuji_aim_01/lap2": {"tc0_ms": 325300.0, "speed_rms_kmh": 0.0003}, "fuji_aim_01/lap3": {"tc0_ms": 469900.0, "speed_rms_kmh": 0.0003}, "fuji_aim_01/lap4": {"tc0_ms": 611300.0, "speed_rms_kmh": 0.0003}, "fuji_aim_2020_07_30/lap1": {"tc0_ms": 162200.0, "speed_rms_kmh": 0.0003}, "fuji_aim_2020_07_30/lap2": {"tc0_ms": 295800.0, "speed_rms_kmh": 0.0003}, "fuji_aim_2020_07_30/lap3": {"tc0_ms": 427600.0, "speed_rms_kmh": 0.0003}, "fuji_aim_2020_07_30/lap4": {"tc0_ms": 559400.0, "speed_rms_kmh": 0.0003}, "fuji_aim_2020_07_30/lap5": {"tc0_ms": 690200.0, "speed_rms_kmh": 0.0003}, "fuji_aim_2020_07_30/lap6": {"tc0_ms": 821000.0, "speed_rms_kmh": 0.0003}}
+
+conversion offset s (ms) median [min,max]; s>0 = JSON channel early vs XRK timeline
+  ref0729 {"brake<-ECU_BRK_P": [-0.5, -2.4, 3.7], "steer<-ECU_STEER_ANG": [0.0, -0.0, -0.0], "accx<-InlineAcc": [0.0, 0.0, 0.0], "accy<-LateralAcc": [0.0, -0.0, -0.0], "aps<-ECU_PPS": [-4.4, -6.8, 0.8], "aps<-ECU_TPS": [0.0, -0.0, -0.0]}
+  before0730 {"brake<-ECU_BRK_P": [-1.25, -5.2, -0.0], "steer<-ECU_STEER_ANG": [0.0, -0.0, -0.0], "accx<-InlineAcc": [0.0, 0.0, 0.1], "accy<-LateralAcc": [0.0, -0.0, -0.0], "aps<-ECU_PPS": [-4.9, -7.9, -3.9], "aps<-ECU_TPS": [0.0, -0.0, -0.0]}
+  after0730 {"brake<-ECU_BRK_P": [-505.75, -522.3, -463.1], "steer<-ECU_STEER_ANG": [-503.05, -523.3, -464.2], "accx<-InlineAcc": [-502.5, -514.5, -479.8], "accy<-LateralAcc": [-502.65, -517.5, -475.2], "aps<-ECU_PPS": [-507.6, -524.3, -464.7], "aps<-ECU_TPS": [-504.15, -521.3, -461.4]}
+
+per-lap conversion offsets:
+  ref0729/lap1     brake<-ECU_BRK_P=+4(r1.00) steer<-ECU_STEER_ANG=-0(r1.00) accx<-InlineAcc=+0(r1.00) accy<-LateralAcc=-0(r1.00) aps<-ECU_PPS=-3(r1.00) aps<-ECU_TPS=-0(r1.00)
+  ref0729/lap2     brake<-ECU_BRK_P=-0(r1.00) steer<-ECU_STEER_ANG=-0(r1.00) accx<-InlineAcc=-0(r1.00) accy<-LateralAcc=-0(r1.00) aps<-ECU_PPS=-6(r1.00) aps<-ECU_TPS=-0(r1.00)
+  ref0729/lap3     brake<-ECU_BRK_P=-2(r1.00) steer<-ECU_STEER_ANG=+0(r1.00) accx<-InlineAcc=-0(r1.00) accy<-LateralAcc=+0(r1.00) aps<-ECU_PPS=+1(r1.00) aps<-ECU_TPS=+0(r1.00)
+  ref0729/lap4     brake<-ECU_BRK_P=-0(r1.00) steer<-ECU_STEER_ANG=+0(r1.00) accx<-InlineAcc=-0(r1.00) accy<-LateralAcc=-0(r1.00) aps<-ECU_PPS=-7(r1.00) aps<-ECU_TPS=+0(r1.00)
+  before0730/lap1  brake<-ECU_BRK_P=-0(r1.00) steer<-ECU_STEER_ANG=-0(r1.00) accx<-InlineAcc=+0(r1.00) accy<-LateralAcc=-0(r1.00) aps<-ECU_PPS=-4(r1.00) aps<-ECU_TPS=-0(r1.00)
+  after0730/lap1   brake<-ECU_BRK_P=-483(r1.00) steer<-ECU_STEER_ANG=-477(r1.00) accx<-InlineAcc=-487(r1.00) accy<-LateralAcc=-475(r1.00) aps<-ECU_PPS=-488(r1.00) aps<-ECU_TPS=-461(r1.00)
+  before0730/lap2  brake<-ECU_BRK_P=-0(r1.00) steer<-ECU_STEER_ANG=+0(r1.00) accx<-InlineAcc=+0(r1.00) accy<-LateralAcc=+0(r1.00) aps<-ECU_PPS=-6(r1.00) aps<-ECU_TPS=+0(r1.00)
+  after0730/lap2   brake<-ECU_BRK_P=-463(r1.00) steer<-ECU_STEER_ANG=-464(r1.00) accx<-InlineAcc=-480(r0.99) accy<-LateralAcc=-477(r1.00) aps<-ECU_PPS=-465(r1.00) aps<-ECU_TPS=-463(r1.00)
+  before0730/lap3  brake<-ECU_BRK_P=-2(r1.00) steer<-ECU_STEER_ANG=+0(r1.00) accx<-InlineAcc=+0(r1.00) accy<-LateralAcc=+0(r1.00) aps<-ECU_PPS=-5(r1.00) aps<-ECU_TPS=+0(r1.00)
+  after0730/lap3   brake<-ECU_BRK_P=-496(r1.00) steer<-ECU_STEER_ANG=-493(r1.00) accx<-InlineAcc=-497(r1.00) accy<-LateralAcc=-497(r1.00) aps<-ECU_PPS=-501(r1.00) aps<-ECU_TPS=-496(r1.00)
+  before0730/lap4  brake<-ECU_BRK_P=-5(r1.00) steer<-ECU_STEER_ANG=+0(r1.00) accx<-InlineAcc=+0(r1.00) accy<-LateralAcc=+0(r1.00) aps<-ECU_PPS=-5(r1.00) aps<-ECU_TPS=+0(r1.00)
+  after0730/lap4   brake<-ECU_BRK_P=-515(r1.00) steer<-ECU_STEER_ANG=-513(r1.00) accx<-InlineAcc=-508(r1.00) accy<-LateralAcc=-508(r1.00) aps<-ECU_PPS=-514(r1.00) aps<-ECU_TPS=-512(r1.00)
+  before0730/lap5  brake<-ECU_BRK_P=-3(r1.00) steer<-ECU_STEER_ANG=+0(r1.00) accx<-InlineAcc=-0(r1.00) accy<-LateralAcc=-0(r1.00) aps<-ECU_PPS=-8(r1.00) aps<-ECU_TPS=+0(r1.00)
+  after0730/lap5   brake<-ECU_BRK_P=-522(r1.00) steer<-ECU_STEER_ANG=-523(r1.00) accx<-InlineAcc=-514(r1.00) accy<-LateralAcc=-518(r1.00) aps<-ECU_PPS=-523(r1.00) aps<-ECU_TPS=-520(r1.00)
+  before0730/lap6  brake<-ECU_BRK_P=-0(r1.00) steer<-ECU_STEER_ANG=-0(r1.00) accx<-InlineAcc=+0(r1.00) accy<-LateralAcc=-0(r1.00) aps<-ECU_PPS=-5(r1.00) aps<-ECU_TPS=-0(r1.00)
+  after0730/lap6   brake<-ECU_BRK_P=-521(r1.00) steer<-ECU_STEER_ANG=-523(r1.00) accx<-InlineAcc=-508(r1.00) accy<-LateralAcc=-509(r1.00) aps<-ECU_PPS=-524(r1.00) aps<-ECU_TPS=-521(r1.00)
+
+first timecodes (ms): {"fuji_aim_01": {"GPS_Speed": 415.0, "ECU_STEER_ANG": 405.0, "InlineAcc": 235.0, "YawRate": 0.0}, "fuji_aim_2020_07_30": {"GPS_Speed": 767.0, "ECU_STEER_ANG": 293.0, "InlineAcc": 32.0, "YawRate": 0.0}}
+
+per-lap native lags (s):
+  fuji_aim_01/lap1           InlineAcc_vs_gps_along=-0.048(r0.97) LateralAcc_vs_gps_lat=+0.048(r1.00) ECU_BRK_P_vs_gps_decel=-0.135(r0.86) ECU_STEER_ANG_vs_gps_rate=-0.054(r0.98) ECU_PPS_vs_gps_along=-0.183(r0.81) YawRate_vs_gps_rate=+0.036(r1.00) ECU_BRK_P_vs_InlineAcc=-0.077(r0.88) ECU_STEER_ANG_vs_YawRate=-0.124(r0.99) LateralAcc_vs_YawRate=+0.027(r0.96)
+  fuji_aim_01/lap2           InlineAcc_vs_gps_along=-0.081(r0.97) LateralAcc_vs_gps_lat=+0.014(r1.00) ECU_BRK_P_vs_gps_decel=-0.148(r0.80) ECU_STEER_ANG_vs_gps_rate=-0.034(r0.98) ECU_PPS_vs_gps_along=-0.192(r0.81) YawRate_vs_gps_rate=+0.040(r0.99) ECU_BRK_P_vs_InlineAcc=-0.083(r0.83) ECU_STEER_ANG_vs_YawRate=-0.138(r0.98) LateralAcc_vs_YawRate=-0.003(r0.95)
+  fuji_aim_01/lap3           InlineAcc_vs_gps_along=-0.096(r0.97) LateralAcc_vs_gps_lat=+0.002(r1.00) ECU_BRK_P_vs_gps_decel=-0.161(r0.86) ECU_STEER_ANG_vs_gps_rate=-0.054(r0.98) ECU_PPS_vs_gps_along=-0.198(r0.85) YawRate_vs_gps_rate=+0.014(r1.00) ECU_BRK_P_vs_InlineAcc=-0.052(r0.87) ECU_STEER_ANG_vs_YawRate=-0.113(r0.98) LateralAcc_vs_YawRate=-0.008(r0.95)
+  fuji_aim_01/lap4           InlineAcc_vs_gps_along=-0.122(r0.97) LateralAcc_vs_gps_lat=-0.022(r1.00) ECU_BRK_P_vs_gps_decel=-0.142(r0.81) ECU_STEER_ANG_vs_gps_rate=-0.037(r0.98) ECU_PPS_vs_gps_along=-0.216(r0.74) YawRate_vs_gps_rate=+0.040(r1.00) ECU_BRK_P_vs_InlineAcc=-0.016(r0.83) ECU_STEER_ANG_vs_YawRate=-0.109(r0.98) LateralAcc_vs_YawRate=-0.066(r0.96)
+  fuji_aim_2020_07_30/lap1   InlineAcc_vs_gps_along=-0.576(r0.98) LateralAcc_vs_gps_lat=-0.469(r1.00) ECU_BRK_P_vs_gps_decel=-0.636(r0.90) ECU_STEER_ANG_vs_gps_rate=-0.608(r0.97) ECU_PPS_vs_gps_along=-0.701(r0.76) YawRate_vs_gps_rate=-0.515(r1.00) ECU_BRK_P_vs_InlineAcc=-0.065(r0.91) ECU_STEER_ANG_vs_YawRate=-0.145(r0.97) LateralAcc_vs_YawRate=+0.063(r0.96)
+  fuji_aim_2020_07_30/lap2   InlineAcc_vs_gps_along=-0.587(r0.98) LateralAcc_vs_gps_lat=-0.498(r1.00) ECU_BRK_P_vs_gps_decel=-0.663(r0.90) ECU_STEER_ANG_vs_gps_rate=-0.622(r0.98) ECU_PPS_vs_gps_along=-0.699(r0.76) YawRate_vs_gps_rate=-0.524(r1.00) ECU_BRK_P_vs_InlineAcc=-0.088(r0.91) ECU_STEER_ANG_vs_YawRate=-0.133(r0.98) LateralAcc_vs_YawRate=+0.034(r0.96)
+  fuji_aim_2020_07_30/lap3   InlineAcc_vs_gps_along=-0.603(r0.98) LateralAcc_vs_gps_lat=-0.508(r1.00) ECU_BRK_P_vs_gps_decel=-0.663(r0.91) ECU_STEER_ANG_vs_gps_rate=-0.590(r0.97) ECU_PPS_vs_gps_along=-0.720(r0.80) YawRate_vs_gps_rate=-0.506(r1.00) ECU_BRK_P_vs_InlineAcc=-0.063(r0.92) ECU_STEER_ANG_vs_YawRate=-0.128(r0.98) LateralAcc_vs_YawRate=+0.021(r0.95)
+  fuji_aim_2020_07_30/lap4   InlineAcc_vs_gps_along=-0.617(r0.98) LateralAcc_vs_gps_lat=-0.514(r1.00) ECU_BRK_P_vs_gps_decel=-0.704(r0.90) ECU_STEER_ANG_vs_gps_rate=-0.628(r0.97) ECU_PPS_vs_gps_along=-0.739(r0.80) YawRate_vs_gps_rate=-0.544(r1.00) ECU_BRK_P_vs_InlineAcc=-0.083(r0.91) ECU_STEER_ANG_vs_YawRate=-0.123(r0.98) LateralAcc_vs_YawRate=+0.047(r0.96)
+  fuji_aim_2020_07_30/lap5   InlineAcc_vs_gps_along=-0.625(r0.98) LateralAcc_vs_gps_lat=-0.533(r1.00) ECU_BRK_P_vs_gps_decel=-0.711(r0.89) ECU_STEER_ANG_vs_gps_rate=-0.645(r0.97) ECU_PPS_vs_gps_along=-0.744(r0.78) YawRate_vs_gps_rate=-0.559(r1.00) ECU_BRK_P_vs_InlineAcc=-0.087(r0.90) ECU_STEER_ANG_vs_YawRate=-0.120(r0.98) LateralAcc_vs_YawRate=+0.044(r0.96)
+  fuji_aim_2020_07_30/lap6   InlineAcc_vs_gps_along=-0.647(r0.98) LateralAcc_vs_gps_lat=-0.544(r1.00) ECU_BRK_P_vs_gps_decel=-0.721(r0.89) ECU_STEER_ANG_vs_gps_rate=-0.642(r0.97) ECU_PPS_vs_gps_along=-0.756(r0.76) YawRate_vs_gps_rate=-0.559(r1.00) ECU_BRK_P_vs_InlineAcc=-0.071(r0.90) ECU_STEER_ANG_vs_YawRate=-0.130(r0.98) LateralAcc_vs_YawRate=+0.023(r0.96)
+
+native XRK lag tau (s) median [min,max]
+  fuji_aim_01
+    InlineAcc_vs_gps_along         (-0.0887, -0.1222, -0.0475)
+    LateralAcc_vs_gps_lat          (0.0081, -0.0217, 0.0481)
+    ECU_BRK_P_vs_gps_decel         (-0.1452, -0.161, -0.1353)
+    ECU_STEER_ANG_vs_gps_rate      (-0.0451, -0.0541, -0.0336)
+    ECU_PPS_vs_gps_along           (-0.1948, -0.2163, -0.183)
+    YawRate_vs_gps_rate            (0.0378, 0.014, 0.0398)
+    ECU_BRK_P_vs_InlineAcc         (-0.0645, -0.0827, -0.0156)
+    ECU_STEER_ANG_vs_YawRate       (-0.1181, -0.138, -0.1086)
+    LateralAcc_vs_YawRate          (-0.0057, -0.0662, 0.0268)
+  fuji_aim_2020_07_30
+    InlineAcc_vs_gps_along         (-0.6096, -0.6472, -0.5763)
+    LateralAcc_vs_gps_lat          (-0.5113, -0.5443, -0.4688)
+    ECU_BRK_P_vs_gps_decel         (-0.6834, -0.7205, -0.6363)
+    ECU_STEER_ANG_vs_gps_rate      (-0.6248, -0.6454, -0.5903)
+    ECU_PPS_vs_gps_along           (-0.7295, -0.7564, -0.6993)
+    YawRate_vs_gps_rate            (-0.5339, -0.5592, -0.5061)
+    ECU_BRK_P_vs_InlineAcc         (-0.0769, -0.0883, -0.0632)
+    ECU_STEER_ANG_vs_YawRate       (-0.129, -0.1454, -0.12)
+    LateralAcc_vs_YawRate          (0.0388, 0.0212, 0.0632)

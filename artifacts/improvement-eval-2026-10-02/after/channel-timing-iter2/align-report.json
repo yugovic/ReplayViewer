@@ -1,0 +1,1439 @@
+{
+  "version": 2,
+  "scope": "7/30 logger-clock channel re-timing onto the GPS time base (GPS-REG-08). GPS arrays unchanged.",
+  "raceId": "fuji_aim_2020_07_30",
+  "sampler": "xrk-native-v1",
+  "estimate": "ref-0729",
+  "mode": "per-lap",
+  "convention": "shiftSeconds > 0: channel(t) = logger(t - shiftSeconds). lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS.",
+  "estimator": "shift_lap = -median over pairs (accxVsGpsAlong, accyVsGpsLateral, brakeVsGpsDecel, steerVsGpsCourseRate, yawGyroVsGpsCourseRate) of (lag_7/30,lap - median lag of the same pair over the 7/29 laps), on the unshifted data. lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS. GPS along/lateral acceleration and course rate from the shipped smoothed lat/lng, deceleration from -d(GPS speed)/dt; yaw gyro = raw XRK YawRate (50 Hz) at XRK timecode tc0 + 1000 t, sign fitted to the course rate.",
+  "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+  ],
+  "sourceCsv": "pipeline/cache/osaki_hmr_demio_101_fuji_generic_testing_a_1741_converted.csv",
+  "sourceCsvSha256": "6b96baf1bf1bbe8aa3335ce5d7d0d38083ac9b41c95f49655ff0dde76584749a",
+  "sourceXrkSha256": "5dc8ece620a19ca2c89fac4064aed373511d2f516bb1a27f75223eec203d455a",
+  "reference": {
+    "race": "fuji_aim_01",
+    "xrkSha256": "18055a88997fe1475bcaa94fe0081e26da83c0bf900162ca578e4d5a0d441a43",
+    "medianLagS": {
+      "accxVsGpsAlong": -0.003,
+      "accyVsGpsLateral": 0.034,
+      "brakeVsGpsDecel": -0.129,
+      "steerVsGpsCourseRate": -0.048,
+      "yawGyroVsGpsCourseRate": 0.036
+    },
+    "lapMapping": {
+      "1": {
+        "lapStartTimecodeMs": 180700,
+        "speedMappingMaxAbsErrKmh": 0.0
+      },
+      "2": {
+        "lapStartTimecodeMs": 325300,
+        "speedMappingMaxAbsErrKmh": 0.0
+      },
+      "3": {
+        "lapStartTimecodeMs": 469900,
+        "speedMappingMaxAbsErrKmh": 0.0
+      },
+      "4": {
+        "lapStartTimecodeMs": 611300,
+        "speedMappingMaxAbsErrKmh": 0.0
+      }
+    },
+    "laps": {
+      "1": {
+        "accxVsGpsAlong": {
+          "lagS": 0.058,
+          "r": 0.936
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.074,
+          "r": 0.99
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.114,
+          "r": 0.844
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.06,
+          "r": 0.984
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.034,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      },
+      "2": {
+        "accxVsGpsAlong": {
+          "lagS": -0.008,
+          "r": 0.922
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.01,
+          "r": 0.991
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.124,
+          "r": 0.783
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.034,
+          "r": 0.98
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.038,
+          "r": 0.993,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.199
+        }
+      },
+      "3": {
+        "accxVsGpsAlong": {
+          "lagS": 0.002,
+          "r": 0.946
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.018,
+          "r": 0.99
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.136,
+          "r": 0.843
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.056,
+          "r": 0.982
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.016,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.205
+        }
+      },
+      "4": {
+        "accxVsGpsAlong": {
+          "lagS": -0.076,
+          "r": 0.924
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.05,
+          "r": 0.987
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.134,
+          "r": 0.796
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.04,
+          "r": 0.983
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.042,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.212
+        }
+      }
+    }
+  },
+  "shippedStateBeforeRun": "aligned:logger_channel_delay_v1",
+  "applied": true,
+  "checks": {
+    "gpsArraysIdentical": true,
+    "otherMetaIdentical": true,
+    "zeroShiftReproducesUnaligned": true,
+    "noHeldEdgeSamples": true,
+    "sourceFilesUnchanged": true,
+    "nativeShift0ReproducesCsvAndUnalignedLap": true,
+    "residualMedianVs0729Within0.01s": true,
+    "everyPairResidualVs0729Within0.1s": true
+  },
+  "nativeSelfCheck": {
+    "1": {
+      "lapStartTimecodeMs": 162200,
+      "speedMappingMaxAbsErrKmh": 0.0,
+      "replayVsCsvRowsMaxAbsDiff": {
+        "accx": 0.0,
+        "accy": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "gear": 0.0,
+        "lat": 0.0,
+        "lng": 0.0,
+        "rpm": 0.0,
+        "speed": 0.0,
+        "steer": 0.0
+      },
+      "shift0VsUnalignedMaxAbsDiff": {
+        "aps": 0.0,
+        "brake": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0
+      },
+      "shift0PayloadIdentical": true
+    },
+    "2": {
+      "lapStartTimecodeMs": 295800,
+      "speedMappingMaxAbsErrKmh": 0.0,
+      "replayVsCsvRowsMaxAbsDiff": {
+        "accx": 0.0,
+        "accy": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "gear": 0.0,
+        "lat": 0.0,
+        "lng": 0.0,
+        "rpm": 0.0,
+        "speed": 0.0,
+        "steer": 0.0
+      },
+      "shift0VsUnalignedMaxAbsDiff": {
+        "aps": 0.0,
+        "brake": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0
+      },
+      "shift0PayloadIdentical": true
+    },
+    "3": {
+      "lapStartTimecodeMs": 427600,
+      "speedMappingMaxAbsErrKmh": 0.0,
+      "replayVsCsvRowsMaxAbsDiff": {
+        "accx": 0.0,
+        "accy": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "gear": 0.0,
+        "lat": 0.0,
+        "lng": 0.0,
+        "rpm": 0.0,
+        "speed": 0.0,
+        "steer": 0.0
+      },
+      "shift0VsUnalignedMaxAbsDiff": {
+        "aps": 0.0,
+        "brake": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0
+      },
+      "shift0PayloadIdentical": true
+    },
+    "4": {
+      "lapStartTimecodeMs": 559400,
+      "speedMappingMaxAbsErrKmh": 0.0,
+      "replayVsCsvRowsMaxAbsDiff": {
+        "accx": 0.0,
+        "accy": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "gear": 0.0,
+        "lat": 0.0,
+        "lng": 0.0,
+        "rpm": 0.0,
+        "speed": 0.0,
+        "steer": 0.0
+      },
+      "shift0VsUnalignedMaxAbsDiff": {
+        "aps": 0.0,
+        "brake": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0
+      },
+      "shift0PayloadIdentical": true
+    },
+    "5": {
+      "lapStartTimecodeMs": 690200,
+      "speedMappingMaxAbsErrKmh": 0.0,
+      "replayVsCsvRowsMaxAbsDiff": {
+        "accx": 0.0,
+        "accy": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "gear": 0.0,
+        "lat": 0.0,
+        "lng": 0.0,
+        "rpm": 0.0,
+        "speed": 0.0,
+        "steer": 0.0
+      },
+      "shift0VsUnalignedMaxAbsDiff": {
+        "aps": 0.0,
+        "brake": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0
+      },
+      "shift0PayloadIdentical": true
+    },
+    "6": {
+      "lapStartTimecodeMs": 821000,
+      "speedMappingMaxAbsErrKmh": 0.0,
+      "replayVsCsvRowsMaxAbsDiff": {
+        "accx": 0.0,
+        "accy": 0.0,
+        "aps": 0.0,
+        "brake_f": 0.0,
+        "brake_r": 0.0,
+        "gear": 0.0,
+        "lat": 0.0,
+        "lng": 0.0,
+        "rpm": 0.0,
+        "speed": 0.0,
+        "steer": 0.0
+      },
+      "shift0VsUnalignedMaxAbsDiff": {
+        "aps": 0.0,
+        "brake": 0.0,
+        "steer": 0.0,
+        "gear": 0.0,
+        "accx": 0.0,
+        "accy": 0.0
+      },
+      "shift0PayloadIdentical": true
+    }
+  },
+  "unalignedVsBaselineSnapshot": {
+    "source": "artifacts/improvement-eval-2026-10-02/baseline/public/data/races/fuji_aim_2020_07_30",
+    "laps": {
+      "1": {
+        "identicalBytes": true,
+        "maxAbsDiff": {
+          "t": 0.0,
+          "lat": 0.0,
+          "lng": 0.0,
+          "speed": 0.0,
+          "aps": 0.0,
+          "brake": 0.0,
+          "steer": 0.0,
+          "gear": 0.0,
+          "accx": 0.0,
+          "accy": 0.0,
+          "dist": 0.0
+        }
+      },
+      "2": {
+        "identicalBytes": true,
+        "maxAbsDiff": {
+          "t": 0.0,
+          "lat": 0.0,
+          "lng": 0.0,
+          "speed": 0.0,
+          "aps": 0.0,
+          "brake": 0.0,
+          "steer": 0.0,
+          "gear": 0.0,
+          "accx": 0.0,
+          "accy": 0.0,
+          "dist": 0.0
+        }
+      },
+      "3": {
+        "identicalBytes": true,
+        "maxAbsDiff": {
+          "t": 0.0,
+          "lat": 0.0,
+          "lng": 0.0,
+          "speed": 0.0,
+          "aps": 0.0,
+          "brake": 0.0,
+          "steer": 0.0,
+          "gear": 0.0,
+          "accx": 0.0,
+          "accy": 0.0,
+          "dist": 0.0
+        }
+      },
+      "4": {
+        "identicalBytes": true,
+        "maxAbsDiff": {
+          "t": 0.0,
+          "lat": 0.0,
+          "lng": 0.0,
+          "speed": 0.0,
+          "aps": 0.0,
+          "brake": 0.0,
+          "steer": 0.0,
+          "gear": 0.0,
+          "accx": 0.0,
+          "accy": 0.0,
+          "dist": 0.0
+        }
+      },
+      "5": {
+        "identicalBytes": true,
+        "maxAbsDiff": {
+          "t": 0.0,
+          "lat": 0.0,
+          "lng": 0.0,
+          "speed": 0.0,
+          "aps": 0.0,
+          "brake": 0.0,
+          "steer": 0.0,
+          "gear": 0.0,
+          "accx": 0.0,
+          "accy": 0.0,
+          "dist": 0.0
+        }
+      },
+      "6": {
+        "identicalBytes": true,
+        "maxAbsDiff": {
+          "t": 0.0,
+          "lat": 0.0,
+          "lng": 0.0,
+          "speed": 0.0,
+          "aps": 0.0,
+          "brake": 0.0,
+          "steer": 0.0,
+          "gear": 0.0,
+          "accx": 0.0,
+          "accy": 0.0,
+          "dist": 0.0
+        }
+      }
+    }
+  },
+  "summary": {
+    "before": {
+      "accxVsGpsAlong": {
+        "medianLagS": -0.517,
+        "medianVs0729S": -0.514
+      },
+      "accyVsGpsLateral": {
+        "medianLagS": -0.488,
+        "medianVs0729S": -0.522
+      },
+      "brakeVsGpsDecel": {
+        "medianLagS": -0.668,
+        "medianVs0729S": -0.539
+      },
+      "steerVsGpsCourseRate": {
+        "medianLagS": -0.63,
+        "medianVs0729S": -0.582
+      },
+      "yawGyroVsGpsCourseRate": {
+        "medianLagS": -0.531,
+        "medianVs0729S": -0.567
+      }
+    },
+    "after": {
+      "accxVsGpsAlong": {
+        "medianLagS": 0.033,
+        "medianVs0729S": 0.036
+      },
+      "accyVsGpsLateral": {
+        "medianLagS": 0.05,
+        "medianVs0729S": 0.016
+      },
+      "brakeVsGpsDecel": {
+        "medianLagS": -0.131,
+        "medianVs0729S": -0.002
+      },
+      "steerVsGpsCourseRate": {
+        "medianLagS": -0.08,
+        "medianVs0729S": -0.032
+      },
+      "yawGyroVsGpsCourseRate": {
+        "medianLagS": 0.01,
+        "medianVs0729S": -0.026
+      }
+    },
+    "shiftSecondsByLap": {
+      "per-lap": {
+        "1": 0.497,
+        "2": 0.523,
+        "3": 0.523,
+        "4": 0.555,
+        "5": 0.565,
+        "6": 0.583
+      },
+      "session-median": {
+        "1": 0.539,
+        "2": 0.539,
+        "3": 0.539,
+        "4": 0.539,
+        "5": 0.539,
+        "6": 0.539
+      }
+    },
+    "shippedBefore": {
+      "accxVsGpsAlong": {
+        "medianLagS": -0.019,
+        "medianVs0729S": -0.016
+      },
+      "accyVsGpsLateral": {
+        "medianLagS": 0.002,
+        "medianVs0729S": -0.032
+      },
+      "brakeVsGpsDecel": {
+        "medianLagS": -0.171,
+        "medianVs0729S": -0.042
+      },
+      "steerVsGpsCourseRate": {
+        "medianLagS": -0.12,
+        "medianVs0729S": -0.072
+      },
+      "yawGyroVsGpsCourseRate": {
+        "medianLagS": -0.035,
+        "medianVs0729S": -0.071
+      }
+    },
+    "shippedBeforeShiftSecondsByLap": {
+      "1": 0.468,
+      "2": 0.465,
+      "3": 0.49,
+      "4": 0.515,
+      "5": 0.526,
+      "6": 0.524
+    }
+  },
+  "laps": [
+    {
+      "lap": 1,
+      "dataFile": "osaki_hmr_demio_101_lap_001.json",
+      "pointCount": 1336,
+      "shiftSeconds": 0.497,
+      "samplesFromNeighbourLaps": 5,
+      "unalignedSha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+      "alignedSha256": "581fa77eff9e8ff2b0b25270be231c24138d50c2d870a0d4be6cc9ff40662078",
+      "shippedSha256Before": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+      "gpsArraysIdentical": true,
+      "otherMetaIdentical": true,
+      "changedSamples": {
+        "aps": 514,
+        "brake": 169,
+        "steer": 1200,
+        "gear": 70,
+        "accx": 1334,
+        "accy": 1335
+      },
+      "lagBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.476,
+          "r": 0.96
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.46,
+          "r": 0.993
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.626,
+          "r": 0.889
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.618,
+          "r": 0.967
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.518,
+          "r": 0.994,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.197
+        }
+      },
+      "lagAfter": {
+        "accxVsGpsAlong": {
+          "lagS": 0.022,
+          "r": 0.96
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.038,
+          "r": 0.993
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.13,
+          "r": 0.889
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.12,
+          "r": 0.967
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.022,
+          "r": 0.994,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.197
+        }
+      },
+      "peaks": {
+        "unaligned": {
+          "maxAbsAccxG": 1.1286,
+          "maxAbsAccyG": 1.6165,
+          "rmsAccxG": 0.2702,
+          "rmsAccyG": 0.657,
+          "p95AbsAccyG": 1.1598
+        },
+        "shippedBefore": {
+          "maxAbsAccxG": 1.0809,
+          "maxAbsAccyG": 1.4106,
+          "rmsAccxG": 0.267,
+          "rmsAccyG": 0.6555,
+          "p95AbsAccyG": 1.1511
+        },
+        "aligned": {
+          "maxAbsAccxG": 1.1201,
+          "maxAbsAccyG": 1.5904,
+          "rmsAccxG": 0.2703,
+          "rmsAccyG": 0.657,
+          "p95AbsAccyG": 1.158
+        },
+        "native50HzLapWindow": {
+          "maxAbsAccxG": 1.1973,
+          "maxAbsAccyG": 1.6406
+        }
+      },
+      "residualVs0729": {
+        "unaligned": {
+          "byPair": {
+            "accxVsGpsAlong": -0.473,
+            "accyVsGpsLateral": -0.494,
+            "brakeVsGpsDecel": -0.497,
+            "steerVsGpsCourseRate": -0.57,
+            "yawGyroVsGpsCourseRate": -0.554
+          },
+          "medianS": -0.497,
+          "maxAbsS": 0.57
+        },
+        "aligned": {
+          "byPair": {
+            "accxVsGpsAlong": 0.025,
+            "accyVsGpsLateral": 0.004,
+            "brakeVsGpsDecel": -0.001,
+            "steerVsGpsCourseRate": -0.072,
+            "yawGyroVsGpsCourseRate": -0.058
+          },
+          "medianS": -0.001,
+          "maxAbsS": 0.072
+        },
+        "shippedBefore": {
+          "byPair": {
+            "accxVsGpsAlong": -0.013,
+            "accyVsGpsLateral": -0.036,
+            "brakeVsGpsDecel": -0.029,
+            "steerVsGpsCourseRate": -0.1,
+            "yawGyroVsGpsCourseRate": -0.086
+          },
+          "medianS": -0.036,
+          "maxAbsS": 0.1
+        }
+      },
+      "lagShippedBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.016,
+          "r": 0.968
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.002,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.158,
+          "r": 0.891
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.148,
+          "r": 0.968
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.05,
+          "r": 0.994,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.197
+        }
+      }
+    },
+    {
+      "lap": 2,
+      "dataFile": "osaki_hmr_demio_101_lap_002.json",
+      "pointCount": 1318,
+      "shiftSeconds": 0.523,
+      "samplesFromNeighbourLaps": 6,
+      "unalignedSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "alignedSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "shippedSha256Before": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+      "gpsArraysIdentical": true,
+      "otherMetaIdentical": true,
+      "changedSamples": {
+        "aps": 473,
+        "brake": 173,
+        "steer": 1131,
+        "gear": 86,
+        "accx": 1317,
+        "accy": 1318
+      },
+      "lagBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.488,
+          "r": 0.95
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.442,
+          "r": 0.991
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.652,
+          "r": 0.889
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.628,
+          "r": 0.974
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.522,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      },
+      "lagAfter": {
+        "accxVsGpsAlong": {
+          "lagS": 0.026,
+          "r": 0.951
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.084,
+          "r": 0.99
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.132,
+          "r": 0.889
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.104,
+          "r": 0.974
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.002,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      },
+      "peaks": {
+        "unaligned": {
+          "maxAbsAccxG": 1.1758,
+          "maxAbsAccyG": 1.9668,
+          "rmsAccxG": 0.2801,
+          "rmsAccyG": 0.6761,
+          "p95AbsAccyG": 1.1907
+        },
+        "shippedBefore": {
+          "maxAbsAccxG": 1.1668,
+          "maxAbsAccyG": 1.715,
+          "rmsAccxG": 0.2762,
+          "rmsAccyG": 0.6739,
+          "p95AbsAccyG": 1.1825
+        },
+        "aligned": {
+          "maxAbsAccxG": 1.1772,
+          "maxAbsAccyG": 2.0762,
+          "rmsAccxG": 0.2803,
+          "rmsAccyG": 0.6767,
+          "p95AbsAccyG": 1.1961
+        },
+        "native50HzLapWindow": {
+          "maxAbsAccxG": 1.1973,
+          "maxAbsAccyG": 2.0898
+        }
+      },
+      "residualVs0729": {
+        "unaligned": {
+          "byPair": {
+            "accxVsGpsAlong": -0.485,
+            "accyVsGpsLateral": -0.476,
+            "brakeVsGpsDecel": -0.523,
+            "steerVsGpsCourseRate": -0.58,
+            "yawGyroVsGpsCourseRate": -0.558
+          },
+          "medianS": -0.523,
+          "maxAbsS": 0.58
+        },
+        "aligned": {
+          "byPair": {
+            "accxVsGpsAlong": 0.029,
+            "accyVsGpsLateral": 0.05,
+            "brakeVsGpsDecel": -0.003,
+            "steerVsGpsCourseRate": -0.056,
+            "yawGyroVsGpsCourseRate": -0.034
+          },
+          "medianS": -0.003,
+          "maxAbsS": 0.056
+        },
+        "shippedBefore": {
+          "byPair": {
+            "accxVsGpsAlong": -0.029,
+            "accyVsGpsLateral": -0.032,
+            "brakeVsGpsDecel": -0.059,
+            "steerVsGpsCourseRate": -0.112,
+            "yawGyroVsGpsCourseRate": -0.092
+          },
+          "medianS": -0.059,
+          "maxAbsS": 0.112
+        }
+      },
+      "lagShippedBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.032,
+          "r": 0.961
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.002,
+          "r": 0.993
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.188,
+          "r": 0.89
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.16,
+          "r": 0.975
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.056,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      }
+    },
+    {
+      "lap": 3,
+      "dataFile": "osaki_hmr_demio_101_lap_003.json",
+      "pointCount": 1318,
+      "shiftSeconds": 0.523,
+      "samplesFromNeighbourLaps": 6,
+      "unalignedSha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+      "alignedSha256": "fb0534fdc10cc554bbc4c7d6ae91749a947ab52e8905451cf95b0d9b4f53736b",
+      "shippedSha256Before": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+      "gpsArraysIdentical": true,
+      "otherMetaIdentical": true,
+      "changedSamples": {
+        "aps": 409,
+        "brake": 187,
+        "steer": 1178,
+        "gear": 95,
+        "accx": 1318,
+        "accy": 1318
+      },
+      "lagBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.51,
+          "r": 0.961
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.47,
+          "r": 0.994
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.652,
+          "r": 0.9
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.592,
+          "r": 0.972
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.504,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.204
+        }
+      },
+      "lagAfter": {
+        "accxVsGpsAlong": {
+          "lagS": 0.034,
+          "r": 0.962
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.05,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.132,
+          "r": 0.899
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.068,
+          "r": 0.972
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.018,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.204
+        }
+      },
+      "peaks": {
+        "unaligned": {
+          "maxAbsAccxG": 1.1375,
+          "maxAbsAccyG": 1.6056,
+          "rmsAccxG": 0.2791,
+          "rmsAccyG": 0.6631,
+          "p95AbsAccyG": 1.1707
+        },
+        "shippedBefore": {
+          "maxAbsAccxG": 1.1339,
+          "maxAbsAccyG": 1.559,
+          "rmsAccxG": 0.278,
+          "rmsAccyG": 0.6627,
+          "p95AbsAccyG": 1.1641
+        },
+        "aligned": {
+          "maxAbsAccxG": 1.1312,
+          "maxAbsAccyG": 1.5169,
+          "rmsAccxG": 0.2789,
+          "rmsAccyG": 0.6631,
+          "p95AbsAccyG": 1.1678
+        },
+        "native50HzLapWindow": {
+          "maxAbsAccxG": 1.1387,
+          "maxAbsAccyG": 1.6182
+        }
+      },
+      "residualVs0729": {
+        "unaligned": {
+          "byPair": {
+            "accxVsGpsAlong": -0.507,
+            "accyVsGpsLateral": -0.504,
+            "brakeVsGpsDecel": -0.523,
+            "steerVsGpsCourseRate": -0.544,
+            "yawGyroVsGpsCourseRate": -0.54
+          },
+          "medianS": -0.523,
+          "maxAbsS": 0.544
+        },
+        "aligned": {
+          "byPair": {
+            "accxVsGpsAlong": 0.037,
+            "accyVsGpsLateral": 0.016,
+            "brakeVsGpsDecel": -0.003,
+            "steerVsGpsCourseRate": -0.02,
+            "yawGyroVsGpsCourseRate": -0.018
+          },
+          "medianS": -0.003,
+          "maxAbsS": 0.037
+        },
+        "shippedBefore": {
+          "byPair": {
+            "accxVsGpsAlong": -0.029,
+            "accyVsGpsLateral": -0.048,
+            "brakeVsGpsDecel": -0.033,
+            "steerVsGpsCourseRate": -0.054,
+            "yawGyroVsGpsCourseRate": -0.05
+          },
+          "medianS": -0.048,
+          "maxAbsS": 0.054
+        }
+      },
+      "lagShippedBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.032,
+          "r": 0.964
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.014,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.162,
+          "r": 0.901
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.102,
+          "r": 0.972
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.014,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.204
+        }
+      }
+    },
+    {
+      "lap": 4,
+      "dataFile": "osaki_hmr_demio_101_lap_004.json",
+      "pointCount": 1308,
+      "shiftSeconds": 0.555,
+      "samplesFromNeighbourLaps": 6,
+      "unalignedSha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+      "alignedSha256": "24bce3cb32336af2b79de5ffa646465232ea5d86e9b2325b47cbee0c40c41164",
+      "shippedSha256Before": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+      "gpsArraysIdentical": true,
+      "otherMetaIdentical": true,
+      "changedSamples": {
+        "aps": 452,
+        "brake": 182,
+        "steer": 1159,
+        "gear": 83,
+        "accx": 1307,
+        "accy": 1308
+      },
+      "lagBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.524,
+          "r": 0.958
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.506,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.684,
+          "r": 0.885
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.632,
+          "r": 0.972
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.54,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.201
+        }
+      },
+      "lagAfter": {
+        "accxVsGpsAlong": {
+          "lagS": 0.032,
+          "r": 0.962
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.05,
+          "r": 0.996
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.132,
+          "r": 0.886
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.076,
+          "r": 0.972
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.016,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.201
+        }
+      },
+      "peaks": {
+        "unaligned": {
+          "maxAbsAccxG": 1.1481,
+          "maxAbsAccyG": 1.5361,
+          "rmsAccxG": 0.2684,
+          "rmsAccyG": 0.6954,
+          "p95AbsAccyG": 1.1914
+        },
+        "shippedBefore": {
+          "maxAbsAccxG": 1.1124,
+          "maxAbsAccyG": 1.3937,
+          "rmsAccxG": 0.2665,
+          "rmsAccyG": 0.6947,
+          "p95AbsAccyG": 1.1906
+        },
+        "aligned": {
+          "maxAbsAccxG": 1.1365,
+          "maxAbsAccyG": 1.4233,
+          "rmsAccxG": 0.2679,
+          "rmsAccyG": 0.6956,
+          "p95AbsAccyG": 1.1924
+        },
+        "native50HzLapWindow": {
+          "maxAbsAccxG": 1.168,
+          "maxAbsAccyG": 1.5361
+        }
+      },
+      "residualVs0729": {
+        "unaligned": {
+          "byPair": {
+            "accxVsGpsAlong": -0.521,
+            "accyVsGpsLateral": -0.54,
+            "brakeVsGpsDecel": -0.555,
+            "steerVsGpsCourseRate": -0.584,
+            "yawGyroVsGpsCourseRate": -0.576
+          },
+          "medianS": -0.555,
+          "maxAbsS": 0.584
+        },
+        "aligned": {
+          "byPair": {
+            "accxVsGpsAlong": 0.035,
+            "accyVsGpsLateral": 0.016,
+            "brakeVsGpsDecel": -0.003,
+            "steerVsGpsCourseRate": -0.028,
+            "yawGyroVsGpsCourseRate": -0.02
+          },
+          "medianS": -0.003,
+          "maxAbsS": 0.035
+        },
+        "shippedBefore": {
+          "byPair": {
+            "accxVsGpsAlong": -0.003,
+            "accyVsGpsLateral": -0.028,
+            "brakeVsGpsDecel": -0.043,
+            "steerVsGpsCourseRate": -0.068,
+            "yawGyroVsGpsCourseRate": -0.06
+          },
+          "medianS": -0.043,
+          "maxAbsS": 0.068
+        }
+      },
+      "lagShippedBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.006,
+          "r": 0.963
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.006,
+          "r": 0.996
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.172,
+          "r": 0.887
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.116,
+          "r": 0.973
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.024,
+          "r": 0.996,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.201
+        }
+      }
+    },
+    {
+      "lap": 5,
+      "dataFile": "osaki_hmr_demio_101_lap_005.json",
+      "pointCount": 1308,
+      "shiftSeconds": 0.565,
+      "samplesFromNeighbourLaps": 6,
+      "unalignedSha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+      "alignedSha256": "0ba563ac35814fc76b630f0bf5d463962a313962aad53fa317a00579890e863d",
+      "shippedSha256Before": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+      "gpsArraysIdentical": true,
+      "otherMetaIdentical": true,
+      "changedSamples": {
+        "aps": 455,
+        "brake": 178,
+        "steer": 1120,
+        "gear": 82,
+        "accx": 1307,
+        "accy": 1307
+      },
+      "lagBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.53,
+          "r": 0.961
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.522,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.694,
+          "r": 0.881
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.648,
+          "r": 0.973
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.56,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      },
+      "lagAfter": {
+        "accxVsGpsAlong": {
+          "lagS": 0.036,
+          "r": 0.961
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.048,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.128,
+          "r": 0.884
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.084,
+          "r": 0.973
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.004,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      },
+      "peaks": {
+        "unaligned": {
+          "maxAbsAccxG": 1.1613,
+          "maxAbsAccyG": 2.1108,
+          "rmsAccxG": 0.2683,
+          "rmsAccyG": 0.6953,
+          "p95AbsAccyG": 1.2012
+        },
+        "shippedBefore": {
+          "maxAbsAccxG": 1.1273,
+          "maxAbsAccyG": 1.8728,
+          "rmsAccxG": 0.266,
+          "rmsAccyG": 0.6942,
+          "p95AbsAccyG": 1.1957
+        },
+        "aligned": {
+          "maxAbsAccxG": 1.1359,
+          "maxAbsAccyG": 1.9928,
+          "rmsAccxG": 0.2684,
+          "rmsAccyG": 0.6954,
+          "p95AbsAccyG": 1.2033
+        },
+        "native50HzLapWindow": {
+          "maxAbsAccxG": 1.1699,
+          "maxAbsAccyG": 2.127
+        }
+      },
+      "residualVs0729": {
+        "unaligned": {
+          "byPair": {
+            "accxVsGpsAlong": -0.527,
+            "accyVsGpsLateral": -0.556,
+            "brakeVsGpsDecel": -0.565,
+            "steerVsGpsCourseRate": -0.6,
+            "yawGyroVsGpsCourseRate": -0.596
+          },
+          "medianS": -0.565,
+          "maxAbsS": 0.6
+        },
+        "aligned": {
+          "byPair": {
+            "accxVsGpsAlong": 0.039,
+            "accyVsGpsLateral": 0.014,
+            "brakeVsGpsDecel": 0.001,
+            "steerVsGpsCourseRate": -0.036,
+            "yawGyroVsGpsCourseRate": -0.032
+          },
+          "medianS": 0.001,
+          "maxAbsS": 0.039
+        },
+        "shippedBefore": {
+          "byPair": {
+            "accxVsGpsAlong": -0.007,
+            "accyVsGpsLateral": -0.032,
+            "brakeVsGpsDecel": -0.041,
+            "steerVsGpsCourseRate": -0.074,
+            "yawGyroVsGpsCourseRate": -0.07
+          },
+          "medianS": -0.041,
+          "maxAbsS": 0.074
+        }
+      },
+      "lagShippedBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.01,
+          "r": 0.968
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.002,
+          "r": 0.996
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.17,
+          "r": 0.884
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.122,
+          "r": 0.973
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.034,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.2
+        }
+      }
+    },
+    {
+      "lap": 6,
+      "dataFile": "osaki_hmr_demio_101_lap_006.json",
+      "pointCount": 1405,
+      "shiftSeconds": 0.583,
+      "samplesFromNeighbourLaps": 6,
+      "unalignedSha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+      "alignedSha256": "f289ac394c3ad28824fc4024ba118c9cc52021651d16feccb5f243bbce937173",
+      "shippedSha256Before": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+      "gpsArraysIdentical": true,
+      "otherMetaIdentical": true,
+      "changedSamples": {
+        "aps": 629,
+        "brake": 317,
+        "steer": 1281,
+        "gear": 72,
+        "accx": 1402,
+        "accy": 1404
+      },
+      "lagBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.54,
+          "r": 0.962
+        },
+        "accyVsGpsLateral": {
+          "lagS": -0.508,
+          "r": 0.994
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.712,
+          "r": 0.879
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.642,
+          "r": 0.971
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.56,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.199
+        }
+      },
+      "lagAfter": {
+        "accxVsGpsAlong": {
+          "lagS": 0.046,
+          "r": 0.962
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.074,
+          "r": 0.994
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.126,
+          "r": 0.879
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.06,
+          "r": 0.971
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": 0.024,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.199
+        }
+      },
+      "peaks": {
+        "unaligned": {
+          "maxAbsAccxG": 1.224,
+          "maxAbsAccyG": 1.365,
+          "rmsAccxG": 0.2706,
+          "rmsAccyG": 0.6697,
+          "p95AbsAccyG": 1.1998
+        },
+        "shippedBefore": {
+          "maxAbsAccxG": 1.1586,
+          "maxAbsAccyG": 1.3307,
+          "rmsAccxG": 0.2684,
+          "rmsAccyG": 0.6687,
+          "p95AbsAccyG": 1.1898
+        },
+        "aligned": {
+          "maxAbsAccxG": 1.2262,
+          "maxAbsAccyG": 1.4089,
+          "rmsAccxG": 0.2709,
+          "rmsAccyG": 0.6696,
+          "p95AbsAccyG": 1.202
+        },
+        "native50HzLapWindow": {
+          "maxAbsAccxG": 1.2314,
+          "maxAbsAccyG": 1.4219
+        }
+      },
+      "residualVs0729": {
+        "unaligned": {
+          "byPair": {
+            "accxVsGpsAlong": -0.537,
+            "accyVsGpsLateral": -0.542,
+            "brakeVsGpsDecel": -0.583,
+            "steerVsGpsCourseRate": -0.594,
+            "yawGyroVsGpsCourseRate": -0.596
+          },
+          "medianS": -0.583,
+          "maxAbsS": 0.596
+        },
+        "aligned": {
+          "byPair": {
+            "accxVsGpsAlong": 0.049,
+            "accyVsGpsLateral": 0.04,
+            "brakeVsGpsDecel": 0.003,
+            "steerVsGpsCourseRate": -0.012,
+            "yawGyroVsGpsCourseRate": -0.012
+          },
+          "medianS": 0.003,
+          "maxAbsS": 0.049
+        },
+        "shippedBefore": {
+          "byPair": {
+            "accxVsGpsAlong": -0.019,
+            "accyVsGpsLateral": -0.03,
+            "brakeVsGpsDecel": -0.063,
+            "steerVsGpsCourseRate": -0.07,
+            "yawGyroVsGpsCourseRate": -0.072
+          },
+          "medianS": -0.063,
+          "maxAbsS": 0.072
+        }
+      },
+      "lagShippedBefore": {
+        "accxVsGpsAlong": {
+          "lagS": -0.022,
+          "r": 0.968
+        },
+        "accyVsGpsLateral": {
+          "lagS": 0.004,
+          "r": 0.995
+        },
+        "brakeVsGpsDecel": {
+          "lagS": -0.192,
+          "r": 0.881
+        },
+        "steerVsGpsCourseRate": {
+          "lagS": -0.118,
+          "r": 0.972
+        },
+        "yawGyroVsGpsCourseRate": {
+          "lagS": -0.036,
+          "r": 0.995,
+          "gyroSign": 1,
+          "gpsPerGyroScale": 1.199
+        }
+      }
+    }
+  ]
+}

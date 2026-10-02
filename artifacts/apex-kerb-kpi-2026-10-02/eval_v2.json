@@ -1,0 +1,4685 @@
+{
+ "fuji_aim_2020_07_30": {
+  "session": [
+   0.5,
+   -3.0
+  ],
+  "feasibleSetExtent": {
+   "1": [
+    0.2,
+    0.35
+   ],
+   "2": [
+    0.4,
+    0.75
+   ],
+   "3": [
+    0.1,
+    0.0
+   ],
+   "4": [
+    0.25,
+    0.25
+   ],
+   "5": [
+    0.0,
+    0.0
+   ],
+   "6": [
+    0.0,
+    0.0
+   ]
+  },
+  "variants": {
+   "raw": {
+    "strong": 17,
+    "silent": 41,
+    "auc": 0.8981348637015782,
+    "contradictions": [
+     [
+      1,
+      7,
+      "silent-but-deep",
+      -2.01
+     ],
+     [
+      2,
+      21,
+      "strong-but-off",
+      0.44
+     ],
+     [
+      2,
+      24,
+      "silent-but-deep",
+      -1.12
+     ],
+     [
+      2,
+      25,
+      "strong-but-off",
+      0.94
+     ],
+     [
+      3,
+      7,
+      "silent-but-deep",
+      -2.54
+     ],
+     [
+      3,
+      10,
+      "silent-but-deep",
+      -1.78
+     ],
+     [
+      3,
+      13,
+      "silent-but-deep",
+      -2.46
+     ],
+     [
+      4,
+      3,
+      "silent-but-deep",
+      -1.89
+     ],
+     [
+      4,
+      10,
+      "silent-but-deep",
+      -0.6
+     ],
+     [
+      6,
+      7,
+      "silent-but-deep",
+      -1.67
+     ],
+     [
+      6,
+      13,
+      "silent-but-deep",
+      -0.84
+     ]
+    ],
+    "strongMedian": -2.08
+   },
+   "shipped": {
+    "strong": 17,
+    "silent": 41,
+    "auc": 0.8780487804878049,
+    "contradictions": [
+     [
+      2,
+      21,
+      "strong-but-off",
+      1.68
+     ],
+     [
+      5,
+      9,
+      "silent-but-deep",
+      -0.91
+     ],
+     [
+      5,
+      10,
+      "strong-but-off",
+      0.45
+     ]
+    ],
+    "strongMedian": -0.39
+   },
+   "sessionOnlyV2": {
+    "strong": 17,
+    "silent": 41,
+    "auc": 0.8550932568149211,
+    "contradictions": [
+     [
+      2,
+      7,
+      "strong-but-off",
+      0.42
+     ],
+     [
+      2,
+      10,
+      "strong-but-off",
+      0.4
+     ],
+     [
+      2,
+      21,
+      "strong-but-off",
+      0.84
+     ],
+     [
+      2,
+      24,
+      "silent-but-deep",
+      -0.6
+     ],
+     [
+      3,
+      25,
+      "silent-but-deep",
+      -0.83
+     ],
+     [
+      5,
+      7,
+      "strong-but-off",
+      0.8
+     ],
+     [
+      5,
+      9,
+      "silent-but-deep",
+      -0.91
+     ],
+     [
+      5,
+      10,
+      "strong-but-off",
+      0.92
+     ],
+     [
+      6,
+      10,
+      "strong-but-off",
+      0.18
+     ],
+     [
+      6,
+      20,
+      "silent-but-deep",
+      -0.74
+     ]
+    ],
+    "strongMedian": -0.35
+   },
+   "v2Centroid": {
+    "strong": 17,
+    "silent": 41,
+    "auc": 0.7905308464849354,
+    "contradictions": [
+     [
+      2,
+      7,
+      "strong-but-off",
+      0.36
+     ],
+     [
+      2,
+      10,
+      "strong-but-off",
+      0.37
+     ],
+     [
+      2,
+      21,
+      "strong-but-off",
+      0.91
+     ],
+     [
+      3,
+      25,
+      "silent-but-deep",
+      -1.14
+     ],
+     [
+      5,
+      7,
+      "strong-but-off",
+      1.5
+     ],
+     [
+      5,
+      9,
+      "silent-but-deep",
+      -1.44
+     ],
+     [
+      5,
+      10,
+      "strong-but-off",
+      1.62
+     ],
+     [
+      6,
+      10,
+      "strong-but-off",
+      0.53
+     ],
+     [
+      6,
+      20,
+      "silent-but-deep",
+      -1.08
+     ]
+    ],
+    "strongMedian": -0.39
+   }
+  },
+  "kpi": [
+   {
+    "lap": 1,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "strong",
+    "peak": 2.61,
+    "events": [
+     [
+      32.91,
+      2.6,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -1.08,
+     -0.89
+    ],
+    "gPaintFront": [
+     -1.63,
+     -1.45
+    ],
+    "gBlockFrontLabelConstrained": [
+     -1.08,
+     -0.89
+    ],
+    "gBlockRearCentroid": -0.99,
+    "apexStation": [
+     1458.0,
+     1458.0
+    ],
+    "onBlockLengthM": 12.4,
+    "exitOuterGap": -0.89,
+    "gBlockFrontSessionOnly": -1.44
+   },
+   {
+    "lap": 1,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "strong",
+    "peak": 2.42,
+    "events": [
+     [
+      52.65,
+      2.4,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -0.85,
+     -0.49
+    ],
+    "gPaintFront": [
+     -1.29,
+     -0.93
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.85,
+     -0.49
+    ],
+    "gBlockRearCentroid": -0.69,
+    "apexStation": [
+     2138.5,
+     2138.5
+    ],
+    "onBlockLengthM": 11.8,
+    "exitOuterGap": 1.56,
+    "gBlockFrontSessionOnly": -0.6
+   },
+   {
+    "lap": 1,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "silent",
+    "peak": 0.38,
+    "events": [],
+    "gBlockFront": [
+     0.17,
+     0.53
+    ],
+    "gPaintFront": [
+     -0.37,
+     -0.01
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.17,
+     0.53
+    ],
+    "gBlockRearCentroid": 0.34,
+    "apexStation": [
+     3043.0,
+     3043.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.17,
+    "gBlockFrontSessionOnly": 0.68
+   },
+   {
+    "lap": 1,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.44,
+    "events": [],
+    "gBlockFront": [
+     3.77,
+     4.04
+    ],
+    "gPaintFront": [
+     3.38,
+     3.64
+    ],
+    "gBlockFrontLabelConstrained": [
+     3.77,
+     4.04
+    ],
+    "gBlockRearCentroid": 3.91,
+    "apexStation": [
+     3377.5,
+     3378.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.4,
+    "gBlockFrontSessionOnly": 4.11
+   },
+   {
+    "lap": 1,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "silent",
+    "peak": 0.37,
+    "events": [],
+    "gBlockFront": [
+     4.33,
+     4.67
+    ],
+    "gPaintFront": [
+     3.84,
+     4.18
+    ],
+    "gBlockFrontLabelConstrained": [
+     4.33,
+     4.67
+    ],
+    "gBlockRearCentroid": 4.49,
+    "apexStation": [
+     3574.0,
+     3574.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.7,
+    "gBlockFrontSessionOnly": 4.45
+   },
+   {
+    "lap": 1,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "mild/other-side",
+    "peak": 1.37,
+    "events": [
+     [
+      17.18,
+      1.4,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -0.15,
+     0.23
+    ],
+    "gPaintFront": [
+     -0.62,
+     -0.24
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.15,
+     0.23
+    ],
+    "gBlockRearCentroid": 0.02,
+    "apexStation": [
+     905.0,
+     905.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.46,
+    "gBlockFrontSessionOnly": 0.27
+   },
+   {
+    "lap": 1,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "strong",
+    "peak": 1.93,
+    "events": [
+     [
+      32.91,
+      2.6,
+      "left"
+     ],
+     [
+      34.81,
+      1.9,
+      "both/unclear"
+     ]
+    ],
+    "gBlockFront": [
+     -0.44,
+     -0.13
+    ],
+    "gPaintFront": [
+     -1.04,
+     -0.73
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.44,
+     -0.13
+    ],
+    "gBlockRearCentroid": -0.3,
+    "apexStation": [
+     1534.0,
+     1535.0
+    ],
+    "onBlockLengthM": 8.2,
+    "exitOuterGap": 6.71,
+    "gBlockFrontSessionOnly": 0.14
+   },
+   {
+    "lap": 1,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.72,
+    "events": [],
+    "gBlockFront": [
+     4.28,
+     4.48
+    ],
+    "gPaintFront": [
+     3.86,
+     4.06
+    ],
+    "gBlockFrontLabelConstrained": [
+     4.28,
+     4.48
+    ],
+    "gBlockRearCentroid": 4.41,
+    "apexStation": [
+     2454.5,
+     2455.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.23,
+    "gBlockFrontSessionOnly": 4.87
+   },
+   {
+    "lap": 1,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.55,
+    "events": [],
+    "gBlockFront": [
+     4.27,
+     4.48
+    ],
+    "gPaintFront": [
+     3.93,
+     4.13
+    ],
+    "gBlockFrontLabelConstrained": [
+     4.27,
+     4.48
+    ],
+    "gBlockRearCentroid": 4.37,
+    "apexStation": [
+     2682.0,
+     2682.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.58,
+    "gBlockFrontSessionOnly": 4.68
+   },
+   {
+    "lap": 1,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.51,
+    "events": [],
+    "gBlockFront": [
+     0.07,
+     0.41
+    ],
+    "gPaintFront": [
+     -0.36,
+     -0.02
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.07,
+     0.41
+    ],
+    "gBlockRearCentroid": 0.27,
+    "apexStation": [
+     3097.0,
+     3099.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.77,
+    "gBlockFrontSessionOnly": 0.28
+   },
+   {
+    "lap": 1,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "mild/other-side",
+    "peak": 1.18,
+    "events": [
+     [
+      90.51,
+      1.2,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -0.57,
+     -0.41
+    ],
+    "gPaintFront": [
+     -1.04,
+     -0.89
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.57,
+     -0.41
+    ],
+    "gBlockRearCentroid": -0.47,
+    "apexStation": [
+     3302.0,
+     3302.5
+    ],
+    "onBlockLengthM": 19.3,
+    "exitOuterGap": 3.51,
+    "gBlockFrontSessionOnly": -0.89
+   },
+   {
+    "lap": 1,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.32,
+    "events": [],
+    "gBlockFront": [
+     1.11,
+     1.32
+    ],
+    "gPaintFront": [
+     0.61,
+     0.81
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.11,
+     1.32
+    ],
+    "gBlockRearCentroid": 1.21,
+    "apexStation": [
+     3626.5,
+     3631.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.95,
+    "gBlockFrontSessionOnly": 1.53
+   },
+   {
+    "lap": 1,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "silent",
+    "peak": 0.59,
+    "events": [],
+    "gBlockFront": [
+     0.51,
+     0.7
+    ],
+    "gPaintFront": [
+     0.03,
+     0.22
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.51,
+     0.7
+    ],
+    "gBlockRearCentroid": 0.6,
+    "apexStation": [
+     3859.0,
+     3859.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.4,
+    "gBlockFrontSessionOnly": 0.13
+   },
+   {
+    "lap": 1,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "mild/other-side",
+    "peak": 1.02,
+    "events": [
+     [
+      76.61,
+      1.0,
+      "both/unclear"
+     ]
+    ],
+    "gBlockFront": [
+     -0.24,
+     0.11
+    ],
+    "gPaintFront": [
+     -0.66,
+     -0.31
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.24,
+     0.11
+    ],
+    "gBlockRearCentroid": -0.05,
+    "apexStation": [
+     2980.5,
+     2981.0
+    ],
+    "onBlockLengthM": 2.4,
+    "exitOuterGap": -0.21,
+    "gBlockFrontSessionOnly": -0.43
+   },
+   {
+    "lap": 2,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "strong",
+    "peak": 2.27,
+    "events": [
+     [
+      32.4,
+      2.3,
+      "left"
+     ],
+     [
+      33.88,
+      1.0,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -1.12,
+     -0.6
+    ],
+    "gPaintFront": [
+     -1.68,
+     -1.16
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.96,
+    "apexStation": [
+     1458.5,
+     1459.0
+    ],
+    "onBlockLengthM": 13.1,
+    "exitOuterGap": -0.87,
+    "gBlockFrontSessionOnly": -1.04
+   },
+   {
+    "lap": 2,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "silent",
+    "peak": 0.63,
+    "events": [],
+    "gBlockFront": [
+     4.94,
+     5.63
+    ],
+    "gPaintFront": [
+     4.5,
+     5.2
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 5.12,
+    "apexStation": [
+     2139.0,
+     2144.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.26,
+    "gBlockFrontSessionOnly": 5.15
+   },
+   {
+    "lap": 2,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "strong",
+    "peak": 2.39,
+    "events": [
+     [
+      79.61,
+      2.4,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.22,
+     0.76
+    ],
+    "gPaintFront": [
+     -0.31,
+     0.24
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.37,
+    "apexStation": [
+     3051.0,
+     3054.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.27,
+    "gBlockFrontSessionOnly": 0.42
+   },
+   {
+    "lap": 2,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.56,
+    "events": [],
+    "gBlockFront": [
+     -0.71,
+     0.09
+    ],
+    "gPaintFront": [
+     -1.1,
+     -0.29
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.07,
+    "apexStation": [
+     3363.5,
+     3364.0
+    ],
+    "onBlockLengthM": 8.0,
+    "exitOuterGap": 2.91,
+    "gBlockFrontSessionOnly": -0.06
+   },
+   {
+    "lap": 2,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "strong",
+    "peak": 4.48,
+    "events": [
+     [
+      97.81,
+      1.4,
+      "left"
+     ],
+     [
+      98.63,
+      1.1,
+      "left"
+     ],
+     [
+      99.11,
+      4.5,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.2,
+     0.92
+    ],
+    "gPaintFront": [
+     -0.37,
+     0.36
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.38,
+    "apexStation": [
+     3565.0,
+     3571.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.12,
+    "gBlockFrontSessionOnly": 0.4
+   },
+   {
+    "lap": 2,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "strong",
+    "peak": 4.47,
+    "events": [
+     [
+      16.37,
+      4.5,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -0.55,
+     0.01
+    ],
+    "gPaintFront": [
+     -1.01,
+     -0.46
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.39,
+    "apexStation": [
+     905.0,
+     905.5
+    ],
+    "onBlockLengthM": 9.9,
+    "exitOuterGap": -1.11,
+    "gBlockFrontSessionOnly": -0.35
+   },
+   {
+    "lap": 2,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "strong",
+    "peak": 3.06,
+    "events": [
+     [
+      33.88,
+      1.0,
+      "left"
+     ],
+     [
+      34.56,
+      3.1,
+      "both/unclear"
+     ]
+    ],
+    "gBlockFront": [
+     -0.27,
+     -0.16
+    ],
+    "gPaintFront": [
+     -0.93,
+     -0.82
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.22,
+    "apexStation": [
+     1549.0,
+     1549.5
+    ],
+    "onBlockLengthM": 10.1,
+    "exitOuterGap": 7.6,
+    "gBlockFrontSessionOnly": -0.15
+   },
+   {
+    "lap": 2,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.65,
+    "events": [],
+    "gBlockFront": [
+     1.34,
+     1.82
+    ],
+    "gPaintFront": [
+     0.91,
+     1.39
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.68,
+    "apexStation": [
+     2454.5,
+     2461.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.01,
+    "gBlockFrontSessionOnly": 1.75
+   },
+   {
+    "lap": 2,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.59,
+    "events": [],
+    "gBlockFront": [
+     -0.21,
+     0.56
+    ],
+    "gPaintFront": [
+     -0.57,
+     0.19
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.38,
+    "apexStation": [
+     2692.5,
+     2697.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.59,
+    "gBlockFrontSessionOnly": 0.42
+   },
+   {
+    "lap": 2,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.47,
+    "events": [],
+    "gBlockFront": [
+     -0.45,
+     0.34
+    ],
+    "gPaintFront": [
+     -0.87,
+     -0.09
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.17,
+    "apexStation": [
+     3100.0,
+     3100.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.94,
+    "gBlockFrontSessionOnly": 0.15
+   },
+   {
+    "lap": 2,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "strong",
+    "peak": 1.59,
+    "events": [
+     [
+      89.63,
+      1.6,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     0.76,
+     1.27
+    ],
+    "gPaintFront": [
+     0.3,
+     0.82
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.92,
+    "apexStation": [
+     3287.5,
+     3288.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.47,
+    "gBlockFrontSessionOnly": 0.84
+   },
+   {
+    "lap": 2,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "mild/other-side",
+    "peak": 4.48,
+    "events": [
+     [
+      99.11,
+      4.5,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.02,
+     0.78
+    ],
+    "gPaintFront": [
+     -0.46,
+     0.3
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.6,
+    "apexStation": [
+     3631.5,
+     3631.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.53,
+    "gBlockFrontSessionOnly": 0.64
+   },
+   {
+    "lap": 2,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "silent",
+    "peak": 0.65,
+    "events": [],
+    "gBlockFront": [
+     -0.69,
+     -0.13
+    ],
+    "gPaintFront": [
+     -1.18,
+     -0.63
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.52,
+    "apexStation": [
+     3858.5,
+     3859.5
+    ],
+    "onBlockLengthM": 14.4,
+    "exitOuterGap": 0.49,
+    "gBlockFrontSessionOnly": -0.6
+   },
+   {
+    "lap": 2,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "strong",
+    "peak": 2.06,
+    "events": [
+     [
+      76.29,
+      2.1,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -1.46,
+     -1.17
+    ],
+    "gPaintFront": [
+     -1.88,
+     -1.59
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.26,
+    "apexStation": [
+     2980.0,
+     2981.0
+    ],
+    "onBlockLengthM": 9.8,
+    "exitOuterGap": -0.16,
+    "gBlockFrontSessionOnly": -1.34
+   },
+   {
+    "lap": 3,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "strong",
+    "peak": 3.01,
+    "events": [
+     [
+      32.84,
+      3.0,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -0.66,
+     -0.56
+    ],
+    "gPaintFront": [
+     -1.15,
+     -1.05
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.6,
+    "apexStation": [
+     1461.5,
+     1461.5
+    ],
+    "onBlockLengthM": 13.8,
+    "exitOuterGap": 1.91,
+    "gBlockFrontSessionOnly": -0.88
+   },
+   {
+    "lap": 3,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "mild/other-side",
+    "peak": 1.15,
+    "events": [
+     [
+      52.64,
+      1.2,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     1.01,
+     1.03
+    ],
+    "gPaintFront": [
+     0.53,
+     0.55
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.03,
+    "apexStation": [
+     2160.0,
+     2160.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.19,
+    "gBlockFrontSessionOnly": 0.1
+   },
+   {
+    "lap": 3,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "silent",
+    "peak": 0.4,
+    "events": [],
+    "gBlockFront": [
+     1.1,
+     1.14
+    ],
+    "gPaintFront": [
+     0.57,
+     0.61
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.12,
+    "apexStation": [
+     3053.0,
+     3053.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.87,
+    "gBlockFrontSessionOnly": 0.39
+   },
+   {
+    "lap": 3,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.75,
+    "events": [],
+    "gBlockFront": [
+     -0.01,
+     0.04
+    ],
+    "gPaintFront": [
+     -0.41,
+     -0.36
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.02,
+    "apexStation": [
+     3377.5,
+     3377.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.68,
+    "gBlockFrontSessionOnly": 0.88
+   },
+   {
+    "lap": 3,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "silent",
+    "peak": 0.4,
+    "events": [],
+    "gBlockFront": [
+     2.07,
+     2.08
+    ],
+    "gPaintFront": [
+     1.55,
+     1.56
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 2.08,
+    "apexStation": [
+     3573.5,
+     3573.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.6,
+    "gBlockFrontSessionOnly": 1.15
+   },
+   {
+    "lap": 3,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "silent",
+    "peak": 0.74,
+    "events": [],
+    "gBlockFront": [
+     1.12,
+     1.16
+    ],
+    "gPaintFront": [
+     0.66,
+     0.7
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.15,
+    "apexStation": [
+     905.5,
+     905.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.16,
+    "gBlockFrontSessionOnly": 0.44
+   },
+   {
+    "lap": 3,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "silent",
+    "peak": 0.6,
+    "events": [],
+    "gBlockFront": [
+     2.53,
+     2.62
+    ],
+    "gPaintFront": [
+     1.86,
+     1.95
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 2.59,
+    "apexStation": [
+     1540.0,
+     1540.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 7.04,
+    "gBlockFrontSessionOnly": 2.35
+   },
+   {
+    "lap": 3,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.56,
+    "events": [],
+    "gBlockFront": [
+     1.76,
+     1.86
+    ],
+    "gPaintFront": [
+     1.34,
+     1.44
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.81,
+    "apexStation": [
+     2455.0,
+     2455.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.42,
+    "gBlockFrontSessionOnly": 2.09
+   },
+   {
+    "lap": 3,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.55,
+    "events": [],
+    "gBlockFront": [
+     0.61,
+     0.69
+    ],
+    "gPaintFront": [
+     0.26,
+     0.34
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.66,
+    "apexStation": [
+     2682.5,
+     2682.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.32,
+    "gBlockFrontSessionOnly": 1.4
+   },
+   {
+    "lap": 3,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.63,
+    "events": [],
+    "gBlockFront": [
+     -0.42,
+     -0.41
+    ],
+    "gPaintFront": [
+     -0.88,
+     -0.86
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.4,
+    "apexStation": [
+     3101.5,
+     3101.5
+    ],
+    "onBlockLengthM": 13.2,
+    "exitOuterGap": 1.74,
+    "gBlockFrontSessionOnly": 0.5
+   },
+   {
+    "lap": 3,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "mild/other-side",
+    "peak": 0.84,
+    "events": [],
+    "gBlockFront": [
+     0.49,
+     0.59
+    ],
+    "gPaintFront": [
+     0.02,
+     0.11
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.55,
+    "apexStation": [
+     3296.0,
+     3296.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.38,
+    "gBlockFrontSessionOnly": 0.04
+   },
+   {
+    "lap": 3,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.26,
+    "events": [],
+    "gBlockFront": [
+     1.03,
+     1.11
+    ],
+    "gPaintFront": [
+     0.56,
+     0.63
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.08,
+    "apexStation": [
+     3632.0,
+     3632.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.68,
+    "gBlockFrontSessionOnly": 1.81
+   },
+   {
+    "lap": 3,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "mild/other-side",
+    "peak": 1.21,
+    "events": [
+     [
+      110.08,
+      1.2,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -1.2,
+     -1.1
+    ],
+    "gPaintFront": [
+     -1.65,
+     -1.55
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.14,
+    "apexStation": [
+     3851.5,
+     3851.5
+    ],
+    "onBlockLengthM": 20.4,
+    "exitOuterGap": -0.04,
+    "gBlockFrontSessionOnly": -1.4
+   },
+   {
+    "lap": 3,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "silent",
+    "peak": 0.71,
+    "events": [],
+    "gBlockFront": [
+     -1.18,
+     -1.1
+    ],
+    "gPaintFront": [
+     -1.6,
+     -1.52
+    ],
+    "gBlockFrontLabelConstrained": [
+     -1.18,
+     -1.1
+    ],
+    "gBlockRearCentroid": -1.13,
+    "apexStation": [
+     2983.0,
+     2983.0
+    ],
+    "onBlockLengthM": 10.6,
+    "exitOuterGap": 0.59,
+    "gBlockFrontSessionOnly": -0.83
+   },
+   {
+    "lap": 4,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "strong",
+    "peak": 2.73,
+    "events": [
+     [
+      33.16,
+      2.7,
+      "left"
+     ],
+     [
+      34.68,
+      1.2,
+      "both/unclear"
+     ]
+    ],
+    "gBlockFront": [
+     -0.86,
+     -0.63
+    ],
+    "gPaintFront": [
+     -1.42,
+     -1.18
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.86,
+     -0.63
+    ],
+    "gBlockRearCentroid": -0.74,
+    "apexStation": [
+     1459.0,
+     1459.0
+    ],
+    "onBlockLengthM": 11.6,
+    "exitOuterGap": 0.12,
+    "gBlockFrontSessionOnly": -0.92
+   },
+   {
+    "lap": 4,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "silent",
+    "peak": 0.42,
+    "events": [],
+    "gBlockFront": [
+     1.29,
+     1.54
+    ],
+    "gPaintFront": [
+     0.81,
+     1.06
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.29,
+     1.54
+    ],
+    "gBlockRearCentroid": 1.4,
+    "apexStation": [
+     2146.5,
+     2146.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.63,
+    "gBlockFrontSessionOnly": 1.09
+   },
+   {
+    "lap": 4,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "mild/other-side",
+    "peak": 1.13,
+    "events": [
+     [
+      79.22,
+      1.1,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.52,
+     0.83
+    ],
+    "gPaintFront": [
+     -0.0,
+     0.31
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.52,
+     0.83
+    ],
+    "gBlockRearCentroid": 0.67,
+    "apexStation": [
+     3053.0,
+     3053.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -1.45,
+    "gBlockFrontSessionOnly": 0.45
+   },
+   {
+    "lap": 4,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.44,
+    "events": [],
+    "gBlockFront": [
+     -0.39,
+     -0.17
+    ],
+    "gPaintFront": [
+     -0.77,
+     -0.55
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.39,
+     -0.17
+    ],
+    "gBlockRearCentroid": -0.29,
+    "apexStation": [
+     3362.5,
+     3363.0
+    ],
+    "onBlockLengthM": 18.0,
+    "exitOuterGap": 0.82,
+    "gBlockFrontSessionOnly": 0.03
+   },
+   {
+    "lap": 4,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "silent",
+    "peak": 0.78,
+    "events": [],
+    "gBlockFront": [
+     2.55,
+     2.8
+    ],
+    "gPaintFront": [
+     2.04,
+     2.29
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.55,
+     2.8
+    ],
+    "gBlockRearCentroid": 2.67,
+    "apexStation": [
+     3572.0,
+     3573.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.29,
+    "gBlockFrontSessionOnly": 2.35
+   },
+   {
+    "lap": 4,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "strong",
+    "peak": 8.38,
+    "events": [
+     [
+      17.02,
+      8.4,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -0.82,
+     -0.51
+    ],
+    "gPaintFront": [
+     -1.29,
+     -0.97
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.82,
+     -0.51
+    ],
+    "gBlockRearCentroid": -0.67,
+    "apexStation": [
+     905.0,
+     905.5
+    ],
+    "onBlockLengthM": 14.8,
+    "exitOuterGap": 3.16,
+    "gBlockFrontSessionOnly": -0.89
+   },
+   {
+    "lap": 4,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "mild/other-side",
+    "peak": 1.23,
+    "events": [
+     [
+      34.68,
+      1.2,
+      "both/unclear"
+     ]
+    ],
+    "gBlockFront": [
+     0.57,
+     0.88
+    ],
+    "gPaintFront": [
+     -0.04,
+     0.28
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.57,
+     0.88
+    ],
+    "gBlockRearCentroid": 0.74,
+    "apexStation": [
+     1534.5,
+     1534.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 6.15,
+    "gBlockFrontSessionOnly": 0.71
+   },
+   {
+    "lap": 4,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.45,
+    "events": [],
+    "gBlockFront": [
+     0.61,
+     0.85
+    ],
+    "gPaintFront": [
+     0.18,
+     0.43
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.61,
+     0.85
+    ],
+    "gBlockRearCentroid": 0.73,
+    "apexStation": [
+     2455.0,
+     2455.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.35,
+    "gBlockFrontSessionOnly": 0.89
+   },
+   {
+    "lap": 4,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "mild/other-side",
+    "peak": 1.07,
+    "events": [
+     [
+      66.72,
+      1.1,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     5.81,
+     6.02
+    ],
+    "gPaintFront": [
+     5.49,
+     5.7
+    ],
+    "gBlockFrontLabelConstrained": [
+     5.81,
+     6.02
+    ],
+    "gBlockRearCentroid": 5.91,
+    "apexStation": [
+     2682.5,
+     2682.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.49,
+    "gBlockFrontSessionOnly": 6.19
+   },
+   {
+    "lap": 4,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "mild/other-side",
+    "peak": 0.89,
+    "events": [],
+    "gBlockFront": [
+     -1.14,
+     -0.89
+    ],
+    "gPaintFront": [
+     -1.59,
+     -1.34
+    ],
+    "gBlockFrontLabelConstrained": [
+     -1.14,
+     -0.89
+    ],
+    "gBlockRearCentroid": -0.99,
+    "apexStation": [
+     3101.5,
+     3101.5
+    ],
+    "onBlockLengthM": 21.9,
+    "exitOuterGap": 1.2,
+    "gBlockFrontSessionOnly": -0.68
+   },
+   {
+    "lap": 4,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "silent",
+    "peak": 0.63,
+    "events": [],
+    "gBlockFront": [
+     3.19,
+     3.43
+    ],
+    "gPaintFront": [
+     2.75,
+     2.99
+    ],
+    "gBlockFrontLabelConstrained": [
+     3.19,
+     3.43
+    ],
+    "gBlockRearCentroid": 3.31,
+    "apexStation": [
+     3287.5,
+     3288.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.67,
+    "gBlockFrontSessionOnly": 3.14
+   },
+   {
+    "lap": 4,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.45,
+    "events": [],
+    "gBlockFront": [
+     0.12,
+     0.34
+    ],
+    "gPaintFront": [
+     -0.38,
+     -0.16
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.12,
+     0.34
+    ],
+    "gBlockRearCentroid": 0.23,
+    "apexStation": [
+     3627.0,
+     3627.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.84,
+    "gBlockFrontSessionOnly": 0.51
+   },
+   {
+    "lap": 4,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "mild/other-side",
+    "peak": 0.81,
+    "events": [],
+    "gBlockFront": [
+     -0.38,
+     -0.13
+    ],
+    "gPaintFront": [
+     -0.84,
+     -0.59
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.38,
+     -0.13
+    ],
+    "gBlockRearCentroid": -0.25,
+    "apexStation": [
+     3851.5,
+     3852.0
+    ],
+    "onBlockLengthM": 10.1,
+    "exitOuterGap": -0.62,
+    "gBlockFrontSessionOnly": -0.39
+   },
+   {
+    "lap": 4,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "mild/other-side",
+    "peak": 0.97,
+    "events": [],
+    "gBlockFront": [
+     -0.84,
+     -0.52
+    ],
+    "gPaintFront": [
+     -1.26,
+     -0.94
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.84,
+     -0.52
+    ],
+    "gBlockRearCentroid": -0.67,
+    "apexStation": [
+     2980.5,
+     2980.5
+    ],
+    "onBlockLengthM": 7.5,
+    "exitOuterGap": 0.14,
+    "gBlockFrontSessionOnly": -0.55
+   },
+   {
+    "lap": 5,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "mild/other-side",
+    "peak": 1.12,
+    "events": [
+     [
+      33.17,
+      1.0,
+      "left"
+     ],
+     [
+      33.59,
+      1.1,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -0.93,
+     -0.93
+    ],
+    "gPaintFront": [
+     -1.47,
+     -1.47
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.93,
+    "apexStation": [
+     1460.0,
+     1460.0
+    ],
+    "onBlockLengthM": 15.0,
+    "exitOuterGap": 1.96,
+    "gBlockFrontSessionOnly": -0.88
+   },
+   {
+    "lap": 5,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "mild/other-side",
+    "peak": 0.83,
+    "events": [],
+    "gBlockFront": [
+     1.38,
+     1.38
+    ],
+    "gPaintFront": [
+     0.9,
+     0.9
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.39,
+    "apexStation": [
+     2147.0,
+     2147.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.23,
+    "gBlockFrontSessionOnly": 0.69
+   },
+   {
+    "lap": 5,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "strong",
+    "peak": 2.94,
+    "events": [
+     [
+      79.37,
+      2.9,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     1.5,
+     1.5
+    ],
+    "gPaintFront": [
+     0.96,
+     0.96
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.51,
+    "apexStation": [
+     3053.5,
+     3053.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.05,
+    "gBlockFrontSessionOnly": 0.8
+   },
+   {
+    "lap": 5,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.78,
+    "events": [],
+    "gBlockFront": [
+     -1.44,
+     -1.44
+    ],
+    "gPaintFront": [
+     -1.82,
+     -1.82
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.43,
+    "apexStation": [
+     3367.0,
+     3367.0
+    ],
+    "onBlockLengthM": 54.6,
+    "exitOuterGap": 0.22,
+    "gBlockFrontSessionOnly": -0.91
+   },
+   {
+    "lap": 5,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "strong",
+    "peak": 1.83,
+    "events": [
+     [
+      98.31,
+      1.8,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     1.62,
+     1.62
+    ],
+    "gPaintFront": [
+     1.08,
+     1.08
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.63,
+    "apexStation": [
+     3572.0,
+     3572.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.56,
+    "gBlockFrontSessionOnly": 0.92
+   },
+   {
+    "lap": 5,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "mild/other-side",
+    "peak": 0.9,
+    "events": [],
+    "gBlockFront": [
+     1.6,
+     1.6
+    ],
+    "gPaintFront": [
+     1.14,
+     1.14
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.61,
+    "apexStation": [
+     905.0,
+     905.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -1.69,
+    "gBlockFrontSessionOnly": 0.91
+   },
+   {
+    "lap": 5,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "mild/other-side",
+    "peak": 0.88,
+    "events": [],
+    "gBlockFront": [
+     2.55,
+     2.55
+    ],
+    "gPaintFront": [
+     1.96,
+     1.96
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 2.56,
+    "apexStation": [
+     1534.5,
+     1534.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 5.27,
+    "gBlockFrontSessionOnly": 2.11
+   },
+   {
+    "lap": 5,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.6,
+    "events": [],
+    "gBlockFront": [
+     2.05,
+     2.05
+    ],
+    "gPaintFront": [
+     1.63,
+     1.63
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 2.05,
+    "apexStation": [
+     2455.5,
+     2455.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.43,
+    "gBlockFrontSessionOnly": 1.98
+   },
+   {
+    "lap": 5,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.65,
+    "events": [],
+    "gBlockFront": [
+     1.81,
+     1.81
+    ],
+    "gPaintFront": [
+     1.47,
+     1.47
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.82,
+    "apexStation": [
+     2682.5,
+     2682.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.07,
+    "gBlockFrontSessionOnly": 2.17
+   },
+   {
+    "lap": 5,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.46,
+    "events": [],
+    "gBlockFront": [
+     0.46,
+     0.46
+    ],
+    "gPaintFront": [
+     0.05,
+     0.05
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.47,
+    "apexStation": [
+     3100.5,
+     3100.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.81,
+    "gBlockFrontSessionOnly": 1.13
+   },
+   {
+    "lap": 5,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "mild/other-side",
+    "peak": 0.95,
+    "events": [],
+    "gBlockFront": [
+     -0.19,
+     -0.19
+    ],
+    "gPaintFront": [
+     -0.65,
+     -0.65
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.18,
+    "apexStation": [
+     3287.5,
+     3287.5
+    ],
+    "onBlockLengthM": 10.7,
+    "exitOuterGap": -1.82,
+    "gBlockFrontSessionOnly": -0.16
+   },
+   {
+    "lap": 5,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "mild/other-side",
+    "peak": 0.82,
+    "events": [
+     [
+      98.31,
+      1.8,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -0.08,
+     -0.08
+    ],
+    "gPaintFront": [
+     -0.55,
+     -0.55
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.08,
+    "apexStation": [
+     3632.0,
+     3632.0
+    ],
+    "onBlockLengthM": 2.1,
+    "exitOuterGap": 3.49,
+    "gBlockFrontSessionOnly": 0.25
+   },
+   {
+    "lap": 5,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "silent",
+    "peak": 0.7,
+    "events": [],
+    "gBlockFront": [
+     0.14,
+     0.14
+    ],
+    "gPaintFront": [
+     -0.34,
+     -0.34
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.15,
+    "apexStation": [
+     3853.0,
+     3853.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.23,
+    "gBlockFrontSessionOnly": 0.17
+   },
+   {
+    "lap": 5,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "mild/other-side",
+    "peak": 0.84,
+    "events": [],
+    "gBlockFront": [
+     -1.36,
+     -1.36
+    ],
+    "gPaintFront": [
+     -1.78,
+     -1.78
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.36,
+    "apexStation": [
+     2980.0,
+     2980.0
+    ],
+    "onBlockLengthM": 11.5,
+    "exitOuterGap": 0.96,
+    "gBlockFrontSessionOnly": -0.75
+   },
+   {
+    "lap": 6,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "strong",
+    "peak": 2.67,
+    "events": [
+     [
+      32.95,
+      2.7,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -1.43,
+     -1.43
+    ],
+    "gPaintFront": [
+     -1.98,
+     -1.98
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.42,
+    "apexStation": [
+     1460.0,
+     1460.0
+    ],
+    "onBlockLengthM": 18.8,
+    "exitOuterGap": 0.93,
+    "gBlockFrontSessionOnly": -1.33
+   },
+   {
+    "lap": 6,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "mild/other-side",
+    "peak": 1.25,
+    "events": [
+     [
+      52.41,
+      1.2,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.82,
+     0.82
+    ],
+    "gPaintFront": [
+     0.33,
+     0.33
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.82,
+    "apexStation": [
+     2147.0,
+     2147.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.78,
+    "gBlockFrontSessionOnly": 0.48
+   },
+   {
+    "lap": 6,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "silent",
+    "peak": 0.42,
+    "events": [],
+    "gBlockFront": [
+     1.56,
+     1.56
+    ],
+    "gPaintFront": [
+     1.07,
+     1.07
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.57,
+    "apexStation": [
+     3050.5,
+     3050.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -1.58,
+    "gBlockFrontSessionOnly": 1.18
+   },
+   {
+    "lap": 6,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "mild/other-side",
+    "peak": 0.8,
+    "events": [],
+    "gBlockFront": [
+     -1.45,
+     -1.45
+    ],
+    "gPaintFront": [
+     -1.83,
+     -1.83
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.45,
+    "apexStation": [
+     3367.0,
+     3367.0
+    ],
+    "onBlockLengthM": 38.4,
+    "exitOuterGap": 1.3,
+    "gBlockFrontSessionOnly": -1.22
+   },
+   {
+    "lap": 6,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "strong",
+    "peak": 3.01,
+    "events": [
+     [
+      97.75,
+      3.0,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.53,
+     0.53
+    ],
+    "gPaintFront": [
+     -0.0,
+     -0.0
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.53,
+    "apexStation": [
+     3572.0,
+     3572.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.55,
+    "gBlockFrontSessionOnly": 0.18
+   },
+   {
+    "lap": 6,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "silent",
+    "peak": 0.75,
+    "events": [],
+    "gBlockFront": [
+     2.4,
+     2.4
+    ],
+    "gPaintFront": [
+     1.9,
+     1.9
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 2.41,
+    "apexStation": [
+     912.5,
+     912.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.81,
+    "gBlockFrontSessionOnly": 2.03
+   },
+   {
+    "lap": 6,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "silent",
+    "peak": 0.74,
+    "events": [],
+    "gBlockFront": [
+     1.6,
+     1.6
+    ],
+    "gPaintFront": [
+     0.93,
+     0.93
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.6,
+    "apexStation": [
+     1539.5,
+     1539.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 5.74,
+    "gBlockFrontSessionOnly": 1.3
+   },
+   {
+    "lap": 6,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.5,
+    "events": [],
+    "gBlockFront": [
+     1.5,
+     1.5
+    ],
+    "gPaintFront": [
+     1.08,
+     1.08
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.51,
+    "apexStation": [
+     2455.0,
+     2455.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.04,
+    "gBlockFrontSessionOnly": 1.39
+   },
+   {
+    "lap": 6,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.62,
+    "events": [],
+    "gBlockFront": [
+     6.47,
+     6.47
+    ],
+    "gPaintFront": [
+     6.14,
+     6.14
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 6.48,
+    "apexStation": [
+     2682.5,
+     2682.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.98,
+    "gBlockFrontSessionOnly": 6.59
+   },
+   {
+    "lap": 6,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.57,
+    "events": [],
+    "gBlockFront": [
+     -1.08,
+     -1.08
+    ],
+    "gPaintFront": [
+     -1.58,
+     -1.58
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.07,
+    "apexStation": [
+     3101.5,
+     3101.5
+    ],
+    "onBlockLengthM": 25.4,
+    "exitOuterGap": 1.88,
+    "gBlockFrontSessionOnly": -0.74
+   },
+   {
+    "lap": 6,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "mild/other-side",
+    "peak": 1.0,
+    "events": [],
+    "gBlockFront": [
+     -0.07,
+     -0.07
+    ],
+    "gPaintFront": [
+     -0.56,
+     -0.56
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.07,
+    "apexStation": [
+     3295.0,
+     3295.0
+    ],
+    "onBlockLengthM": 5.7,
+    "exitOuterGap": -1.83,
+    "gBlockFrontSessionOnly": -0.04
+   },
+   {
+    "lap": 6,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "mild/other-side",
+    "peak": 2.15,
+    "events": [
+     [
+      97.75,
+      3.0,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     -0.04,
+     -0.04
+    ],
+    "gPaintFront": [
+     -0.55,
+     -0.55
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.03,
+    "apexStation": [
+     3632.0,
+     3632.0
+    ],
+    "onBlockLengthM": 0.5,
+    "exitOuterGap": 3.25,
+    "gBlockFrontSessionOnly": 0.09
+   },
+   {
+    "lap": 6,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "mild/other-side",
+    "peak": 1.0,
+    "events": [
+     [
+      108.77,
+      1.0,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -1.1,
+     -1.1
+    ],
+    "gPaintFront": [
+     -1.55,
+     -1.55
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.09,
+    "apexStation": [
+     3851.0,
+     3851.0
+    ],
+    "onBlockLengthM": 20.2,
+    "exitOuterGap": 0.35,
+    "gBlockFrontSessionOnly": -0.94
+   },
+   {
+    "lap": 6,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "mild/other-side",
+    "peak": 1.16,
+    "events": [
+     [
+      75.77,
+      1.2,
+      "right"
+     ]
+    ],
+    "gBlockFront": [
+     -1.23,
+     -1.23
+    ],
+    "gPaintFront": [
+     -1.65,
+     -1.65
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -1.23,
+    "apexStation": [
+     2980.5,
+     2980.5
+    ],
+    "onBlockLengthM": 10.9,
+    "exitOuterGap": 1.07,
+    "gBlockFrontSessionOnly": -0.89
+   }
+  ],
+  "events": {
+   "1": [
+    {
+     "t0": 17.175,
+     "t1": 17.554000000000002,
+     "peak": 1.3658751240873723,
+     "side": "right",
+     "ripLR": 0.79
+    },
+    {
+     "t0": 32.913,
+     "t1": 34.352999999999994,
+     "peak": 2.6084918535170862,
+     "side": "left",
+     "ripLR": 1.92
+    },
+    {
+     "t0": 34.812,
+     "t1": 36.095,
+     "peak": 1.9305336903112205,
+     "side": "both/unclear",
+     "ripLR": 0.95
+    },
+    {
+     "t0": 52.652,
+     "t1": 53.092,
+     "peak": 2.4156525516690004,
+     "side": "left",
+     "ripLR": 2.72
+    },
+    {
+     "t0": 76.60900000000001,
+     "t1": 76.60900000000001,
+     "peak": 1.0150130802140636,
+     "side": "both/unclear",
+     "ripLR": 1.07
+    },
+    {
+     "t0": 90.509,
+     "t1": 90.68900000000001,
+     "peak": 1.182117378877206,
+     "side": "right",
+     "ripLR": 0.41
+    },
+    {
+     "t0": 108.107,
+     "t1": 108.60600000000001,
+     "peak": 1.2878841763392384,
+     "side": "right",
+     "ripLR": 0.4
+    }
+   ],
+   "2": [
+    {
+     "t0": 16.366,
+     "t1": 16.906000000000002,
+     "peak": 4.473738896593989,
+     "side": "right",
+     "ripLR": 0.36
+    },
+    {
+     "t0": 32.403999999999996,
+     "t1": 32.823,
+     "peak": 2.2705586382406775,
+     "side": "left",
+     "ripLR": 2.71
+    },
+    {
+     "t0": 33.882999999999996,
+     "t1": 33.903,
+     "peak": 1.0345257739164895,
+     "side": "left",
+     "ripLR": 1.31
+    },
+    {
+     "t0": 34.564,
+     "t1": 35.983,
+     "peak": 3.0586756328558495,
+     "side": "both/unclear",
+     "ripLR": 0.91
+    },
+    {
+     "t0": 72.455,
+     "t1": 72.635,
+     "peak": 1.1548261784872174,
+     "side": "both/unclear",
+     "ripLR": 1.18
+    },
+    {
+     "t0": 76.292,
+     "t1": 77.113,
+     "peak": 2.061717236320629,
+     "side": "right",
+     "ripLR": 0.3
+    },
+    {
+     "t0": 79.61200000000001,
+     "t1": 80.212,
+     "peak": 2.3855945028011862,
+     "side": "left",
+     "ripLR": 3.36
+    },
+    {
+     "t0": 89.632,
+     "t1": 90.292,
+     "peak": 1.5867657527851826,
+     "side": "right",
+     "ripLR": 0.64
+    },
+    {
+     "t0": 97.81200000000001,
+     "t1": 98.012,
+     "peak": 1.4391477853487011,
+     "side": "left",
+     "ripLR": 1.41
+    },
+    {
+     "t0": 98.632,
+     "t1": 98.67200000000001,
+     "peak": 1.0508851850482916,
+     "side": "left",
+     "ripLR": 1.95
+    },
+    {
+     "t0": 99.11200000000001,
+     "t1": 100.652,
+     "peak": 4.475598378448762,
+     "side": "left",
+     "ripLR": 1.69
+    },
+    {
+     "t0": 115.81200000000001,
+     "t1": 115.872,
+     "peak": 1.1035086443887487,
+     "side": "both/unclear",
+     "ripLR": 1.21
+    }
+   ],
+   "3": [
+    {
+     "t0": 32.841,
+     "t1": 33.419,
+     "peak": 3.0055584392888286,
+     "side": "left",
+     "ripLR": 3.45
+    },
+    {
+     "t0": 52.638999999999996,
+     "t1": 52.858999999999995,
+     "peak": 1.152548987137524,
+     "side": "left",
+     "ripLR": 2.57
+    },
+    {
+     "t0": 105.30600000000001,
+     "t1": 105.488,
+     "peak": 1.1455614684014797,
+     "side": "right",
+     "ripLR": 0.68
+    },
+    {
+     "t0": 110.081,
+     "t1": 110.259,
+     "peak": 1.2121859012139844,
+     "side": "right",
+     "ripLR": 0.43
+    }
+   ],
+   "4": [
+    {
+     "t0": 17.022000000000002,
+     "t1": 18.164,
+     "peak": 8.383498584699847,
+     "side": "right",
+     "ripLR": 0.42
+    },
+    {
+     "t0": 33.158,
+     "t1": 33.717,
+     "peak": 2.7349558526859905,
+     "side": "left",
+     "ripLR": 2.83
+    },
+    {
+     "t0": 34.677,
+     "t1": 34.858,
+     "peak": 1.2325446139727938,
+     "side": "both/unclear",
+     "ripLR": 0.81
+    },
+    {
+     "t0": 66.71600000000001,
+     "t1": 66.756,
+     "peak": 1.0651391968877453,
+     "side": "right",
+     "ripLR": 0.8
+    },
+    {
+     "t0": 79.21600000000001,
+     "t1": 79.376,
+     "peak": 1.1300785677667544,
+     "side": "left",
+     "ripLR": 1.51
+    }
+   ],
+   "5": [
+    {
+     "t0": 33.169,
+     "t1": 33.208999999999996,
+     "peak": 1.0312698913094356,
+     "side": "left",
+     "ripLR": 3.62
+    },
+    {
+     "t0": 33.589,
+     "t1": 33.649,
+     "peak": 1.1225284494411711,
+     "side": "left",
+     "ripLR": 2.24
+    },
+    {
+     "t0": 42.509,
+     "t1": 42.849,
+     "peak": 1.680509698998359,
+     "side": "both/unclear",
+     "ripLR": 0.86
+    },
+    {
+     "t0": 79.366,
+     "t1": 79.726,
+     "peak": 2.943316091702848,
+     "side": "left",
+     "ripLR": 2.3
+    },
+    {
+     "t0": 98.30600000000001,
+     "t1": 99.006,
+     "peak": 1.826044765598261,
+     "side": "left",
+     "ripLR": 1.68
+    },
+    {
+     "t0": 106.32600000000001,
+     "t1": 106.60600000000001,
+     "peak": 1.2250661168669728,
+     "side": "both/unclear",
+     "ripLR": 0.96
+    }
+   ],
+   "6": [
+    {
+     "t0": 32.952999999999996,
+     "t1": 33.513,
+     "peak": 2.669677651815514,
+     "side": "left",
+     "ripLR": 2.94
+    },
+    {
+     "t0": 46.771,
+     "t1": 47.172,
+     "peak": 1.294245907446904,
+     "side": "both/unclear",
+     "ripLR": 0.84
+    },
+    {
+     "t0": 52.412,
+     "t1": 52.571999999999996,
+     "peak": 1.2487442015448647,
+     "side": "left",
+     "ripLR": 1.92
+    },
+    {
+     "t0": 75.771,
+     "t1": 76.051,
+     "peak": 1.1638052853642435,
+     "side": "right",
+     "ripLR": 0.32
+    },
+    {
+     "t0": 96.492,
+     "t1": 96.632,
+     "peak": 1.0580379211462012,
+     "side": "both/unclear",
+     "ripLR": 1.21
+    },
+    {
+     "t0": 97.75200000000001,
+     "t1": 98.88900000000001,
+     "peak": 3.0070188290861526,
+     "side": "left",
+     "ripLR": 1.83
+    },
+    {
+     "t0": 108.769,
+     "t1": 108.769,
+     "peak": 1.0022665328751346,
+     "side": "right",
+     "ripLR": 0.6
+    }
+   ]
+  }
+ },
+ "fuji_aim_01": {
+  "session": [
+   -1.5,
+   2.0
+  ],
+  "feasibleSetExtent": {
+   "1": [
+    0.1,
+    0.05
+   ],
+   "2": [
+    0.2,
+    0.1
+   ],
+   "3": [
+    0.05,
+    0.05
+   ],
+   "4": [
+    0.25,
+    0.2
+   ]
+  },
+  "variants": {
+   "raw": {
+    "strong": 1,
+    "silent": 51,
+    "auc": 0.45098039215686275,
+    "contradictions": [
+     [
+      1,
+      20,
+      "silent-but-deep",
+      -5.09
+     ],
+     [
+      1,
+      25,
+      "silent-but-deep",
+      -3.14
+     ],
+     [
+      2,
+      20,
+      "silent-but-deep",
+      -1.64
+     ],
+     [
+      2,
+      25,
+      "silent-but-deep",
+      -2.25
+     ],
+     [
+      3,
+      7,
+      "strong-but-off",
+      2.37
+     ],
+     [
+      3,
+      9,
+      "silent-but-deep",
+      -0.68
+     ]
+    ],
+    "strongMedian": 2.37
+   },
+   "shipped": {
+    "strong": 1,
+    "silent": 51,
+    "auc": 0.9411764705882353,
+    "contradictions": [
+     [
+      1,
+      13,
+      "silent-but-deep",
+      -0.73
+     ],
+     [
+      1,
+      25,
+      "silent-but-deep",
+      -0.63
+     ]
+    ],
+    "strongMedian": 0.01
+   },
+   "sessionOnlyV2": {
+    "strong": 1,
+    "silent": 51,
+    "auc": 0.9411764705882353,
+    "contradictions": [
+     [
+      1,
+      13,
+      "silent-but-deep",
+      -0.73
+     ],
+     [
+      1,
+      20,
+      "silent-but-deep",
+      -0.72
+     ],
+     [
+      1,
+      25,
+      "silent-but-deep",
+      -0.65
+     ]
+    ],
+    "strongMedian": -0.12
+   },
+   "v2Centroid": {
+    "strong": 1,
+    "silent": 51,
+    "auc": 0.9411764705882353,
+    "contradictions": [
+     [
+      1,
+      13,
+      "silent-but-deep",
+      -0.79
+     ]
+    ],
+    "strongMedian": 0.08
+   }
+  },
+  "kpi": [
+   {
+    "lap": 1,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "silent",
+    "peak": 0.48,
+    "events": [],
+    "gBlockFront": [
+     1.14,
+     1.24
+    ],
+    "gPaintFront": [
+     0.58,
+     0.69
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.19,
+    "apexStation": [
+     1451.0,
+     1451.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.57,
+    "gBlockFrontSessionOnly": 1.79
+   },
+   {
+    "lap": 1,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "silent",
+    "peak": 0.55,
+    "events": [],
+    "gBlockFront": [
+     1.8,
+     1.85
+    ],
+    "gPaintFront": [
+     1.28,
+     1.34
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.83,
+    "apexStation": [
+     2146.5,
+     2147.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 5.41,
+    "gBlockFrontSessionOnly": 2.54
+   },
+   {
+    "lap": 1,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "silent",
+    "peak": 0.45,
+    "events": [],
+    "gBlockFront": [
+     0.92,
+     0.99
+    ],
+    "gPaintFront": [
+     0.43,
+     0.49
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.96,
+    "apexStation": [
+     3053.0,
+     3053.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.41,
+    "gBlockFrontSessionOnly": 1.23
+   },
+   {
+    "lap": 1,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.46,
+    "events": [],
+    "gBlockFront": [
+     1.68,
+     1.78
+    ],
+    "gPaintFront": [
+     1.29,
+     1.38
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.74,
+    "apexStation": [
+     3378.0,
+     3378.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.82,
+    "gBlockFrontSessionOnly": 0.89
+   },
+   {
+    "lap": 1,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "silent",
+    "peak": 0.49,
+    "events": [],
+    "gBlockFront": [
+     0.19,
+     0.25
+    ],
+    "gPaintFront": [
+     -0.33,
+     -0.26
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.24,
+    "apexStation": [
+     3572.0,
+     3572.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.75,
+    "gBlockFrontSessionOnly": 0.94
+   },
+   {
+    "lap": 1,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "silent",
+    "peak": 0.54,
+    "events": [],
+    "gBlockFront": [
+     -0.82,
+     -0.74
+    ],
+    "gPaintFront": [
+     -1.27,
+     -1.2
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.82,
+     -0.81
+    ],
+    "gBlockRearCentroid": -0.78,
+    "apexStation": [
+     912.5,
+     913.0
+    ],
+    "onBlockLengthM": 16.5,
+    "exitOuterGap": 2.99,
+    "gBlockFrontSessionOnly": -0.73
+   },
+   {
+    "lap": 1,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "silent",
+    "peak": 0.34,
+    "events": [],
+    "gBlockFront": [
+     1.12,
+     1.21
+    ],
+    "gPaintFront": [
+     0.52,
+     0.61
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.18,
+    "apexStation": [
+     1530.0,
+     1530.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 8.05,
+    "gBlockFrontSessionOnly": 1.03
+   },
+   {
+    "lap": 1,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.55,
+    "events": [],
+    "gBlockFront": [
+     7.31,
+     7.41
+    ],
+    "gPaintFront": [
+     6.87,
+     6.98
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 7.38,
+    "apexStation": [
+     2456.0,
+     2456.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.92,
+    "gBlockFrontSessionOnly": 6.75
+   },
+   {
+    "lap": 1,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.67,
+    "events": [],
+    "gBlockFront": [
+     6.7,
+     6.81
+    ],
+    "gPaintFront": [
+     6.32,
+     6.43
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 6.77,
+    "apexStation": [
+     2676.5,
+     2676.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.75,
+    "gBlockFrontSessionOnly": 5.95
+   },
+   {
+    "lap": 1,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.65,
+    "events": [],
+    "gBlockFront": [
+     -0.02,
+     0.05
+    ],
+    "gPaintFront": [
+     -0.43,
+     -0.37
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.02,
+    "apexStation": [
+     3098.0,
+     3098.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.47,
+    "gBlockFrontSessionOnly": -0.72
+   },
+   {
+    "lap": 1,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "silent",
+    "peak": 0.5,
+    "events": [],
+    "gBlockFront": [
+     0.3,
+     0.41
+    ],
+    "gPaintFront": [
+     -0.18,
+     -0.07
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.36,
+    "apexStation": [
+     3303.0,
+     3303.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.33,
+    "gBlockFrontSessionOnly": 1.04
+   },
+   {
+    "lap": 1,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.49,
+    "events": [],
+    "gBlockFront": [
+     1.24,
+     1.34
+    ],
+    "gPaintFront": [
+     0.69,
+     0.8
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 1.3,
+    "apexStation": [
+     3626.5,
+     3626.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.0,
+    "gBlockFrontSessionOnly": 0.47
+   },
+   {
+    "lap": 1,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "mild/other-side",
+    "peak": 0.86,
+    "events": [],
+    "gBlockFront": [
+     0.53,
+     0.64
+    ],
+    "gPaintFront": [
+     0.05,
+     0.16
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": 0.59,
+    "apexStation": [
+     3866.5,
+     3866.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.61,
+    "gBlockFrontSessionOnly": 1.2
+   },
+   {
+    "lap": 1,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "silent",
+    "peak": 0.57,
+    "events": [],
+    "gBlockFront": [
+     -0.59,
+     -0.51
+    ],
+    "gPaintFront": [
+     -1.01,
+     -0.93
+    ],
+    "gBlockFrontLabelConstrained": null,
+    "gBlockRearCentroid": -0.54,
+    "apexStation": [
+     2986.0,
+     2986.0
+    ],
+    "onBlockLengthM": 7.1,
+    "exitOuterGap": 0.46,
+    "gBlockFrontSessionOnly": -0.65
+   },
+   {
+    "lap": 2,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "silent",
+    "peak": 0.74,
+    "events": [],
+    "gBlockFront": [
+     1.39,
+     1.59
+    ],
+    "gPaintFront": [
+     0.83,
+     1.03
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.39,
+     1.59
+    ],
+    "gBlockRearCentroid": 1.49,
+    "apexStation": [
+     1450.5,
+     1450.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.05,
+    "gBlockFrontSessionOnly": 1.32
+   },
+   {
+    "lap": 2,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "silent",
+    "peak": 0.42,
+    "events": [],
+    "gBlockFront": [
+     2.17,
+     2.28
+    ],
+    "gPaintFront": [
+     1.69,
+     1.8
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.17,
+     2.28
+    ],
+    "gBlockRearCentroid": 2.23,
+    "apexStation": [
+     2146.0,
+     2146.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.26,
+    "gBlockFrontSessionOnly": 2.32
+   },
+   {
+    "lap": 2,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "silent",
+    "peak": 0.41,
+    "events": [],
+    "gBlockFront": [
+     0.31,
+     0.45
+    ],
+    "gPaintFront": [
+     -0.19,
+     -0.05
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.31,
+     0.45
+    ],
+    "gBlockRearCentroid": 0.39,
+    "apexStation": [
+     3052.5,
+     3052.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.18,
+    "gBlockFrontSessionOnly": 0.56
+   },
+   {
+    "lap": 2,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.75,
+    "events": [],
+    "gBlockFront": [
+     0.68,
+     0.84
+    ],
+    "gPaintFront": [
+     0.3,
+     0.46
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.68,
+     0.84
+    ],
+    "gBlockRearCentroid": 0.76,
+    "apexStation": [
+     3372.0,
+     3372.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.9,
+    "gBlockFrontSessionOnly": 0.75
+   },
+   {
+    "lap": 2,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "silent",
+    "peak": 0.72,
+    "events": [],
+    "gBlockFront": [
+     0.31,
+     0.42
+    ],
+    "gPaintFront": [
+     -0.2,
+     -0.09
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.31,
+     0.42
+    ],
+    "gBlockRearCentroid": 0.37,
+    "apexStation": [
+     3568.5,
+     3570.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.06,
+    "gBlockFrontSessionOnly": 0.45
+   },
+   {
+    "lap": 2,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "silent",
+    "peak": 0.49,
+    "events": [],
+    "gBlockFront": [
+     2.19,
+     2.32
+    ],
+    "gPaintFront": [
+     1.71,
+     1.84
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.19,
+     2.32
+    ],
+    "gBlockRearCentroid": 2.27,
+    "apexStation": [
+     902.0,
+     902.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.04,
+    "gBlockFrontSessionOnly": 2.43
+   },
+   {
+    "lap": 2,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "silent",
+    "peak": 0.43,
+    "events": [],
+    "gBlockFront": [
+     0.46,
+     0.63
+    ],
+    "gPaintFront": [
+     -0.14,
+     0.03
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.46,
+     0.63
+    ],
+    "gBlockRearCentroid": 0.55,
+    "apexStation": [
+     1530.5,
+     1531.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 7.78,
+    "gBlockFrontSessionOnly": 0.77
+   },
+   {
+    "lap": 2,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.62,
+    "events": [],
+    "gBlockFront": [
+     1.3,
+     1.51
+    ],
+    "gPaintFront": [
+     0.86,
+     1.07
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.3,
+     1.51
+    ],
+    "gBlockRearCentroid": 1.42,
+    "apexStation": [
+     2449.0,
+     2449.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.62,
+    "gBlockFrontSessionOnly": 1.59
+   },
+   {
+    "lap": 2,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.55,
+    "events": [],
+    "gBlockFront": [
+     4.08,
+     4.27
+    ],
+    "gPaintFront": [
+     3.71,
+     3.9
+    ],
+    "gBlockFrontLabelConstrained": [
+     4.08,
+     4.27
+    ],
+    "gBlockRearCentroid": 4.17,
+    "apexStation": [
+     2662.5,
+     2662.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.91,
+    "gBlockFrontSessionOnly": 4.25
+   },
+   {
+    "lap": 2,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.39,
+    "events": [],
+    "gBlockFront": [
+     0.18,
+     0.29
+    ],
+    "gPaintFront": [
+     -0.24,
+     -0.12
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.18,
+     0.29
+    ],
+    "gBlockRearCentroid": 0.25,
+    "apexStation": [
+     3097.5,
+     3097.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.36,
+    "gBlockFrontSessionOnly": 0.16
+   },
+   {
+    "lap": 2,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "silent",
+    "peak": 0.68,
+    "events": [],
+    "gBlockFront": [
+     1.73,
+     1.93
+    ],
+    "gPaintFront": [
+     1.25,
+     1.46
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.73,
+     1.93
+    ],
+    "gBlockRearCentroid": 1.84,
+    "apexStation": [
+     3308.0,
+     3308.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.38,
+    "gBlockFrontSessionOnly": 1.71
+   },
+   {
+    "lap": 2,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.36,
+    "events": [],
+    "gBlockFront": [
+     2.48,
+     2.67
+    ],
+    "gPaintFront": [
+     1.98,
+     2.16
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.48,
+     2.67
+    ],
+    "gBlockRearCentroid": 2.58,
+    "apexStation": [
+     3626.5,
+     3626.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.88,
+    "gBlockFrontSessionOnly": 2.65
+   },
+   {
+    "lap": 2,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "silent",
+    "peak": 0.49,
+    "events": [],
+    "gBlockFront": [
+     3.02,
+     3.23
+    ],
+    "gPaintFront": [
+     2.53,
+     2.74
+    ],
+    "gBlockFrontLabelConstrained": [
+     3.02,
+     3.23
+    ],
+    "gBlockRearCentroid": 3.13,
+    "apexStation": [
+     3866.5,
+     3866.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.7,
+    "gBlockFrontSessionOnly": 2.97
+   },
+   {
+    "lap": 2,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "silent",
+    "peak": 0.78,
+    "events": [],
+    "gBlockFront": [
+     0.21,
+     0.38
+    ],
+    "gPaintFront": [
+     -0.2,
+     -0.03
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.21,
+     0.38
+    ],
+    "gBlockRearCentroid": 0.3,
+    "apexStation": [
+     2986.5,
+     2987.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.12,
+    "gBlockFrontSessionOnly": 0.07
+   },
+   {
+    "lap": 3,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "silent",
+    "peak": 0.47,
+    "events": [],
+    "gBlockFront": [
+     2.98,
+     3.03
+    ],
+    "gPaintFront": [
+     2.45,
+     2.5
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.98,
+     3.03
+    ],
+    "gBlockRearCentroid": 3.01,
+    "apexStation": [
+     1453.0,
+     1453.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.17,
+    "gBlockFrontSessionOnly": 3.01
+   },
+   {
+    "lap": 3,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "silent",
+    "peak": 0.36,
+    "events": [],
+    "gBlockFront": [
+     1.84,
+     1.88
+    ],
+    "gPaintFront": [
+     1.33,
+     1.38
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.84,
+     1.88
+    ],
+    "gBlockRearCentroid": 1.86,
+    "apexStation": [
+     2153.0,
+     2153.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.8,
+    "gBlockFrontSessionOnly": 1.66
+   },
+   {
+    "lap": 3,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "strong",
+    "peak": 1.63,
+    "events": [
+     [
+      85.46,
+      1.6,
+      "left"
+     ]
+    ],
+    "gBlockFront": [
+     0.05,
+     0.12
+    ],
+    "gPaintFront": [
+     -0.46,
+     -0.39
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.05,
+     0.12
+    ],
+    "gBlockRearCentroid": 0.09,
+    "apexStation": [
+     3050.5,
+     3050.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 4.58,
+    "gBlockFrontSessionOnly": -0.12
+   },
+   {
+    "lap": 3,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.67,
+    "events": [],
+    "gBlockFront": [
+     0.15,
+     0.19
+    ],
+    "gPaintFront": [
+     -0.22,
+     -0.18
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.15,
+     0.19
+    ],
+    "gBlockRearCentroid": 0.18,
+    "apexStation": [
+     3371.5,
+     3372.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.92,
+    "gBlockFrontSessionOnly": 0.34
+   },
+   {
+    "lap": 3,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "mild/other-side",
+    "peak": 0.91,
+    "events": [],
+    "gBlockFront": [
+     -0.22,
+     -0.17
+    ],
+    "gPaintFront": [
+     -0.74,
+     -0.69
+    ],
+    "gBlockFrontLabelConstrained": [
+     -0.22,
+     -0.17
+    ],
+    "gBlockRearCentroid": -0.2,
+    "apexStation": [
+     3571.5,
+     3571.5
+    ],
+    "onBlockLengthM": 6.3,
+    "exitOuterGap": 0.42,
+    "gBlockFrontSessionOnly": -0.42
+   },
+   {
+    "lap": 3,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "silent",
+    "peak": 0.57,
+    "events": [],
+    "gBlockFront": [
+     1.59,
+     1.65
+    ],
+    "gPaintFront": [
+     1.11,
+     1.17
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.59,
+     1.65
+    ],
+    "gBlockRearCentroid": 1.62,
+    "apexStation": [
+     902.5,
+     902.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.65,
+    "gBlockFrontSessionOnly": 1.41
+   },
+   {
+    "lap": 3,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "silent",
+    "peak": 0.52,
+    "events": [],
+    "gBlockFront": [
+     3.72,
+     3.78
+    ],
+    "gPaintFront": [
+     3.16,
+     3.22
+    ],
+    "gBlockFrontLabelConstrained": [
+     3.72,
+     3.78
+    ],
+    "gBlockRearCentroid": 3.76,
+    "apexStation": [
+     1521.0,
+     1521.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 7.99,
+    "gBlockFrontSessionOnly": 3.63
+   },
+   {
+    "lap": 3,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "mild/other-side",
+    "peak": 0.95,
+    "events": [],
+    "gBlockFront": [
+     3.37,
+     3.42
+    ],
+    "gPaintFront": [
+     2.95,
+     3.0
+    ],
+    "gBlockFrontLabelConstrained": [
+     3.37,
+     3.42
+    ],
+    "gBlockRearCentroid": 3.42,
+    "apexStation": [
+     2449.5,
+     2449.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.32,
+    "gBlockFrontSessionOnly": 3.39
+   },
+   {
+    "lap": 3,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.41,
+    "events": [],
+    "gBlockFront": [
+     1.29,
+     1.33
+    ],
+    "gPaintFront": [
+     0.97,
+     1.01
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.29,
+     1.33
+    ],
+    "gBlockRearCentroid": 1.32,
+    "apexStation": [
+     2677.0,
+     2677.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.38,
+    "gBlockFrontSessionOnly": 1.43
+   },
+   {
+    "lap": 3,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.7,
+    "events": [],
+    "gBlockFront": [
+     5.03,
+     5.08
+    ],
+    "gPaintFront": [
+     4.55,
+     4.6
+    ],
+    "gBlockFrontLabelConstrained": [
+     5.03,
+     5.08
+    ],
+    "gBlockRearCentroid": 5.07,
+    "apexStation": [
+     3099.0,
+     3099.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.17,
+    "gBlockFrontSessionOnly": 5.28
+   },
+   {
+    "lap": 3,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "silent",
+    "peak": 0.76,
+    "events": [],
+    "gBlockFront": [
+     1.74,
+     1.78
+    ],
+    "gPaintFront": [
+     1.26,
+     1.3
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.74,
+     1.78
+    ],
+    "gBlockRearCentroid": 1.77,
+    "apexStation": [
+     3307.5,
+     3307.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.2,
+    "gBlockFrontSessionOnly": 1.7
+   },
+   {
+    "lap": 3,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.39,
+    "events": [],
+    "gBlockFront": [
+     0.87,
+     0.91
+    ],
+    "gPaintFront": [
+     0.4,
+     0.44
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.87,
+     0.91
+    ],
+    "gBlockRearCentroid": 0.9,
+    "apexStation": [
+     3636.5,
+     3636.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.4,
+    "gBlockFrontSessionOnly": 1.01
+   },
+   {
+    "lap": 3,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "silent",
+    "peak": 0.66,
+    "events": [],
+    "gBlockFront": [
+     0.94,
+     0.98
+    ],
+    "gPaintFront": [
+     0.46,
+     0.51
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.94,
+     0.98
+    ],
+    "gBlockRearCentroid": 0.96,
+    "apexStation": [
+     3872.5,
+     3872.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.48,
+    "gBlockFrontSessionOnly": 0.91
+   },
+   {
+    "lap": 3,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "silent",
+    "peak": 0.78,
+    "events": [],
+    "gBlockFront": [
+     2.85,
+     2.92
+    ],
+    "gPaintFront": [
+     2.44,
+     2.51
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.85,
+     2.92
+    ],
+    "gBlockRearCentroid": 2.89,
+    "apexStation": [
+     2979.0,
+     2979.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": -0.43,
+    "gBlockFrontSessionOnly": 3.09
+   },
+   {
+    "lap": 4,
+    "kerb": 1,
+    "name": "Coca-Cola (L)",
+    "label": "silent",
+    "peak": 0.39,
+    "events": [],
+    "gBlockFront": [
+     2.88,
+     3.09
+    ],
+    "gPaintFront": [
+     2.32,
+     2.53
+    ],
+    "gBlockFrontLabelConstrained": [
+     2.88,
+     3.09
+    ],
+    "gBlockRearCentroid": 2.98,
+    "apexStation": [
+     1451.0,
+     1451.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.59,
+    "gBlockFrontSessionOnly": 2.9
+   },
+   {
+    "lap": 4,
+    "kerb": 3,
+    "name": "Hairpin (L)",
+    "label": "silent",
+    "peak": 0.43,
+    "events": [],
+    "gBlockFront": [
+     1.51,
+     1.71
+    ],
+    "gPaintFront": [
+     1.03,
+     1.23
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.51,
+     1.71
+    ],
+    "gBlockRearCentroid": 1.62,
+    "apexStation": [
+     2145.5,
+     2146.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.7,
+    "gBlockFrontSessionOnly": 1.07
+   },
+   {
+    "lap": 4,
+    "kerb": 7,
+    "name": "Dunlop-L",
+    "label": "silent",
+    "peak": 0.29,
+    "events": [],
+    "gBlockFront": [
+     0.96,
+     1.26
+    ],
+    "gPaintFront": [
+     0.46,
+     0.76
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.96,
+     1.26
+    ],
+    "gBlockRearCentroid": 1.12,
+    "apexStation": [
+     3052.0,
+     3052.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.82,
+    "gBlockFrontSessionOnly": 0.62
+   },
+   {
+    "lap": 4,
+    "kerb": 9,
+    "name": "3350m (L)",
+    "label": "silent",
+    "peak": 0.5,
+    "events": [],
+    "gBlockFront": [
+     0.79,
+     0.94
+    ],
+    "gPaintFront": [
+     0.39,
+     0.53
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.79,
+     0.94
+    ],
+    "gBlockRearCentroid": 0.88,
+    "apexStation": [
+     3381.5,
+     3382.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.07,
+    "gBlockFrontSessionOnly": 1.31
+   },
+   {
+    "lap": 4,
+    "kerb": 10,
+    "name": "3540m (L)",
+    "label": "silent",
+    "peak": 0.49,
+    "events": [],
+    "gBlockFront": [
+     0.42,
+     0.62
+    ],
+    "gPaintFront": [
+     -0.08,
+     0.11
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.42,
+     0.62
+    ],
+    "gBlockRearCentroid": 0.54,
+    "apexStation": [
+     3568.5,
+     3570.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.35,
+    "gBlockFrontSessionOnly": -0.02
+   },
+   {
+    "lap": 4,
+    "kerb": 13,
+    "name": "T1 (R)",
+    "label": "silent",
+    "peak": 0.5,
+    "events": [],
+    "gBlockFront": [
+     5.98,
+     6.26
+    ],
+    "gPaintFront": [
+     5.54,
+     5.82
+    ],
+    "gBlockFrontLabelConstrained": [
+     5.98,
+     6.26
+    ],
+    "gBlockRearCentroid": 6.16,
+    "apexStation": [
+     883.0,
+     914.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.2,
+    "gBlockFrontSessionOnly": 5.68
+   },
+   {
+    "lap": 4,
+    "kerb": 15,
+    "name": "1500m (R)",
+    "label": "silent",
+    "peak": 0.39,
+    "events": [],
+    "gBlockFront": [
+     1.02,
+     1.33
+    ],
+    "gPaintFront": [
+     0.42,
+     0.74
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.02,
+     1.33
+    ],
+    "gBlockRearCentroid": 1.2,
+    "apexStation": [
+     1521.0,
+     1521.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 8.5,
+    "gBlockFrontSessionOnly": 0.9
+   },
+   {
+    "lap": 4,
+    "kerb": 18,
+    "name": "2420m (R)",
+    "label": "silent",
+    "peak": 0.55,
+    "events": [],
+    "gBlockFront": [
+     1.67,
+     1.89
+    ],
+    "gPaintFront": [
+     1.25,
+     1.47
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.67,
+     1.89
+    ],
+    "gBlockRearCentroid": 1.8,
+    "apexStation": [
+     2456.5,
+     2457.5
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 4.26,
+    "gBlockFrontSessionOnly": 1.84
+   },
+   {
+    "lap": 4,
+    "kerb": 19,
+    "name": "2650m (R)",
+    "label": "silent",
+    "peak": 0.53,
+    "events": [],
+    "gBlockFront": [
+     0.99,
+     1.11
+    ],
+    "gPaintFront": [
+     0.69,
+     0.8
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.99,
+     1.11
+    ],
+    "gBlockRearCentroid": 1.06,
+    "apexStation": [
+     2677.0,
+     2677.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 1.65,
+    "gBlockFrontSessionOnly": 1.39
+   },
+   {
+    "lap": 4,
+    "kerb": 20,
+    "name": "3090m (R)",
+    "label": "silent",
+    "peak": 0.27,
+    "events": [],
+    "gBlockFront": [
+     1.38,
+     1.59
+    ],
+    "gPaintFront": [
+     0.72,
+     0.93
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.38,
+     1.59
+    ],
+    "gBlockRearCentroid": 1.48,
+    "apexStation": [
+     3110.0,
+     3110.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 2.53,
+    "gBlockFrontSessionOnly": 2.03
+   },
+   {
+    "lap": 4,
+    "kerb": 21,
+    "name": "3250m (R)",
+    "label": "silent",
+    "peak": 0.62,
+    "events": [],
+    "gBlockFront": [
+     0.96,
+     1.19
+    ],
+    "gPaintFront": [
+     0.5,
+     0.7
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.96,
+     1.19
+    ],
+    "gBlockRearCentroid": 1.08,
+    "apexStation": [
+     3293.5,
+     3302.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.47,
+    "gBlockFrontSessionOnly": 0.95
+   },
+   {
+    "lap": 4,
+    "kerb": 23,
+    "name": "3600m (R)",
+    "label": "silent",
+    "peak": 0.32,
+    "events": [],
+    "gBlockFront": [
+     1.72,
+     1.84
+    ],
+    "gPaintFront": [
+     1.29,
+     1.41
+    ],
+    "gBlockFrontLabelConstrained": [
+     1.72,
+     1.84
+    ],
+    "gBlockRearCentroid": 1.79,
+    "apexStation": [
+     3636.5,
+     3637.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 3.55,
+    "gBlockFrontSessionOnly": 2.11
+   },
+   {
+    "lap": 4,
+    "kerb": 24,
+    "name": "Final (R)",
+    "label": "mild/other-side",
+    "peak": 1.06,
+    "events": [
+     [
+      125.75,
+      1.1,
+      "both/unclear"
+     ]
+    ],
+    "gBlockFront": [
+     0.41,
+     0.65
+    ],
+    "gPaintFront": [
+     -0.05,
+     0.2
+    ],
+    "gBlockFrontLabelConstrained": [
+     0.41,
+     0.65
+    ],
+    "gBlockRearCentroid": 0.53,
+    "apexStation": [
+     3858.5,
+     3859.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 5.53,
+    "gBlockFrontSessionOnly": 0.53
+   },
+   {
+    "lap": 4,
+    "kerb": 25,
+    "name": "Dunlop-R (new)",
+    "label": "silent",
+    "peak": 0.62,
+    "events": [],
+    "gBlockFront": [
+     5.72,
+     5.91
+    ],
+    "gPaintFront": [
+     5.3,
+     5.49
+    ],
+    "gBlockFrontLabelConstrained": [
+     5.72,
+     5.91
+    ],
+    "gBlockRearCentroid": 5.82,
+    "apexStation": [
+     2969.5,
+     2970.0
+    ],
+    "onBlockLengthM": 0.0,
+    "exitOuterGap": 0.62,
+    "gBlockFrontSessionOnly": 6.35
+   }
+  ],
+  "events": {
+   "1": [],
+   "2": [],
+   "3": [
+    {
+     "t0": 85.461,
+     "t1": 86.181,
+     "peak": 1.6258945898359844,
+     "side": "left",
+     "ripLR": 3.99
+    },
+    {
+     "t0": 113.818,
+     "t1": 113.958,
+     "peak": 1.1223107128275074,
+     "side": "right",
+     "ripLR": 0.72
+    }
+   ],
+   "4": [
+    {
+     "t0": 125.749,
+     "t1": 125.789,
+     "peak": 1.0589693521875345,
+     "side": "both/unclear",
+     "ripLR": 1.13
+    }
+   ]
+  }
+ }
+}

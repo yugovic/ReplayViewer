@@ -1,0 +1,1067 @@
+{
+ "script": "indep_timing_xrk.py",
+ "doc": "Evaluator's raw-XRK cross-check of the 7/30 channel re-timing (2026-10-02).\n\nInput: xrkraw_<race>.npz dumped by the evaluator from the original .xrk files with\nlibxrk (logger timecodes in ms; dump script extract_xrk.py kept in the scratchpad,\nnot in the repo). Path given by env XRKRAW_DIR. Nothing from the implementer's tools.\n\nA. Map every lap JSON t to the XRK timecode: tc = tc0 + 1000 t, tc0 fitted so that the\n   lap's GPS speed equals XRK 'GPS Speed' (1 ms refinement).\nB. Conversion offset per logger channel: s = argmax_s corr(JSON_ch(t), XRK_ch(tc0+1000t+s)).\n   s > 0 -> the JSON shows the XRK value from s ms LATER, i.e. the channel is early on\n   the GPS time base and needs a delay of s (same sign as shiftSeconds).\nC. Native XRK lags on the logger timeline (no CSV involved): tau = argmax corr(GPSref(tc),\n   ch(tc + tau)) for the ECU/IMU channels against GPS-derived references, both sessions.\nOutput: indep_timing_xrk_results.json next to this script.\n",
+ "tc0": {
+  "fuji_aim_01/lap1": {
+   "tc0_ms": 180700.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_01/lap2": {
+   "tc0_ms": 325300.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_01/lap3": {
+   "tc0_ms": 469900.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_01/lap4": {
+   "tc0_ms": 611300.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_2020_07_30/lap1": {
+   "tc0_ms": 162200.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_2020_07_30/lap2": {
+   "tc0_ms": 295800.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_2020_07_30/lap3": {
+   "tc0_ms": 427600.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_2020_07_30/lap4": {
+   "tc0_ms": 559400.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_2020_07_30/lap5": {
+   "tc0_ms": 690200.0,
+   "speed_rms_kmh": 0.0003
+  },
+  "fuji_aim_2020_07_30/lap6": {
+   "tc0_ms": 821000.0,
+   "speed_rms_kmh": 0.0003
+  }
+ },
+ "conversion_offset_ms": {
+  "ref0729/lap1": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": 3.7,
+    "r": 0.998
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -2.6,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -0.0,
+    "r": 1.0
+   }
+  },
+  "ref0729/lap2": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -0.5,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -6.2,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -0.0,
+    "r": 1.0
+   }
+  },
+  "ref0729/lap3": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -2.4,
+    "r": 1.0
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": 0.8,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": 0.0,
+    "r": 1.0
+   }
+  },
+  "ref0729/lap4": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -0.5,
+    "r": 1.0
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -6.8,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": 0.0,
+    "r": 1.0
+   }
+  },
+  "before0730/lap1": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -0.0,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -3.9,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -0.0,
+    "r": 1.0
+   }
+  },
+  "after0730/lap1": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -483.2,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -476.8,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -486.9,
+    "r": 0.996
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -475.2,
+    "r": 0.999
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -487.5,
+    "r": 0.998
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -461.4,
+    "r": 0.997
+   }
+  },
+  "before0730/lap2": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -0.1,
+    "r": 1.0
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -5.6,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": 0.0,
+    "r": 1.0
+   }
+  },
+  "after0730/lap2": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -463.1,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -464.2,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -479.8,
+    "r": 0.995
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -476.8,
+    "r": 0.999
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -464.7,
+    "r": 0.998
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -462.6,
+    "r": 0.998
+   }
+  },
+  "before0730/lap3": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -2.0,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -4.9,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": 0.0,
+    "r": 1.0
+   }
+  },
+  "after0730/lap3": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -496.4,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -493.3,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -497.4,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -497.4,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -501.1,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -496.3,
+    "r": 1.0
+   }
+  },
+  "before0730/lap4": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -5.2,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": 0.1,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -4.9,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": 0.0,
+    "r": 1.0
+   }
+  },
+  "after0730/lap4": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -515.1,
+    "r": 1.0
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -512.8,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -507.6,
+    "r": 0.999
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -507.9,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -514.1,
+    "r": 0.999
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -512.0,
+    "r": 1.0
+   }
+  },
+  "before0730/lap5": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -2.8,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -7.9,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": 0.0,
+    "r": 1.0
+   }
+  },
+  "after0730/lap5": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -522.3,
+    "r": 0.999
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -523.3,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -514.5,
+    "r": 0.997
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -517.5,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -523.3,
+    "r": 0.999
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -519.7,
+    "r": 0.999
+   }
+  },
+  "before0730/lap6": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -0.5,
+    "r": 1.0
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": 0.0,
+    "r": 1.0
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -0.0,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -4.8,
+    "r": 1.0
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -0.0,
+    "r": 1.0
+   }
+  },
+  "after0730/lap6": {
+   "brake<-ECU_BRK_P": {
+    "s_ms": -520.8,
+    "r": 1.0
+   },
+   "steer<-ECU_STEER_ANG": {
+    "s_ms": -523.1,
+    "r": 1.0
+   },
+   "accx<-InlineAcc": {
+    "s_ms": -508.0,
+    "r": 0.998
+   },
+   "accy<-LateralAcc": {
+    "s_ms": -508.7,
+    "r": 1.0
+   },
+   "aps<-ECU_PPS": {
+    "s_ms": -524.3,
+    "r": 0.999
+   },
+   "aps<-ECU_TPS": {
+    "s_ms": -521.3,
+    "r": 0.999
+   }
+  }
+ },
+ "native_lag_s": {
+  "fuji_aim_01/lap1": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.0475,
+    "r": 0.973
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": 0.0481,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.1353,
+    "r": 0.859
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.0541,
+    "r": 0.985
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.183,
+    "r": 0.806
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": 0.0361,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0766,
+    "r": 0.881
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1236,
+    "r": 0.987
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.0268,
+    "r": 0.963
+   }
+  },
+  "fuji_aim_01/lap2": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.081,
+    "r": 0.966
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": 0.0138,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.1483,
+    "r": 0.8
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.0336,
+    "r": 0.982
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.192,
+    "r": 0.809
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": 0.0398,
+    "r": 0.995
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0827,
+    "r": 0.83
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.138,
+    "r": 0.98
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": -0.0033,
+    "r": 0.952
+   }
+  },
+  "fuji_aim_01/lap3": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.0964,
+    "r": 0.975
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": 0.0024,
+    "r": 0.998
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.161,
+    "r": 0.857
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.0536,
+    "r": 0.983
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.1975,
+    "r": 0.847
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": 0.014,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0524,
+    "r": 0.871
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1126,
+    "r": 0.983
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": -0.0082,
+    "r": 0.954
+   }
+  },
+  "fuji_aim_01/lap4": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.1222,
+    "r": 0.967
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.0217,
+    "r": 0.996
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.1421,
+    "r": 0.808
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.0366,
+    "r": 0.985
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.2163,
+    "r": 0.74
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": 0.0395,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0156,
+    "r": 0.828
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1086,
+    "r": 0.985
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": -0.0662,
+    "r": 0.957
+   }
+  },
+  "fuji_aim_2020_07_30/lap1": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.5763,
+    "r": 0.982
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.4688,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.6363,
+    "r": 0.897
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.608,
+    "r": 0.969
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.7011,
+    "r": 0.757
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": -0.5155,
+    "r": 0.996
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0654,
+    "r": 0.909
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1454,
+    "r": 0.973
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.0632,
+    "r": 0.959
+   }
+  },
+  "fuji_aim_2020_07_30/lap2": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.5871,
+    "r": 0.976
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.4977,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.6627,
+    "r": 0.895
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.6217,
+    "r": 0.976
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.6993,
+    "r": 0.762
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": -0.5242,
+    "r": 0.996
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0883,
+    "r": 0.905
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1325,
+    "r": 0.978
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.0336,
+    "r": 0.959
+   }
+  },
+  "fuji_aim_2020_07_30/lap3": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.6025,
+    "r": 0.981
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.5082,
+    "r": 0.998
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.6628,
+    "r": 0.907
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.5903,
+    "r": 0.974
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.7201,
+    "r": 0.799
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": -0.5061,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0632,
+    "r": 0.918
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1278,
+    "r": 0.977
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.0212,
+    "r": 0.952
+   }
+  },
+  "fuji_aim_2020_07_30/lap4": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.6167,
+    "r": 0.981
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.5144,
+    "r": 0.998
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.7041,
+    "r": 0.895
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.6278,
+    "r": 0.974
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.739,
+    "r": 0.795
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": -0.5437,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0828,
+    "r": 0.909
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1229,
+    "r": 0.976
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.0467,
+    "r": 0.961
+   }
+  },
+  "fuji_aim_2020_07_30/lap5": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.6247,
+    "r": 0.981
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.5333,
+    "r": 0.998
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.7112,
+    "r": 0.891
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.6454,
+    "r": 0.975
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.7437,
+    "r": 0.777
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": -0.5592,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0872,
+    "r": 0.904
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.12,
+    "r": 0.976
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.044,
+    "r": 0.96
+   }
+  },
+  "fuji_aim_2020_07_30/lap6": {
+   "InlineAcc_vs_gps_along": {
+    "tau_s": -0.6472,
+    "r": 0.983
+   },
+   "LateralAcc_vs_gps_lat": {
+    "tau_s": -0.5443,
+    "r": 0.998
+   },
+   "ECU_BRK_P_vs_gps_decel": {
+    "tau_s": -0.7205,
+    "r": 0.887
+   },
+   "ECU_STEER_ANG_vs_gps_rate": {
+    "tau_s": -0.642,
+    "r": 0.974
+   },
+   "ECU_PPS_vs_gps_along": {
+    "tau_s": -0.7564,
+    "r": 0.764
+   },
+   "YawRate_vs_gps_rate": {
+    "tau_s": -0.5592,
+    "r": 0.997
+   },
+   "ECU_BRK_P_vs_InlineAcc": {
+    "tau_s": -0.0709,
+    "r": 0.899
+   },
+   "ECU_STEER_ANG_vs_YawRate": {
+    "tau_s": -0.1302,
+    "r": 0.976
+   },
+   "LateralAcc_vs_YawRate": {
+    "tau_s": 0.0227,
+    "r": 0.959
+   }
+  }
+ },
+ "first_timecode_ms": {
+  "fuji_aim_01": {
+   "GPS_Speed": 415.0,
+   "ECU_STEER_ANG": 405.0,
+   "InlineAcc": 235.0,
+   "YawRate": 0.0
+  },
+  "fuji_aim_2020_07_30": {
+   "GPS_Speed": 767.0,
+   "ECU_STEER_ANG": 293.0,
+   "InlineAcc": 32.0,
+   "YawRate": 0.0
+  }
+ },
+ "signs": {
+  "InlineAcc_vs_gps_along": 1.0,
+  "LateralAcc_vs_gps_lat": -1.0,
+  "ECU_BRK_P_vs_gps_decel": 1.0,
+  "ECU_STEER_ANG_vs_gps_rate": 1.0,
+  "ECU_PPS_vs_gps_along": 1.0,
+  "YawRate_vs_gps_rate": -1.0,
+  "ECU_BRK_P_vs_InlineAcc": -1.0,
+  "ECU_STEER_ANG_vs_YawRate": -1.0,
+  "LateralAcc_vs_YawRate": 1.0
+ },
+ "summary": {
+  "conversion_offset_ms": {
+   "ref0729": {
+    "brake<-ECU_BRK_P": [
+     -0.5,
+     -2.4,
+     3.7
+    ],
+    "steer<-ECU_STEER_ANG": [
+     0.0,
+     -0.0,
+     -0.0
+    ],
+    "accx<-InlineAcc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "accy<-LateralAcc": [
+     0.0,
+     -0.0,
+     -0.0
+    ],
+    "aps<-ECU_PPS": [
+     -4.4,
+     -6.8,
+     0.8
+    ],
+    "aps<-ECU_TPS": [
+     0.0,
+     -0.0,
+     -0.0
+    ]
+   },
+   "before0730": {
+    "brake<-ECU_BRK_P": [
+     -1.25,
+     -5.2,
+     -0.0
+    ],
+    "steer<-ECU_STEER_ANG": [
+     0.0,
+     -0.0,
+     -0.0
+    ],
+    "accx<-InlineAcc": [
+     0.0,
+     0.0,
+     0.1
+    ],
+    "accy<-LateralAcc": [
+     0.0,
+     -0.0,
+     -0.0
+    ],
+    "aps<-ECU_PPS": [
+     -4.9,
+     -7.9,
+     -3.9
+    ],
+    "aps<-ECU_TPS": [
+     0.0,
+     -0.0,
+     -0.0
+    ]
+   },
+   "after0730": {
+    "brake<-ECU_BRK_P": [
+     -505.75,
+     -522.3,
+     -463.1
+    ],
+    "steer<-ECU_STEER_ANG": [
+     -503.05,
+     -523.3,
+     -464.2
+    ],
+    "accx<-InlineAcc": [
+     -502.5,
+     -514.5,
+     -479.8
+    ],
+    "accy<-LateralAcc": [
+     -502.65,
+     -517.5,
+     -475.2
+    ],
+    "aps<-ECU_PPS": [
+     -507.6,
+     -524.3,
+     -464.7
+    ],
+    "aps<-ECU_TPS": [
+     -504.15,
+     -521.3,
+     -461.4
+    ]
+   }
+  },
+  "native_lag_s": {
+   "fuji_aim_01": {
+    "InlineAcc_vs_gps_along": [
+     -0.0887,
+     -0.1222,
+     -0.0475
+    ],
+    "LateralAcc_vs_gps_lat": [
+     0.0081,
+     -0.0217,
+     0.0481
+    ],
+    "ECU_BRK_P_vs_gps_decel": [
+     -0.1452,
+     -0.161,
+     -0.1353
+    ],
+    "ECU_STEER_ANG_vs_gps_rate": [
+     -0.0451,
+     -0.0541,
+     -0.0336
+    ],
+    "ECU_PPS_vs_gps_along": [
+     -0.1948,
+     -0.2163,
+     -0.183
+    ],
+    "YawRate_vs_gps_rate": [
+     0.0378,
+     0.014,
+     0.0398
+    ],
+    "ECU_BRK_P_vs_InlineAcc": [
+     -0.0645,
+     -0.0827,
+     -0.0156
+    ],
+    "ECU_STEER_ANG_vs_YawRate": [
+     -0.1181,
+     -0.138,
+     -0.1086
+    ],
+    "LateralAcc_vs_YawRate": [
+     -0.0057,
+     -0.0662,
+     0.0268
+    ]
+   },
+   "fuji_aim_2020_07_30": {
+    "InlineAcc_vs_gps_along": [
+     -0.6096,
+     -0.6472,
+     -0.5763
+    ],
+    "LateralAcc_vs_gps_lat": [
+     -0.5113,
+     -0.5443,
+     -0.4688
+    ],
+    "ECU_BRK_P_vs_gps_decel": [
+     -0.6834,
+     -0.7205,
+     -0.6363
+    ],
+    "ECU_STEER_ANG_vs_gps_rate": [
+     -0.6248,
+     -0.6454,
+     -0.5903
+    ],
+    "ECU_PPS_vs_gps_along": [
+     -0.7295,
+     -0.7564,
+     -0.6993
+    ],
+    "YawRate_vs_gps_rate": [
+     -0.5339,
+     -0.5592,
+     -0.5061
+    ],
+    "ECU_BRK_P_vs_InlineAcc": [
+     -0.0769,
+     -0.0883,
+     -0.0632
+    ],
+    "ECU_STEER_ANG_vs_YawRate": [
+     -0.129,
+     -0.1454,
+     -0.12
+    ],
+    "LateralAcc_vs_YawRate": [
+     0.0388,
+     0.0212,
+     0.0632
+    ]
+   }
+  }
+ }
+}

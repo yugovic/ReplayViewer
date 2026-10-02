@@ -1,0 +1,76 @@
+ M 2026-10-02 11:20 pipeline/build_race.py
+ M 2026-10-02 11:31 public/data/races/fuji_aim_2020_07_30/gps_registration.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/laps.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json
+ M 2026-10-02 11:28 public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json
+ M 2026-10-02 13:25 scripts/quality/rebuild-fuji-gps-preprocessing.py
+ M 2026-10-02 12:05 src/App.tsx
+ M 2026-10-02 11:19 src/engine/ReplayScene.ts
+ M 2026-10-02 11:54 src/engine/track/FujiCgStudy.ts
+ M 2026-10-02 12:02 src/replay/dataLoader.ts
+ M 2026-10-02 11:26 src/replay/delta.test.ts
+ M 2026-10-02 11:19 src/replay/delta.ts
+ M 2026-10-02 13:25 src/replay/types.ts
+ M 2026-10-02 12:02 src/state/replayStore.ts
+ M 2026-10-02 12:10 src/style.css
+ M 2026-10-02 12:04 src/ui/Hud.tsx
+ M 2026-10-02 12:04 src/ui/Minimap.tsx
+ M 2026-10-02 11:19 src/ui/ReplayControls.tsx
+?? 2026-10-02 12:40 pipeline/register_gps_kerb_contact.py
+?? 2026-10-02 11:27 pipeline/test_channel_time_alignment.py
+?? 2026-10-02 13:24 public/data/races/fuji_aim_01/apex_kpi.json
+?? 2026-10-02 12:07 public/data/races/fuji_aim_01/kerb_contacts.json
+?? 2026-10-02 13:24 public/data/races/fuji_aim_2020_07_30/apex_kpi.json
+?? 2026-10-02 12:51 public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json
+?? 2026-10-02 12:07 public/data/races/fuji_aim_2020_07_30/kerb_contacts.json
+?? 2026-10-02 11:44 public/data/tracks/fuji/cg_study/kerb_zones.json
+?? 2026-10-02 11:22 scripts/quality/align-fuji-channel-timing.py
+?? 2026-10-02 13:24 scripts/quality/apex_kpi/build_apex_kpi.py
+?? 2026-10-02 09:06 scripts/quality/apex_kpi/build_kerb_candidate.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/camfit.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/camproj.py
+?? 2026-10-02 09:06 scripts/quality/apex_kpi/course_v2.py
+?? 2026-10-02 13:01 scripts/quality/apex_kpi/eval_kerb_registration.py
+?? 2026-10-02 09:06 scripts/quality/apex_kpi/eval_v2.py
+?? 2026-10-02 12:10 scripts/quality/apex_kpi/export_inputs.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/gyro_vs_gps.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/kerb_contact.py
+?? 2026-10-02 11:41 scripts/quality/apex_kpi/kerb_zones_v3.py
+?? 2026-10-02 11:41 scripts/quality/apex_kpi/kerb_zones_validate.py
+?? 2026-10-02 09:06 scripts/quality/apex_kpi/kerbcheck_vs_ortho.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/loko_session.py
+?? 2026-10-02 11:23 scripts/quality/apex_kpi/ortho_common.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/paths.py
+?? 2026-10-02 11:37 scripts/quality/apex_kpi/pose_lag_eval.ts
+?? 2026-10-02 11:39 scripts/quality/apex_kpi/pose_lag_eval_report.ts
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/quick_checks.py
+?? 2026-10-02 13:20 scripts/quality/apex_kpi/report_kerb_registration.py
+?? 2026-10-02 09:07 scripts/quality/apex_kpi/round2_tests.py
+?? 2026-10-02 09:06 scripts/quality/apex_kpi/scan_missing_kerbs.py
+?? 2026-10-02 09:08 scripts/quality/apex_kpi/side_baseline.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/similarity_test.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/strike_events.py
+?? 2026-10-02 12:51 scripts/quality/apex_kpi/test_kerb_registration.py
+?? 2026-10-02 13:28 scripts/quality/apex_kpi/test_kerb_zones.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/vib.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/xrk_extract.py
+?? 2026-10-02 08:44 scripts/quality/apex_kpi/xrk_map.py
+?? 2026-10-02 11:18 scripts/quality/audit-fuji-channel-timing.py
+?? 2026-10-02 11:35 src/engine/poseSmoothing.test.ts
+?? 2026-10-02 11:35 src/engine/poseSmoothing.ts
+?? 2026-10-02 11:58 src/engine/track/FujiKerbZones.test.ts
+?? 2026-10-02 11:53 src/engine/track/FujiKerbZones.ts
+?? 2026-10-02 12:06 src/replay/apexKpi.test.ts
+?? 2026-10-02 12:02 src/replay/apexKpi.ts
+?? 2026-10-02 12:06 src/replay/kerbContacts.test.ts
+?? 2026-10-02 12:01 src/replay/kerbContacts.ts
+?? 2026-10-02 11:25 src/replay/lapClock.test.ts
+?? 2026-10-02 11:18 src/replay/lapClock.ts
+?? 2026-10-02 12:06 src/replay/registrationVariant.test.ts
+?? 2026-10-02 12:02 src/replay/registrationVariant.ts
+?? 2026-10-02 12:08 src/ui/ApexKpiPanel.tsx
+?? 2026-10-02 12:04 src/ui/KerbContactHud.tsx

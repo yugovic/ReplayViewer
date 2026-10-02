@@ -1,0 +1,35 @@
+{
+  "scope": "Manual reads of the SmartyCam overlay LAP timer, used to map ffmpeg presentation time (PTS) to each lap's true start. Observation only; no frames are stored.",
+  "method": "ffmpeg -ss <pts> -i <video> (accurate input seek, PTS base). Read the overlay 'LAP n m:ss.ss' at 10/50/90 % of every lap. Offset = mean(read - predicted). The overlay updates about every 50 ms, so reads trail the true value by 0-50 ms.",
+  "timeBaseWarning": "OpenCV CAP_PROP_POS_MSEC seeking on the 7/29 file returns the frame 1.000 s (30 frames) later than requested (requested 219.7 s -> timer 0:50.02 via OpenCV vs 0:49.02 via ffmpeg; 513.9 s -> 0:54.99 vs 0:53.99). The older 'video = L3 t + 458.9 s' mapping is in the OpenCV base; in PTS base the 7/29 L3 true start is about 459.89 s.",
+  "overlayLapNumber": "overlay lap = data lap + 1 (overlay lap 1 is the out lap).",
+  "sessions": {
+    "fuji_aim_01": {
+      "video": "SCHD0613.MOV (2020-07-29, user-supplied, local reference only)",
+      "referenceLapStart": "2020-07-29T16:08:23.884",
+      "referencePtsSeconds": 458.884,
+      "perLapCorrectionSeconds": {"1": -0.943, "2": -1.013, "3": -1.010, "4": -0.980},
+      "reads": [
+        {"lap": 1, "predicted": [14.456, 72.278, 130.100], "read": [13.52, 71.37, 129.12]},
+        {"lap": 2, "predicted": [14.463, 72.317, 130.172], "read": [13.45, 71.29, 129.17]},
+        {"lap": 3, "predicted": [14.139, 70.692, 127.246], "read": [13.13, 69.69, 126.23]},
+        {"lap": 4, "predicted": [16.472, 82.359, 148.245], "read": [15.51, 81.38, 147.25]}
+      ]
+    },
+    "fuji_aim_2020_07_30": {
+      "video": "SCHD0624.MOV (2020-07-30, user-supplied, local reference only; not used by earlier investigations)",
+      "referenceLapStart": "2020-07-30T15:56:11.143",
+      "referencePtsSeconds": 151.58,
+      "referenceEvidence": "PTS 250.0 shows LAP 2 1:38.39; lap 2 freezes at 2:13.63 (= data L1 2:13.635) about PTS 285.23.",
+      "perLapCorrectionSeconds": {"1": -0.010, "2": -0.023, "3": 0.010, "4": 0.010, "5": 0.090, "6": -0.020},
+      "reads": [
+        {"lap": 1, "predicted": [13.364, 66.817, 120.271], "read": [13.36, 66.77, 120.28]},
+        {"lap": 2, "predicted": [13.174, 65.871, 118.568], "read": [13.13, 65.86, 118.54]},
+        {"lap": 3, "predicted": [13.178, 65.891, 118.605], "read": [13.21, 65.88, 118.60]},
+        {"lap": 4, "predicted": [13.086, 65.430, 117.774], "read": [13.10, 65.43, 117.79]},
+        {"lap": 5, "predicted": [13.082, 65.411, 117.740], "read": [13.18, 65.51, 117.81]},
+        {"lap": 6, "predicted": [14.047, 70.234, 126.420], "read": [14.06, 70.18, 126.39]}
+      ]
+    }
+  }
+}

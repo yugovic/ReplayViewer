@@ -3,14 +3,9 @@ import { useReplayStore } from "../state/replayStore";
 import { getVehicleBestLap } from "../replay/dataLoader";
 import { computeDeltaAtDist, buildSectorBoundaries, computeSectorTimes, getSectorIndex } from "../replay/delta";
 import { describeOffset } from "../replay/gpsRegistration";
+import { formatLapClock, lapStartOffsetSeconds, trueLapTime } from "../replay/lapClock";
 import { LayersPanel } from "./LayersPanel";
-
-function formatLapTime(seconds: number): string {
-  const minutes = Math.floor(seconds / 60);
-  const rem = seconds - minutes * 60;
-  const remStr = rem.toFixed(3).padStart(6, "0");
-  return `${String(minutes).padStart(2, "0")}:${remStr}`;
-}
+import { HudAnalysisRows } from "./KerbContactHud";
 
 function formatSectorTime(seconds: number): string {
   return seconds.toFixed(3);
@@ -178,6 +173,9 @@ export function Hud({ developerMode = false }: HudProps) {
   const lapsIndex = useReplayStore((state) => state.lapsIndex);
   const setGpsRegistrationEnabled = useReplayStore((state) => state.setGpsRegistrationEnabled);
   const registration = activeLap?.registration ?? null;
+  // True lap clock: recorded t starts at the first GPS sample, δ after the line.
+  const clockMeta = lapMeta ?? activeLap?.meta ?? null;
+  const lapClockOffset = lapStartOffsetSeconds(clockMeta);
 
   const vehicleBest =
     lapsIndex && lapMeta ? getVehicleBestLap(lapsIndex, lapMeta.vehicle_id) : null;
@@ -230,8 +228,15 @@ export function Hud({ developerMode = false }: HudProps) {
           <strong className="hud-value">{lapMeta?.lap ?? "--"}</strong>
         </div>
         <div className="hud-row">
-          <span className="hud-label">TIME</span>
-          <strong className="hud-value hud-laptime">{formatLapTime(currentTime)}</strong>
+          <span
+            className="hud-label"
+            title={lapClockOffset > 0
+              ? `ラップ開始（計測ライン通過）からの時間。最初のGPS標本は開始の${(lapClockOffset * 1000).toFixed(0)}ms後`
+              : "最初のGPS標本からの時間（このデータにはラップ開始との差の記録がありません）"}
+          >
+            TIME
+          </span>
+          <strong className="hud-value hud-laptime">{formatLapClock(trueLapTime(currentTime, clockMeta))}</strong>
         </div>
         {lapMeta?.lap_time && (
           <div className="hud-row">
@@ -269,6 +274,9 @@ export function Hud({ developerMode = false }: HudProps) {
             <span className="hud-gps-offset">{describeOffset(registration.offsetMeters)}</span>
           </div>
         )}
+
+        {/* Analysis layers (Fuji): active registration file + IMU kerb-contact indicator */}
+        <HudAnalysisRows />
 
         {/* Ghost info */}
         {ghostRecord && (

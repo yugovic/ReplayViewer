@@ -5,6 +5,9 @@ import type { QualityPreset } from "../engine/Effects";
 import { SATELLITE_VARIANTS, type SatVariantId } from "../replay/satelliteVariants";
 import { advanceInWindow, type PlaybackWindow } from "../replay/showcase";
 import { setRegistrationEnabled } from "../replay/gpsRegistration";
+import type { KerbContactsFile } from "../replay/kerbContacts";
+import type { ApexKpiFile } from "../replay/apexKpi";
+import type { RegistrationLoadResult } from "../replay/registrationVariant";
 
 const DEVELOPER_VIEW_LAYER_PRESET = {
   showRoad3d: true,
@@ -64,6 +67,12 @@ interface ReplayState {
   /** Raw GPS vs track-limit registration; applied to main and ghost alike. */
   gpsRegistrationEnabled: boolean;
 
+  // Optional analysis layers (Fuji): IMU kerb contacts, clipping-point KPI,
+  // and which registration file (standard / ?gps=kerb candidate) is active.
+  kerbContacts: KerbContactsFile | null;
+  apexKpi: ApexKpiFile | null;
+  gpsRegistrationSource: RegistrationLoadResult | null;
+
   // Live world positions for the minimap (throttled updates)
   carPosition: { x: number; z: number } | null;
   ghostPosition: { x: number; z: number } | null;
@@ -72,6 +81,7 @@ interface ReplayState {
   showLapSelector: boolean;
   showTelemetryPanel: boolean;
   showMinimap: boolean;
+  showApexKpiPanel: boolean;
 
   // Scene layers
   showRoad3d: boolean;
@@ -118,6 +128,11 @@ interface ReplayState {
   setGhostLap: (record: LapIndexRecord | null, lap: LapData | null) => void;
   clearGhost: () => void;
   setGpsRegistrationEnabled: (enabled: boolean) => void;
+  setAnalysisData: (data: {
+    kerbContacts: KerbContactsFile | null;
+    apexKpi: ApexKpiFile | null;
+    registration: RegistrationLoadResult | null;
+  }) => void;
   setMapPositions: (
     car: { x: number; z: number } | null,
     ghost: { x: number; z: number } | null,
@@ -127,6 +142,7 @@ interface ReplayState {
   setShowLapSelector: (show: boolean) => void;
   toggleTelemetryPanel: () => void;
   toggleMinimap: () => void;
+  toggleApexKpiPanel: () => void;
 
   // Actions – scene layers
   applyViewerModePreset: (developerMode: boolean) => void;
@@ -196,6 +212,10 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   gpsRegistrationEnabled:
     typeof window === "undefined" || new URLSearchParams(window.location.search).get("gps") !== "raw",
 
+  kerbContacts: null,
+  apexKpi: null,
+  gpsRegistrationSource: null,
+
   // Map positions
   carPosition: null,
   ghostPosition: null,
@@ -204,6 +224,7 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   showLapSelector: false,
   showTelemetryPanel: false,
   showMinimap: true,
+  showApexKpiPanel: false,
 
   // Scene layers
   ...DEVELOPER_VIEW_LAYER_PRESET,
@@ -289,6 +310,9 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
     ghostLap: state.ghostLap && setRegistrationEnabled(state.ghostLap, enabled),
   })),
 
+  setAnalysisData: ({ kerbContacts, apexKpi, registration }) =>
+    set({ kerbContacts, apexKpi, gpsRegistrationSource: registration }),
+
   setMapPositions: (car, ghost) => set({ carPosition: car, ghostPosition: ghost }),
 
   // ── UI ────────────────────────────────────────────────────────────────────
@@ -299,6 +323,8 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
     set((state) => ({ showTelemetryPanel: !state.showTelemetryPanel })),
 
   toggleMinimap: () => set((state) => ({ showMinimap: !state.showMinimap })),
+
+  toggleApexKpiPanel: () => set((state) => ({ showApexKpiPanel: !state.showApexKpiPanel })),
 
   // ── Scene layers ──────────────────────────────────────────────────────────
 

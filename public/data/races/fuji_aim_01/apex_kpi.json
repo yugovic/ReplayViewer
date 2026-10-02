@@ -1,0 +1,1805 @@
+{
+ "version": 1,
+ "kind": "apex-kpi",
+ "raceId": "fuji_aim_01",
+ "trackId": "fuji",
+ "definition": {
+  "gBlockFront": "m; inner front tyre outer edge to the road-side start of the red/white block band, minimum over the pass (negative = on the blocks)",
+  "gBlockRear": "m; same for the inner rear tyre",
+  "gPaintFront": "m; inner front tyre outer edge to the road-side start of the kerb paint (white strip = track-limit line)",
+  "gPaintRear": "m; same for the inner rear tyre",
+  "apexStation": "m; CG road station where gBlockFront is minimal (clipping point)",
+  "apexT": "s; recorded lap t (GPS time base of the shipped lap JSON, playback clock) at the clipping point",
+  "apexLapTime": "s; apexT + meta.first_sample_after_lap_start_seconds (time since the timing line, as the HUD lap clock)",
+  "onBlockLengthM": "m; path length of the inner front tyre while gBlockFront < 0",
+  "exitOuterGapM": "m; outer tyres vs the opposite road edge (paint start at kerbs), -10 m to +120 m from the kerb end (negative = beyond)",
+  "contact": "IMU label of this pass from kerb_contacts.json (class strong/silent/mild, strength bin low/mid/high = 弱/中/強); no left/right attribution",
+  "labelCheck": "IMU label vs geometry: strong-but-off = strong label with min(gBlockFront, gBlockRear) > 0.15 m; silent-but-deep = silent label with it < -0.55 m (a GPS/course disagreement, not a verdict); ok; null for mild",
+  "deltaVsSessionMedian": "value minus the median of the same corner over the distributed laps of this session (primary comparison: a common GPS bias cancels)",
+  "pass": "samples whose CG station lies within the kerb station range +-3 m; a gap counts only where the tyre projects onto the kerb line between its end vertices",
+  "wheelPaths": "50 Hz cubic spline of the registered GPS track; heading from the spline derivative; tyre outer edges at +-(track + tyre width)/2, axles at +-wheelbase/2 from the antenna (assumed at the vehicle centre)"
+ },
+ "absoluteUncertaintyMeters": 0.7,
+ "absoluteUncertaintyReason": "The shipped registration is a road-limit fit: inside the road its cost is flat over 0.5-1 m, and the IMU kerb-contact labels bound the remaining lateral GPS error only to about +-0.4-0.7 m (docs/fuji-apex-kerb-kpi-2026-10-02.md). Kerb lines come from the 2019 orthophoto (georeferencing ~0.2-0.3 m, not verified against 2020). Compare laps at the same corner (delta) first.",
+ "primaryComparison": "deltaVsSessionMedian",
+ "deltaCaveat": "Each lap has its own registration offset; a lap-specific GPS error (e.g. 7/30 L2 at 3250-3600 m) is not cancelled by the delta.",
+ "registration": {
+  "source": "public/data/races/fuji_aim_01/gps_registration.json",
+  "sha256": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+  "note": "SHIPPED track-limit registration; the opt-in kerb-contact candidate is not used here"
+ },
+ "inputs": {
+  "kerbZones": {
+   "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+   "sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+  },
+  "kerbContacts": {
+   "source": "public/data/races/fuji_aim_01/kerb_contacts.json",
+   "sha256": "54dbd64834b770a08af8dbb969462966aec8ca57ceb16d4b2baa539dfdb18836"
+  },
+  "roadGeometry": {
+   "source": "public/data/tracks/fuji/cg_study/geometry.json",
+   "sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+  },
+  "vehicleProfile": {
+   "source": "public/data/vehicles/mazda2-dj.json",
+   "sha256": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d"
+  },
+  "laps": {
+   "1": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+    "sha256": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3"
+   },
+   "2": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+    "sha256": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f"
+   },
+   "3": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+    "sha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c"
+   },
+   "4": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+    "sha256": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008"
+   }
+  }
+ },
+ "tool": "scripts/quality/apex_kpi/build_apex_kpi.py",
+ "surveyTruth": false,
+ "corners": [
+  {
+   "kerb": "k13",
+   "name": "1コーナー",
+   "order": 0
+  },
+  {
+   "kerb": "k1",
+   "name": "コカ・コーラ",
+   "order": 1
+  },
+  {
+   "kerb": "k15",
+   "name": "1500m",
+   "order": 2
+  },
+  {
+   "kerb": "k3",
+   "name": "ヘアピン",
+   "order": 3
+  },
+  {
+   "kerb": "k18",
+   "name": "2420m",
+   "order": 4
+  },
+  {
+   "kerb": "k19",
+   "name": "2650m",
+   "order": 5
+  },
+  {
+   "kerb": "kDunlopR",
+   "name": "ダンロップ右",
+   "order": 6
+  },
+  {
+   "kerb": "k7",
+   "name": "ダンロップ左",
+   "order": 7
+  },
+  {
+   "kerb": "k20",
+   "name": "3090m",
+   "order": 8
+  },
+  {
+   "kerb": "k21",
+   "name": "3250m",
+   "order": 9
+  },
+  {
+   "kerb": "k9",
+   "name": "3350m",
+   "order": 10
+  },
+  {
+   "kerb": "k10",
+   "name": "3540m",
+   "order": 11
+  },
+  {
+   "kerb": "k23",
+   "name": "3600m",
+   "order": 12
+  },
+  {
+   "kerb": "k24",
+   "name": "最終コーナー",
+   "order": 13
+  }
+ ],
+ "sessionMedian": {
+  "k13": {
+   "gBlockFront": 2.02,
+   "gBlockRear": 2.03,
+   "gPaintFront": 1.53,
+   "gPaintRear": 1.54,
+   "apexStation": 906.8,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 1.46,
+   "laps": 4
+  },
+  "k1": {
+   "gBlockFront": 2.29,
+   "gBlockRear": 2.29,
+   "gPaintFront": 1.79,
+   "gPaintRear": 1.8,
+   "apexStation": 1453.2,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 0.53,
+   "laps": 4
+  },
+  "k15": {
+   "gBlockFront": 1.0,
+   "gBlockRear": 1.01,
+   "gPaintFront": 0.53,
+   "gPaintRear": 0.54,
+   "apexStation": 1524.5,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 8.18,
+   "laps": 4
+  },
+  "k3": {
+   "gBlockFront": 2.07,
+   "gBlockRear": 2.08,
+   "gPaintFront": 1.58,
+   "gPaintRear": 1.58,
+   "apexStation": 2149.2,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 3.11,
+   "laps": 4
+  },
+  "k18": {
+   "gBlockFront": 2.38,
+   "gBlockRear": 2.39,
+   "gPaintFront": 2.0,
+   "gPaintRear": 2.0,
+   "apexStation": 2454.8,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 2.59,
+   "laps": 4
+  },
+  "k19": {
+   "gBlockFront": 2.65,
+   "gBlockRear": 2.66,
+   "gPaintFront": 2.3,
+   "gPaintRear": 2.31,
+   "apexStation": 2676.2,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 1.37,
+   "laps": 4
+  },
+  "kDunlopR": {
+   "gBlockFront": 1.66,
+   "gBlockRear": 1.67,
+   "gPaintFront": 1.2,
+   "gPaintRear": 1.21,
+   "apexStation": 2981.5,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 0.11,
+   "laps": 4
+  },
+  "k7": {
+   "gBlockFront": 0.57,
+   "gBlockRear": 0.58,
+   "gPaintFront": 0.11,
+   "gPaintRear": 0.12,
+   "apexStation": 3050.5,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 0.43,
+   "laps": 4
+  },
+  "k20": {
+   "gBlockFront": 0.94,
+   "gBlockRear": 0.95,
+   "gPaintFront": 0.43,
+   "gPaintRear": 0.43,
+   "apexStation": 3100.2,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 1.55,
+   "laps": 4
+  },
+  "k21": {
+   "gBlockFront": 1.6,
+   "gBlockRear": 1.6,
+   "gPaintFront": 1.13,
+   "gPaintRear": 1.14,
+   "apexStation": 3299.0,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 0.43,
+   "laps": 4
+  },
+  "k9": {
+   "gBlockFront": 0.8,
+   "gBlockRear": 0.81,
+   "gPaintFront": 0.43,
+   "gPaintRear": 0.44,
+   "apexStation": 3373.0,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 2.46,
+   "laps": 4
+  },
+  "k10": {
+   "gBlockFront": 0.36,
+   "gBlockRear": 0.37,
+   "gPaintFront": -0.11,
+   "gPaintRear": -0.11,
+   "apexStation": 3572.0,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 1.01,
+   "laps": 4
+  },
+  "k23": {
+   "gBlockFront": 1.46,
+   "gBlockRear": 1.47,
+   "gPaintFront": 1.01,
+   "gPaintRear": 1.01,
+   "apexStation": 3634.2,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 3.46,
+   "laps": 4
+  },
+  "k24": {
+   "gBlockFront": 0.98,
+   "gBlockRear": 0.99,
+   "gPaintFront": 0.54,
+   "gPaintRear": 0.55,
+   "apexStation": 3864.0,
+   "onBlockLengthM": 0.0,
+   "exitOuterGapM": 1.29,
+   "laps": 4
+  }
+ },
+ "laps": {
+  "1": [
+   {
+    "kerb": "k13",
+    "gBlockFront": -0.7,
+    "gBlockRear": -0.7,
+    "gPaintFront": -1.14,
+    "gPaintRear": -1.13,
+    "apexStation": 914.0,
+    "apexT": 18.98,
+    "apexLapTime": 18.987,
+    "onBlockLengthM": 16.4,
+    "exitOuterGapM": 3.32,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.54
+    },
+    "labelCheck": "silent-but-deep",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -2.72,
+     "gBlockRear": -2.73,
+     "gPaintFront": -2.67,
+     "gPaintRear": -2.67,
+     "apexStation": 7.2,
+     "onBlockLengthM": 16.4,
+     "exitOuterGapM": 1.86
+    }
+   },
+   {
+    "kerb": "k1",
+    "gBlockFront": 1.41,
+    "gBlockRear": 1.42,
+    "gPaintFront": 0.92,
+    "gPaintRear": 0.93,
+    "apexStation": 1453.5,
+    "apexT": 35.78,
+    "apexLapTime": 35.787,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.73,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.48
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.87,
+     "gBlockRear": -0.88,
+     "gPaintFront": -0.87,
+     "gPaintRear": -0.87,
+     "apexStation": 0.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.2
+    }
+   },
+   {
+    "kerb": "k15",
+    "gBlockFront": 1.18,
+    "gBlockRear": 1.18,
+    "gPaintFront": 0.73,
+    "gPaintRear": 0.74,
+    "apexStation": 1532.5,
+    "apexT": 38.56,
+    "apexLapTime": 38.567,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 8.25,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.34
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.18,
+     "gBlockRear": 0.18,
+     "gPaintFront": 0.2,
+     "gPaintRear": 0.2,
+     "apexStation": 8.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.06
+    }
+   },
+   {
+    "kerb": "k3",
+    "gBlockFront": 2.22,
+    "gBlockRear": 2.22,
+    "gPaintFront": 1.72,
+    "gPaintRear": 1.73,
+    "apexStation": 2151.0,
+    "apexT": 58.54,
+    "apexLapTime": 58.547,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 5.11,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.55
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.15,
+     "gBlockRear": 0.15,
+     "gPaintFront": 0.14,
+     "gPaintRear": 0.14,
+     "apexStation": 1.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 2.0
+    }
+   },
+   {
+    "kerb": "k18",
+    "gBlockFront": 7.08,
+    "gBlockRear": 7.09,
+    "gPaintFront": 6.69,
+    "gPaintRear": 6.7,
+    "apexStation": 2465.5,
+    "apexT": 69.76,
+    "apexLapTime": 69.767,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.3,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.55
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 4.7,
+     "gBlockRear": 4.7,
+     "gPaintFront": 4.69,
+     "gPaintRear": 4.69,
+     "apexStation": 10.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -1.28
+    }
+   },
+   {
+    "kerb": "k19",
+    "gBlockFront": 6.37,
+    "gBlockRear": 6.38,
+    "gPaintFront": 6.0,
+    "gPaintRear": 6.01,
+    "apexStation": 2674.0,
+    "apexT": 75.42,
+    "apexLapTime": 75.427,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.19,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.67
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 3.72,
+     "gBlockRear": 3.72,
+     "gPaintFront": 3.7,
+     "gPaintRear": 3.7,
+     "apexStation": -2.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.18
+    }
+   },
+   {
+    "kerb": "kDunlopR",
+    "gBlockFront": -0.57,
+    "gBlockRear": -0.57,
+    "gPaintFront": -1.02,
+    "gPaintRear": -1.01,
+    "apexStation": 2983.5,
+    "apexT": 85.32,
+    "apexLapTime": 85.327,
+    "onBlockLengthM": 6.9,
+    "exitOuterGapM": 0.64,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.57
+    },
+    "labelCheck": "silent-but-deep",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -2.23,
+     "gBlockRear": -2.23,
+     "gPaintFront": -2.22,
+     "gPaintRear": -2.22,
+     "apexStation": 2.0,
+     "onBlockLengthM": 6.9,
+     "exitOuterGapM": 0.53
+    }
+   },
+   {
+    "kerb": "k7",
+    "gBlockFront": 1.09,
+    "gBlockRear": 1.09,
+    "gPaintFront": 0.64,
+    "gPaintRear": 0.65,
+    "apexStation": 3050.5,
+    "apexT": 88.92,
+    "apexLapTime": 88.927,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": -0.78,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.45
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.51,
+     "gBlockRear": 0.51,
+     "gPaintFront": 0.53,
+     "gPaintRear": 0.53,
+     "apexStation": 0.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -1.2
+    }
+   },
+   {
+    "kerb": "k20",
+    "gBlockFront": -0.34,
+    "gBlockRear": -0.33,
+    "gPaintFront": -0.78,
+    "gPaintRear": -0.77,
+    "apexStation": 3098.5,
+    "apexT": 91.24,
+    "apexLapTime": 91.247,
+    "onBlockLengthM": 11.1,
+    "exitOuterGapM": 1.62,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.65
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -1.28,
+     "gBlockRear": -1.27,
+     "gPaintFront": -1.2,
+     "gPaintRear": -1.2,
+     "apexStation": -1.8,
+     "onBlockLengthM": 11.1,
+     "exitOuterGapM": 0.06
+    }
+   },
+   {
+    "kerb": "k21",
+    "gBlockFront": 0.7,
+    "gBlockRear": 0.71,
+    "gPaintFront": 0.22,
+    "gPaintRear": 0.23,
+    "apexStation": 3293.5,
+    "apexT": 98.92,
+    "apexLapTime": 98.927,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.93,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.5
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.9,
+     "gBlockRear": -0.89,
+     "gPaintFront": -0.91,
+     "gPaintRear": -0.91,
+     "apexStation": -5.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.5
+    }
+   },
+   {
+    "kerb": "k9",
+    "gBlockFront": 1.32,
+    "gBlockRear": 1.33,
+    "gPaintFront": 0.93,
+    "gPaintRear": 0.94,
+    "apexStation": 3376.0,
+    "apexT": 102.46,
+    "apexLapTime": 102.467,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.86,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.46
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.52,
+     "gBlockRear": 0.52,
+     "gPaintFront": 0.5,
+     "gPaintRear": 0.5,
+     "apexStation": 3.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.61
+    }
+   },
+   {
+    "kerb": "k10",
+    "gBlockFront": 0.58,
+    "gBlockRear": 0.59,
+    "gPaintFront": 0.11,
+    "gPaintRear": 0.12,
+    "apexStation": 3572.5,
+    "apexT": 110.26,
+    "apexLapTime": 110.267,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.52,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.49
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.22,
+     "gBlockRear": 0.23,
+     "gPaintFront": 0.22,
+     "gPaintRear": 0.23,
+     "apexStation": 0.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.49
+    }
+   },
+   {
+    "kerb": "k23",
+    "gBlockFront": 1.0,
+    "gBlockRear": 1.0,
+    "gPaintFront": 0.52,
+    "gPaintRear": 0.53,
+    "apexStation": 3631.5,
+    "apexT": 112.8,
+    "apexLapTime": 112.807,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 3.44,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.49
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.47,
+     "gBlockRear": -0.46,
+     "gPaintFront": -0.49,
+     "gPaintRear": -0.49,
+     "apexStation": -2.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.02
+    }
+   },
+   {
+    "kerb": "k24",
+    "gBlockFront": 0.88,
+    "gBlockRear": 0.89,
+    "gPaintFront": 0.41,
+    "gPaintRear": 0.42,
+    "apexStation": 3860.5,
+    "apexT": 121.96,
+    "apexLapTime": 121.967,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.21,
+    "contact": {
+     "class": "mild",
+     "bin": null,
+     "peakRollRms": 0.86
+    },
+    "labelCheck": null,
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.1,
+     "gBlockRear": -0.1,
+     "gPaintFront": -0.13,
+     "gPaintRear": -0.13,
+     "apexStation": -3.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.08
+    }
+   }
+  ],
+  "2": [
+   {
+    "kerb": "k13",
+    "gBlockFront": 2.41,
+    "gBlockRear": 2.42,
+    "gPaintFront": 1.93,
+    "gPaintRear": 1.94,
+    "apexStation": 900.0,
+    "apexT": 18.26,
+    "apexLapTime": 18.311,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.05,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.49
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.4,
+     "gBlockRear": 0.39,
+     "gPaintFront": 0.4,
+     "gPaintRear": 0.4,
+     "apexStation": -6.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.59
+    }
+   },
+   {
+    "kerb": "k1",
+    "gBlockFront": 1.44,
+    "gBlockRear": 1.44,
+    "gPaintFront": 0.94,
+    "gPaintRear": 0.95,
+    "apexStation": 1453.0,
+    "apexT": 35.96,
+    "apexLapTime": 36.011,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.18,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.74
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.85,
+     "gBlockRear": -0.85,
+     "gPaintFront": -0.85,
+     "gPaintRear": -0.85,
+     "apexStation": -0.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.35
+    }
+   },
+   {
+    "kerb": "k15",
+    "gBlockFront": 0.62,
+    "gBlockRear": 0.63,
+    "gPaintFront": 0.18,
+    "gPaintRear": 0.19,
+    "apexStation": 1528.0,
+    "apexT": 38.58,
+    "apexLapTime": 38.631,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 7.77,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.43
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.38,
+     "gBlockRear": -0.38,
+     "gPaintFront": -0.35,
+     "gPaintRear": -0.35,
+     "apexStation": 3.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.41
+    }
+   },
+   {
+    "kerb": "k3",
+    "gBlockFront": 2.4,
+    "gBlockRear": 2.41,
+    "gPaintFront": 1.91,
+    "gPaintRear": 1.92,
+    "apexStation": 2147.5,
+    "apexT": 57.96,
+    "apexLapTime": 58.011,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.41,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.42
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.33,
+     "gBlockRear": 0.33,
+     "gPaintFront": 0.34,
+     "gPaintRear": 0.34,
+     "apexStation": -1.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -1.7
+    }
+   },
+   {
+    "kerb": "k18",
+    "gBlockFront": 1.39,
+    "gBlockRear": 1.4,
+    "gPaintFront": 1.0,
+    "gPaintRear": 1.01,
+    "apexStation": 2450.5,
+    "apexT": 67.94,
+    "apexLapTime": 67.991,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.68,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.62
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.99,
+     "gBlockRear": -0.99,
+     "gPaintFront": -1.0,
+     "gPaintRear": -0.99,
+     "apexStation": -4.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.09
+    }
+   },
+   {
+    "kerb": "k19",
+    "gBlockFront": 4.13,
+    "gBlockRear": 4.14,
+    "gPaintFront": 3.75,
+    "gPaintRear": 3.76,
+    "apexStation": 2666.0,
+    "apexT": 73.54,
+    "apexLapTime": 73.591,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.03,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.55
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 1.48,
+     "gBlockRear": 1.48,
+     "gPaintFront": 1.45,
+     "gPaintRear": 1.45,
+     "apexStation": -10.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.34
+    }
+   },
+   {
+    "kerb": "kDunlopR",
+    "gBlockFront": 0.37,
+    "gBlockRear": 0.37,
+    "gPaintFront": -0.15,
+    "gPaintRear": -0.14,
+    "apexStation": 2986.0,
+    "apexT": 84.96,
+    "apexLapTime": 85.011,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.0,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.78
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -1.3,
+     "gBlockRear": -1.29,
+     "gPaintFront": -1.35,
+     "gPaintRear": -1.35,
+     "apexStation": 4.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.11
+    }
+   },
+   {
+    "kerb": "k7",
+    "gBlockFront": 0.47,
+    "gBlockRear": 0.48,
+    "gPaintFront": 0.0,
+    "gPaintRear": 0.01,
+    "apexStation": 3053.5,
+    "apexT": 89.04,
+    "apexLapTime": 89.091,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": -0.29,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.41
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.11,
+     "gBlockRear": -0.1,
+     "gPaintFront": -0.11,
+     "gPaintRear": -0.11,
+     "apexStation": 3.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.72
+    }
+   },
+   {
+    "kerb": "k20",
+    "gBlockFront": 0.14,
+    "gBlockRear": 0.15,
+    "gPaintFront": -0.29,
+    "gPaintRear": -0.28,
+    "apexStation": 3098.5,
+    "apexT": 91.32,
+    "apexLapTime": 91.371,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.49,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.39
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.79,
+     "gBlockRear": -0.79,
+     "gPaintFront": -0.72,
+     "gPaintRear": -0.72,
+     "apexStation": -1.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.06
+    }
+   },
+   {
+    "kerb": "k21",
+    "gBlockFront": 1.89,
+    "gBlockRear": 1.89,
+    "gPaintFront": 1.42,
+    "gPaintRear": 1.42,
+    "apexStation": 3304.5,
+    "apexT": 99.78,
+    "apexLapTime": 99.831,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.3,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.68
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.29,
+     "gBlockRear": 0.29,
+     "gPaintFront": 0.29,
+     "gPaintRear": 0.29,
+     "apexStation": 5.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.13
+    }
+   },
+   {
+    "kerb": "k9",
+    "gBlockFront": 0.65,
+    "gBlockRear": 0.66,
+    "gPaintFront": 0.3,
+    "gPaintRear": 0.3,
+    "apexStation": 3370.0,
+    "apexT": 102.54,
+    "apexLapTime": 102.591,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.85,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.75
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.15,
+     "gBlockRear": -0.15,
+     "gPaintFront": -0.13,
+     "gPaintRear": -0.13,
+     "apexStation": -3.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.39
+    }
+   },
+   {
+    "kerb": "k10",
+    "gBlockFront": 0.48,
+    "gBlockRear": 0.48,
+    "gPaintFront": 0.0,
+    "gPaintRear": 0.01,
+    "apexStation": 3572.0,
+    "apexT": 110.46,
+    "apexLapTime": 110.511,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.15,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.72
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.11,
+     "gBlockRear": 0.12,
+     "gPaintFront": 0.11,
+     "gPaintRear": 0.12,
+     "apexStation": 0.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 1.14
+    }
+   },
+   {
+    "kerb": "k23",
+    "gBlockFront": 2.63,
+    "gBlockRear": 2.64,
+    "gPaintFront": 2.15,
+    "gPaintRear": 2.15,
+    "apexStation": 3631.5,
+    "apexT": 113.16,
+    "apexLapTime": 113.211,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 4.0,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.36
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 1.17,
+     "gBlockRear": 1.17,
+     "gPaintFront": 1.14,
+     "gPaintRear": 1.14,
+     "apexStation": -2.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.54
+    }
+   },
+   {
+    "kerb": "k24",
+    "gBlockFront": 3.12,
+    "gBlockRear": 3.13,
+    "gPaintFront": 2.67,
+    "gPaintRear": 2.68,
+    "apexStation": 3867.5,
+    "apexT": 122.74,
+    "apexLapTime": 122.791,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.63,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.49
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 2.14,
+     "gBlockRear": 2.14,
+     "gPaintFront": 2.13,
+     "gPaintRear": 2.13,
+     "apexStation": 3.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.65
+    }
+   }
+  ],
+  "3": [
+   {
+    "kerb": "k13",
+    "gBlockFront": 1.62,
+    "gBlockRear": 1.63,
+    "gPaintFront": 1.14,
+    "gPaintRear": 1.14,
+    "apexStation": 900.0,
+    "apexT": 17.62,
+    "apexLapTime": 17.636,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.87,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.57
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.4,
+     "gBlockRear": -0.39,
+     "gPaintFront": -0.4,
+     "gPaintRear": -0.4,
+     "apexStation": -6.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.59
+    }
+   },
+   {
+    "kerb": "k1",
+    "gBlockFront": 3.14,
+    "gBlockRear": 3.15,
+    "gPaintFront": 2.65,
+    "gPaintRear": 2.66,
+    "apexStation": 1453.5,
+    "apexT": 35.78,
+    "apexLapTime": 35.796,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 3.02,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.47
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.85,
+     "gBlockRear": 0.85,
+     "gPaintFront": 0.85,
+     "gPaintRear": 0.85,
+     "apexStation": 0.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 2.48
+    }
+   },
+   {
+    "kerb": "k15",
+    "gBlockFront": 3.68,
+    "gBlockRear": 3.69,
+    "gPaintFront": 3.2,
+    "gPaintRear": 3.21,
+    "apexStation": 1521.0,
+    "apexT": 38.26,
+    "apexLapTime": 38.276,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 8.12,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.52
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 2.68,
+     "gBlockRear": 2.68,
+     "gPaintFront": 2.67,
+     "gPaintRear": 2.67,
+     "apexStation": -3.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.06
+    }
+   },
+   {
+    "kerb": "k3",
+    "gBlockFront": 1.93,
+    "gBlockRear": 1.93,
+    "gPaintFront": 1.43,
+    "gPaintRear": 1.44,
+    "apexStation": 2152.0,
+    "apexT": 57.7,
+    "apexLapTime": 57.716,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 3.77,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.36
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.15,
+     "gBlockRear": -0.15,
+     "gPaintFront": -0.14,
+     "gPaintRear": -0.14,
+     "apexStation": 2.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.66
+    }
+   },
+   {
+    "kerb": "k18",
+    "gBlockFront": 3.21,
+    "gBlockRear": 3.22,
+    "gPaintFront": 2.85,
+    "gPaintRear": 2.86,
+    "apexStation": 2451.5,
+    "apexT": 67.24,
+    "apexLapTime": 67.256,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.5,
+    "contact": {
+     "class": "mild",
+     "bin": null,
+     "peakRollRms": 0.95
+    },
+    "labelCheck": null,
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.83,
+     "gBlockRear": 0.83,
+     "gPaintFront": 0.86,
+     "gPaintRear": 0.86,
+     "apexStation": -3.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.09
+    }
+   },
+   {
+    "kerb": "k19",
+    "gBlockFront": 1.18,
+    "gBlockRear": 1.18,
+    "gPaintFront": 0.85,
+    "gPaintRear": 0.86,
+    "apexStation": 2680.5,
+    "apexT": 72.74,
+    "apexLapTime": 72.756,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.56,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.41
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -1.48,
+     "gBlockRear": -1.48,
+     "gPaintFront": -1.45,
+     "gPaintRear": -1.45,
+     "apexStation": 4.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.18
+    }
+   },
+   {
+    "kerb": "kDunlopR",
+    "gBlockFront": 2.96,
+    "gBlockRear": 2.96,
+    "gPaintFront": 2.56,
+    "gPaintRear": 2.56,
+    "apexStation": 2979.5,
+    "apexT": 81.34,
+    "apexLapTime": 81.356,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": -0.48,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.78
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 1.3,
+     "gBlockRear": 1.29,
+     "gPaintFront": 1.35,
+     "gPaintRear": 1.35,
+     "apexStation": -2.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.59
+    }
+   },
+   {
+    "kerb": "k7",
+    "gBlockFront": -0.03,
+    "gBlockRear": -0.02,
+    "gPaintFront": -0.48,
+    "gPaintRear": -0.47,
+    "apexStation": 3049.5,
+    "apexT": 85.58,
+    "apexLapTime": 85.596,
+    "onBlockLengthM": 4.4,
+    "exitOuterGapM": 4.55,
+    "contact": {
+     "class": "strong",
+     "bin": "mid",
+     "peakRollRms": 1.63
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.6,
+     "gBlockRear": -0.6,
+     "gPaintFront": -0.59,
+     "gPaintRear": -0.59,
+     "apexStation": -1.0,
+     "onBlockLengthM": 4.4,
+     "exitOuterGapM": 4.12
+    }
+   },
+   {
+    "kerb": "k20",
+    "gBlockFront": 5.04,
+    "gBlockRear": 5.04,
+    "gPaintFront": 4.55,
+    "gPaintRear": 4.56,
+    "apexStation": 3102.0,
+    "apexT": 88.56,
+    "apexLapTime": 88.576,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.11,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.7
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 4.1,
+     "gBlockRear": 4.1,
+     "gPaintFront": 4.12,
+     "gPaintRear": 4.12,
+     "apexStation": 1.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.45
+    }
+   },
+   {
+    "kerb": "k21",
+    "gBlockFront": 1.94,
+    "gBlockRear": 1.95,
+    "gPaintFront": 1.47,
+    "gPaintRear": 1.48,
+    "apexStation": 3305.0,
+    "apexT": 97.08,
+    "apexLapTime": 97.096,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": -0.29,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.76
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.34,
+     "gBlockRear": 0.35,
+     "gPaintFront": 0.34,
+     "gPaintRear": 0.34,
+     "apexStation": 6.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.72
+    }
+   },
+   {
+    "kerb": "k9",
+    "gBlockFront": 0.06,
+    "gBlockRear": 0.07,
+    "gPaintFront": -0.29,
+    "gPaintRear": -0.28,
+    "apexStation": 3370.0,
+    "apexT": 99.78,
+    "apexLapTime": 99.796,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.07,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.67
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.74,
+     "gBlockRear": -0.74,
+     "gPaintFront": -0.72,
+     "gPaintRear": -0.72,
+     "apexStation": -3.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.39
+    }
+   },
+   {
+    "kerb": "k10",
+    "gBlockFront": -0.17,
+    "gBlockRear": -0.17,
+    "gPaintFront": -0.65,
+    "gPaintRear": -0.64,
+    "apexStation": 3572.0,
+    "apexT": 107.62,
+    "apexLapTime": 107.636,
+    "onBlockLengthM": 5.8,
+    "exitOuterGapM": 0.45,
+    "contact": {
+     "class": "mild",
+     "bin": null,
+     "peakRollRms": 0.91
+    },
+    "labelCheck": null,
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.53,
+     "gBlockRear": -0.53,
+     "gPaintFront": -0.53,
+     "gPaintRear": -0.53,
+     "apexStation": 0.0,
+     "onBlockLengthM": 5.8,
+     "exitOuterGapM": -0.55
+    }
+   },
+   {
+    "kerb": "k23",
+    "gBlockFront": 0.92,
+    "gBlockRear": 0.93,
+    "gPaintFront": 0.45,
+    "gPaintRear": 0.46,
+    "apexStation": 3637.0,
+    "apexT": 110.38,
+    "apexLapTime": 110.396,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.43,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.39
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.54,
+     "gBlockRear": -0.54,
+     "gPaintFront": -0.55,
+     "gPaintRear": -0.55,
+     "apexStation": 2.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -2.03
+    }
+   },
+   {
+    "kerb": "k24",
+    "gBlockFront": 1.07,
+    "gBlockRear": 1.08,
+    "gPaintFront": 0.67,
+    "gPaintRear": 0.68,
+    "apexStation": 3868.0,
+    "apexT": 119.74,
+    "apexLapTime": 119.756,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.37,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.66
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.1,
+     "gBlockRear": 0.1,
+     "gPaintFront": 0.13,
+     "gPaintRear": 0.13,
+     "apexStation": 4.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.08
+    }
+   }
+  ],
+  "4": [
+   {
+    "kerb": "k13",
+    "gBlockFront": 5.75,
+    "gBlockRear": 5.76,
+    "gPaintFront": 5.31,
+    "gPaintRear": 5.32,
+    "apexStation": 913.5,
+    "apexT": 18.18,
+    "apexLapTime": 18.211,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.51,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.46
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 3.73,
+     "gBlockRear": 3.73,
+     "gPaintFront": 3.78,
+     "gPaintRear": 3.78,
+     "apexStation": 6.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.95
+    }
+   },
+   {
+    "kerb": "k1",
+    "gBlockFront": 3.17,
+    "gBlockRear": 3.17,
+    "gPaintFront": 2.67,
+    "gPaintRear": 2.68,
+    "apexStation": 1453.0,
+    "apexT": 35.24,
+    "apexLapTime": 35.271,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.34,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.39
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.88,
+     "gBlockRear": 0.88,
+     "gPaintFront": 0.88,
+     "gPaintRear": 0.88,
+     "apexStation": -0.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.2
+    }
+   },
+   {
+    "kerb": "k15",
+    "gBlockFront": 0.83,
+    "gBlockRear": 0.83,
+    "gPaintFront": 0.34,
+    "gPaintRear": 0.35,
+    "apexStation": 1520.0,
+    "apexT": 37.84,
+    "apexLapTime": 37.871,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 8.86,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.39
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.18,
+     "gBlockRear": -0.18,
+     "gPaintFront": -0.2,
+     "gPaintRear": -0.2,
+     "apexStation": -4.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.67
+    }
+   },
+   {
+    "kerb": "k3",
+    "gBlockFront": 1.39,
+    "gBlockRear": 1.4,
+    "gPaintFront": 0.91,
+    "gPaintRear": 0.92,
+    "apexStation": 2146.5,
+    "apexT": 60.06,
+    "apexLapTime": 60.091,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.46,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.43
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.68,
+     "gBlockRear": -0.68,
+     "gPaintFront": -0.66,
+     "gPaintRear": -0.66,
+     "apexStation": -2.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": -0.66
+    }
+   },
+   {
+    "kerb": "k18",
+    "gBlockFront": 1.55,
+    "gBlockRear": 1.55,
+    "gPaintFront": 1.14,
+    "gPaintRear": 1.15,
+    "apexStation": 2458.0,
+    "apexT": 70.7,
+    "apexLapTime": 70.731,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 4.43,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.55
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.83,
+     "gBlockRear": -0.83,
+     "gPaintFront": -0.86,
+     "gPaintRear": -0.86,
+     "apexStation": 3.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 1.85
+    }
+   },
+   {
+    "kerb": "k19",
+    "gBlockFront": 1.03,
+    "gBlockRear": 1.04,
+    "gPaintFront": 0.71,
+    "gPaintRear": 0.72,
+    "apexStation": 2678.5,
+    "apexT": 76.16,
+    "apexLapTime": 76.191,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.65,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.53
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -1.62,
+     "gBlockRear": -1.62,
+     "gPaintFront": -1.59,
+     "gPaintRear": -1.59,
+     "apexStation": 2.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.28
+    }
+   },
+   {
+    "kerb": "kDunlopR",
+    "gBlockFront": 6.06,
+    "gBlockRear": 6.07,
+    "gPaintFront": 5.66,
+    "gPaintRear": 5.67,
+    "apexStation": 2971.0,
+    "apexT": 83.86,
+    "apexLapTime": 83.891,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.22,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.62
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 4.4,
+     "gBlockRear": 4.4,
+     "gPaintFront": 4.46,
+     "gPaintRear": 4.46,
+     "apexStation": -10.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.11
+    }
+   },
+   {
+    "kerb": "k7",
+    "gBlockFront": 0.68,
+    "gBlockRear": 0.68,
+    "gPaintFront": 0.22,
+    "gPaintRear": 0.23,
+    "apexStation": 3050.5,
+    "apexT": 90.36,
+    "apexLapTime": 90.391,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.14,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.29
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.11,
+     "gBlockRear": 0.1,
+     "gPaintFront": 0.11,
+     "gPaintRear": 0.11,
+     "apexStation": 0.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.72
+    }
+   },
+   {
+    "kerb": "k20",
+    "gBlockFront": 1.73,
+    "gBlockRear": 1.74,
+    "gPaintFront": 1.14,
+    "gPaintRear": 1.15,
+    "apexStation": 3103.0,
+    "apexT": 93.5,
+    "apexLapTime": 93.531,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 2.14,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.27
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.79,
+     "gBlockRear": 0.79,
+     "gPaintFront": 0.72,
+     "gPaintRear": 0.72,
+     "apexStation": 2.8,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.58
+    }
+   },
+   {
+    "kerb": "k21",
+    "gBlockFront": 1.31,
+    "gBlockRear": 1.32,
+    "gPaintFront": 0.84,
+    "gPaintRear": 0.85,
+    "apexStation": 3293.5,
+    "apexT": 101.92,
+    "apexLapTime": 101.951,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 0.57,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.62
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.29,
+     "gBlockRear": -0.29,
+     "gPaintFront": -0.29,
+     "gPaintRear": -0.29,
+     "apexStation": -5.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.13
+    }
+   },
+   {
+    "kerb": "k9",
+    "gBlockFront": 0.95,
+    "gBlockRear": 0.96,
+    "gPaintFront": 0.57,
+    "gPaintRear": 0.57,
+    "apexStation": 3381.5,
+    "apexT": 105.74,
+    "apexLapTime": 105.771,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 3.51,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.49
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.15,
+     "gBlockRear": 0.15,
+     "gPaintFront": 0.13,
+     "gPaintRear": 0.13,
+     "apexStation": 8.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 1.05
+    }
+   },
+   {
+    "kerb": "k10",
+    "gBlockFront": 0.25,
+    "gBlockRear": 0.25,
+    "gPaintFront": -0.23,
+    "gPaintRear": -0.22,
+    "apexStation": 3572.0,
+    "apexT": 113.62,
+    "apexLapTime": 113.651,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 1.49,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.49
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.11,
+     "gBlockRear": -0.12,
+     "gPaintFront": -0.11,
+     "gPaintRear": -0.12,
+     "apexStation": 0.0,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.49
+    }
+   },
+   {
+    "kerb": "k23",
+    "gBlockFront": 1.93,
+    "gBlockRear": 1.93,
+    "gPaintFront": 1.49,
+    "gPaintRear": 1.5,
+    "apexStation": 3640.5,
+    "apexT": 116.9,
+    "apexLapTime": 116.931,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 3.48,
+    "contact": {
+     "class": "silent",
+     "bin": null,
+     "peakRollRms": 0.32
+    },
+    "labelCheck": "ok",
+    "deltaVsSessionMedian": {
+     "gBlockFront": 0.47,
+     "gBlockRear": 0.46,
+     "gPaintFront": 0.49,
+     "gPaintRear": 0.49,
+     "apexStation": 6.2,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 0.02
+    }
+   },
+   {
+    "kerb": "k24",
+    "gBlockFront": 0.82,
+    "gBlockRear": 0.83,
+    "gPaintFront": 0.38,
+    "gPaintRear": 0.39,
+    "apexStation": 3857.5,
+    "apexT": 125.74,
+    "apexLapTime": 125.771,
+    "onBlockLengthM": 0.0,
+    "exitOuterGapM": 5.59,
+    "contact": {
+     "class": "mild",
+     "bin": "low",
+     "peakRollRms": 1.06
+    },
+    "labelCheck": null,
+    "deltaVsSessionMedian": {
+     "gBlockFront": -0.16,
+     "gBlockRear": -0.16,
+     "gPaintFront": -0.16,
+     "gPaintRear": -0.16,
+     "apexStation": -6.5,
+     "onBlockLengthM": 0.0,
+     "exitOuterGapM": 4.31
+    }
+   }
+  ]
+ }
+}

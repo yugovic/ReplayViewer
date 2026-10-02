@@ -48,6 +48,15 @@ def main():
     parser.add_argument("--wet-csv", type=Path, default=OUT / "fuji_aim_converted.csv")
     parser.add_argument("--dry-csv", type=Path, default=ROOT / "pipeline/cache/osaki_hmr_demio_101_fuji_generic_testing_a_1741_converted.csv")
     args = parser.parse_args()
+    if args.apply:
+        # 2026-10-02: the shipped 7/30 laps carry a logger-clock channel re-timing
+        # (scripts/quality/align-fuji-channel-timing.py). This rebuild compares against
+        # the 9/22 baseline and would silently drop it; re-apply the alignment afterwards.
+        for race in ("fuji_aim_2020_07_30",):
+            shipped = ROOT / "public/data/races" / race / "osaki_hmr_demio_101_lap_001.json"
+            if shipped.exists() and "channel_time_alignment" in load(shipped).get("meta", {}):
+                print(f"NOTE: {race} ships channel_time_alignment; after --apply run "
+                      "scripts/quality/align-fuji-channel-timing.py --apply and re-run the registration.")
     spec = importlib.util.spec_from_file_location("legacy_build_race", BASELINE / "pipeline/build_race.py")
     legacy = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(legacy)

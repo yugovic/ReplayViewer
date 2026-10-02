@@ -1,0 +1,3 @@
+scripts/quality/apex_kpi/camproj.py:2:Local analysis helper; frames stay in the scratchpad."""
+src/ui/Minimap.tsx:192:          {/* Main car (yellow) */}
+scripts/quality/apex_kpi/test_kerb_registration.py:198:        self.assertIsNone(re.search(r'(?<![A-Za-z])[A-Za-z]:[\\/]|\\\\Users|/Users/|AppData', self.text))

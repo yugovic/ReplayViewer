@@ -1184,3 +1184,228 @@ input {
 .local-alignment-panel a { color: #b5e3f2; }
 .local-alignment-panel button { cursor: pointer; color: #edf4f6; background: #29454e; border: 1px solid #5e7b86; border-radius: 4px; padding: 4px 6px; margin: 2px; }
 @media (max-width: 650px) { .local-alignment-panel { top: auto; bottom: 105px; width: min(350px, 94vw); padding: 8px; font-size: 11px; } }
+
+/* ── Fuji analysis layers: registration source, IMU kerb contact, clip KPI ── */
+
+.hud-gps-source {
+  margin-top: -1px;
+}
+
+.hud-gps-source-text {
+  color: #8fa4ad;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: default;
+  pointer-events: auto;
+}
+
+.hud-gps-source-text--candidate {
+  color: #fcd34d;
+}
+
+.hud-kerb {
+  align-items: center;
+}
+
+.hud-kerb-pill {
+  min-width: 78px;
+  padding: 1px 7px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 4%);
+  color: #6f8189;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  pointer-events: auto;
+  transition: background 0.08s, color 0.08s, border-color 0.08s;
+}
+
+.hud-kerb-pill--low {
+  border-color: #fde68a;
+  background: rgb(253 230 138 / 18%);
+  color: #fef3c7;
+}
+
+.hud-kerb-pill--mid {
+  border-color: #fb923c;
+  background: rgb(251 146 60 / 26%);
+  color: #ffedd5;
+}
+
+.hud-kerb-pill--high {
+  border-color: #ef4444;
+  background: rgb(239 68 68 / 34%);
+  color: #fff;
+}
+
+.hud-kerb-corner {
+  color: #c9d5da;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Hover shows the strength; a click still bubbles to the map's seek handler. */
+.minimap-contact {
+  cursor: pointer;
+}
+
+.apex-kpi-panel {
+  position: absolute;
+  right: 16px;
+  bottom: 210px;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(460px, calc(100vw - 32px));
+  max-height: max(140px, calc(100vh - 440px));
+  padding: 8px 10px;
+  pointer-events: auto;
+}
+
+.apex-kpi-panel--collapsed {
+  width: auto;
+  padding: 6px 10px;
+}
+
+.apex-kpi-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apex-kpi-title {
+  flex: 1;
+  color: #c9d5da;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.apex-kpi-note {
+  margin: 0;
+  color: #9fb5bd;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.apex-kpi-note strong {
+  color: #e8f16c;
+  font-weight: 700;
+}
+
+.apex-kpi-note--warn {
+  color: #fcd34d;
+}
+
+.apex-kpi-scroll {
+  min-height: 0;
+  overflow: auto;
+}
+
+.apex-kpi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.apex-kpi-table thead th {
+  position: sticky;
+  top: 0;
+  background: rgb(8 11 14 / 96%);
+  color: #8fa4ad;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: right;
+  padding: 2px 4px 4px;
+  white-space: nowrap;
+}
+
+.apex-kpi-table thead th:first-child,
+.apex-kpi-table tbody th {
+  text-align: left;
+}
+
+.apex-kpi-table tbody th {
+  color: #e6edf0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.apex-kpi-table td,
+.apex-kpi-table tbody th {
+  padding: 2px 4px;
+  border-top: 1px solid rgb(255 255 255 / 6%);
+}
+
+.apex-kpi-row {
+  cursor: pointer;
+}
+
+.apex-kpi-row:hover {
+  background: rgb(255 255 255 / 6%);
+}
+
+.apex-kpi-row--active {
+  background: rgb(232 241 108 / 12%);
+  box-shadow: inset 2px 0 0 #e8f16c;
+}
+
+.apex-kpi-num {
+  color: #d7e3e9;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.apex-kpi-sub {
+  color: #8fa4ad;
+  font-size: 10px;
+}
+
+.apex-kpi-delta {
+  color: #c9d5da;
+}
+
+.apex-kpi-delta--closer {
+  color: #7dd3fc;
+}
+
+.apex-kpi-contact {
+  text-align: center;
+  font-weight: 700;
+  color: #6f8189;
+}
+
+.apex-kpi-contact--mild {
+  color: #d6c48a;
+}
+
+.apex-kpi-contact--low {
+  color: #fde68a;
+}
+
+.apex-kpi-contact--mid {
+  color: #fb923c;
+}
+
+.apex-kpi-contact--high {
+  color: #f87171;
+}
+
+.apex-kpi-warn {
+  margin-left: 4px;
+  color: #fcd34d;
+  font-size: 10px;
+  cursor: help;
+}
+
+@media (max-width: 760px) {
+  .apex-kpi-panel {
+    display: none;
+  }
+}

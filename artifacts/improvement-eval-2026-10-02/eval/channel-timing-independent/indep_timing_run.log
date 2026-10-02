@@ -1,0 +1,79 @@
+GPS identity 7/30: {'lap1': True, 'lap2': True, 'lap3': True, 'lap4': True, 'lap5': True, 'lap6': True}
+arrays changed: {'lap1': ['accx', 'accy', 'aps', 'brake', 'gear', 'steer'], 'lap2': ['accx', 'accy', 'aps', 'brake', 'gear', 'steer'], 'lap3': ['accx', 'accy', 'aps', 'brake', 'gear', 'steer'], 'lap4': ['accx', 'accy', 'aps', 'brake', 'gear', 'steer'], 'lap5': ['accx', 'accy', 'aps', 'brake', 'gear', 'steer'], 'lap6': ['accx', 'accy', 'aps', 'brake', 'gear', 'steer']}
+meta other keys identical: {'lap1': True, 'lap2': True, 'lap3': True, 'lap4': True, 'lap5': True, 'lap6': True}
+7/29 untouched: {"lap1": {"sha_head": "02c01c06d11844c4", "sha_cur": "02c01c06d11844c4", "bytes_identical": true, "json_identical": true, "has_channel_time_alignment": false}, "lap2": {"sha_head": "caa84effa0bbd88b", "sha_cur": "caa84effa0bbd88b", "bytes_identical": true, "json_identical": true, "has_channel_time_alignment": false}, "lap3": {"sha_head": "8e301c755b70ca61", "sha_cur": "8e301c755b70ca61", "bytes_identical": true, "json_identical": true, "has_channel_time_alignment": false}, "lap4": {"sha_head": "51fecba131e9ebae", "sha_cur": "51fecba131e9ebae", "bytes_identical": true, "json_identical": true, "has_channel_time_alignment": false}, "baseline_vs_current_laps.json": true, "baseline_vs_current_gps_registration.json": true, "git_status_fuji_aim_01": ["?? public/data/races/fuji_aim_01/apex_kpi.json", "?? public/data/races/fuji_aim_01/kerb_contacts.json"]}
+signs: {'accx_vs_gps_along': 1.0, 'accy_vs_gps_lat': -1.0, 'brake_vs_gps_decel': 1.0, 'steer_vs_gps_rate': 1.0, 'steer_vs_gps_curv': 1.0, 'aps_vs_gps_along': 1.0, 'steer_vs_accy': -1.0, 'accx': 1.0, 'brake_vs_accx_decel': 1.0}
+
+pair                        ref        ref range   before    after     B-ref     A-ref
+accx_vs_gps_along        -0.089 [-0.123,-0.047]   -0.610   -0.111    -0.521    -0.022  circular: accx was used to estimate the shift
+accy_vs_gps_lat           0.008 [-0.022, 0.048]   -0.512   -0.013    -0.519    -0.021  circular: accy was used to estimate the shift
+brake_vs_gps_decel       -0.143 [-0.156,-0.129]   -0.683   -0.187    -0.540    -0.044  independent: brake not used in the estimate
+steer_vs_gps_rate        -0.044 [-0.055,-0.033]   -0.625   -0.118    -0.580    -0.074  independent: steer not used in the estimate
+steer_vs_gps_curv        -0.052 [-0.064,-0.025]   -0.617   -0.118    -0.565    -0.066  independent: steer not used in the estimate
+aps_vs_gps_along         -0.191 [-0.209,-0.180]   -0.725   -0.223    -0.534    -0.032  independent (weak physics: drivetrain response)
+brake_vs_accx_decel      -0.059 [-0.079,-0.013]   -0.076   -0.078    -0.018    -0.019  logger-logger control: must not change
+steer_vs_accy            -0.073 [-0.131, 0.000]   -0.131   -0.131    -0.058    -0.058  logger-logger control: must not change
+
+per-lap tau (s):
+ ref0729    lap1  accx/gps_alon=-0.047(r0.97) accy/gps_lat=+0.048(r1.00) brake/gps_dece=-0.129(r0.86) steer/gps_rate=-0.055(r0.98) steer/gps_curv=-0.045(r0.98) aps/gps_alon=-0.180(r0.81) brake/accx_dec=-0.071(r0.88) steer/accy=-0.131(r0.93)
+ ref0729    lap2  accx/gps_alon=-0.081(r0.97) accy/gps_lat=+0.013(r1.00) brake/gps_dece=-0.147(r0.80) steer/gps_rate=-0.033(r0.98) steer/gps_curv=-0.025(r0.97) aps/gps_alon=-0.184(r0.81) brake/accx_dec=-0.079(r0.83) steer/accy=-0.084(r0.90)
+ ref0729    lap3  accx/gps_alon=-0.097(r0.98) accy/gps_lat=+0.002(r1.00) brake/gps_dece=-0.156(r0.86) steer/gps_rate=-0.053(r0.98) steer/gps_curv=-0.064(r0.97) aps/gps_alon=-0.197(r0.85) brake/accx_dec=-0.047(r0.87) steer/accy=-0.061(r0.91)
+ ref0729    lap4  accx/gps_alon=-0.123(r0.97) accy/gps_lat=-0.022(r1.00) brake/gps_dece=-0.139(r0.81) steer/gps_rate=-0.036(r0.98) steer/gps_curv=-0.058(r0.98) aps/gps_alon=-0.209(r0.74) brake/accx_dec=-0.013(r0.83) steer/accy=+0.000(r0.91)
+ before0730 lap1  accx/gps_alon=-0.578(r0.98) accy/gps_lat=-0.468(r1.00) brake/gps_dece=-0.635(r0.90) steer/gps_rate=-0.607(r0.97) steer/gps_curv=-0.580(r0.98) aps/gps_alon=-0.694(r0.76) brake/accx_dec=-0.062(r0.91) steer/accy=-0.179(r0.89)
+ before0730 lap2  accx/gps_alon=-0.588(r0.98) accy/gps_lat=-0.498(r1.00) brake/gps_dece=-0.663(r0.90) steer/gps_rate=-0.621(r0.98) steer/gps_curv=-0.614(r0.98) aps/gps_alon=-0.691(r0.76) brake/accx_dec=-0.088(r0.91) steer/accy=-0.132(r0.90)
+ before0730 lap3  accx/gps_alon=-0.603(r0.98) accy/gps_lat=-0.508(r1.00) brake/gps_dece=-0.659(r0.91) steer/gps_rate=-0.591(r0.97) steer/gps_curv=-0.591(r0.97) aps/gps_alon=-0.713(r0.80) brake/accx_dec=-0.059(r0.92) steer/accy=-0.101(r0.89)
+ before0730 lap4  accx/gps_alon=-0.617(r0.98) accy/gps_lat=-0.515(r1.00) brake/gps_dece=-0.703(r0.89) steer/gps_rate=-0.628(r0.97) steer/gps_curv=-0.620(r0.98) aps/gps_alon=-0.737(r0.79) brake/accx_dec=-0.079(r0.91) steer/accy=-0.136(r0.90)
+ before0730 lap5  accx/gps_alon=-0.626(r0.98) accy/gps_lat=-0.533(r1.00) brake/gps_dece=-0.710(r0.89) steer/gps_rate=-0.645(r0.97) steer/gps_curv=-0.650(r0.98) aps/gps_alon=-0.739(r0.78) brake/accx_dec=-0.084(r0.90) steer/accy=-0.131(r0.90)
+ before0730 lap6  accx/gps_alon=-0.649(r0.98) accy/gps_lat=-0.544(r1.00) brake/gps_dece=-0.725(r0.89) steer/gps_rate=-0.642(r0.97) steer/gps_curv=-0.654(r0.98) aps/gps_alon=-0.750(r0.77) brake/accx_dec=-0.074(r0.90) steer/accy=-0.107(r0.90)
+ after0730  lap1  accx/gps_alon=-0.110(r0.98) accy/gps_lat=+0.000(r1.00) brake/gps_dece=-0.168(r0.90) steer/gps_rate=-0.138(r0.97) steer/gps_curv=-0.112(r0.98) aps/gps_alon=-0.223(r0.76) brake/accx_dec=-0.063(r0.91) steer/accy=-0.179(r0.89)
+ after0730  lap2  accx/gps_alon=-0.123(r0.98) accy/gps_lat=-0.033(r1.00) brake/gps_dece=-0.199(r0.90) steer/gps_rate=-0.156(r0.98) steer/gps_curv=-0.149(r0.98) aps/gps_alon=-0.224(r0.76) brake/accx_dec=-0.090(r0.91) steer/accy=-0.131(r0.90)
+ after0730  lap3  accx/gps_alon=-0.113(r0.98) accy/gps_lat=-0.018(r1.00) brake/gps_dece=-0.169(r0.91) steer/gps_rate=-0.101(r0.97) steer/gps_curv=-0.101(r0.97) aps/gps_alon=-0.222(r0.80) brake/accx_dec=-0.059(r0.92) steer/accy=-0.101(r0.89)
+ after0730  lap4  accx/gps_alon=-0.102(r0.98) accy/gps_lat=+0.000(r1.00) brake/gps_dece=-0.189(r0.89) steer/gps_rate=-0.113(r0.97) steer/gps_curv=-0.105(r0.98) aps/gps_alon=-0.222(r0.80) brake/accx_dec=-0.080(r0.91) steer/accy=-0.136(r0.90)
+ after0730  lap5  accx/gps_alon=-0.101(r0.98) accy/gps_lat=-0.008(r1.00) brake/gps_dece=-0.185(r0.89) steer/gps_rate=-0.119(r0.97) steer/gps_curv=-0.124(r0.98) aps/gps_alon=-0.211(r0.78) brake/accx_dec=-0.086(r0.90) steer/accy=-0.130(r0.90)
+ after0730  lap6  accx/gps_alon=-0.126(r0.98) accy/gps_lat=-0.020(r1.00) brake/gps_dece=-0.202(r0.89) steer/gps_rate=-0.118(r0.97) steer/gps_curv=-0.130(r0.98) aps/gps_alon=-0.225(r0.77) brake/accx_dec=-0.075(r0.90) steer/accy=-0.106(r0.90)
+
+after-before-shift residual: {"accx_vs_gps_along": {"lap1": 0.0, "lap2": -0.0004, "lap3": 0.0002, "lap4": -0.0005, "lap5": -0.0008, "lap6": -0.0007}, "accy_vs_gps_lat": {"lap1": 0.0004, "lap2": -0.0001, "lap3": 0.0, "lap4": -0.0001, "lap5": -0.0002, "lap6": -0.0003}, "brake_vs_gps_decel": {"lap1": -0.0007, "lap2": -0.0009, "lap3": 0.0002, "lap4": -0.0011, "lap5": -0.0017, "lap6": -0.0011}, "steer_vs_gps_rate": {"lap1": 0.0009, "lap2": 0.0003, "lap3": 0.0001, "lap4": 0.0, "lap5": 0.0001, "lap6": -0.0}, "steer_vs_gps_curv": {"lap1": 0.0007, "lap2": 0.0001, "lap3": 0.0001, "lap4": 0.0, "lap5": 0.0, "lap6": 0.0}, "aps_vs_gps_along": {"lap1": 0.0027, "lap2": 0.0018, "lap3": 0.001, "lap4": -0.0001, "lap5": 0.001, "lap6": 0.0006}, "brake_vs_accx_decel": {"lap1": -0.469, "lap2": -0.4666, "lap3": -0.49, "lap4": -0.5162, "lap5": -0.5284, "lap6": -0.5253}, "steer_vs_accy": {"lap1": -0.468, "lap2": -0.4647, "lap3": -0.4895, "lap4": -0.5146, "lap5": -0.5254, "lap6": -0.5233}}
+
+shift provenance: {
+"lap1": {
+"applied": 0.468,
+"minus_mean_accx_accy_before": 0.5228,
+"brake_implied_shift_vs_ref": 0.4923,
+"steer_implied_shift_vs_ref": 0.5624
+},
+"lap2": {
+"applied": 0.465,
+"minus_mean_accx_accy_before": 0.5428,
+"brake_implied_shift_vs_ref": 0.5205,
+"steer_implied_shift_vs_ref": 0.5768
+},
+"lap3": {
+"applied": 0.49,
+"minus_mean_accx_accy_before": 0.5558,
+"brake_implied_shift_vs_ref": 0.5162,
+"steer_implied_shift_vs_ref": 0.5462
+},
+"lap4": {
+"applied": 0.515,
+"minus_mean_accx_accy_before": 0.5658,
+"brake_implied_shift_vs_ref": 0.5598,
+"steer_implied_shift_vs_ref": 0.5835
+},
+"lap5": {
+"applied": 0.526,
+"minus_mean_accx_accy_before": 0.5798,
+"brake_implied_shift_vs_ref": 0.5671,
+"steer_implied_shift_vs_ref": 0.6009
+},
+"lap6": {
+"applied": 0.524,
+"minus_mean_accx_accy_before": 0.5965,
+"brake_implied_shift_vs_ref": 0.5824,
+"steer_implied_shift_vs_ref": 0.5971
+}
+}
+
+braking event summaries:
+  ref0729 {"gps_d10_s": {"median": -0.14, "p25": -0.236, "p75": -0.073, "n": 19}, "gps_d10_m": {"median": -4.369, "p25": -10.144, "p75": -2.855, "n": 19}, "gps_d50_s": {"median": 0.013, "p25": -0.018, "p75": 0.044, "n": 19}, "gps_d50_m": {"median": 0.543, "p25": -0.576, "p75": 1.762, "n": 19}, "imu_d10_s": {"median": -0.177, "p25": -0.233, "p75": -0.143, "n": 19}, "imu_d10_m": {"median": -5.968, "p25": -10.274, "p75": -5.633, "n": 19}, "imu_d50_s": {"median": -0.03, "p25": -0.08, "p75": -0.01, "n": 19}, "imu_d50_m": {"median": -1.404, "p25": -3.175, "p75": -0.323, "n": 19}}
+  before0730 {"gps_d10_s": {"median": 0.462, "p25": 0.344, "p75": 0.505, "n": 36}, "gps_d10_m": {"median": 18.951, "p25": 10.871, "p75": 23.679, "n": 36}, "gps_d50_s": {"median": 0.581, "p25": 0.551, "p75": 0.629, "n": 36}, "gps_d50_m": {"median": 24.13, "p25": 18.295, "p75": 29.794, "n": 36}, "imu_d10_s": {"median": -0.122, "p25": -0.191, "p75": -0.074, "n": 36}, "imu_d10_m": {"median": -4.748, "p25": -7.36, "p75": -3.4, "n": 36}, "imu_d50_s": {"median": 0.005, "p25": -0.042, "p75": 0.034, "n": 36}, "imu_d50_m": {"median": 0.183, "p25": -1.403, "p75": 1.556, "n": 36}}
+  after0730 {"gps_d10_s": {"median": -0.016, "p25": -0.092, "p75": 0.019, "n": 35}, "gps_d10_m": {"median": -0.69, "p25": -3.595, "p75": 0.969, "n": 35}, "gps_d50_s": {"median": 0.1, "p25": 0.039, "p75": 0.124, "n": 35}, "gps_d50_m": {"median": 4.092, "p25": 1.27, "p75": 5.571, "n": 35}, "imu_d10_s": {"median": -0.112, "p25": -0.181, "p75": -0.07, "n": 35}, "imu_d10_m": {"median": -4.532, "p25": -6.755, "p75": -3.342, "n": 35}, "imu_d50_s": {"median": 0.003, "p25": -0.039, "p75": 0.028, "n": 35}, "imu_d50_m": {"median": 0.118, "p25": -1.339, "p75": 1.361, "n": 35}}

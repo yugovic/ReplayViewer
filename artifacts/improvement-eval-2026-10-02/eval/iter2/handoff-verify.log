@@ -1,0 +1,4 @@
+fuji_aim_01: 4 laps, registration and input hashes checked
+fuji_aim_2020_07_30: 6 laps, registration and input hashes checked
+PASS: shipped Fuji GPS handoff files match the saved hashes
+exit 0

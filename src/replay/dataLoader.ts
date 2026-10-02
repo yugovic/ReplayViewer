@@ -1,7 +1,10 @@
 import type { LapData, LapIndexRecord, LapsIndex, LoadedReplay, TrackData } from "./types";
 import { resolveShowcase } from "./showcase";
 import { parseSatVariantParam, probeSatelliteVariantsForTrack, type SatVariantId } from "./satelliteVariants";
-import { parseGpsRegistration, registrationLimitsUrl, withRegistration, type GpsRegistrationFile } from "./gpsRegistration";
+import { registrationLimitsUrl, withRegistration, type GpsRegistrationFile } from "./gpsRegistration";
+import { loadRegistrationVariant, requestedRegistrationVariant, type RegistrationLoadResult } from "./registrationVariant";
+import { parseKerbContacts, type KerbContactsFile } from "./kerbContacts";
+import { parseApexKpi, type ApexKpiFile } from "./apexKpi";
 
 const DEFAULT_TRACK_ID = "barber";
 const DEFAULT_RACE_ID = "barber_r1";
@@ -188,6 +191,18 @@ async function fetchRegistrationLimitsHash(file: GpsRegistrationFile | null): Pr
   }
 }
 
+/** Optional per-race analysis layers loaded with the initial replay (Fuji only today). */
+export interface ReplayAnalysisData {
+  /** IMU kerb-contact events/labels (kerb_contacts.json); null when absent. */
+  kerbContacts: KerbContactsFile | null;
+  /** Per-corner clipping-point KPI (apex_kpi.json); null when absent. */
+  apexKpi: ApexKpiFile | null;
+  /** Which registration file is active (standard / opt-in kerb candidate). */
+  registration: RegistrationLoadResult | null;
+}
+
+export type LoadedReplayWithAnalysis = LoadedReplay & { analysis: ReplayAnalysisData };
+
 /** `?gps=raw` starts with the registration switched off (it stays toggleable). */
 export function gpsRegistrationInitiallyEnabled(search: string): boolean {
   return new URLSearchParams(search).get("gps") !== "raw";
@@ -201,7 +216,7 @@ function pickInitialLap(index: LapsIndex): LapIndexRecord {
   return [...generated].sort((a, b) => a.lap_time_seconds - b.lap_time_seconds)[0];
 }
 
-export async function loadInitialReplay(): Promise<LoadedReplay> {
+export async function loadInitialReplay(): Promise<LoadedReplayWithAnalysis> {
   const trackDir = `/data/tracks/${SOURCES.trackId}/`;
   // Availability probing is development tooling. In the user-facing viewer,
   // resolve immediately with the one texture it is allowed to display; this
@@ -211,16 +226,20 @@ export async function loadInitialReplay(): Promise<LoadedReplay> {
     : Promise.resolve<SatVariantId[]>([SOURCES.satVariant]);
   const search = typeof window !== "undefined" ? window.location.search : "";
   const alignment = new URLSearchParams(search).get("alignment");
-  const [fetchedTrack, lapsIndex, availableSatelliteVariants, registration] = await Promise.all([
+  const [fetchedTrack, lapsIndex, availableSatelliteVariants, registration, kerbContactsRaw, apexKpiRaw] = await Promise.all([
     fetchHashedJson<TrackData>(SOURCES.trackUrl),
     fetchJson<LapsIndex>(`${SOURCES.raceBaseUrl}/laps.json`),
     availableVariantsPromise,
     // The dated `alignment=` studies are defined against raw GPS; keep them so.
-    alignment ? Promise.resolve(null) : fetchOptionalJson(`${SOURCES.raceBaseUrl}/gps_registration.json`),
+    // ?gps=kerb tries the opt-in kerb-contact candidate first, else the shipped file.
+    alignment ? Promise.resolve(null) : loadRegistrationVariant(fetchOptionalJson, SOURCES.raceBaseUrl,
+      SOURCES.raceId, SOURCES.trackId, requestedRegistrationVariant(search)),
+    fetchOptionalJson(`${SOURCES.raceBaseUrl}/kerb_contacts.json`),
+    fetchOptionalJson(`${SOURCES.raceBaseUrl}/apex_kpi.json`),
   ]);
   const track = fetchedTrack.data;
   gpsTrackSha256 = fetchedTrack.sha256;
-  gpsRegistration = parseGpsRegistration(registration, SOURCES.raceId, SOURCES.trackId);
+  gpsRegistration = registration?.file ?? null;
   // Stamp the resolved selection onto the track so downstream consumers
   // (TrackBuilder's satellite/terrain/features asset URLs) key off the id
   // actually used to fetch this data, not whatever track.json happens to
@@ -248,7 +267,12 @@ export async function loadInitialReplay(): Promise<LoadedReplay> {
   gpsLimitsSha256 = await fetchRegistrationLimitsHash(gpsRegistration);
   const lap = withRegistration(fetched.data, gpsRegistration, gpsRegistrationInitiallyEnabled(search),
     fetched.sha256, gpsLimitsSha256, gpsTrackSha256);
-  return { track, lapsIndex, lap, activeRecord, availableSatelliteVariants };
+  const analysis: ReplayAnalysisData = {
+    kerbContacts: parseKerbContacts(kerbContactsRaw, SOURCES.raceId, SOURCES.trackId),
+    apexKpi: parseApexKpi(apexKpiRaw, SOURCES.raceId, SOURCES.trackId),
+    registration,
+  };
+  return { track, lapsIndex, lap, activeRecord, availableSatelliteVariants, analysis };
 }
 
 /**

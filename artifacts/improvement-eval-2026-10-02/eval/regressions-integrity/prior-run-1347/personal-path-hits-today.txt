@@ -1,0 +1,5 @@
+scripts/quality/apex_kpi/camproj.py:2:Local analysis helper; frames stay in the scratchpad."""
+scripts/quality/audit-fuji-channel-timing.py:16:pts/quality/audit-fuji-channel-timing.py [--wet-video <7/29 SCHD0613.MOV> --dry-video <7/30 SCHD0624.MOV>]
+scripts/quality/audit-fuji-channel-timing.py:223:add_argument("--wet-video", type=Path, help="7/29 SmartyCam SCHD0613.MOV (local, not published)")
+scripts/quality/audit-fuji-channel-timing.py:224:add_argument("--dry-video", type=Path, help="7/30 SmartyCam SCHD0624.MOV (local, not published)")
+scripts/quality/apex_kpi/test_kerb_registration.py:198:e(re.search(r'(?<![A-Za-z])[A-Za-z]:[\\/]|\\\\Users|/Users/|AppData', self.text))

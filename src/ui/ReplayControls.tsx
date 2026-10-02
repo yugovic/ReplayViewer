@@ -1,10 +1,5 @@
 import { useReplayStore } from "../state/replayStore";
-
-function formatClock(seconds: number): string {
-  const minutes = Math.floor(seconds / 60);
-  const rem = Math.floor(seconds - minutes * 60);
-  return `${String(minutes).padStart(2, "0")}:${String(rem).padStart(2, "0")}`;
-}
+import { formatLapClock, formatTransportClock, lapStartOffsetSeconds } from "../replay/lapClock";
 
 const PLAYBACK_RATES = [0.5, 1, 2, 4];
 
@@ -19,6 +14,9 @@ export function ReplayControls() {
   const seek = useReplayStore((state) => state.seek);
   const setPlaybackRate = useReplayStore((state) => state.setPlaybackRate);
   const toggleLoop = useReplayStore((state) => state.toggleLoop);
+  const lapMeta = useReplayStore((state) => state.lapMeta);
+  // Clocks show true lap time (t + δ); the slider itself stays in recorded t.
+  const lapClockOffset = lapStartOffsetSeconds(lapMeta);
 
   return (
     <section className="controls" aria-label="Replay controls">
@@ -34,9 +32,10 @@ export function ReplayControls() {
       <button className="play-button" type="button" onClick={togglePlaying} aria-label={playing ? "Pause" : "Play"}>
         {playing ? "⏸" : "▶"}
       </button>
-      <span className="clock">{formatClock(currentTime)}</span>
+      <span className="clock">{formatTransportClock(currentTime + lapClockOffset)}</span>
       <input
         aria-label="Replay time"
+        aria-valuetext={formatLapClock(Math.min(currentTime, duration) + lapClockOffset)}
         className="seek"
         type="range"
         min={range?.start ?? 0}
@@ -45,7 +44,7 @@ export function ReplayControls() {
         value={Math.min(currentTime, duration)}
         onChange={(event) => seek(Number(event.target.value))}
       />
-      <span className="clock">{formatClock(range?.end ?? duration)}</span>
+      <span className="clock">{formatTransportClock((range?.end ?? duration) + lapClockOffset)}</span>
       <div className="rate-buttons" role="group" aria-label="Playback speed">
         {PLAYBACK_RATES.map((rate) => (
           <button

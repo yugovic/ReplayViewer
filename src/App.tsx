@@ -8,6 +8,7 @@ import { Hud } from "./ui/Hud";
 import { ReplayControls } from "./ui/ReplayControls";
 import { LapSelector } from "./ui/LapSelector";
 import { TelemetryPanel } from "./ui/TelemetryPanel";
+import { ApexKpiPanel } from "./ui/ApexKpiPanel";
 import { Minimap } from "./ui/Minimap";
 import { CreditOverlay } from "./ui/CreditOverlay";
 import { FUJI_SHOWCASE, resolveShowcase } from "./replay/showcase";
@@ -61,6 +62,8 @@ export function App() {
         }
         setLapsIndex(loaded.lapsIndex);
         setActiveLap(loaded.activeRecord, loaded.lap);
+        // Optional Fuji analysis layers: kerb contacts, clipping-point KPI, registration source.
+        useReplayStore.getState().setAnalysisData(loaded.analysis);
         setAvailableSatelliteVariants(loaded.availableSatelliteVariants);
         setSatelliteVariant(loaded.track.satVariant ?? "default");
         setDuration(lapDuration(loaded.lap));
@@ -127,6 +130,7 @@ export function App() {
       <ReplayControls />
       <LapSelector />
       <TelemetryPanel lap={currentLap} />
+      <ApexKpiPanel />
       <CreditOverlay />
       {showcase && bundle.track.replayAlignment?.kind !== "local-windows" && <ShowcasePanel look={showcase} />}
       <LocalAlignmentPanel />

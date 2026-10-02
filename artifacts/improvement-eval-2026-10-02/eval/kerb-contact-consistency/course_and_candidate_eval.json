@@ -1,0 +1,1114 @@
+{
+ "definitions": {
+  "g": "min over the pass of the inner front/rear tyre outer edge signed gap to the kerb BLOCK line (m, negative = on blocks)",
+  "contradiction": "strong & g > +0.15, or silent & g < -0.55",
+  "auc": "P(g_strong < g_silent), ties 0.5",
+  "oldCourse": "geometry.json curbs inner line (cols 1:3) = old CG kerb start; no Dunlop-R kerb",
+  "newCourse": "public/data/tracks/fuji/cg_study/kerb_zones.json block line",
+  "scorer": "kc_scorer.py (independent re-implementation, brute-force nearest segment, projection end rule)"
+ },
+ "fuji_aim_2020_07_30": {
+  "raw_newZones": {
+   "all": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": [],
+    "strong": 17,
+    "silent": 42,
+    "contradictions": [
+     "L1 k7 silent g=-2.05",
+     "L2 kDunlopR strong g=+1.08",
+     "L2 k21 strong g=+0.46",
+     "L2 k24 silent g=-1.17",
+     "L3 k13 silent g=-2.42",
+     "L3 k7 silent g=-2.60",
+     "L3 k10 silent g=-1.80",
+     "L4 k3 silent g=-1.85",
+     "L4 k10 silent g=-0.61",
+     "L6 k13 silent g=-0.78",
+     "L6 k7 silent g=-1.71"
+    ],
+    "contradictionCount": 11,
+    "auc": 0.896,
+    "withinKerbAuc": 0.889,
+    "withinKerbPairs": 27,
+    "strongMedianG": -1.942,
+    "silentMedianG": 1.897
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L1 k7 silent g=-2.05",
+     "L2 k21 strong g=+0.46",
+     "L2 k24 silent g=-1.17",
+     "L3 k13 silent g=-2.42",
+     "L3 k7 silent g=-2.60",
+     "L3 k10 silent g=-1.80",
+     "L4 k3 silent g=-1.85",
+     "L4 k10 silent g=-0.61",
+     "L6 k13 silent g=-0.78",
+     "L6 k7 silent g=-1.71"
+    ],
+    "contradictionCount": 10,
+    "auc": 0.91,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -2.031,
+    "silentMedianG": 1.965
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": [],
+    "strong": 15,
+    "silent": 40,
+    "contradictions": [
+     "L1 k7 silent g=-2.05",
+     "L2 kDunlopR strong g=+1.08",
+     "L3 k13 silent g=-2.42",
+     "L3 k7 silent g=-2.60",
+     "L3 k10 silent g=-1.80",
+     "L4 k3 silent g=-1.85",
+     "L4 k10 silent g=-0.61",
+     "L6 k13 silent g=-0.78",
+     "L6 k7 silent g=-1.71"
+    ],
+    "contradictionCount": 9,
+    "auc": 0.902,
+    "withinKerbAuc": 0.87,
+    "withinKerbPairs": 23,
+    "strongMedianG": -1.942,
+    "silentMedianG": 1.897
+   }
+  },
+  "a_shipped_oldCG": {
+   "all": {
+    "labels": 59,
+    "measurable": 57,
+    "unmeasurable": [
+     "L2 kDunlopR strong",
+     "L3 kDunlopR silent"
+    ],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.60",
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.324,
+    "silentMedianG": 0.844
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.60",
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.324,
+    "silentMedianG": 0.844
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 53,
+    "unmeasurable": [
+     "L2 kDunlopR strong",
+     "L3 kDunlopR silent"
+    ],
+    "strong": 14,
+    "silent": 39,
+    "contradictions": [
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.914,
+    "withinKerbAuc": 0.909,
+    "withinKerbPairs": 22,
+    "strongMedianG": -0.353,
+    "silentMedianG": 0.862
+   }
+  },
+  "b_shipped_newZones": {
+   "all": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": [],
+    "strong": 17,
+    "silent": 42,
+    "contradictions": [
+     "L2 k21 strong g=+1.66",
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.884,
+    "withinKerbAuc": 0.926,
+    "withinKerbPairs": 27,
+    "strongMedianG": -0.419,
+    "silentMedianG": 0.787
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.66",
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.88,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.421,
+    "silentMedianG": 0.844
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": [],
+    "strong": 15,
+    "silent": 40,
+    "contradictions": [
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.933,
+    "withinKerbAuc": 0.913,
+    "withinKerbPairs": 23,
+    "strongMedianG": -0.423,
+    "silentMedianG": 0.867
+   }
+  },
+  "c_candidate_newZones_INSAMPLE": {
+   "all": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": [],
+    "strong": 17,
+    "silent": 42,
+    "contradictions": [
+     "L2 k21 strong g=+1.01"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.943,
+    "withinKerbAuc": 0.926,
+    "withinKerbPairs": 27,
+    "strongMedianG": -0.642,
+    "silentMedianG": 0.901
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.01"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.941,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.598,
+    "silentMedianG": 1.034
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": [],
+    "strong": 15,
+    "silent": 40,
+    "contradictions": [],
+    "contradictionCount": 0,
+    "auc": 0.98,
+    "withinKerbAuc": 0.913,
+    "withinKerbPairs": 23,
+    "strongMedianG": -0.65,
+    "silentMedianG": 1.036
+   }
+  },
+  "a_shipped_oldCG_nearestVertexEndRule": {
+   "all": {
+    "labels": 59,
+    "measurable": 57,
+    "unmeasurable": [
+     "L2 kDunlopR strong",
+     "L3 kDunlopR silent"
+    ],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.60",
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.324,
+    "silentMedianG": 0.844
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.60",
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.324,
+    "silentMedianG": 0.844
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 53,
+    "unmeasurable": [
+     "L2 kDunlopR strong",
+     "L3 kDunlopR silent"
+    ],
+    "strong": 14,
+    "silent": 39,
+    "contradictions": [
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.914,
+    "withinKerbAuc": 0.909,
+    "withinKerbPairs": 22,
+    "strongMedianG": -0.353,
+    "silentMedianG": 0.862
+   }
+  },
+  "b_shipped_newZones_nearestVertexEndRule": {
+   "all": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": [],
+    "strong": 17,
+    "silent": 42,
+    "contradictions": [
+     "L2 k21 strong g=+1.66",
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.884,
+    "withinKerbAuc": 0.926,
+    "withinKerbPairs": 27,
+    "strongMedianG": -0.419,
+    "silentMedianG": 0.787
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.66",
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.88,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.421,
+    "silentMedianG": 0.844
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": [],
+    "strong": 15,
+    "silent": 40,
+    "contradictions": [
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.933,
+    "withinKerbAuc": 0.913,
+    "withinKerbPairs": 23,
+    "strongMedianG": -0.423,
+    "silentMedianG": 0.867
+   }
+  },
+  "a_shipped_oldCG_labelTimeWindow": {
+   "all": {
+    "labels": 59,
+    "measurable": 57,
+    "unmeasurable": [
+     "L2 kDunlopR strong",
+     "L3 kDunlopR silent"
+    ],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.60",
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.324,
+    "silentMedianG": 0.844
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.60",
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.324,
+    "silentMedianG": 0.844
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 53,
+    "unmeasurable": [
+     "L2 kDunlopR strong",
+     "L3 kDunlopR silent"
+    ],
+    "strong": 14,
+    "silent": 39,
+    "contradictions": [
+     "L5 k9 silent g=-0.94",
+     "L5 k10 strong g=+0.47"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.914,
+    "withinKerbAuc": 0.909,
+    "withinKerbPairs": 22,
+    "strongMedianG": -0.353,
+    "silentMedianG": 0.862
+   }
+  },
+  "b_shipped_newZones_labelTimeWindow": {
+   "all": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": [],
+    "strong": 17,
+    "silent": 42,
+    "contradictions": [
+     "L2 k21 strong g=+1.66",
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.884,
+    "withinKerbAuc": 0.926,
+    "withinKerbPairs": 27,
+    "strongMedianG": -0.419,
+    "silentMedianG": 0.787
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.66",
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 3,
+    "auc": 0.88,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.421,
+    "silentMedianG": 0.844
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": [],
+    "strong": 15,
+    "silent": 40,
+    "contradictions": [
+     "L5 k9 silent g=-0.92",
+     "L5 k10 strong g=+0.42"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.933,
+    "withinKerbAuc": 0.913,
+    "withinKerbPairs": 23,
+    "strongMedianG": -0.423,
+    "silentMedianG": 0.867
+   }
+  },
+  "c_candidate_newZones_INSAMPLE_labelTimeWindow": {
+   "all": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": [],
+    "strong": 17,
+    "silent": 42,
+    "contradictions": [
+     "L2 k21 strong g=+1.01"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.943,
+    "withinKerbAuc": 0.926,
+    "withinKerbPairs": 27,
+    "strongMedianG": -0.642,
+    "silentMedianG": 0.901
+   },
+   "commonWithOldCG": {
+    "labels": 57,
+    "measurable": 57,
+    "unmeasurable": [],
+    "strong": 16,
+    "silent": 41,
+    "contradictions": [
+     "L2 k21 strong g=+1.01"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.941,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26,
+    "strongMedianG": -0.598,
+    "silentMedianG": 1.034
+   },
+   "withoutAnomalyLabels": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": [],
+    "strong": 15,
+    "silent": 40,
+    "contradictions": [],
+    "contradictionCount": 0,
+    "auc": 0.98,
+    "withinKerbAuc": 0.913,
+    "withinKerbPairs": 23,
+    "strongMedianG": -0.65,
+    "silentMedianG": 1.036
+   }
+  },
+  "gChange_b_minus_a_byKerb": {
+   "k1": {
+    "median": -0.133,
+    "min": -0.141,
+    "max": -0.07,
+    "n": 5
+   },
+   "k10": {
+    "median": -0.01,
+    "min": -0.051,
+    "max": 0.037,
+    "n": 6
+   },
+   "k13": {
+    "median": 0.057,
+    "min": 0.033,
+    "max": 0.066,
+    "n": 4
+   },
+   "k15": {
+    "median": -0.293,
+    "min": -0.325,
+    "max": -0.231,
+    "n": 4
+   },
+   "k18": {
+    "median": -0.002,
+    "min": -0.005,
+    "max": 0.0,
+    "n": 6
+   },
+   "k19": {
+    "median": -0.068,
+    "min": -0.082,
+    "max": -0.065,
+    "n": 5
+   },
+   "k20": {
+    "median": -0.067,
+    "min": -0.079,
+    "max": -0.025,
+    "n": 5
+   },
+   "k21": {
+    "median": 0.051,
+    "min": 0.041,
+    "max": 0.061,
+    "n": 2
+   },
+   "k23": {
+    "median": -0.263,
+    "min": -0.266,
+    "max": -0.26,
+    "n": 4
+   },
+   "k24": {
+    "median": 0.029,
+    "min": -0.022,
+    "max": 0.035,
+    "n": 3
+   },
+   "k3": {
+    "median": 0.078,
+    "min": 0.039,
+    "max": 0.096,
+    "n": 3
+   },
+   "k7": {
+    "median": -0.061,
+    "min": -0.081,
+    "max": -0.046,
+    "n": 5
+   },
+   "k9": {
+    "median": 0.019,
+    "min": -0.033,
+    "max": 0.075,
+    "n": 5
+   }
+  },
+  "verdictChanges_a_to_b": [
+   {
+    "lap": 2,
+    "kerb": "kDunlopR",
+    "cls": "strong",
+    "g_a": null,
+    "g_b": -0.336,
+    "contra_a": null,
+    "contra_b": false
+   },
+   {
+    "lap": 3,
+    "kerb": "kDunlopR",
+    "cls": "silent",
+    "g_a": null,
+    "g_b": 0.277,
+    "contra_a": null,
+    "contra_b": false
+   }
+  ],
+  "bootstrap_b_minus_a_common": {
+   "labels": 57,
+   "kerbs": 13,
+   "B": 10000,
+   "contradictionDiff": 0,
+   "contradictionDiffCI95": [
+    0.0,
+    0.0
+   ],
+   "aucDiff": 0.0137,
+   "aucDiffCI95": [
+    -0.0111,
+    0.04
+   ],
+   "pAucDiffLE0": 0.1619
+  },
+  "bootstrap_cIn_minus_b_INSAMPLE": {
+   "labels": 59,
+   "kerbs": 14,
+   "B": 10000,
+   "contradictionDiff": -2,
+   "contradictionDiffCI95": [
+    -5.0,
+    0.0
+   ],
+   "aucDiff": 0.0588,
+   "aucDiffCI95": [
+    0.0056,
+    0.1199
+   ],
+   "pAucDiffLE0": 0.0147
+  }
+ },
+ "fuji_aim_01": {
+  "raw_newZones": {
+   "all": {
+    "labels": 52,
+    "measurable": 52,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 51,
+    "contradictions": [
+     "L1 kDunlopR silent g=-3.11",
+     "L1 k20 silent g=-2.48",
+     "L2 kDunlopR silent g=-2.13",
+     "L2 k20 silent g=-1.60",
+     "L3 k7 strong g=+2.34",
+     "L3 k9 silent g=-0.68"
+    ],
+    "contradictionCount": 6,
+    "auc": 0.451,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 2.338,
+    "silentMedianG": 1.962
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k20 silent g=-2.48",
+     "L2 k20 silent g=-1.60",
+     "L3 k7 strong g=+2.34",
+     "L3 k9 silent g=-0.68"
+    ],
+    "contradictionCount": 4,
+    "auc": 0.468,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 2.338,
+    "silentMedianG": 2.143
+   }
+  },
+  "a_shipped_oldCG": {
+   "all": {
+    "labels": 52,
+    "measurable": 48,
+    "unmeasurable": [
+     "L1 kDunlopR silent",
+     "L2 kDunlopR silent",
+     "L3 kDunlopR silent",
+     "L4 kDunlopR silent"
+    ],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.74"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 0.017,
+    "silentMedianG": 1.406
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.74"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 0.017,
+    "silentMedianG": 1.406
+   }
+  },
+  "b_shipped_newZones": {
+   "all": {
+    "labels": 52,
+    "measurable": 52,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 51,
+    "contradictions": [
+     "L1 k13 silent g=-0.70",
+     "L1 kDunlopR silent g=-0.57"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.941,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": -0.029,
+    "silentMedianG": 1.391
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.70"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": -0.029,
+    "silentMedianG": 1.391
+   }
+  },
+  "a_shipped_oldCG_nearestVertexEndRule": {
+   "all": {
+    "labels": 52,
+    "measurable": 48,
+    "unmeasurable": [
+     "L1 kDunlopR silent",
+     "L2 kDunlopR silent",
+     "L3 kDunlopR silent",
+     "L4 kDunlopR silent"
+    ],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.74"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 0.017,
+    "silentMedianG": 1.406
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.74"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 0.017,
+    "silentMedianG": 1.406
+   }
+  },
+  "b_shipped_newZones_nearestVertexEndRule": {
+   "all": {
+    "labels": 52,
+    "measurable": 52,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 51,
+    "contradictions": [
+     "L1 k13 silent g=-0.70",
+     "L1 kDunlopR silent g=-0.57"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.941,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": -0.029,
+    "silentMedianG": 1.391
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.70"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": -0.029,
+    "silentMedianG": 1.391
+   }
+  },
+  "a_shipped_oldCG_labelTimeWindow": {
+   "all": {
+    "labels": 52,
+    "measurable": 48,
+    "unmeasurable": [
+     "L1 kDunlopR silent",
+     "L2 kDunlopR silent",
+     "L3 kDunlopR silent",
+     "L4 kDunlopR silent"
+    ],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.74"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 0.017,
+    "silentMedianG": 1.406
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.74"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": 0.017,
+    "silentMedianG": 1.406
+   }
+  },
+  "b_shipped_newZones_labelTimeWindow": {
+   "all": {
+    "labels": 52,
+    "measurable": 52,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 51,
+    "contradictions": [
+     "L1 k13 silent g=-0.70",
+     "L1 kDunlopR silent g=-0.57"
+    ],
+    "contradictionCount": 2,
+    "auc": 0.941,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": -0.029,
+    "silentMedianG": 1.391
+   },
+   "commonWithOldCG": {
+    "labels": 48,
+    "measurable": 48,
+    "unmeasurable": [],
+    "strong": 1,
+    "silent": 47,
+    "contradictions": [
+     "L1 k13 silent g=-0.70"
+    ],
+    "contradictionCount": 1,
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3,
+    "strongMedianG": -0.029,
+    "silentMedianG": 1.391
+   }
+  },
+  "gChange_b_minus_a_byKerb": {
+   "k1": {
+    "median": -0.136,
+    "min": -0.141,
+    "max": -0.101,
+    "n": 4
+   },
+   "k10": {
+    "median": 0.013,
+    "min": 0.012,
+    "max": 0.023,
+    "n": 3
+   },
+   "k13": {
+    "median": 0.044,
+    "min": 0.037,
+    "max": 0.056,
+    "n": 4
+   },
+   "k15": {
+    "median": -0.332,
+    "min": -0.344,
+    "max": -0.312,
+    "n": 4
+   },
+   "k18": {
+    "median": 0.028,
+    "min": -0.015,
+    "max": 0.036,
+    "n": 3
+   },
+   "k19": {
+    "median": -0.049,
+    "min": -0.071,
+    "max": -0.042,
+    "n": 4
+   },
+   "k20": {
+    "median": -0.07,
+    "min": -0.08,
+    "max": -0.067,
+    "n": 4
+   },
+   "k21": {
+    "median": 0.094,
+    "min": 0.085,
+    "max": 0.103,
+    "n": 4
+   },
+   "k23": {
+    "median": -0.236,
+    "min": -0.252,
+    "max": -0.224,
+    "n": 4
+   },
+   "k24": {
+    "median": -0.005,
+    "min": -0.017,
+    "max": 0.007,
+    "n": 2
+   },
+   "k3": {
+    "median": 0.093,
+    "min": 0.037,
+    "max": 0.106,
+    "n": 4
+   },
+   "k7": {
+    "median": -0.045,
+    "min": -0.049,
+    "max": -0.044,
+    "n": 4
+   },
+   "k9": {
+    "median": 0.03,
+    "min": 0.001,
+    "max": 0.073,
+    "n": 4
+   }
+  },
+  "verdictChanges_a_to_b": [
+   {
+    "lap": 1,
+    "kerb": "kDunlopR",
+    "cls": "silent",
+    "g_a": null,
+    "g_b": -0.572,
+    "contra_a": null,
+    "contra_b": true
+   },
+   {
+    "lap": 2,
+    "kerb": "kDunlopR",
+    "cls": "silent",
+    "g_a": null,
+    "g_b": 0.366,
+    "contra_a": null,
+    "contra_b": false
+   },
+   {
+    "lap": 3,
+    "kerb": "kDunlopR",
+    "cls": "silent",
+    "g_a": null,
+    "g_b": 2.958,
+    "contra_a": null,
+    "contra_b": false
+   },
+   {
+    "lap": 4,
+    "kerb": "kDunlopR",
+    "cls": "silent",
+    "g_a": null,
+    "g_b": 6.059,
+    "contra_a": null,
+    "contra_b": false
+   }
+  ],
+  "bootstrap_b_minus_a_common": {
+   "labels": 48,
+   "kerbs": 13,
+   "B": 10000,
+   "contradictionDiff": 0,
+   "contradictionDiffCI95": [
+    0.0,
+    0.0
+   ],
+   "aucDiff": 0.0,
+   "aucDiffCI95": [
+    0.0,
+    0.0
+   ],
+   "pAucDiffLE0": 1.0
+  }
+ },
+ "agreementWithImplementerRows": {
+  "shipped(newZones)": {
+   "n": 59,
+   "maxAbsDiff": 0.0,
+   "medianAbsDiff": 0.0
+  },
+  "raw(newZones)": {
+   "n": 59,
+   "maxAbsDiff": 0.0,
+   "medianAbsDiff": 0.0
+  }
+ },
+ "implementerCourseFix": {
+  "cgKerbLines": {
+   "n": 57,
+   "contradictionCount": 3,
+   "auc": 0.866,
+   "withinKerbAuc": 0.923,
+   "unmeasurable": 2
+  },
+  "courseV2": {
+   "n": 59,
+   "contradictionCount": 3,
+   "auc": 0.875,
+   "withinKerbAuc": 0.926,
+   "unmeasurable": 0
+  },
+  "kerbZonesV3": {
+   "n": 59,
+   "contradictionCount": 3,
+   "auc": 0.884,
+   "withinKerbAuc": 0.926,
+   "unmeasurable": 0
+  }
+ },
+ "implementerCandidateInSample": {
+  "n": 59,
+  "contradictionCount": 1,
+  "auc": 0.943,
+  "withinKerbAuc": 0.926,
+  "contradictions": [
+   [
+    2,
+    "k21",
+    "strong",
+    1.01
+   ]
+  ]
+ }
+}

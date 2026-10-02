@@ -22,3 +22,5 @@ tracktools-kit/textures_cc0/*.jpg
 
 # session scratch (screenshots, verify scripts)
 Temp/
+# camfit work dir (may hold onboard-video-derived frames)
+artifacts/apex-kerb-kpi-2026-10-02/work/

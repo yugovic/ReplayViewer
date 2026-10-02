@@ -1,0 +1,555 @@
+{
+ "laps": [
+  "fuji_aim_01/L1",
+  "fuji_aim_01/L2",
+  "fuji_aim_01/L3",
+  "fuji_aim_01/L4",
+  "fuji_aim_2020_07_30/L1",
+  "fuji_aim_2020_07_30/L2",
+  "fuji_aim_2020_07_30/L3",
+  "fuji_aim_2020_07_30/L4",
+  "fuji_aim_2020_07_30/L5",
+  "fuji_aim_2020_07_30/L6"
+ ],
+ "method": "Independent cross-check of the playback pose-lag change (C1).\n\nRe-implements, WITHOUT importing any viewer code, the yaw part of\n  * the target heading (ReplayScene -> sampleReplay -> samplePose):\n    +-6-sample chord heading per 10 Hz sample, unwrapped, linearly interpolated\n    in t and clamped to [t0, t_end];\n  * BEFORE: one first-order stage, tau = 140 ms, y += (1 - e^{-dt/tau}) (u(t) - y),\n    snap when dt <= 0 or dt > 0.25 s;\n  * AFTER (src/engine/poseSmoothing.ts as read): 2 cascaded stages, tau = 70 ms,\n    stage-1 input u(t + 0.14 s), exact first-order-hold step\n        y1 = e^{-x} y0 + (1 - e^{-x}) u0 + (1 - (1 - e^{-x})/x) (u1 - u0),  x = dt/tau\n    (derived here from the ODE, not copied), stage 2 driven by stage 1's\n    start/end values with the same formula; after a snap, stage 1 is charged\n    with u(t_snap + tau) and the previous input with u(t_snap + 2 tau).\nYaw-only scalar simulation (rotation about one axis => slerp == lerp of the\nangle). The viewer filters full quaternions incl. pitch (<=8 deg) and track\nroll (<=10 deg), so small differences to the implementer's numbers are expected.\n\nExtra metrics the implementer did not report:\n  * effective delay: shift s minimising RMS(y(t) - u(t - s));\n  * heading vs the drawn PATH tangent (derivative of the viewer's non-uniform\n    Catmull-Rom Hermite position), i.e. how far the car's nose points away from\n    the direction it is visibly moving (context: the +-0.6 s chord target itself\n    is not the path tangent).\n\nUsage: <venv python> pose_lag_crosscheck.py   (writes pose_lag_crosscheck.json next to itself)\n",
+ "fps60_rate1": {
+  "before": {
+   "headingErrorVsTargetDeg": {
+    "n": 83631,
+    "median": 1.0126,
+    "p95": 3.8572,
+    "p99": 4.857,
+    "max": 6.0582
+   },
+   "jitter2ndDiffDegPerFrame": {
+    "n": 83611,
+    "median": 0.0006,
+    "p95": 0.0042,
+    "p99": 0.0079,
+    "max": 0.0194
+   },
+   "yawRateChangeDegPerSecPerFrame": {
+    "n": 83611,
+    "median": 0.0351,
+    "p95": 0.252,
+    "p99": 0.4738,
+    "max": 1.1615
+   },
+   "headingVsDrawnPathTangentDeg": {
+    "n": 83631,
+    "median": 1.0339,
+    "p95": 3.9607,
+    "p99": 5.23,
+    "max": 7.6738
+   },
+   "effectiveDelaySecondsPerLap": [
+    0.132,
+    0.132,
+    0.132,
+    0.132,
+    0.132,
+    0.132,
+    0.132,
+    0.132,
+    0.132,
+    0.132
+   ],
+   "worst": {
+    "lap": "fuji_aim_2020_07_30/L6",
+    "errDeg": 6.058,
+    "t": 75.6,
+    "dist": 2821.8
+   }
+  },
+  "after": {
+   "headingErrorVsTargetDeg": {
+    "n": 83631,
+    "median": 0.0108,
+    "p95": 0.0752,
+    "p99": 0.1362,
+    "max": 0.3087
+   },
+   "jitter2ndDiffDegPerFrame": {
+    "n": 83611,
+    "median": 0.0006,
+    "p95": 0.0042,
+    "p99": 0.0075,
+    "max": 0.0156
+   },
+   "yawRateChangeDegPerSecPerFrame": {
+    "n": 83611,
+    "median": 0.0363,
+    "p95": 0.2507,
+    "p99": 0.4479,
+    "max": 0.9387
+   },
+   "headingVsDrawnPathTangentDeg": {
+    "n": 83631,
+    "median": 0.1287,
+    "p95": 0.8683,
+    "p99": 1.7351,
+    "max": 5.1504
+   },
+   "effectiveDelaySecondsPerLap": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "worst": {
+    "lap": "fuji_aim_2020_07_30/L5",
+    "errDeg": 0.309,
+    "t": 77.3,
+    "dist": 2842.7
+   }
+  },
+  "raw": {
+   "headingErrorVsTargetDeg": {
+    "n": 83631,
+    "median": 0.0,
+    "p95": 0.0,
+    "p99": 0.0,
+    "max": 0.0
+   },
+   "jitter2ndDiffDegPerFrame": {
+    "n": 83611,
+    "median": 0.0,
+    "p95": 0.008,
+    "p99": 0.0231,
+    "max": 0.0908
+   },
+   "yawRateChangeDegPerSecPerFrame": {
+    "n": 83611,
+    "median": 0.0,
+    "p95": 0.4786,
+    "p99": 1.3837,
+    "max": 5.446
+   },
+   "headingVsDrawnPathTangentDeg": {
+    "n": 83631,
+    "median": 0.1214,
+    "p95": 0.8001,
+    "p99": 1.6134,
+    "max": 4.9147
+   },
+   "effectiveDelaySecondsPerLap": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "worst": {
+    "lap": "fuji_aim_01/L1",
+    "errDeg": 0.0,
+    "t": 0.0,
+    "dist": 0.0
+   }
+  }
+ },
+ "fps60_rate1_perLap": [
+  {
+   "lap": "fuji_aim_01/L1",
+   "before": {
+    "errMax": 5.541,
+    "errP95": 3.636
+   },
+   "after": {
+    "errMax": 0.245,
+    "errP95": 0.067
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_01/L2",
+   "before": {
+    "errMax": 5.258,
+    "errP95": 3.664
+   },
+   "after": {
+    "errMax": 0.262,
+    "errP95": 0.066
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_01/L3",
+   "before": {
+    "errMax": 5.484,
+    "errP95": 3.805
+   },
+   "after": {
+    "errMax": 0.207,
+    "errP95": 0.071
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_01/L4",
+   "before": {
+    "errMax": 5.993,
+    "errP95": 3.517
+   },
+   "after": {
+    "errMax": 0.196,
+    "errP95": 0.061
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_2020_07_30/L1",
+   "before": {
+    "errMax": 6.031,
+    "errP95": 3.899
+   },
+   "after": {
+    "errMax": 0.255,
+    "errP95": 0.085
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_2020_07_30/L2",
+   "before": {
+    "errMax": 5.658,
+    "errP95": 4.024
+   },
+   "after": {
+    "errMax": 0.284,
+    "errP95": 0.074
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_2020_07_30/L3",
+   "before": {
+    "errMax": 5.697,
+    "errP95": 4.026
+   },
+   "after": {
+    "errMax": 0.291,
+    "errP95": 0.078
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_2020_07_30/L4",
+   "before": {
+    "errMax": 5.619,
+    "errP95": 4.089
+   },
+   "after": {
+    "errMax": 0.282,
+    "errP95": 0.084
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_2020_07_30/L5",
+   "before": {
+    "errMax": 5.959,
+    "errP95": 4.01
+   },
+   "after": {
+    "errMax": 0.309,
+    "errP95": 0.087
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  },
+  {
+   "lap": "fuji_aim_2020_07_30/L6",
+   "before": {
+    "errMax": 6.058,
+    "errP95": 3.778
+   },
+   "after": {
+    "errMax": 0.266,
+    "errP95": 0.08
+   },
+   "raw": {
+    "errMax": 0.0,
+    "errP95": 0.0
+   }
+  }
+ ],
+ "robustness": {
+  "fps30": {
+   "before": {
+    "headingErrorVsTargetDeg": {
+     "n": 41828,
+     "median": 0.9521,
+     "p95": 3.6279,
+     "p99": 4.5682,
+     "max": 5.698
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 41808,
+     "median": 0.0023,
+     "p95": 0.0167,
+     "p99": 0.0318,
+     "max": 0.0731
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 41808,
+     "median": 0.0704,
+     "p95": 0.501,
+     "p99": 0.9533,
+     "max": 2.1926
+    }
+   },
+   "after": {
+    "headingErrorVsTargetDeg": {
+     "n": 41828,
+     "median": 0.0112,
+     "p95": 0.0783,
+     "p99": 0.1431,
+     "max": 0.3158
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 41808,
+     "median": 0.0024,
+     "p95": 0.0167,
+     "p99": 0.0298,
+     "max": 0.0601
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 41808,
+     "median": 0.0726,
+     "p95": 0.5,
+     "p99": 0.8936,
+     "max": 1.8022
+    }
+   }
+  },
+  "fps144": {
+   "before": {
+    "headingErrorVsTargetDeg": {
+     "n": 200692,
+     "median": 1.0487,
+     "p95": 3.9958,
+     "p99": 5.0319,
+     "max": 6.2747
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 200672,
+     "median": 0.0001,
+     "p95": 0.0007,
+     "p99": 0.0014,
+     "max": 0.0034
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 200672,
+     "median": 0.0147,
+     "p95": 0.1048,
+     "p99": 0.197,
+     "max": 0.4859
+    }
+   },
+   "after": {
+    "headingErrorVsTargetDeg": {
+     "n": 200692,
+     "median": 0.0107,
+     "p95": 0.074,
+     "p99": 0.134,
+     "max": 0.3022
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 200672,
+     "median": 0.0001,
+     "p95": 0.0007,
+     "p99": 0.0013,
+     "max": 0.0028
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 200672,
+     "median": 0.0151,
+     "p95": 0.1046,
+     "p99": 0.1881,
+     "max": 0.3968
+    }
+   }
+  },
+  "fps60_rate4": {
+   "before": {
+    "headingErrorVsTargetDeg": {
+     "n": 20920,
+     "median": 0.8366,
+     "p95": 3.1982,
+     "p99": 4.0239,
+     "max": 5.0227
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 20900,
+     "median": 0.0096,
+     "p95": 0.0668,
+     "p99": 0.1212,
+     "max": 0.2611
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 20900,
+     "median": 0.1437,
+     "p95": 1.0016,
+     "p99": 1.8176,
+     "max": 3.9164
+    }
+   },
+   "after": {
+    "headingErrorVsTargetDeg": {
+     "n": 20920,
+     "median": 0.0124,
+     "p95": 0.0863,
+     "p99": 0.1588,
+     "max": 0.3362
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 20900,
+     "median": 0.0097,
+     "p95": 0.0664,
+     "p99": 0.1189,
+     "max": 0.2367
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 20900,
+     "median": 0.1454,
+     "p95": 0.9961,
+     "p99": 1.7838,
+     "max": 3.5502
+    }
+   }
+  },
+  "fps60_dtJitter40": {
+   "before": {
+    "headingErrorVsTargetDeg": {
+     "n": 83671,
+     "median": 1.0078,
+     "p95": 3.845,
+     "p99": 4.8182,
+     "max": 6.0563
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 83651,
+     "median": 0.0195,
+     "p95": 0.1869,
+     "p99": 0.2972,
+     "max": 0.6048
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 83651,
+     "median": 0.0905,
+     "p95": 0.6574,
+     "p99": 1.0299,
+     "max": 2.1083
+    }
+   },
+   "after": {
+    "headingErrorVsTargetDeg": {
+     "n": 83671,
+     "median": 0.0107,
+     "p95": 0.0745,
+     "p99": 0.1347,
+     "max": 0.2874
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 83651,
+     "median": 0.0186,
+     "p95": 0.1777,
+     "p99": 0.2819,
+     "max": 0.5811
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 83651,
+     "median": 0.0354,
+     "p95": 0.2544,
+     "p99": 0.4631,
+     "max": 1.1783
+    }
+   }
+  },
+  "fps60_pause10framesEvery3s": {
+   "before": {
+    "headingErrorVsTargetDeg": {
+     "n": 88221,
+     "median": 0.8227,
+     "p95": 3.7469,
+     "p99": 4.6374,
+     "max": 6.0299
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 88201,
+     "median": 0.0006,
+     "p95": 0.0084,
+     "p99": 0.0418,
+     "max": 5.3277
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 83152,
+     "median": 0.0391,
+     "p95": 0.416,
+     "p99": 1.2368,
+     "max": 4.2777
+    }
+   },
+   "after": {
+    "headingErrorVsTargetDeg": {
+     "n": 88221,
+     "median": 0.0089,
+     "p95": 0.0702,
+     "p99": 0.1295,
+     "max": 0.3087
+    },
+    "jitter2ndDiffDegPerFrame": {
+     "n": 88201,
+     "median": 0.0006,
+     "p95": 0.0045,
+     "p99": 0.0148,
+     "max": 0.7739
+    },
+    "yawRateChangeDegPerSecPerFrame": {
+     "n": 83152,
+     "median": 0.0358,
+     "p95": 0.2457,
+     "p99": 0.44,
+     "max": 0.9387
+    }
+   }
+  }
+ }
+}

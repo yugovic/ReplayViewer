@@ -1,0 +1,611 @@
+{
+ "scope": "Supplementary video check (event-based overlay onsets, steer vs windshield yaw). Numbers only; no frames stored.",
+ "signConventions": {
+  "corr*/event*D": "overlay bar time minus recorded channel time (s); >0 = overlay trails recorded",
+  "*AfterVideoYawS": ">0 = channel feature occurs after the video yaw feature"
+ },
+ "results": {
+  "before": {
+   "fuji_aim_01": {
+    "laps": [
+     {
+      "lap": 1,
+      "corrThrottleD": 0.085,
+      "rThrottle": 0.973,
+      "corrBrakeD": 0.095,
+      "rBrake": 0.985,
+      "eventBrakeD": 0.16,
+      "nBrakeEvents": 9,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.268,
+       0.078,
+       0.146,
+       0.16,
+       0.06,
+       0.174,
+       0.191,
+       0.152,
+       0.22
+      ],
+      "steerAfterVideoYawS": 0.1,
+      "r_steer": 0.685,
+      "imuAccyOverSpeedAfterVideoYawS": 0.23,
+      "r_imuAccyOverSpeed": 0.721,
+      "gpsCourseRateAfterVideoYawS": 0.17,
+      "r_gpsCourseRate": 0.72
+     },
+     {
+      "lap": 2,
+      "corrThrottleD": 0.05,
+      "rThrottle": 0.977,
+      "corrBrakeD": 0.025,
+      "rBrake": 0.98,
+      "eventBrakeD": 0.095,
+      "nBrakeEvents": 9,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.095,
+       -0.017,
+       0.358,
+       -0.002,
+       0.06,
+       0.119,
+       -0.059,
+       0.142,
+       0.238
+      ],
+      "steerAfterVideoYawS": 0.105,
+      "r_steer": 0.765,
+      "imuAccyOverSpeedAfterVideoYawS": 0.2,
+      "r_imuAccyOverSpeed": 0.783,
+      "gpsCourseRateAfterVideoYawS": 0.2,
+      "r_gpsCourseRate": 0.781
+     },
+     {
+      "lap": 3,
+      "corrThrottleD": 0.115,
+      "rThrottle": 0.974,
+      "corrBrakeD": 0.08,
+      "rBrake": 0.988,
+      "eventBrakeD": 0.131,
+      "nBrakeEvents": 8,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.107,
+       0.078,
+       -0.22,
+       0.116,
+       0.146,
+       0.162,
+       0.264,
+       0.207
+      ],
+      "steerAfterVideoYawS": 0.17,
+      "r_steer": 0.736,
+      "imuAccyOverSpeedAfterVideoYawS": 0.335,
+      "r_imuAccyOverSpeed": 0.775,
+      "gpsCourseRateAfterVideoYawS": 0.375,
+      "r_gpsCourseRate": 0.776
+     },
+     {
+      "lap": 4,
+      "corrThrottleD": 0.185,
+      "rThrottle": 0.986,
+      "corrBrakeD": 0.125,
+      "rBrake": 0.99,
+      "eventBrakeD": 0.183,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.155,
+       0.247,
+       0.213,
+       0.209,
+       0.057,
+       0.157
+      ],
+      "steerAfterVideoYawS": -0.005,
+      "r_steer": 0.776,
+      "imuAccyOverSpeedAfterVideoYawS": 0.165,
+      "r_imuAccyOverSpeed": 0.805,
+      "gpsCourseRateAfterVideoYawS": 0.04,
+      "r_gpsCourseRate": 0.801
+     }
+    ],
+    "medians": {
+     "corrThrottleD": 0.1,
+     "corrBrakeD": 0.087,
+     "eventBrakeD": 0.146,
+     "eventThrottleD": NaN,
+     "steerAfterVideoYawS": 0.103,
+     "imuAccyOverSpeedAfterVideoYawS": 0.215,
+     "gpsCourseRateAfterVideoYawS": 0.185,
+     "eventBrakeD_allEvents": {
+      "n": 32,
+      "median": 0.149,
+      "p25": 0.078,
+      "p75": 0.207
+     }
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "laps": [
+     {
+      "lap": 1,
+      "corrThrottleD": 0.62,
+      "rThrottle": 0.968,
+      "corrBrakeD": 0.62,
+      "rBrake": 0.98,
+      "eventBrakeD": 0.67,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.671,
+       0.674,
+       0.684,
+       0.644,
+       0.669,
+       -0.442
+      ],
+      "steerAfterVideoYawS": -0.57,
+      "r_steer": 0.712,
+      "imuAccyOverSpeedAfterVideoYawS": -0.27,
+      "r_imuAccyOverSpeed": 0.776,
+      "gpsCourseRateAfterVideoYawS": 0.165,
+      "r_gpsCourseRate": 0.777
+     },
+     {
+      "lap": 2,
+      "corrThrottleD": 0.55,
+      "rThrottle": 0.96,
+      "corrBrakeD": 0.56,
+      "rBrake": 0.987,
+      "eventBrakeD": 0.643,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.591,
+       0.644,
+       0.648,
+       0.568,
+       0.642,
+       0.71
+      ],
+      "steerAfterVideoYawS": -0.4,
+      "r_steer": 0.719,
+      "imuAccyOverSpeedAfterVideoYawS": -0.235,
+      "r_imuAccyOverSpeed": 0.772,
+      "gpsCourseRateAfterVideoYawS": 0.27,
+      "r_gpsCourseRate": 0.777
+     },
+     {
+      "lap": 3,
+      "corrThrottleD": 0.62,
+      "rThrottle": 0.969,
+      "corrBrakeD": 0.59,
+      "rBrake": 0.989,
+      "eventBrakeD": 0.664,
+      "nBrakeEvents": 6,
+      "eventThrottleD": 0.978,
+      "nThrottleEvents": 1,
+      "brakeEventLags": [
+       0.658,
+       0.64,
+       0.67,
+       0.648,
+       0.691,
+       0.706
+      ],
+      "steerAfterVideoYawS": -0.3,
+      "r_steer": 0.771,
+      "imuAccyOverSpeedAfterVideoYawS": -0.2,
+      "r_imuAccyOverSpeed": 0.813,
+      "gpsCourseRateAfterVideoYawS": 0.325,
+      "r_gpsCourseRate": 0.814
+     },
+     {
+      "lap": 4,
+      "corrThrottleD": 0.645,
+      "rThrottle": 0.967,
+      "corrBrakeD": 0.625,
+      "rBrake": 0.989,
+      "eventBrakeD": 0.696,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.649,
+       0.687,
+       0.705,
+       0.666,
+       0.717,
+       0.727
+      ],
+      "steerAfterVideoYawS": -0.465,
+      "r_steer": 0.714,
+      "imuAccyOverSpeedAfterVideoYawS": -0.3,
+      "r_imuAccyOverSpeed": 0.768,
+      "gpsCourseRateAfterVideoYawS": 0.23,
+      "r_gpsCourseRate": 0.769
+     },
+     {
+      "lap": 5,
+      "corrThrottleD": 0.78,
+      "rThrottle": 0.962,
+      "corrBrakeD": 0.775,
+      "rBrake": 0.985,
+      "eventBrakeD": 0.786,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.804,
+       0.769,
+       -0.699,
+       0.768,
+       0.835,
+       0.878
+      ],
+      "steerAfterVideoYawS": -0.47,
+      "r_steer": 0.708,
+      "imuAccyOverSpeedAfterVideoYawS": -0.335,
+      "r_imuAccyOverSpeed": 0.771,
+      "gpsCourseRateAfterVideoYawS": 0.2,
+      "r_gpsCourseRate": 0.771
+     },
+     {
+      "lap": 6,
+      "corrThrottleD": 0.65,
+      "rThrottle": 0.971,
+      "corrBrakeD": 0.655,
+      "rBrake": 0.98,
+      "eventBrakeD": 0.695,
+      "nBrakeEvents": 9,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.666,
+       0.695,
+       0.703,
+       0.718,
+       0.581,
+       0.82,
+       0.728,
+       0.673,
+       0.539
+      ],
+      "steerAfterVideoYawS": -0.46,
+      "r_steer": 0.746,
+      "imuAccyOverSpeedAfterVideoYawS": -0.265,
+      "r_imuAccyOverSpeed": 0.795,
+      "gpsCourseRateAfterVideoYawS": 0.24,
+      "r_gpsCourseRate": 0.798
+     }
+    ],
+    "medians": {
+     "corrThrottleD": 0.633,
+     "corrBrakeD": 0.623,
+     "eventBrakeD": 0.682,
+     "eventThrottleD": 0.978,
+     "steerAfterVideoYawS": -0.463,
+     "imuAccyOverSpeedAfterVideoYawS": -0.268,
+     "gpsCourseRateAfterVideoYawS": 0.235,
+     "eventBrakeD_allEvents": {
+      "n": 39,
+      "median": 0.673,
+      "p25": 0.646,
+      "p75": 0.714
+     }
+    }
+   }
+  },
+  "after": {
+   "fuji_aim_01": {
+    "laps": [
+     {
+      "lap": 1,
+      "corrThrottleD": 0.085,
+      "rThrottle": 0.973,
+      "corrBrakeD": 0.095,
+      "rBrake": 0.985,
+      "eventBrakeD": 0.16,
+      "nBrakeEvents": 9,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.268,
+       0.078,
+       0.146,
+       0.16,
+       0.06,
+       0.174,
+       0.191,
+       0.152,
+       0.22
+      ],
+      "steerAfterVideoYawS": 0.1,
+      "r_steer": 0.685,
+      "imuAccyOverSpeedAfterVideoYawS": 0.23,
+      "r_imuAccyOverSpeed": 0.721,
+      "gpsCourseRateAfterVideoYawS": 0.17,
+      "r_gpsCourseRate": 0.72
+     },
+     {
+      "lap": 2,
+      "corrThrottleD": 0.05,
+      "rThrottle": 0.977,
+      "corrBrakeD": 0.025,
+      "rBrake": 0.98,
+      "eventBrakeD": 0.095,
+      "nBrakeEvents": 9,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.095,
+       -0.017,
+       0.358,
+       -0.002,
+       0.06,
+       0.119,
+       -0.059,
+       0.142,
+       0.238
+      ],
+      "steerAfterVideoYawS": 0.105,
+      "r_steer": 0.765,
+      "imuAccyOverSpeedAfterVideoYawS": 0.2,
+      "r_imuAccyOverSpeed": 0.783,
+      "gpsCourseRateAfterVideoYawS": 0.2,
+      "r_gpsCourseRate": 0.781
+     },
+     {
+      "lap": 3,
+      "corrThrottleD": 0.115,
+      "rThrottle": 0.974,
+      "corrBrakeD": 0.08,
+      "rBrake": 0.988,
+      "eventBrakeD": 0.131,
+      "nBrakeEvents": 8,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.107,
+       0.078,
+       -0.22,
+       0.116,
+       0.146,
+       0.162,
+       0.264,
+       0.207
+      ],
+      "steerAfterVideoYawS": 0.17,
+      "r_steer": 0.736,
+      "imuAccyOverSpeedAfterVideoYawS": 0.335,
+      "r_imuAccyOverSpeed": 0.775,
+      "gpsCourseRateAfterVideoYawS": 0.375,
+      "r_gpsCourseRate": 0.776
+     },
+     {
+      "lap": 4,
+      "corrThrottleD": 0.185,
+      "rThrottle": 0.986,
+      "corrBrakeD": 0.125,
+      "rBrake": 0.99,
+      "eventBrakeD": 0.183,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.155,
+       0.247,
+       0.213,
+       0.209,
+       0.057,
+       0.157
+      ],
+      "steerAfterVideoYawS": -0.005,
+      "r_steer": 0.776,
+      "imuAccyOverSpeedAfterVideoYawS": 0.165,
+      "r_imuAccyOverSpeed": 0.805,
+      "gpsCourseRateAfterVideoYawS": 0.04,
+      "r_gpsCourseRate": 0.801
+     }
+    ],
+    "medians": {
+     "corrThrottleD": 0.1,
+     "corrBrakeD": 0.087,
+     "eventBrakeD": 0.146,
+     "eventThrottleD": NaN,
+     "steerAfterVideoYawS": 0.103,
+     "imuAccyOverSpeedAfterVideoYawS": 0.215,
+     "gpsCourseRateAfterVideoYawS": 0.185,
+     "eventBrakeD_allEvents": {
+      "n": 32,
+      "median": 0.149,
+      "p25": 0.078,
+      "p75": 0.207
+     }
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "laps": [
+     {
+      "lap": 1,
+      "corrThrottleD": 0.15,
+      "rThrottle": 0.971,
+      "corrBrakeD": 0.155,
+      "rBrake": 0.981,
+      "eventBrakeD": 0.206,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.203,
+       0.204,
+       0.224,
+       0.187,
+       0.209,
+       0.222
+      ],
+      "steerAfterVideoYawS": -0.105,
+      "r_steer": 0.713,
+      "imuAccyOverSpeedAfterVideoYawS": 0.175,
+      "r_imuAccyOverSpeed": 0.777,
+      "gpsCourseRateAfterVideoYawS": 0.165,
+      "r_gpsCourseRate": 0.777
+     },
+     {
+      "lap": 2,
+      "corrThrottleD": 0.09,
+      "rThrottle": 0.963,
+      "corrBrakeD": 0.105,
+      "rBrake": 0.988,
+      "eventBrakeD": 0.172,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.137,
+       0.173,
+       0.184,
+       0.12,
+       0.171,
+       0.232
+      ],
+      "steerAfterVideoYawS": 0.065,
+      "r_steer": 0.719,
+      "imuAccyOverSpeedAfterVideoYawS": 0.23,
+      "r_imuAccyOverSpeed": 0.775,
+      "gpsCourseRateAfterVideoYawS": 0.27,
+      "r_gpsCourseRate": 0.777
+     },
+     {
+      "lap": 3,
+      "corrThrottleD": 0.145,
+      "rThrottle": 0.97,
+      "corrBrakeD": 0.105,
+      "rBrake": 0.989,
+      "eventBrakeD": 0.174,
+      "nBrakeEvents": 6,
+      "eventThrottleD": 0.487,
+      "nThrottleEvents": 1,
+      "brakeEventLags": [
+       0.168,
+       0.148,
+       0.181,
+       0.159,
+       0.198,
+       0.217
+      ],
+      "steerAfterVideoYawS": 0.195,
+      "r_steer": 0.771,
+      "imuAccyOverSpeedAfterVideoYawS": 0.27,
+      "r_imuAccyOverSpeed": 0.816,
+      "gpsCourseRateAfterVideoYawS": 0.325,
+      "r_gpsCourseRate": 0.814
+     },
+     {
+      "lap": 4,
+      "corrThrottleD": 0.12,
+      "rThrottle": 0.97,
+      "corrBrakeD": 0.115,
+      "rBrake": 0.989,
+      "eventBrakeD": 0.186,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.137,
+       0.175,
+       0.197,
+       0.156,
+       0.205,
+       0.214
+      ],
+      "steerAfterVideoYawS": 0.04,
+      "r_steer": 0.714,
+      "imuAccyOverSpeedAfterVideoYawS": 0.23,
+      "r_imuAccyOverSpeed": 0.77,
+      "gpsCourseRateAfterVideoYawS": 0.23,
+      "r_gpsCourseRate": 0.769
+     },
+     {
+      "lap": 5,
+      "corrThrottleD": 0.25,
+      "rThrottle": 0.966,
+      "corrBrakeD": 0.245,
+      "rBrake": 0.986,
+      "eventBrakeD": 0.284,
+      "nBrakeEvents": 6,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.291,
+       0.251,
+       0.277,
+       0.256,
+       0.309,
+       0.35
+      ],
+      "steerAfterVideoYawS": 0.065,
+      "r_steer": 0.708,
+      "imuAccyOverSpeedAfterVideoYawS": 0.2,
+      "r_imuAccyOverSpeed": 0.772,
+      "gpsCourseRateAfterVideoYawS": 0.2,
+      "r_gpsCourseRate": 0.771
+     },
+     {
+      "lap": 6,
+      "corrThrottleD": 0.14,
+      "rThrottle": 0.973,
+      "corrBrakeD": 0.14,
+      "rBrake": 0.981,
+      "eventBrakeD": 0.18,
+      "nBrakeEvents": 9,
+      "eventThrottleD": null,
+      "nThrottleEvents": 0,
+      "brakeEventLags": [
+       0.154,
+       0.18,
+       0.181,
+       0.207,
+       0.079,
+       0.271,
+       0.217,
+       0.15,
+       0.02
+      ],
+      "steerAfterVideoYawS": 0.07,
+      "r_steer": 0.746,
+      "imuAccyOverSpeedAfterVideoYawS": 0.265,
+      "r_imuAccyOverSpeed": 0.796,
+      "gpsCourseRateAfterVideoYawS": 0.24,
+      "r_gpsCourseRate": 0.798
+     }
+    ],
+    "medians": {
+     "corrThrottleD": 0.143,
+     "corrBrakeD": 0.128,
+     "eventBrakeD": 0.183,
+     "eventThrottleD": 0.487,
+     "steerAfterVideoYawS": 0.065,
+     "imuAccyOverSpeedAfterVideoYawS": 0.23,
+     "gpsCourseRateAfterVideoYawS": 0.235,
+     "eventBrakeD_allEvents": {
+      "n": 39,
+      "median": 0.197,
+      "p25": 0.164,
+      "p75": 0.22
+     }
+    }
+   }
+  }
+ }
+}

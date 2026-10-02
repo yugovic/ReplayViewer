@@ -1,0 +1,251 @@
+{
+ "task": "7/30 logger-channel re-timing judged against the onboard SmartyCam video (evaluator run, 2026-10-02)",
+ "measuredBy": "evaluator (this folder); implementer numbers are labelled 'implementer'",
+ "inputs": {
+  "before": "scratchpad races dir = artifacts/improvement-eval-2026-10-02/baseline/public/data/races/fuji_aim_2020_07_30 + current public/data/races/fuji_aim_01 (7/29 lap files unchanged vs HEAD)",
+  "after": "public/data/races (current)",
+  "videos": "SCHD0613.MOV (7/29), SCHD0624.MOV (7/30); local only, no frames stored",
+  "videoLapMapping": "artifacts/video-position-gap-2026-10-02/video-timer-reads.json; lap meta (lap_start_time, first_sample_after_lap_start_seconds) identical before/after, so the mapping is identical",
+  "tool": "scripts/quality/audit-fuji-channel-timing.py --races-dir ... --out ... --wet-video ... --dry-video ...; supplementary video_series_check.py"
+ },
+ "signConvention": "D = overlay bar time minus recorded channel time (s), >0 overlay trails recorded. *AfterVideoYawS >0 = channel feature after windshield-flow yaw feature.",
+ "reproducibility": "BEFORE run reproduces the earlier artifacts/video-position-gap-2026-10-02/channel-timing-audit.json video section exactly (both races). 7/29 results identical before/after. Data part identical to implementer audit-before/after.json.",
+ "appliedShiftSecondsByLap_implementer": {
+  "1": 0.468,
+  "2": 0.465,
+  "3": 0.49,
+  "4": 0.515,
+  "5": 0.526,
+  "6": 0.524
+ },
+ "perLap": {
+  "fuji_aim_01": [
+   {
+    "lap": 1,
+    "throttleD": 0.085,
+    "brakeD": 0.095,
+    "imuAccyOverSpeedAfterVideoYawS": 0.23,
+    "gpsCourseRateAfterVideoYawS": 0.17
+   },
+   {
+    "lap": 2,
+    "throttleD": 0.05,
+    "brakeD": 0.025,
+    "imuAccyOverSpeedAfterVideoYawS": 0.2,
+    "gpsCourseRateAfterVideoYawS": 0.2
+   },
+   {
+    "lap": 3,
+    "throttleD": 0.115,
+    "brakeD": 0.08,
+    "imuAccyOverSpeedAfterVideoYawS": 0.335,
+    "gpsCourseRateAfterVideoYawS": 0.375
+   },
+   {
+    "lap": 4,
+    "throttleD": 0.185,
+    "brakeD": 0.125,
+    "imuAccyOverSpeedAfterVideoYawS": 0.165,
+    "gpsCourseRateAfterVideoYawS": 0.04
+   }
+  ],
+  "fuji_aim_2020_07_30_before": [
+   {
+    "lap": 1,
+    "throttleD": 0.62,
+    "brakeD": 0.62,
+    "imuAccyOverSpeedAfterVideoYawS": -0.27,
+    "gpsCourseRateAfterVideoYawS": 0.165
+   },
+   {
+    "lap": 2,
+    "throttleD": 0.55,
+    "brakeD": 0.56,
+    "imuAccyOverSpeedAfterVideoYawS": -0.235,
+    "gpsCourseRateAfterVideoYawS": 0.27
+   },
+   {
+    "lap": 3,
+    "throttleD": 0.62,
+    "brakeD": 0.59,
+    "imuAccyOverSpeedAfterVideoYawS": -0.2,
+    "gpsCourseRateAfterVideoYawS": 0.325
+   },
+   {
+    "lap": 4,
+    "throttleD": 0.645,
+    "brakeD": 0.625,
+    "imuAccyOverSpeedAfterVideoYawS": -0.3,
+    "gpsCourseRateAfterVideoYawS": 0.23
+   },
+   {
+    "lap": 5,
+    "throttleD": 0.78,
+    "brakeD": 0.775,
+    "imuAccyOverSpeedAfterVideoYawS": -0.335,
+    "gpsCourseRateAfterVideoYawS": 0.2
+   },
+   {
+    "lap": 6,
+    "throttleD": 0.65,
+    "brakeD": 0.655,
+    "imuAccyOverSpeedAfterVideoYawS": -0.265,
+    "gpsCourseRateAfterVideoYawS": 0.24
+   }
+  ],
+  "fuji_aim_2020_07_30_after": [
+   {
+    "lap": 1,
+    "throttleD": 0.15,
+    "brakeD": 0.155,
+    "imuAccyOverSpeedAfterVideoYawS": 0.175,
+    "gpsCourseRateAfterVideoYawS": 0.165
+   },
+   {
+    "lap": 2,
+    "throttleD": 0.09,
+    "brakeD": 0.105,
+    "imuAccyOverSpeedAfterVideoYawS": 0.23,
+    "gpsCourseRateAfterVideoYawS": 0.27
+   },
+   {
+    "lap": 3,
+    "throttleD": 0.145,
+    "brakeD": 0.105,
+    "imuAccyOverSpeedAfterVideoYawS": 0.27,
+    "gpsCourseRateAfterVideoYawS": 0.325
+   },
+   {
+    "lap": 4,
+    "throttleD": 0.12,
+    "brakeD": 0.115,
+    "imuAccyOverSpeedAfterVideoYawS": 0.23,
+    "gpsCourseRateAfterVideoYawS": 0.23
+   },
+   {
+    "lap": 5,
+    "throttleD": 0.25,
+    "brakeD": 0.245,
+    "imuAccyOverSpeedAfterVideoYawS": 0.2,
+    "gpsCourseRateAfterVideoYawS": 0.2
+   },
+   {
+    "lap": 6,
+    "throttleD": 0.14,
+    "brakeD": 0.14,
+    "imuAccyOverSpeedAfterVideoYawS": 0.265,
+    "gpsCourseRateAfterVideoYawS": 0.24
+   }
+  ]
+ },
+ "afterMinusPredicted_beforeMinusShift": {
+  "1": {
+   "throttle": -0.002,
+   "brake": 0.003
+  },
+  "2": {
+   "throttle": 0.005,
+   "brake": 0.01
+  },
+  "3": {
+   "throttle": 0.015,
+   "brake": 0.005
+  },
+  "4": {
+   "throttle": -0.01,
+   "brake": 0.005
+  },
+  "5": {
+   "throttle": -0.004,
+   "brake": -0.004
+  },
+  "6": {
+   "throttle": 0.014,
+   "brake": 0.009
+  }
+ },
+ "medians": {
+  "throttleD": {
+   "0729": 0.1,
+   "0730_before": 0.633,
+   "0730_after": 0.143,
+   "0730_after_excl_L5": 0.14,
+   "0730_after_minus_0729": 0.043
+  },
+  "brakeD": {
+   "0729": 0.087,
+   "0730_before": 0.623,
+   "0730_after": 0.128,
+   "0730_after_excl_L5": 0.115,
+   "0730_after_minus_0729": 0.041
+  },
+  "imuAccyOverSpeedAfterVideoYawS": {
+   "0729": 0.215,
+   "0730_before": -0.268,
+   "0730_after": 0.23,
+   "0730_after_excl_L5": 0.23,
+   "0730_after_minus_0729": 0.015
+  },
+  "gpsCourseRateAfterVideoYawS": {
+   "0729": 0.185,
+   "0730_before": 0.235,
+   "0730_after": 0.235,
+   "0730_after_excl_L5": 0.24,
+   "0730_after_minus_0729": 0.05
+  }
+ },
+ "supplementary": {
+  "eventBrakeOnsetD_allEvents": {
+   "before_fuji_aim_01": {
+    "n": 32,
+    "median": 0.149,
+    "p25": 0.078,
+    "p75": 0.207
+   },
+   "before_fuji_aim_2020_07_30": {
+    "n": 39,
+    "median": 0.673,
+    "p25": 0.646,
+    "p75": 0.714
+   },
+   "after_fuji_aim_01": {
+    "n": 32,
+    "median": 0.149,
+    "p25": 0.078,
+    "p75": 0.207
+   },
+   "after_fuji_aim_2020_07_30": {
+    "n": 39,
+    "median": 0.197,
+    "p25": 0.164,
+    "p75": 0.22
+   }
+  },
+  "eventBrakeOnsetD_perLapMedian": {
+   "0729": 0.146,
+   "0730_before": 0.682,
+   "0730_after": 0.183
+  },
+  "steerAfterVideoYawS_median": {
+   "0729": 0.103,
+   "0730_before": -0.463,
+   "0730_after": 0.065,
+   "note": "noisy (r~0.7, per-lap spread ~0.3 s); weak evidence"
+  },
+  "eventThrottleOnset": "estimator failed (aps mostly saturated; edges found on 1 of 10 laps) - not used",
+  "steerVsGpsCourseRateShift_dataOnly": {
+   "0729": -0.048,
+   "0730_before": -0.63,
+   "0730_after": -0.12,
+   "note": "best_shift(courseRate, steer); <0 steer leads; evaluator re-measured, equals implementer independentSteerCheck"
+  }
+ },
+ "criterion": "improved only if 7/30 median D moves to the 7/29 level within ~0.05 s",
+ "result": {
+  "throttle": "0.633 -> 0.143 (7/29 0.100; residual +0.043)",
+  "brake": "0.623 -> 0.128 (7/29 0.087; residual +0.041)",
+  "imuVsVideoYaw": "-0.268 -> +0.230 (7/29 +0.215; residual +0.015)",
+  "eventBrake": "0.673 -> 0.197 (7/29 0.149; residual +0.048)",
+  "verdict": "improved (criterion met at the margin): ~92% of the 0.53-0.54 s offset removed; a same-sign residual of about +0.04 s remains (overlay still trails more than on 7/29), lap 5 outlier 0.25 s"
+ }
+}

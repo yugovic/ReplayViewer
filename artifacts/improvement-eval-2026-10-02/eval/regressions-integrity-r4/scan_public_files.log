@@ -1,0 +1,36 @@
+== public/data/tracks/fuji/cg_study/kerb_zones.json (328438 B)
+   personal hits: 0
+   path-like refs: 5, nonexistent: ['cg_study/geometry.json']
+   sha refs: 0, stale/mismatch: []
+   numeric arrays >=50: {'$.kerbs[].station': 446}
+   base64-like: []  longest string: 509
+== public/data/races/fuji_aim_01/kerb_contacts.json (12508 B)
+   personal hits: 0
+   path-like refs: 10, nonexistent: []
+   sha refs: 6, stale/mismatch: []
+   numeric arrays >=50: {}
+   base64-like: []  longest string: 467
+== public/data/races/fuji_aim_2020_07_30/kerb_contacts.json (24700 B)
+   personal hits: 0
+   path-like refs: 13, nonexistent: []
+   sha refs: 8, stale/mismatch: []
+   numeric arrays >=50: {}
+   base64-like: []  longest string: 467
+== public/data/races/fuji_aim_01/apex_kpi.json (43159 B)
+   personal hits: 0
+   path-like refs: 11, nonexistent: []
+   sha refs: 9, stale/mismatch: []
+   numeric arrays >=50: {}
+   base64-like: []  longest string: 373
+== public/data/races/fuji_aim_2020_07_30/apex_kpi.json (61103 B)
+   personal hits: 0
+   path-like refs: 13, nonexistent: []
+   sha refs: 11, stale/mismatch: []
+   numeric arrays >=50: {}
+   base64-like: []  longest string: 373
+== public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json (40177 B)
+   personal hits: 0
+   path-like refs: 9, nonexistent: []
+   sha refs: 6, stale/mismatch: []
+   numeric arrays >=50: {}
+   base64-like: []  longest string: 321

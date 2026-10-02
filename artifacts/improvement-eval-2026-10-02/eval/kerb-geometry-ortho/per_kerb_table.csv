@@ -1,0 +1,57 @@
+kerb,side,sections,truth_paint_n,truth_block_n,phase,line,median_m,q1_m,q3_m,maxabs_m,p95abs_m,frac_within_0.15,meets_|median|<=0.15,meets_median_and_IQR,before_line
+k1,left,160,160,60,before,paint,-0.356,-0.419,-0.32,-0.653,0.631,0.006,False,False,CG kerb inner (geometry.json curbs)
+k1,left,160,160,60,before,block,0.007,-0.03,0.056,0.175,0.124,0.983,True,True,CG kerb inner (geometry.json curbs)
+k1,left,160,160,60,after,paint,-0.006,-0.016,0.002,-0.038,0.03,1.0,True,True,kerb_zones.json paint
+k1,left,160,160,60,after,block,0.012,-0.007,0.036,0.274,0.111,0.983,True,True,kerb_zones.json block
+k3,left,155,155,71,before,paint,-0.406,-0.448,-0.382,-0.544,0.506,0.0,False,False,CG kerb inner (geometry.json curbs)
+k3,left,155,155,71,before,block,0.041,-0.0,0.083,0.277,0.16,0.906,True,True,CG kerb inner (geometry.json curbs)
+k3,left,155,155,71,after,paint,-0.006,-0.014,0.004,-0.048,0.027,1.0,True,True,kerb_zones.json paint
+k3,left,155,155,71,after,block,0.015,-0.008,0.042,0.18,0.113,0.985,True,True,kerb_zones.json block
+k7,left,131,131,51,before,paint,-0.452,-0.503,-0.406,-0.693,0.678,0.0,False,False,CG kerb inner (geometry.json curbs)
+k7,left,131,131,51,before,block,-0.042,-0.066,0.002,-0.151,0.126,0.98,True,True,CG kerb inner (geometry.json curbs)
+k7,left,131,131,51,after,paint,-0.001,-0.008,0.008,0.069,0.026,1.0,True,True,kerb_zones.json paint
+k7,left,131,131,51,after,block,-0.011,-0.031,0.016,0.197,0.108,0.98,True,True,kerb_zones.json block
+k9,left,205,205,90,before,paint,-0.347,-0.366,-0.322,-0.727,0.428,0.0,False,False,CG kerb inner (geometry.json curbs)
+k9,left,205,205,90,before,block,0.047,0.0,0.085,0.335,0.171,0.911,True,True,CG kerb inner (geometry.json curbs)
+k9,left,205,205,90,after,paint,0.001,-0.009,0.007,0.048,0.029,1.0,True,True,kerb_zones.json paint
+k9,left,205,205,90,after,block,0.001,-0.021,0.025,0.249,0.1,0.978,True,True,kerb_zones.json block
+k10,left,119,119,44,before,paint,-0.391,-0.447,-0.36,-0.639,0.599,0.0,False,False,CG kerb inner (geometry.json curbs)
+k10,left,119,119,44,before,block,0.037,0.003,0.07,0.139,0.128,1.0,True,True,CG kerb inner (geometry.json curbs)
+k10,left,119,119,44,after,paint,-0.004,-0.011,0.005,0.032,0.026,1.0,True,True,kerb_zones.json paint
+k10,left,119,119,44,after,block,0.028,-0.002,0.055,0.169,0.123,0.977,True,True,kerb_zones.json block
+k13,right,113,112,64,before,paint,-0.419,-0.466,-0.389,-0.559,0.522,0.0,False,False,CG kerb inner (geometry.json curbs)
+k13,right,113,112,64,before,block,0.098,0.027,0.125,0.259,0.193,0.844,True,True,CG kerb inner (geometry.json curbs)
+k13,right,113,112,64,after,paint,-0.001,-0.013,0.007,0.031,0.022,1.0,True,True,kerb_zones.json paint
+k13,right,113,112,64,after,block,0.067,0.014,0.1,0.264,0.164,0.922,True,True,kerb_zones.json block
+k15,right,160,158,60,before,paint,-1.028,-1.196,-0.846,-2.093,1.302,0.0,False,False,CG kerb inner (geometry.json curbs)
+k15,right,160,158,60,before,block,-0.393,-0.503,-0.297,-0.871,0.694,0.033,False,False,CG kerb inner (geometry.json curbs)
+k15,right,160,158,60,after,paint,-0.001,-0.01,0.008,-0.814,0.029,0.987,True,True,kerb_zones.json paint
+k15,right,160,158,60,after,block,-0.021,-0.063,0.001,-0.232,0.152,0.95,True,True,kerb_zones.json block
+k18,right,159,159,73,before,paint,-0.381,-0.402,-0.369,-0.463,0.437,0.0,False,False,CG kerb inner (geometry.json curbs)
+k18,right,159,159,73,before,block,0.009,-0.023,0.044,0.124,0.095,1.0,True,True,CG kerb inner (geometry.json curbs)
+k18,right,159,159,73,after,paint,-0.003,-0.013,0.006,-0.061,0.034,1.0,True,True,kerb_zones.json paint
+k18,right,159,159,73,after,block,0.025,-0.006,0.062,0.099,0.091,1.0,True,True,kerb_zones.json block
+k19,right,145,145,68,before,paint,-0.432,-0.451,-0.409,-1.876,0.535,0.0,False,False,CG kerb inner (geometry.json curbs)
+k19,right,145,145,68,before,block,-0.043,-0.087,-0.015,-0.999,0.366,0.912,True,True,CG kerb inner (geometry.json curbs)
+k19,right,145,145,68,after,paint,-0.004,-0.01,0.003,-0.033,0.022,1.0,True,True,kerb_zones.json paint
+k19,right,145,145,68,after,block,0.029,0.005,0.05,0.13,0.086,1.0,True,True,kerb_zones.json block
+k20,right,114,114,44,before,paint,-0.394,-0.514,-0.35,-0.766,0.742,0.044,False,False,CG kerb inner (geometry.json curbs)
+k20,right,114,114,44,before,block,0.013,-0.016,0.056,0.251,0.144,0.955,True,True,CG kerb inner (geometry.json curbs)
+k20,right,114,114,44,after,paint,-0.008,-0.018,0.001,-0.051,0.038,1.0,True,True,kerb_zones.json paint
+k20,right,114,114,44,after,block,0.006,-0.035,0.025,0.235,0.112,0.955,True,True,kerb_zones.json block
+k21,right,189,189,95,before,paint,-0.399,-0.441,-0.36,-2.596,1.442,0.005,False,False,CG kerb inner (geometry.json curbs)
+k21,right,189,189,95,before,block,0.009,-0.039,0.114,-0.531,0.25,0.821,True,True,CG kerb inner (geometry.json curbs)
+k21,right,189,189,95,after,paint,-0.004,-0.017,0.004,-0.043,0.035,1.0,True,True,kerb_zones.json paint
+k21,right,189,189,95,after,block,0.031,0.001,0.07,0.235,0.163,0.937,True,True,kerb_zones.json block
+k23,right,164,164,80,before,paint,-0.952,-1.131,-0.748,-1.33,1.235,0.0,False,False,CG kerb inner (geometry.json curbs)
+k23,right,164,164,80,before,block,-0.329,-0.407,-0.278,-0.784,0.65,0.025,False,False,CG kerb inner (geometry.json curbs)
+k23,right,164,164,80,after,paint,0.003,-0.002,0.009,0.027,0.018,1.0,True,True,kerb_zones.json paint
+k23,right,164,164,80,after,block,-0.015,-0.045,0.016,-0.195,0.129,0.975,True,True,kerb_zones.json block
+k24,right,135,134,52,before,paint,-0.414,-0.451,-0.379,-0.511,0.503,0.046,False,False,CG kerb inner (geometry.json curbs)
+k24,right,135,134,52,before,block,0.028,-0.034,0.079,0.181,0.162,0.904,True,True,CG kerb inner (geometry.json curbs)
+k24,right,135,134,52,after,paint,-0.002,-0.01,0.007,-0.042,0.033,1.0,True,True,kerb_zones.json paint
+k24,right,135,134,52,after,block,0.05,0.005,0.085,0.174,0.142,0.962,True,True,kerb_zones.json block
+kDunlopR,right,69,69,32,before,paint,-0.166,-0.501,-0.029,-1.013,0.884,0.485,False,False,no kerb in CG; stand-in = CG right road edge
+kDunlopR,right,69,69,32,before,block,0.383,0.268,0.467,0.562,0.534,0.097,False,False,no kerb in CG; stand-in = CG right road edge
+kDunlopR,right,69,69,32,after,paint,0.0,-0.014,0.008,0.084,0.041,1.0,True,True,kerb_zones.json paint
+kDunlopR,right,69,69,32,after,block,0.001,-0.02,0.042,-0.191,0.087,0.969,True,True,kerb_zones.json block

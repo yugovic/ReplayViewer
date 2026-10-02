@@ -1,0 +1,5 @@
+fuji_aim_01: 4 laps, 56 corner passes -> public/data/races/fuji_aim_01/apex_kpi.json
+fuji_aim_01 consistency {'strong': 1, 'silent': 51, 'auc': 0.941, 'strongMedianGMin': -0.03, 'contradictionCount': 2} [[1, 'k13', 'silent-but-deep', -0.7], [1, 'kDunlopR', 'silent-but-deep', -0.57]]
+fuji_aim_2020_07_30: 6 laps, 84 corner passes -> public/data/races/fuji_aim_2020_07_30/apex_kpi.json
+fuji_aim_2020_07_30 consistency {'strong': 17, 'silent': 41, 'auc': 0.872, 'strongMedianGMin': -0.42, 'contradictionCount': 4} [[2, 'k21', 'strong-but-off', 1.66], [2, 'k23', 'strong-but-off', 0.33], [5, 'k9', 'silent-but-deep', -0.92], [5, 'k10', 'strong-but-off', 0.42]]
+evaluation -> artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/kerb-contact-kpi/apex_kpi_eval.json

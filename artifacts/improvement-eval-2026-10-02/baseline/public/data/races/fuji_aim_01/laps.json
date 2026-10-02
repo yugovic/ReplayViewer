@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "race_id": "fuji_aim_01",
+  "track_id": "fuji",
+  "source_lap_times": "fuji_aim_converted_laps.csv",
+  "selected": [
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "lap": 1,
+      "data_file": "osaki_hmr_demio_101_lap_001.json",
+      "point_count": 1446,
+      "file_size": 114789,
+      "total_distance_m": 4494.98
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "lap": 2,
+      "data_file": "osaki_hmr_demio_101_lap_002.json",
+      "point_count": 1446,
+      "file_size": 115022,
+      "total_distance_m": 4508.59
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "lap": 3,
+      "data_file": "osaki_hmr_demio_101_lap_003.json",
+      "point_count": 1414,
+      "file_size": 112159,
+      "total_distance_m": 4510.58
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "lap": 4,
+      "data_file": "osaki_hmr_demio_101_lap_004.json",
+      "point_count": 1647,
+      "file_size": 130266,
+      "total_distance_m": 4513.9
+    }
+  ],
+  "laps": [
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "vehicle_number": "",
+      "lap": 0,
+      "lap_time_seconds": 180.693,
+      "lap_time": "3:00.693",
+      "start_time": "2020-07-29T16:00:34.000Z",
+      "end_time": "2020-07-29T16:03:34.693Z",
+      "outing": "0",
+      "is_best_vehicle": false,
+      "is_overall_best": false
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "vehicle_number": "",
+      "lap": 1,
+      "lap_time_seconds": 144.556,
+      "lap_time": "2:24.556",
+      "start_time": "2020-07-29T16:03:34.693Z",
+      "end_time": "2020-07-29T16:05:59.249Z",
+      "outing": "0",
+      "is_best_vehicle": false,
+      "is_overall_best": false,
+      "data_file": "osaki_hmr_demio_101_lap_001.json",
+      "point_count": 1446,
+      "file_size": 114789,
+      "total_distance_m": 4494.98
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "vehicle_number": "",
+      "lap": 2,
+      "lap_time_seconds": 144.635,
+      "lap_time": "2:24.635",
+      "start_time": "2020-07-29T16:05:59.249Z",
+      "end_time": "2020-07-29T16:08:23.884Z",
+      "outing": "0",
+      "is_best_vehicle": false,
+      "is_overall_best": false,
+      "data_file": "osaki_hmr_demio_101_lap_002.json",
+      "point_count": 1446,
+      "file_size": 115022,
+      "total_distance_m": 4508.59
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "vehicle_number": "",
+      "lap": 3,
+      "lap_time_seconds": 141.385,
+      "lap_time": "2:21.385",
+      "start_time": "2020-07-29T16:08:23.884Z",
+      "end_time": "2020-07-29T16:10:45.269Z",
+      "outing": "0",
+      "is_best_vehicle": true,
+      "is_overall_best": true,
+      "data_file": "osaki_hmr_demio_101_lap_003.json",
+      "point_count": 1414,
+      "file_size": 112159,
+      "total_distance_m": 4510.58
+    },
+    {
+      "vehicle_id": "osaki_hmr_demio_101",
+      "vehicle_number": "",
+      "lap": 4,
+      "lap_time_seconds": 164.717,
+      "lap_time": "2:44.717",
+      "start_time": "2020-07-29T16:10:45.269Z",
+      "end_time": "2020-07-29T16:13:29.986Z",
+      "outing": "0",
+      "is_best_vehicle": false,
+      "is_overall_best": false,
+      "data_file": "osaki_hmr_demio_101_lap_004.json",
+      "point_count": 1647,
+      "file_size": 130266,
+      "total_distance_m": 4513.9
+    }
+  ]
+}

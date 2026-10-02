@@ -1,0 +1,5 @@
+dt=16.67ms const rate 30deg/s: before steady err -3.955 deg (= -131.8 ms lag; analytic 131.8 ms) | after steady err +0.0000 deg
+dt=33.33ms const rate 30deg/s: before steady err -3.720 deg (= -124.0 ms lag; analytic 124.0 ms) | after steady err +0.0000 deg
+dt=6.94ms const rate 30deg/s: before steady err -4.097 deg (= -136.6 ms lag; analytic 136.6 ms) | after steady err +0.0000 deg
+const yaw accel 60 deg/s^2: after steady err +0.297 deg (analytic N/2*tau^2*a = 0.294 deg)
+const yaw accel 60 deg/s^2 at t=6s (rate 360 deg/s): before err -46.35 deg

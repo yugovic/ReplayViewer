@@ -1,0 +1,1879 @@
+{
+ "version": 1,
+ "kind": "lap-translation",
+ "status": "candidate-kerb-contact-fit",
+ "optIn": {
+  "viewerQuery": "?gps=kerb",
+  "replacesShipped": false,
+  "note": "Opt-in candidate layer (review decision 2026-10-02). gps_registration.json stays the default; this file is never loaded without ?gps=kerb."
+ },
+ "raceId": "fuji_aim_2020_07_30",
+ "trackId": "fuji",
+ "frame": "viewer local XZ metres: +x east, +z south; added after latLngToLocal.",
+ "definition": "Display-only rigid translation per lap: a session translation fitted to the traced road limits and the logger-native kerb-contact labels (robust hinge loss on the gap to the kerb block start), plus a small lap deviation. Raw lat/lng unchanged. Not a survey; absolute clipping-point gaps carry at least +-0.7 m.",
+ "method": {
+  "tool": "pipeline/register_gps_kerb_contact.py",
+  "surface": "dry",
+  "curbUse": 1.0,
+  "vehicleWidthMeters": 1.695,
+  "wheelbaseMeters": 2.57,
+  "vehicleGeometry": {
+   "id": "mazda2-dj",
+   "bodyWidthMeters": 1.695,
+   "wheelbaseMeters": 2.57,
+   "frontTrackMeters": 1.495,
+   "rearTrackMeters": 1.48,
+   "frontTyreWidthMeters": 0.185,
+   "rearTyreWidthMeters": 0.185,
+   "status": "manufacturer-specification-assumption",
+   "source": "https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification_202003.pdf",
+   "provenance": {
+    "basis": "User states the vehicle matches Mazda2 specifications; March 2020 DJ manufacturer dimensions are the working baseline for both 2020 Fuji sessions.",
+    "tyres": "185 mm is the nominal section width of the 185/65R15 and 185/60R16 standard options in the March 2020 specification. 195/55R16 is another listed option. This is not a measured loaded contact patch or confirmed 2020 racing tyre fitment.",
+    "scope": "Only the matching vehicle/laps explicitly carrying this geometry in gps_registration.json use these dimensions.",
+    "limitations": "The March 2020 manufacturer specification does not establish this vehicle's exact grade, wheel offset, installed tyres, or antenna position. Rendered body styling remains a generic proxy."
+   }
+  },
+  "antennaOffsetMeters": {
+   "right": 0.0,
+   "forward": 0.0
+  },
+  "model": "session translation + lap deviation with a Gaussian prior (sigmaLapMeters)",
+  "trackTerm": {
+   "loss": "huber",
+   "huberDeltaMeters": 0.75,
+   "limits": "geometry.json road/dry edges; at kerbs the road edge is the kerb paint start (kerb_zones.json); dry edge extended to the outer end of kerbs missing in the CG",
+   "pitExcludeBeyondMeters": 4.0,
+   "samples": "10 Hz, 4 tyre contact points"
+  },
+  "labelTerm": {
+   "loss": "huber",
+   "lossDeltaMeters": 0.15,
+   "labelWeight": 50.0,
+   "strongMaxGapMeters": 0.0,
+   "silentMinGapMeters": -0.4,
+   "gap": "min over the inner front/rear tyre outer edge (50 Hz spline path) of the signed gap to the kerb block start of kerb_zones.json; negative = on the blocks; NaN beyond the line end vertices",
+   "passWindow": "kerb station range +-3 m at the shipped registration offset (locates the pass only)",
+   "labelClasses": "strong and silent only; mild passes carry no hinge evidence; no left/right side"
+  },
+  "sigmaLapMeters": 0.25,
+  "anomalyTreatment": "exclude",
+  "anomalyWeight": null,
+  "solver": "Nelder-Mead from the best points of a 0.5 m grid (+-3 m) and the shipped session offset; exact cost pruning within 4 m of that centre (full evaluation beyond)",
+  "inputs": {
+   "kerbZones": {
+    "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+    "sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+   },
+   "kerbContacts": {
+    "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+    "sha256": "83b6d92fb06490929ba03b0b7f63791a019bf14719b07eb8e7e52f276802cf4a"
+   },
+   "shippedRegistration": {
+    "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+    "sha256": "d59f72ad465802b961a3132861a95975461e98a5b49f70f98a838fab636250d3",
+    "use": "pass windows and search centre only"
+   },
+   "vehicleProfile": {
+    "source": "public/data/vehicles/mazda2-dj.json",
+    "sha256": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d"
+   }
+  }
+ },
+ "limits": {
+  "source": "public/data/tracks/fuji/cg_study/geometry.json",
+  "sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+ },
+ "referenceTrack": {
+  "source": "public/data/tracks/fuji/track.json",
+  "sha256": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3"
+ },
+ "uncertainty": {
+  "absolutePositionAccuracyVerified": false,
+  "antennaPositionMeasured": false,
+  "absoluteGapIntervalMeters": 0.7,
+  "absoluteGapIntervalBasis": "lower bound: label-feasible widths of 0.4-0.7 m (feasibleRegion), held-out contradictions within 0.15 m tolerance, 2019 ortho kerb lines (~0.2-0.3 m georeferencing, not verified against 2020). Compare laps at the same corner first.",
+  "validation": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/registration-candidate/evaluation.json"
+ },
+ "labelSummary": {
+  "strongUsed": 15,
+  "silentUsed": 39,
+  "strongKerbs": [
+   "k1",
+   "k10",
+   "k13",
+   "k15",
+   "k3",
+   "k7",
+   "kDunlopR"
+  ],
+  "notUsed": 4
+ },
+ "labelsUsed": [
+  {
+   "lap": 1,
+   "kerb": "k1",
+   "class": "strong",
+   "peakRollRms": 2.61,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1417.5,
+    1497.5
+   ],
+   "gBlockMinAtFit": -1.195,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k15",
+   "class": "strong",
+   "peakRollRms": 1.93,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1498.5,
+    1578.5
+   ],
+   "gBlockMinAtFit": -0.405,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k3",
+   "class": "strong",
+   "peakRollRms": 2.42,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2104.5,
+    2182.0
+   ],
+   "gBlockMinAtFit": -1.08,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k18",
+   "class": "silent",
+   "peakRollRms": 0.72,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2423.0,
+    2502.5
+   ],
+   "gBlockMinAtFit": 4.48,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k19",
+   "class": "silent",
+   "peakRollRms": 0.55,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2645.5,
+    2718.0
+   ],
+   "gBlockMinAtFit": 4.719,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k7",
+   "class": "silent",
+   "peakRollRms": 0.38,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3022.0,
+    3087.5
+   ],
+   "gBlockMinAtFit": -0.015,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k20",
+   "class": "silent",
+   "peakRollRms": 0.51,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3086.0,
+    3143.0
+   ],
+   "gBlockMinAtFit": 0.693,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k9",
+   "class": "silent",
+   "peakRollRms": 0.44,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3352.0,
+    3454.5
+   ],
+   "gBlockMinAtFit": 4.325,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k10",
+   "class": "silent",
+   "peakRollRms": 0.37,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3541.5,
+    3601.0
+   ],
+   "gBlockMinAtFit": 4.027,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k23",
+   "class": "silent",
+   "peakRollRms": 0.32,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3594.5,
+    3676.5
+   ],
+   "gBlockMinAtFit": 1.638,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 1,
+   "kerb": "k24",
+   "class": "silent",
+   "peakRollRms": 0.79,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3825.0,
+    3892.5
+   ],
+   "gBlockMinAtFit": 0.473,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k13",
+   "class": "strong",
+   "peakRollRms": 4.47,
+   "bin": "high",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    875.5,
+    932.0
+   ],
+   "gBlockMinAtFit": -0.954,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k1",
+   "class": "strong",
+   "peakRollRms": 2.27,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1417.5,
+    1497.5
+   ],
+   "gBlockMinAtFit": -0.908,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k15",
+   "class": "strong",
+   "peakRollRms": 3.06,
+   "bin": "high",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1498.5,
+    1578.5
+   ],
+   "gBlockMinAtFit": -0.65,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k3",
+   "class": "silent",
+   "peakRollRms": 0.63,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2104.5,
+    2182.0
+   ],
+   "gBlockMinAtFit": 4.581,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k18",
+   "class": "silent",
+   "peakRollRms": 0.65,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2423.0,
+    2502.5
+   ],
+   "gBlockMinAtFit": 1.488,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k19",
+   "class": "silent",
+   "peakRollRms": 0.59,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2645.5,
+    2718.0
+   ],
+   "gBlockMinAtFit": 0.586,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "kDunlopR",
+   "class": "strong",
+   "peakRollRms": 2.06,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2962.5,
+    2997.0
+   ],
+   "gBlockMinAtFit": -0.642,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k7",
+   "class": "strong",
+   "peakRollRms": 2.39,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3022.0,
+    3087.5
+   ],
+   "gBlockMinAtFit": -0.284,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k20",
+   "class": "silent",
+   "peakRollRms": 0.47,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3086.0,
+    3143.0
+   ],
+   "gBlockMinAtFit": 0.679,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k21",
+   "class": "strong",
+   "peakRollRms": 1.59,
+   "bin": "mid",
+   "used": false,
+   "weight": 0.0,
+   "reason": "GPS anomaly lap 2 3250-3900 m: excluded from the fit (flagged, not absorbed)",
+   "anomaly": true,
+   "stationRange": [
+    3253.5,
+    3348.0
+   ],
+   "gBlockMinAtFit": 1.01,
+   "violationAtFitM": 1.01
+  },
+  {
+   "lap": 2,
+   "kerb": "k9",
+   "class": "silent",
+   "peakRollRms": 0.56,
+   "bin": null,
+   "used": false,
+   "weight": 0.0,
+   "reason": "GPS anomaly lap 2 3250-3900 m: excluded from the fit (flagged, not absorbed)",
+   "anomaly": true,
+   "stationRange": [
+    3352.0,
+    3454.5
+   ],
+   "gBlockMinAtFit": 0.312,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 2,
+   "kerb": "k23",
+   "class": "strong",
+   "peakRollRms": 4.48,
+   "bin": "high",
+   "used": false,
+   "weight": 0.0,
+   "reason": "GPS anomaly lap 2 3250-3900 m: excluded from the fit (flagged, not absorbed)",
+   "anomaly": true,
+   "stationRange": [
+    3594.5,
+    3676.5
+   ],
+   "gBlockMinAtFit": 0.935,
+   "violationAtFitM": 0.935
+  },
+  {
+   "lap": 2,
+   "kerb": "k24",
+   "class": "silent",
+   "peakRollRms": 0.65,
+   "bin": null,
+   "used": false,
+   "weight": 0.0,
+   "reason": "GPS anomaly lap 2 3250-3900 m: excluded from the fit (flagged, not absorbed)",
+   "anomaly": true,
+   "stationRange": [
+    3825.0,
+    3892.5
+   ],
+   "gBlockMinAtFit": -0.528,
+   "violationAtFitM": 0.128
+  },
+  {
+   "lap": 3,
+   "kerb": "k13",
+   "class": "silent",
+   "peakRollRms": 0.74,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    875.5,
+    932.0
+   ],
+   "gBlockMinAtFit": -0.272,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k1",
+   "class": "strong",
+   "peakRollRms": 3.01,
+   "bin": "high",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1417.5,
+    1497.5
+   ],
+   "gBlockMinAtFit": -0.53,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k15",
+   "class": "silent",
+   "peakRollRms": 0.6,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1498.5,
+    1578.5
+   ],
+   "gBlockMinAtFit": 1.654,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k18",
+   "class": "silent",
+   "peakRollRms": 0.56,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2423.0,
+    2502.5
+   ],
+   "gBlockMinAtFit": 1.689,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k19",
+   "class": "silent",
+   "peakRollRms": 0.55,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2645.5,
+    2718.0
+   ],
+   "gBlockMinAtFit": 1.49,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "kDunlopR",
+   "class": "silent",
+   "peakRollRms": 0.71,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2962.5,
+    2997.0
+   ],
+   "gBlockMinAtFit": 0.004,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k7",
+   "class": "silent",
+   "peakRollRms": 0.42,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3022.0,
+    3087.5
+   ],
+   "gBlockMinAtFit": -0.41,
+   "violationAtFitM": 0.01
+  },
+  {
+   "lap": 3,
+   "kerb": "k20",
+   "class": "silent",
+   "peakRollRms": 0.63,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3086.0,
+    3143.0
+   ],
+   "gBlockMinAtFit": 1.116,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k9",
+   "class": "silent",
+   "peakRollRms": 0.75,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3352.0,
+    3454.5
+   ],
+   "gBlockMinAtFit": 1.034,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k10",
+   "class": "silent",
+   "peakRollRms": 0.4,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3541.5,
+    3601.0
+   ],
+   "gBlockMinAtFit": 0.554,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 3,
+   "kerb": "k23",
+   "class": "silent",
+   "peakRollRms": 0.26,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3594.5,
+    3676.5
+   ],
+   "gBlockMinAtFit": 2.025,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k13",
+   "class": "strong",
+   "peakRollRms": 8.38,
+   "bin": "high",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    875.5,
+    932.0
+   ],
+   "gBlockMinAtFit": -1.247,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k1",
+   "class": "strong",
+   "peakRollRms": 2.73,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1417.5,
+    1497.5
+   ],
+   "gBlockMinAtFit": -0.886,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k3",
+   "class": "silent",
+   "peakRollRms": 0.42,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2104.5,
+    2182.0
+   ],
+   "gBlockMinAtFit": 0.767,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k18",
+   "class": "silent",
+   "peakRollRms": 0.45,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2423.0,
+    2502.5
+   ],
+   "gBlockMinAtFit": 0.74,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k21",
+   "class": "silent",
+   "peakRollRms": 0.63,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3253.5,
+    3348.0
+   ],
+   "gBlockMinAtFit": 3.226,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k9",
+   "class": "silent",
+   "peakRollRms": 0.45,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3352.0,
+    3454.5
+   ],
+   "gBlockMinAtFit": 0.287,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k10",
+   "class": "silent",
+   "peakRollRms": 0.78,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3541.5,
+    3601.0
+   ],
+   "gBlockMinAtFit": 1.971,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 4,
+   "kerb": "k23",
+   "class": "silent",
+   "peakRollRms": 0.45,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3594.5,
+    3676.5
+   ],
+   "gBlockMinAtFit": 0.732,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 5,
+   "kerb": "k18",
+   "class": "silent",
+   "peakRollRms": 0.6,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2423.0,
+    2502.5
+   ],
+   "gBlockMinAtFit": 1.693,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 5,
+   "kerb": "k19",
+   "class": "silent",
+   "peakRollRms": 0.65,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2645.5,
+    2718.0
+   ],
+   "gBlockMinAtFit": 2.468,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 5,
+   "kerb": "k7",
+   "class": "strong",
+   "peakRollRms": 2.94,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3022.0,
+    3087.5
+   ],
+   "gBlockMinAtFit": -0.186,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 5,
+   "kerb": "k20",
+   "class": "silent",
+   "peakRollRms": 0.46,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3086.0,
+    3143.0
+   ],
+   "gBlockMinAtFit": 1.942,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 5,
+   "kerb": "k9",
+   "class": "silent",
+   "peakRollRms": 0.78,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3352.0,
+    3454.5
+   ],
+   "gBlockMinAtFit": -0.339,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 5,
+   "kerb": "k10",
+   "class": "strong",
+   "peakRollRms": 1.83,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3541.5,
+    3601.0
+   ],
+   "gBlockMinAtFit": 0.026,
+   "violationAtFitM": 0.026
+  },
+  {
+   "lap": 5,
+   "kerb": "k24",
+   "class": "silent",
+   "peakRollRms": 0.79,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3825.0,
+    3892.5
+   ],
+   "gBlockMinAtFit": 0.382,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k13",
+   "class": "silent",
+   "peakRollRms": 0.75,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    875.5,
+    932.0
+   ],
+   "gBlockMinAtFit": 1.256,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k1",
+   "class": "strong",
+   "peakRollRms": 2.67,
+   "bin": "mid",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1417.5,
+    1497.5
+   ],
+   "gBlockMinAtFit": -1.096,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k15",
+   "class": "silent",
+   "peakRollRms": 0.74,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    1498.5,
+    1578.5
+   ],
+   "gBlockMinAtFit": 0.611,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k18",
+   "class": "silent",
+   "peakRollRms": 0.5,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2423.0,
+    2502.5
+   ],
+   "gBlockMinAtFit": 1.038,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k19",
+   "class": "silent",
+   "peakRollRms": 0.62,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    2645.5,
+    2718.0
+   ],
+   "gBlockMinAtFit": 6.757,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k7",
+   "class": "silent",
+   "peakRollRms": 0.42,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3022.0,
+    3087.5
+   ],
+   "gBlockMinAtFit": 0.352,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k20",
+   "class": "silent",
+   "peakRollRms": 0.57,
+   "bin": null,
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3086.0,
+    3143.0
+   ],
+   "gBlockMinAtFit": -0.08,
+   "violationAtFitM": 0.0
+  },
+  {
+   "lap": 6,
+   "kerb": "k10",
+   "class": "strong",
+   "peakRollRms": 3.01,
+   "bin": "high",
+   "used": true,
+   "weight": 1.0,
+   "reason": null,
+   "anomaly": false,
+   "stationRange": [
+    3541.5,
+    3601.0
+   ],
+   "gBlockMinAtFit": -0.546,
+   "violationAtFitM": 0.0
+  }
+ ],
+ "gpsAnomalies": [
+  {
+   "lap": 2,
+   "stationRange": [
+    3250.0,
+    3900.0
+   ],
+   "kind": "lap-internal lateral GPS error",
+   "evidence": [
+    "GPS lateral motion leads the steering return by about 0.3 s in this sector",
+    "strong roll-rate vibration at 3580-3600 m that L3 at the same displayed position does not show",
+    "opposite-sign kerb-label contradictions at k21 (strong but off) and k24 (silent but deep)"
+   ],
+   "source": "docs/fuji-apex-kerb-kpi-2026-10-02.md",
+   "treatment": "exclude",
+   "affectedLabels": [
+    "L2 k21 strong",
+    "L2 k9 silent",
+    "L2 k23 strong",
+    "L2 k24 silent"
+   ],
+   "displayNote": "translation not adjusted to this segment; KPI there is flagged, not corrected"
+  }
+ ],
+ "unresolvedLabels": [
+  {
+   "lap": 2,
+   "kerb": "k21",
+   "class": "strong",
+   "gBlockMin": 1.01,
+   "usedInFit": false,
+   "anomaly": true
+  },
+  {
+   "lap": 2,
+   "kerb": "k23",
+   "class": "strong",
+   "gBlockMin": 0.935,
+   "usedInFit": false,
+   "anomaly": true
+  }
+ ],
+ "beyondLimitNote": "laps[].raw/registered are measured like gps_registration.json (geometry.json limits, tyre beyond the edge by > 0.05 m); the candidate trades some of them for label consistency",
+ "feasibleRegion": {
+  "definition": "grid 0.05 m over +-1.5 m around the fitted offset. trackNearOptimal: track-limit cost <= grid minimum + 0.05 per lap. labelFeasible[tol]: every used label has hinge violation <= tol (strong: g <= strongMaxGap + tol; silent: g >= silentMinGap - tol). touchesWindow = the set reaches the grid edge (width is a lower bound).",
+  "tolerancesMeters": [
+   0.0,
+   0.15
+  ],
+  "session": {
+   "centre": [
+    0.177,
+    -2.296
+   ],
+   "labels": 54,
+   "trackNearOptimal": {
+    "empty": false,
+    "points": 28,
+    "areaM2": 0.07,
+    "eastWidthM": 0.3,
+    "southWidthM": 0.3,
+    "centroid": [
+     0.111,
+     -2.975
+    ],
+    "touchesWindow": false,
+    "majorWidthM": 0.37,
+    "minorWidthM": 0.27,
+    "majorAxisBearingDeg": 40.7
+   },
+   "minWorstLabelViolationM": 0.024,
+   "labelFeasible_tol0": {
+    "empty": true,
+    "points": 0
+   },
+   "trackAndLabel_tol0": {
+    "empty": true,
+    "points": 0
+   },
+   "labelFeasible_tol0.15": {
+    "empty": false,
+    "points": 71,
+    "areaM2": 0.178,
+    "eastWidthM": 0.9,
+    "southWidthM": 0.4,
+    "centroid": [
+     0.53,
+     -2.124
+    ],
+    "touchesWindow": false,
+    "majorWidthM": 0.97,
+    "minorWidthM": 0.36,
+    "majorAxisBearingDeg": 109.2
+   },
+   "trackAndLabel_tol0.15": {
+    "empty": true,
+    "points": 0
+   }
+  },
+  "laps": {
+   "1": {
+    "centre": [
+     0.08,
+     -2.496
+    ],
+    "labels": 11,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 27,
+     "areaM2": 0.068,
+     "eastWidthM": 0.25,
+     "southWidthM": 0.4,
+     "centroid": [
+      0.034,
+      -2.957
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.45,
+     "minorWidthM": 0.23,
+     "majorAxisBearingDeg": 24.3
+    },
+    "minWorstLabelViolationM": 0.0,
+    "labelFeasible_tol0": {
+     "empty": false,
+     "points": 728,
+     "areaM2": 1.82,
+     "eastWidthM": 1.9,
+     "southWidthM": 2.05,
+     "centroid": [
+      -0.079,
+      -2.686
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 2.53,
+     "minorWidthM": 1.16,
+     "majorAxisBearingDeg": 138.6
+    },
+    "trackAndLabel_tol0": {
+     "empty": false,
+     "points": 27,
+     "areaM2": 0.068,
+     "eastWidthM": 0.25,
+     "southWidthM": 0.4,
+     "centroid": [
+      0.034,
+      -2.957
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.45,
+     "minorWidthM": 0.23,
+     "majorAxisBearingDeg": 24.3
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 1125,
+     "areaM2": 2.812,
+     "eastWidthM": 2.2,
+     "southWidthM": 2.45,
+     "centroid": [
+      -0.058,
+      -2.659
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 2.99,
+     "minorWidthM": 1.49,
+     "majorAxisBearingDeg": 139.4
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": false,
+     "points": 27,
+     "areaM2": 0.068,
+     "eastWidthM": 0.25,
+     "southWidthM": 0.4,
+     "centroid": [
+      0.034,
+      -2.957
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.45,
+     "minorWidthM": 0.23,
+     "majorAxisBearingDeg": 24.3
+    }
+   },
+   "2": {
+    "centre": [
+     0.194,
+     -2.411
+    ],
+    "labels": 9,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 57,
+     "areaM2": 0.143,
+     "eastWidthM": 0.5,
+     "southWidthM": 0.4,
+     "centroid": [
+      0.03,
+      -2.819
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.54,
+     "minorWidthM": 0.41,
+     "majorAxisBearingDeg": 106.8
+    },
+    "minWorstLabelViolationM": 0.0,
+    "labelFeasible_tol0": {
+     "empty": false,
+     "points": 1021,
+     "areaM2": 2.553,
+     "eastWidthM": 2.45,
+     "southWidthM": 2.2,
+     "centroid": [
+      0.46,
+      -1.906
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 3.13,
+     "minorWidthM": 1.27,
+     "majorAxisBearingDeg": 133.5
+    },
+    "trackAndLabel_tol0": {
+     "empty": false,
+     "points": 27,
+     "areaM2": 0.068,
+     "eastWidthM": 0.45,
+     "southWidthM": 0.3,
+     "centroid": [
+      -0.023,
+      -2.755
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.52,
+     "minorWidthM": 0.19,
+     "majorAxisBearingDeg": 116.4
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 1399,
+     "areaM2": 3.498,
+     "eastWidthM": 2.6,
+     "southWidthM": 2.4,
+     "centroid": [
+      0.408,
+      -1.975
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 3.3,
+     "minorWidthM": 1.58,
+     "majorAxisBearingDeg": 131.6
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": false,
+     "points": 53,
+     "areaM2": 0.133,
+     "eastWidthM": 0.5,
+     "southWidthM": 0.35,
+     "centroid": [
+      0.022,
+      -2.808
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.54,
+     "minorWidthM": 0.35,
+     "majorAxisBearingDeg": 110.4
+    }
+   },
+   "3": {
+    "centre": [
+     0.059,
+     -2.367
+    ],
+    "labels": 11,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 95,
+     "areaM2": 0.238,
+     "eastWidthM": 0.65,
+     "southWidthM": 0.55,
+     "centroid": [
+      -0.393,
+      -2.296
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.66,
+     "minorWidthM": 0.56,
+     "majorAxisBearingDeg": 102.6
+    },
+    "minWorstLabelViolationM": 0.0,
+    "labelFeasible_tol0": {
+     "empty": false,
+     "points": 281,
+     "areaM2": 0.703,
+     "eastWidthM": 1.05,
+     "southWidthM": 1.55,
+     "centroid": [
+      -0.028,
+      -2.837
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 1.77,
+     "minorWidthM": 0.77,
+     "majorAxisBearingDeg": 148.8
+    },
+    "trackAndLabel_tol0": {
+     "empty": false,
+     "points": 1,
+     "areaM2": 0.003,
+     "eastWidthM": 0.05,
+     "southWidthM": 0.05,
+     "centroid": [
+      -0.191,
+      -2.517
+     ],
+     "touchesWindow": false
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 574,
+     "areaM2": 1.435,
+     "eastWidthM": 1.5,
+     "southWidthM": 2.05,
+     "centroid": [
+      0.003,
+      -2.825
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 2.44,
+     "minorWidthM": 1.07,
+     "majorAxisBearingDeg": 147.7
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": false,
+     "points": 20,
+     "areaM2": 0.05,
+     "eastWidthM": 0.35,
+     "southWidthM": 0.25,
+     "centroid": [
+      -0.264,
+      -2.444
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.39,
+     "minorWidthM": 0.21,
+     "majorAxisBearingDeg": 115.5
+    }
+   },
+   "4": {
+    "centre": [
+     0.334,
+     -2.621
+    ],
+    "labels": 8,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 21,
+     "areaM2": 0.053,
+     "eastWidthM": 0.3,
+     "southWidthM": 0.25,
+     "centroid": [
+      0.367,
+      -3.266
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.32,
+     "minorWidthM": 0.25,
+     "majorAxisBearingDeg": 69.8
+    },
+    "minWorstLabelViolationM": 0.0,
+    "labelFeasible_tol0": {
+     "empty": false,
+     "points": 1892,
+     "areaM2": 4.73,
+     "eastWidthM": 2.65,
+     "southWidthM": 2.25,
+     "centroid": [
+      0.65,
+      -2.415
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 3.11,
+     "minorWidthM": 2.33,
+     "majorAxisBearingDeg": 68.7
+    },
+    "trackAndLabel_tol0": {
+     "empty": false,
+     "points": 21,
+     "areaM2": 0.053,
+     "eastWidthM": 0.3,
+     "southWidthM": 0.25,
+     "centroid": [
+      0.367,
+      -3.266
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.32,
+     "minorWidthM": 0.25,
+     "majorAxisBearingDeg": 69.8
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 2328,
+     "areaM2": 5.82,
+     "eastWidthM": 2.85,
+     "southWidthM": 2.55,
+     "centroid": [
+      0.578,
+      -2.41
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 3.51,
+     "minorWidthM": 2.67,
+     "majorAxisBearingDeg": 61.5
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": false,
+     "points": 21,
+     "areaM2": 0.053,
+     "eastWidthM": 0.3,
+     "southWidthM": 0.25,
+     "centroid": [
+      0.367,
+      -3.266
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.32,
+     "minorWidthM": 0.25,
+     "majorAxisBearingDeg": 69.8
+    }
+   },
+   "5": {
+    "centre": [
+     0.142,
+     -2.142
+    ],
+    "labels": 7,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 474,
+     "areaM2": 1.185,
+     "eastWidthM": 1.1,
+     "southWidthM": 1.5,
+     "centroid": [
+      -0.254,
+      -2.167
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 1.54,
+     "minorWidthM": 1.13,
+     "majorAxisBearingDeg": 18.8
+    },
+    "minWorstLabelViolationM": 0.0,
+    "labelFeasible_tol0": {
+     "empty": false,
+     "points": 1084,
+     "areaM2": 2.71,
+     "eastWidthM": 2.3,
+     "southWidthM": 1.5,
+     "centroid": [
+      -0.183,
+      -1.292
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 2.63,
+     "minorWidthM": 1.64,
+     "majorAxisBearingDeg": 69.4
+    },
+    "trackAndLabel_tol0": {
+     "empty": false,
+     "points": 149,
+     "areaM2": 0.373,
+     "eastWidthM": 0.85,
+     "southWidthM": 0.7,
+     "centroid": [
+      -0.184,
+      -1.761
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.94,
+     "minorWidthM": 0.63,
+     "majorAxisBearingDeg": 64.0
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 1329,
+     "areaM2": 3.323,
+     "eastWidthM": 2.45,
+     "southWidthM": 1.65,
+     "centroid": [
+      -0.118,
+      -1.374
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 2.79,
+     "minorWidthM": 1.84,
+     "majorAxisBearingDeg": 71.0
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": false,
+     "points": 212,
+     "areaM2": 0.53,
+     "eastWidthM": 1.0,
+     "southWidthM": 0.85,
+     "centroid": [
+      -0.22,
+      -1.843
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 1.1,
+     "minorWidthM": 0.78,
+     "majorAxisBearingDeg": 61.3
+    }
+   },
+   "6": {
+    "centre": [
+     0.095,
+     -2.308
+    ],
+    "labels": 8,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 94,
+     "areaM2": 0.235,
+     "eastWidthM": 0.8,
+     "southWidthM": 0.5,
+     "centroid": [
+      -0.426,
+      -2.273
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.9,
+     "minorWidthM": 0.44,
+     "majorAxisBearingDeg": 66.7
+    },
+    "minWorstLabelViolationM": 0.0,
+    "labelFeasible_tol0": {
+     "empty": false,
+     "points": 1355,
+     "areaM2": 3.388,
+     "eastWidthM": 2.65,
+     "southWidthM": 1.95,
+     "centroid": [
+      0.581,
+      -1.933
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 3.02,
+     "minorWidthM": 1.92,
+     "majorAxisBearingDeg": 109.4
+    },
+    "trackAndLabel_tol0": {
+     "empty": false,
+     "points": 94,
+     "areaM2": 0.235,
+     "eastWidthM": 0.8,
+     "southWidthM": 0.5,
+     "centroid": [
+      -0.426,
+      -2.273
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.9,
+     "minorWidthM": 0.44,
+     "majorAxisBearingDeg": 66.7
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 1706,
+     "areaM2": 4.265,
+     "eastWidthM": 2.8,
+     "southWidthM": 2.1,
+     "centroid": [
+      0.474,
+      -1.965
+     ],
+     "touchesWindow": true,
+     "majorWidthM": 3.21,
+     "minorWidthM": 2.18,
+     "majorAxisBearingDeg": 109.0
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": false,
+     "points": 94,
+     "areaM2": 0.235,
+     "eastWidthM": 0.8,
+     "southWidthM": 0.5,
+     "centroid": [
+      -0.426,
+      -2.273
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.9,
+     "minorWidthM": 0.44,
+     "majorAxisBearingDeg": 66.7
+    }
+   }
+  }
+ },
+ "sessionOffsetMeters": [
+  0.177,
+  -2.296
+ ],
+ "laps": [
+  {
+   "vehicleId": "osaki_hmr_demio_101",
+   "lap": 1,
+   "dataFile": "osaki_hmr_demio_101_lap_001.json",
+   "dataSha256": "581fa77eff9e8ff2b0b25270be231c24138d50c2d870a0d4be6cc9ff40662078",
+   "offsetMeters": [
+    0.08,
+    -2.496
+   ],
+   "deviationFromSessionMeters": [
+    -0.097,
+    -0.2
+   ],
+   "labelsUsed": {
+    "strong": 3,
+    "silent": 8
+   },
+   "flags": [],
+   "raw": {
+    "secondsBeyondLimit": 10.8,
+    "maxBeyondLimitMeters": 2.979,
+    "samples": 1336
+   },
+   "registered": {
+    "secondsBeyondLimit": 0.8,
+    "maxBeyondLimitMeters": 0.53,
+    "samples": 1336
+   }
+  },
+  {
+   "vehicleId": "osaki_hmr_demio_101",
+   "lap": 2,
+   "dataFile": "osaki_hmr_demio_101_lap_002.json",
+   "dataSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+   "offsetMeters": [
+    0.194,
+    -2.411
+   ],
+   "deviationFromSessionMeters": [
+    0.017,
+    -0.115
+   ],
+   "labelsUsed": {
+    "strong": 5,
+    "silent": 4
+   },
+   "flags": [
+    "gps-anomaly 3250-3900 m (exclude)"
+   ],
+   "raw": {
+    "secondsBeyondLimit": 9.3,
+    "maxBeyondLimitMeters": 2.605,
+    "samples": 1318
+   },
+   "registered": {
+    "secondsBeyondLimit": 1.5,
+    "maxBeyondLimitMeters": 0.925,
+    "samples": 1318
+   }
+  },
+  {
+   "vehicleId": "osaki_hmr_demio_101",
+   "lap": 3,
+   "dataFile": "osaki_hmr_demio_101_lap_003.json",
+   "dataSha256": "fb0534fdc10cc554bbc4c7d6ae91749a947ab52e8905451cf95b0d9b4f53736b",
+   "offsetMeters": [
+    0.059,
+    -2.367
+   ],
+   "deviationFromSessionMeters": [
+    -0.118,
+    -0.071
+   ],
+   "labelsUsed": {
+    "strong": 1,
+    "silent": 10
+   },
+   "flags": [],
+   "raw": {
+    "secondsBeyondLimit": 9.8,
+    "maxBeyondLimitMeters": 2.09,
+    "samples": 1318
+   },
+   "registered": {
+    "secondsBeyondLimit": 1.4,
+    "maxBeyondLimitMeters": 0.477,
+    "samples": 1318
+   }
+  },
+  {
+   "vehicleId": "osaki_hmr_demio_101",
+   "lap": 4,
+   "dataFile": "osaki_hmr_demio_101_lap_004.json",
+   "dataSha256": "24bce3cb32336af2b79de5ffa646465232ea5d86e9b2325b47cbee0c40c41164",
+   "offsetMeters": [
+    0.334,
+    -2.621
+   ],
+   "deviationFromSessionMeters": [
+    0.157,
+    -0.325
+   ],
+   "labelsUsed": {
+    "strong": 2,
+    "silent": 6
+   },
+   "flags": [],
+   "raw": {
+    "secondsBeyondLimit": 9.5,
+    "maxBeyondLimitMeters": 3.103,
+    "samples": 1308
+   },
+   "registered": {
+    "secondsBeyondLimit": 1.6,
+    "maxBeyondLimitMeters": 0.633,
+    "samples": 1308
+   }
+  },
+  {
+   "vehicleId": "osaki_hmr_demio_101",
+   "lap": 5,
+   "dataFile": "osaki_hmr_demio_101_lap_005.json",
+   "dataSha256": "0ba563ac35814fc76b630f0bf5d463962a313962aad53fa317a00579890e863d",
+   "offsetMeters": [
+    0.142,
+    -2.142
+   ],
+   "deviationFromSessionMeters": [
+    -0.035,
+    0.154
+   ],
+   "labelsUsed": {
+    "strong": 2,
+    "silent": 5
+   },
+   "flags": [],
+   "raw": {
+    "secondsBeyondLimit": 7.4,
+    "maxBeyondLimitMeters": 1.608,
+    "samples": 1308
+   },
+   "registered": {
+    "secondsBeyondLimit": 0.9,
+    "maxBeyondLimitMeters": 0.135,
+    "samples": 1308
+   }
+  },
+  {
+   "vehicleId": "osaki_hmr_demio_101",
+   "lap": 6,
+   "dataFile": "osaki_hmr_demio_101_lap_006.json",
+   "dataSha256": "f289ac394c3ad28824fc4024ba118c9cc52021651d16feccb5f243bbce937173",
+   "offsetMeters": [
+    0.095,
+    -2.308
+   ],
+   "deviationFromSessionMeters": [
+    -0.082,
+    -0.012
+   ],
+   "labelsUsed": {
+    "strong": 2,
+    "silent": 6
+   },
+   "flags": [],
+   "raw": {
+    "secondsBeyondLimit": 5.0,
+    "maxBeyondLimitMeters": 2.207,
+    "samples": 1211
+   },
+   "registered": {
+    "secondsBeyondLimit": 0.9,
+    "maxBeyondLimitMeters": 0.454,
+    "samples": 1211
+   }
+  }
+ ]
+}

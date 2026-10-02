@@ -14,6 +14,9 @@ ReplayViewer のドキュメント置き場。**このファイルが docs/ の�
 
 | ファイル | 種類 | 概要 |
 |----------|------|------|
+| [fuji-improvement-evaluation-2026-10-02.html](fuji-improvement-evaluation-2026-10-02.html) | 改善評価レポート（HTML） | 承認済み改善の実装後評価。7/30時刻ずれ：動画のブレーキ表示差0.623→0.075秒（7/29 0.087）、2巡目でGピーク低下も解消。縁石形状：ブロック線11/14→14/14（同一オルソ上・真値未確認）。再生中の向き誤差p95 3.86°→0.08°、ラップ時計の先行最大5m→0。縁石接触HUD・CLIP KPIは新機能。`?gps=kerb`候補は既定より良いとは言えず選択式のまま。Sonnet/Fable反証レビュー2回 |
+| [fuji-apex-kerb-kpi-2026-10-02.md](fuji-apex-kerb-kpi-2026-10-02.md) | クリッピングポイントKPI・コース/GPS切り分け（第3版） | KPIを縁石との関係へ変更、IMU縁石接触をGPS非依存の正解に。コース：白帯0.4mの定義差・縁石15/23の約1m誤り・ダンロップ右欠落。GPS：周内で場所依存の1〜2m誤差（7/30 L2）。道路境界のみの補正は南北に不定、接触ラベルで定まるが改善幅は限定的。Sonnet/Fable各2回レビュー、撤回事項と可否表つき |
+| [fuji-video-position-gap-2026-10-02.md](fuji-video-position-gap-2026-10-02.md) | 車載動画との位置ずれ：原因と対策方針 | 7/30はGPSとロガー時計チャネル（ペダル/ステア/内蔵G）が0.51秒ずれ、制動表示が約25m手前に出る（3手法・未使用だった7/30映像で確認）。比較時刻基準（δ・約0.2秒・OpenCV 1秒差）、再生中の姿勢遅れp95約4°、コックピット視点とSmartyCamの差。P1〜P3の対策 |
 | [fuji-gps-investigator-handoff-2026-10-01.md](fuji-gps-investigator-handoff-2026-10-01.md) | GPS調査引き継ぎ | 別端末での読み順、Git内の証拠地図、SHA検証、原媒体が必要な工程、次の独立検証手順 |
 | [fuji-gps-investigation-history-2026-10-01.md](fuji-gps-investigation-history-2026-10-01.md) | GPS調査の経緯・採否 | 9/8〜10/1の固定移動・2軸・地点別・全周推定の判断履歴と、後で撤回した解釈 |
 | [fuji-gps-accuracy-improvement-2026-09-22.md](fuji-gps-accuracy-improvement-2026-09-22.md) | GPS・CG精度改善の実施結果 | 端点処理4.93m→3.2cm、Mazda2寸法/道路境界を統一し全10周再推定。半周CV20/20改善、実Chrome確認。映像1294時計点と原GPSパケット監査、日差4.821mの感度解析、測定限界と不採用判断 |

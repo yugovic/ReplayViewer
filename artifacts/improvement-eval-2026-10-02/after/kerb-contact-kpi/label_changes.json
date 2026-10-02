@@ -1,0 +1,184 @@
+{
+ "fuji_aim_01": {
+  "counts": {
+   "published": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "attributedSessionShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "overlapNoSideLapShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "overlapSideFilterLapShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "overlapSideFilterSessionShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "v3Report": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   }
+  },
+  "changedVsReport": [],
+  "changedBy": {
+   "attributedSessionShift": [],
+   "overlapNoSideLapShift": [],
+   "overlapSideFilterLapShift": [],
+   "overlapSideFilterSessionShift": []
+  },
+  "eventShiftSecondsVsSession": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "4": 0.0
+  },
+  "passesMissingInReport": [],
+  "events": {
+   "total": 3,
+   "kerbAttributed": 3,
+   "insidePass": 2,
+   "byBin": {
+    "low": 2,
+    "mid": 1,
+    "high": 0
+   },
+   "durationSeconds": {
+    "min": 0.04000000000000625,
+    "median": 0.14000000000000057
+   }
+  }
+ },
+ "fuji_aim_2020_07_30": {
+  "counts": {
+   "published": {
+    "strong": 17,
+    "silent": 42,
+    "mild": 25
+   },
+   "attributedSessionShift": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   },
+   "overlapNoSideLapShift": {
+    "strong": 20,
+    "silent": 41,
+    "mild": 23
+   },
+   "overlapSideFilterLapShift": {
+    "strong": 17,
+    "silent": 42,
+    "mild": 25
+   },
+   "overlapSideFilterSessionShift": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   },
+   "v3Report": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   }
+  },
+  "changedVsReport": [
+   {
+    "lap": 5,
+    "kerb": "k23",
+    "before": "mild",
+    "after": "silent",
+    "attributedSessionShift": "silent",
+    "overlapNoSideLapShift": "strong",
+    "overlapSideFilterLapShift": "silent",
+    "overlapSideFilterSessionShift": "silent"
+   }
+  ],
+  "changedBy": {
+   "attributedSessionShift": [
+    {
+     "lap": 1,
+     "kerb": "k24",
+     "published": "silent",
+     "attributedSessionShift": "mild"
+    },
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "published": "strong",
+     "attributedSessionShift": "mild"
+    },
+    {
+     "lap": 2,
+     "kerb": "k23",
+     "published": "mild",
+     "attributedSessionShift": "strong"
+    }
+   ],
+   "overlapNoSideLapShift": [
+    {
+     "lap": 2,
+     "kerb": "k23",
+     "published": "mild",
+     "overlapNoSideLapShift": "strong"
+    },
+    {
+     "lap": 5,
+     "kerb": "k23",
+     "published": "silent",
+     "overlapNoSideLapShift": "strong"
+    },
+    {
+     "lap": 6,
+     "kerb": "k23",
+     "published": "mild",
+     "overlapNoSideLapShift": "strong"
+    }
+   ],
+   "overlapSideFilterLapShift": [],
+   "overlapSideFilterSessionShift": [
+    {
+     "lap": 1,
+     "kerb": "k24",
+     "published": "silent",
+     "overlapSideFilterSessionShift": "mild"
+    }
+   ]
+  },
+  "eventShiftSecondsVsSession": {
+   "1": -0.039,
+   "2": -0.042,
+   "3": -0.017,
+   "4": 0.008,
+   "5": 0.019,
+   "6": 0.017
+  },
+  "passesMissingInReport": [],
+  "events": {
+   "total": 41,
+   "kerbAttributed": 39,
+   "insidePass": 33,
+   "byBin": {
+    "low": 23,
+    "mid": 12,
+    "high": 6
+   },
+   "durationSeconds": {
+    "min": 0.0,
+    "median": 0.3399999999999963
+   }
+  }
+ }
+}

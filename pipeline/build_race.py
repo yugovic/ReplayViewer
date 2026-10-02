@@ -3,6 +3,10 @@
 
 The telemetry source is long-form and large. This script only keeps rows for
 selected vehicle/lap pairs in memory, while the 1.5GB CSV is read sequentially.
+
+Optional --channel-time-alignment / --channel-shift re-times logger-clock
+channels (aps, brake, steer, gear, accx, accy) onto the GPS time base; GPS
+t/lat/lng/speed/dist are never changed. See ALIGNABLE_CHANNELS.
 """
 
 from __future__ import annotations
@@ -13,10 +17,11 @@ import json
 import math
 import re
 import statistics
+from bisect import bisect_right
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -43,6 +48,35 @@ CHANNEL_ALIASES = {
 
 COMPACT_KEYS = ("t", "lat", "lng", "speed", "aps", "brake", "steer", "gear", "accx", "accy", "dist")
 
+# Optional channel time alignment (off unless --channel-time-alignment or
+# --channel-shift is given). Some loggers stamp their own channels (ECU via CAN,
+# internal IMU) on a clock that is offset from the GPS fixes. The lap timebase
+# t, the lap boundaries and lat/lng/speed/dist all follow GPS time, so only the
+# logger-clock channels below are re-timed:
+#   aligned(t) = logger channel at (t - shiftSeconds)
+# A positive shift delays the channel (it was recorded early). Values come from
+# linear interpolation over the continuous session series of that channel,
+# including neighbouring-lap rows at the lap boundaries; discrete channels use
+# the nearest sample (ties resolve to the earlier one). Each re-timed lap records
+# meta.channel_time_alignment. Keys are compact output channels; values are the
+# source keys stream_telemetry() stores (brake = max(front, rear) as unaligned).
+ALIGNABLE_CHANNELS: dict[str, tuple[str, ...]] = {
+    "aps": ("aps",),
+    "brake": ("brake_f", "brake_r"),
+    "steer": ("steer",),
+    "gear": ("gear",),
+    "accx": ("accx",),
+    "accy": ("accy",),
+}
+NEAREST_SAMPLE_CHANNELS = frozenset({"gear"})
+CHANNEL_ALIGNMENT_METHOD = "logger_channel_delay_v1"
+MAX_CHANNEL_SHIFT_SECONDS = 5.0
+# A config may name the sampler that produced it. build_race only implements the
+# linear CSV re-timing; configs written for the native XRK re-timing
+# (scripts/quality/align-fuji-channel-timing.py --sampler xrk-native) are refused
+# instead of being re-applied with different values.
+CSV_LINEAR_SAMPLER = "csv-linear-v1"
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build compact replay data from long-form telemetry CSV")
@@ -65,6 +99,19 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--smooth-window", type=int, default=5, help="Odd GPS moving-average window")
     parser.add_argument("--max-gps-speed-mps", type=float, default=90.0, help="GPS outlier threshold")
+    parser.add_argument(
+        "--channel-time-alignment",
+        type=Path,
+        default=None,
+        help="JSON with logger-channel delays per lap (see lap_channel_alignment); default: no re-timing",
+    )
+    parser.add_argument(
+        "--channel-shift",
+        type=float,
+        default=None,
+        help="Delay in seconds for the logger-clock channels of every selected lap "
+        "(positive = channel was recorded early); overridden per lap by --channel-time-alignment",
+    )
     return parser.parse_args()
 
 
@@ -192,9 +239,21 @@ def select_targets(args: argparse.Namespace, lap_records: list[dict[str, Any]]) 
     return unique_targets
 
 
-def stream_telemetry(path: Path, targets: list[tuple[str, int]], time_column: str) -> dict[tuple[str, int], dict[str, dict[str, float]]]:
+def stream_telemetry(
+    path: Path,
+    targets: list[tuple[str, int]],
+    time_column: str,
+    context_channels: Iterable[str] = ("lat", "lng"),
+) -> dict[tuple[str, int], dict[str, dict[str, float]]]:
+    """Read the selected laps; neighbour laps keep only ``context_channels``.
+
+    The default keeps GPS for boundary smoothing. Channel time alignment also
+    needs the re-timed logger channels of the neighbour laps (see
+    alignment_context_channels).
+    """
     if not path.exists():
         raise SystemExit(f"Telemetry CSV not found: {path}")
+    context_channels = frozenset(context_channels)
 
     target_laps_by_vehicle: dict[str, set[int]] = defaultdict(set)
     for vehicle_id, lap in targets:
@@ -235,7 +294,7 @@ def stream_telemetry(path: Path, targets: list[tuple[str, int]], time_column: st
             channel = CHANNEL_ALIASES.get(row.get("telemetry_name", ""))
             if channel is None:
                 continue
-            if not is_target and channel not in ("lat", "lng"):
+            if not is_target and channel not in context_channels:
                 continue
             ts = row.get(time_column) or row.get("timestamp") or row.get("meta_time")
             if not ts:
@@ -347,6 +406,154 @@ def smooth_with_lap_context(
     }
 
 
+def lap_channel_alignment(config: dict[str, Any] | None, vehicle_id: str, lap: int) -> dict[str, Any] | None:
+    """Resolve the channel time alignment for one lap, or None to leave it untouched.
+
+    ``config`` (the --channel-time-alignment JSON) may hold a session default
+    and per-lap entries keyed "VEHICLE:LAP" or "LAP":
+      {"channels": ["aps", ...],          # optional; default: all ALIGNABLE_CHANNELS
+       "sampler": "csv-linear-v1",        # optional; any other sampler is refused
+       "shiftSeconds": 0.5,               # optional session default
+       "estimate": {...},                 # optional provenance for the default
+       "laps": {"3": {"shiftSeconds": 0.49, "estimate": {...}}}}
+    """
+    if not config:
+        return None
+    sampler = config.get("sampler")
+    if sampler not in (None, CSV_LINEAR_SAMPLER):
+        raise SystemExit(
+            f"Channel time alignment sampler {sampler!r} is not build_race's linear CSV re-timing ({CSV_LINEAR_SAMPLER}); "
+            "re-run scripts/quality/align-fuji-channel-timing.py with the source XRK instead"
+        )
+    laps = config.get("laps") or {}
+    entry = laps.get(f"{vehicle_id}:{lap}", laps.get(str(lap)))
+    if entry is None:
+        if config.get("shiftSeconds") is None:
+            return None
+        entry = {"shiftSeconds": config["shiftSeconds"], "estimate": config.get("estimate")}
+    shift = float(entry["shiftSeconds"])
+    if not math.isfinite(shift) or abs(shift) > MAX_CHANNEL_SHIFT_SECONDS:
+        raise SystemExit(f"Channel shift for {vehicle_id} lap {lap} must be finite and <= {MAX_CHANNEL_SHIFT_SECONDS} s: {shift}")
+    channels = list(entry.get("channels") or config.get("channels") or ALIGNABLE_CHANNELS)
+    unknown = [channel for channel in channels if channel not in ALIGNABLE_CHANNELS]
+    if unknown:
+        raise SystemExit(f"Channel time alignment cannot re-time {unknown}; allowed: {list(ALIGNABLE_CHANNELS)}")
+    return {"shiftSeconds": shift, "estimate": entry.get("estimate"), "channels": channels}
+
+
+def alignment_context_channels(config: dict[str, Any] | None) -> tuple[str, ...]:
+    """Source keys stream_telemetry() must keep for neighbour laps (GPS always)."""
+    keys = ["lat", "lng"]
+    if config:
+        channels = set(config.get("channels") or ALIGNABLE_CHANNELS)
+        for entry in (config.get("laps") or {}).values():
+            channels.update(entry.get("channels") or [])
+        for channel in ALIGNABLE_CHANNELS:
+            if channel in channels:
+                keys.extend(ALIGNABLE_CHANNELS[channel])
+    return tuple(keys)
+
+
+def logger_channel_series(
+    row_sets: Iterable[dict[str, dict[str, float]]],
+    start_time: datetime,
+    keys: Iterable[str],
+) -> dict[str, tuple[list[float], list[float]]]:
+    """Per source key, (times, values) in seconds after ``start_time``, sorted.
+
+    Later row sets win on a duplicate timestamp, so pass neighbour-lap context
+    first and the lap's own rows last.
+    """
+    points: dict[str, dict[float, float]] = {key: {} for key in keys}
+    for rows in row_sets:
+        for ts, channels in rows.items():
+            present = [key for key in points if key in channels]
+            if not present:
+                continue
+            try:
+                t = (parse_iso(ts) - start_time).total_seconds()
+            except ValueError:
+                continue
+            for key in present:
+                if math.isfinite(channels[key]):
+                    points[key][t] = channels[key]
+    series = {}
+    for key, by_time in points.items():
+        if by_time:
+            times = sorted(by_time)
+            series[key] = (times, [by_time[t] for t in times])
+    return series
+
+
+def sample_channel_at(times: list[float], values: list[float], t: float, nearest: bool = False) -> tuple[float, bool]:
+    """Channel value at time ``t`` and whether ``t`` lay outside the samples.
+
+    Linear interpolation between the bracketing samples (nearest sample when
+    ``nearest``; ties resolve to the earlier sample). An exact sample time
+    returns that sample unchanged. Outside the sampled span the edge value is
+    held and the flag is True.
+    """
+    i = bisect_right(times, t)
+    if i > 0 and times[i - 1] == t:
+        return values[i - 1], False
+    if i == 0:
+        return values[0], True
+    if i == len(times):
+        return values[-1], True
+    t0, t1 = times[i - 1], times[i]
+    if nearest:
+        return (values[i - 1] if t - t0 <= t1 - t else values[i]), False
+    return values[i - 1] + (values[i] - values[i - 1]) * (t - t0) / (t1 - t0), False
+
+
+def align_logger_channels(
+    samples: list[dict[str, float]],
+    series: dict[str, tuple[list[float], list[float]]],
+    alignment: dict[str, Any],
+    lap_span: tuple[float, float],
+) -> dict[str, Any]:
+    """Re-time the logger-clock channels of ``samples`` in place (see ALIGNABLE_CHANNELS).
+
+    Only the listed channels are written; t/lat/lng/speed are never touched.
+    Returns the meta.channel_time_alignment record.
+    """
+    shift = alignment["shiftSeconds"]
+    channels = alignment["channels"]
+    for channel in channels:
+        if not any(key in series for key in ALIGNABLE_CHANNELS[channel]):
+            raise SystemExit(f"Channel time alignment: no source samples for {channel}")
+    neighbour = held = 0
+    for sample in samples:
+        source_t = sample["t"] - shift
+        neighbour += not lap_span[0] <= source_t <= lap_span[1]
+        sample_held = False
+        for channel in channels:
+            values = []
+            for key in ALIGNABLE_CHANNELS[channel]:
+                if key not in series:
+                    values.append(0.0)  # same default as the unaligned forward-fill
+                    continue
+                value, was_held = sample_channel_at(*series[key], source_t, channel in NEAREST_SAMPLE_CHANNELS)
+                sample_held = sample_held or was_held
+                values.append(value)
+            sample[channel] = max(values)
+        held += sample_held
+    return {
+        "method": CHANNEL_ALIGNMENT_METHOD,
+        "definition": (
+            "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. "
+            "Linear interpolation over the continuous session series incl. neighbouring laps; "
+            "nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged."
+        ),
+        "shiftSeconds": shift,
+        "estimate": alignment.get("estimate"),
+        "channels": list(channels),
+        "nearestSampleChannels": [channel for channel in channels if channel in NEAREST_SAMPLE_CHANNELS],
+        "samplesFromNeighbourLaps": neighbour,
+        "heldEdgeSamples": held,
+    }
+
+
 def compact_from_timeseries(
     vehicle_id: str,
     lap: int,
@@ -354,7 +561,15 @@ def compact_from_timeseries(
     lap_record: dict[str, Any] | None,
     args: argparse.Namespace,
     gps_context: dict[str, dict[str, float]] | None = None,
+    channel_alignment: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    """Build one compact lap.
+
+    ``gps_context`` holds neighbour-lap rows: their GPS supplies the boundary
+    smoothing window and, when ``channel_alignment`` (from
+    lap_channel_alignment) is given, their logger channels supply the re-timed
+    values near the lap boundaries.
+    """
     rows = []
     for ts, channels in by_timestamp.items():
         try:
@@ -416,6 +631,13 @@ def compact_from_timeseries(
     )
     start_t = filtered_samples[0]["t"]
 
+    channel_time_alignment = None
+    if channel_alignment and channel_alignment["channels"]:
+        keys = [key for channel in channel_alignment["channels"] for key in ALIGNABLE_CHANNELS[channel]]
+        series = logger_channel_series([gps_context or {}, by_timestamp], start_time, keys)
+        lap_span = ((rows[0][0] - start_time).total_seconds(), (rows[-1][0] - start_time).total_seconds())
+        channel_time_alignment = align_logger_channels(filtered_samples, series, channel_alignment, lap_span)
+
     dist = [0.0]
     for i in range(1, len(filtered_samples)):
         dist.append(dist[-1] + haversine_m(lats[i - 1], lngs[i - 1], lats[i], lngs[i]))
@@ -446,6 +668,8 @@ def compact_from_timeseries(
             ),
         }
     }
+    if channel_time_alignment is not None:
+        compact["meta"]["channel_time_alignment"] = channel_time_alignment
     for key in COMPACT_KEYS:
         compact[key] = []
 
@@ -477,6 +701,7 @@ def write_outputs(
     records_by_key = {(rec["vehicle_id"], int(rec["lap"])): rec for rec in lap_records}
     generated: list[dict[str, Any]] = []
 
+    alignment_config = getattr(args, "channel_alignment_config", None)
     for vehicle_id, lap in targets:
         lap_record = records_by_key.get((vehicle_id, lap))
         gps_context = {
@@ -486,6 +711,7 @@ def write_outputs(
         }
         compact = compact_from_timeseries(
             vehicle_id, lap, telemetry.get((vehicle_id, lap), {}), lap_record, args, gps_context,
+            lap_channel_alignment(alignment_config, vehicle_id, lap),
         )
         filename = f"{vehicle_slug(vehicle_id)}_lap_{lap:03d}.json"
         path = output_dir / filename
@@ -535,8 +761,20 @@ def write_outputs(
     return generated
 
 
+def load_channel_alignment_config(args: argparse.Namespace) -> dict[str, Any] | None:
+    config: dict[str, Any] | None = None
+    if args.channel_time_alignment is not None:
+        config = json.loads(args.channel_time_alignment.read_text(encoding="utf-8"))
+    if args.channel_shift is not None:
+        config = dict(config or {})
+        config["shiftSeconds"] = args.channel_shift
+        config["estimate"] = {"method": "manual --channel-shift"}
+    return config
+
+
 def main() -> None:
     args = parse_args()
+    args.channel_alignment_config = load_channel_alignment_config(args)
     lap_records = read_lap_index(args.lap_times)
     targets = select_targets(args, lap_records)
     print("Selected targets:")
@@ -547,7 +785,9 @@ def main() -> None:
         else:
             print(f"  {vehicle_id} lap {lap}")
 
-    telemetry = stream_telemetry(args.telemetry, targets, args.time_column)
+    telemetry = stream_telemetry(
+        args.telemetry, targets, args.time_column, alignment_context_channels(args.channel_alignment_config),
+    )
     generated = write_outputs(args.output_dir, args.race_id, targets, lap_records, telemetry, args)
     print("Generated laps:")
     for item in generated:

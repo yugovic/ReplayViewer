@@ -2,10 +2,14 @@ import { useMemo, type MouseEvent } from "react";
 import { useReplayStore } from "../state/replayStore";
 import { timeAtDist } from "../replay/delta";
 import type { TrackData } from "../replay/types";
+import { sampleReplay } from "../replay/interpolation";
+import { activeKerbContact, kerbContactText, kerbEventsForLap, strengthLabel, type ContactStrengthBin } from "../replay/kerbContacts";
 
 const MAP_WIDTH = 190;
 const PADDING = 8;
 const SECTOR_COLORS = ["#f87171", "#4ade80", "#60a5fa"];
+/** IMU kerb-contact strength (弱/中/強); same palette as the HUD pill. */
+const CONTACT_COLORS: Record<ContactStrengthBin, string> = { low: "#fde68a", mid: "#fb923c", high: "#ef4444" };
 
 interface MapGeometry {
   height: number;
@@ -70,8 +74,21 @@ export function Minimap() {
   const showMinimap = useReplayStore((state) => state.showMinimap);
   const toggleMinimap = useReplayStore((state) => state.toggleMinimap);
   const seek = useReplayStore((state) => state.seek);
+  const kerbContacts = useReplayStore((state) => state.kerbContacts);
 
   const geometry = useMemo(() => (track ? buildGeometry(track) : null), [track]);
+  // Kerb-contact events of the active lap, placed at the car position at the
+  // burst's RMS peak (follows the raw/registered choice via the lap object).
+  const contactMarkers = useMemo(() => {
+    if (!track || !activeLap) return [];
+    return kerbEventsForLap(kerbContacts, activeLap.meta.race_id, activeLap.meta.lap).map((event) => {
+      const sample = sampleReplay(activeLap, track, event.tPeak ?? (event.t0 + event.t1) / 2);
+      return { event, x: sample.x, z: sample.z };
+    });
+  }, [kerbContacts, activeLap, track]);
+  const contactEvents = useMemo(() => contactMarkers.map((m) => m.event), [contactMarkers]);
+  // Selector returns a stable event object, so the map re-renders only when the lit event changes.
+  const litContact = useReplayStore((state) => activeKerbContact(contactEvents, state.currentTime));
 
   if (!track || !geometry) return null;
 
@@ -137,6 +154,29 @@ export function Minimap() {
               />
             ) : null,
           )}
+          {/* IMU kerb-contact events of the active lap (strength only, no side) */}
+          {contactMarkers.map(({ event, x, z }) => {
+            const cx = geometry.toX(x);
+            const cy = geometry.toY(z);
+            const r = event === litContact ? 4.2 : 2.6;
+            return (
+              <rect
+                key={`${event.t0}-${event.kerb}`}
+                className="minimap-contact"
+                x={cx - r}
+                y={cy - r}
+                width={r * 2}
+                height={r * 2}
+                transform={`rotate(45 ${cx} ${cy})`}
+                fill={CONTACT_COLORS[event.bin]}
+                stroke="#1a0d05"
+                strokeWidth={0.8}
+                opacity={event === litContact ? 1 : 0.85}
+              >
+                <title>{`縁石振動 ${kerbContactText(event)}（${event.t0.toFixed(1)} s）`}</title>
+              </rect>
+            );
+          })}
           {/* Ghost car (cyan) */}
           {ghostPosition && (
             <circle

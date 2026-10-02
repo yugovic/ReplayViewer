@@ -1,0 +1,322 @@
+{
+  "race_id": "fuji_aim_2020_07_30",
+  "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+  ],
+  "sampler": "xrk-native-v1",
+  "estimator": "shift_lap = -median over pairs (accxVsGpsAlong, accyVsGpsLateral, brakeVsGpsDecel, steerVsGpsCourseRate, yawGyroVsGpsCourseRate) of (lag_7/30,lap - median lag of the same pair over the 7/29 laps), on the unshifted data. lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS. GPS along/lateral acceleration and course rate from the shipped smoothed lat/lng, deceleration from -d(GPS speed)/dt; yaw gyro = raw XRK YawRate (50 Hz) at XRK timecode tc0 + 1000 t, sign fitted to the course rate.",
+  "mode": "per-lap",
+  "laps": {
+    "1": {
+      "shiftSeconds": 0.497,
+      "estimate": {
+        "method": "ref-0729-multipair-v2",
+        "basis": "per-lap median over channel pairs of the lag relative to the 7/29 median of the same pair",
+        "referenceRace": "fuji_aim_01",
+        "lagDefinition": "lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS",
+        "lapShiftSeconds": 0.497,
+        "sessionMedianShiftSeconds": 0.539,
+        "medianDeltaS": -0.497,
+        "deltaRangeS": [
+          -0.57,
+          -0.473
+        ],
+        "pairs": {
+          "accxVsGpsAlong": {
+            "lagS": -0.476,
+            "r": 0.96,
+            "ref0729MedianS": -0.003,
+            "deltaS": -0.473
+          },
+          "accyVsGpsLateral": {
+            "lagS": -0.46,
+            "r": 0.993,
+            "ref0729MedianS": 0.034,
+            "deltaS": -0.494
+          },
+          "brakeVsGpsDecel": {
+            "lagS": -0.626,
+            "r": 0.889,
+            "ref0729MedianS": -0.129,
+            "deltaS": -0.497
+          },
+          "steerVsGpsCourseRate": {
+            "lagS": -0.618,
+            "r": 0.967,
+            "ref0729MedianS": -0.048,
+            "deltaS": -0.57
+          },
+          "yawGyroVsGpsCourseRate": {
+            "lagS": -0.518,
+            "r": 0.994,
+            "gyroSign": 1,
+            "gpsPerGyroScale": 1.197,
+            "ref0729MedianS": 0.036,
+            "deltaS": -0.554
+          }
+        },
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "2": {
+      "shiftSeconds": 0.523,
+      "estimate": {
+        "method": "ref-0729-multipair-v2",
+        "basis": "per-lap median over channel pairs of the lag relative to the 7/29 median of the same pair",
+        "referenceRace": "fuji_aim_01",
+        "lagDefinition": "lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS",
+        "lapShiftSeconds": 0.523,
+        "sessionMedianShiftSeconds": 0.539,
+        "medianDeltaS": -0.523,
+        "deltaRangeS": [
+          -0.58,
+          -0.476
+        ],
+        "pairs": {
+          "accxVsGpsAlong": {
+            "lagS": -0.488,
+            "r": 0.95,
+            "ref0729MedianS": -0.003,
+            "deltaS": -0.485
+          },
+          "accyVsGpsLateral": {
+            "lagS": -0.442,
+            "r": 0.991,
+            "ref0729MedianS": 0.034,
+            "deltaS": -0.476
+          },
+          "brakeVsGpsDecel": {
+            "lagS": -0.652,
+            "r": 0.889,
+            "ref0729MedianS": -0.129,
+            "deltaS": -0.523
+          },
+          "steerVsGpsCourseRate": {
+            "lagS": -0.628,
+            "r": 0.974,
+            "ref0729MedianS": -0.048,
+            "deltaS": -0.58
+          },
+          "yawGyroVsGpsCourseRate": {
+            "lagS": -0.522,
+            "r": 0.995,
+            "gyroSign": 1,
+            "gpsPerGyroScale": 1.2,
+            "ref0729MedianS": 0.036,
+            "deltaS": -0.558
+          }
+        },
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "3": {
+      "shiftSeconds": 0.523,
+      "estimate": {
+        "method": "ref-0729-multipair-v2",
+        "basis": "per-lap median over channel pairs of the lag relative to the 7/29 median of the same pair",
+        "referenceRace": "fuji_aim_01",
+        "lagDefinition": "lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS",
+        "lapShiftSeconds": 0.523,
+        "sessionMedianShiftSeconds": 0.539,
+        "medianDeltaS": -0.523,
+        "deltaRangeS": [
+          -0.544,
+          -0.504
+        ],
+        "pairs": {
+          "accxVsGpsAlong": {
+            "lagS": -0.51,
+            "r": 0.961,
+            "ref0729MedianS": -0.003,
+            "deltaS": -0.507
+          },
+          "accyVsGpsLateral": {
+            "lagS": -0.47,
+            "r": 0.994,
+            "ref0729MedianS": 0.034,
+            "deltaS": -0.504
+          },
+          "brakeVsGpsDecel": {
+            "lagS": -0.652,
+            "r": 0.9,
+            "ref0729MedianS": -0.129,
+            "deltaS": -0.523
+          },
+          "steerVsGpsCourseRate": {
+            "lagS": -0.592,
+            "r": 0.972,
+            "ref0729MedianS": -0.048,
+            "deltaS": -0.544
+          },
+          "yawGyroVsGpsCourseRate": {
+            "lagS": -0.504,
+            "r": 0.996,
+            "gyroSign": 1,
+            "gpsPerGyroScale": 1.204,
+            "ref0729MedianS": 0.036,
+            "deltaS": -0.54
+          }
+        },
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "4": {
+      "shiftSeconds": 0.555,
+      "estimate": {
+        "method": "ref-0729-multipair-v2",
+        "basis": "per-lap median over channel pairs of the lag relative to the 7/29 median of the same pair",
+        "referenceRace": "fuji_aim_01",
+        "lagDefinition": "lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS",
+        "lapShiftSeconds": 0.555,
+        "sessionMedianShiftSeconds": 0.539,
+        "medianDeltaS": -0.555,
+        "deltaRangeS": [
+          -0.584,
+          -0.521
+        ],
+        "pairs": {
+          "accxVsGpsAlong": {
+            "lagS": -0.524,
+            "r": 0.958,
+            "ref0729MedianS": -0.003,
+            "deltaS": -0.521
+          },
+          "accyVsGpsLateral": {
+            "lagS": -0.506,
+            "r": 0.995,
+            "ref0729MedianS": 0.034,
+            "deltaS": -0.54
+          },
+          "brakeVsGpsDecel": {
+            "lagS": -0.684,
+            "r": 0.885,
+            "ref0729MedianS": -0.129,
+            "deltaS": -0.555
+          },
+          "steerVsGpsCourseRate": {
+            "lagS": -0.632,
+            "r": 0.972,
+            "ref0729MedianS": -0.048,
+            "deltaS": -0.584
+          },
+          "yawGyroVsGpsCourseRate": {
+            "lagS": -0.54,
+            "r": 0.996,
+            "gyroSign": 1,
+            "gpsPerGyroScale": 1.201,
+            "ref0729MedianS": 0.036,
+            "deltaS": -0.576
+          }
+        },
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "5": {
+      "shiftSeconds": 0.565,
+      "estimate": {
+        "method": "ref-0729-multipair-v2",
+        "basis": "per-lap median over channel pairs of the lag relative to the 7/29 median of the same pair",
+        "referenceRace": "fuji_aim_01",
+        "lagDefinition": "lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS",
+        "lapShiftSeconds": 0.565,
+        "sessionMedianShiftSeconds": 0.539,
+        "medianDeltaS": -0.565,
+        "deltaRangeS": [
+          -0.6,
+          -0.527
+        ],
+        "pairs": {
+          "accxVsGpsAlong": {
+            "lagS": -0.53,
+            "r": 0.961,
+            "ref0729MedianS": -0.003,
+            "deltaS": -0.527
+          },
+          "accyVsGpsLateral": {
+            "lagS": -0.522,
+            "r": 0.995,
+            "ref0729MedianS": 0.034,
+            "deltaS": -0.556
+          },
+          "brakeVsGpsDecel": {
+            "lagS": -0.694,
+            "r": 0.881,
+            "ref0729MedianS": -0.129,
+            "deltaS": -0.565
+          },
+          "steerVsGpsCourseRate": {
+            "lagS": -0.648,
+            "r": 0.973,
+            "ref0729MedianS": -0.048,
+            "deltaS": -0.6
+          },
+          "yawGyroVsGpsCourseRate": {
+            "lagS": -0.56,
+            "r": 0.995,
+            "gyroSign": 1,
+            "gpsPerGyroScale": 1.2,
+            "ref0729MedianS": 0.036,
+            "deltaS": -0.596
+          }
+        },
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "6": {
+      "shiftSeconds": 0.583,
+      "estimate": {
+        "method": "ref-0729-multipair-v2",
+        "basis": "per-lap median over channel pairs of the lag relative to the 7/29 median of the same pair",
+        "referenceRace": "fuji_aim_01",
+        "lagDefinition": "lag = s maximising corr(GPS-derived(t), channel(t + s)); cubic splines on a 10 ms grid, 2 ms scan; negative = channel features earlier than GPS",
+        "lapShiftSeconds": 0.583,
+        "sessionMedianShiftSeconds": 0.539,
+        "medianDeltaS": -0.583,
+        "deltaRangeS": [
+          -0.596,
+          -0.537
+        ],
+        "pairs": {
+          "accxVsGpsAlong": {
+            "lagS": -0.54,
+            "r": 0.962,
+            "ref0729MedianS": -0.003,
+            "deltaS": -0.537
+          },
+          "accyVsGpsLateral": {
+            "lagS": -0.508,
+            "r": 0.994,
+            "ref0729MedianS": 0.034,
+            "deltaS": -0.542
+          },
+          "brakeVsGpsDecel": {
+            "lagS": -0.712,
+            "r": 0.879,
+            "ref0729MedianS": -0.129,
+            "deltaS": -0.583
+          },
+          "steerVsGpsCourseRate": {
+            "lagS": -0.642,
+            "r": 0.971,
+            "ref0729MedianS": -0.048,
+            "deltaS": -0.594
+          },
+          "yawGyroVsGpsCourseRate": {
+            "lagS": -0.56,
+            "r": 0.995,
+            "gyroSign": 1,
+            "gpsPerGyroScale": 1.199,
+            "ref0729MedianS": 0.036,
+            "deltaS": -0.596
+          }
+        },
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+session candidate [ 0.177 -2.296] track-only [ 0.103 -2.97 ] 45s
+305 fits on 14 workers
+fits done 699s
+held-out {'raw': (11, 0.896), 'shipped': (3, 0.884), 'trackOnlySession': (7, 0.843), 'trackOnlySessionPlusLap': (7, 0.85), 'candidateInSample (not held out)': (1, 0.943), 'candidateLOKO': (2, 0.938), 'candidateLOKO_sessionOnly': (3, 0.936), 'candidateLOLO': (4, 0.915), 'candidateLOLO_sessionOnly': (4, 0.919)}
+-> artifacts/improvement-eval-2026-10-02/after/registration-candidate/evaluation.json 1016.6s
+exit 0

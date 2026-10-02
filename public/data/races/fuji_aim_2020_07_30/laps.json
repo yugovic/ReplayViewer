@@ -9,7 +9,7 @@
       "lap": 1,
       "data_file": "osaki_hmr_demio_101_lap_001.json",
       "point_count": 1336,
-      "file_size": 106041,
+      "file_size": 107715,
       "total_distance_m": 4508.98
     },
     {
@@ -17,7 +17,7 @@
       "lap": 2,
       "data_file": "osaki_hmr_demio_101_lap_002.json",
       "point_count": 1318,
-      "file_size": 104671,
+      "file_size": 106341,
       "total_distance_m": 4500.35
     },
     {
@@ -25,7 +25,7 @@
       "lap": 3,
       "data_file": "osaki_hmr_demio_101_lap_003.json",
       "point_count": 1318,
-      "file_size": 104625,
+      "file_size": 106678,
       "total_distance_m": 4493.36
     },
     {
@@ -33,7 +33,7 @@
       "lap": 4,
       "data_file": "osaki_hmr_demio_101_lap_004.json",
       "point_count": 1308,
-      "file_size": 103814,
+      "file_size": 105739,
       "total_distance_m": 4496.77
     },
     {
@@ -41,7 +41,7 @@
       "lap": 5,
       "data_file": "osaki_hmr_demio_101_lap_005.json",
       "point_count": 1308,
-      "file_size": 103980,
+      "file_size": 105884,
       "total_distance_m": 4499.65
     },
     {
@@ -49,7 +49,7 @@
       "lap": 6,
       "data_file": "osaki_hmr_demio_101_lap_006.json",
       "point_count": 1405,
-      "file_size": 111798,
+      "file_size": 113695,
       "total_distance_m": 4507.63
     }
   ],
@@ -79,7 +79,7 @@
       "is_overall_best": false,
       "data_file": "osaki_hmr_demio_101_lap_001.json",
       "point_count": 1336,
-      "file_size": 106041,
+      "file_size": 107715,
       "total_distance_m": 4508.98
     },
     {
@@ -95,7 +95,7 @@
       "is_overall_best": false,
       "data_file": "osaki_hmr_demio_101_lap_002.json",
       "point_count": 1318,
-      "file_size": 104671,
+      "file_size": 106341,
       "total_distance_m": 4500.35
     },
     {
@@ -111,7 +111,7 @@
       "is_overall_best": false,
       "data_file": "osaki_hmr_demio_101_lap_003.json",
       "point_count": 1318,
-      "file_size": 104625,
+      "file_size": 106678,
       "total_distance_m": 4493.36
     },
     {
@@ -127,7 +127,7 @@
       "is_overall_best": false,
       "data_file": "osaki_hmr_demio_101_lap_004.json",
       "point_count": 1308,
-      "file_size": 103814,
+      "file_size": 105739,
       "total_distance_m": 4496.77
     },
     {
@@ -143,7 +143,7 @@
       "is_overall_best": true,
       "data_file": "osaki_hmr_demio_101_lap_005.json",
       "point_count": 1308,
-      "file_size": 103980,
+      "file_size": 105884,
       "total_distance_m": 4499.65
     },
     {
@@ -159,7 +159,7 @@
       "is_overall_best": false,
       "data_file": "osaki_hmr_demio_101_lap_006.json",
       "point_count": 1405,
-      "file_size": 111798,
+      "file_size": 113695,
       "total_distance_m": 4507.63
     }
   ]

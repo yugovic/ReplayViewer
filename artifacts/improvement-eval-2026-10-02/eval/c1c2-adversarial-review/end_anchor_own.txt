@@ -1,0 +1,20 @@
+--- anchor: main sample 0.0 s before its last sample; truth = official_main - official_ghost; same-session ordered pairs n=42
+  before: |err| ms median 79.5 p95 760.5 max 1643.5; signed mean +180.7
+  after: |err| ms median 62.5 p95 579.3 max 1715.8; signed mean +162.6
+  after better in 32/42; ghost clamped at its last sample in 21 pairs
+  |dist_last diff| m: median 7.3 max 18.9
+  flying-only n=26 before: |err| ms median 78.0 p95 362.3 max 370.6
+  flying-only n=26 after: |err| ms median 62.5 p95 361.4 max 370.1
+--- anchor: main sample 1.0 s before its last sample; truth = official_main - official_ghost; same-session ordered pairs n=42
+  before: |err| ms median 332.9 p95 3558.1 max 4636.6; signed mean +496.6
+  after: |err| ms median 333.2 p95 3502.0 max 4703.5; signed mean +482.0
+  after better in 25/42; ghost clamped at its last sample in 1 pairs
+  |dist_last diff| m: median 7.3 max 18.9
+  flying-only n=26 before: |err| ms median 165.8 p95 359.4 max 362.7
+  flying-only n=26 after: |err| ms median 165.1 p95 358.6 max 361.6
+--- worst 5 after (anchor 0 s):
+   fuji_aim_01 L1->L4 before +1644 after +1716 ms, distlast diff -18.9 m, ghost clamped False
+   fuji_aim_2020_07_30 L3->L6 before +1099 after +921 ms, distlast diff -14.3 m, ghost clamped False
+   fuji_aim_2020_07_30 L2->L6 before +600 after +579 ms, distlast diff -7.3 m, ghost clamped False
+   fuji_aim_2020_07_30 L4->L6 before +761 after +537 ms, distlast diff -10.9 m, ghost clamped False
+   fuji_aim_2020_07_30 L5->L6 before +575 after +513 ms, distlast diff -8.0 m, ghost clamped False

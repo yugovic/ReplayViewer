@@ -1,0 +1,81 @@
+used-label kerbs ['k1', 'k10', 'k13', 'k15', 'k18', 'k19', 'k20', 'k21', 'k23', 'k24', 'k3', 'k7', 'k9', 'kDunlopR'] labels used 55
+full in-sample session [ 0.177 -2.296] {'1': [0.08, -2.496], '2': [0.194, -2.411], '3': [0.059, -2.367], '4': [0.334, -2.621], '5': [0.142, -2.142], '6': [0.095, -2.308]} 42s
+28 LOKO fits done 156s
+implementer LOKO 59 59 contra 2 ['L5 k10 strong +0.16', 'L2 k21 strong +1.01'] auc 0.938 wk 0.926
+neutral LOKO 59 59 contra 2 ['L5 k10 strong +0.16', 'L2 k21 strong +1.01'] auc 0.938 wk 0.926
+{
+ "implementerLOKO_minus_shippedNew": {
+  "all": {
+   "commonLabels": 59,
+   "clusters": 14,
+   "B": 10000,
+   "contradictionDiff": -1,
+   "contradictionDiffCI95": [
+    -3.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.3558,
+   "aucDiff": 0.0546,
+   "aucDiffCI95": [
+    0.0024,
+    0.112
+   ],
+   "pAucDiffLE0": 0.0224
+  },
+  "withoutL2Anomaly": {
+   "commonLabels": 55,
+   "clusters": 14,
+   "B": 10000,
+   "contradictionDiff": -1,
+   "contradictionDiffCI95": [
+    -3.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.3558,
+   "aucDiff": 0.045,
+   "aucDiffCI95": [
+    0.0078,
+    0.0872
+   ],
+   "pAucDiffLE0": 0.0102
+  }
+ },
+ "neutralLOKO_minus_shippedNew": {
+  "all": {
+   "commonLabels": 59,
+   "clusters": 14,
+   "B": 10000,
+   "contradictionDiff": -1,
+   "contradictionDiffCI95": [
+    -3.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.3558,
+   "aucDiff": 0.0546,
+   "aucDiffCI95": [
+    0.0024,
+    0.112
+   ],
+   "pAucDiffLE0": 0.0224
+  },
+  "withoutL2Anomaly": {
+   "commonLabels": 55,
+   "clusters": 14,
+   "B": 10000,
+   "contradictionDiff": -1,
+   "contradictionDiffCI95": [
+    -3.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.3558,
+   "aucDiff": 0.045,
+   "aucDiffCI95": [
+    0.0078,
+    0.0872
+   ],
+   "pAucDiffLE0": 0.0102
+  }
+ }
+}
+-> loko_recheck.json 161s
+exit 0

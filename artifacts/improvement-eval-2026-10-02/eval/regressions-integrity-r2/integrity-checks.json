@@ -1,0 +1,2006 @@
+{
+ "registration": {
+  "fuji_aim_01": {
+   "sessionOffsetBefore": [
+    -1.627,
+    1.931
+   ],
+   "sessionOffsetAfter": [
+    -1.627,
+    1.931
+   ],
+   "sessionOffsetEqual": true,
+   "lapCount": [
+    4,
+    4
+   ],
+   "allLapOffsetsEqual": true,
+   "allJackknifeEqual": true,
+   "allRawRegisteredStatsEqual": true,
+   "laps": [
+    {
+     "lap": 1,
+     "offsetBefore": [
+      -1.224,
+      2.315
+     ],
+     "offsetAfter": [
+      -1.224,
+      2.315
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": false
+    },
+    {
+     "lap": 2,
+     "offsetBefore": [
+      -1.677,
+      1.976
+     ],
+     "offsetAfter": [
+      -1.677,
+      1.976
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": false
+    },
+    {
+     "lap": 3,
+     "offsetBefore": [
+      -1.638,
+      1.75
+     ],
+     "offsetAfter": [
+      -1.638,
+      1.75
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": false
+    },
+    {
+     "lap": 4,
+     "offsetBefore": [
+      -1.777,
+      1.735
+     ],
+     "offsetAfter": [
+      -1.777,
+      1.735
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": false
+    }
+   ],
+   "fileShaBefore": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+   "fileShaAfter": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+   "fieldsChanged": [],
+   "fieldsChangedOtherThanDataSha": []
+  },
+  "fuji_aim_2020_07_30": {
+   "sessionOffsetBefore": [
+    -0.221,
+    -2.68
+   ],
+   "sessionOffsetAfter": [
+    -0.221,
+    -2.68
+   ],
+   "sessionOffsetEqual": true,
+   "lapCount": [
+    6,
+    6
+   ],
+   "allLapOffsetsEqual": true,
+   "allJackknifeEqual": true,
+   "allRawRegisteredStatsEqual": true,
+   "laps": [
+    {
+     "lap": 1,
+     "offsetBefore": [
+      -0.084,
+      -2.783
+     ],
+     "offsetAfter": [
+      -0.084,
+      -2.783
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 2,
+     "offsetBefore": [
+      -0.432,
+      -2.612
+     ],
+     "offsetAfter": [
+      -0.432,
+      -2.612
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 3,
+     "offsetBefore": [
+      -0.329,
+      -2.511
+     ],
+     "offsetAfter": [
+      -0.329,
+      -2.511
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 4,
+     "offsetBefore": [
+      -0.031,
+      -3.034
+     ],
+     "offsetAfter": [
+      -0.031,
+      -3.034
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 5,
+     "offsetBefore": [
+      -0.298,
+      -2.558
+     ],
+     "offsetAfter": [
+      -0.298,
+      -2.558
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 6,
+     "offsetBefore": [
+      -0.316,
+      -2.446
+     ],
+     "offsetAfter": [
+      -0.316,
+      -2.446
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawEqual": true,
+     "registeredEqual": true,
+     "dataShaChanged": true
+    }
+   ],
+   "fileShaBefore": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+   "fileShaAfter": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+   "fieldsChanged": [
+    ".laps[0].dataSha256",
+    ".laps[1].dataSha256",
+    ".laps[2].dataSha256",
+    ".laps[3].dataSha256",
+    ".laps[4].dataSha256",
+    ".laps[5].dataSha256"
+   ],
+   "fieldsChangedOtherThanDataSha": []
+  }
+ },
+ "fuji_aim_01_byte_identity": {
+  "laps": [
+   {
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "baselineManifestSha": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "currentSha": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "equalToBaselineManifest": true,
+    "gitHeadSha": "f15f59a902c4297b3b63948fadab9cceeb1863b3dda7c0fcb8af6c480b2a9c45",
+    "equalToGitHead": false
+   },
+   {
+    "source": "public/data/tracks/fuji/track.json",
+    "baselineManifestSha": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "currentSha": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "equalToBaselineManifest": true,
+    "gitHeadSha": "8f62d14c1ec2c44243b3be0d41391782670042834d39c0ef82ee4d59202bade2",
+    "equalToGitHead": false
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+    "baselineManifestSha": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "currentSha": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "equalToBaselineManifest": true,
+    "equalToBaselineRegistrationDataSha": true,
+    "gitHeadSha": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "equalToGitHead": true
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+    "baselineManifestSha": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "currentSha": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "equalToBaselineManifest": true,
+    "equalToBaselineRegistrationDataSha": true,
+    "gitHeadSha": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "equalToGitHead": true
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+    "baselineManifestSha": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "currentSha": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "equalToBaselineManifest": true,
+    "equalToBaselineRegistrationDataSha": true,
+    "gitHeadSha": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "equalToGitHead": true
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+    "baselineManifestSha": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "currentSha": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "equalToBaselineManifest": true,
+    "equalToBaselineRegistrationDataSha": true,
+    "gitHeadSha": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "equalToGitHead": true
+   }
+  ],
+  "trackedFilesInRaceDir": 6,
+  "trackedFilesModifiedVsHead": [],
+  "untrackedFilesInRaceDir": [
+   "public/data/races/fuji_aim_01/apex_kpi.json",
+   "public/data/races/fuji_aim_01/kerb_contacts.json"
+  ],
+  "lapsJsonEqualToBaseline": true,
+  "allLapInputsByteIdentical": true
+ },
+ "verificationManifestDiff": [
+  {
+   "path": ".races.fuji_aim_2020_07_30.inputs[2].sha256",
+   "change": "value",
+   "before": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+   "after": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185"
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.inputs[3].sha256",
+   "change": "value",
+   "before": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+   "after": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4"
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.inputs[4].sha256",
+   "change": "value",
+   "before": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+   "after": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f"
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.inputs[5].sha256",
+   "change": "value",
+   "before": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+   "after": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332"
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.inputs[6].sha256",
+   "change": "value",
+   "before": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+   "after": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2"
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.inputs[7].sha256",
+   "change": "value",
+   "before": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+   "after": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359"
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.note",
+   "change": "added",
+   "after": {
+    "date": "2026-10-02",
+    "change": "GPS-REG-08: 7/30 logger-clock channels (aps, brake, steer, gear, accx, accy) re-timed onto the GPS time base with per-lap delays 0.465-0.526 s (pipeline/build_race.py channel time alignment, scripts/quality/align-fuji-channel-timing.py --apply). Each lap records meta.channel_time_alignment.",
+    "unchanged": "t, lat, lng, speed, dist, lap boundaries and all other meta are bit-identical; the re-run register_gps_to_track.py output equals the previous file except laps[].dataSha256 (offsets, jackknife, beyond-limit KPIs and session offset unchanged).",
+    "previousRegistrationSha256": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+    "changedInputs": [
+     {
+      "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+      "previousSha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+      "sha256": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185"
+     },
+     {
+      "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+      "previousSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "sha256": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4"
+     },
+     {
+      "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+      "previousSha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+      "sha256": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f"
+     },
+     {
+      "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+      "previousSha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+      "sha256": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332"
+     },
+     {
+      "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+      "previousSha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+      "sha256": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2"
+     },
+     {
+      "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+      "previousSha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+      "sha256": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359"
+     }
+    ],
+    "evidence": "artifacts/improvement-eval-2026-10-02/after/channel-timing/align-report.json"
+   }
+  },
+  {
+   "path": ".races.fuji_aim_2020_07_30.registrationSha256",
+   "change": "value",
+   "before": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+   "after": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68"
+  }
+ ],
+ "fuji_aim_2020_07_30_arrays": {
+  "osaki_hmr_demio_101_lap_001.json": {
+   "keysAdded": [],
+   "keysRemoved": [],
+   "arrays": {
+    "accx": {
+     "equal": false,
+     "len": [
+      1336,
+      1336
+     ],
+     "maxAbsDiff": 1.1925000000000001,
+     "nChanged": 1335
+    },
+    "accy": {
+     "equal": false,
+     "len": [
+      1336,
+      1336
+     ],
+     "maxAbsDiff": 1.7031,
+     "nChanged": 1336
+    },
+    "aps": {
+     "equal": false,
+     "len": [
+      1336,
+      1336
+     ],
+     "maxAbsDiff": 100.0,
+     "nChanged": 525
+    },
+    "brake": {
+     "equal": false,
+     "len": [
+      1336,
+      1336
+     ],
+     "maxAbsDiff": 96.56,
+     "nChanged": 169
+    },
+    "dist": {
+     "equal": true,
+     "len": [
+      1336,
+      1336
+     ]
+    },
+    "gear": {
+     "equal": false,
+     "len": [
+      1336,
+      1336
+     ],
+     "maxAbsDiff": 5,
+     "nChanged": 70
+    },
+    "lat": {
+     "equal": true,
+     "len": [
+      1336,
+      1336
+     ]
+    },
+    "lng": {
+     "equal": true,
+     "len": [
+      1336,
+      1336
+     ]
+    },
+    "speed": {
+     "equal": true,
+     "len": [
+      1336,
+      1336
+     ]
+    },
+    "steer": {
+     "equal": false,
+     "len": [
+      1336,
+      1336
+     ],
+     "maxAbsDiff": 87.358,
+     "nChanged": 1219
+    },
+    "t": {
+     "equal": true,
+     "len": [
+      1336,
+      1336
+     ]
+    }
+   },
+   "metaDiff": [
+    {
+     "path": ".channel_time_alignment",
+     "change": "added",
+     "after": {
+      "method": "logger_channel_delay_v1",
+      "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+      "shiftSeconds": 0.468,
+      "estimate": {
+       "method": "imu-vs-gps-xcorr-v1",
+       "basis": "per-lap mean of accx and accy lags",
+       "lagS": -0.468,
+       "imuAccxLagS": -0.476,
+       "rAccx": 0.96,
+       "imuAccyLagS": -0.46,
+       "rAccy": 0.993,
+       "sessionMedianLagS": -0.507,
+       "tool": "scripts/quality/align-fuji-channel-timing.py"
+      },
+      "channels": [
+       "aps",
+       "brake",
+       "steer",
+       "gear",
+       "accx",
+       "accy"
+      ],
+      "nearestSampleChannels": [
+       "gear"
+      ],
+      "samplesFromNeighbourLaps": 5,
+      "heldEdgeSamples": 0
+     }
+    }
+   ]
+  },
+  "osaki_hmr_demio_101_lap_002.json": {
+   "keysAdded": [],
+   "keysRemoved": [],
+   "arrays": {
+    "accx": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 1.0922,
+     "nChanged": 1317
+    },
+    "accy": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 1.334,
+     "nChanged": 1318
+    },
+    "aps": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 100.0,
+     "nChanged": 486
+    },
+    "brake": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 94.0,
+     "nChanged": 174
+    },
+    "dist": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "gear": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 5,
+     "nChanged": 86
+    },
+    "lat": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "lng": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "speed": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "steer": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 110.589,
+     "nChanged": 1150
+    },
+    "t": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    }
+   },
+   "metaDiff": [
+    {
+     "path": ".channel_time_alignment",
+     "change": "added",
+     "after": {
+      "method": "logger_channel_delay_v1",
+      "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+      "shiftSeconds": 0.465,
+      "estimate": {
+       "method": "imu-vs-gps-xcorr-v1",
+       "basis": "per-lap mean of accx and accy lags",
+       "lagS": -0.465,
+       "imuAccxLagS": -0.488,
+       "rAccx": 0.95,
+       "imuAccyLagS": -0.442,
+       "rAccy": 0.991,
+       "sessionMedianLagS": -0.507,
+       "tool": "scripts/quality/align-fuji-channel-timing.py"
+      },
+      "channels": [
+       "aps",
+       "brake",
+       "steer",
+       "gear",
+       "accx",
+       "accy"
+      ],
+      "nearestSampleChannels": [
+       "gear"
+      ],
+      "samplesFromNeighbourLaps": 5,
+      "heldEdgeSamples": 0
+     }
+    }
+   ]
+  },
+  "osaki_hmr_demio_101_lap_003.json": {
+   "keysAdded": [],
+   "keysRemoved": [],
+   "arrays": {
+    "accx": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 1.0531,
+     "nChanged": 1316
+    },
+    "accy": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 1.0261,
+     "nChanged": 1318
+    },
+    "aps": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 100.0,
+     "nChanged": 418
+    },
+    "brake": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 89.492,
+     "nChanged": 187
+    },
+    "dist": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "gear": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 6,
+     "nChanged": 95
+    },
+    "lat": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "lng": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "speed": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    },
+    "steer": {
+     "equal": false,
+     "len": [
+      1318,
+      1318
+     ],
+     "maxAbsDiff": 103.918,
+     "nChanged": 1197
+    },
+    "t": {
+     "equal": true,
+     "len": [
+      1318,
+      1318
+     ]
+    }
+   },
+   "metaDiff": [
+    {
+     "path": ".channel_time_alignment",
+     "change": "added",
+     "after": {
+      "method": "logger_channel_delay_v1",
+      "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+      "shiftSeconds": 0.49,
+      "estimate": {
+       "method": "imu-vs-gps-xcorr-v1",
+       "basis": "per-lap mean of accx and accy lags",
+       "lagS": -0.49,
+       "imuAccxLagS": -0.51,
+       "rAccx": 0.961,
+       "imuAccyLagS": -0.47,
+       "rAccy": 0.994,
+       "sessionMedianLagS": -0.507,
+       "tool": "scripts/quality/align-fuji-channel-timing.py"
+      },
+      "channels": [
+       "aps",
+       "brake",
+       "steer",
+       "gear",
+       "accx",
+       "accy"
+      ],
+      "nearestSampleChannels": [
+       "gear"
+      ],
+      "samplesFromNeighbourLaps": 5,
+      "heldEdgeSamples": 0
+     }
+    }
+   ]
+  },
+  "osaki_hmr_demio_101_lap_004.json": {
+   "keysAdded": [],
+   "keysRemoved": [],
+   "arrays": {
+    "accx": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 1.0521,
+     "nChanged": 1307
+    },
+    "accy": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 1.7267000000000001,
+     "nChanged": 1307
+    },
+    "aps": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 100.0,
+     "nChanged": 470
+    },
+    "brake": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 94.8,
+     "nChanged": 185
+    },
+    "dist": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "gear": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 6,
+     "nChanged": 75
+    },
+    "lat": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "lng": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "speed": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "steer": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 154.617,
+     "nChanged": 1184
+    },
+    "t": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    }
+   },
+   "metaDiff": [
+    {
+     "path": ".channel_time_alignment",
+     "change": "added",
+     "after": {
+      "method": "logger_channel_delay_v1",
+      "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+      "shiftSeconds": 0.515,
+      "estimate": {
+       "method": "imu-vs-gps-xcorr-v1",
+       "basis": "per-lap mean of accx and accy lags",
+       "lagS": -0.515,
+       "imuAccxLagS": -0.524,
+       "rAccx": 0.958,
+       "imuAccyLagS": -0.506,
+       "rAccy": 0.995,
+       "sessionMedianLagS": -0.507,
+       "tool": "scripts/quality/align-fuji-channel-timing.py"
+      },
+      "channels": [
+       "aps",
+       "brake",
+       "steer",
+       "gear",
+       "accx",
+       "accy"
+      ],
+      "nearestSampleChannels": [
+       "gear"
+      ],
+      "samplesFromNeighbourLaps": 6,
+      "heldEdgeSamples": 0
+     }
+    }
+   ]
+  },
+  "osaki_hmr_demio_101_lap_005.json": {
+   "keysAdded": [],
+   "keysRemoved": [],
+   "arrays": {
+    "accx": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 1.1308,
+     "nChanged": 1308
+    },
+    "accy": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 1.5733000000000001,
+     "nChanged": 1308
+    },
+    "aps": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 100.0,
+     "nChanged": 468
+    },
+    "brake": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 101.53,
+     "nChanged": 178
+    },
+    "dist": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "gear": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 6,
+     "nChanged": 74
+    },
+    "lat": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "lng": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "speed": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    },
+    "steer": {
+     "equal": false,
+     "len": [
+      1308,
+      1308
+     ],
+     "maxAbsDiff": 146.781,
+     "nChanged": 1140
+    },
+    "t": {
+     "equal": true,
+     "len": [
+      1308,
+      1308
+     ]
+    }
+   },
+   "metaDiff": [
+    {
+     "path": ".channel_time_alignment",
+     "change": "added",
+     "after": {
+      "method": "logger_channel_delay_v1",
+      "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+      "shiftSeconds": 0.526,
+      "estimate": {
+       "method": "imu-vs-gps-xcorr-v1",
+       "basis": "per-lap mean of accx and accy lags",
+       "lagS": -0.526,
+       "imuAccxLagS": -0.53,
+       "rAccx": 0.961,
+       "imuAccyLagS": -0.522,
+       "rAccy": 0.995,
+       "sessionMedianLagS": -0.507,
+       "tool": "scripts/quality/align-fuji-channel-timing.py"
+      },
+      "channels": [
+       "aps",
+       "brake",
+       "steer",
+       "gear",
+       "accx",
+       "accy"
+      ],
+      "nearestSampleChannels": [
+       "gear"
+      ],
+      "samplesFromNeighbourLaps": 6,
+      "heldEdgeSamples": 0
+     }
+    }
+   ]
+  },
+  "osaki_hmr_demio_101_lap_006.json": {
+   "keysAdded": [],
+   "keysRemoved": [],
+   "arrays": {
+    "accx": {
+     "equal": false,
+     "len": [
+      1405,
+      1405
+     ],
+     "maxAbsDiff": 1.1954,
+     "nChanged": 1404
+    },
+    "accy": {
+     "equal": false,
+     "len": [
+      1405,
+      1405
+     ],
+     "maxAbsDiff": 1.2393,
+     "nChanged": 1404
+    },
+    "aps": {
+     "equal": false,
+     "len": [
+      1405,
+      1405
+     ],
+     "maxAbsDiff": 100.0,
+     "nChanged": 641
+    },
+    "brake": {
+     "equal": false,
+     "len": [
+      1405,
+      1405
+     ],
+     "maxAbsDiff": 97.9,
+     "nChanged": 319
+    },
+    "dist": {
+     "equal": true,
+     "len": [
+      1405,
+      1405
+     ]
+    },
+    "gear": {
+     "equal": false,
+     "len": [
+      1405,
+      1405
+     ],
+     "maxAbsDiff": 6,
+     "nChanged": 60
+    },
+    "lat": {
+     "equal": true,
+     "len": [
+      1405,
+      1405
+     ]
+    },
+    "lng": {
+     "equal": true,
+     "len": [
+      1405,
+      1405
+     ]
+    },
+    "speed": {
+     "equal": true,
+     "len": [
+      1405,
+      1405
+     ]
+    },
+    "steer": {
+     "equal": false,
+     "len": [
+      1405,
+      1405
+     ],
+     "maxAbsDiff": 99.98500000000001,
+     "nChanged": 1288
+    },
+    "t": {
+     "equal": true,
+     "len": [
+      1405,
+      1405
+     ]
+    }
+   },
+   "metaDiff": [
+    {
+     "path": ".channel_time_alignment",
+     "change": "added",
+     "after": {
+      "method": "logger_channel_delay_v1",
+      "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+      "shiftSeconds": 0.524,
+      "estimate": {
+       "method": "imu-vs-gps-xcorr-v1",
+       "basis": "per-lap mean of accx and accy lags",
+       "lagS": -0.524,
+       "imuAccxLagS": -0.54,
+       "rAccx": 0.962,
+       "imuAccyLagS": -0.508,
+       "rAccy": 0.994,
+       "sessionMedianLagS": -0.507,
+       "tool": "scripts/quality/align-fuji-channel-timing.py"
+      },
+      "channels": [
+       "aps",
+       "brake",
+       "steer",
+       "gear",
+       "accx",
+       "accy"
+      ],
+      "nearestSampleChannels": [
+       "gear"
+      ],
+      "samplesFromNeighbourLaps": 6,
+      "heldEdgeSamples": 0
+     }
+    }
+   ]
+  }
+ },
+ "fuji_aim_2020_07_30_gpsArraysUnchanged": {
+  "t": true,
+  "dist": true,
+  "lat": true,
+  "lng": true,
+  "speed": true
+ },
+ "fuji_aim_2020_07_30_lapsJsonDiff": [
+  {
+   "path": ".laps[1].file_size",
+   "change": "value",
+   "before": 106041,
+   "after": 107992
+  },
+  {
+   "path": ".laps[2].file_size",
+   "change": "value",
+   "before": 104671,
+   "after": 106785
+  },
+  {
+   "path": ".laps[3].file_size",
+   "change": "value",
+   "before": 104625,
+   "after": 106553
+  },
+  {
+   "path": ".laps[4].file_size",
+   "change": "value",
+   "before": 103814,
+   "after": 105814
+  },
+  {
+   "path": ".laps[5].file_size",
+   "change": "value",
+   "before": 103980,
+   "after": 105692
+  },
+  {
+   "path": ".laps[6].file_size",
+   "change": "value",
+   "before": 111798,
+   "after": 114043
+  },
+  {
+   "path": ".selected[0].file_size",
+   "change": "value",
+   "before": 106041,
+   "after": 107992
+  },
+  {
+   "path": ".selected[1].file_size",
+   "change": "value",
+   "before": 104671,
+   "after": 106785
+  },
+  {
+   "path": ".selected[2].file_size",
+   "change": "value",
+   "before": 104625,
+   "after": 106553
+  },
+  {
+   "path": ".selected[3].file_size",
+   "change": "value",
+   "before": 103814,
+   "after": 105814
+  },
+  {
+   "path": ".selected[4].file_size",
+   "change": "value",
+   "before": 103980,
+   "after": 105692
+  },
+  {
+   "path": ".selected[5].file_size",
+   "change": "value",
+   "before": 111798,
+   "after": 114043
+  }
+ ],
+ "newPublicProvenance": {
+  "public/data/tracks/fuji/cg_study/kerb_zones.json": {
+   "bytes": 328438,
+   "sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+   "personalOrMediaHits": [],
+   "numericListsWith>=200Items": [
+    [
+     ".kerbs[2].station",
+     206,
+     206
+    ],
+    [
+     ".kerbs[5].station",
+     308,
+     308
+    ],
+    [
+     ".kerbs[6].station",
+     446,
+     446
+    ],
+    [
+     ".kerbs[9].station",
+     206,
+     206
+    ],
+    [
+     ".kerbs[11].station",
+     263,
+     263
+    ],
+    [
+     ".kerbs[12].station",
+     249,
+     249
+    ],
+    [
+     ".kerbs[14].station",
+     302,
+     302
+    ],
+    [
+     ".kerbs[16].station",
+     221,
+     221
+    ],
+    [
+     ".kerbs[17].station",
+     294,
+     294
+    ]
+   ],
+   "nNumericListsWith>=200Items": 9,
+   "rawSensorLikeKeys": [],
+   "shaReferences": [],
+   "shaReferencesAllMatch": true,
+   "relativePathStrings": [
+    {
+     "at": ".definition",
+     "value": "Per kerb, three lines sampled at road stations (0.5 m grid of cg_study/geometry.json), XZ metres in the track local frame (x east, z south). paint = road-side start of the kerb paint (white strip, tra"
+    },
+    {
+     "at": ".method",
+     "value": "scripts/quality/apex_kpi/kerb_zones_v3.py: colour-distance gradient (paint) and along-track redness envelope (block/outer) on 0.04 m Lab cross-sections, Hampel + Gaussian smoothing; validated with the"
+    },
+    {
+     "at": ".validation.checker",
+     "value": "scripts/quality/apex_kpi/kerb_zones_validate.py (independent Lab half-level cross-section checker, same 2019 ortho)"
+    },
+    {
+     "at": ".validation.report",
+     "value": "artifacts/improvement-eval-2026-10-02/after/kerb-zones/validation.json"
+    }
+   ],
+   "topLevelKeys": [
+    "version",
+    "trackId",
+    "definition",
+    "source",
+    "sourceUrl",
+    "license",
+    "surveyTruth",
+    "geometrySha256",
+    "method",
+    "limitations",
+    "kerbs",
+    "validation"
+   ]
+  },
+  "public/data/races/fuji_aim_01/kerb_contacts.json": {
+   "bytes": 12508,
+   "sha256": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d",
+   "personalOrMediaHits": [],
+   "numericListsWith>=200Items": [],
+   "nNumericListsWith>=200Items": 0,
+   "rawSensorLikeKeys": [],
+   "shaReferences": [
+    {
+     "at": ".provenance.registrationForPassWindows",
+     "source": "public/data/races/fuji_aim_01/gps_registration.json",
+     "declared": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+     "current": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.kerbZones",
+     "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+     "declared": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.1",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+     "declared": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+     "current": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.2",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+     "declared": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+     "current": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.3",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+     "declared": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+     "current": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.4",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+     "declared": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+     "current": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+     "match": true,
+     "isAbsolute": false
+    }
+   ],
+   "shaReferencesAllMatch": true,
+   "relativePathStrings": [
+    {
+     "at": ".provenance.tool",
+     "value": "scripts/quality/apex_kpi/export_inputs.py"
+    },
+    {
+     "at": ".provenance.detector",
+     "value": "scripts/quality/apex_kpi/eval_v2.py detector() (roll rate only; its wheel-speed side output is discarded)"
+    },
+    {
+     "at": ".provenance.source",
+     "value": "AiM XRK of the session (local file, not published); IMU via scripts/quality/apex_kpi/xrk_extract.py"
+    },
+    {
+     "at": ".provenance.registrationForPassWindows.source",
+     "value": "public/data/races/fuji_aim_01/gps_registration.json"
+    },
+    {
+     "at": ".provenance.kerbZones.source",
+     "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+    },
+    {
+     "at": ".provenance.laps.1.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json"
+    },
+    {
+     "at": ".provenance.laps.2.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json"
+    },
+    {
+     "at": ".provenance.laps.3.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json"
+    },
+    {
+     "at": ".provenance.laps.4.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json"
+    }
+   ],
+   "topLevelKeys": [
+    "version",
+    "kind",
+    "raceId",
+    "trackId",
+    "definition",
+    "strengthBins",
+    "peakUnit",
+    "sideAttribution",
+    "timeBase",
+    "labelRule",
+    "provenance",
+    "limitations",
+    "laps",
+    "events"
+   ]
+  },
+  "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json": {
+   "bytes": 24700,
+   "sha256": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+   "personalOrMediaHits": [],
+   "numericListsWith>=200Items": [],
+   "nNumericListsWith>=200Items": 0,
+   "rawSensorLikeKeys": [],
+   "shaReferences": [
+    {
+     "at": ".provenance.registrationForPassWindows",
+     "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+     "declared": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+     "current": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.kerbZones",
+     "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+     "declared": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.1",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+     "declared": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+     "current": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.2",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+     "declared": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+     "current": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.3",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+     "declared": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+     "current": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.4",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+     "declared": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+     "current": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.5",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+     "declared": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+     "current": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".provenance.laps.6",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+     "declared": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+     "current": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+     "match": true,
+     "isAbsolute": false
+    }
+   ],
+   "shaReferencesAllMatch": true,
+   "relativePathStrings": [
+    {
+     "at": ".provenance.tool",
+     "value": "scripts/quality/apex_kpi/export_inputs.py"
+    },
+    {
+     "at": ".provenance.detector",
+     "value": "scripts/quality/apex_kpi/eval_v2.py detector() (roll rate only; its wheel-speed side output is discarded)"
+    },
+    {
+     "at": ".provenance.source",
+     "value": "AiM XRK of the session (local file, not published); IMU via scripts/quality/apex_kpi/xrk_extract.py"
+    },
+    {
+     "at": ".provenance.registrationForPassWindows.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/gps_registration.json"
+    },
+    {
+     "at": ".provenance.kerbZones.source",
+     "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+    },
+    {
+     "at": ".provenance.laps.1.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json"
+    },
+    {
+     "at": ".provenance.laps.2.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json"
+    },
+    {
+     "at": ".provenance.laps.3.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json"
+    },
+    {
+     "at": ".provenance.laps.4.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json"
+    },
+    {
+     "at": ".provenance.laps.5.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json"
+    },
+    {
+     "at": ".provenance.laps.6.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json"
+    }
+   ],
+   "topLevelKeys": [
+    "version",
+    "kind",
+    "raceId",
+    "trackId",
+    "definition",
+    "strengthBins",
+    "peakUnit",
+    "sideAttribution",
+    "timeBase",
+    "labelRule",
+    "provenance",
+    "limitations",
+    "laps",
+    "events"
+   ]
+  },
+  "public/data/races/fuji_aim_01/apex_kpi.json": {
+   "bytes": 43159,
+   "sha256": "3fddc8c754a5c46ab7363927b063c57fb2c4f4206a18635bd1a81bd52d7a0910",
+   "personalOrMediaHits": [],
+   "numericListsWith>=200Items": [],
+   "nNumericListsWith>=200Items": 0,
+   "rawSensorLikeKeys": [],
+   "shaReferences": [
+    {
+     "at": ".registration",
+     "source": "public/data/races/fuji_aim_01/gps_registration.json",
+     "declared": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+     "current": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.kerbZones",
+     "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+     "declared": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.kerbContacts",
+     "source": "public/data/races/fuji_aim_01/kerb_contacts.json",
+     "declared": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d",
+     "current": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.roadGeometry",
+     "source": "public/data/tracks/fuji/cg_study/geometry.json",
+     "declared": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+     "current": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.vehicleProfile",
+     "source": "public/data/vehicles/mazda2-dj.json",
+     "declared": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+     "current": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.1",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+     "declared": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+     "current": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.2",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+     "declared": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+     "current": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.3",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+     "declared": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+     "current": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.4",
+     "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+     "declared": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+     "current": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+     "match": true,
+     "isAbsolute": false
+    }
+   ],
+   "shaReferencesAllMatch": true,
+   "relativePathStrings": [
+    {
+     "at": ".registration.source",
+     "value": "public/data/races/fuji_aim_01/gps_registration.json"
+    },
+    {
+     "at": ".inputs.kerbZones.source",
+     "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+    },
+    {
+     "at": ".inputs.kerbContacts.source",
+     "value": "public/data/races/fuji_aim_01/kerb_contacts.json"
+    },
+    {
+     "at": ".inputs.roadGeometry.source",
+     "value": "public/data/tracks/fuji/cg_study/geometry.json"
+    },
+    {
+     "at": ".inputs.vehicleProfile.source",
+     "value": "public/data/vehicles/mazda2-dj.json"
+    },
+    {
+     "at": ".inputs.laps.1.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json"
+    },
+    {
+     "at": ".inputs.laps.2.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json"
+    },
+    {
+     "at": ".inputs.laps.3.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json"
+    },
+    {
+     "at": ".inputs.laps.4.source",
+     "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json"
+    },
+    {
+     "at": ".tool",
+     "value": "scripts/quality/apex_kpi/build_apex_kpi.py"
+    }
+   ],
+   "topLevelKeys": [
+    "version",
+    "kind",
+    "raceId",
+    "trackId",
+    "definition",
+    "absoluteUncertaintyMeters",
+    "absoluteUncertaintyReason",
+    "primaryComparison",
+    "deltaCaveat",
+    "registration",
+    "inputs",
+    "tool",
+    "surveyTruth",
+    "corners",
+    "sessionMedian",
+    "laps"
+   ]
+  },
+  "public/data/races/fuji_aim_2020_07_30/apex_kpi.json": {
+   "bytes": 61103,
+   "sha256": "b18bdb3396052dc932ae277f0fd3375bcb495a14417431cd1bddb95f8458cb89",
+   "personalOrMediaHits": [],
+   "numericListsWith>=200Items": [],
+   "nNumericListsWith>=200Items": 0,
+   "rawSensorLikeKeys": [],
+   "shaReferences": [
+    {
+     "at": ".registration",
+     "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+     "declared": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+     "current": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.kerbZones",
+     "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+     "declared": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.kerbContacts",
+     "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+     "declared": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+     "current": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.roadGeometry",
+     "source": "public/data/tracks/fuji/cg_study/geometry.json",
+     "declared": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+     "current": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.vehicleProfile",
+     "source": "public/data/vehicles/mazda2-dj.json",
+     "declared": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+     "current": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.1",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+     "declared": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+     "current": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.2",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+     "declared": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+     "current": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.3",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+     "declared": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+     "current": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.4",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+     "declared": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+     "current": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.5",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+     "declared": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+     "current": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".inputs.laps.6",
+     "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+     "declared": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+     "current": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+     "match": true,
+     "isAbsolute": false
+    }
+   ],
+   "shaReferencesAllMatch": true,
+   "relativePathStrings": [
+    {
+     "at": ".registration.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/gps_registration.json"
+    },
+    {
+     "at": ".inputs.kerbZones.source",
+     "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+    },
+    {
+     "at": ".inputs.kerbContacts.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json"
+    },
+    {
+     "at": ".inputs.roadGeometry.source",
+     "value": "public/data/tracks/fuji/cg_study/geometry.json"
+    },
+    {
+     "at": ".inputs.vehicleProfile.source",
+     "value": "public/data/vehicles/mazda2-dj.json"
+    },
+    {
+     "at": ".inputs.laps.1.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json"
+    },
+    {
+     "at": ".inputs.laps.2.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json"
+    },
+    {
+     "at": ".inputs.laps.3.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json"
+    },
+    {
+     "at": ".inputs.laps.4.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json"
+    },
+    {
+     "at": ".inputs.laps.5.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json"
+    },
+    {
+     "at": ".inputs.laps.6.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json"
+    },
+    {
+     "at": ".tool",
+     "value": "scripts/quality/apex_kpi/build_apex_kpi.py"
+    }
+   ],
+   "topLevelKeys": [
+    "version",
+    "kind",
+    "raceId",
+    "trackId",
+    "definition",
+    "absoluteUncertaintyMeters",
+    "absoluteUncertaintyReason",
+    "primaryComparison",
+    "deltaCaveat",
+    "registration",
+    "inputs",
+    "tool",
+    "surveyTruth",
+    "corners",
+    "sessionMedian",
+    "laps"
+   ]
+  },
+  "public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json": {
+   "bytes": 40177,
+   "sha256": "ef443574c7a5c1f8c9fcda779133ebcc46b52f7c6f5b1a247627cbea70d8d361",
+   "personalOrMediaHits": [],
+   "numericListsWith>=200Items": [],
+   "nNumericListsWith>=200Items": 0,
+   "rawSensorLikeKeys": [
+    "frame",
+    "raw",
+    "samples"
+   ],
+   "shaReferences": [
+    {
+     "at": ".method.inputs.kerbZones",
+     "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+     "declared": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".method.inputs.kerbContacts",
+     "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+     "declared": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+     "current": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".method.inputs.shippedRegistration",
+     "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+     "declared": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+     "current": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".method.inputs.vehicleProfile",
+     "source": "public/data/vehicles/mazda2-dj.json",
+     "declared": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+     "current": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".limits",
+     "source": "public/data/tracks/fuji/cg_study/geometry.json",
+     "declared": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+     "current": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+     "match": true,
+     "isAbsolute": false
+    },
+    {
+     "at": ".referenceTrack",
+     "source": "public/data/tracks/fuji/track.json",
+     "declared": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+     "current": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+     "match": true,
+     "isAbsolute": false
+    }
+   ],
+   "shaReferencesAllMatch": true,
+   "relativePathStrings": [
+    {
+     "at": ".method.tool",
+     "value": "pipeline/register_gps_kerb_contact.py"
+    },
+    {
+     "at": ".method.inputs.kerbZones.source",
+     "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+    },
+    {
+     "at": ".method.inputs.kerbContacts.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json"
+    },
+    {
+     "at": ".method.inputs.shippedRegistration.source",
+     "value": "public/data/races/fuji_aim_2020_07_30/gps_registration.json"
+    },
+    {
+     "at": ".method.inputs.vehicleProfile.source",
+     "value": "public/data/vehicles/mazda2-dj.json"
+    },
+    {
+     "at": ".limits.source",
+     "value": "public/data/tracks/fuji/cg_study/geometry.json"
+    },
+    {
+     "at": ".referenceTrack.source",
+     "value": "public/data/tracks/fuji/track.json"
+    },
+    {
+     "at": ".uncertainty.validation",
+     "value": "artifacts/improvement-eval-2026-10-02/after/registration-candidate/evaluation.json"
+    },
+    {
+     "at": ".gpsAnomalies[0].source",
+     "value": "docs/fuji-apex-kerb-kpi-2026-10-02.md"
+    }
+   ],
+   "topLevelKeys": [
+    "version",
+    "kind",
+    "status",
+    "optIn",
+    "raceId",
+    "trackId",
+    "frame",
+    "definition",
+    "method",
+    "limits",
+    "referenceTrack",
+    "uncertainty",
+    "labelSummary",
+    "labelsUsed",
+    "gpsAnomalies",
+    "unresolvedLabels",
+    "beyondLimitNote",
+    "feasibleRegion",
+    "sessionOffsetMeters",
+    "laps"
+   ]
+  }
+ }
+}

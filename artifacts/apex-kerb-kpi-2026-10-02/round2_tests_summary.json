@@ -1,0 +1,241 @@
+{
+ "scope": "Round-2 review tests on 7/30 (58 strong/silent labels). Scratch outputs consolidated; see docs/fuji-apex-kerb-kpi-2026-10-02.md.",
+ "T1_deadBand": [
+  {
+   "strongMax": 0.0,
+   "silentMin": -0.4,
+   "session": [
+    0.515,
+    -2.185
+   ],
+   "contradictions": 2
+  },
+  {
+   "strongMax": 0.0,
+   "silentMin": -0.2,
+   "session": [
+    0.395,
+    -2.25
+   ],
+   "contradictions": 3
+  },
+  {
+   "strongMax": 0.0,
+   "silentMin": 0.0,
+   "session": [
+    0.403,
+    -2.262
+   ],
+   "contradictions": 3
+  },
+  {
+   "strongMax": -0.1,
+   "silentMin": -0.1,
+   "session": [
+    0.384,
+    -2.232
+   ],
+   "contradictions": 3
+  }
+ ],
+ "T2_antenna": {
+  "params": [
+   0.496,
+   -2.209,
+   -0.021,
+   0.04
+  ],
+  "cost": 73.9685019873138,
+  "contradictions": [
+   [
+    2,
+    21,
+    "strong",
+    0.65
+   ],
+   [
+    2,
+    24,
+    "silent",
+    -0.84
+   ],
+   [
+    5,
+    10,
+    "strong",
+    0.15
+   ]
+  ]
+ },
+ "T2_profile": [
+  {
+   "right": -0.4,
+   "cost": 104.73,
+   "session": [
+    0.197,
+    -2.139
+   ],
+   "fwd": 0.17,
+   "contradictions": 6
+  },
+  {
+   "right": 0.4,
+   "cost": 120.8,
+   "session": [
+    0.731,
+    -2.445
+   ],
+   "fwd": 0.07,
+   "contradictions": 5
+  }
+ ],
+ "T3_trackOnly": {
+  "v2": [
+   0.491,
+   -3.473
+  ],
+  "v2PlusMissingPaint": [
+   0.709,
+   -3.554
+  ],
+  "labelEstimate": [
+   0.51,
+   -2.18
+  ],
+  "contradictionsV2PlusMissing": [
+   [
+    1,
+    15,
+    "strong",
+    0.59
+   ],
+   [
+    2,
+    7,
+    "strong",
+    1.01
+   ],
+   [
+    2,
+    10,
+    "strong",
+    0.95
+   ],
+   [
+    2,
+    13,
+    "strong",
+    0.25
+   ],
+   [
+    2,
+    15,
+    "strong",
+    0.29
+   ],
+   [
+    2,
+    21,
+    "strong",
+    0.72
+   ],
+   [
+    2,
+    24,
+    "silent",
+    -0.68
+   ],
+   [
+    3,
+    25,
+    "silent",
+    -1.29
+   ],
+   [
+    5,
+    7,
+    "strong",
+    1.39
+   ],
+   [
+    5,
+    9,
+    "silent",
+    -1.28
+   ],
+   [
+    5,
+    10,
+    "strong",
+    1.47
+   ],
+   [
+    6,
+    10,
+    "strong",
+    0.73
+   ],
+   [
+    6,
+    20,
+    "silent",
+    -1.28
+   ]
+  ]
+ },
+ "sideBaselineNoVibration": {
+  "fuji_aim_2020_07_30": {
+   "straight": {
+    "n": 657,
+    "medianLR": 0.99,
+    "p90": 1.24,
+    "p10": 0.66,
+    "fracAbove1p25": 0.1,
+    "fracBelow0p8": 0.24
+   },
+   "posLat": {
+    "n": 808,
+    "medianLR": 0.82,
+    "p90": 1.09,
+    "p10": 0.41,
+    "fracAbove1p25": 0.03,
+    "fracBelow0p8": 0.48
+   },
+   "negLat": {
+    "n": 400,
+    "medianLR": 1.31,
+    "p90": 3.0,
+    "p10": 0.91,
+    "fracAbove1p25": 0.55,
+    "fracBelow0p8": 0.04
+   }
+  },
+  "fuji_aim_01": {
+   "straight": {
+    "n": 545,
+    "medianLR": 1.02,
+    "p90": 1.41,
+    "p10": 0.79,
+    "fracAbove1p25": 0.18,
+    "fracBelow0p8": 0.11
+   },
+   "posLat": {
+    "n": 596,
+    "medianLR": 0.88,
+    "p90": 1.19,
+    "p10": 0.5,
+    "fracAbove1p25": 0.08,
+    "fracBelow0p8": 0.38
+   },
+   "negLat": {
+    "n": 301,
+    "medianLR": 1.15,
+    "p90": 1.91,
+    "p10": 0.88,
+    "fracAbove1p25": 0.42,
+    "fracBelow0p8": 0.05
+   }
+  }
+ },
+ "sideBaselineNote": "posLat ~ right-hand cornering (more samples, clockwise circuit), negLat ~ left-hand. Inner wheels show more ripple without any kerb contact -> wheel-ripple side attribution is confounded with corner direction."
+}

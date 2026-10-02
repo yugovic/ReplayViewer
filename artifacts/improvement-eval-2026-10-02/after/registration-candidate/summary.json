@@ -1,0 +1,388 @@
+{
+ "task": "D (BACKLOG GPS-REG-15): opt-in kerb-contact registration candidate for 7/30",
+ "candidate": {
+  "file": "public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json",
+  "sessionOffsetMeters": [
+   0.177,
+   -2.296
+  ],
+  "lapOffsetsMeters": {
+   "1": [
+    0.08,
+    -2.496
+   ],
+   "2": [
+    0.194,
+    -2.411
+   ],
+   "3": [
+    0.059,
+    -2.367
+   ],
+   "4": [
+    0.334,
+    -2.621
+   ],
+   "5": [
+    0.142,
+    -2.142
+   ],
+   "6": [
+    0.095,
+    -2.308
+   ]
+  },
+  "labelSummary": {
+   "strongUsed": 15,
+   "silentUsed": 40,
+   "strongKerbs": [
+    "k1",
+    "k10",
+    "k13",
+    "k15",
+    "k3",
+    "k7",
+    "kDunlopR"
+   ],
+   "notUsed": 4
+  },
+  "unresolvedLabels": [
+   {
+    "lap": 2,
+    "kerb": "k21",
+    "class": "strong",
+    "gBlockMin": 1.01,
+    "usedInFit": false,
+    "anomaly": true
+   }
+  ]
+ },
+ "heldOutAllLabels59": {
+  "raw": {
+   "contradictions": 11,
+   "auc": 0.896,
+   "withinKerbAuc": 0.889
+  },
+  "shipped": {
+   "contradictions": 3,
+   "auc": 0.884,
+   "withinKerbAuc": 0.926
+  },
+  "trackOnlySession": {
+   "contradictions": 7,
+   "auc": 0.843,
+   "withinKerbAuc": 0.889
+  },
+  "trackOnlySessionPlusLap": {
+   "contradictions": 7,
+   "auc": 0.85,
+   "withinKerbAuc": 0.889
+  },
+  "candidateLOKO": {
+   "contradictions": 2,
+   "auc": 0.938,
+   "withinKerbAuc": 0.926
+  },
+  "candidateLOLO": {
+   "contradictions": 4,
+   "auc": 0.915,
+   "withinKerbAuc": 0.852
+  }
+ },
+ "heldOutWithoutAnomaly55": {
+  "raw": {
+   "contradictions": 9,
+   "auc": 0.902,
+   "withinKerbAuc": 0.87
+  },
+  "shipped": {
+   "contradictions": 2,
+   "auc": 0.933,
+   "withinKerbAuc": 0.913
+  },
+  "trackOnlySession": {
+   "contradictions": 5,
+   "auc": 0.893,
+   "withinKerbAuc": 0.87
+  },
+  "candidateLOKO": {
+   "contradictions": 1,
+   "auc": 0.978,
+   "withinKerbAuc": 0.913
+  },
+  "candidateLOLO": {
+   "contradictions": 3,
+   "auc": 0.95,
+   "withinKerbAuc": 0.826
+  }
+ },
+ "bootstrapCandidateLOKOminusShipped": {
+  "allLabels": {
+   "clusters": 14,
+   "labels": 59,
+   "B": 10000,
+   "contradictionDiff": -1,
+   "contradictionDiffCI95": [
+    -3.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.3575,
+   "aucDiff": 0.0546,
+   "aucDiffCI95": [
+    0.003,
+    0.1125
+   ],
+   "pAucDiffLE0": 0.0212
+  },
+  "withoutAnomalyLabels": {
+   "clusters": 14,
+   "labels": 55,
+   "B": 10000,
+   "contradictionDiff": -1,
+   "contradictionDiffCI95": [
+    -3.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.3575,
+   "aucDiff": 0.045,
+   "aucDiffCI95": [
+    0.0069,
+    0.0892
+   ],
+   "pAucDiffLE0": 0.0107
+  }
+ },
+ "bootstrapCandidateLOKOminusTrackOnlySession": {
+  "allLabels": {
+   "clusters": 14,
+   "labels": 59,
+   "B": 10000,
+   "contradictionDiff": -5,
+   "contradictionDiffCI95": [
+    -10.0,
+    -1.0
+   ],
+   "pContradictionDiffGE0": 0.0075,
+   "aucDiff": 0.0952,
+   "aucDiffCI95": [
+    0.0225,
+    0.1957
+   ],
+   "pAucDiffLE0": 0.0008
+  },
+  "withoutAnomalyLabels": {
+   "clusters": 14,
+   "labels": 55,
+   "B": 10000,
+   "contradictionDiff": -4,
+   "contradictionDiffCI95": [
+    -9.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 0.0343,
+   "aucDiff": 0.085,
+   "aucDiffCI95": [
+    0.0174,
+    0.1861
+   ],
+   "pAucDiffLE0": 0.004
+  }
+ },
+ "toleranceSensitivity": {
+  "tol0": {
+   "candidateLOKO": {
+    "all": 4,
+    "withoutAnomaly": 2
+   },
+   "candidateLOLO": {
+    "all": 6,
+    "withoutAnomaly": 4
+   },
+   "raw": {
+    "all": 12,
+    "withoutAnomaly": 10
+   },
+   "shipped": {
+    "all": 5,
+    "withoutAnomaly": 4
+   },
+   "trackOnlySession": {
+    "all": 8,
+    "withoutAnomaly": 6
+   },
+   "trackOnlySessionPlusLap": {
+    "all": 8,
+    "withoutAnomaly": 6
+   }
+  },
+  "tol0.1": {
+   "candidateLOKO": {
+    "all": 4,
+    "withoutAnomaly": 2
+   },
+   "candidateLOLO": {
+    "all": 6,
+    "withoutAnomaly": 4
+   },
+   "raw": {
+    "all": 12,
+    "withoutAnomaly": 10
+   },
+   "shipped": {
+    "all": 3,
+    "withoutAnomaly": 2
+   },
+   "trackOnlySession": {
+    "all": 8,
+    "withoutAnomaly": 6
+   },
+   "trackOnlySessionPlusLap": {
+    "all": 7,
+    "withoutAnomaly": 5
+   }
+  },
+  "tol0.15": {
+   "candidateLOKO": {
+    "all": 2,
+    "withoutAnomaly": 1
+   },
+   "candidateLOLO": {
+    "all": 4,
+    "withoutAnomaly": 3
+   },
+   "raw": {
+    "all": 11,
+    "withoutAnomaly": 9
+   },
+   "shipped": {
+    "all": 3,
+    "withoutAnomaly": 2
+   },
+   "trackOnlySession": {
+    "all": 7,
+    "withoutAnomaly": 5
+   },
+   "trackOnlySessionPlusLap": {
+    "all": 7,
+    "withoutAnomaly": 5
+   }
+  },
+  "tol0.25": {
+   "candidateLOKO": {
+    "all": 1,
+    "withoutAnomaly": 0
+   },
+   "candidateLOLO": {
+    "all": 4,
+    "withoutAnomaly": 3
+   },
+   "raw": {
+    "all": 10,
+    "withoutAnomaly": 8
+   },
+   "shipped": {
+    "all": 3,
+    "withoutAnomaly": 2
+   },
+   "trackOnlySession": {
+    "all": 6,
+    "withoutAnomaly": 4
+   },
+   "trackOnlySessionPlusLap": {
+    "all": 5,
+    "withoutAnomaly": 3
+   }
+  },
+  "tol0.7": {
+   "candidateLOKO": {
+    "all": 1,
+    "withoutAnomaly": 0
+   },
+   "candidateLOLO": {
+    "all": 1,
+    "withoutAnomaly": 0
+   },
+   "raw": {
+    "all": 8,
+    "withoutAnomaly": 7
+   },
+   "shipped": {
+    "all": 1,
+    "withoutAnomaly": 0
+   },
+   "trackOnlySession": {
+    "all": 2,
+    "withoutAnomaly": 1
+   },
+   "trackOnlySessionPlusLap": {
+    "all": 2,
+    "withoutAnomaly": 1
+   }
+  }
+ },
+ "courseFixShippedRegistration": {
+  "cgKerbLines": {
+   "contradictions": 3,
+   "auc": 0.866,
+   "withinKerbAuc": 0.923,
+   "unmeasurable": 2
+  },
+  "courseV2": {
+   "contradictions": 3,
+   "auc": 0.875,
+   "withinKerbAuc": 0.926,
+   "unmeasurable": 0
+  },
+  "kerbZonesV3": {
+   "contradictions": 3,
+   "auc": 0.884,
+   "withinKerbAuc": 0.926,
+   "unmeasurable": 0
+  }
+ },
+ "beyondLimitTotal": {
+  "raw": {
+   "secondsBeyondLimit": 51.8,
+   "maxBeyondLimitMeters": 3.103
+  },
+  "shipped": {
+   "secondsBeyondLimit": 6.5,
+   "maxBeyondLimitMeters": 0.583
+  },
+  "trackOnlySession": {
+   "secondsBeyondLimit": 7.9,
+   "maxBeyondLimitMeters": 1.22
+  },
+  "candidate": {
+   "secondsBeyondLimit": 7.1,
+   "maxBeyondLimitMeters": 0.924
+  }
+ },
+ "feasibleRegionSessionTol015": {
+  "empty": false,
+  "points": 71,
+  "areaM2": 0.178,
+  "eastWidthM": 0.9,
+  "southWidthM": 0.4,
+  "centroid": [
+   0.53,
+   -2.124
+  ],
+  "touchesWindow": false,
+  "majorWidthM": 0.97,
+  "minorWidthM": 0.36,
+  "majorAxisBearingDeg": 109.2
+ },
+ "wet0729": {
+  "candidate": null,
+  "strongLabels": 1,
+  "strongKerbs": 1,
+  "silentLabels": 51,
+  "required": {
+   "strongLabels": 5,
+   "strongKerbs": 3
+  },
+  "reason": "Only strong labels bound the offset from the kerb side; with one strong contact the hinge is one-sided (silent labels only push the tyres away from the blocks), the fit stays on the flat track-limit set and there is no held-out strong label to validate it (AUC undefined under leave-one-kerb-out). pipeline/register_gps_kerb_contact.py refuses the race (exit 3)."
+ },
+ "verdict": "better than the track-only fits (significant), marginal vs the shipped registration (contradictions n.s., AUC CI just above 0; worse under leave-one-lap-out and at tolerance 0.10 m): keep as the opt-in ?gps=kerb candidate, do not replace gps_registration.json"
+}

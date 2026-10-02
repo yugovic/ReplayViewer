@@ -1,0 +1,606 @@
+{
+ "version": 2,
+ "kind": "kerb-contacts",
+ "raceId": "fuji_aim_01",
+ "trackId": "fuji",
+ "definition": "Kerb-contact labels from the logger internal IMU: roll-rate high-pass (>~3 Hz) RMS over 0.2 s; events = RMS > 1.0 deg/s merged across < 0.3 s gaps. Each event is attributed to one kerb by the CG station at its RMS peak (inside-kerb pass first; kerb = null when no kerb zone is within 3 m). One label per inside-kerb pass: strong = an event attributed to it has peak >= 1.5, silent = pass peak <= 0.8, otherwise mild. GPS-independent apart from locating the pass/peak.",
+ "strengthBins": [
+  {
+   "id": "low",
+   "label": "弱",
+   "minPeak": 1.0,
+   "maxPeak": 1.5
+  },
+  {
+   "id": "mid",
+   "label": "中",
+   "minPeak": 1.5,
+   "maxPeak": 3.0
+  },
+  {
+   "id": "high",
+   "label": "強",
+   "minPeak": 3.0,
+   "maxPeak": null
+  }
+ ],
+ "peakUnit": "deg/s (roll-rate high-pass RMS, 0.2 s window)",
+ "sideAttribution": "not published: the 4-wheel ECU speed-ripple ratio is confounded with the corner direction (0.82 in right-handers, 1.31 in left-handers without kerb contact, 7/30); an inside-kerb label is read as \"the inner wheels hit\", never as a measured side",
+ "timeBase": {
+  "basis": "lap t (s) of the shipped lap JSON = GPS time base = viewer playback clock (0 = first GPS sample of the lap)",
+  "loggerToGps": "t = (logger_ms - tc0Ms) / 1000 + shiftSeconds",
+  "shiftSecondsByLap": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "4": 0.0
+  },
+  "shiftSource": "0 s: reference session for the logger-clock timing (GPS-REG-08); its shipped lap channels are not re-timed, so the IMU events use the same logger clock as the lap JSON channels",
+  "evaluationSessionShiftSeconds": 0.014,
+  "evaluationSessionShiftUse": "gyro-vs-GPS session estimate, used only for the attributedSessionShift / overlap...SessionShift evaluation variants (label_changes.json); not applied to the published events",
+  "lapMapping": {
+   "1": {
+    "tc0Ms": 180700.0,
+    "speedRmsKmh": 0.00029
+   },
+   "2": {
+    "tc0Ms": 325300.0,
+    "speedRmsKmh": 0.00029
+   },
+   "3": {
+    "tc0Ms": 469900.0,
+    "speedRmsKmh": 0.00029
+   },
+   "4": {
+    "tc0Ms": 611300.0,
+    "speedRmsKmh": 0.00029
+   }
+  },
+  "lapMappingMethod": "XRK GPS speed vs shipped lap speed (scripts/quality/apex_kpi/xrk_map.py)"
+ },
+ "labelRule": {
+  "eventMinPeak": 1.0,
+  "strongMinPeak": 1.5,
+  "silentMaxPeak": 0.8,
+  "mergeGapSeconds": 0.3,
+  "overlapPadSeconds": 0.2,
+  "passMarginMeters": 3.0
+ },
+ "provenance": {
+  "tool": "scripts/quality/apex_kpi/export_inputs.py",
+  "detector": "scripts/quality/apex_kpi/eval_v2.py detector() (roll rate only; its wheel-speed side output is discarded)",
+  "source": "AiM XRK of the session (local file, not published); IMU via scripts/quality/apex_kpi/xrk_extract.py",
+  "sourceSha256": "18055a88997fe1475bcaa94fe0081e26da83c0bf900162ca578e4d5a0d441a43",
+  "registrationForPassWindows": {
+   "source": "public/data/races/fuji_aim_01/gps_registration.json",
+   "sha256": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729"
+  },
+  "kerbZones": {
+   "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+   "sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+  },
+  "laps": {
+   "1": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+    "sha256": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3"
+   },
+   "2": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+    "sha256": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f"
+   },
+   "3": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+    "sha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c"
+   },
+   "4": {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+    "sha256": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008"
+   }
+  }
+ },
+ "limitations": [
+  "Strength depends on speed and sampling (aliasing); thresholds were set on the 7/30 data.",
+  "Non-kerb vibration (brake lock, bumps) is not excluded; events with kerb = null are not attributed to a kerb.",
+  "Where an inside and an outside kerb share stations, the label cannot tell which one was hit.",
+  "7/29 (wet) has very few strong contacts."
+ ],
+ "laps": {
+  "1": [
+   {
+    "kerb": "k13",
+    "class": "silent",
+    "peakRollRms": 0.54,
+    "bin": null,
+    "t0": 16.92,
+    "t1": 20.02
+   },
+   {
+    "kerb": "k1",
+    "class": "silent",
+    "peakRollRms": 0.48,
+    "bin": null,
+    "t0": 34.42,
+    "t1": 37.46
+   },
+   {
+    "kerb": "k15",
+    "class": "silent",
+    "peakRollRms": 0.34,
+    "bin": null,
+    "t0": 37.28,
+    "t1": 40.12
+   },
+   {
+    "kerb": "k3",
+    "class": "silent",
+    "peakRollRms": 0.55,
+    "bin": null,
+    "t0": 56.4,
+    "t1": 59.68
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.55,
+    "bin": null,
+    "t0": 68.32,
+    "t1": 70.98
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.67,
+    "bin": null,
+    "t0": 74.62,
+    "t1": 76.58
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "silent",
+    "peakRollRms": 0.57,
+    "bin": null,
+    "t0": 83.8,
+    "t1": 86.3
+   },
+   {
+    "kerb": "k7",
+    "class": "silent",
+    "peakRollRms": 0.45,
+    "bin": null,
+    "t0": 87.4,
+    "t1": 90.92
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.65,
+    "bin": null,
+    "t0": 90.56,
+    "t1": 93.18
+   },
+   {
+    "kerb": "k21",
+    "class": "silent",
+    "peakRollRms": 0.5,
+    "bin": null,
+    "t0": 97.28,
+    "t1": 101.48
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.46,
+    "bin": null,
+    "t0": 101.38,
+    "t1": 105.18
+   },
+   {
+    "kerb": "k10",
+    "class": "silent",
+    "peakRollRms": 0.49,
+    "bin": null,
+    "t0": 108.62,
+    "t1": 111.62
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.49,
+    "bin": null,
+    "t0": 111.0,
+    "t1": 114.58
+   },
+   {
+    "kerb": "k24",
+    "class": "mild",
+    "peakRollRms": 0.86,
+    "bin": null,
+    "t0": 120.26,
+    "t1": 123.34
+   }
+  ],
+  "2": [
+   {
+    "kerb": "k13",
+    "class": "silent",
+    "peakRollRms": 0.49,
+    "bin": null,
+    "t0": 16.98,
+    "t1": 20.14
+   },
+   {
+    "kerb": "k1",
+    "class": "silent",
+    "peakRollRms": 0.74,
+    "bin": null,
+    "t0": 34.7,
+    "t1": 37.62
+   },
+   {
+    "kerb": "k15",
+    "class": "silent",
+    "peakRollRms": 0.43,
+    "bin": null,
+    "t0": 37.44,
+    "t1": 40.32
+   },
+   {
+    "kerb": "k3",
+    "class": "silent",
+    "peakRollRms": 0.42,
+    "bin": null,
+    "t0": 55.92,
+    "t1": 59.14
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.62,
+    "bin": null,
+    "t0": 67.08,
+    "t1": 69.46
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.55,
+    "bin": null,
+    "t0": 72.96,
+    "t1": 74.94
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "silent",
+    "peakRollRms": 0.78,
+    "bin": null,
+    "t0": 82.78,
+    "t1": 85.92
+   },
+   {
+    "kerb": "k7",
+    "class": "silent",
+    "peakRollRms": 0.41,
+    "bin": null,
+    "t0": 87.18,
+    "t1": 90.98
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.39,
+    "bin": null,
+    "t0": 90.6,
+    "t1": 93.4
+   },
+   {
+    "kerb": "k21",
+    "class": "silent",
+    "peakRollRms": 0.68,
+    "bin": null,
+    "t0": 97.58,
+    "t1": 101.8
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.75,
+    "bin": null,
+    "t0": 101.72,
+    "t1": 105.38
+   },
+   {
+    "kerb": "k10",
+    "class": "silent",
+    "peakRollRms": 0.72,
+    "bin": null,
+    "t0": 108.86,
+    "t1": 111.92
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.36,
+    "bin": null,
+    "t0": 111.24,
+    "t1": 115.04
+   },
+   {
+    "kerb": "k24",
+    "class": "silent",
+    "peakRollRms": 0.49,
+    "bin": null,
+    "t0": 120.62,
+    "t1": 123.92
+   }
+  ],
+  "3": [
+   {
+    "kerb": "k13",
+    "class": "silent",
+    "peakRollRms": 0.57,
+    "bin": null,
+    "t0": 16.32,
+    "t1": 19.48
+   },
+   {
+    "kerb": "k1",
+    "class": "silent",
+    "peakRollRms": 0.47,
+    "bin": null,
+    "t0": 34.3,
+    "t1": 37.52
+   },
+   {
+    "kerb": "k15",
+    "class": "silent",
+    "peakRollRms": 0.52,
+    "bin": null,
+    "t0": 37.34,
+    "t1": 40.22
+   },
+   {
+    "kerb": "k3",
+    "class": "silent",
+    "peakRollRms": 0.36,
+    "bin": null,
+    "t0": 55.5,
+    "t1": 58.74
+   },
+   {
+    "kerb": "k18",
+    "class": "mild",
+    "peakRollRms": 0.95,
+    "bin": null,
+    "t0": 66.42,
+    "t1": 68.62
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.41,
+    "bin": null,
+    "t0": 71.9,
+    "t1": 73.62
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "silent",
+    "peakRollRms": 0.78,
+    "bin": null,
+    "t0": 79.94,
+    "t1": 82.78
+   },
+   {
+    "kerb": "k7",
+    "class": "strong",
+    "peakRollRms": 1.63,
+    "bin": "mid",
+    "t0": 83.96,
+    "t1": 87.98
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.7,
+    "bin": null,
+    "t0": 87.54,
+    "t1": 90.62
+   },
+   {
+    "kerb": "k21",
+    "class": "silent",
+    "peakRollRms": 0.76,
+    "bin": null,
+    "t0": 94.86,
+    "t1": 99.04
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.67,
+    "bin": null,
+    "t0": 98.96,
+    "t1": 102.58
+   },
+   {
+    "kerb": "k10",
+    "class": "mild",
+    "peakRollRms": 0.91,
+    "bin": null,
+    "t0": 106.08,
+    "t1": 108.96
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.39,
+    "bin": null,
+    "t0": 108.32,
+    "t1": 111.94
+   },
+   {
+    "kerb": "k24",
+    "class": "silent",
+    "peakRollRms": 0.66,
+    "bin": null,
+    "t0": 117.62,
+    "t1": 120.8
+   }
+  ],
+  "4": [
+   {
+    "kerb": "k13",
+    "class": "silent",
+    "peakRollRms": 0.46,
+    "bin": null,
+    "t0": 15.82,
+    "t1": 19.42
+   },
+   {
+    "kerb": "k1",
+    "class": "silent",
+    "peakRollRms": 0.39,
+    "bin": null,
+    "t0": 33.8,
+    "t1": 37.08
+   },
+   {
+    "kerb": "k15",
+    "class": "silent",
+    "peakRollRms": 0.39,
+    "bin": null,
+    "t0": 36.88,
+    "t1": 40.08
+   },
+   {
+    "kerb": "k3",
+    "class": "silent",
+    "peakRollRms": 0.43,
+    "bin": null,
+    "t0": 58.28,
+    "t1": 61.3
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.55,
+    "bin": null,
+    "t0": 69.66,
+    "t1": 71.96
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.53,
+    "bin": null,
+    "t0": 75.34,
+    "t1": 77.1
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "silent",
+    "peakRollRms": 0.62,
+    "bin": null,
+    "t0": 83.22,
+    "t1": 86.88
+   },
+   {
+    "kerb": "k7",
+    "class": "silent",
+    "peakRollRms": 0.29,
+    "bin": null,
+    "t0": 88.38,
+    "t1": 92.84
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.27,
+    "bin": null,
+    "t0": 92.38,
+    "t1": 95.58
+   },
+   {
+    "kerb": "k21",
+    "class": "silent",
+    "peakRollRms": 0.62,
+    "bin": null,
+    "t0": 100.12,
+    "t1": 104.54
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.49,
+    "bin": null,
+    "t0": 104.46,
+    "t1": 108.34
+   },
+   {
+    "kerb": "k10",
+    "class": "silent",
+    "peakRollRms": 0.49,
+    "bin": null,
+    "t0": 111.92,
+    "t1": 115.2
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.32,
+    "bin": null,
+    "t0": 114.48,
+    "t1": 118.42
+   },
+   {
+    "kerb": "k24",
+    "class": "mild",
+    "peakRollRms": 1.06,
+    "bin": "low",
+    "t0": 124.26,
+    "t1": 127.34
+   }
+  ]
+ },
+ "events": {
+  "1": [],
+  "2": [],
+  "3": [
+   {
+    "t0": 85.45,
+    "t1": 86.17,
+    "tPeak": 85.53,
+    "peak": 1.63,
+    "bin": "mid",
+    "kerb": "k7",
+    "insidePass": true,
+    "stationAtPeak": 3049.0,
+    "alsoNear": []
+   },
+   {
+    "t0": 113.8,
+    "t1": 113.94,
+    "tPeak": 113.92,
+    "peak": 1.12,
+    "bin": "low",
+    "kerb": "k11",
+    "insidePass": false,
+    "stationAtPeak": 3739.2,
+    "alsoNear": []
+   }
+  ],
+  "4": [
+   {
+    "t0": 125.73,
+    "t1": 125.78,
+    "tPeak": 125.75,
+    "peak": 1.06,
+    "bin": "low",
+    "kerb": "k24",
+    "insidePass": true,
+    "stationAtPeak": 3857.9,
+    "alsoNear": []
+   }
+  ]
+ }
+}

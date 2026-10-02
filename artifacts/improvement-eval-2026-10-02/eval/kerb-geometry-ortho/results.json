@@ -1,0 +1,2133 @@
+{
+ "task": "course kerb geometry accuracy (BEFORE = geometry.json curbs + missing Dunlop-R; AFTER = kerb_zones.json)",
+ "method": "Independent ortho check of Fuji kerb geometry: BEFORE (CG curbs in geometry.json) vs AFTER (kerb_zones.json).\n\nEvaluation only. Reads repo files, writes only into this folder.\n\nWhy this is a separate sample from the implementer's validator (kerb_zones_validate.py):\n  * stations: zone stations + 0.25 m (midway between the 0.5 m stations used to build and to validate the zones);\n  * section direction: normal of the CG road centreline (geometry.json 'road'), interpolated at the station,\n    so it comes from neither candidate line (the implementer cut sections along the v3 paint-line normal,\n    through the v3 paint points);\n  * sampling: 0.02 m bicubic (order 3) on Lab (the implementer used 0.04 m bilinear);\n  * edge estimator: least-squares erf step fit (centre of a blurred step), not a half-level crossing\n    (implementer's checker) and not a gradient peak (v3 builder);\n      - paint: projection of Lab onto the asphalt->first-paint colour direction, detection by positive-only\n        standardised L/a deviation from the asphalt median;\n      - block: a* (redness) step outward of the paint edge, accepted only when the red starts within\n        BLOCK_MAX m of the paint edge (otherwise the inner block is white and the red is the outer row).\nCandidate lines only place the search windows (asphalt reference 1.2-4.0 m road-side of the most road-side\ncandidate, search from 1.0 m road-side of it to 1.5 m outward of the most outward one); the edge itself comes\nfrom the image.\n\nResidual = truth_w - line_w along the section (w grows outward, away from the road centre),\nso + = the line lies road-side of the ortho edge (same sign as the implementer's report).\n\nSource imagery: VIRTUAL SHIZUOKA 2019 LP orthophoto 20 cm (CC BY 4.0, Shizuoka Prefecture). The same 2019\northo was used to build the AFTER zones, so this is a consistency check on the same image, not survey truth.\n",
+ "settings": {
+  "DW": 0.02,
+  "TOL": 0.15,
+  "BLOCK_MAX": 0.75,
+  "BLOCK_SENS": [
+   0.6,
+   0.75,
+   1.0
+  ],
+  "STATION_OFFSET": 0.25
+ },
+ "inputs": {
+  "geometry": "public\\data\\tracks\\fuji\\cg_study\\geometry.json",
+  "kerb_zones": "public\\data\\tracks\\fuji\\cg_study\\kerb_zones.json",
+  "ortho": "pipeline\\cache\\shizuoka_ortho\\native_mosaic.png",
+  "geometry_sha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+  "kerb_zones_sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+ },
+ "residual_sign": "truth - line along the section (outward +); + = line lies road-side of the ortho edge",
+ "not_survey_truth": "Same VIRTUAL SHIZUOKA 2019 ortho was the source of the AFTER zones (and of the CG). Ortho georeferencing error (~0.2-0.3 m) cancels in this comparison and is not measured. 2019 imagery vs 2020 sessions not verified.",
+ "estimator_self_test": {
+  "trials": 40,
+  "paint_bias_median": -0.0206,
+  "paint_absmax": 0.0573,
+  "paint_detected": 40,
+  "block_bias_median": -0.0074,
+  "block_absmax": 0.0308,
+  "block_detected": 40
+ },
+ "counts": {
+  "before_paint_median": 0,
+  "before_paint_median_and_iqr": 0,
+  "before_block_median": 11,
+  "before_block_median_and_iqr": 11,
+  "after_paint_median": 14,
+  "after_paint_median_and_iqr": 14,
+  "after_block_median": 14,
+  "after_block_median_and_iqr": 14,
+  "before_both_median": 0,
+  "after_both_median": 14,
+  "total": 14
+ },
+ "block_rule_sensitivity_counts": {
+  "0.6": {
+   "after": 14,
+   "before": 11
+  },
+  "0.75": {
+   "after": 14,
+   "before": 11
+  },
+  "1.0": {
+   "after": 14,
+   "before": 11
+  }
+ },
+ "pooled": {
+  "before_paint_excl_DunlopR_before": {
+   "n": 1910,
+   "median": -0.413,
+   "q1": -0.504,
+   "q3": -0.367,
+   "maxabs": -2.596,
+   "p95abs": 1.162,
+   "within_tol": 0.007
+  },
+  "before_block_excl_DunlopR_before": {
+   "n": 845,
+   "median": -0.002,
+   "q1": -0.077,
+   "q3": 0.058,
+   "maxabs": -0.999,
+   "p95abs": 0.454,
+   "within_tol": 0.773
+  },
+  "after_paint_excl_DunlopR_before": {
+   "n": 1990,
+   "median": -0.002,
+   "q1": -0.012,
+   "q3": 0.006,
+   "maxabs": -0.814,
+   "p95abs": 0.03,
+   "within_tol": 0.999
+  },
+  "after_block_excl_DunlopR_before": {
+   "n": 880,
+   "median": 0.014,
+   "q1": -0.016,
+   "q3": 0.05,
+   "maxabs": 0.274,
+   "p95abs": 0.128,
+   "within_tol": 0.969
+  }
+ },
+ "kerbs": {
+  "k1": {
+   "side": "left",
+   "sections": 160,
+   "station_range": [
+    1417.75,
+    1497.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 97,
+    "block-fit-rejected": 3
+   },
+   "truth_paint_n": 160,
+   "truth_block_n": 60,
+   "before": {
+    "paint": {
+     "n": 160,
+     "median": -0.356,
+     "q1": -0.419,
+     "q3": -0.32,
+     "maxabs": -0.653,
+     "p95abs": 0.631,
+     "within_tol": 0.006
+    },
+    "block": {
+     "n": 60,
+     "median": 0.007,
+     "q1": -0.03,
+     "q3": 0.056,
+     "maxabs": 0.175,
+     "p95abs": 0.124,
+     "within_tol": 0.983
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 160,
+     "median": -0.006,
+     "q1": -0.016,
+     "q3": 0.002,
+     "maxabs": -0.038,
+     "p95abs": 0.03,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 60,
+     "median": 0.012,
+     "q1": -0.007,
+     "q3": 0.036,
+     "maxabs": 0.274,
+     "p95abs": 0.111,
+     "within_tol": 0.983
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 60,
+    "median": 0.374,
+    "q1": 0.345,
+    "q3": 0.422,
+    "maxabs": 0.678,
+    "p95abs": 0.496,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9467,
+   "min_cos_before": 0.9505,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 58,
+      "median": 0.011,
+      "q1": -0.008,
+      "q3": 0.034,
+      "maxabs": 0.115,
+      "p95abs": 0.078,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 58,
+      "median": 0.007,
+      "q1": -0.03,
+      "q3": 0.054,
+      "maxabs": 0.132,
+      "p95abs": 0.12,
+      "within_tol": 1.0
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 60,
+      "median": 0.012,
+      "q1": -0.007,
+      "q3": 0.036,
+      "maxabs": 0.274,
+      "p95abs": 0.111,
+      "within_tol": 0.983
+     },
+     "before": {
+      "n": 60,
+      "median": 0.007,
+      "q1": -0.03,
+      "q3": 0.056,
+      "maxabs": 0.175,
+      "p95abs": 0.124,
+      "within_tol": 0.983
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 60,
+      "median": 0.012,
+      "q1": -0.007,
+      "q3": 0.036,
+      "maxabs": 0.274,
+      "p95abs": 0.111,
+      "within_tol": 0.983
+     },
+     "before": {
+      "n": 60,
+      "median": 0.007,
+      "q1": -0.03,
+      "q3": 0.056,
+      "maxabs": 0.175,
+      "p95abs": 0.124,
+      "within_tol": 0.983
+     }
+    }
+   }
+  },
+  "k3": {
+   "side": "left",
+   "sections": 155,
+   "station_range": [
+    2104.75,
+    2181.75
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 82,
+    "block-fit-rejected": 2
+   },
+   "truth_paint_n": 155,
+   "truth_block_n": 71,
+   "before": {
+    "paint": {
+     "n": 137,
+     "median": -0.406,
+     "q1": -0.448,
+     "q3": -0.382,
+     "maxabs": -0.544,
+     "p95abs": 0.506,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 64,
+     "median": 0.041,
+     "q1": -0.0,
+     "q3": 0.083,
+     "maxabs": 0.277,
+     "p95abs": 0.16,
+     "within_tol": 0.906
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 146,
+     "median": -0.006,
+     "q1": -0.014,
+     "q3": 0.004,
+     "maxabs": -0.048,
+     "p95abs": 0.027,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 67,
+     "median": 0.015,
+     "q1": -0.008,
+     "q3": 0.042,
+     "maxabs": 0.18,
+     "p95abs": 0.113,
+     "within_tol": 0.985
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 71,
+    "median": 0.433,
+    "q1": 0.379,
+    "q3": 0.482,
+    "maxabs": 0.69,
+    "p95abs": 0.59,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.8833,
+   "min_cos_before": 0.8776,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 65,
+      "median": 0.015,
+      "q1": -0.01,
+      "q3": 0.037,
+      "maxabs": 0.124,
+      "p95abs": 0.099,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 62,
+      "median": 0.039,
+      "q1": -0.002,
+      "q3": 0.077,
+      "maxabs": 0.2,
+      "p95abs": 0.156,
+      "within_tol": 0.935
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 67,
+      "median": 0.015,
+      "q1": -0.008,
+      "q3": 0.042,
+      "maxabs": 0.18,
+      "p95abs": 0.113,
+      "within_tol": 0.985
+     },
+     "before": {
+      "n": 64,
+      "median": 0.041,
+      "q1": -0.0,
+      "q3": 0.083,
+      "maxabs": 0.277,
+      "p95abs": 0.16,
+      "within_tol": 0.906
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 67,
+      "median": 0.015,
+      "q1": -0.008,
+      "q3": 0.042,
+      "maxabs": 0.18,
+      "p95abs": 0.113,
+      "within_tol": 0.985
+     },
+     "before": {
+      "n": 64,
+      "median": 0.041,
+      "q1": -0.0,
+      "q3": 0.083,
+      "maxabs": 0.277,
+      "p95abs": 0.16,
+      "within_tol": 0.906
+     }
+    }
+   }
+  },
+  "k7": {
+   "side": "left",
+   "sections": 131,
+   "station_range": [
+    3022.25,
+    3087.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 77,
+    "block-fit-rejected": 3
+   },
+   "truth_paint_n": 131,
+   "truth_block_n": 51,
+   "before": {
+    "paint": {
+     "n": 130,
+     "median": -0.452,
+     "q1": -0.503,
+     "q3": -0.406,
+     "maxabs": -0.693,
+     "p95abs": 0.678,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 51,
+     "median": -0.042,
+     "q1": -0.066,
+     "q3": 0.002,
+     "maxabs": -0.151,
+     "p95abs": 0.126,
+     "within_tol": 0.98
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 130,
+     "median": -0.001,
+     "q1": -0.008,
+     "q3": 0.008,
+     "maxabs": 0.069,
+     "p95abs": 0.026,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 51,
+     "median": -0.011,
+     "q1": -0.031,
+     "q3": 0.016,
+     "maxabs": 0.197,
+     "p95abs": 0.108,
+     "within_tol": 0.98
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 51,
+    "median": 0.388,
+    "q1": 0.361,
+    "q3": 0.438,
+    "maxabs": 0.672,
+    "p95abs": 0.499,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9673,
+   "min_cos_before": 0.9464,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 50,
+      "median": -0.012,
+      "q1": -0.031,
+      "q3": 0.014,
+      "maxabs": -0.111,
+      "p95abs": 0.099,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 50,
+      "median": -0.042,
+      "q1": -0.066,
+      "q3": -0.003,
+      "maxabs": -0.151,
+      "p95abs": 0.122,
+      "within_tol": 0.98
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 51,
+      "median": -0.011,
+      "q1": -0.031,
+      "q3": 0.016,
+      "maxabs": 0.197,
+      "p95abs": 0.108,
+      "within_tol": 0.98
+     },
+     "before": {
+      "n": 51,
+      "median": -0.042,
+      "q1": -0.066,
+      "q3": 0.002,
+      "maxabs": -0.151,
+      "p95abs": 0.126,
+      "within_tol": 0.98
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 51,
+      "median": -0.011,
+      "q1": -0.031,
+      "q3": 0.016,
+      "maxabs": 0.197,
+      "p95abs": 0.108,
+      "within_tol": 0.98
+     },
+     "before": {
+      "n": 51,
+      "median": -0.042,
+      "q1": -0.066,
+      "q3": 0.002,
+      "maxabs": -0.151,
+      "p95abs": 0.126,
+      "within_tol": 0.98
+     }
+    }
+   }
+  },
+  "k9": {
+   "side": "left",
+   "sections": 205,
+   "station_range": [
+    3352.25,
+    3454.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 106,
+    "block-fit-rejected": 8,
+    "red-is-outer-row": 1
+   },
+   "truth_paint_n": 205,
+   "truth_block_n": 90,
+   "before": {
+    "paint": {
+     "n": 204,
+     "median": -0.347,
+     "q1": -0.366,
+     "q3": -0.322,
+     "maxabs": -0.727,
+     "p95abs": 0.428,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 90,
+     "median": 0.047,
+     "q1": 0.0,
+     "q3": 0.085,
+     "maxabs": 0.335,
+     "p95abs": 0.171,
+     "within_tol": 0.911
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 205,
+     "median": 0.001,
+     "q1": -0.009,
+     "q3": 0.007,
+     "maxabs": 0.048,
+     "p95abs": 0.029,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 90,
+     "median": 0.001,
+     "q1": -0.021,
+     "q3": 0.025,
+     "maxabs": 0.249,
+     "p95abs": 0.1,
+     "within_tol": 0.978
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 91,
+    "median": 0.4,
+    "q1": 0.368,
+    "q3": 0.436,
+    "maxabs": 0.935,
+    "p95abs": 0.527,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.994,
+   "min_cos_before": 0.9682,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 89,
+      "median": 0.0,
+      "q1": -0.021,
+      "q3": 0.024,
+      "maxabs": 0.207,
+      "p95abs": 0.091,
+      "within_tol": 0.989
+     },
+     "before": {
+      "n": 89,
+      "median": 0.046,
+      "q1": -0.001,
+      "q3": 0.081,
+      "maxabs": 0.248,
+      "p95abs": 0.164,
+      "within_tol": 0.921
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 90,
+      "median": 0.001,
+      "q1": -0.021,
+      "q3": 0.025,
+      "maxabs": 0.249,
+      "p95abs": 0.1,
+      "within_tol": 0.978
+     },
+     "before": {
+      "n": 90,
+      "median": 0.047,
+      "q1": 0.0,
+      "q3": 0.085,
+      "maxabs": 0.335,
+      "p95abs": 0.171,
+      "within_tol": 0.911
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 91,
+      "median": 0.002,
+      "q1": -0.021,
+      "q3": 0.028,
+      "maxabs": 0.55,
+      "p95abs": 0.104,
+      "within_tol": 0.967
+     },
+     "before": {
+      "n": 91,
+      "median": 0.047,
+      "q1": 0.001,
+      "q3": 0.087,
+      "maxabs": 0.612,
+      "p95abs": 0.181,
+      "within_tol": 0.901
+     }
+    }
+   }
+  },
+  "k10": {
+   "side": "left",
+   "sections": 119,
+   "station_range": [
+    3541.75,
+    3600.75
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 72,
+    "block-fit-rejected": 3
+   },
+   "truth_paint_n": 119,
+   "truth_block_n": 44,
+   "before": {
+    "paint": {
+     "n": 117,
+     "median": -0.391,
+     "q1": -0.447,
+     "q3": -0.36,
+     "maxabs": -0.639,
+     "p95abs": 0.599,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 44,
+     "median": 0.037,
+     "q1": 0.003,
+     "q3": 0.07,
+     "maxabs": 0.139,
+     "p95abs": 0.128,
+     "within_tol": 1.0
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 117,
+     "median": -0.004,
+     "q1": -0.011,
+     "q3": 0.005,
+     "maxabs": 0.032,
+     "p95abs": 0.026,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 44,
+     "median": 0.028,
+     "q1": -0.002,
+     "q3": 0.055,
+     "maxabs": 0.169,
+     "p95abs": 0.123,
+     "within_tol": 0.977
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 44,
+    "median": 0.432,
+    "q1": 0.377,
+    "q3": 0.489,
+    "maxabs": 0.706,
+    "p95abs": 0.602,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9523,
+   "min_cos_before": 0.9458,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 41,
+      "median": 0.026,
+      "q1": -0.005,
+      "q3": 0.05,
+      "maxabs": 0.134,
+      "p95abs": 0.098,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 41,
+      "median": 0.03,
+      "q1": -0.003,
+      "q3": 0.064,
+      "maxabs": 0.139,
+      "p95abs": 0.114,
+      "within_tol": 1.0
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 44,
+      "median": 0.028,
+      "q1": -0.002,
+      "q3": 0.055,
+      "maxabs": 0.169,
+      "p95abs": 0.123,
+      "within_tol": 0.977
+     },
+     "before": {
+      "n": 44,
+      "median": 0.037,
+      "q1": 0.003,
+      "q3": 0.07,
+      "maxabs": 0.139,
+      "p95abs": 0.128,
+      "within_tol": 1.0
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 44,
+      "median": 0.028,
+      "q1": -0.002,
+      "q3": 0.055,
+      "maxabs": 0.169,
+      "p95abs": 0.123,
+      "within_tol": 0.977
+     },
+     "before": {
+      "n": 44,
+      "median": 0.037,
+      "q1": 0.003,
+      "q3": 0.07,
+      "maxabs": 0.139,
+      "p95abs": 0.128,
+      "within_tol": 1.0
+     }
+    }
+   }
+  },
+  "k13": {
+   "side": "right",
+   "sections": 113,
+   "station_range": [
+    875.75,
+    931.75
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 42,
+    "block-fit-rejected": 6,
+    "paint-fit-rejected": 1
+   },
+   "truth_paint_n": 112,
+   "truth_block_n": 64,
+   "before": {
+    "paint": {
+     "n": 104,
+     "median": -0.419,
+     "q1": -0.466,
+     "q3": -0.389,
+     "maxabs": -0.559,
+     "p95abs": 0.522,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 64,
+     "median": 0.098,
+     "q1": 0.027,
+     "q3": 0.125,
+     "maxabs": 0.259,
+     "p95abs": 0.193,
+     "within_tol": 0.844
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 104,
+     "median": -0.001,
+     "q1": -0.013,
+     "q3": 0.007,
+     "maxabs": 0.031,
+     "p95abs": 0.022,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 64,
+     "median": 0.067,
+     "q1": 0.014,
+     "q3": 0.1,
+     "maxabs": 0.264,
+     "p95abs": 0.164,
+     "within_tol": 0.922
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 64,
+    "median": 0.507,
+    "q1": 0.407,
+    "q3": 0.569,
+    "maxabs": 0.66,
+    "p95abs": 0.624,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9543,
+   "min_cos_before": 0.9383,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 58,
+      "median": 0.056,
+      "q1": 0.009,
+      "q3": 0.092,
+      "maxabs": 0.187,
+      "p95abs": 0.129,
+      "within_tol": 0.983
+     },
+     "before": {
+      "n": 58,
+      "median": 0.086,
+      "q1": 0.025,
+      "q3": 0.113,
+      "maxabs": 0.192,
+      "p95abs": 0.166,
+      "within_tol": 0.897
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 64,
+      "median": 0.067,
+      "q1": 0.014,
+      "q3": 0.1,
+      "maxabs": 0.264,
+      "p95abs": 0.164,
+      "within_tol": 0.922
+     },
+     "before": {
+      "n": 64,
+      "median": 0.098,
+      "q1": 0.027,
+      "q3": 0.125,
+      "maxabs": 0.259,
+      "p95abs": 0.193,
+      "within_tol": 0.844
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 64,
+      "median": 0.067,
+      "q1": 0.014,
+      "q3": 0.1,
+      "maxabs": 0.264,
+      "p95abs": 0.164,
+      "within_tol": 0.922
+     },
+     "before": {
+      "n": 64,
+      "median": 0.098,
+      "q1": 0.027,
+      "q3": 0.125,
+      "maxabs": 0.259,
+      "p95abs": 0.193,
+      "within_tol": 0.844
+     }
+    }
+   }
+  },
+  "k15": {
+   "side": "right",
+   "sections": 160,
+   "station_range": [
+    1498.75,
+    1578.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "block-fit-rejected": 14,
+    "no-red-near-paint": 80,
+    "red-is-outer-row": 4,
+    "no-paint": 2
+   },
+   "truth_paint_n": 158,
+   "truth_block_n": 60,
+   "before": {
+    "paint": {
+     "n": 158,
+     "median": -1.028,
+     "q1": -1.196,
+     "q3": -0.846,
+     "maxabs": -2.093,
+     "p95abs": 1.302,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 60,
+     "median": -0.393,
+     "q1": -0.503,
+     "q3": -0.297,
+     "maxabs": -0.871,
+     "p95abs": 0.694,
+     "within_tol": 0.033
+    },
+    "meets_median": {
+     "paint": false,
+     "block": false
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": false
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 158,
+     "median": -0.001,
+     "q1": -0.01,
+     "q3": 0.008,
+     "maxabs": -0.814,
+     "p95abs": 0.029,
+     "within_tol": 0.987
+    },
+    "block": {
+     "n": 60,
+     "median": -0.021,
+     "q1": -0.063,
+     "q3": 0.001,
+     "maxabs": -0.232,
+     "p95abs": 0.152,
+     "within_tol": 0.95
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 64,
+    "median": 0.428,
+    "q1": 0.385,
+    "q3": 0.5,
+    "maxabs": 0.915,
+    "p95abs": 0.828,
+    "within_tol": 0.016
+   },
+   "min_cos_after_paint": 0.9978,
+   "min_cos_before": 0.8317,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 58,
+      "median": -0.023,
+      "q1": -0.067,
+      "q3": -0.001,
+      "maxabs": -0.232,
+      "p95abs": 0.112,
+      "within_tol": 0.966
+     },
+     "before": {
+      "n": 58,
+      "median": -0.399,
+      "q1": -0.507,
+      "q3": -0.297,
+      "maxabs": -0.871,
+      "p95abs": 0.694,
+      "within_tol": 0.034
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 60,
+      "median": -0.021,
+      "q1": -0.063,
+      "q3": 0.001,
+      "maxabs": -0.232,
+      "p95abs": 0.152,
+      "within_tol": 0.95
+     },
+     "before": {
+      "n": 60,
+      "median": -0.393,
+      "q1": -0.503,
+      "q3": -0.297,
+      "maxabs": -0.871,
+      "p95abs": 0.694,
+      "within_tol": 0.033
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 64,
+      "median": -0.019,
+      "q1": -0.061,
+      "q3": 0.014,
+      "maxabs": 0.488,
+      "p95abs": 0.326,
+      "within_tol": 0.891
+     },
+     "before": {
+      "n": 64,
+      "median": -0.381,
+      "q1": -0.501,
+      "q3": -0.286,
+      "maxabs": -0.871,
+      "p95abs": 0.691,
+      "within_tol": 0.062
+     }
+    }
+   }
+  },
+  "k18": {
+   "side": "right",
+   "sections": 159,
+   "station_range": [
+    2423.25,
+    2502.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 84,
+    "block-fit-rejected": 2
+   },
+   "truth_paint_n": 159,
+   "truth_block_n": 73,
+   "before": {
+    "paint": {
+     "n": 159,
+     "median": -0.381,
+     "q1": -0.402,
+     "q3": -0.369,
+     "maxabs": -0.463,
+     "p95abs": 0.437,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 73,
+     "median": 0.009,
+     "q1": -0.023,
+     "q3": 0.044,
+     "maxabs": 0.124,
+     "p95abs": 0.095,
+     "within_tol": 1.0
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 159,
+     "median": -0.003,
+     "q1": -0.013,
+     "q3": 0.006,
+     "maxabs": -0.061,
+     "p95abs": 0.034,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 73,
+     "median": 0.025,
+     "q1": -0.006,
+     "q3": 0.062,
+     "maxabs": 0.099,
+     "p95abs": 0.091,
+     "within_tol": 1.0
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 73,
+    "median": 0.395,
+    "q1": 0.364,
+    "q3": 0.44,
+    "maxabs": 0.521,
+    "p95abs": 0.489,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9916,
+   "min_cos_before": 0.9816,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 73,
+      "median": 0.025,
+      "q1": -0.006,
+      "q3": 0.062,
+      "maxabs": 0.099,
+      "p95abs": 0.091,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 73,
+      "median": 0.009,
+      "q1": -0.023,
+      "q3": 0.044,
+      "maxabs": 0.124,
+      "p95abs": 0.095,
+      "within_tol": 1.0
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 73,
+      "median": 0.025,
+      "q1": -0.006,
+      "q3": 0.062,
+      "maxabs": 0.099,
+      "p95abs": 0.091,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 73,
+      "median": 0.009,
+      "q1": -0.023,
+      "q3": 0.044,
+      "maxabs": 0.124,
+      "p95abs": 0.095,
+      "within_tol": 1.0
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 73,
+      "median": 0.025,
+      "q1": -0.006,
+      "q3": 0.062,
+      "maxabs": 0.099,
+      "p95abs": 0.091,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 73,
+      "median": 0.009,
+      "q1": -0.023,
+      "q3": 0.044,
+      "maxabs": 0.124,
+      "p95abs": 0.095,
+      "within_tol": 1.0
+     }
+    }
+   }
+  },
+  "k19": {
+   "side": "right",
+   "sections": 145,
+   "station_range": [
+    2645.75,
+    2717.75
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 76,
+    "block-fit-rejected": 1
+   },
+   "truth_paint_n": 145,
+   "truth_block_n": 68,
+   "before": {
+    "paint": {
+     "n": 145,
+     "median": -0.432,
+     "q1": -0.451,
+     "q3": -0.409,
+     "maxabs": -1.876,
+     "p95abs": 0.535,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 68,
+     "median": -0.043,
+     "q1": -0.087,
+     "q3": -0.015,
+     "maxabs": -0.999,
+     "p95abs": 0.366,
+     "within_tol": 0.912
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 145,
+     "median": -0.004,
+     "q1": -0.01,
+     "q3": 0.003,
+     "maxabs": -0.033,
+     "p95abs": 0.022,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 68,
+     "median": 0.029,
+     "q1": 0.005,
+     "q3": 0.05,
+     "maxabs": 0.13,
+     "p95abs": 0.086,
+     "within_tol": 1.0
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 68,
+    "median": 0.383,
+    "q1": 0.359,
+    "q3": 0.405,
+    "maxabs": 0.477,
+    "p95abs": 0.449,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9957,
+   "min_cos_before": 0.8799,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 68,
+      "median": 0.029,
+      "q1": 0.005,
+      "q3": 0.05,
+      "maxabs": 0.13,
+      "p95abs": 0.086,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 68,
+      "median": -0.043,
+      "q1": -0.087,
+      "q3": -0.015,
+      "maxabs": -0.999,
+      "p95abs": 0.366,
+      "within_tol": 0.912
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 68,
+      "median": 0.029,
+      "q1": 0.005,
+      "q3": 0.05,
+      "maxabs": 0.13,
+      "p95abs": 0.086,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 68,
+      "median": -0.043,
+      "q1": -0.087,
+      "q3": -0.015,
+      "maxabs": -0.999,
+      "p95abs": 0.366,
+      "within_tol": 0.912
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 68,
+      "median": 0.029,
+      "q1": 0.005,
+      "q3": 0.05,
+      "maxabs": 0.13,
+      "p95abs": 0.086,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 68,
+      "median": -0.043,
+      "q1": -0.087,
+      "q3": -0.015,
+      "maxabs": -0.999,
+      "p95abs": 0.366,
+      "within_tol": 0.912
+     }
+    }
+   }
+  },
+  "k20": {
+   "side": "right",
+   "sections": 114,
+   "station_range": [
+    3086.25,
+    3142.75
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 62,
+    "block-fit-rejected": 4,
+    "red-is-outer-row": 4
+   },
+   "truth_paint_n": 114,
+   "truth_block_n": 44,
+   "before": {
+    "paint": {
+     "n": 113,
+     "median": -0.394,
+     "q1": -0.514,
+     "q3": -0.35,
+     "maxabs": -0.766,
+     "p95abs": 0.742,
+     "within_tol": 0.044
+    },
+    "block": {
+     "n": 44,
+     "median": 0.013,
+     "q1": -0.016,
+     "q3": 0.056,
+     "maxabs": 0.251,
+     "p95abs": 0.144,
+     "within_tol": 0.955
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 113,
+     "median": -0.008,
+     "q1": -0.018,
+     "q3": 0.001,
+     "maxabs": -0.051,
+     "p95abs": 0.038,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 44,
+     "median": 0.006,
+     "q1": -0.035,
+     "q3": 0.025,
+     "maxabs": 0.235,
+     "p95abs": 0.112,
+     "within_tol": 0.955
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 48,
+    "median": 0.428,
+    "q1": 0.368,
+    "q3": 0.505,
+    "maxabs": 0.976,
+    "p95abs": 0.849,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9875,
+   "min_cos_before": 0.9753,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 39,
+      "median": 0.005,
+      "q1": -0.037,
+      "q3": 0.02,
+      "maxabs": -0.114,
+      "p95abs": 0.078,
+      "within_tol": 1.0
+     },
+     "before": {
+      "n": 39,
+      "median": 0.012,
+      "q1": -0.017,
+      "q3": 0.038,
+      "maxabs": 0.151,
+      "p95abs": 0.143,
+      "within_tol": 0.974
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 44,
+      "median": 0.006,
+      "q1": -0.035,
+      "q3": 0.025,
+      "maxabs": 0.235,
+      "p95abs": 0.112,
+      "within_tol": 0.955
+     },
+     "before": {
+      "n": 44,
+      "median": 0.013,
+      "q1": -0.016,
+      "q3": 0.056,
+      "maxabs": 0.251,
+      "p95abs": 0.144,
+      "within_tol": 0.955
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 48,
+      "median": 0.007,
+      "q1": -0.033,
+      "q3": 0.035,
+      "maxabs": 0.276,
+      "p95abs": 0.228,
+      "within_tol": 0.896
+     },
+     "before": {
+      "n": 48,
+      "median": 0.016,
+      "q1": -0.013,
+      "q3": 0.081,
+      "maxabs": 0.262,
+      "p95abs": 0.168,
+      "within_tol": 0.896
+     }
+    }
+   }
+  },
+  "k21": {
+   "side": "right",
+   "sections": 189,
+   "station_range": [
+    3253.75,
+    3347.75
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 92,
+    "block-fit-rejected": 2
+   },
+   "truth_paint_n": 189,
+   "truth_block_n": 95,
+   "before": {
+    "paint": {
+     "n": 189,
+     "median": -0.399,
+     "q1": -0.441,
+     "q3": -0.36,
+     "maxabs": -2.596,
+     "p95abs": 1.442,
+     "within_tol": 0.005
+    },
+    "block": {
+     "n": 95,
+     "median": 0.009,
+     "q1": -0.039,
+     "q3": 0.114,
+     "maxabs": -0.531,
+     "p95abs": 0.25,
+     "within_tol": 0.821
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 189,
+     "median": -0.004,
+     "q1": -0.017,
+     "q3": 0.004,
+     "maxabs": -0.043,
+     "p95abs": 0.035,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 95,
+     "median": 0.031,
+     "q1": 0.001,
+     "q3": 0.07,
+     "maxabs": 0.235,
+     "p95abs": 0.163,
+     "within_tol": 0.937
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 95,
+    "median": 0.405,
+    "q1": 0.362,
+    "q3": 0.481,
+    "maxabs": 0.644,
+    "p95abs": 0.601,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.974,
+   "min_cos_before": 0.9032,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 90,
+      "median": 0.029,
+      "q1": -0.001,
+      "q3": 0.067,
+      "maxabs": 0.194,
+      "p95abs": 0.131,
+      "within_tol": 0.967
+     },
+     "before": {
+      "n": 90,
+      "median": 0.008,
+      "q1": -0.041,
+      "q3": 0.095,
+      "maxabs": -0.531,
+      "p95abs": 0.231,
+      "within_tol": 0.856
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 95,
+      "median": 0.031,
+      "q1": 0.001,
+      "q3": 0.07,
+      "maxabs": 0.235,
+      "p95abs": 0.163,
+      "within_tol": 0.937
+     },
+     "before": {
+      "n": 95,
+      "median": 0.009,
+      "q1": -0.039,
+      "q3": 0.114,
+      "maxabs": -0.531,
+      "p95abs": 0.25,
+      "within_tol": 0.821
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 95,
+      "median": 0.031,
+      "q1": 0.001,
+      "q3": 0.07,
+      "maxabs": 0.235,
+      "p95abs": 0.163,
+      "within_tol": 0.937
+     },
+     "before": {
+      "n": 95,
+      "median": 0.009,
+      "q1": -0.039,
+      "q3": 0.114,
+      "maxabs": -0.531,
+      "p95abs": 0.25,
+      "within_tol": 0.821
+     }
+    }
+   }
+  },
+  "k23": {
+   "side": "right",
+   "sections": 164,
+   "station_range": [
+    3594.75,
+    3676.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 82,
+    "block-fit-rejected": 2
+   },
+   "truth_paint_n": 164,
+   "truth_block_n": 80,
+   "before": {
+    "paint": {
+     "n": 164,
+     "median": -0.952,
+     "q1": -1.131,
+     "q3": -0.748,
+     "maxabs": -1.33,
+     "p95abs": 1.235,
+     "within_tol": 0.0
+    },
+    "block": {
+     "n": 80,
+     "median": -0.329,
+     "q1": -0.407,
+     "q3": -0.278,
+     "maxabs": -0.784,
+     "p95abs": 0.65,
+     "within_tol": 0.025
+    },
+    "meets_median": {
+     "paint": false,
+     "block": false
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": false
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 164,
+     "median": 0.003,
+     "q1": -0.002,
+     "q3": 0.009,
+     "maxabs": 0.027,
+     "p95abs": 0.018,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 80,
+     "median": -0.015,
+     "q1": -0.045,
+     "q3": 0.016,
+     "maxabs": -0.195,
+     "p95abs": 0.129,
+     "within_tol": 0.975
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 80,
+    "median": 0.416,
+    "q1": 0.378,
+    "q3": 0.46,
+    "maxabs": 0.606,
+    "p95abs": 0.534,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9968,
+   "min_cos_before": 0.8863,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 79,
+      "median": -0.015,
+      "q1": -0.045,
+      "q3": 0.015,
+      "maxabs": -0.195,
+      "p95abs": 0.127,
+      "within_tol": 0.975
+     },
+     "before": {
+      "n": 79,
+      "median": -0.33,
+      "q1": -0.414,
+      "q3": -0.282,
+      "maxabs": -0.784,
+      "p95abs": 0.651,
+      "within_tol": 0.025
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 80,
+      "median": -0.015,
+      "q1": -0.045,
+      "q3": 0.016,
+      "maxabs": -0.195,
+      "p95abs": 0.129,
+      "within_tol": 0.975
+     },
+     "before": {
+      "n": 80,
+      "median": -0.329,
+      "q1": -0.407,
+      "q3": -0.278,
+      "maxabs": -0.784,
+      "p95abs": 0.65,
+      "within_tol": 0.025
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 80,
+      "median": -0.015,
+      "q1": -0.045,
+      "q3": 0.016,
+      "maxabs": -0.195,
+      "p95abs": 0.129,
+      "within_tol": 0.975
+     },
+     "before": {
+      "n": 80,
+      "median": -0.329,
+      "q1": -0.407,
+      "q3": -0.278,
+      "maxabs": -0.784,
+      "p95abs": 0.65,
+      "within_tol": 0.025
+     }
+    }
+   }
+  },
+  "k24": {
+   "side": "right",
+   "sections": 135,
+   "station_range": [
+    3825.25,
+    3892.25
+   ],
+   "before_line": "CG kerb inner (geometry.json curbs)",
+   "flags": {
+    "no-red-near-paint": 77,
+    "weak-paint": 1,
+    "block-fit-rejected": 5
+   },
+   "truth_paint_n": 134,
+   "truth_block_n": 52,
+   "before": {
+    "paint": {
+     "n": 130,
+     "median": -0.414,
+     "q1": -0.451,
+     "q3": -0.379,
+     "maxabs": -0.511,
+     "p95abs": 0.503,
+     "within_tol": 0.046
+    },
+    "block": {
+     "n": 52,
+     "median": 0.028,
+     "q1": -0.034,
+     "q3": 0.079,
+     "maxabs": 0.181,
+     "p95abs": 0.162,
+     "within_tol": 0.904
+    },
+    "meets_median": {
+     "paint": false,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": true
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 131,
+     "median": -0.002,
+     "q1": -0.01,
+     "q3": 0.007,
+     "maxabs": -0.042,
+     "p95abs": 0.033,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 52,
+     "median": 0.05,
+     "q1": 0.005,
+     "q3": 0.085,
+     "maxabs": 0.174,
+     "p95abs": 0.142,
+     "within_tol": 0.962
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 52,
+    "median": 0.427,
+    "q1": 0.373,
+    "q3": 0.527,
+    "maxabs": 0.605,
+    "p95abs": 0.593,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.991,
+   "min_cos_before": 0.9745,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 50,
+      "median": 0.048,
+      "q1": 0.004,
+      "q3": 0.078,
+      "maxabs": 0.155,
+      "p95abs": 0.132,
+      "within_tol": 0.98
+     },
+     "before": {
+      "n": 50,
+      "median": 0.023,
+      "q1": -0.035,
+      "q3": 0.077,
+      "maxabs": 0.181,
+      "p95abs": 0.162,
+      "within_tol": 0.92
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 52,
+      "median": 0.05,
+      "q1": 0.005,
+      "q3": 0.085,
+      "maxabs": 0.174,
+      "p95abs": 0.142,
+      "within_tol": 0.962
+     },
+     "before": {
+      "n": 52,
+      "median": 0.028,
+      "q1": -0.034,
+      "q3": 0.079,
+      "maxabs": 0.181,
+      "p95abs": 0.162,
+      "within_tol": 0.904
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 52,
+      "median": 0.05,
+      "q1": 0.005,
+      "q3": 0.085,
+      "maxabs": 0.174,
+      "p95abs": 0.142,
+      "within_tol": 0.962
+     },
+     "before": {
+      "n": 52,
+      "median": 0.028,
+      "q1": -0.034,
+      "q3": 0.079,
+      "maxabs": 0.181,
+      "p95abs": 0.162,
+      "within_tol": 0.904
+     }
+    }
+   }
+  },
+  "kDunlopR": {
+   "side": "right",
+   "sections": 69,
+   "station_range": [
+    2962.75,
+    2996.75
+   ],
+   "before_line": "no kerb in CG; stand-in = CG right road edge",
+   "flags": {
+    "no-red-near-paint": 37
+   },
+   "truth_paint_n": 69,
+   "truth_block_n": 32,
+   "before": {
+    "paint": {
+     "n": 66,
+     "median": -0.166,
+     "q1": -0.501,
+     "q3": -0.029,
+     "maxabs": -1.013,
+     "p95abs": 0.884,
+     "within_tol": 0.485
+    },
+    "block": {
+     "n": 31,
+     "median": 0.383,
+     "q1": 0.268,
+     "q3": 0.467,
+     "maxabs": 0.562,
+     "p95abs": 0.534,
+     "within_tol": 0.097
+    },
+    "meets_median": {
+     "paint": false,
+     "block": false
+    },
+    "meets_median_and_iqr": {
+     "paint": false,
+     "block": false
+    },
+    "note": "No kerb exists in the CG here (missing). Counted as NOT meeting the criterion; the numbers are for the CG right road edge as a stand-in only.",
+    "standin_meets_median": {
+     "paint": false,
+     "block": false
+    }
+   },
+   "after": {
+    "paint": {
+     "n": 69,
+     "median": 0.0,
+     "q1": -0.014,
+     "q3": 0.008,
+     "maxabs": 0.084,
+     "p95abs": 0.041,
+     "within_tol": 1.0
+    },
+    "block": {
+     "n": 32,
+     "median": 0.001,
+     "q1": -0.02,
+     "q3": 0.042,
+     "maxabs": -0.191,
+     "p95abs": 0.087,
+     "within_tol": 0.969
+    },
+    "meets_median": {
+     "paint": true,
+     "block": true
+    },
+    "meets_median_and_iqr": {
+     "paint": true,
+     "block": true
+    }
+   },
+   "strip_measured": {
+    "n": 32,
+    "median": 0.455,
+    "q1": 0.399,
+    "q3": 0.498,
+    "maxabs": 0.575,
+    "p95abs": 0.544,
+    "within_tol": 0.0
+   },
+   "min_cos_after_paint": 0.9341,
+   "min_cos_before": 0.4053,
+   "block_rule_sensitivity": {
+    "0.6": {
+     "after": {
+      "n": 32,
+      "median": 0.001,
+      "q1": -0.02,
+      "q3": 0.042,
+      "maxabs": -0.191,
+      "p95abs": 0.087,
+      "within_tol": 0.969
+     },
+     "before": {
+      "n": 31,
+      "median": 0.383,
+      "q1": 0.268,
+      "q3": 0.467,
+      "maxabs": 0.562,
+      "p95abs": 0.534,
+      "within_tol": 0.097
+     }
+    },
+    "0.75": {
+     "after": {
+      "n": 32,
+      "median": 0.001,
+      "q1": -0.02,
+      "q3": 0.042,
+      "maxabs": -0.191,
+      "p95abs": 0.087,
+      "within_tol": 0.969
+     },
+     "before": {
+      "n": 31,
+      "median": 0.383,
+      "q1": 0.268,
+      "q3": 0.467,
+      "maxabs": 0.562,
+      "p95abs": 0.534,
+      "within_tol": 0.097
+     }
+    },
+    "1.0": {
+     "after": {
+      "n": 32,
+      "median": 0.001,
+      "q1": -0.02,
+      "q3": 0.042,
+      "maxabs": -0.191,
+      "p95abs": 0.087,
+      "within_tol": 0.969
+     },
+     "before": {
+      "n": 31,
+      "median": 0.383,
+      "q1": 0.268,
+      "q3": 0.467,
+      "maxabs": 0.562,
+      "p95abs": 0.534,
+      "within_tol": 0.097
+     }
+    }
+   }
+  }
+ },
+ "images": [
+  "overlay_k15_s156475.png",
+  "overlay_k23_s366625.png",
+  "overlay_kDunlopR_s297625.png"
+ ],
+ "attribution": "Ortho: VIRTUAL SHIZUOKA 2019 LP orthophoto 20 cm, Shizuoka Prefecture, CC BY 4.0 (lines/markers added)",
+ "runtime_s": 60.9
+}

@@ -1,0 +1,242 @@
+{
+ "fuji_aim_01": {
+  "kerbContacts_keys": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "alsoNear",
+   "basis",
+   "bin",
+   "class",
+   "definition",
+   "detector",
+   "eventMinPeak",
+   "events",
+   "id",
+   "insidePass",
+   "kerb",
+   "kerbZones",
+   "kind",
+   "label",
+   "labelRule",
+   "lapMapping",
+   "lapMappingMethod",
+   "laps",
+   "limitations",
+   "loggerToGps",
+   "maxPeak",
+   "mergeGapSeconds",
+   "minPeak",
+   "overlapPadSeconds",
+   "passMarginMeters",
+   "peak",
+   "peakRollRms",
+   "peakUnit",
+   "provenance",
+   "raceId",
+   "registrationForPassWindows",
+   "sessionShiftSeconds",
+   "sha256",
+   "shiftSecondsByLap",
+   "shiftSource",
+   "sideAttribution",
+   "silentMaxPeak",
+   "source",
+   "sourceSha256",
+   "speedRmsKmh",
+   "stationAtPeak",
+   "strengthBins",
+   "strongMinPeak",
+   "t0",
+   "t1",
+   "tPeak",
+   "tc0Ms",
+   "timeBase",
+   "tool",
+   "trackId",
+   "version"
+  ],
+  "kerbContacts_sideLikeKeys": [
+   "insidePass",
+   "sideAttribution"
+  ],
+  "apexKpi_sideLikeKeys": [
+   "wheelPaths"
+  ],
+  "events": 3,
+  "eventsKerbAttributed": 3,
+  "eventsPeakBelow1": 0,
+  "fileBinVsPeakMismatch": [],
+  "eventBinCounts": {
+   "low": 2,
+   "mid": 1,
+   "high": 0
+  },
+  "passLabels": 56,
+  "passClassCounts": {
+   "silent": 51,
+   "mild": 4,
+   "strong": 1
+  },
+  "strongClassShownAsMidBin": 1,
+  "timeBaseShift_kerbContacts_vs_lapMeta": {
+   "1": [
+    0.014,
+    null
+   ],
+   "2": [
+    0.014,
+    null
+   ],
+   "3": [
+    0.014,
+    null
+   ],
+   "4": [
+    0.014,
+    null
+   ]
+  },
+  "apexKpi_absoluteUncertaintyMeters": 0.7,
+  "apexKpi_absoluteUncertaintyReason": "The shipped registration is a road-limit fit: inside the road its cost is flat over 0.5-1 m, and the IMU kerb-contact labels bound the remaining lateral GPS error only to about +-0.4-0.7 m (docs/fuji-apex-kerb-kpi-2026-10-02.md). Kerb lines come from the 2019 orthophoto (georeferencing ~0.2-0.3 m, not verified against 2020). Compare laps at the same corner (delta) first.",
+  "apexKpi_rows": 56,
+  "apexLapTimeMinusTrueMaxS": 0.0,
+  "deltaVsSessionMedian_recomputeMaxAbsErr": 0.05,
+  "lapsPerKerbMin": 4,
+  "lapsPerKerbMax": 4,
+  "cornerNamesContainingLeftRight": {
+   "kDunlopR": "ダンロップ右",
+   "k7": "ダンロップ左"
+  },
+  "gBlockFrontAbsRange": [
+   -0.7,
+   7.08
+  ]
+ },
+ "fuji_aim_2020_07_30": {
+  "kerbContacts_keys": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "alsoNear",
+   "basis",
+   "bin",
+   "class",
+   "definition",
+   "detector",
+   "eventMinPeak",
+   "events",
+   "id",
+   "insidePass",
+   "kerb",
+   "kerbZones",
+   "kind",
+   "label",
+   "labelRule",
+   "lapMapping",
+   "lapMappingMethod",
+   "laps",
+   "limitations",
+   "loggerToGps",
+   "maxPeak",
+   "mergeGapSeconds",
+   "minPeak",
+   "overlapPadSeconds",
+   "passMarginMeters",
+   "peak",
+   "peakRollRms",
+   "peakUnit",
+   "provenance",
+   "raceId",
+   "registrationForPassWindows",
+   "sessionShiftSeconds",
+   "sha256",
+   "shiftSecondsByLap",
+   "shiftSource",
+   "sideAttribution",
+   "silentMaxPeak",
+   "source",
+   "sourceSha256",
+   "speedRmsKmh",
+   "stationAtPeak",
+   "strengthBins",
+   "strongMinPeak",
+   "t0",
+   "t1",
+   "tPeak",
+   "tc0Ms",
+   "timeBase",
+   "tool",
+   "trackId",
+   "version"
+  ],
+  "kerbContacts_sideLikeKeys": [
+   "insidePass",
+   "sideAttribution"
+  ],
+  "apexKpi_sideLikeKeys": [
+   "wheelPaths"
+  ],
+  "events": 41,
+  "eventsKerbAttributed": 39,
+  "eventsPeakBelow1": 0,
+  "fileBinVsPeakMismatch": [],
+  "eventBinCounts": {
+   "low": 23,
+   "mid": 12,
+   "high": 6
+  },
+  "passLabels": 84,
+  "passClassCounts": {
+   "mild": 25,
+   "strong": 17,
+   "silent": 42
+  },
+  "strongClassShownAsMidBin": 11,
+  "timeBaseShift_kerbContacts_vs_lapMeta": {
+   "1": [
+    0.468,
+    0.468
+   ],
+   "2": [
+    0.465,
+    0.465
+   ],
+   "3": [
+    0.49,
+    0.49
+   ],
+   "4": [
+    0.515,
+    0.515
+   ],
+   "5": [
+    0.526,
+    0.526
+   ],
+   "6": [
+    0.524,
+    0.524
+   ]
+  },
+  "apexKpi_absoluteUncertaintyMeters": 0.7,
+  "apexKpi_absoluteUncertaintyReason": "The shipped registration is a road-limit fit: inside the road its cost is flat over 0.5-1 m, and the IMU kerb-contact labels bound the remaining lateral GPS error only to about +-0.4-0.7 m (docs/fuji-apex-kerb-kpi-2026-10-02.md). Kerb lines come from the 2019 orthophoto (georeferencing ~0.2-0.3 m, not verified against 2020). Compare laps at the same corner (delta) first.",
+  "apexKpi_rows": 84,
+  "apexLapTimeMinusTrueMaxS": 0.0,
+  "deltaVsSessionMedian_recomputeMaxAbsErr": 0.1,
+  "lapsPerKerbMin": 6,
+  "lapsPerKerbMax": 6,
+  "cornerNamesContainingLeftRight": {
+   "kDunlopR": "ダンロップ右",
+   "k7": "ダンロップ左"
+  },
+  "gBlockFrontAbsRange": [
+   -1.14,
+   6.35
+  ]
+ }
+}

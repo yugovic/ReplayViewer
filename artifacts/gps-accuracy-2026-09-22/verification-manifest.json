@@ -37,7 +37,7 @@
       ]
     },
     "fuji_aim_2020_07_30": {
-      "registrationSha256": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+      "registrationSha256": "d59f72ad465802b961a3132861a95975461e98a5b49f70f98a838fab636250d3",
       "inputs": [
         {
           "source": "public/data/tracks/fuji/cg_study/geometry.json",
@@ -51,35 +51,83 @@
         },
         {
           "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
-          "sha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+          "sha256": "581fa77eff9e8ff2b0b25270be231c24138d50c2d870a0d4be6cc9ff40662078",
           "matchesRegistration": true
         },
         {
           "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
-          "sha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+          "sha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
           "matchesRegistration": true
         },
         {
           "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
-          "sha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+          "sha256": "fb0534fdc10cc554bbc4c7d6ae91749a947ab52e8905451cf95b0d9b4f53736b",
           "matchesRegistration": true
         },
         {
           "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
-          "sha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+          "sha256": "24bce3cb32336af2b79de5ffa646465232ea5d86e9b2325b47cbee0c40c41164",
           "matchesRegistration": true
         },
         {
           "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
-          "sha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+          "sha256": "0ba563ac35814fc76b630f0bf5d463962a313962aad53fa317a00579890e863d",
           "matchesRegistration": true
         },
         {
           "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
-          "sha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+          "sha256": "f289ac394c3ad28824fc4024ba118c9cc52021651d16feccb5f243bbce937173",
           "matchesRegistration": true
         }
-      ]
+      ],
+      "note": {
+        "date": "2026-10-02",
+        "change": "GPS-REG-08 iteration 2: 7/30 logger-clock channels (aps, brake, steer, gear, accx, accy) re-timed onto the GPS time base with per-lap delays 0.497-0.583 s estimated against the 7/29 reference (median over five channel pairs of the lag relative to the 7/29 median of the same pair) and re-sampled from the native XRK series (pipeline/convert_aim.py replayed on its 10 Hz grid delayed by the shift; scripts/quality/align-fuji-channel-timing.py --apply). Each lap records meta.channel_time_alignment (method xrk_native_resample_v1).",
+        "unchanged": "t, lat, lng, speed, dist, lap boundaries and all other meta are bit-identical; the re-run register_gps_to_track.py output equals the previous file except laps[].dataSha256 (offsets, jackknife, beyond-limit KPIs and session offset unchanged).",
+        "previousRegistrationSha256": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+        "iteration1RegistrationSha256": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+        "iteration1": "per-lap delays 0.465-0.526 s (IMU lag set to 0), linear interpolation of the 10 Hz CSV; superseded: under-corrected by 0.02-0.08 s against the 7/29 relation and lowered accx/accy peaks by up to 13 %",
+        "changedInputs": [
+          {
+            "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+            "previousSha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+            "iteration1Sha256": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+            "sha256": "581fa77eff9e8ff2b0b25270be231c24138d50c2d870a0d4be6cc9ff40662078"
+          },
+          {
+            "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+            "previousSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+            "iteration1Sha256": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+            "sha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500"
+          },
+          {
+            "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+            "previousSha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+            "iteration1Sha256": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+            "sha256": "fb0534fdc10cc554bbc4c7d6ae91749a947ab52e8905451cf95b0d9b4f53736b"
+          },
+          {
+            "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+            "previousSha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+            "iteration1Sha256": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+            "sha256": "24bce3cb32336af2b79de5ffa646465232ea5d86e9b2325b47cbee0c40c41164"
+          },
+          {
+            "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+            "previousSha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+            "iteration1Sha256": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+            "sha256": "0ba563ac35814fc76b630f0bf5d463962a313962aad53fa317a00579890e863d"
+          },
+          {
+            "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+            "previousSha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+            "iteration1Sha256": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+            "sha256": "f289ac394c3ad28824fc4024ba118c9cc52021651d16feccb5f243bbce937173"
+          }
+        ],
+        "evidence": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/align-report.json",
+        "iteration1Evidence": "artifacts/improvement-eval-2026-10-02/after/channel-timing/align-report.json"
+      }
     }
   },
   "allInputHashesMatch": true,

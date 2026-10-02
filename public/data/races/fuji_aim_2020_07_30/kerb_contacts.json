@@ -1,0 +1,1278 @@
+{
+ "version": 2,
+ "kind": "kerb-contacts",
+ "raceId": "fuji_aim_2020_07_30",
+ "trackId": "fuji",
+ "definition": "Kerb-contact labels from the logger internal IMU: roll-rate high-pass (>~3 Hz) RMS over 0.2 s; events = RMS > 1.0 deg/s merged across < 0.3 s gaps. Each event is attributed to one kerb by the CG station at its RMS peak (inside-kerb pass first; kerb = null when no kerb zone is within 3 m). One label per inside-kerb pass: strong = an event attributed to it has peak >= 1.5, silent = pass peak <= 0.8, otherwise mild. GPS-independent apart from locating the pass/peak.",
+ "strengthBins": [
+  {
+   "id": "low",
+   "label": "弱",
+   "minPeak": 1.0,
+   "maxPeak": 1.5
+  },
+  {
+   "id": "mid",
+   "label": "中",
+   "minPeak": 1.5,
+   "maxPeak": 3.0
+  },
+  {
+   "id": "high",
+   "label": "強",
+   "minPeak": 3.0,
+   "maxPeak": null
+  }
+ ],
+ "peakUnit": "deg/s (roll-rate high-pass RMS, 0.2 s window)",
+ "sideAttribution": "not published: the 4-wheel ECU speed-ripple ratio is confounded with the corner direction (0.82 in right-handers, 1.31 in left-handers without kerb contact, 7/30); an inside-kerb label is read as \"the inner wheels hit\", never as a measured side",
+ "timeBase": {
+  "basis": "lap t (s) of the shipped lap JSON = GPS time base = viewer playback clock (0 = first GPS sample of the lap)",
+  "loggerToGps": "t = (logger_ms - tc0Ms) / 1000 + shiftSeconds",
+  "shiftSecondsByLap": {
+   "1": 0.497,
+   "2": 0.523,
+   "3": 0.523,
+   "4": 0.555,
+   "5": 0.565,
+   "6": 0.583
+  },
+  "shiftSource": "meta.channel_time_alignment.shiftSeconds (scripts/quality/align-fuji-channel-timing.py; xrk_native_resample_v1, ref-0729-multipair-v2)",
+  "evaluationSessionShiftSeconds": 0.507,
+  "evaluationSessionShiftUse": "gyro-vs-GPS session estimate, used only for the attributedSessionShift / overlap...SessionShift evaluation variants (label_changes.json); not applied to the published events",
+  "lapMapping": {
+   "1": {
+    "tc0Ms": 162200.0,
+    "speedRmsKmh": 0.00029
+   },
+   "2": {
+    "tc0Ms": 295800.0,
+    "speedRmsKmh": 0.00029
+   },
+   "3": {
+    "tc0Ms": 427600.0,
+    "speedRmsKmh": 0.00029
+   },
+   "4": {
+    "tc0Ms": 559400.0,
+    "speedRmsKmh": 0.00029
+   },
+   "5": {
+    "tc0Ms": 690200.0,
+    "speedRmsKmh": 0.00028
+   },
+   "6": {
+    "tc0Ms": 821000.0,
+    "speedRmsKmh": 0.00029
+   }
+  },
+  "lapMappingMethod": "XRK GPS speed vs shipped lap speed (scripts/quality/apex_kpi/xrk_map.py)"
+ },
+ "labelRule": {
+  "eventMinPeak": 1.0,
+  "strongMinPeak": 1.5,
+  "silentMaxPeak": 0.8,
+  "mergeGapSeconds": 0.3,
+  "overlapPadSeconds": 0.2,
+  "passMarginMeters": 3.0
+ },
+ "provenance": {
+  "tool": "scripts/quality/apex_kpi/export_inputs.py",
+  "detector": "scripts/quality/apex_kpi/eval_v2.py detector() (roll rate only; its wheel-speed side output is discarded)",
+  "source": "AiM XRK of the session (local file, not published); IMU via scripts/quality/apex_kpi/xrk_extract.py",
+  "sourceSha256": "5dc8ece620a19ca2c89fac4064aed373511d2f516bb1a27f75223eec203d455a",
+  "registrationForPassWindows": {
+   "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+   "sha256": "d59f72ad465802b961a3132861a95975461e98a5b49f70f98a838fab636250d3"
+  },
+  "kerbZones": {
+   "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+   "sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+  },
+  "laps": {
+   "1": {
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+    "sha256": "581fa77eff9e8ff2b0b25270be231c24138d50c2d870a0d4be6cc9ff40662078"
+   },
+   "2": {
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+    "sha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500"
+   },
+   "3": {
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+    "sha256": "fb0534fdc10cc554bbc4c7d6ae91749a947ab52e8905451cf95b0d9b4f53736b"
+   },
+   "4": {
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+    "sha256": "24bce3cb32336af2b79de5ffa646465232ea5d86e9b2325b47cbee0c40c41164"
+   },
+   "5": {
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+    "sha256": "0ba563ac35814fc76b630f0bf5d463962a313962aad53fa317a00579890e863d"
+   },
+   "6": {
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+    "sha256": "f289ac394c3ad28824fc4024ba118c9cc52021651d16feccb5f243bbce937173"
+   }
+  }
+ },
+ "limitations": [
+  "Strength depends on speed and sampling (aliasing); thresholds were set on the 7/30 data.",
+  "Non-kerb vibration (brake lock, bumps) is not excluded; events with kerb = null are not attributed to a kerb.",
+  "Where an inside and an outside kerb share stations, the label cannot tell which one was hit.",
+  "7/29 (wet) has very few strong contacts."
+ ],
+ "laps": {
+  "1": [
+   {
+    "kerb": "k13",
+    "class": "mild",
+    "peakRollRms": 1.37,
+    "bin": "low",
+    "t0": 15.76,
+    "t1": 18.34
+   },
+   {
+    "kerb": "k1",
+    "class": "strong",
+    "peakRollRms": 2.61,
+    "bin": "mid",
+    "t0": 31.96,
+    "t1": 34.32
+   },
+   {
+    "kerb": "k15",
+    "class": "strong",
+    "peakRollRms": 1.93,
+    "bin": "mid",
+    "t0": 34.16,
+    "t1": 36.68
+   },
+   {
+    "kerb": "k3",
+    "class": "strong",
+    "peakRollRms": 2.42,
+    "bin": "mid",
+    "t0": 51.2,
+    "t1": 53.88
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.72,
+    "bin": null,
+    "t0": 61.54,
+    "t1": 63.76
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.55,
+    "bin": null,
+    "t0": 67.0,
+    "t1": 68.72
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "mild",
+    "peakRollRms": 1.02,
+    "bin": "low",
+    "t0": 74.98,
+    "t1": 77.34
+   },
+   {
+    "kerb": "k7",
+    "class": "silent",
+    "peakRollRms": 0.38,
+    "bin": null,
+    "t0": 78.36,
+    "t1": 81.9
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.51,
+    "bin": null,
+    "t0": 81.46,
+    "t1": 84.56
+   },
+   {
+    "kerb": "k21",
+    "class": "mild",
+    "peakRollRms": 1.18,
+    "bin": "low",
+    "t0": 88.78,
+    "t1": 92.4
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.44,
+    "bin": null,
+    "t0": 92.34,
+    "t1": 95.96
+   },
+   {
+    "kerb": "k10",
+    "class": "silent",
+    "peakRollRms": 0.37,
+    "bin": null,
+    "t0": 99.28,
+    "t1": 102.5
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.32,
+    "bin": null,
+    "t0": 101.92,
+    "t1": 105.38
+   },
+   {
+    "kerb": "k24",
+    "class": "silent",
+    "peakRollRms": 0.79,
+    "bin": null,
+    "t0": 110.98,
+    "t1": 113.6
+   }
+  ],
+  "2": [
+   {
+    "kerb": "k13",
+    "class": "strong",
+    "peakRollRms": 4.47,
+    "bin": "high",
+    "t0": 15.46,
+    "t1": 17.96
+   },
+   {
+    "kerb": "k1",
+    "class": "strong",
+    "peakRollRms": 2.27,
+    "bin": "mid",
+    "t0": 31.44,
+    "t1": 33.78
+   },
+   {
+    "kerb": "k15",
+    "class": "strong",
+    "peakRollRms": 3.06,
+    "bin": "high",
+    "t0": 33.64,
+    "t1": 36.04
+   },
+   {
+    "kerb": "k3",
+    "class": "silent",
+    "peakRollRms": 0.63,
+    "bin": null,
+    "t0": 50.66,
+    "t1": 53.92
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.65,
+    "bin": null,
+    "t0": 61.52,
+    "t1": 63.68
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.59,
+    "bin": null,
+    "t0": 66.9,
+    "t1": 68.58
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "strong",
+    "peakRollRms": 2.06,
+    "bin": "mid",
+    "t0": 75.08,
+    "t1": 77.36
+   },
+   {
+    "kerb": "k7",
+    "class": "strong",
+    "peakRollRms": 2.39,
+    "bin": "mid",
+    "t0": 78.38,
+    "t1": 81.64
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.47,
+    "bin": null,
+    "t0": 81.26,
+    "t1": 83.94
+   },
+   {
+    "kerb": "k21",
+    "class": "strong",
+    "peakRollRms": 1.59,
+    "bin": "mid",
+    "t0": 87.78,
+    "t1": 91.42
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.56,
+    "bin": null,
+    "t0": 91.34,
+    "t1": 94.64
+   },
+   {
+    "kerb": "k10",
+    "class": "mild",
+    "peakRollRms": 4.48,
+    "bin": "low",
+    "t0": 97.72,
+    "t1": 100.36
+   },
+   {
+    "kerb": "k23",
+    "class": "strong",
+    "peakRollRms": 4.48,
+    "bin": "high",
+    "t0": 99.74,
+    "t1": 103.24
+   },
+   {
+    "kerb": "k24",
+    "class": "silent",
+    "peakRollRms": 0.65,
+    "bin": null,
+    "t0": 108.52,
+    "t1": 111.34
+   }
+  ],
+  "3": [
+   {
+    "kerb": "k13",
+    "class": "silent",
+    "peakRollRms": 0.74,
+    "bin": null,
+    "t0": 15.6,
+    "t1": 18.24
+   },
+   {
+    "kerb": "k1",
+    "class": "strong",
+    "peakRollRms": 3.01,
+    "bin": "high",
+    "t0": 31.88,
+    "t1": 34.44
+   },
+   {
+    "kerb": "k15",
+    "class": "silent",
+    "peakRollRms": 0.6,
+    "bin": null,
+    "t0": 34.28,
+    "t1": 36.76
+   },
+   {
+    "kerb": "k3",
+    "class": "mild",
+    "peakRollRms": 1.15,
+    "bin": "low",
+    "t0": 50.86,
+    "t1": 53.72
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.56,
+    "bin": null,
+    "t0": 61.2,
+    "t1": 63.36
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.55,
+    "bin": null,
+    "t0": 66.58,
+    "t1": 68.28
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "silent",
+    "peakRollRms": 0.71,
+    "bin": null,
+    "t0": 74.66,
+    "t1": 77.32
+   },
+   {
+    "kerb": "k7",
+    "class": "silent",
+    "peakRollRms": 0.42,
+    "bin": null,
+    "t0": 78.44,
+    "t1": 81.86
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.63,
+    "bin": null,
+    "t0": 81.48,
+    "t1": 84.12
+   },
+   {
+    "kerb": "k21",
+    "class": "mild",
+    "peakRollRms": 0.84,
+    "bin": null,
+    "t0": 88.02,
+    "t1": 91.66
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.75,
+    "bin": null,
+    "t0": 91.6,
+    "t1": 94.92
+   },
+   {
+    "kerb": "k10",
+    "class": "silent",
+    "peakRollRms": 0.4,
+    "bin": null,
+    "t0": 97.98,
+    "t1": 100.74
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.26,
+    "bin": null,
+    "t0": 100.16,
+    "t1": 103.56
+   },
+   {
+    "kerb": "k24",
+    "class": "mild",
+    "peakRollRms": 1.21,
+    "bin": "low",
+    "t0": 108.94,
+    "t1": 111.5
+   }
+  ],
+  "4": [
+   {
+    "kerb": "k13",
+    "class": "strong",
+    "peakRollRms": 8.38,
+    "bin": "high",
+    "t0": 16.02,
+    "t1": 18.54
+   },
+   {
+    "kerb": "k1",
+    "class": "strong",
+    "peakRollRms": 2.73,
+    "bin": "mid",
+    "t0": 32.22,
+    "t1": 34.6
+   },
+   {
+    "kerb": "k15",
+    "class": "mild",
+    "peakRollRms": 1.23,
+    "bin": "low",
+    "t0": 34.46,
+    "t1": 36.88
+   },
+   {
+    "kerb": "k3",
+    "class": "silent",
+    "peakRollRms": 0.42,
+    "bin": null,
+    "t0": 50.92,
+    "t1": 53.68
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.45,
+    "bin": null,
+    "t0": 61.08,
+    "t1": 63.22
+   },
+   {
+    "kerb": "k19",
+    "class": "mild",
+    "peakRollRms": 1.07,
+    "bin": "low",
+    "t0": 66.42,
+    "t1": 68.16
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "mild",
+    "peakRollRms": 0.97,
+    "bin": null,
+    "t0": 74.52,
+    "t1": 76.78
+   },
+   {
+    "kerb": "k7",
+    "class": "mild",
+    "peakRollRms": 1.13,
+    "bin": "low",
+    "t0": 77.8,
+    "t1": 81.04
+   },
+   {
+    "kerb": "k20",
+    "class": "mild",
+    "peakRollRms": 0.89,
+    "bin": null,
+    "t0": 80.68,
+    "t1": 83.22
+   },
+   {
+    "kerb": "k21",
+    "class": "silent",
+    "peakRollRms": 0.63,
+    "bin": null,
+    "t0": 87.02,
+    "t1": 90.76
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.45,
+    "bin": null,
+    "t0": 90.7,
+    "t1": 94.02
+   },
+   {
+    "kerb": "k10",
+    "class": "silent",
+    "peakRollRms": 0.78,
+    "bin": null,
+    "t0": 97.02,
+    "t1": 99.88
+   },
+   {
+    "kerb": "k23",
+    "class": "silent",
+    "peakRollRms": 0.45,
+    "bin": null,
+    "t0": 99.3,
+    "t1": 102.64
+   },
+   {
+    "kerb": "k24",
+    "class": "mild",
+    "peakRollRms": 0.81,
+    "bin": null,
+    "t0": 107.88,
+    "t1": 110.54
+   }
+  ],
+  "5": [
+   {
+    "kerb": "k13",
+    "class": "mild",
+    "peakRollRms": 0.9,
+    "bin": null,
+    "t0": 16.02,
+    "t1": 18.66
+   },
+   {
+    "kerb": "k1",
+    "class": "mild",
+    "peakRollRms": 1.12,
+    "bin": "low",
+    "t0": 32.26,
+    "t1": 34.62
+   },
+   {
+    "kerb": "k15",
+    "class": "mild",
+    "peakRollRms": 0.88,
+    "bin": null,
+    "t0": 34.48,
+    "t1": 36.84
+   },
+   {
+    "kerb": "k3",
+    "class": "mild",
+    "peakRollRms": 0.83,
+    "bin": null,
+    "t0": 50.96,
+    "t1": 53.68
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.6,
+    "bin": null,
+    "t0": 61.14,
+    "t1": 63.28
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.65,
+    "bin": null,
+    "t0": 66.5,
+    "t1": 68.2
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "mild",
+    "peakRollRms": 0.84,
+    "bin": null,
+    "t0": 74.48,
+    "t1": 76.76
+   },
+   {
+    "kerb": "k7",
+    "class": "strong",
+    "peakRollRms": 2.94,
+    "bin": "mid",
+    "t0": 77.84,
+    "t1": 81.14
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.46,
+    "bin": null,
+    "t0": 80.78,
+    "t1": 83.38
+   },
+   {
+    "kerb": "k21",
+    "class": "mild",
+    "peakRollRms": 0.95,
+    "bin": null,
+    "t0": 87.22,
+    "t1": 90.78
+   },
+   {
+    "kerb": "k9",
+    "class": "silent",
+    "peakRollRms": 0.78,
+    "bin": null,
+    "t0": 90.72,
+    "t1": 94.0
+   },
+   {
+    "kerb": "k10",
+    "class": "strong",
+    "peakRollRms": 1.83,
+    "bin": "mid",
+    "t0": 97.16,
+    "t1": 99.74
+   },
+   {
+    "kerb": "k23",
+    "class": "mild",
+    "peakRollRms": 0.82,
+    "bin": null,
+    "t0": 99.14,
+    "t1": 102.54
+   },
+   {
+    "kerb": "k24",
+    "class": "silent",
+    "peakRollRms": 0.79,
+    "bin": null,
+    "t0": 107.84,
+    "t1": 110.58
+   }
+  ],
+  "6": [
+   {
+    "kerb": "k13",
+    "class": "silent",
+    "peakRollRms": 0.75,
+    "bin": null,
+    "t0": 15.6,
+    "t1": 18.4
+   },
+   {
+    "kerb": "k1",
+    "class": "strong",
+    "peakRollRms": 2.67,
+    "bin": "mid",
+    "t0": 32.02,
+    "t1": 34.42
+   },
+   {
+    "kerb": "k15",
+    "class": "silent",
+    "peakRollRms": 0.74,
+    "bin": null,
+    "t0": 34.28,
+    "t1": 36.64
+   },
+   {
+    "kerb": "k3",
+    "class": "mild",
+    "peakRollRms": 1.25,
+    "bin": "low",
+    "t0": 50.7,
+    "t1": 53.48
+   },
+   {
+    "kerb": "k18",
+    "class": "silent",
+    "peakRollRms": 0.5,
+    "bin": null,
+    "t0": 60.9,
+    "t1": 63.04
+   },
+   {
+    "kerb": "k19",
+    "class": "silent",
+    "peakRollRms": 0.62,
+    "bin": null,
+    "t0": 66.26,
+    "t1": 68.0
+   },
+   {
+    "kerb": "kDunlopR",
+    "class": "mild",
+    "peakRollRms": 1.16,
+    "bin": "low",
+    "t0": 74.3,
+    "t1": 76.62
+   },
+   {
+    "kerb": "k7",
+    "class": "silent",
+    "peakRollRms": 0.42,
+    "bin": null,
+    "t0": 77.66,
+    "t1": 80.96
+   },
+   {
+    "kerb": "k20",
+    "class": "silent",
+    "peakRollRms": 0.57,
+    "bin": null,
+    "t0": 80.62,
+    "t1": 83.14
+   },
+   {
+    "kerb": "k21",
+    "class": "mild",
+    "peakRollRms": 1.0,
+    "bin": null,
+    "t0": 86.98,
+    "t1": 90.5
+   },
+   {
+    "kerb": "k9",
+    "class": "mild",
+    "peakRollRms": 0.8,
+    "bin": null,
+    "t0": 90.44,
+    "t1": 93.72
+   },
+   {
+    "kerb": "k10",
+    "class": "strong",
+    "peakRollRms": 3.01,
+    "bin": "high",
+    "t0": 96.84,
+    "t1": 99.42
+   },
+   {
+    "kerb": "k23",
+    "class": "mild",
+    "peakRollRms": 2.15,
+    "bin": null,
+    "t0": 98.82,
+    "t1": 102.26
+   },
+   {
+    "kerb": "k24",
+    "class": "mild",
+    "peakRollRms": 1.0,
+    "bin": "low",
+    "t0": 107.66,
+    "t1": 110.2
+   }
+  ]
+ },
+ "events": {
+  "1": [
+   {
+    "t0": 17.16,
+    "t1": 17.54,
+    "tPeak": 17.4,
+    "peak": 1.37,
+    "bin": "low",
+    "kerb": "k13",
+    "insidePass": true,
+    "stationAtPeak": 914.6,
+    "alsoNear": []
+   },
+   {
+    "t0": 32.9,
+    "t1": 34.34,
+    "tPeak": 33.16,
+    "peak": 2.61,
+    "bin": "mid",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1461.6,
+    "alsoNear": []
+   },
+   {
+    "t0": 34.8,
+    "t1": 36.09,
+    "tPeak": 35.02,
+    "peak": 1.93,
+    "bin": "mid",
+    "kerb": "k15",
+    "insidePass": true,
+    "stationAtPeak": 1523.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 52.64,
+    "t1": 53.08,
+    "tPeak": 52.8,
+    "peak": 2.42,
+    "bin": "mid",
+    "kerb": "k3",
+    "insidePass": true,
+    "stationAtPeak": 2146.0,
+    "alsoNear": []
+   },
+   {
+    "t0": 76.6,
+    "t1": 76.6,
+    "tPeak": 76.6,
+    "peak": 1.02,
+    "bin": "low",
+    "kerb": "kDunlopR",
+    "insidePass": true,
+    "stationAtPeak": 2986.0,
+    "alsoNear": []
+   },
+   {
+    "t0": 90.5,
+    "t1": 90.68,
+    "tPeak": 90.64,
+    "peak": 1.18,
+    "bin": "low",
+    "kerb": "k21",
+    "insidePass": true,
+    "stationAtPeak": 3304.4,
+    "alsoNear": []
+   },
+   {
+    "t0": 108.1,
+    "t1": 108.6,
+    "tPeak": 108.28,
+    "peak": 1.29,
+    "bin": "low",
+    "kerb": "k11",
+    "insidePass": false,
+    "stationAtPeak": 3764.4,
+    "alsoNear": []
+   }
+  ],
+  "2": [
+   {
+    "t0": 16.38,
+    "t1": 16.92,
+    "tPeak": 16.68,
+    "peak": 4.47,
+    "bin": "high",
+    "kerb": "k13",
+    "insidePass": true,
+    "stationAtPeak": 905.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 32.42,
+    "t1": 32.84,
+    "tPeak": 32.68,
+    "peak": 2.27,
+    "bin": "mid",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1462.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 33.9,
+    "t1": 33.92,
+    "tPeak": 33.9,
+    "peak": 1.03,
+    "bin": "low",
+    "kerb": "k15",
+    "insidePass": true,
+    "stationAtPeak": 1504.0,
+    "alsoNear": []
+   },
+   {
+    "t0": 34.58,
+    "t1": 36.0,
+    "tPeak": 34.8,
+    "peak": 3.06,
+    "bin": "high",
+    "kerb": "k15",
+    "insidePass": true,
+    "stationAtPeak": 1535.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 72.47,
+    "t1": 72.65,
+    "tPeak": 72.51,
+    "peak": 1.15,
+    "bin": "low",
+    "kerb": "k6",
+    "insidePass": false,
+    "stationAtPeak": 2897.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 76.31,
+    "t1": 77.13,
+    "tPeak": 76.61,
+    "peak": 2.06,
+    "bin": "mid",
+    "kerb": "kDunlopR",
+    "insidePass": true,
+    "stationAtPeak": 2985.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 79.63,
+    "t1": 80.23,
+    "tPeak": 79.79,
+    "peak": 2.39,
+    "bin": "mid",
+    "kerb": "k7",
+    "insidePass": true,
+    "stationAtPeak": 3050.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 89.65,
+    "t1": 90.31,
+    "tPeak": 90.17,
+    "peak": 1.59,
+    "bin": "mid",
+    "kerb": "k21",
+    "insidePass": true,
+    "stationAtPeak": 3318.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 97.83,
+    "t1": 98.03,
+    "tPeak": 97.89,
+    "peak": 1.44,
+    "bin": "low",
+    "kerb": "k10",
+    "insidePass": true,
+    "stationAtPeak": 3541.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 98.65,
+    "t1": 98.69,
+    "tPeak": 98.67,
+    "peak": 1.05,
+    "bin": "low",
+    "kerb": "k10",
+    "insidePass": true,
+    "stationAtPeak": 3558.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 99.13,
+    "t1": 100.67,
+    "tPeak": 100.09,
+    "peak": 4.48,
+    "bin": "high",
+    "kerb": "k23",
+    "insidePass": true,
+    "stationAtPeak": 3598.2,
+    "alsoNear": [
+     "k10"
+    ]
+   },
+   {
+    "t0": 115.83,
+    "t1": 115.89,
+    "tPeak": 115.85,
+    "peak": 1.1,
+    "bin": "low",
+    "kerb": null,
+    "insidePass": false,
+    "stationAtPeak": 4027.4,
+    "alsoNear": []
+   }
+  ],
+  "3": [
+   {
+    "t0": 32.86,
+    "t1": 33.44,
+    "tPeak": 33.16,
+    "peak": 3.01,
+    "bin": "high",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1458.4,
+    "alsoNear": []
+   },
+   {
+    "t0": 52.66,
+    "t1": 52.88,
+    "tPeak": 52.84,
+    "peak": 1.15,
+    "bin": "low",
+    "kerb": "k3",
+    "insidePass": true,
+    "stationAtPeak": 2152.4,
+    "alsoNear": []
+   },
+   {
+    "t0": 105.32,
+    "t1": 105.5,
+    "tPeak": 105.46,
+    "peak": 1.15,
+    "bin": "low",
+    "kerb": "k11",
+    "insidePass": false,
+    "stationAtPeak": 3738.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 110.1,
+    "t1": 110.27,
+    "tPeak": 110.13,
+    "peak": 1.21,
+    "bin": "low",
+    "kerb": "k24",
+    "insidePass": true,
+    "stationAtPeak": 3853.9,
+    "alsoNear": []
+   }
+  ],
+  "4": [
+   {
+    "t0": 17.07,
+    "t1": 18.21,
+    "tPeak": 17.39,
+    "peak": 8.38,
+    "bin": "high",
+    "kerb": "k13",
+    "insidePass": true,
+    "stationAtPeak": 907.3,
+    "alsoNear": []
+   },
+   {
+    "t0": 33.21,
+    "t1": 33.77,
+    "tPeak": 33.39,
+    "peak": 2.73,
+    "bin": "mid",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1458.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 34.73,
+    "t1": 34.91,
+    "tPeak": 34.77,
+    "peak": 1.23,
+    "bin": "low",
+    "kerb": "k15",
+    "insidePass": true,
+    "stationAtPeak": 1505.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 66.76,
+    "t1": 66.8,
+    "tPeak": 66.78,
+    "peak": 1.07,
+    "bin": "low",
+    "kerb": "k19",
+    "insidePass": true,
+    "stationAtPeak": 2658.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 79.26,
+    "t1": 79.42,
+    "tPeak": 79.3,
+    "peak": 1.13,
+    "bin": "low",
+    "kerb": "k7",
+    "insidePass": true,
+    "stationAtPeak": 3053.1,
+    "alsoNear": []
+   }
+  ],
+  "5": [
+   {
+    "t0": 33.23,
+    "t1": 33.27,
+    "tPeak": 33.25,
+    "peak": 1.03,
+    "bin": "low",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1450.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 33.65,
+    "t1": 33.71,
+    "tPeak": 33.67,
+    "peak": 1.12,
+    "bin": "low",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1467.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 42.57,
+    "t1": 42.91,
+    "tPeak": 42.73,
+    "peak": 1.68,
+    "bin": "mid",
+    "kerb": null,
+    "insidePass": false,
+    "stationAtPeak": 1809.8,
+    "alsoNear": []
+   },
+   {
+    "t0": 79.42,
+    "t1": 79.78,
+    "tPeak": 79.6,
+    "peak": 2.94,
+    "bin": "mid",
+    "kerb": "k7",
+    "insidePass": true,
+    "stationAtPeak": 3057.1,
+    "alsoNear": []
+   },
+   {
+    "t0": 98.36,
+    "t1": 99.06,
+    "tPeak": 98.62,
+    "peak": 1.83,
+    "bin": "mid",
+    "kerb": "k10",
+    "insidePass": true,
+    "stationAtPeak": 3578.6,
+    "alsoNear": []
+   },
+   {
+    "t0": 106.38,
+    "t1": 106.66,
+    "tPeak": 106.54,
+    "peak": 1.23,
+    "bin": "low",
+    "kerb": "k11",
+    "insidePass": false,
+    "stationAtPeak": 3794.6,
+    "alsoNear": []
+   }
+  ],
+  "6": [
+   {
+    "t0": 33.03,
+    "t1": 33.59,
+    "tPeak": 33.21,
+    "peak": 2.67,
+    "bin": "mid",
+    "kerb": "k1",
+    "insidePass": true,
+    "stationAtPeak": 1459.2,
+    "alsoNear": []
+   },
+   {
+    "t0": 46.85,
+    "t1": 47.25,
+    "tPeak": 46.91,
+    "peak": 1.29,
+    "bin": "low",
+    "kerb": "k2",
+    "insidePass": false,
+    "stationAtPeak": 1971.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 52.49,
+    "t1": 52.65,
+    "tPeak": 52.61,
+    "peak": 1.25,
+    "bin": "low",
+    "kerb": "k3",
+    "insidePass": true,
+    "stationAtPeak": 2153.2,
+    "alsoNear": []
+   },
+   {
+    "t0": 75.85,
+    "t1": 76.13,
+    "tPeak": 75.97,
+    "peak": 1.16,
+    "bin": "low",
+    "kerb": "kDunlopR",
+    "insidePass": true,
+    "stationAtPeak": 2987.5,
+    "alsoNear": []
+   },
+   {
+    "t0": 96.57,
+    "t1": 96.71,
+    "tPeak": 96.59,
+    "peak": 1.06,
+    "bin": "low",
+    "kerb": "k22",
+    "insidePass": false,
+    "stationAtPeak": 3532.7,
+    "alsoNear": []
+   },
+   {
+    "t0": 97.83,
+    "t1": 98.97,
+    "tPeak": 98.29,
+    "peak": 3.01,
+    "bin": "high",
+    "kerb": "k10",
+    "insidePass": true,
+    "stationAtPeak": 3578.2,
+    "alsoNear": []
+   },
+   {
+    "t0": 108.84,
+    "t1": 108.84,
+    "tPeak": 108.84,
+    "peak": 1.0,
+    "bin": "low",
+    "kerb": "k24",
+    "insidePass": true,
+    "stationAtPeak": 3855.6,
+    "alsoNear": []
+   }
+  ]
+ }
+}

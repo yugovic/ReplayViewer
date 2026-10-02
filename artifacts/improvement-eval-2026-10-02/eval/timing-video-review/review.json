@@ -1,0 +1,19 @@
+{
+  "scope": "Adversarial review of eval/timing-video (7/30 channel timing vs onboard video), 2026-10-02. Read-only checks; numbers below measured by the reviewer unless labelled.",
+  "checksRun": {
+    "beforeReproducibility": "eval/timing-video/run-before.log video rows equal artifacts/video-position-gap-2026-10-02/channel-timing-audit.json video section for both races (checked L1-L4 7/29, L1-L6 7/30).",
+    "gpsAndMetaIdentity": "baseline vs current fuji_aim_2020_07_30 lap_001..006: t/lat/lng/speed/dist arrays identical; lap_start_time, first_sample_after_lap_start_seconds, lap_time_seconds identical; only new meta key is channel_time_alignment.",
+    "appliedShiftByXcorr_aps_s": {"1": 0.466, "2": 0.464, "3": 0.488, "4": 0.512, "5": 0.524, "6": 0.522},
+    "appliedShiftByXcorr_steer_s": {"1": 0.46, "2": 0.456, "3": 0.48, "4": 0.506, "5": 0.518, "6": 0.516},
+    "statedShift_implementer_s": {"1": 0.468, "2": 0.465, "3": 0.49, "4": 0.515, "5": 0.526, "6": 0.524},
+    "lapBoundaryEdge": "lap 4 starts with aps 0.0/78.2/98.8 after the fix; baseline lap 3 ends 0,0,0,92.1,100,100,100 -> a real 0.4 s throttle lift moved across the boundary via the continuous session series (build_race.py align_logger_channels interpolates raw series incl. neighbouring laps). No fill/NaN artefacts found.",
+    "lapMetaConsistency": "lap_start_time deltas equal the previous lap_time_seconds exactly for all laps, so the lap-5 overlay timer-read anomaly (+0.10/+0.10/+0.07 s at 10/50/90%) has no data-side explanation; it is either an overlay timer reset offset or a PTS discontinuity. Not resolved.",
+    "mappingCircularity": "video-timer-reads.json uses overlay LAP timer reads + data lap times only; pedal channels are not used for the mapping. Not circular.",
+    "pedalVsImuThroughVideo": "D_throttle + imuAccyAfterVideo: 7/29 0.315; 7/30 before 0.365; 7/30 after 0.373. Unchanged by the fix (all logger channels shifted together) and 0.05-0.06 s larger than 7/29, i.e. the pedal-vs-IMU relation seen through the video differs between sessions by about the size of the residual."
+  },
+  "assessment": {
+    "refuted": false,
+    "agreedVerdict": "improved",
+    "note": "The core numbers (0.633->0.143 throttle, 0.623->0.128 brake, 7/29 unchanged, after = before - shift within 0.015 s) are reproducible and non-circular. The claimed same-direction residual of 0.02-0.07 s is not established: steer-vs-GPS-course-rate is dry/wet-confounded, implementer IMU-vs-GPS after is in-sample by construction, and the two cleanest checks (IMU-vs-video yaw +0.015, brake->IMU decel 0.078 vs 0.075 [implementer]) predict a pedal residual of ~0.02, not 0.04. The +0.04 s is also indistinguishable from a SmartyCam live-path latency difference between the two days."
+  }
+}

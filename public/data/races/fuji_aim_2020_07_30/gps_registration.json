@@ -62,7 +62,7 @@
       "vehicleId": "osaki_hmr_demio_101",
       "lap": 1,
       "dataFile": "osaki_hmr_demio_101_lap_001.json",
-      "dataSha256": "acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a",
+      "dataSha256": "581fa77eff9e8ff2b0b25270be231c24138d50c2d870a0d4be6cc9ff40662078",
       "offsetMeters": [
         -0.084,
         -2.783
@@ -86,7 +86,7 @@
       "vehicleId": "osaki_hmr_demio_101",
       "lap": 2,
       "dataFile": "osaki_hmr_demio_101_lap_002.json",
-      "dataSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "dataSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
       "offsetMeters": [
         -0.432,
         -2.612
@@ -110,7 +110,7 @@
       "vehicleId": "osaki_hmr_demio_101",
       "lap": 3,
       "dataFile": "osaki_hmr_demio_101_lap_003.json",
-      "dataSha256": "de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0",
+      "dataSha256": "fb0534fdc10cc554bbc4c7d6ae91749a947ab52e8905451cf95b0d9b4f53736b",
       "offsetMeters": [
         -0.329,
         -2.511
@@ -134,7 +134,7 @@
       "vehicleId": "osaki_hmr_demio_101",
       "lap": 4,
       "dataFile": "osaki_hmr_demio_101_lap_004.json",
-      "dataSha256": "721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e",
+      "dataSha256": "24bce3cb32336af2b79de5ffa646465232ea5d86e9b2325b47cbee0c40c41164",
       "offsetMeters": [
         -0.031,
         -3.034
@@ -158,7 +158,7 @@
       "vehicleId": "osaki_hmr_demio_101",
       "lap": 5,
       "dataFile": "osaki_hmr_demio_101_lap_005.json",
-      "dataSha256": "e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465",
+      "dataSha256": "0ba563ac35814fc76b630f0bf5d463962a313962aad53fa317a00579890e863d",
       "offsetMeters": [
         -0.298,
         -2.558
@@ -182,7 +182,7 @@
       "vehicleId": "osaki_hmr_demio_101",
       "lap": 6,
       "dataFile": "osaki_hmr_demio_101_lap_006.json",
-      "dataSha256": "c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae",
+      "dataSha256": "f289ac394c3ad28824fc4024ba118c9cc52021651d16feccb5f243bbce937173",
       "offsetMeters": [
         -0.316,
         -2.446

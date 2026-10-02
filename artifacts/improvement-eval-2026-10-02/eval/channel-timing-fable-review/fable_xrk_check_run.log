@@ -1,0 +1,84 @@
+{
+ "fuji_aim_01": {
+  "gps_speed_vs_ECU_WS_RL": [
+   -0.2091,
+   0.999
+  ],
+  "gps_yawrate_vs_IMU_YawRate": [
+   -0.103,
+   0.987
+  ],
+  "gps_speed_deriv_vs_IMU_InlineAcc": [
+   -0.0422,
+   0.904
+  ],
+  "gps_decel_vs_ECU_BRK_P": [
+   -0.1083,
+   0.798
+  ],
+  "gps_yawrate_vs_ECU_STEER": [
+   -0.1804,
+   0.968
+  ],
+  "ctrl_IMU_yaw_vs_ECU_STEER": [
+   -0.1276,
+   0.978
+  ],
+  "ctrl_IMU_InlineAcc_decel_vs_ECU_BRK_P": [
+   -0.0651,
+   0.847
+  ],
+  "ctrl_ECU_WS_RL_deriv_vs_IMU_InlineAcc": [
+   0.1071,
+   0.621
+  ],
+  "first_sample_ms": {
+   "GPS": 415.0,
+   "ECU": 405.0,
+   "IMU_acc": 235.0,
+   "IMU_gyro": 0.0
+  },
+  "moving_seconds": 144.1
+ },
+ "fuji_aim_2020_07_30": {
+  "gps_speed_vs_ECU_WS_RL": [
+   -0.7253,
+   0.999
+  ],
+  "gps_yawrate_vs_IMU_YawRate": [
+   -0.665,
+   0.992
+  ],
+  "gps_speed_deriv_vs_IMU_InlineAcc": [
+   -0.577,
+   0.949
+  ],
+  "gps_decel_vs_ECU_BRK_P": [
+   -0.6385,
+   0.907
+  ],
+  "gps_yawrate_vs_ECU_STEER": [
+   -0.753,
+   0.979
+  ],
+  "ctrl_IMU_yaw_vs_ECU_STEER": [
+   -0.1437,
+   0.986
+  ],
+  "ctrl_IMU_InlineAcc_decel_vs_ECU_BRK_P": [
+   -0.0654,
+   0.928
+  ],
+  "ctrl_ECU_WS_RL_deriv_vs_IMU_InlineAcc": [
+   0.1357,
+   0.478
+  ],
+  "first_sample_ms": {
+   "GPS": 767.0,
+   "ECU": 293.0,
+   "IMU_acc": 32.0,
+   "IMU_gyro": 0.0
+  },
+  "moving_seconds": 131.6
+ }
+}

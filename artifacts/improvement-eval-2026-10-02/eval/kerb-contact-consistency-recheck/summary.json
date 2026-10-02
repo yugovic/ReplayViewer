@@ -1,0 +1,531 @@
+{
+ "evaluator": "independent recheck 2026-10-02 (scorer kc_recheck_scorer.py re-implements the KPI; candidate fits use pipeline/register_gps_kerb_contact.py because LOKO/LOLO are properties of that fitter)",
+ "definitions": {
+  "g": "min over the label pass window of min(inner front, inner rear) tyre outer edge signed gap to the BLOCK line (m, negative = on blocks)",
+  "contradiction": "strong with g > +0.15 m, or silent with g < -0.55 m",
+  "auc": "P(g_strong < g_silent) over all strong x silent pairs (ties 0.5)",
+  "windows": {
+   "label": "label t0..t1 from kerb_contacts.json",
+   "station": "kerb station range +-3 m at the evaluated offset"
+  },
+  "oldLines": "geometry.json curbs[i] inner line as k{i} (no Dunlop-R)",
+  "newLines": "kerb_zones.json block line"
+ },
+ "course_fix_shipped_registration": {
+  "7_30": {
+   "a_oldCG": {
+    "labels": 59,
+    "measurable": 57,
+    "unmeasurable": 2,
+    "strong": 16,
+    "silent": 41,
+    "contradictions": 3,
+    "contradictionList": [
+     "L2 k21 strong +1.60",
+     "L5 k9 silent -0.94",
+     "L5 k10 strong +0.47"
+    ],
+    "auc": 0.866,
+    "withinKerbAuc": 0.923,
+    "withinKerbPairs": 26
+   },
+   "b_newZones": {
+    "labels": 59,
+    "measurable": 59,
+    "unmeasurable": 0,
+    "strong": 17,
+    "silent": 42,
+    "contradictions": 3,
+    "contradictionList": [
+     "L2 k21 strong +1.66",
+     "L5 k9 silent -0.92",
+     "L5 k10 strong +0.42"
+    ],
+    "auc": 0.884,
+    "withinKerbAuc": 0.926,
+    "withinKerbPairs": 27
+   },
+   "b_newZones_on_57_common_labels": {
+    "contradictions": 3,
+    "auc": 0.88,
+    "withinKerbAuc": 0.923
+   },
+   "bootstrap_b_minus_a_common57": {
+    "commonLabels": 57,
+    "clusters": 13,
+    "B": 10000,
+    "contradictionDiff": 0,
+    "contradictionDiffCI95": [
+     0.0,
+     0.0
+    ],
+    "pContradictionDiffGE0": 1.0,
+    "aucDiff": 0.0137,
+    "aucDiffCI95": [
+     -0.0111,
+     0.04
+    ],
+    "pAucDiffLE0": 0.1619
+   },
+   "tolSweep_a": {
+    "0": 4,
+    "0.1": 3,
+    "0.15": 3,
+    "0.25": 3
+   },
+   "tolSweep_b": {
+    "0": 5,
+    "0.1": 3,
+    "0.15": 3,
+    "0.25": 3
+   },
+   "withoutL2Anomaly_a": {
+    "labels": 55,
+    "measurable": 53,
+    "unmeasurable": 2,
+    "strong": 14,
+    "silent": 39,
+    "contradictions": 2,
+    "contradictionList": [
+     "L5 k9 silent -0.94",
+     "L5 k10 strong +0.47"
+    ],
+    "auc": 0.914,
+    "withinKerbAuc": 0.909,
+    "withinKerbPairs": 22
+   },
+   "withoutL2Anomaly_b": {
+    "labels": 55,
+    "measurable": 55,
+    "unmeasurable": 0,
+    "strong": 15,
+    "silent": 40,
+    "contradictions": 2,
+    "contradictionList": [
+     "L5 k9 silent -0.92",
+     "L5 k10 strong +0.42"
+    ],
+    "auc": 0.933,
+    "withinKerbAuc": 0.913,
+    "withinKerbPairs": 23
+   },
+   "gChange_b_minus_a_perKerb": {
+    "k1": {
+     "n": 5,
+     "median": -0.135,
+     "min": -0.141,
+     "max": -0.07
+    },
+    "k10": {
+     "n": 6,
+     "median": -0.01,
+     "min": -0.051,
+     "max": 0.037
+    },
+    "k13": {
+     "n": 4,
+     "median": 0.057,
+     "min": 0.033,
+     "max": 0.067
+    },
+    "k15": {
+     "n": 4,
+     "median": -0.293,
+     "min": -0.31,
+     "max": -0.226
+    },
+    "k18": {
+     "n": 6,
+     "median": -0.001,
+     "min": -0.005,
+     "max": 0.0
+    },
+    "k19": {
+     "n": 5,
+     "median": -0.068,
+     "min": -0.082,
+     "max": -0.065
+    },
+    "k20": {
+     "n": 5,
+     "median": -0.068,
+     "min": -0.078,
+     "max": -0.024
+    },
+    "k21": {
+     "n": 2,
+     "median": 0.05,
+     "min": 0.041,
+     "max": 0.06
+    },
+    "k23": {
+     "n": 4,
+     "median": -0.261,
+     "min": -0.263,
+     "max": -0.251
+    },
+    "k24": {
+     "n": 3,
+     "median": 0.034,
+     "min": -0.023,
+     "max": 0.036
+    },
+    "k3": {
+     "n": 3,
+     "median": 0.078,
+     "min": 0.038,
+     "max": 0.099
+    },
+    "k7": {
+     "n": 5,
+     "median": -0.06,
+     "min": -0.079,
+     "max": -0.046
+    },
+    "k9": {
+     "n": 5,
+     "median": 0.02,
+     "min": -0.033,
+     "max": 0.075
+    }
+   }
+  },
+  "7_29": {
+   "a_oldCG": {
+    "labels": 52,
+    "measurable": 48,
+    "unmeasurable": 4,
+    "strong": 1,
+    "silent": 47,
+    "contradictions": 1,
+    "contradictionList": [
+     "L1 k13 silent -0.74"
+    ],
+    "auc": 0.957,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3
+   },
+   "b_newZones": {
+    "labels": 52,
+    "measurable": 52,
+    "unmeasurable": 0,
+    "strong": 1,
+    "silent": 51,
+    "contradictions": 2,
+    "contradictionList": [
+     "L1 k13 silent -0.70",
+     "L1 kDunlopR silent -0.57"
+    ],
+    "auc": 0.941,
+    "withinKerbAuc": 1.0,
+    "withinKerbPairs": 3
+   },
+   "note": "only 1 strong label: AUC is not informative",
+   "gChange_b_minus_a_perKerb": {
+    "k1": {
+     "n": 4,
+     "median": -0.136,
+     "min": -0.141,
+     "max": -0.101
+    },
+    "k10": {
+     "n": 3,
+     "median": 0.013,
+     "min": 0.011,
+     "max": 0.024
+    },
+    "k13": {
+     "n": 4,
+     "median": 0.043,
+     "min": 0.037,
+     "max": 0.056
+    },
+    "k15": {
+     "n": 4,
+     "median": -0.332,
+     "min": -0.344,
+     "max": -0.312
+    },
+    "k18": {
+     "n": 3,
+     "median": 0.03,
+     "min": -0.006,
+     "max": 0.036
+    },
+    "k19": {
+     "n": 4,
+     "median": -0.05,
+     "min": -0.071,
+     "max": -0.042
+    },
+    "k20": {
+     "n": 4,
+     "median": -0.071,
+     "min": -0.078,
+     "max": -0.067
+    },
+    "k21": {
+     "n": 4,
+     "median": 0.092,
+     "min": 0.086,
+     "max": 0.105
+    },
+    "k23": {
+     "n": 4,
+     "median": -0.236,
+     "min": -0.252,
+     "max": -0.224
+    },
+    "k24": {
+     "n": 2,
+     "median": -0.004,
+     "min": -0.016,
+     "max": 0.007
+    },
+    "k3": {
+     "n": 4,
+     "median": 0.094,
+     "min": 0.037,
+     "max": 0.106
+    },
+    "k7": {
+     "n": 4,
+     "median": -0.045,
+     "min": -0.05,
+     "max": -0.044
+    },
+    "k9": {
+     "n": 4,
+     "median": 0.03,
+     "min": 0.002,
+     "max": 0.073
+    }
+   }
+  },
+  "windowSensitivity": "label t0..t1 window and station window (+-3 m at the evaluated offset) give identical counts/AUC in every config"
+ },
+ "candidate_7_30": {
+  "inSample_NOT_HELD_OUT": {
+   "labels": 59,
+   "measurable": 59,
+   "unmeasurable": 0,
+   "strong": 17,
+   "silent": 42,
+   "contradictions": 1,
+   "contradictionList": [
+    "L2 k21 strong +1.01"
+   ],
+   "auc": 0.943,
+   "withinKerbAuc": 0.926,
+   "withinKerbPairs": 27
+  },
+  "inSample_withoutL2Anomaly": {
+   "labels": 55,
+   "measurable": 55,
+   "unmeasurable": 0,
+   "strong": 15,
+   "silent": 40,
+   "contradictions": 0,
+   "contradictionList": [],
+   "auc": 0.98,
+   "withinKerbAuc": 0.913,
+   "withinKerbPairs": 23
+  },
+  "fullRefitReproducesPublishedFile": {
+   "session": [
+    0.177,
+    -2.296
+   ],
+   "laps": {
+    "1": [
+     0.08,
+     -2.496
+    ],
+    "2": [
+     0.194,
+     -2.411
+    ],
+    "3": [
+     0.059,
+     -2.367
+    ],
+    "4": [
+     0.334,
+     -2.621
+    ],
+    "5": [
+     0.142,
+     -2.142
+    ],
+    "6": [
+     0.095,
+     -2.308
+    ]
+   },
+   "published": {
+    "session": [
+     0.177,
+     -2.296
+    ],
+    "laps": {
+     "1": [
+      0.08,
+      -2.496
+     ],
+     "2": [
+      0.194,
+      -2.411
+     ],
+     "3": [
+      0.059,
+      -2.367
+     ],
+     "4": [
+      0.334,
+      -2.621
+     ],
+     "5": [
+      0.142,
+      -2.142
+     ],
+     "6": [
+      0.095,
+      -2.308
+     ]
+    }
+   },
+   "maxLapDiffVsPublishedM": 0.0005
+  },
+  "LOKO_all14folds_implementerStart": {
+   "labels": 59,
+   "measurable": 59,
+   "unmeasurable": 0,
+   "strong": 17,
+   "silent": 42,
+   "contradictions": 2,
+   "contradictionList": [
+    "L5 k10 strong +0.16",
+    "L2 k21 strong +1.01"
+   ],
+   "auc": 0.938,
+   "withinKerbAuc": 0.926,
+   "withinKerbPairs": 27
+  },
+  "LOKO_all14folds_neutralStart": {
+   "labels": 59,
+   "measurable": 59,
+   "unmeasurable": 0,
+   "strong": 17,
+   "silent": 42,
+   "contradictions": 2,
+   "contradictionList": [
+    "L5 k10 strong +0.16",
+    "L2 k21 strong +1.01"
+   ],
+   "auc": 0.938,
+   "withinKerbAuc": 0.926,
+   "withinKerbPairs": 27
+  },
+  "LOKO_neutral_withoutL2Anomaly": {
+   "labels": 55,
+   "measurable": 55,
+   "unmeasurable": 0,
+   "strong": 15,
+   "silent": 40,
+   "contradictions": 1,
+   "contradictionList": [
+    "L5 k10 strong +0.16"
+   ],
+   "auc": 0.978,
+   "withinKerbAuc": 0.913,
+   "withinKerbPairs": 23
+  },
+  "LOKO_tolSweep": {
+   "0": 4,
+   "0.1": 4,
+   "0.15": 2,
+   "0.25": 1
+  },
+  "LOKO_foldsWhereSessionMoved": [
+   "k10",
+   "k7",
+   "k9"
+  ],
+  "LOKO_bootstrap_vs_shippedNew": {
+   "all": {
+    "commonLabels": 59,
+    "clusters": 14,
+    "B": 10000,
+    "contradictionDiff": -1,
+    "contradictionDiffCI95": [
+     -3.0,
+     0.0
+    ],
+    "pContradictionDiffGE0": 0.3558,
+    "aucDiff": 0.0546,
+    "aucDiffCI95": [
+     0.0024,
+     0.112
+    ],
+    "pAucDiffLE0": 0.0224
+   },
+   "withoutL2Anomaly": {
+    "commonLabels": 55,
+    "clusters": 14,
+    "B": 10000,
+    "contradictionDiff": -1,
+    "contradictionDiffCI95": [
+     -3.0,
+     0.0
+    ],
+    "pContradictionDiffGE0": 0.3558,
+    "aucDiff": 0.045,
+    "aucDiffCI95": [
+     0.0078,
+     0.0872
+    ],
+    "pAucDiffLE0": 0.0102
+   }
+  },
+  "LOLO_neutralStart": {
+   "labels": 59,
+   "measurable": 59,
+   "unmeasurable": 0,
+   "strong": 17,
+   "silent": 42,
+   "contradictions": 4,
+   "contradictionList": [
+    "L2 k21 strong +1.01",
+    "L5 k7 strong +0.30",
+    "L5 k9 silent -0.85",
+    "L5 k10 strong +0.58"
+   ],
+   "auc": 0.915,
+   "withinKerbAuc": 0.852,
+   "withinKerbPairs": 27
+  },
+  "LOLO_tolSweep": {
+   "0": 6,
+   "0.1": 6,
+   "0.15": 4,
+   "0.25": 4
+  },
+  "shippedNew_reference": {
+   "labels": 59,
+   "measurable": 59,
+   "unmeasurable": 0,
+   "strong": 17,
+   "silent": 42,
+   "contradictions": 3,
+   "contradictionList": [
+    "L2 k21 strong +1.66",
+    "L5 k9 silent -0.92",
+    "L5 k10 strong +0.42"
+   ],
+   "auc": 0.884,
+   "withinKerbAuc": 0.926,
+   "withinKerbPairs": 27
+  },
+  "agreementWithImplementer": "per-label g within 0.006 m of after/registration-candidate/evaluation.json heldOutRows (shipped, raw, candidateLOKO); every LOKO fold session offset identical to evaluation.json lokoSessionOffsets; neutral-start LOKO identical to implementer-start LOKO (no starting-point leakage)"
+ }
+}

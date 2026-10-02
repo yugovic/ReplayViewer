@@ -1,0 +1,248 @@
+{
+  "generatedAt": "2026-10-02T04:51:29.550Z",
+  "clock": [
+    {
+      "lap": "fuji_aim_01/L1",
+      "deltaSeconds": 0.007,
+      "startOffsetMeters": 0.332,
+      "lastSampleTrueTime": 144.507,
+      "officialLapTime": 144.556,
+      "beforeAheadMeters": {
+        "n": 2890,
+        "median": 0.215,
+        "p95": 0.345,
+        "p99": 0.361,
+        "max": 0.363
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_01/L2",
+      "deltaSeconds": 0.051,
+      "startOffsetMeters": 2.401,
+      "lastSampleTrueTime": 144.551,
+      "officialLapTime": 144.635,
+      "beforeAheadMeters": {
+        "n": 2889,
+        "median": 1.579,
+        "p95": 2.462,
+        "p99": 2.508,
+        "max": 2.521
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_01/L3",
+      "deltaSeconds": 0.016,
+      "startOffsetMeters": 0.771,
+      "lastSampleTrueTime": 141.316,
+      "officialLapTime": 141.385,
+      "beforeAheadMeters": {
+        "n": 2826,
+        "median": 0.503,
+        "p95": 0.805,
+        "p99": 0.839,
+        "max": 0.847
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_01/L4",
+      "deltaSeconds": 0.031,
+      "startOffsetMeters": 1.497,
+      "lastSampleTrueTime": 164.631,
+      "officialLapTime": 164.717,
+      "beforeAheadMeters": {
+        "n": 3292,
+        "median": 0.819,
+        "p95": 1.552,
+        "p99": 1.633,
+        "max": 1.644
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L1",
+      "deltaSeconds": 0.057,
+      "startOffsetMeters": 2.74,
+      "lastSampleTrueTime": 133.557,
+      "officialLapTime": 133.635,
+      "beforeAheadMeters": {
+        "n": 2669,
+        "median": 1.948,
+        "p95": 2.882,
+        "p99": 3.007,
+        "max": 3.03
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L2",
+      "deltaSeconds": 0.022,
+      "startOffsetMeters": 1.083,
+      "lastSampleTrueTime": 131.722,
+      "officialLapTime": 131.742,
+      "beforeAheadMeters": {
+        "n": 2634,
+        "median": 0.764,
+        "p95": 1.134,
+        "p99": 1.187,
+        "max": 1.195
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L3",
+      "deltaSeconds": 0.08,
+      "startOffsetMeters": 3.893,
+      "lastSampleTrueTime": 131.78,
+      "officialLapTime": 131.783,
+      "beforeAheadMeters": {
+        "n": 2633,
+        "median": 2.708,
+        "p95": 4.116,
+        "p99": 4.194,
+        "max": 4.221
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L4",
+      "deltaSeconds": 0.097,
+      "startOffsetMeters": 4.663,
+      "lastSampleTrueTime": 130.797,
+      "officialLapTime": 130.86,
+      "beforeAheadMeters": {
+        "n": 2613,
+        "median": 3.354,
+        "p95": 4.804,
+        "p99": 4.987,
+        "max": 5.019
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L5",
+      "deltaSeconds": 0.037,
+      "startOffsetMeters": 1.804,
+      "lastSampleTrueTime": 130.737,
+      "officialLapTime": 130.822,
+      "beforeAheadMeters": {
+        "n": 2614,
+        "median": 1.285,
+        "p95": 1.851,
+        "p99": 1.92,
+        "max": 1.934
+      },
+      "afterAheadMeters": 0
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L6",
+      "deltaSeconds": 0.015,
+      "startOffsetMeters": 0.73,
+      "lastSampleTrueTime": 140.415,
+      "officialLapTime": 140.467,
+      "beforeAheadMeters": {
+        "n": 2808,
+        "median": 0.48,
+        "p95": 0.755,
+        "p99": 0.783,
+        "max": 0.789
+      },
+      "afterAheadMeters": 0
+    }
+  ],
+  "clockSummary": {
+    "beforeAheadMetersMedianOfLapMedians": 1.052,
+    "beforeAheadMetersMax": 5.019,
+    "afterAheadMeters": 0,
+    "note": "after: HUD/transport clock show t + δ, so at displayed lap time X the drawn car is the sample at true lap time X (exact by construction)"
+  },
+  "ghostDeltaTruthTest": {
+    "method": "Each real lap's (t, dist) is taken as a continuous truth T(S) from the timing line; it is re-sampled at 10 Hz starting δ after the line (its real δ) with dist from the first sample, exactly like the pipeline. 90 ordered main/ghost pairs; error = computed − true delta at each main sample.",
+    "errorMs": {
+      "legacy": {
+        "n": 125205,
+        "median": 11.603,
+        "p95": 74.365,
+        "p99": 121.218,
+        "max": 260.604
+      },
+      "naiveAddDeltaOnly": {
+        "n": 125205,
+        "median": 44.186,
+        "p95": 141.119,
+        "p99": 196.834,
+        "max": 342.604
+      },
+      "fixed": {
+        "n": 125205,
+        "median": 0.061,
+        "p95": 0.258,
+        "p99": 0.425,
+        "max": 1.055
+      }
+    },
+    "perPairMaxErrorMs": {
+      "legacy": {
+        "n": 90,
+        "median": 83.974,
+        "p95": 207.501,
+        "p99": 246.351,
+        "max": 260.604
+      },
+      "naiveAddDeltaOnly": {
+        "n": 90,
+        "median": 113.961,
+        "p95": 277.625,
+        "p99": 335.471,
+        "max": 342.604
+      },
+      "fixed": {
+        "n": 90,
+        "median": 0.551,
+        "p95": 0.963,
+        "p99": 1.054,
+        "max": 1.055
+      }
+    },
+    "atFirstMainSampleMs": {
+      "legacy": {
+        "n": 90,
+        "median": 0.367,
+        "p95": 1.917,
+        "p99": 2.295,
+        "max": 2.685
+      },
+      "naiveAddDeltaOnly": {
+        "n": 90,
+        "median": 30.428,
+        "p95": 80.786,
+        "p99": 90.248,
+        "max": 91.433
+      },
+      "fixed": {
+        "n": 90,
+        "median": 0.008,
+        "p95": 0.12,
+        "p99": 0.136,
+        "max": 0.14
+      }
+    },
+    "worstLegacyPair": {
+      "main": "fuji_aim_2020_07_30/L4",
+      "ghost": "fuji_aim_2020_07_30/L6",
+      "deltaMain": 0.097,
+      "deltaGhost": 0.015,
+      "legacyMaxMs": 260.604,
+      "fixedMaxMs": 0.433
+    }
+  },
+  "realDataHudDeltaChangeMs": {
+    "n": 125514,
+    "median": 11.6,
+    "p95": 74.525,
+    "p99": 121.633,
+    "max": 260.742
+  }
+}

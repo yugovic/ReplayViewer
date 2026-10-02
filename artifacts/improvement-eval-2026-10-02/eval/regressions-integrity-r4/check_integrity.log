@@ -1,0 +1,21 @@
+[3] fuji_aim_01: byteIdentical=True sessionOffsetEqual=True allLapOffsetsEqual=True diffs(all)=0 diffs(excl dataSha256)=0
+    session now: [-1.627, 1.931]  base: [-1.627, 1.931]
+[3] fuji_aim_2020_07_30: byteIdentical=False sessionOffsetEqual=True allLapOffsetsEqual=True diffs(all)=6 diffs(excl dataSha256)=0
+    session now: [-0.221, -2.68]  base: [-0.221, -2.68]
+[4] fuji_aim_01 allMatch=True gitDiff=[] status=['?? public/data/races/fuji_aim_01/apex_kpi.json', '?? public/data/races/fuji_aim_01/kerb_contacts.json'] manifestEntryUnchanged=True
+     public/data/tracks/fuji/cg_study/geometry.json True
+     public/data/tracks/fuji/track.json True
+     public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json True
+     public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json True
+     public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json True
+     public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json True
+     public/data/races/fuji_aim_01/laps.json True
+     public/data/races/fuji_aim_01/gps_registration.json True
+[7/30] onlyChannelsAndAlignmentMetaChanged=True
+     osaki_hmr_demio_101_lap_001.json prevManifestOK True curManifestOK True keys ['accx', 'accy', 'aps', 'brake', 'gear', 'meta', 'steer'] meta ['channel_time_alignment'] gpsSame True
+     osaki_hmr_demio_101_lap_002.json prevManifestOK True curManifestOK True keys ['accx', 'accy', 'aps', 'brake', 'gear', 'meta', 'steer'] meta ['channel_time_alignment'] gpsSame True
+     osaki_hmr_demio_101_lap_003.json prevManifestOK True curManifestOK True keys ['accx', 'accy', 'aps', 'brake', 'gear', 'meta', 'steer'] meta ['channel_time_alignment'] gpsSame True
+     osaki_hmr_demio_101_lap_004.json prevManifestOK True curManifestOK True keys ['accx', 'accy', 'aps', 'brake', 'gear', 'meta', 'steer'] meta ['channel_time_alignment'] gpsSame True
+     osaki_hmr_demio_101_lap_005.json prevManifestOK True curManifestOK True keys ['accx', 'accy', 'aps', 'brake', 'gear', 'meta', 'steer'] meta ['channel_time_alignment'] gpsSame True
+     osaki_hmr_demio_101_lap_006.json prevManifestOK True curManifestOK True keys ['accx', 'accy', 'aps', 'brake', 'gear', 'meta', 'steer'] meta ['channel_time_alignment'] gpsSame True
+    laps.json diff: ['.laps[1].file_size: 106041 -> 107992', '.laps[2].file_size: 104671 -> 106785', '.laps[3].file_size: 104625 -> 106553', '.laps[4].file_size: 103814 -> 105814', '.laps[5].file_size: 103980 -> 105692', '.laps[6].file_size: 111798 -> 114043', '.selected[0].file_size: 106041 -> 107992', '.selected[1].file_size: 104671 -> 106785', '.selected[2].file_size: 104625 -> 106553', '.selected[3].file_size: 103814 -> 105814']

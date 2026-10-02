@@ -1,0 +1,43 @@
+{
+ "evaluator": "independent recomputation, 2026-10-02 ~14:10-14:40 JST; scripts indep_timing_check.py (lap JSONs) and indep_timing_xrk.py (raw XRK dump via libxrk, dump kept in session scratchpad only)",
+ "not_used": "scripts/quality/align-fuji-channel-timing.py outputs, artifacts/improvement-eval-2026-10-02/after/channel-timing/*; pre-existing recheck_channel_timing.py/results.json/summary.json/run.log in this folder are another run and were left untouched",
+ "integrity": {
+  "gps_arrays_t_lat_lng_speed_dist_0730": "identical before vs after, all 6 laps (parsed JSON list equality)",
+  "other_meta_0730": "identical except added meta.channel_time_alignment",
+  "changed_arrays_0730": ["aps", "brake", "steer", "gear", "accx", "accy"],
+  "fuji_aim_01_0729_lap_jsons": "byte-identical to git HEAD (sha256), no channel_time_alignment; laps.json and gps_registration.json byte-identical to baseline",
+  "gps_registration_0730": "only laps[*].dataSha256 differ from baseline; offsets unchanged"
+ },
+ "lag_vs_0729_reference_s_median_over_laps": {
+  "convention": "tau = argmax corr(GPSref(t), ch(t+tau)); negative = channel early. Values are (7/30 median) - (7/29 median).",
+  "accx_vs_gps_along (circular)": {"before": -0.521, "after": -0.022},
+  "accy_vs_gps_lateral (circular)": {"before": -0.519, "after": -0.021},
+  "brake_vs_gps_decel (independent)": {"before": -0.540, "after": -0.044},
+  "steer_vs_gps_course_rate (independent)": {"before": -0.580, "after": -0.074},
+  "steer_vs_gps_curvature (independent)": {"before": -0.565, "after": -0.066},
+  "aps_vs_gps_along (independent, weak physics)": {"before": -0.534, "after": -0.032},
+  "raw XRK yaw gyro vs GPS course rate (independent sensor, not in JSON)": {"before_equiv": -0.572, "after_equiv": -0.074, "note": "after_equiv = before - applied shift per lap (gyro is not re-timed in the JSON)"},
+  "logger-logger controls (brake vs accx, steer vs accy)": "unchanged by the shift (after-before = 0 within 2 ms)"
+ },
+ "braking_events_median": {
+  "brake50_to_gpsdecel50": {"ref0729": "+0.013 s / +0.5 m (n=19)", "before0730": "+0.581 s / +24.1 m (n=36)", "after0730": "+0.100 s / +4.1 m (n=35)"},
+  "brake10_to_gpsdecel10": {"ref0729": "-0.140 s / -4.4 m", "before0730": "+0.462 s / +19.0 m", "after0730": "-0.016 s / -0.7 m"},
+  "brake50_to_imudecel50": {"ref0729": "-0.030 s", "before0730": "+0.005 s", "after0730": "+0.003 s"}
+ },
+ "shift_provenance": {
+  "applied_per_lap_s": [0.468, 0.465, 0.490, 0.515, 0.526, 0.524],
+  "estimate_basis_in_meta": "per-lap mean of accx and accy lags (circular for accx/accy checks)",
+  "implied_by_independent_channels_mean_s": {"brake": 0.540, "steer_rate": 0.578, "steer_curv": 0.567, "aps": 0.530, "xrk_yaw_gyro": 0.572},
+  "implied_minus_applied_mean_s": {"accx": 0.023, "accy": 0.021, "brake": 0.042, "steer_rate": 0.080, "steer_curv": 0.069, "aps": 0.032, "xrk_yaw_gyro": 0.074},
+  "per_lap_corr_with_applied": {"brake": 0.92, "steer_rate": 0.69, "steer_curv": 0.81, "aps": 0.99, "xrk_yaw_gyro": 0.84},
+  "drift_lap1_to_lap6_s": {"applied": 0.056, "brake": 0.090, "steer_rate": 0.035, "aps": 0.056, "xrk_yaw_gyro": 0.044}
+ },
+ "origin": {
+  "csv_conversion_offset_before_ms": "0 (+-5) for brake/steer/accx/accy/aps vs raw XRK at the GPS-speed-matched timecode, both races -> offset is native to the 7/30 XRK, not a converter bug",
+  "csv_conversion_offset_after_ms": "-461..-524, matching the applied per-lap shift within ~15 ms",
+  "xrk_first_sample_gap_gps_minus_ecu_ms": {"0729": 10, "0730": 474},
+  "logger_internal_ecu_vs_imu": "steer-vs-yaw-gyro -0.118 (7/29) vs -0.129 (7/30); brake-vs-InlineAcc -0.065 vs -0.077 -> CAN and IMU share one clock, offset is GPS vs logger"
+ },
+ "side_effects": "linear re-interpolation of the 10 Hz series at fractional offsets lowers spikes: accy |max| up to -13 % (lap2 1.967->1.715 g), accx min up to -5 %; brake integral unchanged",
+ "verdict": "improved (cross-session timing gap 0.52-0.58 s -> 0.02-0.08 s; residual consistently in the same direction = logger channels still ~0.02-0.08 s early vs the 7/29 behaviour)"
+}

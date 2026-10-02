@@ -1,0 +1,6 @@
+session candidate [ 0.177 -2.296] track-only [ 0.103 -2.97 ] 49s
+305 fits on 14 workers
+fits done 857s
+held-out {'raw': (12, 0.857), 'shipped': (4, 0.874), 'trackOnlySession': (7, 0.844), 'trackOnlySessionPlusLap': (7, 0.849), 'candidateInSample (not held out)': (2, 0.92), 'candidateLOKO': (3, 0.915), 'candidateLOKO_sessionOnly': (4, 0.912), 'candidateLOLO': (5, 0.894), 'candidateLOLO_sessionOnly': (5, 0.897)}
+-> artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/registration-candidate/evaluation.json 1138.9s
+exit 0

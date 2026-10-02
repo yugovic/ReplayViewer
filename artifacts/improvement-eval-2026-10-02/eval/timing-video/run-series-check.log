@@ -1,0 +1,19 @@
+cached fuji_aim_01 1
+cached fuji_aim_01 2
+cached fuji_aim_01 3
+cached fuji_aim_01 4
+cached fuji_aim_2020_07_30 1
+cached fuji_aim_2020_07_30 2
+cached fuji_aim_2020_07_30 3
+cached fuji_aim_2020_07_30 4
+cached fuji_aim_2020_07_30 5
+cached fuji_aim_2020_07_30 6
+D:\00_Dev\ReplayViewer\pipeline\.venv-sr\lib\site-packages\numpy\_core\fromnumeric.py:3860: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+D:\00_Dev\ReplayViewer\pipeline\.venv-sr\lib\site-packages\numpy\_core\_methods.py:145: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+before fuji_aim_01 {'corrThrottleD': 0.1, 'corrBrakeD': 0.087, 'eventBrakeD': 0.146, 'eventThrottleD': nan, 'steerAfterVideoYawS': 0.103, 'imuAccyOverSpeedAfterVideoYawS': 0.215, 'gpsCourseRateAfterVideoYawS': 0.185, 'eventBrakeD_allEvents': {'n': 32, 'median': 0.149, 'p25': 0.078, 'p75': 0.207}}
+before fuji_aim_2020_07_30 {'corrThrottleD': 0.633, 'corrBrakeD': 0.623, 'eventBrakeD': 0.682, 'eventThrottleD': 0.978, 'steerAfterVideoYawS': -0.463, 'imuAccyOverSpeedAfterVideoYawS': -0.268, 'gpsCourseRateAfterVideoYawS': 0.235, 'eventBrakeD_allEvents': {'n': 39, 'median': 0.673, 'p25': 0.646, 'p75': 0.714}}
+after fuji_aim_01 {'corrThrottleD': 0.1, 'corrBrakeD': 0.087, 'eventBrakeD': 0.146, 'eventThrottleD': nan, 'steerAfterVideoYawS': 0.103, 'imuAccyOverSpeedAfterVideoYawS': 0.215, 'gpsCourseRateAfterVideoYawS': 0.185, 'eventBrakeD_allEvents': {'n': 32, 'median': 0.149, 'p25': 0.078, 'p75': 0.207}}
+after fuji_aim_2020_07_30 {'corrThrottleD': 0.143, 'corrBrakeD': 0.128, 'eventBrakeD': 0.183, 'eventThrottleD': 0.487, 'steerAfterVideoYawS': 0.065, 'imuAccyOverSpeedAfterVideoYawS': 0.23, 'gpsCourseRateAfterVideoYawS': 0.235, 'eventBrakeD_allEvents': {'n': 39, 'median': 0.197, 'p25': 0.164, 'p75': 0.22}}
+exit 0

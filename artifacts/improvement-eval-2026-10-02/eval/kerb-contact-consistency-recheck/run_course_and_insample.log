@@ -1,0 +1,73 @@
+fuji_aim_2020_07_30|raw|old|label                                      n=59 meas=57 S=16 N=41 contra=10 auc=0.904 wk=0.923 ['L1 k7 silent -2.00', 'L2 k21 strong +0.35', 'L2 k24 silent -1.16', 'L3 k13 silent -2.49', 'L3 k7 silent -2.50', 'L3 k10 silent -1.82', 'L4 k3 silent -1.95', 'L4 k10 silent -0.63', 'L6 k13 silent -0.85', 'L6 k7 silent -1.66'] unmeas=['L2 kDunlopR strong', 'L3 kDunlopR silent']
+fuji_aim_2020_07_30|raw|old|station                                    n=59 meas=57 S=16 N=41 contra=10 auc=0.904 wk=0.923 ['L1 k7 silent -2.00', 'L2 k21 strong +0.35', 'L2 k24 silent -1.16', 'L3 k13 silent -2.49', 'L3 k7 silent -2.50', 'L3 k10 silent -1.82', 'L4 k3 silent -1.95', 'L4 k10 silent -0.63', 'L6 k13 silent -0.85', 'L6 k7 silent -1.66'] unmeas=['L2 kDunlopR strong', 'L3 kDunlopR silent']
+fuji_aim_2020_07_30|raw|new|label                                      n=59 meas=59 S=17 N=42 contra=11 auc=0.896 wk=0.889 ['L1 k7 silent -2.05', 'L2 kDunlopR strong +1.08', 'L2 k21 strong +0.46', 'L2 k24 silent -1.17', 'L3 k13 silent -2.42', 'L3 k7 silent -2.60', 'L3 k10 silent -1.80', 'L4 k3 silent -1.85', 'L4 k10 silent -0.61', 'L6 k13 silent -0.78', 'L6 k7 silent -1.71'] unmeas=[]
+fuji_aim_2020_07_30|raw|new|station                                    n=59 meas=59 S=17 N=42 contra=11 auc=0.896 wk=0.889 ['L1 k7 silent -2.05', 'L2 kDunlopR strong +1.08', 'L2 k21 strong +0.46', 'L2 k24 silent -1.17', 'L3 k13 silent -2.42', 'L3 k7 silent -2.60', 'L3 k10 silent -1.80', 'L4 k3 silent -1.85', 'L4 k10 silent -0.61', 'L6 k13 silent -0.78', 'L6 k7 silent -1.71'] unmeas=[]
+fuji_aim_2020_07_30|gps_registration.json|old|label                    n=59 meas=57 S=16 N=41 contra=3 auc=0.866 wk=0.923 ['L2 k21 strong +1.60', 'L5 k9 silent -0.94', 'L5 k10 strong +0.47'] unmeas=['L2 kDunlopR strong', 'L3 kDunlopR silent']
+fuji_aim_2020_07_30|gps_registration.json|old|station                  n=59 meas=57 S=16 N=41 contra=3 auc=0.866 wk=0.923 ['L2 k21 strong +1.60', 'L5 k9 silent -0.94', 'L5 k10 strong +0.47'] unmeas=['L2 kDunlopR strong', 'L3 kDunlopR silent']
+fuji_aim_2020_07_30|gps_registration.json|new|label                    n=59 meas=59 S=17 N=42 contra=3 auc=0.884 wk=0.926 ['L2 k21 strong +1.66', 'L5 k9 silent -0.92', 'L5 k10 strong +0.42'] unmeas=[]
+fuji_aim_2020_07_30|gps_registration.json|new|station                  n=59 meas=59 S=17 N=42 contra=3 auc=0.884 wk=0.926 ['L2 k21 strong +1.66', 'L5 k9 silent -0.92', 'L5 k10 strong +0.42'] unmeas=[]
+fuji_aim_2020_07_30|gps_registration_kerb.json|new|label               n=59 meas=59 S=17 N=42 contra=1 auc=0.943 wk=0.926 ['L2 k21 strong +1.01'] unmeas=[]
+fuji_aim_2020_07_30|gps_registration_kerb.json|new|station             n=59 meas=59 S=17 N=42 contra=1 auc=0.943 wk=0.926 ['L2 k21 strong +1.01'] unmeas=[]
+fuji_aim_01|raw|old|label                                              n=52 meas=48 S=1 N=47 contra=4 auc=0.468 wk=1.0 ['L1 k20 silent -2.42', 'L2 k20 silent -1.54', 'L3 k7 strong +2.39', 'L3 k9 silent -0.68'] unmeas=['L1 kDunlopR silent', 'L2 kDunlopR silent', 'L3 kDunlopR silent', 'L4 kDunlopR silent']
+fuji_aim_01|raw|old|station                                            n=52 meas=48 S=1 N=47 contra=4 auc=0.468 wk=1.0 ['L1 k20 silent -2.42', 'L2 k20 silent -1.54', 'L3 k7 strong +2.39', 'L3 k9 silent -0.68'] unmeas=['L1 kDunlopR silent', 'L2 kDunlopR silent', 'L3 kDunlopR silent', 'L4 kDunlopR silent']
+fuji_aim_01|raw|new|label                                              n=52 meas=52 S=1 N=51 contra=6 auc=0.451 wk=1.0 ['L1 kDunlopR silent -3.11', 'L1 k20 silent -2.48', 'L2 kDunlopR silent -2.13', 'L2 k20 silent -1.60', 'L3 k7 strong +2.34', 'L3 k9 silent -0.68'] unmeas=[]
+fuji_aim_01|raw|new|station                                            n=52 meas=52 S=1 N=51 contra=6 auc=0.451 wk=1.0 ['L1 kDunlopR silent -3.11', 'L1 k20 silent -2.48', 'L2 kDunlopR silent -2.13', 'L2 k20 silent -1.60', 'L3 k7 strong +2.34', 'L3 k9 silent -0.68'] unmeas=[]
+fuji_aim_01|gps_registration.json|old|label                            n=52 meas=48 S=1 N=47 contra=1 auc=0.957 wk=1.0 ['L1 k13 silent -0.74'] unmeas=['L1 kDunlopR silent', 'L2 kDunlopR silent', 'L3 kDunlopR silent', 'L4 kDunlopR silent']
+fuji_aim_01|gps_registration.json|old|station                          n=52 meas=48 S=1 N=47 contra=1 auc=0.957 wk=1.0 ['L1 k13 silent -0.74'] unmeas=['L1 kDunlopR silent', 'L2 kDunlopR silent', 'L3 kDunlopR silent', 'L4 kDunlopR silent']
+fuji_aim_01|gps_registration.json|new|label                            n=52 meas=52 S=1 N=51 contra=2 auc=0.941 wk=1.0 ['L1 k13 silent -0.70', 'L1 kDunlopR silent -0.57'] unmeas=[]
+fuji_aim_01|gps_registration.json|new|station                          n=52 meas=52 S=1 N=51 contra=2 auc=0.941 wk=1.0 ['L1 k13 silent -0.70', 'L1 kDunlopR silent -0.57'] unmeas=[]
+{
+ "bootstrap_newMinusOld_shipped_7_30": {
+  "label": {
+   "commonLabels": 57,
+   "clusters": 13,
+   "B": 10000,
+   "contradictionDiff": 0,
+   "contradictionDiffCI95": [
+    0.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 1.0,
+   "aucDiff": 0.0137,
+   "aucDiffCI95": [
+    -0.0111,
+    0.04
+   ],
+   "pAucDiffLE0": 0.1619
+  },
+  "station": {
+   "commonLabels": 57,
+   "clusters": 13,
+   "B": 10000,
+   "contradictionDiff": 0,
+   "contradictionDiffCI95": [
+    0.0,
+    0.0
+   ],
+   "pContradictionDiffGE0": 1.0,
+   "aucDiff": 0.0137,
+   "aucDiffCI95": [
+    -0.0111,
+    0.04
+   ],
+   "pAucDiffLE0": 0.1619
+  }
+ },
+ "bootstrap_candidateInSampleMinusShippedNew_7_30_NOT_HELD_OUT": {
+  "commonLabels": 59,
+  "clusters": 14,
+  "B": 10000,
+  "contradictionDiff": -2,
+  "contradictionDiffCI95": [
+   -5.0,
+   0.0
+  ],
+  "pContradictionDiffGE0": 0.1135,
+  "aucDiff": 0.0588,
+  "aucDiffCI95": [
+   0.0056,
+   0.1199
+  ],
+  "pAucDiffLE0": 0.0147
+ }
+}

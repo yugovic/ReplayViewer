@@ -1,0 +1,266 @@
+{
+  "fps": 60.0,
+  "laps": 10,
+  "per_lap": [
+    {
+      "lap": "fuji_aim_01/L1",
+      "frames": 8671,
+      "before": {
+        "p95": 3.636,
+        "max": 5.541
+      },
+      "after": {
+        "p95": 0.067,
+        "max": 0.245
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_01/L2",
+      "frames": 8671,
+      "before": {
+        "p95": 3.664,
+        "max": 5.258
+      },
+      "after": {
+        "p95": 0.066,
+        "max": 0.262
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_01/L3",
+      "frames": 8479,
+      "before": {
+        "p95": 3.805,
+        "max": 5.484
+      },
+      "after": {
+        "p95": 0.071,
+        "max": 0.207
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_01/L4",
+      "frames": 9877,
+      "before": {
+        "p95": 3.517,
+        "max": 5.993
+      },
+      "after": {
+        "p95": 0.061,
+        "max": 0.196
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L1",
+      "frames": 8012,
+      "before": {
+        "p95": 3.899,
+        "max": 6.031
+      },
+      "after": {
+        "p95": 0.085,
+        "max": 0.255
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L2",
+      "frames": 7904,
+      "before": {
+        "p95": 4.024,
+        "max": 5.658
+      },
+      "after": {
+        "p95": 0.074,
+        "max": 0.284
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L3",
+      "frames": 7904,
+      "before": {
+        "p95": 4.026,
+        "max": 5.697
+      },
+      "after": {
+        "p95": 0.078,
+        "max": 0.291
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L4",
+      "frames": 7844,
+      "before": {
+        "p95": 4.089,
+        "max": 5.619
+      },
+      "after": {
+        "p95": 0.084,
+        "max": 0.282
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L5",
+      "frames": 7844,
+      "before": {
+        "p95": 4.01,
+        "max": 5.959
+      },
+      "after": {
+        "p95": 0.087,
+        "max": 0.309
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "lap": "fuji_aim_2020_07_30/L6",
+      "frames": 8425,
+      "before": {
+        "p95": 3.778,
+        "max": 6.058
+      },
+      "after": {
+        "p95": 0.08,
+        "max": 0.266
+      },
+      "raw": {
+        "p95": 0.0,
+        "max": 0.0
+      }
+    }
+  ],
+  "before": {
+    "headingErrorVsTargetDeg": {
+      "n": 83631,
+      "median": 1.013,
+      "p95": 3.857,
+      "p99": 4.857,
+      "max": 6.058
+    },
+    "headingErrorVsDrawnPathTangentDeg": {
+      "n": 83631,
+      "median": 1.034,
+      "p95": 3.961,
+      "p99": 5.23,
+      "max": 7.674
+    },
+    "stepDegPerFrame": {
+      "n": 83621,
+      "median": 0.1281,
+      "p95": 0.4877,
+      "p99": 0.614,
+      "max": 0.7659
+    },
+    "jitterDegPerFrame(2nd diff)": {
+      "n": 83611,
+      "median": 0.0006,
+      "p95": 0.0042,
+      "p99": 0.0079,
+      "max": 0.0194
+    },
+    "worst": {
+      "errDeg": 6.058,
+      "lap": "fuji_aim_2020_07_30/L6",
+      "time": 75.6
+    }
+  },
+  "after": {
+    "headingErrorVsTargetDeg": {
+      "n": 83631,
+      "median": 0.011,
+      "p95": 0.075,
+      "p99": 0.136,
+      "max": 0.309
+    },
+    "headingErrorVsDrawnPathTangentDeg": {
+      "n": 83631,
+      "median": 0.129,
+      "p95": 0.868,
+      "p99": 1.735,
+      "max": 5.15
+    },
+    "stepDegPerFrame": {
+      "n": 83621,
+      "median": 0.1281,
+      "p95": 0.4883,
+      "p99": 0.6167,
+      "max": 0.7686
+    },
+    "jitterDegPerFrame(2nd diff)": {
+      "n": 83611,
+      "median": 0.0006,
+      "p95": 0.0042,
+      "p99": 0.0075,
+      "max": 0.0156
+    },
+    "worst": {
+      "errDeg": 0.309,
+      "lap": "fuji_aim_2020_07_30/L5",
+      "time": 77.3
+    }
+  },
+  "raw": {
+    "headingErrorVsTargetDeg": {
+      "n": 83631,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "headingErrorVsDrawnPathTangentDeg": {
+      "n": 83631,
+      "median": 0.121,
+      "p95": 0.8,
+      "p99": 1.613,
+      "max": 4.915
+    },
+    "stepDegPerFrame": {
+      "n": 83621,
+      "median": 0.1279,
+      "p95": 0.49,
+      "p99": 0.619,
+      "max": 0.7725
+    },
+    "jitterDegPerFrame(2nd diff)": {
+      "n": 83611,
+      "median": 0.0,
+      "p95": 0.008,
+      "p99": 0.0231,
+      "max": 0.0908
+    }
+  }
+}

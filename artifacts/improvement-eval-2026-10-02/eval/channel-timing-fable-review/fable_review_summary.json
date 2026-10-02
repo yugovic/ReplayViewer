@@ -1,0 +1,47 @@
+{
+  "reviewer": "adversarial recheck (Fable 5.1 lens), 2026-10-02",
+  "scripts": ["fable_recheck.py (lap JSONs: baseline vs current vs 7/29 git HEAD; linear 100 Hz resampling, normalised xcorr, parabolic peak)",
+              "fable_xrk_check.py (raw XRK npz from APEX_WORK, whole-session longest contiguous moving block, logger timeline)"],
+  "integrity_confirmed": {
+    "0730_gps_arrays_t_lat_lng_speed_dist_identical_before_after": true,
+    "0730_meta_identical_except_channel_time_alignment": true,
+    "0729_lap_jsons_sha256_equal_git_HEAD": true,
+    "0730_gps_registration_equal_except_dataSha256": true,
+    "gear_integer_after_shift": true,
+    "heldEdgeSamples": 0, "samplesFromNeighbourLaps": "5-6 per lap"
+  },
+  "lag_0730_minus_0729_median_s (mine vs measurement)": {
+    "accx_vs_gps_along": {"before": [-0.525, -0.521], "after": [-0.025, -0.022]},
+    "accy_vs_gps_lat":   {"before": [-0.518, -0.519], "after": [-0.020, -0.021]},
+    "brake_vs_gps_decel":{"before": [-0.542, -0.540], "after": [-0.045, -0.044]},
+    "steer_vs_gps_rate": {"before": [-0.580, -0.580], "after": [-0.073, -0.074]},
+    "aps_vs_gps_along":  {"before": [-0.543, -0.534], "after": [-0.038, -0.032]},
+    "ctrl_brake_vs_accx (logger-logger)": {"before": -0.017, "after": -0.019, "after_minus_before_per_lap_max_abs": 0.0035}
+  },
+  "after_minus_before_equals_applied_shift": "yes, within 4 ms on every lap and every GPS-referenced pair",
+  "raw_xrk_whole_session_lag_s (tau<0 = logger channel early; 7/29, 7/30, diff)": {
+    "ECU_WS_RL_vs_GPS_speed": [-0.209, -0.725, -0.516],
+    "IMU_YawRate_vs_GPS_yawrate": [-0.103, -0.665, -0.562],
+    "IMU_InlineAcc_vs_dGPSspeed": [-0.042, -0.577, -0.535],
+    "ECU_BRK_P_vs_GPS_decel": [-0.108, -0.639, -0.530],
+    "ECU_STEER_vs_GPS_yawrate": [-0.180, -0.753, -0.573],
+    "ctrl_ECU_STEER_vs_IMU_YawRate": [-0.128, -0.144, -0.016],
+    "ctrl_ECU_BRK_P_vs_IMU_InlineAcc": [-0.065, -0.065, 0.000],
+    "first_sample_ms_GPS_minus_ECU": {"0729": 10, "0730": 474}
+  },
+  "implied_shift_vs_applied": {
+    "applied_per_lap": [0.468, 0.465, 0.490, 0.515, 0.526, 0.524],
+    "implied_ref_matched_mean": {"brake": 0.543, "steer": 0.578, "aps": 0.537, "accx": 0.525, "accy": 0.518},
+    "implied_minus_applied_mean": {"brake": 0.045, "steer": 0.080, "aps": 0.039, "accx": 0.027, "accy": 0.020},
+    "per_lap_corr_with_applied": {"brake": 0.92, "steer": 0.64, "aps": 0.91, "accx": 0.93, "accy": 0.92},
+    "drift_lap1_to_6": {"applied": 0.056, "brake": 0.088, "steer": 0.028, "aps": 0.040, "accx": 0.070, "accy": 0.070}
+  },
+  "side_effect_amplitude": {
+    "cause": "linear interpolation of 10 Hz series at fractional-sample offsets",
+    "max_abs_accy_before_after": {"lap1": [1.617, 1.411], "lap2": [1.967, 1.715], "lap4": [1.536, 1.394], "lap5": [2.111, 1.873]},
+    "max_accx_before_after_lap4": [0.823, 0.705],
+    "rms_p95_p99_change": "within 3 % on all channels and laps",
+    "user_facing": "HUD g-meter reads instantaneous accx/accy (src/ui/Hud.tsx:183-184)"
+  },
+  "verdict": "measurement not refuted; improved (0.52-0.58 s -> 0.02-0.08 s), with a systematic under-correction of 0.02-0.08 s that is a clock residual, not vehicle response (logger-internal brake-vs-IMU lag is identical on both days)"
+}

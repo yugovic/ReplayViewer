@@ -1,0 +1,1222 @@
+{
+ "integrity": {
+  "0730_lap1": {
+   "arrays_equal": {
+    "t": true,
+    "lat": true,
+    "lng": true,
+    "speed": true,
+    "aps": false,
+    "brake": false,
+    "steer": false,
+    "gear": false,
+    "accx": false,
+    "accy": false,
+    "dist": true
+   },
+   "meta_equal_excluding_cta": true,
+   "meta_diff_keys": []
+  },
+  "0730_lap2": {
+   "arrays_equal": {
+    "t": true,
+    "lat": true,
+    "lng": true,
+    "speed": true,
+    "aps": false,
+    "brake": false,
+    "steer": false,
+    "gear": false,
+    "accx": false,
+    "accy": false,
+    "dist": true
+   },
+   "meta_equal_excluding_cta": true,
+   "meta_diff_keys": []
+  },
+  "0730_lap3": {
+   "arrays_equal": {
+    "t": true,
+    "lat": true,
+    "lng": true,
+    "speed": true,
+    "aps": false,
+    "brake": false,
+    "steer": false,
+    "gear": false,
+    "accx": false,
+    "accy": false,
+    "dist": true
+   },
+   "meta_equal_excluding_cta": true,
+   "meta_diff_keys": []
+  },
+  "0730_lap4": {
+   "arrays_equal": {
+    "t": true,
+    "lat": true,
+    "lng": true,
+    "speed": true,
+    "aps": false,
+    "brake": false,
+    "steer": false,
+    "gear": false,
+    "accx": false,
+    "accy": false,
+    "dist": true
+   },
+   "meta_equal_excluding_cta": true,
+   "meta_diff_keys": []
+  },
+  "0730_lap5": {
+   "arrays_equal": {
+    "t": true,
+    "lat": true,
+    "lng": true,
+    "speed": true,
+    "aps": false,
+    "brake": false,
+    "steer": false,
+    "gear": false,
+    "accx": false,
+    "accy": false,
+    "dist": true
+   },
+   "meta_equal_excluding_cta": true,
+   "meta_diff_keys": []
+  },
+  "0730_lap6": {
+   "arrays_equal": {
+    "t": true,
+    "lat": true,
+    "lng": true,
+    "speed": true,
+    "aps": false,
+    "brake": false,
+    "steer": false,
+    "gear": false,
+    "accx": false,
+    "accy": false,
+    "dist": true
+   },
+   "meta_equal_excluding_cta": true,
+   "meta_diff_keys": []
+  },
+  "0729_lap1_sha_equal_gitHEAD": true,
+  "0729_lap2_sha_equal_gitHEAD": true,
+  "0729_lap3_sha_equal_gitHEAD": true,
+  "0729_lap4_sha_equal_gitHEAD": true
+ },
+ "lags": {
+  "before0730": {
+   "lap1": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.5772,
+     "r": 0.973
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.4691,
+     "r": 0.995
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.6272,
+     "r": 0.956
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.6137,
+     "r": 0.967
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.7028,
+     "r": 0.697
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0605,
+     "r": 0.966
+    }
+   },
+   "lap2": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.5827,
+     "r": 0.963
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.4927,
+     "r": 0.993
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.6539,
+     "r": 0.951
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.6241,
+     "r": 0.975
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.6836,
+     "r": 0.692
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0811,
+     "r": 0.958
+    }
+   },
+   "lap3": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.6006,
+     "r": 0.973
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.5058,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.6545,
+     "r": 0.96
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.5918,
+     "r": 0.973
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.7294,
+     "r": 0.683
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0572,
+     "r": 0.965
+    }
+   },
+   "lap4": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.6137,
+     "r": 0.97
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.5132,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.6884,
+     "r": 0.951
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.6297,
+     "r": 0.973
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.7243,
+     "r": 0.685
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0696,
+     "r": 0.964
+    }
+   },
+   "lap5": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.6236,
+     "r": 0.973
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.5319,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.6973,
+     "r": 0.95
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.6473,
+     "r": 0.973
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.7441,
+     "r": 0.687
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0714,
+     "r": 0.959
+    }
+   },
+   "lap6": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.6469,
+     "r": 0.974
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.5394,
+     "r": 0.996
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.7148,
+     "r": 0.95
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.642,
+     "r": 0.972
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.743,
+     "r": 0.741
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0668,
+     "r": 0.962
+    }
+   }
+  },
+  "after0730": {
+   "lap1": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.1056,
+     "r": 0.977
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.0011,
+     "r": 0.996
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.16,
+     "r": 0.958
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.1447,
+     "r": 0.968
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2341,
+     "r": 0.697
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0604,
+     "r": 0.97
+    }
+   },
+   "lap2": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.1157,
+     "r": 0.969
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.03,
+     "r": 0.995
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1902,
+     "r": 0.952
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.1584,
+     "r": 0.975
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2196,
+     "r": 0.693
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.084,
+     "r": 0.963
+    }
+   },
+   "lap3": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.1088,
+     "r": 0.974
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.0163,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1646,
+     "r": 0.961
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.1017,
+     "r": 0.973
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2385,
+     "r": 0.683
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0578,
+     "r": 0.966
+    }
+   },
+   "lap4": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.101,
+     "r": 0.973
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": 0.0015,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1758,
+     "r": 0.952
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.1146,
+     "r": 0.973
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2137,
+     "r": 0.684
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0714,
+     "r": 0.966
+    }
+   },
+   "lap5": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.1004,
+     "r": 0.976
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.0064,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1739,
+     "r": 0.951
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.1211,
+     "r": 0.974
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2212,
+     "r": 0.688
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0749,
+     "r": 0.962
+    }
+   },
+   "lap6": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.1235,
+     "r": 0.977
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.0164,
+     "r": 0.997
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1937,
+     "r": 0.952
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.118,
+     "r": 0.972
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2225,
+     "r": 0.74
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0688,
+     "r": 0.965
+    }
+   }
+  },
+  "ref0729": {
+   "lap1": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.0468,
+     "r": 0.957
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": 0.0508,
+     "r": 0.995
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1168,
+     "r": 0.926
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.0586,
+     "r": 0.984
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.1644,
+     "r": 0.696
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0646,
+     "r": 0.945
+    }
+   },
+   "lap2": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.0728,
+     "r": 0.947
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": 0.0139,
+     "r": 0.996
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1275,
+     "r": 0.888
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.0333,
+     "r": 0.98
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.1788,
+     "r": 0.739
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0716,
+     "r": 0.92
+    }
+   },
+   "lap3": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.0913,
+     "r": 0.962
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": 0.0038,
+     "r": 0.995
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1394,
+     "r": 0.917
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.055,
+     "r": 0.983
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.1897,
+     "r": 0.693
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0383,
+     "r": 0.928
+    }
+   },
+   "lap4": {
+    "accx_vs_gps_along": {
+     "tau_s": -0.1094,
+     "r": 0.947
+    },
+    "accy_vs_gps_lat": {
+     "tau_s": -0.0175,
+     "r": 0.993
+    },
+    "brake_vs_gps_decel": {
+     "tau_s": -0.1319,
+     "r": 0.897
+    },
+    "steer_vs_gps_rate": {
+     "tau_s": -0.038,
+     "r": 0.984
+    },
+    "aps_vs_gps_along": {
+     "tau_s": -0.2047,
+     "r": 0.795
+    },
+    "brake_vs_accx_ctrl": {
+     "tau_s": -0.0153,
+     "r": 0.923
+    }
+   }
+  }
+ },
+ "extrema": {
+  "0730_lap1": {
+   "before": {
+    "accx": [
+     -1.1286,
+     0.4911,
+     1.1286
+    ],
+    "accy": [
+     -1.6165,
+     1.3063,
+     1.6165
+    ],
+    "brake": [
+     0.0,
+     98.76,
+     98.76
+    ],
+    "steer": [
+     -189.44,
+     96.5,
+     189.44
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   },
+   "after": {
+    "accx": [
+     -1.0809,
+     0.4443,
+     1.0809
+    ],
+    "accy": [
+     -1.4106,
+     1.2715,
+     1.4106
+    ],
+    "brake": [
+     0.0,
+     98.197,
+     98.197
+    ],
+    "steer": [
+     -189.141,
+     95.22,
+     189.141
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   }
+  },
+  "0730_lap2": {
+   "before": {
+    "accx": [
+     -1.1758,
+     0.4876,
+     1.1758
+    ],
+    "accy": [
+     -1.9668,
+     1.4751,
+     1.9668
+    ],
+    "brake": [
+     0.0,
+     101.5,
+     101.5
+    ],
+    "steer": [
+     -177.0,
+     106.62,
+     177.0
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   },
+   "after": {
+    "accx": [
+     -1.1668,
+     0.4021,
+     1.1668
+    ],
+    "accy": [
+     -1.715,
+     1.3765,
+     1.715
+    ],
+    "brake": [
+     0.0,
+     100.975,
+     100.975
+    ],
+    "steer": [
+     -177.0,
+     106.0,
+     177.0
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   }
+  },
+  "0730_lap3": {
+   "before": {
+    "accx": [
+     -1.1375,
+     0.4569,
+     1.1375
+    ],
+    "accy": [
+     -1.6056,
+     1.4107,
+     1.6056
+    ],
+    "brake": [
+     0.0,
+     92.0,
+     92.0
+    ],
+    "steer": [
+     -172.0,
+     106.26,
+     172.0
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   },
+   "after": {
+    "accx": [
+     -1.1339,
+     0.438,
+     1.1339
+    ],
+    "accy": [
+     -1.559,
+     1.3894,
+     1.559
+    ],
+    "brake": [
+     0.0,
+     92.0,
+     92.0
+    ],
+    "steer": [
+     -171.766,
+     106.16,
+     171.766
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   }
+  },
+  "0730_lap4": {
+   "before": {
+    "accx": [
+     -1.1481,
+     0.8227,
+     1.1481
+    ],
+    "accy": [
+     -1.3372,
+     1.5361,
+     1.5361
+    ],
+    "brake": [
+     0.0,
+     94.8,
+     94.8
+    ],
+    "steer": [
+     -188.86,
+     126.92,
+     188.86
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   },
+   "after": {
+    "accx": [
+     -1.1124,
+     0.7048,
+     1.1124
+    ],
+    "accy": [
+     -1.3314,
+     1.3937,
+     1.3937
+    ],
+    "brake": [
+     0.0,
+     94.44,
+     94.44
+    ],
+    "steer": [
+     -188.248,
+     126.158,
+     188.248
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   }
+  },
+  "0730_lap5": {
+   "before": {
+    "accx": [
+     -1.1613,
+     0.4188,
+     1.1613
+    ],
+    "accy": [
+     -2.1108,
+     1.3974,
+     2.1108
+    ],
+    "brake": [
+     0.0,
+     103.72,
+     103.72
+    ],
+    "steer": [
+     -193.0,
+     106.0,
+     193.0
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   },
+   "after": {
+    "accx": [
+     -1.1273,
+     0.3964,
+     1.1273
+    ],
+    "accy": [
+     -1.8728,
+     1.3442,
+     1.8728
+    ],
+    "brake": [
+     0.0,
+     102.742,
+     102.742
+    ],
+    "steer": [
+     -192.941,
+     105.97,
+     192.941
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   }
+  },
+  "0730_lap6": {
+   "before": {
+    "accx": [
+     -1.224,
+     0.4232,
+     1.224
+    ],
+    "accy": [
+     -1.365,
+     1.3468,
+     1.365
+    ],
+    "brake": [
+     0.0,
+     101.059,
+     101.059
+    ],
+    "steer": [
+     -192.0,
+     101.0,
+     192.0
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   },
+   "after": {
+    "accx": [
+     -1.1586,
+     0.4212,
+     1.1586
+    ],
+    "accy": [
+     -1.3149,
+     1.3307,
+     1.3307
+    ],
+    "brake": [
+     0.0,
+     99.317,
+     99.317
+    ],
+    "steer": [
+     -192.0,
+     101.0,
+     192.0
+    ],
+    "aps": [
+     0.0,
+     100.0,
+     100.0
+    ]
+   }
+  }
+ },
+ "meta_alignment": {
+  "lap1": {
+   "method": "logger_channel_delay_v1",
+   "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+   "shiftSeconds": 0.468,
+   "estimate": {
+    "method": "imu-vs-gps-xcorr-v1",
+    "basis": "per-lap mean of accx and accy lags",
+    "lagS": -0.468,
+    "imuAccxLagS": -0.476,
+    "rAccx": 0.96,
+    "imuAccyLagS": -0.46,
+    "rAccy": 0.993,
+    "sessionMedianLagS": -0.507,
+    "tool": "scripts/quality/align-fuji-channel-timing.py"
+   },
+   "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+   ],
+   "nearestSampleChannels": [
+    "gear"
+   ],
+   "samplesFromNeighbourLaps": 5,
+   "heldEdgeSamples": 0
+  },
+  "lap2": {
+   "method": "logger_channel_delay_v1",
+   "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+   "shiftSeconds": 0.465,
+   "estimate": {
+    "method": "imu-vs-gps-xcorr-v1",
+    "basis": "per-lap mean of accx and accy lags",
+    "lagS": -0.465,
+    "imuAccxLagS": -0.488,
+    "rAccx": 0.95,
+    "imuAccyLagS": -0.442,
+    "rAccy": 0.991,
+    "sessionMedianLagS": -0.507,
+    "tool": "scripts/quality/align-fuji-channel-timing.py"
+   },
+   "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+   ],
+   "nearestSampleChannels": [
+    "gear"
+   ],
+   "samplesFromNeighbourLaps": 5,
+   "heldEdgeSamples": 0
+  },
+  "lap3": {
+   "method": "logger_channel_delay_v1",
+   "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+   "shiftSeconds": 0.49,
+   "estimate": {
+    "method": "imu-vs-gps-xcorr-v1",
+    "basis": "per-lap mean of accx and accy lags",
+    "lagS": -0.49,
+    "imuAccxLagS": -0.51,
+    "rAccx": 0.961,
+    "imuAccyLagS": -0.47,
+    "rAccy": 0.994,
+    "sessionMedianLagS": -0.507,
+    "tool": "scripts/quality/align-fuji-channel-timing.py"
+   },
+   "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+   ],
+   "nearestSampleChannels": [
+    "gear"
+   ],
+   "samplesFromNeighbourLaps": 5,
+   "heldEdgeSamples": 0
+  },
+  "lap4": {
+   "method": "logger_channel_delay_v1",
+   "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+   "shiftSeconds": 0.515,
+   "estimate": {
+    "method": "imu-vs-gps-xcorr-v1",
+    "basis": "per-lap mean of accx and accy lags",
+    "lagS": -0.515,
+    "imuAccxLagS": -0.524,
+    "rAccx": 0.958,
+    "imuAccyLagS": -0.506,
+    "rAccy": 0.995,
+    "sessionMedianLagS": -0.507,
+    "tool": "scripts/quality/align-fuji-channel-timing.py"
+   },
+   "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+   ],
+   "nearestSampleChannels": [
+    "gear"
+   ],
+   "samplesFromNeighbourLaps": 6,
+   "heldEdgeSamples": 0
+  },
+  "lap5": {
+   "method": "logger_channel_delay_v1",
+   "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+   "shiftSeconds": 0.526,
+   "estimate": {
+    "method": "imu-vs-gps-xcorr-v1",
+    "basis": "per-lap mean of accx and accy lags",
+    "lagS": -0.526,
+    "imuAccxLagS": -0.53,
+    "rAccx": 0.961,
+    "imuAccyLagS": -0.522,
+    "rAccy": 0.995,
+    "sessionMedianLagS": -0.507,
+    "tool": "scripts/quality/align-fuji-channel-timing.py"
+   },
+   "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+   ],
+   "nearestSampleChannels": [
+    "gear"
+   ],
+   "samplesFromNeighbourLaps": 6,
+   "heldEdgeSamples": 0
+  },
+  "lap6": {
+   "method": "logger_channel_delay_v1",
+   "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+   "shiftSeconds": 0.524,
+   "estimate": {
+    "method": "imu-vs-gps-xcorr-v1",
+    "basis": "per-lap mean of accx and accy lags",
+    "lagS": -0.524,
+    "imuAccxLagS": -0.54,
+    "rAccx": 0.962,
+    "imuAccyLagS": -0.508,
+    "rAccy": 0.994,
+    "sessionMedianLagS": -0.507,
+    "tool": "scripts/quality/align-fuji-channel-timing.py"
+   },
+   "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+   ],
+   "nearestSampleChannels": [
+    "gear"
+   ],
+   "samplesFromNeighbourLaps": 6,
+   "heldEdgeSamples": 0
+  }
+ },
+ "summary": {
+  "accx_vs_gps_along": {
+   "before0730": {
+    "median": -0.6072,
+    "min": -0.6469,
+    "max": -0.5772
+   },
+   "after0730": {
+    "median": -0.1072,
+    "min": -0.1235,
+    "max": -0.1004
+   },
+   "ref0729": {
+    "median": -0.0821,
+    "min": -0.1094,
+    "max": -0.0468
+   },
+   "before_minus_ref": -0.5251,
+   "after_minus_ref": -0.0251
+  },
+  "accy_vs_gps_lat": {
+   "before0730": {
+    "median": -0.5095,
+    "min": -0.5394,
+    "max": -0.4691
+   },
+   "after0730": {
+    "median": -0.0113,
+    "min": -0.03,
+    "max": 0.0015
+   },
+   "ref0729": {
+    "median": 0.0089,
+    "min": -0.0175,
+    "max": 0.0508
+   },
+   "before_minus_ref": -0.5184,
+   "after_minus_ref": -0.0202
+  },
+  "brake_vs_gps_decel": {
+   "before0730": {
+    "median": -0.6714,
+    "min": -0.7148,
+    "max": -0.6272
+   },
+   "after0730": {
+    "median": -0.1749,
+    "min": -0.1937,
+    "max": -0.16
+   },
+   "ref0729": {
+    "median": -0.1297,
+    "min": -0.1394,
+    "max": -0.1168
+   },
+   "before_minus_ref": -0.5417,
+   "after_minus_ref": -0.0452
+  },
+  "steer_vs_gps_rate": {
+   "before0730": {
+    "median": -0.6269,
+    "min": -0.6473,
+    "max": -0.5918
+   },
+   "after0730": {
+    "median": -0.1195,
+    "min": -0.1584,
+    "max": -0.1017
+   },
+   "ref0729": {
+    "median": -0.0465,
+    "min": -0.0586,
+    "max": -0.0333
+   },
+   "before_minus_ref": -0.5804,
+   "after_minus_ref": -0.073
+  },
+  "aps_vs_gps_along": {
+   "before0730": {
+    "median": -0.7268,
+    "min": -0.7441,
+    "max": -0.6836
+   },
+   "after0730": {
+    "median": -0.2218,
+    "min": -0.2385,
+    "max": -0.2137
+   },
+   "ref0729": {
+    "median": -0.1842,
+    "min": -0.2047,
+    "max": -0.1644
+   },
+   "before_minus_ref": -0.5426,
+   "after_minus_ref": -0.0376
+  },
+  "brake_vs_accx_ctrl": {
+   "before0730": {
+    "median": -0.0682,
+    "min": -0.0811,
+    "max": -0.0572
+   },
+   "after0730": {
+    "median": -0.0701,
+    "min": -0.084,
+    "max": -0.0578
+   },
+   "ref0729": {
+    "median": -0.0515,
+    "min": -0.0716,
+    "max": -0.0153
+   },
+   "before_minus_ref": -0.0167,
+   "after_minus_ref": -0.0186
+  }
+ },
+ "after_minus_before_per_lap": {
+  "accx_vs_gps_along": {
+   "lap1": 0.4716,
+   "lap2": 0.467,
+   "lap3": 0.4918,
+   "lap4": 0.5127,
+   "lap5": 0.5232,
+   "lap6": 0.5234
+  },
+  "accy_vs_gps_lat": {
+   "lap1": 0.468,
+   "lap2": 0.4627,
+   "lap3": 0.4895,
+   "lap4": 0.5147,
+   "lap5": 0.5255,
+   "lap6": 0.523
+  },
+  "brake_vs_gps_decel": {
+   "lap1": 0.4672,
+   "lap2": 0.4637,
+   "lap3": 0.4899,
+   "lap4": 0.5126,
+   "lap5": 0.5234,
+   "lap6": 0.5211
+  },
+  "steer_vs_gps_rate": {
+   "lap1": 0.469,
+   "lap2": 0.4657,
+   "lap3": 0.4901,
+   "lap4": 0.5151,
+   "lap5": 0.5262,
+   "lap6": 0.524
+  },
+  "aps_vs_gps_along": {
+   "lap1": 0.4687,
+   "lap2": 0.464,
+   "lap3": 0.4909,
+   "lap4": 0.5106,
+   "lap5": 0.5229,
+   "lap6": 0.5205
+  },
+  "brake_vs_accx_ctrl": {
+   "lap1": 0.0001,
+   "lap2": -0.0029,
+   "lap3": -0.0006,
+   "lap4": -0.0018,
+   "lap5": -0.0035,
+   "lap6": -0.002
+  }
+ },
+ "applied_shift": {
+  "lap1": 0.468,
+  "lap2": 0.465,
+  "lap3": 0.49,
+  "lap4": 0.515,
+  "lap5": 0.526,
+  "lap6": 0.524
+ }
+}

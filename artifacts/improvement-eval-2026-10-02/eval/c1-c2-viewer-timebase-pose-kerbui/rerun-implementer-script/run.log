@@ -1,0 +1,27 @@
+1x140ms {"n":83631,"median":1.013,"p95":3.857,"p99":4.857,"max":6.058} jitter p99 0.0079
+1x40ms {"n":83631,"median":0.248,"p95":0.946,"p99":1.198,"max":1.493} jitter p99 0.0102
+1x140ms+lookahead {"n":83631,"median":0.069,"p95":0.291,"p99":0.437,"max":0.618} jitter p99 0.0077
+1x140ms+lookahead+linearInput {"n":83631,"median":0.021,"p95":0.147,"p99":0.263,"max":0.562} jitter p99 0.0077
+2x70ms+lookahead {"n":83631,"median":0.125,"p95":0.478,"p99":0.616,"max":0.815} jitter p99 0.0075
+2x70ms+lookahead+linearInput {"n":83631,"median":0.011,"p95":0.075,"p99":0.136,"max":0.309} jitter p99 0.0075
+2x50ms+lookahead+linearInput {"n":83631,"median":0.005,"p95":0.039,"p99":0.072,"max":0.183} jitter p99 0.0077
+2x100ms+lookahead+linearInput {"n":83631,"median":0.022,"p95":0.15,"p99":0.269,"max":0.576} jitter p99 0.0074
+3x47ms+lookahead+linearInput {"n":83631,"median":0.007,"p95":0.052,"p99":0.095,"max":0.227} jitter p99 0.0075
+raw-target {"n":83631,"median":0,"p95":0,"p99":0,"max":0} jitter p99 0.0231
+30fps-1x p95/max before 3.628 5.698 after 0.078 0.316 | jitter p99 before 0.0318 after 0.0298 | yaw-rate change p99 before 0.953 after 0.893
+144fps-1x p95/max before 3.996 6.275 after 0.074 0.302 | jitter p99 before 0.0014 after 0.0013 | yaw-rate change p99 before 0.197 after 0.188
+60fps-2x p95/max before 3.628 5.698 after 0.078 0.316 | jitter p99 before 0.0318 after 0.0298 | yaw-rate change p99 before 0.953 after 0.893
+60fps-4x p95/max before 3.198 5.023 after 0.086 0.336 | jitter p99 before 0.1212 after 0.1189 | yaw-rate change p99 before 1.818 after 1.784
+60fps-0.5x p95/max before 3.975 6.244 after 0.074 0.306 | jitter p99 before 0.002 after 0.0019 | yaw-rate change p99 before 0.237 after 0.226
+60fps-1x-dtJitter40% p95/max before 3.844 6.042 after 0.075 0.296 | jitter p99 before 0.2937 after 0.2775 | yaw-rate change p99 before 1.017 after 0.474
+60fps-1x-pause10framesEvery3s p95/max before 3.747 6.03 after 0.07 0.309 | jitter p99 before 0.0418 after 0.0148 | yaw-rate change p99 before 1.237 after 0.44
+before {"n":83631,"median":1.013,"p95":3.857,"p99":4.857,"max":6.058} jitter {"n":83611,"median":0.0006,"p95":0.0042,"p99":0.0079,"max":0.0194}
+after  {"n":83631,"median":0.011,"p95":0.075,"p99":0.136,"max":0.309} jitter {"n":83611,"median":0.0006,"p95":0.0042,"p99":0.0075,"max":0.0156}
+targets {"p95BelowOneDegree":true,"jitterP99NotWorse":true,"jitterMaxNotWorse":true,"yawRateChangeP99NotWorse":true,"robustnessP95BelowOneDegree":true,"robustnessYawRateChangeP99NotWorse":true}
+timebase clock {"beforeAheadMetersMedianOfLapMedians":1.052,"beforeAheadMetersMax":5.019,"afterAheadMeters":0,"note":"after: HUD/transport clock show t + δ, so at displayed lap time X the drawn car is the sample at true lap time X (exact by construction)"}
+ghost delta truth {"legacy":{"n":125205,"median":11.603,"p95":74.365,"p99":121.218,"max":260.604},"naiveAddDeltaOnly":{"n":125205,"median":44.186,"p95":141.119,"p99":196.834,"max":342.604},"fixed":{"n":125205,"median":0.061,"p95":0.258,"p99":0.425,"max":1.055}}
+wrote D:\00_Dev\ReplayViewer\artifacts\improvement-eval-2026-10-02\eval\c1-c2-viewer-timebase-pose-kerbui\rerun-implementer-script in 9.607s
+
+real	1m18.287s
+user	0m0.030s
+sys	0m0.167s

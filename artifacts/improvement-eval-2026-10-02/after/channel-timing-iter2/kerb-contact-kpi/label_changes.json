@@ -1,0 +1,219 @@
+{
+ "fuji_aim_01": {
+  "counts": {
+   "published": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "attributedSessionShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "overlapNoSideLapShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "overlapSideFilterLapShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "overlapSideFilterSessionShift": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   },
+   "v3Report": {
+    "strong": 1,
+    "silent": 51,
+    "mild": 4
+   }
+  },
+  "changedVsReport": [],
+  "changedBy": {
+   "attributedSessionShift": [],
+   "overlapNoSideLapShift": [],
+   "overlapSideFilterLapShift": [],
+   "overlapSideFilterSessionShift": []
+  },
+  "eventShiftSecondsVsSession": {
+   "1": -0.014,
+   "2": -0.014,
+   "3": -0.014,
+   "4": -0.014
+  },
+  "passesMissingInReport": [],
+  "events": {
+   "total": 3,
+   "kerbAttributed": 3,
+   "insidePass": 2,
+   "byBin": {
+    "low": 2,
+    "mid": 1,
+    "high": 0
+   },
+   "durationSeconds": {
+    "min": 0.04999999999999716,
+    "median": 0.14000000000000057
+   }
+  }
+ },
+ "fuji_aim_2020_07_30": {
+  "counts": {
+   "published": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   },
+   "attributedSessionShift": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   },
+   "overlapNoSideLapShift": {
+    "strong": 20,
+    "silent": 41,
+    "mild": 23
+   },
+   "overlapSideFilterLapShift": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   },
+   "overlapSideFilterSessionShift": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   },
+   "v3Report": {
+    "strong": 17,
+    "silent": 41,
+    "mild": 26
+   }
+  },
+  "changedVsReport": [
+   {
+    "lap": 2,
+    "kerb": "k10",
+    "before": "strong",
+    "after": "mild",
+    "attributedSessionShift": "mild",
+    "overlapNoSideLapShift": "strong",
+    "overlapSideFilterLapShift": "strong",
+    "overlapSideFilterSessionShift": "strong"
+   },
+   {
+    "lap": 2,
+    "kerb": "k23",
+    "before": "mild",
+    "after": "strong",
+    "attributedSessionShift": "strong",
+    "overlapNoSideLapShift": "strong",
+    "overlapSideFilterLapShift": "mild",
+    "overlapSideFilterSessionShift": "mild"
+   }
+  ],
+  "changedBy": {
+   "attributedSessionShift": [
+    {
+     "lap": 1,
+     "kerb": "k24",
+     "published": "silent",
+     "attributedSessionShift": "mild"
+    },
+    {
+     "lap": 5,
+     "kerb": "k23",
+     "published": "mild",
+     "attributedSessionShift": "silent"
+    }
+   ],
+   "overlapNoSideLapShift": [
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "published": "mild",
+     "overlapNoSideLapShift": "strong"
+    },
+    {
+     "lap": 5,
+     "kerb": "k23",
+     "published": "mild",
+     "overlapNoSideLapShift": "strong"
+    },
+    {
+     "lap": 6,
+     "kerb": "k23",
+     "published": "mild",
+     "overlapNoSideLapShift": "strong"
+    }
+   ],
+   "overlapSideFilterLapShift": [
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "published": "mild",
+     "overlapSideFilterLapShift": "strong"
+    },
+    {
+     "lap": 2,
+     "kerb": "k23",
+     "published": "strong",
+     "overlapSideFilterLapShift": "mild"
+    }
+   ],
+   "overlapSideFilterSessionShift": [
+    {
+     "lap": 1,
+     "kerb": "k24",
+     "published": "silent",
+     "overlapSideFilterSessionShift": "mild"
+    },
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "published": "mild",
+     "overlapSideFilterSessionShift": "strong"
+    },
+    {
+     "lap": 2,
+     "kerb": "k23",
+     "published": "strong",
+     "overlapSideFilterSessionShift": "mild"
+    },
+    {
+     "lap": 5,
+     "kerb": "k23",
+     "published": "mild",
+     "overlapSideFilterSessionShift": "silent"
+    }
+   ]
+  },
+  "eventShiftSecondsVsSession": {
+   "1": -0.01,
+   "2": 0.016,
+   "3": 0.016,
+   "4": 0.048,
+   "5": 0.058,
+   "6": 0.076
+  },
+  "passesMissingInReport": [],
+  "events": {
+   "total": 41,
+   "kerbAttributed": 39,
+   "insidePass": 33,
+   "byBin": {
+    "low": 23,
+    "mid": 12,
+    "high": 6
+   },
+   "durationSeconds": {
+    "min": 0.0,
+    "median": 0.3399999999999963
+   }
+  }
+ }
+}

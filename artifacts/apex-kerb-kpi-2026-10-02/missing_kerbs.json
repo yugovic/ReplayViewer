@@ -1,0 +1,47 @@
+{
+ "missingKerbCandidates": [
+  {
+   "side": "left",
+   "start": 772.0,
+   "end": 850.5,
+   "lengthM": 79.0
+  },
+  {
+   "side": "left",
+   "start": 858.5,
+   "end": 874.0,
+   "lengthM": 16.0
+  },
+  {
+   "side": "right",
+   "start": 1.5,
+   "end": 17.0,
+   "lengthM": 16.0
+  },
+  {
+   "side": "right",
+   "start": 21.0,
+   "end": 30.0,
+   "lengthM": 9.5
+  },
+  {
+   "side": "right",
+   "start": 598.5,
+   "end": 640.0,
+   "lengthM": 42.0
+  },
+  {
+   "side": "right",
+   "start": 2987.0,
+   "end": 2996.0,
+   "lengthM": 9.5
+  },
+  {
+   "side": "right",
+   "start": 4526.5,
+   "end": 4555.0,
+   "lengthM": 29.0
+  }
+ ],
+ "note": "red paint within 2.5 m outside the CG road edge, not covered by any CG kerb (+-1 m). Candidate list for review."
+}

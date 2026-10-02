@@ -79,6 +79,11 @@ export interface LapMeta {
   time_column: string;
   first_sample_time: string;
   last_sample_time: string;
+  /** True lap start (ISO) and its offset to the first 10 Hz sample (seconds, 0.007-0.097 for Fuji). */
+  lap_start_time?: string;
+  first_sample_after_lap_start_seconds?: number;
+  /** Logger-clock channel re-timing applied by pipeline/build_race.py (7/30 only). */
+  channel_time_alignment?: { method: string; shiftSeconds: number; channels: string[]; [key: string]: unknown };
 }
 
 export interface LapData {

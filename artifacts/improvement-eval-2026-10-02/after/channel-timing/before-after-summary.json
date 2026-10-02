@@ -1,0 +1,438 @@
+{
+  "task": "GPS-REG-08: re-time 7/30 logger-clock channels onto the GPS time base",
+  "conventions": {
+    "lagS": "s maximising corr(GPS-derived(t), channel(t+s)); negative = logger channel earlier than GPS",
+    "shiftSeconds": "channel(t) = logger(t - shiftSeconds); positive = delayed"
+  },
+  "mode": "per-lap",
+  "shiftSecondsByLap": {
+    "1": 0.468,
+    "2": 0.465,
+    "3": 0.49,
+    "4": 0.515,
+    "5": 0.526,
+    "6": 0.524
+  },
+  "imuVsGpsLag": {
+    "before": {
+      "median": -0.507,
+      "range": [
+        -0.54,
+        -0.442
+      ],
+      "laps": [
+        {
+          "lap": 1,
+          "accxLagS": -0.476,
+          "accyLagS": -0.46
+        },
+        {
+          "lap": 2,
+          "accxLagS": -0.488,
+          "accyLagS": -0.442
+        },
+        {
+          "lap": 3,
+          "accxLagS": -0.51,
+          "accyLagS": -0.47
+        },
+        {
+          "lap": 4,
+          "accxLagS": -0.524,
+          "accyLagS": -0.506
+        },
+        {
+          "lap": 5,
+          "accxLagS": -0.53,
+          "accyLagS": -0.522
+        },
+        {
+          "lap": 6,
+          "accxLagS": -0.54,
+          "accyLagS": -0.508
+        }
+      ]
+    },
+    "after": {
+      "median": -0.008,
+      "range": [
+        -0.032,
+        0.006
+      ],
+      "laps": [
+        {
+          "lap": 1,
+          "accxLagS": -0.016,
+          "accyLagS": -0.002
+        },
+        {
+          "lap": 2,
+          "accxLagS": -0.032,
+          "accyLagS": 0.002
+        },
+        {
+          "lap": 3,
+          "accxLagS": -0.032,
+          "accyLagS": -0.014
+        },
+        {
+          "lap": 4,
+          "accxLagS": -0.006,
+          "accyLagS": 0.006
+        },
+        {
+          "lap": 5,
+          "accxLagS": -0.01,
+          "accyLagS": 0.002
+        },
+        {
+          "lap": 6,
+          "accxLagS": -0.022,
+          "accyLagS": 0.004
+        }
+      ],
+      "maxAbs": 0.032
+    },
+    "reference0729": {
+      "median": 0.014,
+      "range": [
+        -0.076,
+        0.074
+      ]
+    },
+    "target": "|lag| < 0.05 s on every lap and axis"
+  },
+  "braking": {
+    "before": {
+      "brakeToGpsDecelS": {
+        "median": 0.641,
+        "ci95": [
+          0.621,
+          0.653
+        ],
+        "iqr": [
+          0.607,
+          0.671
+        ],
+        "n": 39
+      },
+      "brakeToGpsDecelM": {
+        "median": 24.6,
+        "ci95": [
+          21.9,
+          29.0
+        ],
+        "iqr": [
+          21.15,
+          30.75
+        ],
+        "n": 39
+      },
+      "brakeToImuDecelS": {
+        "median": 0.08,
+        "ci95": [
+          0.07,
+          0.087
+        ],
+        "iqr": [
+          0.057,
+          0.092
+        ],
+        "n": 39
+      },
+      "imuDecelToGpsDecelS": {
+        "median": 0.562,
+        "ci95": [
+          0.546,
+          0.579
+        ],
+        "iqr": [
+          0.524,
+          0.591
+        ],
+        "n": 39
+      }
+    },
+    "after": {
+      "brakeToGpsDecelS": {
+        "median": 0.151,
+        "ci95": [
+          0.131,
+          0.161
+        ],
+        "iqr": [
+          0.124,
+          0.166
+        ],
+        "n": 39
+      },
+      "brakeToGpsDecelM": {
+        "median": 5.5,
+        "ci95": [
+          5.1,
+          6.7
+        ],
+        "iqr": [
+          4.6,
+          7.65
+        ],
+        "n": 39
+      },
+      "brakeToImuDecelS": {
+        "median": 0.078,
+        "ci95": [
+          0.067,
+          0.089
+        ],
+        "iqr": [
+          0.064,
+          0.099
+        ],
+        "n": 39
+      },
+      "imuDecelToGpsDecelS": {
+        "median": 0.071,
+        "ci95": [
+          0.05,
+          0.079
+        ],
+        "iqr": [
+          0.046,
+          0.083
+        ],
+        "n": 39
+      }
+    },
+    "reference0729": {
+      "brakeToGpsDecelS": {
+        "median": 0.103,
+        "ci95": [
+          0.094,
+          0.117
+        ],
+        "iqr": [
+          0.089,
+          0.127
+        ],
+        "n": 29
+      },
+      "brakeToGpsDecelM": {
+        "median": 3.8,
+        "ci95": [
+          3.1,
+          4.7
+        ],
+        "iqr": [
+          2.8,
+          4.9
+        ],
+        "n": 29
+      },
+      "brakeToImuDecelS": {
+        "median": 0.075,
+        "ci95": [
+          0.047,
+          0.087
+        ],
+        "iqr": [
+          0.039,
+          0.093
+        ],
+        "n": 28
+      },
+      "imuDecelToGpsDecelS": {
+        "median": 0.035,
+        "ci95": [
+          0.009,
+          0.055
+        ],
+        "iqr": [
+          -0.001,
+          0.061
+        ],
+        "n": 28
+      }
+    },
+    "zones": {
+      "before": 39,
+      "after": 39,
+      "reference0729": 29
+    }
+  },
+  "independentSteerCheck": {
+    "description": "ECU steering vs GPS course rate (not used to estimate the shift); steering physically leads yaw",
+    "before": -0.63,
+    "after": -0.12,
+    "reference0729": {
+      "median": -0.048,
+      "laps": [
+        -0.06,
+        -0.034,
+        -0.056,
+        -0.04
+      ]
+    }
+  },
+  "alternativeSessionMedian": {
+    "shiftSeconds": 0.507,
+    "imuLagAfterMaxAbsS": 0.06,
+    "crossChannelCheck": {
+      "per-lap": {
+        "residualsS": [
+          -0.016,
+          -0.046,
+          -0.04,
+          -0.018,
+          -0.008,
+          -0.032,
+          0.016,
+          0.046,
+          0.04,
+          0.018,
+          0.008,
+          0.032
+        ],
+        "meanAbsS": 0.027,
+        "maxAbsS": 0.046
+      },
+      "session-median": {
+        "residualsS": [
+          0.012,
+          0.0,
+          -0.022,
+          -0.036,
+          -0.042,
+          -0.052,
+          0.057,
+          0.075,
+          0.047,
+          0.011,
+          -0.005,
+          0.009
+        ],
+        "meanAbsS": 0.031,
+        "maxAbsS": 0.075
+      }
+    }
+  },
+  "registration": {
+    "offsetsIdentical": true,
+    "identicalExceptDataSha256": true,
+    "sessionOffsetMeters": [
+      -0.221,
+      -2.68
+    ],
+    "laps": [
+      {
+        "lap": 1,
+        "before": [
+          -0.084,
+          -2.783
+        ],
+        "after": [
+          -0.084,
+          -2.783
+        ],
+        "identical": true
+      },
+      {
+        "lap": 2,
+        "before": [
+          -0.432,
+          -2.612
+        ],
+        "after": [
+          -0.432,
+          -2.612
+        ],
+        "identical": true
+      },
+      {
+        "lap": 3,
+        "before": [
+          -0.329,
+          -2.511
+        ],
+        "after": [
+          -0.329,
+          -2.511
+        ],
+        "identical": true
+      },
+      {
+        "lap": 4,
+        "before": [
+          -0.031,
+          -3.034
+        ],
+        "after": [
+          -0.031,
+          -3.034
+        ],
+        "identical": true
+      },
+      {
+        "lap": 5,
+        "before": [
+          -0.298,
+          -2.558
+        ],
+        "after": [
+          -0.298,
+          -2.558
+        ],
+        "identical": true
+      },
+      {
+        "lap": 6,
+        "before": [
+          -0.316,
+          -2.446
+        ],
+        "after": [
+          -0.316,
+          -2.446
+        ],
+        "identical": true
+      }
+    ]
+  },
+  "fileSizeBytes": {
+    "osaki_hmr_demio_101_lap_001.json": {
+      "before": 106041,
+      "after": 107992
+    },
+    "osaki_hmr_demio_101_lap_002.json": {
+      "before": 104671,
+      "after": 106785
+    },
+    "osaki_hmr_demio_101_lap_003.json": {
+      "before": 104625,
+      "after": 106553
+    },
+    "osaki_hmr_demio_101_lap_004.json": {
+      "before": 103814,
+      "after": 105814
+    },
+    "osaki_hmr_demio_101_lap_005.json": {
+      "before": 103980,
+      "after": 105692
+    },
+    "osaki_hmr_demio_101_lap_006.json": {
+      "before": 111798,
+      "after": 114043
+    }
+  },
+  "checks": {
+    "gpsArraysIdentical": true,
+    "otherMetaIdentical": true,
+    "zeroShiftReproducesUnaligned": true,
+    "noHeldEdgeSamples": true,
+    "residualImuLagBelow0.05s": true,
+    "sourceFilesUnchanged": true
+  },
+  "wetSession0729Unchanged": {
+    "laps": true,
+    "zones": true
+  }
+}

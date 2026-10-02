@@ -1,0 +1,455 @@
+{
+ "registration": {
+  "fuji_aim_01": {
+   "lapCountBaseline": 4,
+   "lapCountNow": 4,
+   "sessionOffsetBaseline": [
+    -1.627,
+    1.931
+   ],
+   "sessionOffsetNow": [
+    -1.627,
+    1.931
+   ],
+   "sessionOffsetEqual": true,
+   "allLapOffsetsEqual": true,
+   "topLevelKeysDiffering": [],
+   "lapKeysDifferingExceptDataSha": [],
+   "fileByteIdenticalToBaseline": true,
+   "laps": [
+    {
+     "lap": 1,
+     "offsetBaseline": [
+      -1.224,
+      2.315
+     ],
+     "offsetNow": [
+      -1.224,
+      2.315
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": false
+    },
+    {
+     "lap": 2,
+     "offsetBaseline": [
+      -1.677,
+      1.976
+     ],
+     "offsetNow": [
+      -1.677,
+      1.976
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": false
+    },
+    {
+     "lap": 3,
+     "offsetBaseline": [
+      -1.638,
+      1.75
+     ],
+     "offsetNow": [
+      -1.638,
+      1.75
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": false
+    },
+    {
+     "lap": 4,
+     "offsetBaseline": [
+      -1.777,
+      1.735
+     ],
+     "offsetNow": [
+      -1.777,
+      1.735
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": false
+    }
+   ]
+  },
+  "fuji_aim_2020_07_30": {
+   "lapCountBaseline": 6,
+   "lapCountNow": 6,
+   "sessionOffsetBaseline": [
+    -0.221,
+    -2.68
+   ],
+   "sessionOffsetNow": [
+    -0.221,
+    -2.68
+   ],
+   "sessionOffsetEqual": true,
+   "allLapOffsetsEqual": true,
+   "topLevelKeysDiffering": [],
+   "lapKeysDifferingExceptDataSha": [],
+   "fileByteIdenticalToBaseline": false,
+   "laps": [
+    {
+     "lap": 1,
+     "offsetBaseline": [
+      -0.084,
+      -2.783
+     ],
+     "offsetNow": [
+      -0.084,
+      -2.783
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 2,
+     "offsetBaseline": [
+      -0.432,
+      -2.612
+     ],
+     "offsetNow": [
+      -0.432,
+      -2.612
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 3,
+     "offsetBaseline": [
+      -0.329,
+      -2.511
+     ],
+     "offsetNow": [
+      -0.329,
+      -2.511
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 4,
+     "offsetBaseline": [
+      -0.031,
+      -3.034
+     ],
+     "offsetNow": [
+      -0.031,
+      -3.034
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 5,
+     "offsetBaseline": [
+      -0.298,
+      -2.558
+     ],
+     "offsetNow": [
+      -0.298,
+      -2.558
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": true
+    },
+    {
+     "lap": 6,
+     "offsetBaseline": [
+      -0.316,
+      -2.446
+     ],
+     "offsetNow": [
+      -0.316,
+      -2.446
+     ],
+     "offsetEqual": true,
+     "jackknifeEqual": true,
+     "rawKpiEqual": true,
+     "registeredKpiEqual": true,
+     "dataShaChanged": true
+    }
+   ]
+  }
+ },
+ "wet0729": {
+  "manifestSectionUnchanged": true,
+  "lapFilesOnDisk": [
+   "osaki_hmr_demio_101_lap_001.json",
+   "osaki_hmr_demio_101_lap_002.json",
+   "osaki_hmr_demio_101_lap_003.json",
+   "osaki_hmr_demio_101_lap_004.json"
+  ],
+  "laps_json_identical_to_baseline": true,
+  "inputs": [
+   {
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "shaNow": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "shaBaselineManifest": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "matchesBaselineManifest": true,
+    "trackedInGit": true,
+    "byteIdenticalToHEAD": false,
+    "matchesRegistrationDataSha": null
+   },
+   {
+    "source": "public/data/tracks/fuji/track.json",
+    "shaNow": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "shaBaselineManifest": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "matchesBaselineManifest": true,
+    "trackedInGit": true,
+    "byteIdenticalToHEAD": false,
+    "matchesRegistrationDataSha": null
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+    "shaNow": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "shaBaselineManifest": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "matchesBaselineManifest": true,
+    "trackedInGit": true,
+    "byteIdenticalToHEAD": true,
+    "matchesRegistrationDataSha": true
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+    "shaNow": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "shaBaselineManifest": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "matchesBaselineManifest": true,
+    "trackedInGit": true,
+    "byteIdenticalToHEAD": true,
+    "matchesRegistrationDataSha": true
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+    "shaNow": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "shaBaselineManifest": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "matchesBaselineManifest": true,
+    "trackedInGit": true,
+    "byteIdenticalToHEAD": true,
+    "matchesRegistrationDataSha": true
+   },
+   {
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+    "shaNow": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "shaBaselineManifest": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "matchesBaselineManifest": true,
+    "trackedInGit": true,
+    "byteIdenticalToHEAD": true,
+    "matchesRegistrationDataSha": true
+   }
+  ]
+ },
+ "baselineSnapshotFidelity0730": [
+  {
+   "source": "public/data/tracks/fuji/cg_study/geometry.json",
+   "baselineFileExists": false,
+   "baselineMatchesBaselineManifest": false,
+   "baselineEqualsHEAD": false
+  },
+  {
+   "source": "public/data/tracks/fuji/track.json",
+   "baselineFileExists": false,
+   "baselineMatchesBaselineManifest": false,
+   "baselineEqualsHEAD": false
+  },
+  {
+   "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+   "baselineFileExists": true,
+   "baselineMatchesBaselineManifest": true,
+   "baselineEqualsHEAD": true
+  },
+  {
+   "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+   "baselineFileExists": true,
+   "baselineMatchesBaselineManifest": true,
+   "baselineEqualsHEAD": true
+  },
+  {
+   "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+   "baselineFileExists": true,
+   "baselineMatchesBaselineManifest": true,
+   "baselineEqualsHEAD": true
+  },
+  {
+   "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+   "baselineFileExists": true,
+   "baselineMatchesBaselineManifest": true,
+   "baselineEqualsHEAD": true
+  },
+  {
+   "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+   "baselineFileExists": true,
+   "baselineMatchesBaselineManifest": true,
+   "baselineEqualsHEAD": true
+  },
+  {
+   "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+   "baselineFileExists": true,
+   "baselineMatchesBaselineManifest": true,
+   "baselineEqualsHEAD": true
+  }
+ ],
+ "dry0730LapFields": [
+  {
+   "file": "osaki_hmr_demio_101_lap_001.json",
+   "changedArrays": [
+    "accx",
+    "accy",
+    "aps",
+    "brake",
+    "gear",
+    "steer"
+   ],
+   "changedMetaKeys": [
+    "channel_time_alignment"
+   ],
+   "onlyAllowedChanged": true,
+   "gpsArraysIdentical": true,
+   "arrayLengthsConsistent": true,
+   "pointCount": 1336,
+   "shiftSeconds": 0.468
+  },
+  {
+   "file": "osaki_hmr_demio_101_lap_002.json",
+   "changedArrays": [
+    "accx",
+    "accy",
+    "aps",
+    "brake",
+    "gear",
+    "steer"
+   ],
+   "changedMetaKeys": [
+    "channel_time_alignment"
+   ],
+   "onlyAllowedChanged": true,
+   "gpsArraysIdentical": true,
+   "arrayLengthsConsistent": true,
+   "pointCount": 1318,
+   "shiftSeconds": 0.465
+  },
+  {
+   "file": "osaki_hmr_demio_101_lap_003.json",
+   "changedArrays": [
+    "accx",
+    "accy",
+    "aps",
+    "brake",
+    "gear",
+    "steer"
+   ],
+   "changedMetaKeys": [
+    "channel_time_alignment"
+   ],
+   "onlyAllowedChanged": true,
+   "gpsArraysIdentical": true,
+   "arrayLengthsConsistent": true,
+   "pointCount": 1318,
+   "shiftSeconds": 0.49
+  },
+  {
+   "file": "osaki_hmr_demio_101_lap_004.json",
+   "changedArrays": [
+    "accx",
+    "accy",
+    "aps",
+    "brake",
+    "gear",
+    "steer"
+   ],
+   "changedMetaKeys": [
+    "channel_time_alignment"
+   ],
+   "onlyAllowedChanged": true,
+   "gpsArraysIdentical": true,
+   "arrayLengthsConsistent": true,
+   "pointCount": 1308,
+   "shiftSeconds": 0.515
+  },
+  {
+   "file": "osaki_hmr_demio_101_lap_005.json",
+   "changedArrays": [
+    "accx",
+    "accy",
+    "aps",
+    "brake",
+    "gear",
+    "steer"
+   ],
+   "changedMetaKeys": [
+    "channel_time_alignment"
+   ],
+   "onlyAllowedChanged": true,
+   "gpsArraysIdentical": true,
+   "arrayLengthsConsistent": true,
+   "pointCount": 1308,
+   "shiftSeconds": 0.526
+  },
+  {
+   "file": "osaki_hmr_demio_101_lap_006.json",
+   "changedArrays": [
+    "accx",
+    "accy",
+    "aps",
+    "brake",
+    "gear",
+    "steer"
+   ],
+   "changedMetaKeys": [
+    "channel_time_alignment"
+   ],
+   "onlyAllowedChanged": true,
+   "gpsArraysIdentical": true,
+   "arrayLengthsConsistent": true,
+   "pointCount": 1405,
+   "shiftSeconds": 0.524
+  }
+ ],
+ "dry0730LapsJsonDiffPaths": [
+  ".laps[1].file_size",
+  ".laps[2].file_size",
+  ".laps[3].file_size",
+  ".laps[4].file_size",
+  ".laps[5].file_size",
+  ".laps[6].file_size",
+  ".selected[0].file_size",
+  ".selected[1].file_size",
+  ".selected[2].file_size",
+  ".selected[3].file_size",
+  ".selected[4].file_size",
+  ".selected[5].file_size"
+ ],
+ "summary": {
+  "registrationOffsetsUnchangedBothRaces": true,
+  "wetRegistrationByteIdentical": true,
+  "wetLapFilesMatchBaselineManifest": true,
+  "wetLapFilesByteIdenticalToHEAD": false,
+  "dry0730OnlyChannelFieldsChanged": true
+ }
+}

@@ -1,0 +1,6 @@
+git-changed files under ['scripts', 'pipeline', 'src', 'public']: 1300; mtime today: 76 {'scripts': 33, 'pipeline': 3, 'src': 26, 'public': 14}
+HIT scripts/quality/apex_kpi/camproj.py:2 [??] pat=scratchpad inHEAD=None inBaseline=None :: Local analysis helper; frames stay in the scratchpad."""
+HIT scripts/quality/apex_kpi/test_kerb_registration.py:198 [??] pat=AppData inHEAD=None inBaseline=None :: self.assertIsNone(re.search(r'(?<![A-Za-z])[A-Za-z]:[\\/]|\\\\Users|/Users/|AppData', self.text))
+HIT scripts/quality/audit-fuji-channel-timing.py:16 [??] pat=SCHD\d+ inHEAD=None inBaseline=None :: python scripts/quality/audit-fuji-channel-timing.py [--wet-video <7/29 SCHD0613.MOV> --dry-video <7/30 SCHD0624.MOV>]
+HIT scripts/quality/audit-fuji-channel-timing.py:223 [??] pat=SCHD\d+ inHEAD=None inBaseline=None :: parser.add_argument("--wet-video", type=Path, help="7/29 SmartyCam SCHD0613.MOV (local, not published)")
+HIT scripts/quality/audit-fuji-channel-timing.py:224 [??] pat=SCHD\d+ inHEAD=None inBaseline=None :: parser.add_argument("--dry-video", type=Path, help="7/30 SmartyCam SCHD0624.MOV (local, not published)")

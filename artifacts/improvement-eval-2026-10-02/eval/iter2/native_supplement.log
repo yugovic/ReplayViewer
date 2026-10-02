@@ -1,0 +1,201 @@
+{
+ "yawGyro_ref0729MedianLagS": 0.036000000000000004,
+ "yawGyro_baseline_perLapMinus0729": [
+  -0.554,
+  -0.56,
+  -0.542,
+  -0.58,
+  -0.596,
+  -0.596
+ ],
+ "yawGyro_baseline_medianMinus0729": -0.57,
+ "yawGyro_iter1_perLapMinus0729": [
+  -0.086,
+  -0.094,
+  -0.052,
+  -0.064,
+  -0.07,
+  -0.072
+ ],
+ "yawGyro_iter1_medianMinus0729": -0.071,
+ "yawGyro_iter2_perLapMinus0729": [
+  -0.058,
+  -0.036,
+  -0.02,
+  -0.024,
+  -0.032,
+  -0.012
+ ],
+ "yawGyro_iter2_medianMinus0729": -0.028,
+ "decimation": {
+  "1": {
+   "accx": {
+    "decimationPhaseMaxAbs": [
+     1.126,
+     1.1299,
+     1.1777,
+     1.1973,
+     1.1777
+    ],
+    "spreadPct": 6.0,
+    "baselineMaxAbs": 1.1286,
+    "iter2MaxAbs": 1.1201
+   },
+   "accy": {
+    "decimationPhaseMaxAbs": [
+     1.6152,
+     1.4277,
+     1.3945,
+     1.5098,
+     1.6406
+    ],
+    "spreadPct": 15.0,
+    "baselineMaxAbs": 1.6165,
+    "iter2MaxAbs": 1.5904
+   },
+   "iter2GridOffsetFromNativeMs_median": 2.0,
+   "baselineGridOffsetFromNativeMs_median": 2.0
+  },
+  "2": {
+   "accx": {
+    "decimationPhaseMaxAbs": [
+     1.1904,
+     1.1963,
+     1.1973,
+     1.1826,
+     1.166
+    ],
+    "spreadPct": 2.6,
+    "baselineMaxAbs": 1.1758,
+    "iter2MaxAbs": 1.1772
+   },
+   "accy": {
+    "decimationPhaseMaxAbs": [
+     1.8652,
+     1.7461,
+     1.9932,
+     2.0898,
+     2.0215
+    ],
+    "spreadPct": 16.4,
+    "baselineMaxAbs": 1.9668,
+    "iter2MaxAbs": 2.0762
+   },
+   "iter2GridOffsetFromNativeMs_median": 5.0,
+   "baselineGridOffsetFromNativeMs_median": 8.0
+  },
+  "3": {
+   "accx": {
+    "decimationPhaseMaxAbs": [
+     1.1367,
+     1.1221,
+     1.1064,
+     1.125,
+     1.1387
+    ],
+    "spreadPct": 2.8,
+    "baselineMaxAbs": 1.1375,
+    "iter2MaxAbs": 1.1312
+   },
+   "accy": {
+    "decimationPhaseMaxAbs": [
+     1.6182,
+     1.585,
+     1.5039,
+     1.4443,
+     1.5762
+    ],
+    "spreadPct": 10.7,
+    "baselineMaxAbs": 1.6056,
+    "iter2MaxAbs": 1.5169
+   },
+   "iter2GridOffsetFromNativeMs_median": 7.0,
+   "baselineGridOffsetFromNativeMs_median": 4.0
+  },
+  "4": {
+   "accx": {
+    "decimationPhaseMaxAbs": [
+     1.1445,
+     1.168,
+     1.1543,
+     1.1035,
+     1.0889
+    ],
+    "spreadPct": 6.8,
+    "baselineMaxAbs": 1.1481,
+    "iter2MaxAbs": 1.1365
+   },
+   "accy": {
+    "decimationPhaseMaxAbs": [
+     1.5361,
+     1.5254,
+     1.4561,
+     1.3711,
+     1.4561
+    ],
+    "spreadPct": 10.7,
+    "baselineMaxAbs": 1.5361,
+    "iter2MaxAbs": 1.4233
+   },
+   "iter2GridOffsetFromNativeMs_median": 8.0,
+   "baselineGridOffsetFromNativeMs_median": 3.0
+  },
+  "5": {
+   "accx": {
+    "decimationPhaseMaxAbs": [
+     1.1699,
+     1.1523,
+     1.1123,
+     1.1143,
+     1.1484
+    ],
+    "spreadPct": 4.9,
+    "baselineMaxAbs": 1.1613,
+    "iter2MaxAbs": 1.1359
+   },
+   "accy": {
+    "decimationPhaseMaxAbs": [
+     2.127,
+     2.0234,
+     1.8193,
+     1.9482,
+     2.0977
+    ],
+    "spreadPct": 14.5,
+    "baselineMaxAbs": 2.1108,
+    "iter2MaxAbs": 1.9928
+   },
+   "iter2GridOffsetFromNativeMs_median": 4.0,
+   "baselineGridOffsetFromNativeMs_median": 9.0
+  },
+  "6": {
+   "accx": {
+    "decimationPhaseMaxAbs": [
+     1.2314,
+     1.2197,
+     1.1855,
+     1.1523,
+     1.2129
+    ],
+    "spreadPct": 6.4,
+    "baselineMaxAbs": 1.224,
+    "iter2MaxAbs": 1.2262
+   },
+   "accy": {
+    "decimationPhaseMaxAbs": [
+     1.3848,
+     1.4219,
+     1.3828,
+     1.3604,
+     1.3516
+    ],
+    "spreadPct": 4.9,
+    "baselineMaxAbs": 1.365,
+    "iter2MaxAbs": 1.4089
+   },
+   "iter2GridOffsetFromNativeMs_median": 8.0,
+   "baselineGridOffsetFromNativeMs_median": 8.0
+  }
+ }
+}
+exit 0

@@ -1,0 +1,442 @@
+{
+ "lapClock": {
+  "perLap": [
+   {
+    "lap": "fuji_aim_01/L1",
+    "t0": 0.0,
+    "delta_s": 0.007,
+    "delta_rederived_from_iso_s": 0.007,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.007",
+    "after_display_equals_delta": true,
+    "v0_kmh": 170.5,
+    "car_ahead_at_first_sample_before_m": 0.332,
+    "car_ahead_over_lap_before_m": {
+     "n": 1446,
+     "median": 0.215,
+     "p95": 0.345,
+     "max": 0.363,
+     "mean": 0.218
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 0.33159,
+    "lap_time_official_s": 144.556,
+    "last_sample_true_time_s": 144.507,
+    "lap_time_minus_last_true_s": 0.049
+   },
+   {
+    "lap": "fuji_aim_01/L2",
+    "t0": 0.0,
+    "delta_s": 0.051,
+    "delta_rederived_from_iso_s": 0.051,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.051",
+    "after_display_equals_delta": true,
+    "v0_kmh": 169.5,
+    "car_ahead_at_first_sample_before_m": 2.401,
+    "car_ahead_over_lap_before_m": {
+     "n": 1446,
+     "median": 1.58,
+     "p95": 2.462,
+     "max": 2.521,
+     "mean": 1.592
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 2.40108,
+    "lap_time_official_s": 144.635,
+    "last_sample_true_time_s": 144.551,
+    "lap_time_minus_last_true_s": 0.084
+   },
+   {
+    "lap": "fuji_aim_01/L3",
+    "t0": 0.0,
+    "delta_s": 0.016,
+    "delta_rederived_from_iso_s": 0.016,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.016",
+    "after_display_equals_delta": true,
+    "v0_kmh": 173.4,
+    "car_ahead_at_first_sample_before_m": 0.771,
+    "car_ahead_over_lap_before_m": {
+     "n": 1414,
+     "median": 0.503,
+     "p95": 0.805,
+     "max": 0.847,
+     "mean": 0.511
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 0.77056,
+    "lap_time_official_s": 141.385,
+    "last_sample_true_time_s": 141.316,
+    "lap_time_minus_last_true_s": 0.069
+   },
+   {
+    "lap": "fuji_aim_01/L4",
+    "t0": 0.0,
+    "delta_s": 0.031,
+    "delta_rederived_from_iso_s": 0.031,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.031",
+    "after_display_equals_delta": true,
+    "v0_kmh": 173.8,
+    "car_ahead_at_first_sample_before_m": 1.497,
+    "car_ahead_over_lap_before_m": {
+     "n": 1647,
+     "median": 0.819,
+     "p95": 1.551,
+     "max": 1.644,
+     "mean": 0.851
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 1.49699,
+    "lap_time_official_s": 164.717,
+    "last_sample_true_time_s": 164.631,
+    "lap_time_minus_last_true_s": 0.086
+   },
+   {
+    "lap": "fuji_aim_2020_07_30/L1",
+    "t0": 0.0,
+    "delta_s": 0.057,
+    "delta_rederived_from_iso_s": 0.057,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.057",
+    "after_display_equals_delta": true,
+    "v0_kmh": 173.1,
+    "car_ahead_at_first_sample_before_m": 2.74,
+    "car_ahead_over_lap_before_m": {
+     "n": 1336,
+     "median": 1.949,
+     "p95": 2.881,
+     "max": 3.03,
+     "mean": 1.926
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 2.73999,
+    "lap_time_official_s": 133.635,
+    "last_sample_true_time_s": 133.557,
+    "lap_time_minus_last_true_s": 0.078
+   },
+   {
+    "lap": "fuji_aim_2020_07_30/L2",
+    "t0": 0.0,
+    "delta_s": 0.022,
+    "delta_rederived_from_iso_s": 0.022,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.022",
+    "after_display_equals_delta": true,
+    "v0_kmh": 177.2,
+    "car_ahead_at_first_sample_before_m": 1.083,
+    "car_ahead_over_lap_before_m": {
+     "n": 1318,
+     "median": 0.764,
+     "p95": 1.134,
+     "max": 1.195,
+     "mean": 0.752
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 1.08262,
+    "lap_time_official_s": 131.742,
+    "last_sample_true_time_s": 131.722,
+    "lap_time_minus_last_true_s": 0.02
+   },
+   {
+    "lap": "fuji_aim_2020_07_30/L3",
+    "t0": 0.0,
+    "delta_s": 0.08,
+    "delta_rederived_from_iso_s": 0.08,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.080",
+    "after_display_equals_delta": true,
+    "v0_kmh": 175.2,
+    "car_ahead_at_first_sample_before_m": 3.893,
+    "car_ahead_over_lap_before_m": {
+     "n": 1318,
+     "median": 2.711,
+     "p95": 4.115,
+     "max": 4.221,
+     "mean": 2.73
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 3.8928,
+    "lap_time_official_s": 131.783,
+    "last_sample_true_time_s": 131.78,
+    "lap_time_minus_last_true_s": 0.003
+   },
+   {
+    "lap": "fuji_aim_2020_07_30/L4",
+    "t0": 0.0,
+    "delta_s": 0.097,
+    "delta_rederived_from_iso_s": 0.097,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.097",
+    "after_display_equals_delta": true,
+    "v0_kmh": 173.1,
+    "car_ahead_at_first_sample_before_m": 4.663,
+    "car_ahead_over_lap_before_m": {
+     "n": 1308,
+     "median": 3.355,
+     "p95": 4.802,
+     "max": 5.019,
+     "mean": 3.338
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 4.66279,
+    "lap_time_official_s": 130.86,
+    "last_sample_true_time_s": 130.797,
+    "lap_time_minus_last_true_s": 0.063
+   },
+   {
+    "lap": "fuji_aim_2020_07_30/L5",
+    "t0": 0.0,
+    "delta_s": 0.037,
+    "delta_rederived_from_iso_s": 0.037,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.037",
+    "after_display_equals_delta": true,
+    "v0_kmh": 175.6,
+    "car_ahead_at_first_sample_before_m": 1.804,
+    "car_ahead_over_lap_before_m": {
+     "n": 1308,
+     "median": 1.286,
+     "p95": 1.851,
+     "max": 1.934,
+     "mean": 1.274
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 1.80449,
+    "lap_time_official_s": 130.822,
+    "last_sample_true_time_s": 130.737,
+    "lap_time_minus_last_true_s": 0.085
+   },
+   {
+    "lap": "fuji_aim_2020_07_30/L6",
+    "t0": 0.0,
+    "delta_s": 0.015,
+    "delta_rederived_from_iso_s": 0.015,
+    "displayed_at_first_sample_before": "00:00.000",
+    "displayed_at_first_sample_after": "00:00.015",
+    "after_display_equals_delta": true,
+    "v0_kmh": 175.3,
+    "car_ahead_at_first_sample_before_m": 0.73,
+    "car_ahead_over_lap_before_m": {
+     "n": 1405,
+     "median": 0.481,
+     "p95": 0.755,
+     "max": 0.789,
+     "mean": 0.482
+    },
+    "car_ahead_after_m": 0.0,
+    "s0_lapClock_ts_m": 0.7305,
+    "lap_time_official_s": 140.467,
+    "last_sample_true_time_s": 140.415,
+    "lap_time_minus_last_true_s": 0.052
+   }
+  ],
+  "gridContinuity": [
+   {
+    "pair": "fuji_aim_01/L1->fuji_aim_01/L2",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_01/L2->fuji_aim_01/L3",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_01/L3->fuji_aim_01/L4",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L1->fuji_aim_2020_07_30/L2",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L2->fuji_aim_2020_07_30/L3",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L3->fuji_aim_2020_07_30/L4",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L4->fuji_aim_2020_07_30/L5",
+    "gap_plus_next_delta_s": 0.1
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L5->fuji_aim_2020_07_30/L6",
+    "gap_plus_next_delta_s": 0.1
+   }
+  ]
+ },
+ "selfPairTruthTest": {
+  "pairs": 120,
+  "ghostDeltaAbsErrorMs": {
+   "before": {
+    "n": 167092,
+    "median": 22.77,
+    "p95": 103.76,
+    "max": 317.89,
+    "mean": 33.77
+   },
+   "after": {
+    "n": 167092,
+    "median": 0.09,
+    "p95": 0.39,
+    "max": 1.64,
+    "mean": 0.13
+   }
+  },
+  "worstPhasePair_0.097vs0.007": {
+   "before_absMs": {
+    "n": 13916,
+    "median": 46.33,
+    "p95": 166.09,
+    "max": 317.71,
+    "mean": 60.78
+   },
+   "after_absMs": {
+    "n": 13916,
+    "median": 0.15,
+    "p95": 0.44,
+    "max": 0.92,
+    "mean": 0.18
+   },
+   "before_signedMeanMs": 60.11,
+   "after_signedMeanMs": -0.15,
+   "perSourceLapBeforeMaxMs": {
+    "fuji_aim_01/L1": 239.4,
+    "fuji_aim_01/L2": 306.1,
+    "fuji_aim_01/L3": 261.2,
+    "fuji_aim_01/L4": 317.7,
+    "fuji_aim_2020_07_30/L1": 209.3,
+    "fuji_aim_2020_07_30/L2": 199.6,
+    "fuji_aim_2020_07_30/L3": 242.6,
+    "fuji_aim_2020_07_30/L4": 188.1,
+    "fuji_aim_2020_07_30/L5": 212.7,
+    "fuji_aim_2020_07_30/L6": 293.4
+   },
+   "perSourceLapAfterMaxMs": {
+    "fuji_aim_01/L1": 0.68,
+    "fuji_aim_01/L2": 0.48,
+    "fuji_aim_01/L3": 0.24,
+    "fuji_aim_01/L4": 0.92,
+    "fuji_aim_2020_07_30/L1": 0.48,
+    "fuji_aim_2020_07_30/L2": 0.7,
+    "fuji_aim_2020_07_30/L3": 0.44,
+    "fuji_aim_2020_07_30/L4": 0.34,
+    "fuji_aim_2020_07_30/L5": 0.53,
+    "fuji_aim_2020_07_30/L6": 0.37
+   }
+  },
+  "reversePair_0.007vs0.097_signedMeanMs": {
+   "before": -60.13,
+   "after": 0.15
+  },
+  "ghostPositionAbsErrorM": {
+   "before": {
+    "n": 167092,
+    "median": 1.476,
+    "p95": 4.379,
+    "max": 4.429,
+    "mean": 2.411
+   },
+   "after": {
+    "n": 167092,
+    "median": 0.0024,
+    "p95": 0.008,
+    "max": 4.4289,
+    "mean": 0.0036
+   }
+  }
+ },
+ "realSameSessionPairs": {
+  "pairs": 42,
+  "absChangeAfterMinusBeforeMs": {
+   "n": 57824,
+   "median": 12.5,
+   "p95": 68.8,
+   "max": 260.7,
+   "mean": 20.6
+  },
+  "modelResidualAbsMs": {
+   "n": 57744,
+   "median": 0.0,
+   "p95": 0.001,
+   "max": 81.803,
+   "mean": 0.013
+  },
+  "worst5": [
+   {
+    "main": "fuji_aim_2020_07_30/L4",
+    "ghost": "fuji_aim_2020_07_30/L6",
+    "dm": 0.097,
+    "dg": 0.015,
+    "changeMs": {
+     "mean": -48.0,
+     "min": -260.7,
+     "max": 7.2
+    },
+    "modelResidualMaxMs": 0.001,
+    "ghostOriginShiftM": 3.932
+   },
+   {
+    "main": "fuji_aim_2020_07_30/L3",
+    "ghost": "fuji_aim_2020_07_30/L6",
+    "dm": 0.08,
+    "dg": 0.015,
+    "changeMs": {
+     "mean": -40.1,
+     "min": -211.3,
+     "max": 4.8
+    },
+    "modelResidualMaxMs": 0.001,
+    "ghostOriginShiftM": 3.162
+   },
+   {
+    "main": "fuji_aim_2020_07_30/L6",
+    "ghost": "fuji_aim_2020_07_30/L3",
+    "dm": 0.015,
+    "dg": 0.08,
+    "changeMs": {
+     "mean": 33.5,
+     "min": -65.0,
+     "max": 175.4
+    },
+    "modelResidualMaxMs": 64.988,
+    "ghostOriginShiftM": -3.162
+   },
+   {
+    "main": "fuji_aim_2020_07_30/L6",
+    "ghost": "fuji_aim_2020_07_30/L4",
+    "dm": 0.015,
+    "dg": 0.097,
+    "changeMs": {
+     "mean": 39.0,
+     "min": -82.0,
+     "max": 170.8
+    },
+    "modelResidualMaxMs": 81.803,
+    "ghostOriginShiftM": -3.932
+   },
+   {
+    "main": "fuji_aim_2020_07_30/L4",
+    "ghost": "fuji_aim_2020_07_30/L2",
+    "dm": 0.097,
+    "dg": 0.022,
+    "changeMs": {
+     "mean": -39.3,
+     "min": -159.2,
+     "max": 9.1
+    },
+    "modelResidualMaxMs": 0.001,
+    "ghostOriginShiftM": 3.58
+   }
+  ],
+  "ghostOriginShiftAbsM": {
+   "n": 42,
+   "median": 1.631,
+   "p95": 3.58,
+   "max": 3.932,
+   "mean": 1.712
+  }
+ }
+}

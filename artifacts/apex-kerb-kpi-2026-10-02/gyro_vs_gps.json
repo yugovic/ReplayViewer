@@ -1,0 +1,1302 @@
+[
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 1,
+"lagS": -0.09,
+"r": 0.967,
+"ampRatio": 1.092,
+"peakGyro": 14.6,
+"peakGps": 17.8
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 3,
+"lagS": 0.01,
+"r": 0.961,
+"ampRatio": 1.081,
+"peakGyro": 24.9,
+"peakGps": 29.5
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 7,
+"lagS": 0.06,
+"r": 0.997,
+"ampRatio": 1.169,
+"peakGyro": 29.8,
+"peakGps": 33.1
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 9,
+"lagS": -0.01,
+"r": 0.997,
+"ampRatio": 1.212,
+"peakGyro": 18.6,
+"peakGps": 21.6
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 10,
+"lagS": 0.03,
+"r": 0.958,
+"ampRatio": 1.124,
+"peakGyro": 26.2,
+"peakGps": 30.1
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 13,
+"lagS": 0.06,
+"r": 0.982,
+"ampRatio": 1.235,
+"peakGyro": 26.8,
+"peakGps": 33.5
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 15,
+"lagS": -0.01,
+"r": 0.993,
+"ampRatio": 1.18,
+"peakGyro": 14.5,
+"peakGps": 17.7
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 18,
+"lagS": -0.02,
+"r": 0.981,
+"ampRatio": 1.101,
+"peakGyro": 8.4,
+"peakGps": 10.2
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 19,
+"lagS": -0.11,
+"r": 0.974,
+"ampRatio": 1.191,
+"peakGyro": 6.4,
+"peakGps": 7.9
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 20,
+"lagS": 0.01,
+"r": 0.997,
+"ampRatio": 1.188,
+"peakGyro": 26.0,
+"peakGps": 31.1
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 21,
+"lagS": -0.03,
+"r": 0.967,
+"ampRatio": 1.154,
+"peakGyro": 21.3,
+"peakGps": 23.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 23,
+"lagS": -0.01,
+"r": 0.997,
+"ampRatio": 1.16,
+"peakGyro": 20.7,
+"peakGps": 25.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 1,
+"kerb": 24,
+"lagS": 0.13,
+"r": 0.982,
+"ampRatio": 1.093,
+"peakGyro": 24.7,
+"peakGps": 29.4
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 1,
+"lagS": -0.4,
+"r": 0.91,
+"ampRatio": 0.87,
+"peakGyro": 17.7,
+"peakGps": 18.1
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 3,
+"lagS": -0.01,
+"r": 0.973,
+"ampRatio": 1.113,
+"peakGyro": 25.8,
+"peakGps": 29.8
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 7,
+"lagS": 0.11,
+"r": 0.99,
+"ampRatio": 1.088,
+"peakGyro": 22.7,
+"peakGps": 28.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 9,
+"lagS": -0.01,
+"r": 0.998,
+"ampRatio": 1.192,
+"peakGyro": 19.1,
+"peakGps": 22.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 10,
+"lagS": -0.03,
+"r": 0.958,
+"ampRatio": 1.123,
+"peakGyro": 26.3,
+"peakGps": 29.8
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 13,
+"lagS": 0.02,
+"r": 0.977,
+"ampRatio": 1.275,
+"peakGyro": 26.3,
+"peakGps": 34.8
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 15,
+"lagS": -0.03,
+"r": 0.97,
+"ampRatio": 1.161,
+"peakGyro": 17.5,
+"peakGps": 18.1
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 18,
+"lagS": -0.16,
+"r": 0.975,
+"ampRatio": 1.07,
+"peakGyro": 9.6,
+"peakGps": 11.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 19,
+"lagS": -0.09,
+"r": 0.906,
+"ampRatio": 0.952,
+"peakGyro": 6.3,
+"peakGps": 7.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 20,
+"lagS": 0.02,
+"r": 0.998,
+"ampRatio": 1.187,
+"peakGyro": 19.6,
+"peakGps": 23.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 21,
+"lagS": -0.03,
+"r": 0.985,
+"ampRatio": 1.225,
+"peakGyro": 20.2,
+"peakGps": 25.2
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 23,
+"lagS": 0.06,
+"r": 0.998,
+"ampRatio": 1.195,
+"peakGyro": 21.0,
+"peakGps": 26.7
+},
+{
+"race": "fuji_aim_01",
+"lap": 2,
+"kerb": 24,
+"lagS": 0.05,
+"r": 0.937,
+"ampRatio": 1.113,
+"peakGyro": 25.9,
+"peakGps": 31.2
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 1,
+"lagS": -0.08,
+"r": 0.987,
+"ampRatio": 1.113,
+"peakGyro": 16.2,
+"peakGps": 18.9
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 3,
+"lagS": -0.05,
+"r": 0.976,
+"ampRatio": 1.134,
+"peakGyro": 25.5,
+"peakGps": 33.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 7,
+"lagS": 0.08,
+"r": 0.997,
+"ampRatio": 1.18,
+"peakGyro": 28.6,
+"peakGps": 32.7
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 9,
+"lagS": -0.03,
+"r": 0.997,
+"ampRatio": 1.185,
+"peakGyro": 18.3,
+"peakGps": 21.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 10,
+"lagS": -0.05,
+"r": 0.976,
+"ampRatio": 1.155,
+"peakGyro": 25.8,
+"peakGps": 30.6
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 13,
+"lagS": -0.01,
+"r": 0.961,
+"ampRatio": 1.257,
+"peakGyro": 26.8,
+"peakGps": 35.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 15,
+"lagS": -0.07,
+"r": 0.996,
+"ampRatio": 1.216,
+"peakGyro": 15.6,
+"peakGps": 18.9
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 18,
+"lagS": -0.1,
+"r": 0.992,
+"ampRatio": 1.104,
+"peakGyro": 9.2,
+"peakGps": 10.5
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 19,
+"lagS": -0.07,
+"r": 0.919,
+"ampRatio": 1.047,
+"peakGyro": 5.2,
+"peakGps": 6.0
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 20,
+"lagS": 0.07,
+"r": 0.997,
+"ampRatio": 1.198,
+"peakGyro": 28.5,
+"peakGps": 32.7
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 21,
+"lagS": -0.01,
+"r": 0.963,
+"ampRatio": 1.144,
+"peakGyro": 19.8,
+"peakGps": 24.5
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 23,
+"lagS": 0.11,
+"r": 0.998,
+"ampRatio": 1.171,
+"peakGyro": 20.2,
+"peakGps": 25.1
+},
+{
+"race": "fuji_aim_01",
+"lap": 3,
+"kerb": 24,
+"lagS": 0.01,
+"r": 0.994,
+"ampRatio": 1.202,
+"peakGyro": 26.1,
+"peakGps": 31.4
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 1,
+"lagS": -0.03,
+"r": 0.989,
+"ampRatio": 1.178,
+"peakGyro": 13.8,
+"peakGps": 18.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 3,
+"lagS": 0.0,
+"r": 0.975,
+"ampRatio": 1.228,
+"peakGyro": 25.7,
+"peakGps": 32.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 7,
+"lagS": 0.11,
+"r": 0.994,
+"ampRatio": 1.158,
+"peakGyro": 26.7,
+"peakGps": 32.5
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 9,
+"lagS": 0.0,
+"r": 0.998,
+"ampRatio": 1.228,
+"peakGyro": 15.8,
+"peakGps": 21.2
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 10,
+"lagS": -0.02,
+"r": 0.98,
+"ampRatio": 1.18,
+"peakGyro": 24.4,
+"peakGps": 28.4
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 13,
+"lagS": 0.12,
+"r": 0.986,
+"ampRatio": 1.211,
+"peakGyro": 31.4,
+"peakGps": 37.8
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 15,
+"lagS": 0.01,
+"r": 0.993,
+"ampRatio": 1.214,
+"peakGyro": 13.8,
+"peakGps": 18.3
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 18,
+"lagS": -0.13,
+"r": 0.972,
+"ampRatio": 1.053,
+"peakGyro": 9.1,
+"peakGps": 9.9
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 19,
+"lagS": -0.09,
+"r": 0.848,
+"ampRatio": 1.068,
+"peakGyro": 4.9,
+"peakGps": 5.6
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 20,
+"lagS": 0.02,
+"r": 0.996,
+"ampRatio": 1.167,
+"peakGyro": 20.3,
+"peakGps": 22.4
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 21,
+"lagS": 0.0,
+"r": 0.983,
+"ampRatio": 1.14,
+"peakGyro": 21.7,
+"peakGps": 23.7
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 23,
+"lagS": 0.0,
+"r": 0.997,
+"ampRatio": 1.152,
+"peakGyro": 19.6,
+"peakGps": 22.7
+},
+{
+"race": "fuji_aim_01",
+"lap": 4,
+"kerb": 24,
+"lagS": 0.04,
+"r": 0.991,
+"ampRatio": 1.126,
+"peakGyro": 24.4,
+"peakGps": 28.9
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 1,
+"lagS": -0.08,
+"r": 0.92,
+"ampRatio": 0.978,
+"peakGyro": 18.9,
+"peakGps": 19.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 3,
+"lagS": -0.08,
+"r": 0.974,
+"ampRatio": 1.086,
+"peakGyro": 25.8,
+"peakGps": 31.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 7,
+"lagS": 0.03,
+"r": 0.997,
+"ampRatio": 1.192,
+"peakGyro": 31.9,
+"peakGps": 37.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 9,
+"lagS": -0.06,
+"r": 0.995,
+"ampRatio": 1.201,
+"peakGyro": 22.2,
+"peakGps": 23.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 10,
+"lagS": -0.02,
+"r": 0.985,
+"ampRatio": 1.165,
+"peakGyro": 27.2,
+"peakGps": 32.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 13,
+"lagS": 0.01,
+"r": 0.977,
+"ampRatio": 1.13,
+"peakGyro": 28.5,
+"peakGps": 34.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 15,
+"lagS": -0.02,
+"r": 0.975,
+"ampRatio": 1.115,
+"peakGyro": 19.0,
+"peakGps": 19.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 18,
+"lagS": -0.06,
+"r": 0.984,
+"ampRatio": 1.099,
+"peakGyro": 9.5,
+"peakGps": 12.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 19,
+"lagS": -0.1,
+"r": 0.857,
+"ampRatio": 0.848,
+"peakGyro": 6.2,
+"peakGps": 6.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 20,
+"lagS": 0.0,
+"r": 0.997,
+"ampRatio": 1.2,
+"peakGyro": 26.4,
+"peakGps": 30.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 21,
+"lagS": -0.04,
+"r": 0.987,
+"ampRatio": 1.153,
+"peakGyro": 22.9,
+"peakGps": 27.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 23,
+"lagS": -0.04,
+"r": 0.998,
+"ampRatio": 1.192,
+"peakGyro": 27.2,
+"peakGps": 32.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 1,
+"kerb": 24,
+"lagS": -0.08,
+"r": 0.994,
+"ampRatio": 1.202,
+"peakGyro": 26.3,
+"peakGps": 32.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 1,
+"lagS": -0.19,
+"r": 0.948,
+"ampRatio": 0.982,
+"peakGyro": 17.6,
+"peakGps": 18.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 3,
+"lagS": -0.07,
+"r": 0.986,
+"ampRatio": 1.153,
+"peakGyro": 27.0,
+"peakGps": 33.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 7,
+"lagS": 0.01,
+"r": 0.997,
+"ampRatio": 1.197,
+"peakGyro": 30.8,
+"peakGps": 37.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 9,
+"lagS": -0.06,
+"r": 0.999,
+"ampRatio": 1.191,
+"peakGyro": 22.0,
+"peakGps": 25.6
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 10,
+"lagS": 0.0,
+"r": 0.913,
+"ampRatio": 0.953,
+"peakGyro": 27.6,
+"peakGps": 32.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 13,
+"lagS": -0.06,
+"r": 0.979,
+"ampRatio": 1.123,
+"peakGyro": 31.6,
+"peakGps": 33.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 15,
+"lagS": -0.09,
+"r": 0.991,
+"ampRatio": 1.171,
+"peakGyro": 16.9,
+"peakGps": 18.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 18,
+"lagS": -0.09,
+"r": 0.982,
+"ampRatio": 1.132,
+"peakGyro": 8.6,
+"peakGps": 10.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 19,
+"lagS": -0.04,
+"r": 0.9,
+"ampRatio": 1.038,
+"peakGyro": 5.2,
+"peakGps": 6.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 20,
+"lagS": 0.02,
+"r": 0.997,
+"ampRatio": 1.201,
+"peakGyro": 28.1,
+"peakGps": 33.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 21,
+"lagS": -0.06,
+"r": 0.994,
+"ampRatio": 1.185,
+"peakGyro": 22.6,
+"peakGps": 25.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 23,
+"lagS": -0.3,
+"r": 0.979,
+"ampRatio": 1.146,
+"peakGyro": 27.6,
+"peakGps": 29.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 2,
+"kerb": 24,
+"lagS": 0.05,
+"r": 0.988,
+"ampRatio": 1.188,
+"peakGyro": 29.3,
+"peakGps": 33.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 1,
+"lagS": -0.13,
+"r": 0.968,
+"ampRatio": 1.115,
+"peakGyro": 17.8,
+"peakGps": 20.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 3,
+"lagS": -0.03,
+"r": 0.97,
+"ampRatio": 1.208,
+"peakGyro": 28.0,
+"peakGps": 34.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 7,
+"lagS": 0.04,
+"r": 0.996,
+"ampRatio": 1.148,
+"peakGyro": 24.9,
+"peakGps": 27.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 9,
+"lagS": -0.06,
+"r": 0.998,
+"ampRatio": 1.181,
+"peakGyro": 18.4,
+"peakGps": 21.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 10,
+"lagS": 0.05,
+"r": 0.994,
+"ampRatio": 1.135,
+"peakGyro": 27.1,
+"peakGps": 31.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 13,
+"lagS": -0.03,
+"r": 0.975,
+"ampRatio": 1.158,
+"peakGyro": 28.9,
+"peakGps": 34.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 15,
+"lagS": -0.11,
+"r": 0.994,
+"ampRatio": 1.216,
+"peakGyro": 17.5,
+"peakGps": 20.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 18,
+"lagS": -0.09,
+"r": 0.99,
+"ampRatio": 1.135,
+"peakGyro": 8.3,
+"peakGps": 10.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 19,
+"lagS": -0.21,
+"r": 0.841,
+"ampRatio": 0.908,
+"peakGyro": 5.4,
+"peakGps": 6.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 20,
+"lagS": 0.0,
+"r": 0.997,
+"ampRatio": 1.178,
+"peakGyro": 24.9,
+"peakGps": 27.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 21,
+"lagS": -0.01,
+"r": 0.992,
+"ampRatio": 1.145,
+"peakGyro": 22.8,
+"peakGps": 26.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 23,
+"lagS": -0.06,
+"r": 0.999,
+"ampRatio": 1.196,
+"peakGyro": 27.1,
+"peakGps": 31.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 3,
+"kerb": 24,
+"lagS": -0.05,
+"r": 0.984,
+"ampRatio": 1.14,
+"peakGyro": 26.9,
+"peakGps": 31.5
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 1,
+"lagS": -0.25,
+"r": 0.965,
+"ampRatio": 1.046,
+"peakGyro": 18.1,
+"peakGps": 18.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 3,
+"lagS": -0.07,
+"r": 0.966,
+"ampRatio": 1.101,
+"peakGyro": 27.0,
+"peakGps": 32.6
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 7,
+"lagS": -0.01,
+"r": 0.999,
+"ampRatio": 1.168,
+"peakGyro": 30.8,
+"peakGps": 37.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 9,
+"lagS": -0.09,
+"r": 0.998,
+"ampRatio": 1.199,
+"peakGyro": 23.2,
+"peakGps": 26.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 10,
+"lagS": -0.06,
+"r": 0.99,
+"ampRatio": 1.19,
+"peakGyro": 27.1,
+"peakGps": 32.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 13,
+"lagS": -0.05,
+"r": 0.965,
+"ampRatio": 1.14,
+"peakGyro": 31.5,
+"peakGps": 34.6
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 15,
+"lagS": -0.19,
+"r": 0.99,
+"ampRatio": 1.182,
+"peakGyro": 17.9,
+"peakGps": 18.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 18,
+"lagS": -0.09,
+"r": 0.974,
+"ampRatio": 1.024,
+"peakGyro": 7.5,
+"peakGps": 9.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 19,
+"lagS": -0.17,
+"r": 0.946,
+"ampRatio": 1.109,
+"peakGyro": 6.4,
+"peakGps": 7.9
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 20,
+"lagS": -0.01,
+"r": 0.998,
+"ampRatio": 1.189,
+"peakGyro": 28.8,
+"peakGps": 34.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 21,
+"lagS": -0.08,
+"r": 0.976,
+"ampRatio": 1.134,
+"peakGyro": 23.6,
+"peakGps": 26.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 23,
+"lagS": -0.08,
+"r": 0.998,
+"ampRatio": 1.192,
+"peakGyro": 26.5,
+"peakGps": 29.9
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 4,
+"kerb": 24,
+"lagS": -0.06,
+"r": 0.992,
+"ampRatio": 1.186,
+"peakGyro": 26.6,
+"peakGps": 32.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 1,
+"lagS": -0.24,
+"r": 0.941,
+"ampRatio": 1.011,
+"peakGyro": 18.0,
+"peakGps": 19.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 3,
+"lagS": -0.08,
+"r": 0.972,
+"ampRatio": 1.063,
+"peakGyro": 26.5,
+"peakGps": 32.6
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 7,
+"lagS": -0.01,
+"r": 0.999,
+"ampRatio": 1.186,
+"peakGyro": 32.9,
+"peakGps": 39.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 9,
+"lagS": -0.08,
+"r": 0.998,
+"ampRatio": 1.18,
+"peakGyro": 20.9,
+"peakGps": 24.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 10,
+"lagS": -0.16,
+"r": 0.983,
+"ampRatio": 1.18,
+"peakGyro": 26.0,
+"peakGps": 30.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 13,
+"lagS": -0.06,
+"r": 0.987,
+"ampRatio": 1.207,
+"peakGyro": 28.1,
+"peakGps": 35.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 15,
+"lagS": -0.2,
+"r": 0.986,
+"ampRatio": 1.166,
+"peakGyro": 18.2,
+"peakGps": 19.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 18,
+"lagS": -0.06,
+"r": 0.988,
+"ampRatio": 1.104,
+"peakGyro": 9.5,
+"peakGps": 11.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 19,
+"lagS": -0.1,
+"r": 0.905,
+"ampRatio": 0.92,
+"peakGyro": 5.5,
+"peakGps": 7.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 20,
+"lagS": -0.02,
+"r": 0.999,
+"ampRatio": 1.227,
+"peakGyro": 27.9,
+"peakGps": 34.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 21,
+"lagS": -0.06,
+"r": 0.988,
+"ampRatio": 1.135,
+"peakGyro": 21.2,
+"peakGps": 25.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 23,
+"lagS": -0.15,
+"r": 0.997,
+"ampRatio": 1.2,
+"peakGyro": 25.8,
+"peakGps": 29.6
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 5,
+"kerb": 24,
+"lagS": -0.1,
+"r": 0.991,
+"ampRatio": 1.198,
+"peakGyro": 28.3,
+"peakGps": 32.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 1,
+"lagS": -0.18,
+"r": 0.974,
+"ampRatio": 1.113,
+"peakGyro": 15.5,
+"peakGps": 17.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 3,
+"lagS": -0.06,
+"r": 0.973,
+"ampRatio": 1.162,
+"peakGyro": 26.8,
+"peakGps": 33.1
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 7,
+"lagS": -0.03,
+"r": 0.999,
+"ampRatio": 1.18,
+"peakGyro": 34.9,
+"peakGps": 38.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 9,
+"lagS": -0.08,
+"r": 0.997,
+"ampRatio": 1.174,
+"peakGyro": 21.5,
+"peakGps": 24.6
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 10,
+"lagS": 0.02,
+"r": 0.953,
+"ampRatio": 0.985,
+"peakGyro": 26.8,
+"peakGps": 31.4
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 13,
+"lagS": -0.06,
+"r": 0.969,
+"ampRatio": 1.148,
+"peakGyro": 29.9,
+"peakGps": 35.8
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 15,
+"lagS": -0.1,
+"r": 0.996,
+"ampRatio": 1.179,
+"peakGyro": 15.4,
+"peakGps": 17.0
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 18,
+"lagS": -0.12,
+"r": 0.988,
+"ampRatio": 1.096,
+"peakGyro": 8.7,
+"peakGps": 10.2
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 19,
+"lagS": -0.14,
+"r": 0.969,
+"ampRatio": 1.066,
+"peakGyro": 7.1,
+"peakGps": 8.7
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 20,
+"lagS": -0.04,
+"r": 0.999,
+"ampRatio": 1.201,
+"peakGyro": 25.8,
+"peakGps": 30.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 21,
+"lagS": -0.1,
+"r": 0.988,
+"ampRatio": 1.224,
+"peakGyro": 22.8,
+"peakGps": 27.3
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 23,
+"lagS": -0.04,
+"r": 0.988,
+"ampRatio": 1.161,
+"peakGyro": 26.9,
+"peakGps": 29.9
+},
+{
+"race": "fuji_aim_2020_07_30",
+"lap": 6,
+"kerb": 24,
+"lagS": 0.04,
+"r": 0.98,
+"ampRatio": 1.011,
+"peakGyro": 26.1,
+"peakGps": 31.0
+}
+]

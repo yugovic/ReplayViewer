@@ -3,10 +3,15 @@ import uPlot from "uplot";
 import "uplot/dist/uPlot.min.css";
 import { useReplayStore } from "../state/replayStore";
 import { interpolateNumberSeries } from "../replay/interpolation";
-import { timeAtDist } from "../replay/delta";
+import { playbackTimeAtTrueAxis, trueAxisOffset, type TelemetryAxis } from "../replay/delta";
 import type { LapData } from "../replay/types";
 
-type XAxis = "dist" | "time";
+/**
+ * Both axes are on the TRUE lap basis like the HUD lap clock and delta:
+ * seconds / metres since the timing line (recorded t + δ, dist + s0), not
+ * since the lap's first GPS sample.
+ */
+type XAxis = TelemetryAxis;
 
 const SPEED_COLOR = "#4ade80";
 const APS_COLOR = "#86efac";
@@ -16,9 +21,9 @@ const GHOST_APS_COLOR = "#80f0ff";
 const GHOST_BRAKE_COLOR = "#ff9999";
 
 /**
- * Project ghost telemetry values onto the main lap's x-axis.
- * For dist-axis: find the ghost time at each main dist point, then interpolate ghost channel.
- * For time-axis: interpolate ghost channel at each main time point.
+ * Project ghost telemetry values onto the main lap's true x-axis: the ghost
+ * channel at the same true lap distance (dist axis, the alignment of the 3D
+ * ghost and the HUD delta) or the same true lap time (time axis).
  */
 function projectGhostSeries(
   xAxis: XAxis,
@@ -26,16 +31,8 @@ function projectGhostSeries(
   ghostLap: LapData,
   ghostChannel: number[],
 ): number[] {
-  if (xAxis === "dist") {
-    // x values are main's dist[]. Map each dist to ghost time, then interpolate.
-    return xMain.map((d) => {
-      const gt = timeAtDist(ghostLap, d);
-      return interpolateNumberSeries(ghostLap.t, ghostChannel, gt);
-    });
-  } else {
-    // x values are main's t[]. Interpolate ghost channel at each main time.
-    return xMain.map((mt) => interpolateNumberSeries(ghostLap.t, ghostChannel, mt));
-  }
+  return xMain.map((x) =>
+    interpolateNumberSeries(ghostLap.t, ghostChannel, playbackTimeAtTrueAxis(ghostLap, xAxis, x)));
 }
 
 function buildPlotData(
@@ -44,7 +41,8 @@ function buildPlotData(
   xAxis: XAxis,
 ): uPlot.AlignedData {
   // uPlot requires AlignedData: [xValues[], y1[], y2[], ...] with equal lengths.
-  const xMain = xAxis === "dist" ? (lap.dist ?? []) : (lap.t ?? []);
+  const offset = trueAxisOffset(lap, xAxis);
+  const xMain = (xAxis === "dist" ? (lap.dist ?? []) : (lap.t ?? [])).map((v) => v + offset);
 
   if (ghostLap) {
     const ghostSpeed = projectGhostSeries(xAxis, xMain, ghostLap, ghostLap.speed ?? []);
@@ -71,7 +69,7 @@ function buildOptions(
   xAxis: XAxis,
   hasGhost: boolean,
 ): uPlot.Options {
-  const xLabel = xAxis === "dist" ? "Distance (m)" : "Time (s)";
+  const xLabel = xAxis === "dist" ? "Distance (m)" : "Lap time (s)";
 
   const series: uPlot.Series[] = [
     { label: xAxis === "dist" ? "Dist" : "Time" },
@@ -148,31 +146,11 @@ export function TelemetryPanel({ lap }: TelemetryPanelProps) {
   // Store seek callback in a ref so click handler always has fresh capture
   const seekRef = useRef<(xVal: number) => void>(() => undefined);
 
-  // Build seek callback
+  // Build seek callback: true-axis value → playback time (recorded t basis; seek clamps).
   useEffect(() => {
     seekRef.current = (xVal: number) => {
-      if (xAxis === "time") {
-        seek(xVal);
-      } else {
-        // dist mode: binary-search dist[] to find time
-        const { dist, t } = lap;
-        if (dist.length === 0) return;
-        if (xVal <= dist[0]) { seek(t[0]); return; }
-        if (xVal >= dist[dist.length - 1]) { seek(t[t.length - 1]); return; }
-        let lo = 0;
-        let hi = dist.length - 2;
-        while (lo <= hi) {
-          const mid = (lo + hi) >> 1;
-          if (dist[mid] <= xVal && xVal <= dist[mid + 1]) {
-            const span = dist[mid + 1] - dist[mid];
-            const ratio = span > 0 ? (xVal - dist[mid]) / span : 0;
-            seek(t[mid] + (t[mid + 1] - t[mid]) * ratio);
-            return;
-          }
-          if (dist[mid] < xVal) lo = mid + 1;
-          else hi = mid - 1;
-        }
-      }
+      if (lap.t.length === 0) return;
+      seek(playbackTimeAtTrueAxis(lap, xAxis, xVal));
     };
   }, [xAxis, lap, seek]);
 
@@ -291,12 +269,12 @@ export function TelemetryPanel({ lap }: TelemetryPanelProps) {
   useEffect(() => {
     if (!plotRef.current) return;
     const u = plotRef.current;
-    const xVal = xAxis === "time" ? currentTime : telemetry.dist;
+    const xVal = (xAxis === "time" ? currentTime : telemetry.dist) + trueAxisOffset(lap, xAxis);
     const left = u.valToPos(xVal, "x");
     if (Number.isFinite(left) && left >= 0) {
       u.setCursor({ left, top: (u.cursor.top as number | undefined) ?? 0 });
     }
-  }, [currentTime, telemetry.dist, xAxis]);
+  }, [currentTime, telemetry.dist, xAxis, lap]);
 
   if (!showTelemetryPanel) {
     return (

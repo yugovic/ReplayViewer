@@ -1,0 +1,488 @@
+{
+ "public/data/tracks/fuji/cg_study/kerb_zones.json": {
+  "bytes": 328437,
+  "sha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+  "personalOrAbsolutePathHits": [
+   {
+    "label": "windows-drive-path",
+    "context": ", not verified against the 2020 sessions.\",\"sourceUrl\":\"https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud\",\"l"
+   }
+  ],
+  "hashPairs": [
+   {
+    "at": "$.geometrySha256",
+    "source": null,
+    "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "status": "bare-hash (not file-checked here)"
+   }
+  ],
+  "longestNumericArrays": [
+   {
+    "len": 446,
+    "at": "$.kerbs[6].station"
+   },
+   {
+    "len": 308,
+    "at": "$.kerbs[5].station"
+   },
+   {
+    "len": 302,
+    "at": "$.kerbs[14].station"
+   },
+   {
+    "len": 294,
+    "at": "$.kerbs[17].station"
+   },
+   {
+    "len": 263,
+    "at": "$.kerbs[11].station"
+   },
+   {
+    "len": 249,
+    "at": "$.kerbs[12].station"
+   },
+   {
+    "len": 221,
+    "at": "$.kerbs[16].station"
+   },
+   {
+    "len": 206,
+    "at": "$.kerbs[9].station"
+   }
+  ],
+  "base64LikeStrings": [],
+  "suspiciousKeys": []
+ },
+ "public/data/races/fuji_aim_01/kerb_contacts.json": {
+  "bytes": 11903,
+  "sha256": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d",
+  "personalOrAbsolutePathHits": [],
+  "hashPairs": [
+   {
+    "at": "$.provenance.sourceSha256",
+    "source": null,
+    "recorded": "18055a88997fe1475bcaa94fe0081e26da83c0bf900162ca578e4d5a0d441a43",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.provenance.registrationForPassWindows",
+    "source": "public/data/races/fuji_aim_01/gps_registration.json",
+    "status": "match",
+    "recorded": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+    "current": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729"
+   },
+   {
+    "at": "$.provenance.kerbZones",
+    "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+    "status": "match",
+    "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+    "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+   },
+   {
+    "at": "$.provenance.laps.1",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+    "status": "match",
+    "recorded": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "current": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3"
+   },
+   {
+    "at": "$.provenance.laps.2",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+    "status": "match",
+    "recorded": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "current": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f"
+   },
+   {
+    "at": "$.provenance.laps.3",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+    "status": "match",
+    "recorded": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "current": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c"
+   },
+   {
+    "at": "$.provenance.laps.4",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+    "status": "match",
+    "recorded": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "current": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008"
+   }
+  ],
+  "longestNumericArrays": [],
+  "base64LikeStrings": [],
+  "suspiciousKeys": [
+   "peakRollRms"
+  ]
+ },
+ "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json": {
+  "bytes": 23423,
+  "sha256": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+  "personalOrAbsolutePathHits": [],
+  "hashPairs": [
+   {
+    "at": "$.provenance.sourceSha256",
+    "source": null,
+    "recorded": "5dc8ece620a19ca2c89fac4064aed373511d2f516bb1a27f75223eec203d455a",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.provenance.registrationForPassWindows",
+    "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+    "status": "match",
+    "recorded": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+    "current": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68"
+   },
+   {
+    "at": "$.provenance.kerbZones",
+    "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+    "status": "match",
+    "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+    "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+   },
+   {
+    "at": "$.provenance.laps.1",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+    "status": "match",
+    "recorded": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+    "current": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185"
+   },
+   {
+    "at": "$.provenance.laps.2",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+    "status": "match",
+    "recorded": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+    "current": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4"
+   },
+   {
+    "at": "$.provenance.laps.3",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+    "status": "match",
+    "recorded": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+    "current": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f"
+   },
+   {
+    "at": "$.provenance.laps.4",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+    "status": "match",
+    "recorded": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+    "current": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332"
+   },
+   {
+    "at": "$.provenance.laps.5",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+    "status": "match",
+    "recorded": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+    "current": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2"
+   },
+   {
+    "at": "$.provenance.laps.6",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+    "status": "match",
+    "recorded": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+    "current": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359"
+   }
+  ],
+  "longestNumericArrays": [],
+  "base64LikeStrings": [],
+  "suspiciousKeys": [
+   "peakRollRms"
+  ]
+ },
+ "public/data/races/fuji_aim_01/apex_kpi.json": {
+  "bytes": 41354,
+  "sha256": "3fddc8c754a5c46ab7363927b063c57fb2c4f4206a18635bd1a81bd52d7a0910",
+  "personalOrAbsolutePathHits": [],
+  "hashPairs": [
+   {
+    "at": "$.registration",
+    "source": "public/data/races/fuji_aim_01/gps_registration.json",
+    "status": "match",
+    "recorded": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+    "current": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729"
+   },
+   {
+    "at": "$.inputs.kerbZones",
+    "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+    "status": "match",
+    "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+    "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+   },
+   {
+    "at": "$.inputs.kerbContacts",
+    "source": "public/data/races/fuji_aim_01/kerb_contacts.json",
+    "status": "match",
+    "recorded": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d",
+    "current": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d"
+   },
+   {
+    "at": "$.inputs.roadGeometry",
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "status": "match",
+    "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "current": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+   },
+   {
+    "at": "$.inputs.vehicleProfile",
+    "source": "public/data/vehicles/mazda2-dj.json",
+    "status": "match",
+    "recorded": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+    "current": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d"
+   },
+   {
+    "at": "$.inputs.laps.1",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+    "status": "match",
+    "recorded": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+    "current": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3"
+   },
+   {
+    "at": "$.inputs.laps.2",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+    "status": "match",
+    "recorded": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+    "current": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f"
+   },
+   {
+    "at": "$.inputs.laps.3",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+    "status": "match",
+    "recorded": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+    "current": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c"
+   },
+   {
+    "at": "$.inputs.laps.4",
+    "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+    "status": "match",
+    "recorded": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+    "current": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008"
+   }
+  ],
+  "longestNumericArrays": [],
+  "base64LikeStrings": [],
+  "suspiciousKeys": [
+   "peakRollRms",
+   "wheelPaths"
+  ]
+ },
+ "public/data/races/fuji_aim_2020_07_30/apex_kpi.json": {
+  "bytes": 58530,
+  "sha256": "b18bdb3396052dc932ae277f0fd3375bcb495a14417431cd1bddb95f8458cb89",
+  "personalOrAbsolutePathHits": [],
+  "hashPairs": [
+   {
+    "at": "$.registration",
+    "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+    "status": "match",
+    "recorded": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+    "current": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68"
+   },
+   {
+    "at": "$.inputs.kerbZones",
+    "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+    "status": "match",
+    "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+    "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+   },
+   {
+    "at": "$.inputs.kerbContacts",
+    "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+    "status": "match",
+    "recorded": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+    "current": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e"
+   },
+   {
+    "at": "$.inputs.roadGeometry",
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "status": "match",
+    "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "current": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+   },
+   {
+    "at": "$.inputs.vehicleProfile",
+    "source": "public/data/vehicles/mazda2-dj.json",
+    "status": "match",
+    "recorded": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+    "current": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d"
+   },
+   {
+    "at": "$.inputs.laps.1",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+    "status": "match",
+    "recorded": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+    "current": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185"
+   },
+   {
+    "at": "$.inputs.laps.2",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+    "status": "match",
+    "recorded": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+    "current": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4"
+   },
+   {
+    "at": "$.inputs.laps.3",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+    "status": "match",
+    "recorded": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+    "current": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f"
+   },
+   {
+    "at": "$.inputs.laps.4",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+    "status": "match",
+    "recorded": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+    "current": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332"
+   },
+   {
+    "at": "$.inputs.laps.5",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+    "status": "match",
+    "recorded": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+    "current": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2"
+   },
+   {
+    "at": "$.inputs.laps.6",
+    "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+    "status": "match",
+    "recorded": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+    "current": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359"
+   }
+  ],
+  "longestNumericArrays": [],
+  "base64LikeStrings": [],
+  "suspiciousKeys": [
+   "peakRollRms",
+   "wheelPaths"
+  ]
+ },
+ "public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json": {
+  "bytes": 38289,
+  "sha256": "ef443574c7a5c1f8c9fcda779133ebcc46b52f7c6f5b1a247627cbea70d8d361",
+  "personalOrAbsolutePathHits": [
+   {
+    "label": "windows-drive-path",
+    "context": " \"manufacturer-specification-assumption\",\n   \"source\": \"https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/"
+   }
+  ],
+  "hashPairs": [
+   {
+    "at": "$.method.inputs.kerbZones",
+    "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+    "status": "match",
+    "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+    "current": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+   },
+   {
+    "at": "$.method.inputs.kerbContacts",
+    "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+    "status": "match",
+    "recorded": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+    "current": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e"
+   },
+   {
+    "at": "$.method.inputs.shippedRegistration",
+    "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+    "status": "match",
+    "recorded": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+    "current": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68"
+   },
+   {
+    "at": "$.method.inputs.vehicleProfile",
+    "source": "public/data/vehicles/mazda2-dj.json",
+    "status": "match",
+    "recorded": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+    "current": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d"
+   },
+   {
+    "at": "$.limits",
+    "source": "public/data/tracks/fuji/cg_study/geometry.json",
+    "status": "match",
+    "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+    "current": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+   },
+   {
+    "at": "$.referenceTrack",
+    "source": "public/data/tracks/fuji/track.json",
+    "status": "match",
+    "recorded": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "current": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3"
+   },
+   {
+    "at": "$.laps[0].dataSha256",
+    "source": null,
+    "recorded": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.laps[1].dataSha256",
+    "source": null,
+    "recorded": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.laps[2].dataSha256",
+    "source": null,
+    "recorded": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.laps[3].dataSha256",
+    "source": null,
+    "recorded": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.laps[4].dataSha256",
+    "source": null,
+    "recorded": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+    "status": "bare-hash (not file-checked here)"
+   },
+   {
+    "at": "$.laps[5].dataSha256",
+    "source": null,
+    "recorded": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+    "status": "bare-hash (not file-checked here)"
+   }
+  ],
+  "longestNumericArrays": [
+   {
+    "len": 2,
+    "at": "$.sessionOffsetMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[5].offsetMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[5].deviationFromSessionMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[4].offsetMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[4].deviationFromSessionMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[3].offsetMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[3].deviationFromSessionMeters"
+   },
+   {
+    "len": 2,
+    "at": "$.laps[2].offsetMeters"
+   }
+  ],
+  "base64LikeStrings": [],
+  "suspiciousKeys": [
+   "frame",
+   "peakRollRms",
+   "raw",
+   "samples",
+   "wheelbaseMeters"
+  ]
+ }
+}

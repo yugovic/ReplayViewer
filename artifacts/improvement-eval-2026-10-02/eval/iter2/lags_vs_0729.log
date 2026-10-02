@@ -1,0 +1,17 @@
+sg {"baseline": {"accx_along": -0.522, "accy_lateral": -0.517, "brake_decel": -0.545, "steer_courseRate": -0.579, "medianOverPairs_ofLapMedians": -0.533, "meanAbsOverPairs": 0.541}, "iter1": {"accx_along": -0.023, "accy_lateral": -0.018, "brake_decel": -0.047, "steer_courseRate": -0.073, "medianOverPairs_ofLapMedians": -0.031, "meanAbsOverPairs": 0.04}, "iter2": {"accx_along": 0.024, "accy_lateral": 0.025, "brake_decel": -0.004, "steer_courseRate": -0.031, "medianOverPairs_ofLapMedians": 0.009, "meanAbsOverPairs": 0.021}}
+sg ref {'accx_along': -0.004, 'accy_lateral': 0.002, 'brake_decel': -0.131, 'steer_courseRate': -0.047}
+sg iter2 lap 1 {'accx_along': 0.006, 'accy_lateral': 0.024, 'brake_decel': 0.001, 'steer_courseRate': -0.071, 'medianOverPairs': 0.004}
+sg iter2 lap 2 {'accx_along': 0.024, 'accy_lateral': 0.02, 'brake_decel': -0.003, 'steer_courseRate': -0.053, 'medianOverPairs': 0.009}
+sg iter2 lap 3 {'accx_along': 0.01, 'accy_lateral': 0.008, 'brake_decel': -0.007, 'steer_courseRate': -0.021, 'medianOverPairs': 0.001}
+sg iter2 lap 4 {'accx_along': 0.024, 'accy_lateral': 0.034, 'brake_decel': -0.009, 'steer_courseRate': -0.027, 'medianOverPairs': 0.008}
+sg iter2 lap 5 {'accx_along': 0.024, 'accy_lateral': 0.026, 'brake_decel': -0.005, 'steer_courseRate': -0.035, 'medianOverPairs': 0.009}
+sg iter2 lap 6 {'accx_along': 0.026, 'accy_lateral': 0.032, 'brake_decel': 0.001, 'steer_courseRate': -0.013, 'medianOverPairs': 0.013}
+bp {"baseline": {"accx_along": -0.524, "accy_lateral": -0.518, "brake_decel": -0.539, "steer_courseRate": -0.565, "medianOverPairs_ofLapMedians": -0.531, "meanAbsOverPairs": 0.536}, "iter1": {"accx_along": -0.025, "accy_lateral": -0.018, "brake_decel": -0.039, "steer_courseRate": -0.058, "medianOverPairs_ofLapMedians": -0.029, "meanAbsOverPairs": 0.035}, "iter2": {"accx_along": 0.021, "accy_lateral": 0.022, "brake_decel": 0.004, "steer_courseRate": -0.017, "medianOverPairs_ofLapMedians": 0.009, "meanAbsOverPairs": 0.016}}
+bp ref {'accx_along': 0.0, 'accy_lateral': 0.003, 'brake_decel': -0.14300000000000002, 'steer_courseRate': -0.065}
+bp iter2 lap 1 {'accx_along': 0.006, 'accy_lateral': 0.017, 'brake_decel': 0.009, 'steer_courseRate': -0.049, 'medianOverPairs': 0.007}
+bp iter2 lap 2 {'accx_along': 0.022, 'accy_lateral': 0.017, 'brake_decel': 0.003, 'steer_courseRate': -0.039, 'medianOverPairs': 0.01}
+bp iter2 lap 3 {'accx_along': 0.006, 'accy_lateral': 0.009, 'brake_decel': 0.001, 'steer_courseRate': 0.001, 'medianOverPairs': 0.004}
+bp iter2 lap 4 {'accx_along': 0.022, 'accy_lateral': 0.035, 'brake_decel': -0.003, 'steer_courseRate': -0.011, 'medianOverPairs': 0.009}
+bp iter2 lap 5 {'accx_along': 0.02, 'accy_lateral': 0.027, 'brake_decel': 0.005, 'steer_courseRate': -0.023, 'medianOverPairs': 0.013}
+bp iter2 lap 6 {'accx_along': 0.022, 'accy_lateral': 0.035, 'brake_decel': 0.005, 'steer_courseRate': 0.011, 'medianOverPairs': 0.017}
+exit 0

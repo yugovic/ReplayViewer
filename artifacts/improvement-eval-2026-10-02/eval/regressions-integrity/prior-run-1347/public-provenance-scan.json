@@ -1,0 +1,901 @@
+{
+  "files": {
+    "public/data/tracks/fuji/cg_study/kerb_zones.json": {
+      "bytes": 328438,
+      "crlf": 1,
+      "personalHits": [
+        {
+          "match": "s:/",
+          "context": "cture). 2019 imagery, not verified against the 2020 sessions.\",\"sourceUrl\":\"https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud\",\"license\":\"CC BY 4.0\","
+        }
+      ],
+      "mediaExtensionHits": [],
+      "pathLikeStrings": [
+        {
+          "at": "/definition",
+          "value": "Per kerb, three lines sampled at road stations (0.5 m grid of cg_study/geometry.json), XZ metres in the track local frame (x east, z south). paint = road-side start of the kerb paint (white strip, track-limit line); block = road-side start "
+        },
+        {
+          "at": "/kerbs[0]/notes",
+          "value": "no red blocks at 936.5-937.5 m (white paint only or kerb end): block/outer = paint - 0.39 m / - 1.02 m (not observed); no red blocks at 1019.0-1022.5 m (white paint only or kerb end): block/outer = paint - 0.34 m / - 0.99 m (not observed)"
+        },
+        {
+          "at": "/kerbs[10]/notes",
+          "value": "no red blocks at 3541.5-3544.0 m (white paint only or kerb end): block/outer = paint - 0.38 m / - 0.70 m (not observed); no red blocks at 3598.0-3601.0 m (white paint only or kerb end): block/outer = paint - 0.36 m / - 0.67 m (not observed)"
+        },
+        {
+          "at": "/kerbs[11]/notes",
+          "value": "no red blocks at 3678.5-3680.5 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 1.00 m (not observed); no red blocks at 3806.0-3809.5 m (white paint only or kerb end): block/outer = paint - 0.37 m / - 0.98 m (not observed)"
+        },
+        {
+          "at": "/kerbs[12]/notes",
+          "value": "no red blocks at 3896.0-3896.0 m (white paint only or kerb end): block/outer = paint - 0.42 m / - 0.97 m (not observed); no red blocks at 4017.0-4020.0 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 1.03 m (not observed)"
+        },
+        {
+          "at": "/kerbs[14]/notes",
+          "value": "no red blocks at 1440.5-1444.5 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 0.75 m (not observed)"
+        },
+        {
+          "at": "/kerbs[15]/notes",
+          "value": "staggered double-row blocks: CG inner line zig-zags ~1 m; block/outer from the along-track redness envelope of both rows (white inner-row areas are taken as blocks; flat paint cannot be told apart at 0.2 m); CG inner line departs > 0.5 m fr"
+        },
+        {
+          "at": "/kerbs[16]/notes",
+          "value": "CG inner line departs > 0.5 m from the detected block start at 2128.5-2134.0 m (max -1.64 m, + = CG road-side); no red blocks at 2024.0-2028.0 m (white paint only or kerb end): block/outer = paint - 0.36 m / - 0.74 m (not observed); no red "
+        },
+        {
+          "at": "/kerbs[17]/notes",
+          "value": "no red blocks at 2197.5-2200.0 m (white paint only or kerb end): block/outer = paint - 0.38 m / - 1.04 m (not observed); no red blocks at 2340.0-2344.0 m (white paint only or kerb end): block/outer = paint - 0.36 m / - 1.06 m (not observed)"
+        },
+        {
+          "at": "/kerbs[18]/notes",
+          "value": "no red blocks at 2499.0-2502.5 m (white paint only or kerb end): block/outer = paint - 0.33 m / - 0.76 m (not observed)"
+        },
+        {
+          "at": "/kerbs[19]/notes",
+          "value": "CG inner line departs > 0.5 m from the detected block start at 2715.5-2718.0 m (max -1.83 m, + = CG road-side); no red blocks at 2717.0-2718.0 m (white paint only or kerb end): block/outer = paint - 0.33 m / - 0.74 m (not observed)"
+        },
+        {
+          "at": "/kerbs[1]/notes",
+          "value": "no red blocks at 1417.5-1421.5 m (white paint only or kerb end): block/outer = paint - 0.33 m / - 0.71 m (not observed); no red blocks at 1494.0-1497.5 m (white paint only or kerb end): block/outer = paint - 0.36 m / - 0.71 m (not observed)"
+        },
+        {
+          "at": "/kerbs[20]/notes",
+          "value": "CG inner line departs > 0.5 m from the detected block start at 3086.0-3086.0 m (max +0.50 m, + = CG road-side); no red blocks at 3086.0-3089.5 m (white paint only or kerb end): block/outer = paint - 0.41 m / - 0.99 m (not observed)"
+        },
+        {
+          "at": "/kerbs[21]/notes",
+          "value": "CG inner line departs > 0.5 m from the detected block start at 3325.0-3327.5 m, 3341.0-3348.0 m (max -2.35 m, + = CG road-side); no red blocks at 3340.0-3348.0 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 0.70 m (not o"
+        },
+        {
+          "at": "/kerbs[22]/notes",
+          "value": "no red blocks at 3546.0-3550.0 m (white paint only or kerb end): block/outer = paint - 0.43 m / - 0.90 m (not observed)"
+        },
+        {
+          "at": "/kerbs[23]/notes",
+          "value": "staggered double-row blocks: CG inner line zig-zags ~1 m; block/outer from the along-track redness envelope of both rows (white inner-row areas are taken as blocks; flat paint cannot be told apart at 0.2 m); CG inner line departs > 0.5 m fr"
+        },
+        {
+          "at": "/kerbs[24]/notes",
+          "value": "CG inner line departs > 0.5 m from the detected block start at 3825.0-3825.5 m, 3892.5-3892.5 m (max +0.61 m, + = CG road-side); no red blocks at 3825.0-3828.0 m (white paint only or kerb end): block/outer = paint - 0.38 m / - 0.74 m (not o"
+        },
+        {
+          "at": "/kerbs[25]/notes",
+          "value": "missing from the CG; red/white blocks visible in the 2019 ortho; block start detected (replaces the v2 assumption paint+0.42 m); extent = first..last red block +-1 m (2962.5-2997.0 m; v2 2964.0-3004.0 m included white-only paint)"
+        },
+        {
+          "at": "/kerbs[2]/notes",
+          "value": "no red blocks at 1955.5-1959.5 m (white paint only or kerb end): block/outer = paint - 0.38 m / - 1.05 m (not observed)"
+        },
+        {
+          "at": "/kerbs[3]/notes",
+          "value": "no red blocks at 2182.0-2182.0 m (white paint only or kerb end): block/outer = paint - 0.37 m / - 0.73 m (not observed)"
+        },
+        {
+          "at": "/kerbs[4]/notes",
+          "value": "no red blocks at 2418.0-2422.0 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 0.81 m (not observed)"
+        },
+        {
+          "at": "/kerbs[5]/notes",
+          "value": "no red blocks at 2495.5-2499.5 m (white paint only or kerb end): block/outer = paint - 0.37 m / - 0.71 m (not observed); no red blocks at 2647.0-2649.0 m (white paint only or kerb end): block/outer = paint - 0.32 m / - 0.73 m (not observed)"
+        },
+        {
+          "at": "/kerbs[6]/notes",
+          "value": "no red blocks at 2962.0-2966.0 m (white paint only or kerb end): block/outer = paint - 0.33 m / - 0.68 m (not observed)"
+        },
+        {
+          "at": "/kerbs[7]/notes",
+          "value": "no red blocks at 3086.0-3087.5 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 1.08 m (not observed)"
+        },
+        {
+          "at": "/kerbs[8]/notes",
+          "value": "no red blocks at 3177.5-3178.5 m (white paint only or kerb end): block/outer = paint - 0.33 m / - 0.97 m (not observed); no red blocks at 3253.5-3253.5 m (white paint only or kerb end): block/outer = paint - 0.34 m / - 1.03 m (not observed)"
+        },
+        {
+          "at": "/kerbs[9]/notes",
+          "value": "no red blocks at 3352.0-3354.0 m (white paint only or kerb end): block/outer = paint - 0.35 m / - 0.95 m (not observed); no red blocks at 3454.5-3454.5 m (white paint only or kerb end): block/outer = paint - 0.38 m / - 0.99 m (not observed)"
+        },
+        {
+          "at": "/limitations[3]",
+          "value": "Station ranges of k0..k24 are the CG kerb ranges; where the red blocks end earlier the block/outer lines are filled (blockGaps)."
+        },
+        {
+          "at": "/method",
+          "value": "scripts/quality/apex_kpi/kerb_zones_v3.py: colour-distance gradient (paint) and along-track redness envelope (block/outer) on 0.04 m Lab cross-sections, Hampel + Gaussian smoothing; validated with the independent Lab half-level checker scri"
+        },
+        {
+          "at": "/sourceUrl",
+          "value": "https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud"
+        },
+        {
+          "at": "/validation/blockTruthRule",
+          "value": "block truth only on cross-sections through a red block whose red starts <= 0.8 m outward of the paint edge (kerbs 15/23: farther red is the outer row behind a white block)"
+        },
+        {
+          "at": "/validation/checker",
+          "value": "scripts/quality/apex_kpi/kerb_zones_validate.py (independent Lab half-level cross-section checker, same 2019 ortho)"
+        },
+        {
+          "at": "/validation/insidePass",
+          "value": "14/14"
+        },
+        {
+          "at": "/validation/report",
+          "value": "artifacts/improvement-eval-2026-10-02/after/kerb-zones/validation.json"
+        }
+      ],
+      "largestNumericArrays": [
+        [
+          "/kerbs[6]/station",
+          446
+        ],
+        [
+          "/kerbs[5]/station",
+          308
+        ],
+        [
+          "/kerbs[14]/station",
+          302
+        ],
+        [
+          "/kerbs[17]/station",
+          294
+        ],
+        [
+          "/kerbs[11]/station",
+          263
+        ],
+        [
+          "/kerbs[12]/station",
+          249
+        ],
+        [
+          "/kerbs[16]/station",
+          221
+        ],
+        [
+          "/kerbs[2]/station",
+          206
+        ]
+      ],
+      "shaCrossRefs": []
+    },
+    "public/data/races/fuji_aim_01/kerb_contacts.json": {
+      "bytes": 12508,
+      "crlf": 605,
+      "personalHits": [],
+      "mediaExtensionHits": [],
+      "pathLikeStrings": [
+        {
+          "at": "/definition",
+          "value": "Kerb-contact labels from the logger internal IMU: roll-rate high-pass (>~3 Hz) RMS over 0.2 s; events = RMS > 1.0 deg/s merged across < 0.3 s gaps. Each event is attributed to one kerb by the CG station at its RMS peak (inside-kerb pass fir"
+        },
+        {
+          "at": "/limitations[0]",
+          "value": "Strength depends on speed and sampling (aliasing); thresholds were set on the 7/30 data."
+        },
+        {
+          "at": "/limitations[3]",
+          "value": "7/29 (wet) has very few strong contacts."
+        },
+        {
+          "at": "/peakUnit",
+          "value": "deg/s (roll-rate high-pass RMS, 0.2 s window)"
+        },
+        {
+          "at": "/provenance/detector",
+          "value": "scripts/quality/apex_kpi/eval_v2.py detector() (roll rate only; its wheel-speed side output is discarded)"
+        },
+        {
+          "at": "/provenance/kerbZones/source",
+          "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+        },
+        {
+          "at": "/provenance/laps/1/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json"
+        },
+        {
+          "at": "/provenance/laps/2/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json"
+        },
+        {
+          "at": "/provenance/laps/3/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json"
+        },
+        {
+          "at": "/provenance/laps/4/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json"
+        },
+        {
+          "at": "/provenance/registrationForPassWindows/source",
+          "value": "public/data/races/fuji_aim_01/gps_registration.json"
+        },
+        {
+          "at": "/provenance/source",
+          "value": "AiM XRK of the session (local file, not published); IMU via scripts/quality/apex_kpi/xrk_extract.py"
+        },
+        {
+          "at": "/provenance/tool",
+          "value": "scripts/quality/apex_kpi/export_inputs.py"
+        },
+        {
+          "at": "/sideAttribution",
+          "value": "not published: the 4-wheel ECU speed-ripple ratio is confounded with the corner direction (0.82 in right-handers, 1.31 in left-handers without kerb contact, 7/30); an inside-kerb label is read as \"the inner wheels hit\", never as a measured "
+        },
+        {
+          "at": "/timeBase/lapMappingMethod",
+          "value": "XRK GPS speed vs shipped lap speed (scripts/quality/apex_kpi/xrk_map.py)"
+        },
+        {
+          "at": "/timeBase/loggerToGps",
+          "value": "t = (logger_ms - tc0Ms) / 1000 + shiftSeconds"
+        }
+      ],
+      "largestNumericArrays": [],
+      "shaCrossRefs": [
+        {
+          "at": "/provenance/registrationForPassWindows",
+          "source": "public/data/races/fuji_aim_01/gps_registration.json",
+          "recorded": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/provenance/kerbZones",
+          "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+          "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/provenance/laps/1",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+          "recorded": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/2",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+          "recorded": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/3",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+          "recorded": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/4",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+          "recorded": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        }
+      ]
+    },
+    "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json": {
+      "bytes": 24700,
+      "crlf": 1277,
+      "personalHits": [],
+      "mediaExtensionHits": [],
+      "pathLikeStrings": [
+        {
+          "at": "/definition",
+          "value": "Kerb-contact labels from the logger internal IMU: roll-rate high-pass (>~3 Hz) RMS over 0.2 s; events = RMS > 1.0 deg/s merged across < 0.3 s gaps. Each event is attributed to one kerb by the CG station at its RMS peak (inside-kerb pass fir"
+        },
+        {
+          "at": "/limitations[0]",
+          "value": "Strength depends on speed and sampling (aliasing); thresholds were set on the 7/30 data."
+        },
+        {
+          "at": "/limitations[3]",
+          "value": "7/29 (wet) has very few strong contacts."
+        },
+        {
+          "at": "/peakUnit",
+          "value": "deg/s (roll-rate high-pass RMS, 0.2 s window)"
+        },
+        {
+          "at": "/provenance/detector",
+          "value": "scripts/quality/apex_kpi/eval_v2.py detector() (roll rate only; its wheel-speed side output is discarded)"
+        },
+        {
+          "at": "/provenance/kerbZones/source",
+          "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+        },
+        {
+          "at": "/provenance/laps/1/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json"
+        },
+        {
+          "at": "/provenance/laps/2/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json"
+        },
+        {
+          "at": "/provenance/laps/3/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json"
+        },
+        {
+          "at": "/provenance/laps/4/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json"
+        },
+        {
+          "at": "/provenance/laps/5/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json"
+        },
+        {
+          "at": "/provenance/laps/6/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json"
+        },
+        {
+          "at": "/provenance/registrationForPassWindows/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/gps_registration.json"
+        },
+        {
+          "at": "/provenance/source",
+          "value": "AiM XRK of the session (local file, not published); IMU via scripts/quality/apex_kpi/xrk_extract.py"
+        },
+        {
+          "at": "/provenance/tool",
+          "value": "scripts/quality/apex_kpi/export_inputs.py"
+        },
+        {
+          "at": "/sideAttribution",
+          "value": "not published: the 4-wheel ECU speed-ripple ratio is confounded with the corner direction (0.82 in right-handers, 1.31 in left-handers without kerb contact, 7/30); an inside-kerb label is read as \"the inner wheels hit\", never as a measured "
+        },
+        {
+          "at": "/timeBase/lapMappingMethod",
+          "value": "XRK GPS speed vs shipped lap speed (scripts/quality/apex_kpi/xrk_map.py)"
+        },
+        {
+          "at": "/timeBase/loggerToGps",
+          "value": "t = (logger_ms - tc0Ms) / 1000 + shiftSeconds"
+        },
+        {
+          "at": "/timeBase/shiftSource",
+          "value": "meta.channel_time_alignment.shiftSeconds (scripts/quality/align-fuji-channel-timing.py)"
+        }
+      ],
+      "largestNumericArrays": [],
+      "shaCrossRefs": [
+        {
+          "at": "/provenance/registrationForPassWindows",
+          "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+          "recorded": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/provenance/kerbZones",
+          "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+          "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/provenance/laps/1",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+          "recorded": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/2",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+          "recorded": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/3",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+          "recorded": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/4",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+          "recorded": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/5",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+          "recorded": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/provenance/laps/6",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+          "recorded": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        }
+      ]
+    },
+    "public/data/races/fuji_aim_01/apex_kpi.json": {
+      "bytes": 43159,
+      "crlf": 1805,
+      "personalHits": [],
+      "mediaExtensionHits": [],
+      "pathLikeStrings": [
+        {
+          "at": "/absoluteUncertaintyReason",
+          "value": "The shipped registration is a road-limit fit: inside the road its cost is flat over 0.5-1 m, and the IMU kerb-contact labels bound the remaining lateral GPS error only to about +-0.4-0.7 m (docs/fuji-apex-kerb-kpi-2026-10-02.md). Kerb lines"
+        },
+        {
+          "at": "/definition/contact",
+          "value": "IMU label of this pass from kerb_contacts.json (class strong/silent/mild, strength bin low/mid/high = 弱/中/強); no left/right attribution"
+        },
+        {
+          "at": "/definition/gBlockFront",
+          "value": "m; inner front tyre outer edge to the road-side start of the red/white block band, minimum over the pass (negative = on the blocks)"
+        },
+        {
+          "at": "/definition/labelCheck",
+          "value": "IMU label vs geometry: strong-but-off = strong label with min(gBlockFront, gBlockRear) > 0.15 m; silent-but-deep = silent label with it < -0.55 m (a GPS/course disagreement, not a verdict); ok; null for mild"
+        },
+        {
+          "at": "/definition/wheelPaths",
+          "value": "50 Hz cubic spline of the registered GPS track; heading from the spline derivative; tyre outer edges at +-(track + tyre width)/2, axles at +-wheelbase/2 from the antenna (assumed at the vehicle centre)"
+        },
+        {
+          "at": "/deltaCaveat",
+          "value": "Each lap has its own registration offset; a lap-specific GPS error (e.g. 7/30 L2 at 3250-3600 m) is not cancelled by the delta."
+        },
+        {
+          "at": "/inputs/kerbContacts/source",
+          "value": "public/data/races/fuji_aim_01/kerb_contacts.json"
+        },
+        {
+          "at": "/inputs/kerbZones/source",
+          "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+        },
+        {
+          "at": "/inputs/laps/1/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json"
+        },
+        {
+          "at": "/inputs/laps/2/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json"
+        },
+        {
+          "at": "/inputs/laps/3/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json"
+        },
+        {
+          "at": "/inputs/laps/4/source",
+          "value": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json"
+        },
+        {
+          "at": "/inputs/roadGeometry/source",
+          "value": "public/data/tracks/fuji/cg_study/geometry.json"
+        },
+        {
+          "at": "/inputs/vehicleProfile/source",
+          "value": "public/data/vehicles/mazda2-dj.json"
+        },
+        {
+          "at": "/registration/source",
+          "value": "public/data/races/fuji_aim_01/gps_registration.json"
+        },
+        {
+          "at": "/tool",
+          "value": "scripts/quality/apex_kpi/build_apex_kpi.py"
+        }
+      ],
+      "largestNumericArrays": [],
+      "shaCrossRefs": [
+        {
+          "at": "/registration",
+          "source": "public/data/races/fuji_aim_01/gps_registration.json",
+          "recorded": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/kerbZones",
+          "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+          "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/kerbContacts",
+          "source": "public/data/races/fuji_aim_01/kerb_contacts.json",
+          "recorded": "26a8eeadb31a4d7005271aa18600e28a15c7b7783844036382aa8bfa4c3cc90d",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/roadGeometry",
+          "source": "public/data/tracks/fuji/cg_study/geometry.json",
+          "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/vehicleProfile",
+          "source": "public/data/vehicles/mazda2-dj.json",
+          "recorded": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/laps/1",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+          "recorded": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/2",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+          "recorded": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/3",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+          "recorded": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/4",
+          "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+          "recorded": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        }
+      ]
+    },
+    "public/data/races/fuji_aim_2020_07_30/apex_kpi.json": {
+      "bytes": 61103,
+      "crlf": 2573,
+      "personalHits": [],
+      "mediaExtensionHits": [],
+      "pathLikeStrings": [
+        {
+          "at": "/absoluteUncertaintyReason",
+          "value": "The shipped registration is a road-limit fit: inside the road its cost is flat over 0.5-1 m, and the IMU kerb-contact labels bound the remaining lateral GPS error only to about +-0.4-0.7 m (docs/fuji-apex-kerb-kpi-2026-10-02.md). Kerb lines"
+        },
+        {
+          "at": "/definition/contact",
+          "value": "IMU label of this pass from kerb_contacts.json (class strong/silent/mild, strength bin low/mid/high = 弱/中/強); no left/right attribution"
+        },
+        {
+          "at": "/definition/gBlockFront",
+          "value": "m; inner front tyre outer edge to the road-side start of the red/white block band, minimum over the pass (negative = on the blocks)"
+        },
+        {
+          "at": "/definition/labelCheck",
+          "value": "IMU label vs geometry: strong-but-off = strong label with min(gBlockFront, gBlockRear) > 0.15 m; silent-but-deep = silent label with it < -0.55 m (a GPS/course disagreement, not a verdict); ok; null for mild"
+        },
+        {
+          "at": "/definition/wheelPaths",
+          "value": "50 Hz cubic spline of the registered GPS track; heading from the spline derivative; tyre outer edges at +-(track + tyre width)/2, axles at +-wheelbase/2 from the antenna (assumed at the vehicle centre)"
+        },
+        {
+          "at": "/deltaCaveat",
+          "value": "Each lap has its own registration offset; a lap-specific GPS error (e.g. 7/30 L2 at 3250-3600 m) is not cancelled by the delta."
+        },
+        {
+          "at": "/inputs/kerbContacts/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json"
+        },
+        {
+          "at": "/inputs/kerbZones/source",
+          "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+        },
+        {
+          "at": "/inputs/laps/1/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json"
+        },
+        {
+          "at": "/inputs/laps/2/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json"
+        },
+        {
+          "at": "/inputs/laps/3/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json"
+        },
+        {
+          "at": "/inputs/laps/4/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json"
+        },
+        {
+          "at": "/inputs/laps/5/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json"
+        },
+        {
+          "at": "/inputs/laps/6/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json"
+        },
+        {
+          "at": "/inputs/roadGeometry/source",
+          "value": "public/data/tracks/fuji/cg_study/geometry.json"
+        },
+        {
+          "at": "/inputs/vehicleProfile/source",
+          "value": "public/data/vehicles/mazda2-dj.json"
+        },
+        {
+          "at": "/registration/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/gps_registration.json"
+        },
+        {
+          "at": "/tool",
+          "value": "scripts/quality/apex_kpi/build_apex_kpi.py"
+        }
+      ],
+      "largestNumericArrays": [],
+      "shaCrossRefs": [
+        {
+          "at": "/registration",
+          "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+          "recorded": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/kerbZones",
+          "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+          "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/kerbContacts",
+          "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+          "recorded": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/roadGeometry",
+          "source": "public/data/tracks/fuji/cg_study/geometry.json",
+          "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/vehicleProfile",
+          "source": "public/data/vehicles/mazda2-dj.json",
+          "recorded": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/inputs/laps/1",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+          "recorded": "974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/2",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+          "recorded": "857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/3",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+          "recorded": "2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/4",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+          "recorded": "56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/5",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+          "recorded": "01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        },
+        {
+          "at": "/inputs/laps/6",
+          "source": "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+          "recorded": "f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": true
+        }
+      ]
+    },
+    "public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json": {
+      "bytes": 40177,
+      "crlf": 1888,
+      "personalHits": [
+        {
+          "match": "s:/",
+          "context": ".185,\r    \"status\": \"manufacturer-specification-assumption\",\r    \"source\": \"https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification"
+        }
+      ],
+      "mediaExtensionHits": [],
+      "pathLikeStrings": [
+        {
+          "at": "/beyondLimitNote",
+          "value": "laps[].raw/registered are measured like gps_registration.json (geometry.json limits, tyre beyond the edge by > 0.05 m); the candidate trades some of them for label consistency"
+        },
+        {
+          "at": "/definition",
+          "value": "Display-only rigid translation per lap: a session translation fitted to the traced road limits and the logger-native kerb-contact labels (robust hinge loss on the gap to the kerb block start), plus a small lap deviation. Raw lat/lng unchang"
+        },
+        {
+          "at": "/gpsAnomalies[0]/source",
+          "value": "docs/fuji-apex-kerb-kpi-2026-10-02.md"
+        },
+        {
+          "at": "/limits/source",
+          "value": "public/data/tracks/fuji/cg_study/geometry.json"
+        },
+        {
+          "at": "/method/inputs/kerbContacts/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json"
+        },
+        {
+          "at": "/method/inputs/kerbZones/source",
+          "value": "public/data/tracks/fuji/cg_study/kerb_zones.json"
+        },
+        {
+          "at": "/method/inputs/shippedRegistration/source",
+          "value": "public/data/races/fuji_aim_2020_07_30/gps_registration.json"
+        },
+        {
+          "at": "/method/inputs/vehicleProfile/source",
+          "value": "public/data/vehicles/mazda2-dj.json"
+        },
+        {
+          "at": "/method/labelTerm/gap",
+          "value": "min over the inner front/rear tyre outer edge (50 Hz spline path) of the signed gap to the kerb block start of kerb_zones.json; negative = on the blocks; NaN beyond the line end vertices"
+        },
+        {
+          "at": "/method/labelTerm/labelClasses",
+          "value": "strong and silent only; mild passes carry no hinge evidence; no left/right side"
+        },
+        {
+          "at": "/method/tool",
+          "value": "pipeline/register_gps_kerb_contact.py"
+        },
+        {
+          "at": "/method/trackTerm/limits",
+          "value": "geometry.json road/dry edges; at kerbs the road edge is the kerb paint start (kerb_zones.json); dry edge extended to the outer end of kerbs missing in the CG"
+        },
+        {
+          "at": "/method/vehicleGeometry/provenance/scope",
+          "value": "Only the matching vehicle/laps explicitly carrying this geometry in gps_registration.json use these dimensions."
+        },
+        {
+          "at": "/method/vehicleGeometry/provenance/tyres",
+          "value": "185 mm is the nominal section width of the 185/65R15 and 185/60R16 standard options in the March 2020 specification. 195/55R16 is another listed option. This is not a measured loaded contact patch or confirmed 2020 racing tyre fitment."
+        },
+        {
+          "at": "/method/vehicleGeometry/source",
+          "value": "https://www.mazda.co.jp/globalassets/assets/cars/mazda2/common/pdf/mazda2_specification_202003.pdf"
+        },
+        {
+          "at": "/referenceTrack/source",
+          "value": "public/data/tracks/fuji/track.json"
+        },
+        {
+          "at": "/uncertainty/validation",
+          "value": "artifacts/improvement-eval-2026-10-02/after/registration-candidate/evaluation.json"
+        }
+      ],
+      "largestNumericArrays": [
+        [
+          "/labelsUsed[0]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[1]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[2]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[3]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[4]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[5]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[6]/stationRange",
+          2
+        ],
+        [
+          "/labelsUsed[7]/stationRange",
+          2
+        ]
+      ],
+      "shaCrossRefs": [
+        {
+          "at": "/method/inputs/kerbZones",
+          "source": "public/data/tracks/fuji/cg_study/kerb_zones.json",
+          "recorded": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/method/inputs/kerbContacts",
+          "source": "public/data/races/fuji_aim_2020_07_30/kerb_contacts.json",
+          "recorded": "41eda4452fcb4f73da08db9e229dd002802317215ae26fa982e4ef4fae7ea55e",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/method/inputs/shippedRegistration",
+          "source": "public/data/races/fuji_aim_2020_07_30/gps_registration.json",
+          "recorded": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/method/inputs/vehicleProfile",
+          "source": "public/data/vehicles/mazda2-dj.json",
+          "recorded": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/limits",
+          "source": "public/data/tracks/fuji/cg_study/geometry.json",
+          "recorded": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        },
+        {
+          "at": "/referenceTrack",
+          "source": "public/data/tracks/fuji/track.json",
+          "recorded": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+          "matchesWorkingTree": true,
+          "matchesLfNormalised": false
+        }
+      ]
+    }
+  }
+}

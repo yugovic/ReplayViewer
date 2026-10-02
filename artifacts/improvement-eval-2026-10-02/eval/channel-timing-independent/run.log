@@ -1,0 +1,211 @@
+{
+ "rows": [
+  {
+   "metric": "accx_vs_gps_along",
+   "evidence": "used to estimate the shift (circular)",
+   "before_minus_ref_s": -0.5281,
+   "after_minus_ref_s": -0.0271,
+   "ref0729_range_s": [
+    -0.1083,
+    -0.0437
+   ]
+  },
+  {
+   "metric": "accy_vs_gps_lateral",
+   "evidence": "used to estimate the shift (circular)",
+   "before_minus_ref_s": -0.5175,
+   "after_minus_ref_s": -0.0196,
+   "ref0729_range_s": [
+    -0.011,
+    0.0539
+   ]
+  },
+  {
+   "metric": "steer_vs_gps_curvature",
+   "evidence": "independent sensor (ECU steering)",
+   "before_minus_ref_s": -0.5645,
+   "after_minus_ref_s": -0.0669,
+   "ref0729_range_s": [
+    -0.0634,
+    -0.0237
+   ]
+  },
+  {
+   "metric": "steer_vs_gps_course_rate",
+   "evidence": "independent sensor (ECU steering)",
+   "before_minus_ref_s": -0.5807,
+   "after_minus_ref_s": -0.073,
+   "ref0729_range_s": [
+    -0.0596,
+    -0.0332
+   ]
+  },
+  {
+   "metric": "brake_onset_to_gps_decel_0.3g",
+   "evidence": "independent sensor (ECU brake pressure)",
+   "before_minus_ref_s": 0.545,
+   "after_minus_ref_s": 0.065,
+   "before_s": {
+    "median": 0.708,
+    "ci95": [
+     0.69,
+     0.724
+    ],
+    "iqr": [
+     0.684,
+     0.738
+    ],
+    "n": 37
+   },
+   "after_s": {
+    "median": 0.228,
+    "ci95": [
+     0.217,
+     0.242
+    ],
+    "iqr": [
+     0.206,
+     0.25
+    ],
+    "n": 37
+   },
+   "ref0729_s": {
+    "median": 0.163,
+    "ci95": [
+     0.156,
+     0.196
+    ],
+    "iqr": [
+     0.154,
+     0.197
+    ],
+    "n": 26
+   }
+  },
+  {
+   "metric": "brake_onset_to_gps_decel_0.5g",
+   "evidence": "independent sensor (ECU brake pressure)",
+   "before_minus_ref_s": 0.539,
+   "after_minus_ref_s": 0.048,
+   "before_s": {
+    "median": 0.821,
+    "ci95": [
+     0.772,
+     0.844
+    ],
+    "iqr": [
+     0.767,
+     0.884
+    ],
+    "n": 35
+   },
+   "after_s": {
+    "median": 0.33,
+    "ci95": [
+     0.302,
+     0.37
+    ],
+    "iqr": [
+     0.284,
+     0.385
+    ],
+    "n": 36
+   },
+   "ref0729_s": {
+    "median": 0.282,
+    "ci95": [
+     0.229,
+     0.344
+    ],
+    "iqr": [
+     0.225,
+     0.384
+    ],
+    "n": 23
+   }
+  },
+  {
+   "metric": "brake_onset_to_gps_decel_0.3g_corner_matched",
+   "evidence": "independent sensor (ECU brake pressure)",
+   "after_minus_ref_s": 0.055,
+   "per_corner": {
+    "0": 0.019,
+    "1": 0.042,
+    "2": 0.083,
+    "3": 0.086,
+    "6": -0.031,
+    "7": 0.068
+   }
+  },
+  {
+   "metric": "rawXRK_gyro_yawrate_vs_gps_course_rate",
+   "evidence": "independent sensor, raw XRK channel not shipped (implied AFTER = raw + declared shift)",
+   "before_minus_ref_s": -0.571,
+   "after_minus_ref_s": -0.0718,
+   "after_minus_ref_range_s": [
+    -0.0963,
+    -0.0535
+   ],
+   "corr_raw_lag_vs_declared_shift": -0.838,
+   "residual_std_per_lap_vs_constant_shift": [
+    0.0138,
+    0.0207
+   ]
+  },
+  {
+   "metric": "rawXRK_rear_wheelspeed_vs_gps_speed",
+   "evidence": "independent sensor, raw XRK channel not shipped (implied AFTER = raw + declared shift)",
+   "before_minus_ref_s": -0.5186,
+   "after_minus_ref_s": -0.0242,
+   "after_minus_ref_range_s": [
+    -0.0418,
+    -0.0061
+   ],
+   "corr_raw_lag_vs_declared_shift": -0.885,
+   "residual_std_per_lap_vs_constant_shift": [
+    0.0121,
+    0.0254
+   ]
+  },
+  {
+   "metric": "rawXRK_rear_wheelspeed_accel_vs_gps_speed_accel",
+   "evidence": "independent sensor, raw XRK channel not shipped (implied AFTER = raw + declared shift)",
+   "before_minus_ref_s": -0.5668,
+   "after_minus_ref_s": -0.065,
+   "after_minus_ref_range_s": [
+    -0.0922,
+    -0.0536
+   ],
+   "corr_raw_lag_vs_declared_shift": -0.844,
+   "residual_std_per_lap_vs_constant_shift": [
+    0.0136,
+    0.0203
+   ]
+  },
+  {
+   "metric": "rawXRK_mean4_wheelspeed_accel_vs_gps_speed_accel",
+   "evidence": "independent sensor, raw XRK channel not shipped (implied AFTER = raw + declared shift)",
+   "before_minus_ref_s": -0.5348,
+   "after_minus_ref_s": -0.0333,
+   "after_minus_ref_range_s": [
+    -0.0569,
+    -0.0227
+   ],
+   "corr_raw_lag_vs_declared_shift": -0.891,
+   "residual_std_per_lap_vs_constant_shift": [
+    0.0115,
+    0.0213
+   ]
+  }
+ ],
+ "intra_logger_day_difference_s (0730 minus 0729; clock-free, = dynamics/conditions floor)": {
+  "steer_vs_accy": -0.0436,
+  "gyro_x_speed_vs_accy": -0.0506,
+  "steer_vs_gyro": -0.0082,
+  "brake_to_imu_decel_0.3g": 0.027
+ },
+ "gps_untouched": true,
+ "baseline_equals_git_HEAD": true,
+ "0729_untouched": true,
+ "transform_max_abs_diff": 0.0006
+}

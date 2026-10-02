@@ -1,0 +1,512 @@
+{
+ "description": "Sensitivity of the kerb-zone acceptance to detector envelope parameters (kerb_zones_v3.py --env-half/--env-pct) and to the checker block-truth exclusion (kerb_zones_validate.py --block-max-strip). Aggregates over the 14 inside kerbs; residual = line - checker, metres.",
+ "runs": [
+  {
+   "kind": "detector envelope",
+   "envHalfM": 2.5,
+   "envPercentile": 80,
+   "default": true,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.001,
+     0.023
+    ],
+    "maxAbsMedian": 0.023,
+    "minQ1": -0.023,
+    "maxQ3": 0.07,
+    "maxAbs": 0.312
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.022,
+      -0.008,
+      0.07,
+      82
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.001,
+      -0.019,
+      0.037,
+      87
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.023,
+      -0.007,
+      0.04,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "detector envelope",
+   "envHalfM": 1.5,
+   "envPercentile": 80,
+   "default": false,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.003,
+     0.026
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.022,
+    "maxQ3": 0.075,
+    "maxAbs": 0.3
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.026,
+      0.001,
+      0.075,
+      82
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.003,
+      -0.022,
+      0.029,
+      87
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.017,
+      -0.001,
+      0.036,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "detector envelope",
+   "envHalfM": 3.5,
+   "envPercentile": 80,
+   "default": false,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.002,
+     0.023
+    ],
+    "maxAbsMedian": 0.023,
+    "minQ1": -0.026,
+    "maxQ3": 0.059,
+    "maxAbs": 0.3
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.014,
+      -0.021,
+      0.059,
+      82
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.002,
+      -0.024,
+      0.029,
+      87
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.023,
+      -0.006,
+      0.038,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "detector envelope",
+   "envHalfM": 2.5,
+   "envPercentile": 65,
+   "default": false,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.018,
+     0.016
+    ],
+    "maxAbsMedian": 0.018,
+    "minQ1": -0.054,
+    "maxQ3": 0.036,
+    "maxAbs": 0.225
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      -0.018,
+      -0.054,
+      0.036,
+      82
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.007,
+      -0.044,
+      0.015,
+      87
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.016,
+      -0.027,
+      0.035,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "detector envelope",
+   "envHalfM": 2.5,
+   "envPercentile": 90,
+   "default": false,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     0.001,
+     0.034
+    ],
+    "maxAbsMedian": 0.034,
+    "minQ1": -0.019,
+    "maxQ3": 0.092,
+    "maxAbs": 0.288
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.034,
+      0.006,
+      0.092,
+      82
+     ]
+    },
+    "k23": {
+     "block": [
+      0.001,
+      -0.019,
+      0.041,
+      87
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.022,
+      0.006,
+      0.045,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "checker block-truth exclusion",
+   "blockMaxStripM": 0.6,
+   "note": "",
+   "default": false,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.002,
+     0.02
+    ],
+    "maxAbsMedian": 0.02,
+    "minQ1": -0.022,
+    "maxQ3": 0.053,
+    "maxAbs": -0.183
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.018,
+      -0.022,
+      0.053,
+      73
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.002,
+      -0.02,
+      0.034,
+      85
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.02,
+      -0.013,
+      0.035,
+      33
+     ]
+    }
+   }
+  },
+  {
+   "kind": "checker block-truth exclusion",
+   "blockMaxStripM": 0.8,
+   "note": "",
+   "default": true,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.001,
+     0.023
+    ],
+    "maxAbsMedian": 0.023,
+    "minQ1": -0.023,
+    "maxQ3": 0.07,
+    "maxAbs": 0.312
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.022,
+      -0.008,
+      0.07,
+      82
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.001,
+      -0.019,
+      0.037,
+      87
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.023,
+      -0.007,
+      0.04,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "checker block-truth exclusion",
+   "blockMaxStripM": 1.0,
+   "note": "",
+   "default": false,
+   "insidePass": "14/14",
+   "failures": [],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.001,
+     0.023
+    ],
+    "maxAbsMedian": 0.023,
+    "minQ1": -0.023,
+    "maxQ3": 0.072,
+    "maxAbs": 0.449
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.022,
+      -0.008,
+      0.072,
+      83
+     ]
+    },
+    "k23": {
+     "block": [
+      -0.001,
+      -0.019,
+      0.04,
+      88
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.023,
+      -0.007,
+      0.04,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "kind": "checker block-truth exclusion",
+   "blockMaxStripM": null,
+   "note": "no exclusion",
+   "default": false,
+   "insidePass": "12/14",
+   "failures": [
+    "k15",
+    "k23"
+   ],
+   "v3_paint": {
+    "kerbs": 14,
+    "medianRange": [
+     -0.026,
+     -0.007
+    ],
+    "maxAbsMedian": 0.026,
+    "minQ1": -0.037,
+    "maxQ3": 0.005,
+    "maxAbs": 0.368
+   },
+   "v3_block": {
+    "kerbs": 14,
+    "medianRange": [
+     0.003,
+     0.075
+    ],
+    "maxAbsMedian": 0.075,
+    "minQ1": -0.023,
+    "maxQ3": 0.868,
+    "maxAbs": 0.983
+   },
+   "perKerbBlock": {
+    "k15": {
+     "block": [
+      0.075,
+      0.011,
+      0.83,
+      126
+     ]
+    },
+    "k23": {
+     "block": [
+      0.059,
+      -0.006,
+      0.868,
+      150
+     ]
+    },
+    "kDunlopR": {
+     "block": [
+      0.023,
+      -0.007,
+      0.04,
+      35
+     ]
+    }
+   }
+  }
+ ]
+}

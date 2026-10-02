@@ -1,0 +1,811 @@
+{
+  "3_registration_offsets": {
+    "fuji_aim_01": {
+      "byteIdentical": true,
+      "sha_now": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+      "sha_base": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+      "sessionOffsetMeters_now": [
+        -1.627,
+        1.931
+      ],
+      "sessionOffsetMeters_base": [
+        -1.627,
+        1.931
+      ],
+      "sessionOffsetEqual": true,
+      "lapCount_now": 4,
+      "lapCount_base": 4,
+      "laps": [
+        {
+          "lap": 1,
+          "offsetMeters_now": [
+            -1.224,
+            2.315
+          ],
+          "offsetMeters_base": [
+            -1.224,
+            2.315
+          ],
+          "equal": true
+        },
+        {
+          "lap": 2,
+          "offsetMeters_now": [
+            -1.677,
+            1.976
+          ],
+          "offsetMeters_base": [
+            -1.677,
+            1.976
+          ],
+          "equal": true
+        },
+        {
+          "lap": 3,
+          "offsetMeters_now": [
+            -1.638,
+            1.75
+          ],
+          "offsetMeters_base": [
+            -1.638,
+            1.75
+          ],
+          "equal": true
+        },
+        {
+          "lap": 4,
+          "offsetMeters_now": [
+            -1.777,
+            1.735
+          ],
+          "offsetMeters_base": [
+            -1.777,
+            1.735
+          ],
+          "equal": true
+        }
+      ],
+      "allLapOffsetsEqual": true,
+      "diffCount_all": 0,
+      "diff_all": [],
+      "diff_excluding_dataSha256": []
+    },
+    "fuji_aim_2020_07_30": {
+      "byteIdentical": false,
+      "sha_now": "acb77239c3aea87c0ec1afb0fa489bfbd549fd35e1c208b04396f4483e45ee68",
+      "sha_base": "db70e70023589b2a264f33df11042c658bd868b0e5b2e6f945b3a04211b329b2",
+      "sessionOffsetMeters_now": [
+        -0.221,
+        -2.68
+      ],
+      "sessionOffsetMeters_base": [
+        -0.221,
+        -2.68
+      ],
+      "sessionOffsetEqual": true,
+      "lapCount_now": 6,
+      "lapCount_base": 6,
+      "laps": [
+        {
+          "lap": 1,
+          "offsetMeters_now": [
+            -0.084,
+            -2.783
+          ],
+          "offsetMeters_base": [
+            -0.084,
+            -2.783
+          ],
+          "equal": true
+        },
+        {
+          "lap": 2,
+          "offsetMeters_now": [
+            -0.432,
+            -2.612
+          ],
+          "offsetMeters_base": [
+            -0.432,
+            -2.612
+          ],
+          "equal": true
+        },
+        {
+          "lap": 3,
+          "offsetMeters_now": [
+            -0.329,
+            -2.511
+          ],
+          "offsetMeters_base": [
+            -0.329,
+            -2.511
+          ],
+          "equal": true
+        },
+        {
+          "lap": 4,
+          "offsetMeters_now": [
+            -0.031,
+            -3.034
+          ],
+          "offsetMeters_base": [
+            -0.031,
+            -3.034
+          ],
+          "equal": true
+        },
+        {
+          "lap": 5,
+          "offsetMeters_now": [
+            -0.298,
+            -2.558
+          ],
+          "offsetMeters_base": [
+            -0.298,
+            -2.558
+          ],
+          "equal": true
+        },
+        {
+          "lap": 6,
+          "offsetMeters_now": [
+            -0.316,
+            -2.446
+          ],
+          "offsetMeters_base": [
+            -0.316,
+            -2.446
+          ],
+          "equal": true
+        }
+      ],
+      "allLapOffsetsEqual": true,
+      "diffCount_all": 6,
+      "diff_all": [
+        ".laps[0].dataSha256: 'acf24ba30329ac5514a13ca36d8be4cac0056791569825ad266fe0a3b64a189a' -> '974adc09a291c023213e5d1ce503ef18e5f052123b2f41b71c02fae2ecd88185'",
+        ".laps[1].dataSha256: '2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45' -> '857772171c9ba39f715fcfc6e2f310bbc8d3b6e9f70407a3ab4c202945f482b4'",
+        ".laps[2].dataSha256: 'de48066c838c7adf45fd98d313eaf5a2a160e20e5c164ef9c4626c2d578c70b0' -> '2c927972df4d78c1b14653020dc7c8e34f7f501dc410b8e3dd62b22cfdb54a6f'",
+        ".laps[3].dataSha256: '721812059d587ddc7d39ea074bacf67cb3bb0192d5a21a09243810d403ed937e' -> '56e2b85087732fe9c893da2fe8ca3cba1af7e689cb36b9ad71257a5e81fb4332'",
+        ".laps[4].dataSha256: 'e725b345851a6d65c470f8d0f1e30117412af8a5c72d904617d5ff819ac7a465' -> '01bb847cb7087062feec04cf2e69736856c251f56283d25890a77cd2263a21b2'",
+        ".laps[5].dataSha256: 'c893e1e26a32f6e0f265cac802774729b72e040195206b3995d313f0cb8223ae' -> 'f841e8d5c7ad331a43bf65c0b718a6b17bba09f3be388464aa96da1d25b3d359'"
+      ],
+      "diff_excluding_dataSha256": []
+    }
+  },
+  "4_fuji_aim_01_lap_files": {
+    "files": [
+      {
+        "source": "public/data/tracks/fuji/cg_study/geometry.json",
+        "sha_now": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+        "sha_baseline_manifest": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+        "match": true
+      },
+      {
+        "source": "public/data/tracks/fuji/track.json",
+        "sha_now": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+        "sha_baseline_manifest": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+        "match": true
+      },
+      {
+        "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+        "sha_now": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+        "sha_baseline_manifest": "02c01c06d11844c46fd7c09addb20e916b63e40b614885cfd039fdfc5b2f77e3",
+        "match": true
+      },
+      {
+        "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+        "sha_now": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+        "sha_baseline_manifest": "caa84effa0bbd88b159a5b8da9c82f090b36df9305b0b0078d32ab0aba52023f",
+        "match": true
+      },
+      {
+        "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+        "sha_now": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+        "sha_baseline_manifest": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+        "match": true
+      },
+      {
+        "source": "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+        "sha_now": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+        "sha_baseline_manifest": "51fecba131e9ebae5858cbf8abb9abf6b7ae2ea54e79d1554f45a4e735d9b008",
+        "match": true
+      },
+      {
+        "source": "public/data/races/fuji_aim_01/laps.json",
+        "sha_now": "7532267c8658ddab6601bbfa10a6e9d15e26487c25cbf19718318eba93dc94fe",
+        "sha_baseline_snapshot": "7532267c8658ddab6601bbfa10a6e9d15e26487c25cbf19718318eba93dc94fe",
+        "match": true
+      },
+      {
+        "source": "public/data/races/fuji_aim_01/gps_registration.json",
+        "sha_now": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+        "sha_baseline_snapshot": "3c4410b1674d12c55720758392664a22d6aab7edc8cb3f6429ab96e879534729",
+        "match": true
+      }
+    ],
+    "allMatch": true,
+    "git_diff_name_only_HEAD": [],
+    "git_status_porcelain": [
+      "?? public/data/races/fuji_aim_01/apex_kpi.json",
+      "?? public/data/races/fuji_aim_01/kerb_contacts.json"
+    ],
+    "manifest_fuji_aim_01_unchanged": true
+  },
+  "fuji_aim_2020_07_30_lap_files": {
+    "laps": [
+      {
+        "file": "osaki_hmr_demio_101_lap_001.json",
+        "baseline_sha_matches_previous_manifest": true,
+        "current_sha_matches_current_manifest": true,
+        "top_level_keys_changed": [
+          "accx",
+          "accy",
+          "aps",
+          "brake",
+          "gear",
+          "meta",
+          "steer"
+        ],
+        "meta_keys_changed": [
+          "channel_time_alignment"
+        ],
+        "gps_arrays_identical": true,
+        "array_lengths_base_now": {
+          "aps": [
+            1336,
+            1336
+          ],
+          "brake": [
+            1336,
+            1336
+          ],
+          "steer": [
+            1336,
+            1336
+          ],
+          "gear": [
+            1336,
+            1336
+          ],
+          "accx": [
+            1336,
+            1336
+          ],
+          "accy": [
+            1336,
+            1336
+          ],
+          "t": [
+            1336,
+            1336
+          ],
+          "lat": [
+            1336,
+            1336
+          ],
+          "lng": [
+            1336,
+            1336
+          ],
+          "speed": [
+            1336,
+            1336
+          ],
+          "dist": [
+            1336,
+            1336
+          ]
+        },
+        "channel_time_alignment": {
+          "method": "logger_channel_delay_v1",
+          "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+          "shiftSeconds": 0.468,
+          "estimate": {
+            "method": "imu-vs-gps-xcorr-v1",
+            "basis": "per-lap mean of accx and accy lags",
+            "lagS": -0.468,
+            "imuAccxLagS": -0.476,
+            "rAccx": 0.96,
+            "imuAccyLagS": -0.46,
+            "rAccy": 0.993,
+            "sessionMedianLagS": -0.507,
+            "tool": "scripts/quality/align-fuji-channel-timing.py"
+          },
+          "channels": [
+            "aps",
+            "brake",
+            "steer",
+            "gear",
+            "accx",
+            "accy"
+          ],
+          "nearestSampleChannels": [
+            "gear"
+          ],
+          "samplesFromNeighbourLaps": 5,
+          "heldEdgeSamples": 0
+        }
+      },
+      {
+        "file": "osaki_hmr_demio_101_lap_002.json",
+        "baseline_sha_matches_previous_manifest": true,
+        "current_sha_matches_current_manifest": true,
+        "top_level_keys_changed": [
+          "accx",
+          "accy",
+          "aps",
+          "brake",
+          "gear",
+          "meta",
+          "steer"
+        ],
+        "meta_keys_changed": [
+          "channel_time_alignment"
+        ],
+        "gps_arrays_identical": true,
+        "array_lengths_base_now": {
+          "aps": [
+            1318,
+            1318
+          ],
+          "brake": [
+            1318,
+            1318
+          ],
+          "steer": [
+            1318,
+            1318
+          ],
+          "gear": [
+            1318,
+            1318
+          ],
+          "accx": [
+            1318,
+            1318
+          ],
+          "accy": [
+            1318,
+            1318
+          ],
+          "t": [
+            1318,
+            1318
+          ],
+          "lat": [
+            1318,
+            1318
+          ],
+          "lng": [
+            1318,
+            1318
+          ],
+          "speed": [
+            1318,
+            1318
+          ],
+          "dist": [
+            1318,
+            1318
+          ]
+        },
+        "channel_time_alignment": {
+          "method": "logger_channel_delay_v1",
+          "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+          "shiftSeconds": 0.465,
+          "estimate": {
+            "method": "imu-vs-gps-xcorr-v1",
+            "basis": "per-lap mean of accx and accy lags",
+            "lagS": -0.465,
+            "imuAccxLagS": -0.488,
+            "rAccx": 0.95,
+            "imuAccyLagS": -0.442,
+            "rAccy": 0.991,
+            "sessionMedianLagS": -0.507,
+            "tool": "scripts/quality/align-fuji-channel-timing.py"
+          },
+          "channels": [
+            "aps",
+            "brake",
+            "steer",
+            "gear",
+            "accx",
+            "accy"
+          ],
+          "nearestSampleChannels": [
+            "gear"
+          ],
+          "samplesFromNeighbourLaps": 5,
+          "heldEdgeSamples": 0
+        }
+      },
+      {
+        "file": "osaki_hmr_demio_101_lap_003.json",
+        "baseline_sha_matches_previous_manifest": true,
+        "current_sha_matches_current_manifest": true,
+        "top_level_keys_changed": [
+          "accx",
+          "accy",
+          "aps",
+          "brake",
+          "gear",
+          "meta",
+          "steer"
+        ],
+        "meta_keys_changed": [
+          "channel_time_alignment"
+        ],
+        "gps_arrays_identical": true,
+        "array_lengths_base_now": {
+          "aps": [
+            1318,
+            1318
+          ],
+          "brake": [
+            1318,
+            1318
+          ],
+          "steer": [
+            1318,
+            1318
+          ],
+          "gear": [
+            1318,
+            1318
+          ],
+          "accx": [
+            1318,
+            1318
+          ],
+          "accy": [
+            1318,
+            1318
+          ],
+          "t": [
+            1318,
+            1318
+          ],
+          "lat": [
+            1318,
+            1318
+          ],
+          "lng": [
+            1318,
+            1318
+          ],
+          "speed": [
+            1318,
+            1318
+          ],
+          "dist": [
+            1318,
+            1318
+          ]
+        },
+        "channel_time_alignment": {
+          "method": "logger_channel_delay_v1",
+          "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+          "shiftSeconds": 0.49,
+          "estimate": {
+            "method": "imu-vs-gps-xcorr-v1",
+            "basis": "per-lap mean of accx and accy lags",
+            "lagS": -0.49,
+            "imuAccxLagS": -0.51,
+            "rAccx": 0.961,
+            "imuAccyLagS": -0.47,
+            "rAccy": 0.994,
+            "sessionMedianLagS": -0.507,
+            "tool": "scripts/quality/align-fuji-channel-timing.py"
+          },
+          "channels": [
+            "aps",
+            "brake",
+            "steer",
+            "gear",
+            "accx",
+            "accy"
+          ],
+          "nearestSampleChannels": [
+            "gear"
+          ],
+          "samplesFromNeighbourLaps": 5,
+          "heldEdgeSamples": 0
+        }
+      },
+      {
+        "file": "osaki_hmr_demio_101_lap_004.json",
+        "baseline_sha_matches_previous_manifest": true,
+        "current_sha_matches_current_manifest": true,
+        "top_level_keys_changed": [
+          "accx",
+          "accy",
+          "aps",
+          "brake",
+          "gear",
+          "meta",
+          "steer"
+        ],
+        "meta_keys_changed": [
+          "channel_time_alignment"
+        ],
+        "gps_arrays_identical": true,
+        "array_lengths_base_now": {
+          "aps": [
+            1308,
+            1308
+          ],
+          "brake": [
+            1308,
+            1308
+          ],
+          "steer": [
+            1308,
+            1308
+          ],
+          "gear": [
+            1308,
+            1308
+          ],
+          "accx": [
+            1308,
+            1308
+          ],
+          "accy": [
+            1308,
+            1308
+          ],
+          "t": [
+            1308,
+            1308
+          ],
+          "lat": [
+            1308,
+            1308
+          ],
+          "lng": [
+            1308,
+            1308
+          ],
+          "speed": [
+            1308,
+            1308
+          ],
+          "dist": [
+            1308,
+            1308
+          ]
+        },
+        "channel_time_alignment": {
+          "method": "logger_channel_delay_v1",
+          "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+          "shiftSeconds": 0.515,
+          "estimate": {
+            "method": "imu-vs-gps-xcorr-v1",
+            "basis": "per-lap mean of accx and accy lags",
+            "lagS": -0.515,
+            "imuAccxLagS": -0.524,
+            "rAccx": 0.958,
+            "imuAccyLagS": -0.506,
+            "rAccy": 0.995,
+            "sessionMedianLagS": -0.507,
+            "tool": "scripts/quality/align-fuji-channel-timing.py"
+          },
+          "channels": [
+            "aps",
+            "brake",
+            "steer",
+            "gear",
+            "accx",
+            "accy"
+          ],
+          "nearestSampleChannels": [
+            "gear"
+          ],
+          "samplesFromNeighbourLaps": 6,
+          "heldEdgeSamples": 0
+        }
+      },
+      {
+        "file": "osaki_hmr_demio_101_lap_005.json",
+        "baseline_sha_matches_previous_manifest": true,
+        "current_sha_matches_current_manifest": true,
+        "top_level_keys_changed": [
+          "accx",
+          "accy",
+          "aps",
+          "brake",
+          "gear",
+          "meta",
+          "steer"
+        ],
+        "meta_keys_changed": [
+          "channel_time_alignment"
+        ],
+        "gps_arrays_identical": true,
+        "array_lengths_base_now": {
+          "aps": [
+            1308,
+            1308
+          ],
+          "brake": [
+            1308,
+            1308
+          ],
+          "steer": [
+            1308,
+            1308
+          ],
+          "gear": [
+            1308,
+            1308
+          ],
+          "accx": [
+            1308,
+            1308
+          ],
+          "accy": [
+            1308,
+            1308
+          ],
+          "t": [
+            1308,
+            1308
+          ],
+          "lat": [
+            1308,
+            1308
+          ],
+          "lng": [
+            1308,
+            1308
+          ],
+          "speed": [
+            1308,
+            1308
+          ],
+          "dist": [
+            1308,
+            1308
+          ]
+        },
+        "channel_time_alignment": {
+          "method": "logger_channel_delay_v1",
+          "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+          "shiftSeconds": 0.526,
+          "estimate": {
+            "method": "imu-vs-gps-xcorr-v1",
+            "basis": "per-lap mean of accx and accy lags",
+            "lagS": -0.526,
+            "imuAccxLagS": -0.53,
+            "rAccx": 0.961,
+            "imuAccyLagS": -0.522,
+            "rAccy": 0.995,
+            "sessionMedianLagS": -0.507,
+            "tool": "scripts/quality/align-fuji-channel-timing.py"
+          },
+          "channels": [
+            "aps",
+            "brake",
+            "steer",
+            "gear",
+            "accx",
+            "accy"
+          ],
+          "nearestSampleChannels": [
+            "gear"
+          ],
+          "samplesFromNeighbourLaps": 6,
+          "heldEdgeSamples": 0
+        }
+      },
+      {
+        "file": "osaki_hmr_demio_101_lap_006.json",
+        "baseline_sha_matches_previous_manifest": true,
+        "current_sha_matches_current_manifest": true,
+        "top_level_keys_changed": [
+          "accx",
+          "accy",
+          "aps",
+          "brake",
+          "gear",
+          "meta",
+          "steer"
+        ],
+        "meta_keys_changed": [
+          "channel_time_alignment"
+        ],
+        "gps_arrays_identical": true,
+        "array_lengths_base_now": {
+          "aps": [
+            1405,
+            1405
+          ],
+          "brake": [
+            1405,
+            1405
+          ],
+          "steer": [
+            1405,
+            1405
+          ],
+          "gear": [
+            1405,
+            1405
+          ],
+          "accx": [
+            1405,
+            1405
+          ],
+          "accy": [
+            1405,
+            1405
+          ],
+          "t": [
+            1405,
+            1405
+          ],
+          "lat": [
+            1405,
+            1405
+          ],
+          "lng": [
+            1405,
+            1405
+          ],
+          "speed": [
+            1405,
+            1405
+          ],
+          "dist": [
+            1405,
+            1405
+          ]
+        },
+        "channel_time_alignment": {
+          "method": "logger_channel_delay_v1",
+          "definition": "channel(t) = logger channel at (t - shiftSeconds); positive shift = logger channel delayed. Linear interpolation over the continuous session series incl. neighbouring laps; nearest sample for discrete channels. GPS t/lat/lng/speed/dist unchanged.",
+          "shiftSeconds": 0.524,
+          "estimate": {
+            "method": "imu-vs-gps-xcorr-v1",
+            "basis": "per-lap mean of accx and accy lags",
+            "lagS": -0.524,
+            "imuAccxLagS": -0.54,
+            "rAccx": 0.962,
+            "imuAccyLagS": -0.508,
+            "rAccy": 0.994,
+            "sessionMedianLagS": -0.507,
+            "tool": "scripts/quality/align-fuji-channel-timing.py"
+          },
+          "channels": [
+            "aps",
+            "brake",
+            "steer",
+            "gear",
+            "accx",
+            "accy"
+          ],
+          "nearestSampleChannels": [
+            "gear"
+          ],
+          "samplesFromNeighbourLaps": 6,
+          "heldEdgeSamples": 0
+        }
+      }
+    ],
+    "onlyChannelsAndAlignmentMetaChanged": true,
+    "laps_json_diff": [
+      ".laps[1].file_size: 106041 -> 107992",
+      ".laps[2].file_size: 104671 -> 106785",
+      ".laps[3].file_size: 104625 -> 106553",
+      ".laps[4].file_size: 103814 -> 105814",
+      ".laps[5].file_size: 103980 -> 105692",
+      ".laps[6].file_size: 111798 -> 114043",
+      ".selected[0].file_size: 106041 -> 107992",
+      ".selected[1].file_size: 104671 -> 106785",
+      ".selected[2].file_size: 104625 -> 106553",
+      ".selected[3].file_size: 103814 -> 105814",
+      ".selected[4].file_size: 103980 -> 105692",
+      ".selected[5].file_size: 111798 -> 114043"
+    ]
+  }
+}

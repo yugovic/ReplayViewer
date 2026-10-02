@@ -1,0 +1,904 @@
+{
+ "method": "TASK B2 evaluation: rendered kerb geometry (before = geometry.json CG kerbs, after = kerb_zones.json)",
+ "caveat": "kerb_zones.json was traced on this same ortho, so agreement here shows that the viewer reproduces the traced lines faithfully; it is not an independent check of the lines (see B1 validation for that). Pixel classes (calibrated on 26 kerbs): white = L*>=75 and chroma<20; red = build_fuji_cg.py RGB rule; asphalt = L*<70 and chroma<10. Ortho pixel 0.2 m; georeferencing error ~0.2-0.3 m not removed. Run: KERB_RENDER_WORK=<dir> <venv python> artifacts/improvement-eval-2026-10-02/after/kerb-render/eval_kerb_render.py ",
+ "classes": "white: L*>=75 & chroma<20 (not red); red: r-g>22 & r-b>18 & r>120 & g<175; asphalt: L*<70 & chroma<10",
+ "corridor": "per kerb: from paint - 1.0 m (road side) to outer + 1.0 m, over the zone station range",
+ "raster": "4x supersampled ortho (0.050 m), top faces of the rendered batches",
+ "metrics": {
+  "kerbOnKerbPaint": "share of rendered block-band area on red or white ortho paint",
+  "kerbOnAsphalt": "share of rendered block-band area on asphalt-coloured ortho pixels",
+  "whiteOnWhitePaint": "share of rendered white strip/marking area (paint batch) on white ortho paint",
+  "orthoRedCovered": "share of red ortho pixels in the corridor covered by the rendered block band",
+  "orthoRedUncovered_m2": "red ortho area in the corridor not covered by the rendered block band",
+  "orthoRed50Covered": "as orthoRedCovered with a half-level red class (a* above the asphalt/red-core midpoint, per kerb); the lenient RGB rule is the one the CG kerbs were traced with, so it favours them at the outer edge"
+ },
+ "attribution": "Ortho: VIRTUAL SHIZUOKA 2019 (Shizuoka Pref.) CC BY 4.0",
+ "summary": {
+  "all": {
+   "before": {
+    "kerbArea_m2": 2362.8,
+    "kerbOnKerbPaint": 0.9171,
+    "kerbOnAsphalt": 0.0263,
+    "whiteArea_m2": 484.6,
+    "whiteOnWhitePaint": 0.838,
+    "whiteOnAsphalt": 0.0151,
+    "orthoRedUncovered_m2": 104.7,
+    "medianOrthoRedCovered": 0.9366,
+    "orthoRed50Uncovered_m2": 82.4,
+    "medianOrthoRed50Covered": 0.9579
+   },
+   "after": {
+    "kerbArea_m2": 2257.1,
+    "kerbOnKerbPaint": 0.9602,
+    "kerbOnAsphalt": 0.0156,
+    "whiteArea_m2": 1001.2,
+    "whiteOnWhitePaint": 0.8524,
+    "whiteOnAsphalt": 0.0459,
+    "orthoRedUncovered_m2": 134.5,
+    "medianOrthoRedCovered": 0.8607,
+    "orthoRed50Uncovered_m2": 56.3,
+    "medianOrthoRed50Covered": 0.9383
+   }
+  },
+  "inside": {
+   "before": {
+    "kerbArea_m2": 822.4,
+    "kerbOnKerbPaint": 0.9018,
+    "kerbOnAsphalt": 0.0341,
+    "whiteArea_m2": 176.1,
+    "whiteOnWhitePaint": 0.7543,
+    "whiteOnAsphalt": 0.0378,
+    "orthoRedUncovered_m2": 72.3,
+    "medianOrthoRedCovered": 0.9177,
+    "orthoRed50Uncovered_m2": 61.2,
+    "medianOrthoRed50Covered": 0.9492
+   },
+   "after": {
+    "kerbArea_m2": 876.7,
+    "kerbOnKerbPaint": 0.9468,
+    "kerbOnAsphalt": 0.0265,
+    "whiteArea_m2": 382.7,
+    "whiteOnWhitePaint": 0.8388,
+    "whiteOnAsphalt": 0.0548,
+    "orthoRedUncovered_m2": 49.4,
+    "medianOrthoRedCovered": 0.8487,
+    "orthoRed50Uncovered_m2": 21.9,
+    "medianOrthoRed50Covered": 0.9324
+   }
+  },
+  "cgKerbsOnly": {
+   "before": {
+    "kerbArea_m2": 2362.8,
+    "kerbOnKerbPaint": 0.9171,
+    "kerbOnAsphalt": 0.0263,
+    "whiteArea_m2": 479.7,
+    "whiteOnWhitePaint": 0.8401,
+    "whiteOnAsphalt": 0.0121,
+    "orthoRedUncovered_m2": 92.6,
+    "medianOrthoRedCovered": 0.9393,
+    "orthoRed50Uncovered_m2": 71.7,
+    "medianOrthoRed50Covered": 0.9599
+   },
+   "after": {
+    "kerbArea_m2": 2235.1,
+    "kerbOnKerbPaint": 0.961,
+    "kerbOnAsphalt": 0.0156,
+    "whiteArea_m2": 990.3,
+    "whiteOnWhitePaint": 0.8529,
+    "whiteOnAsphalt": 0.0454,
+    "orthoRedUncovered_m2": 131.9,
+    "medianOrthoRedCovered": 0.8619,
+    "orthoRed50Uncovered_m2": 55.3,
+    "medianOrthoRed50Covered": 0.9384
+   }
+  },
+  "k15_k23": {
+   "before": {
+    "kerbArea_m2": 213.9,
+    "kerbOnKerbPaint": 0.8969,
+    "kerbOnAsphalt": 0.0564,
+    "whiteArea_m2": 32.9,
+    "whiteOnWhitePaint": 0.5185,
+    "whiteOnAsphalt": 0.0046,
+    "orthoRedUncovered_m2": 38.0,
+    "medianOrthoRedCovered": 0.8139,
+    "orthoRed50Uncovered_m2": 36.7,
+    "medianOrthoRed50Covered": 0.8167
+   },
+   "after": {
+    "kerbArea_m2": 300.8,
+    "kerbOnKerbPaint": 0.9414,
+    "kerbOnAsphalt": 0.0394,
+    "whiteArea_m2": 79.0,
+    "whiteOnWhitePaint": 0.8308,
+    "whiteOnAsphalt": 0.0515,
+    "orthoRedUncovered_m2": 4.7,
+    "medianOrthoRedCovered": 0.9769,
+    "orthoRed50Uncovered_m2": 3.8,
+    "medianOrthoRed50Covered": 0.9808
+   }
+  },
+  "kDunlopR": {
+   "before": {
+    "kerbArea_m2": 0.0,
+    "kerbOnKerbPaint": null,
+    "kerbOnAsphalt": null,
+    "whiteArea_m2": 4.9,
+    "whiteOnWhitePaint": 0.6333,
+    "whiteOnAsphalt": 0.3035,
+    "orthoRedUncovered_m2": 12.0,
+    "medianOrthoRedCovered": 0.0,
+    "orthoRed50Uncovered_m2": 10.6,
+    "medianOrthoRed50Covered": 0.0
+   },
+   "after": {
+    "kerbArea_m2": 21.9,
+    "kerbOnKerbPaint": 0.8755,
+    "kerbOnAsphalt": 0.016,
+    "whiteArea_m2": 10.9,
+    "whiteOnWhitePaint": 0.8156,
+    "whiteOnAsphalt": 0.0843,
+    "orthoRedUncovered_m2": 2.6,
+    "medianOrthoRedCovered": 0.7799,
+    "orthoRed50Uncovered_m2": 1.0,
+    "medianOrthoRed50Covered": 0.9084
+   }
+  }
+ },
+ "perKerb": {
+  "k0": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 81.78,
+    "kerbOnKerbPaint": 0.9642,
+    "kerbOnAsphalt": 0.0092,
+    "whiteArea_m2": 18.17,
+    "whiteOnWhitePaint": 0.8907,
+    "whiteOnAsphalt": 0.0,
+    "orthoRedCovered": 0.9686,
+    "orthoRedUncovered_m2": 1.02,
+    "orthoRed50Covered": 0.9243,
+    "orthoRed50Uncovered_m2": 2.84
+   },
+   "after": {
+    "kerbArea_m2": 87.8,
+    "kerbOnKerbPaint": 0.966,
+    "kerbOnAsphalt": 0.0085,
+    "whiteArea_m2": 40.35,
+    "whiteOnWhitePaint": 0.9358,
+    "whiteOnAsphalt": 0.0136,
+    "orthoRedCovered": 0.9811,
+    "orthoRedUncovered_m2": 0.61,
+    "orthoRed50Covered": 0.9601,
+    "orthoRed50Uncovered_m2": 1.49
+   }
+  },
+  "k1": {
+   "side": "left",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 58.35,
+    "kerbOnKerbPaint": 0.9318,
+    "kerbOnAsphalt": 0.0286,
+    "whiteArea_m2": 14.58,
+    "whiteOnWhitePaint": 0.8359,
+    "whiteOnAsphalt": 0.0468,
+    "orthoRedCovered": 0.9259,
+    "orthoRedUncovered_m2": 1.74,
+    "orthoRed50Covered": 0.9604,
+    "orthoRed50Uncovered_m2": 0.8
+   },
+   "after": {
+    "kerbArea_m2": 52.19,
+    "kerbOnKerbPaint": 0.9633,
+    "kerbOnAsphalt": 0.0266,
+    "whiteArea_m2": 28.66,
+    "whiteOnWhitePaint": 0.8199,
+    "whiteOnAsphalt": 0.084,
+    "orthoRedCovered": 0.8595,
+    "orthoRedUncovered_m2": 3.29,
+    "orthoRed50Covered": 0.9384,
+    "orthoRed50Uncovered_m2": 1.25
+   }
+  },
+  "k2": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 127.17,
+    "kerbOnKerbPaint": 0.9007,
+    "kerbOnAsphalt": 0.0403,
+    "whiteArea_m2": 20.98,
+    "whiteOnWhitePaint": 0.89,
+    "whiteOnAsphalt": 0.0041,
+    "orthoRedCovered": 0.9593,
+    "orthoRedUncovered_m2": 2.41,
+    "orthoRed50Covered": 0.9778,
+    "orthoRed50Uncovered_m2": 1.15
+   },
+   "after": {
+    "kerbArea_m2": 112.41,
+    "kerbOnKerbPaint": 0.9586,
+    "kerbOnAsphalt": 0.0102,
+    "whiteArea_m2": 43.07,
+    "whiteOnWhitePaint": 0.8312,
+    "whiteOnAsphalt": 0.0689,
+    "orthoRedCovered": 0.8719,
+    "orthoRedUncovered_m2": 7.58,
+    "orthoRed50Covered": 0.9526,
+    "orthoRed50Uncovered_m2": 2.45
+   }
+  },
+  "k3": {
+   "side": "left",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 41.23,
+    "kerbOnKerbPaint": 0.8926,
+    "kerbOnAsphalt": 0.025,
+    "whiteArea_m2": 10.34,
+    "whiteOnWhitePaint": 0.7765,
+    "whiteOnAsphalt": 0.0587,
+    "orthoRedCovered": 0.9184,
+    "orthoRedUncovered_m2": 1.67,
+    "orthoRed50Covered": 0.9607,
+    "orthoRed50Uncovered_m2": 0.68
+   },
+   "after": {
+    "kerbArea_m2": 37.11,
+    "kerbOnKerbPaint": 0.9478,
+    "kerbOnAsphalt": 0.0195,
+    "whiteArea_m2": 22.78,
+    "whiteOnWhitePaint": 0.7689,
+    "whiteOnAsphalt": 0.0919,
+    "orthoRedCovered": 0.8293,
+    "orthoRedUncovered_m2": 3.5,
+    "orthoRed50Covered": 0.9308,
+    "orthoRed50Uncovered_m2": 1.2
+   }
+  },
+  "k4": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 76.5,
+    "kerbOnKerbPaint": 0.8419,
+    "kerbOnAsphalt": 0.043,
+    "whiteArea_m2": 17.57,
+    "whiteOnWhitePaint": 0.8153,
+    "whiteOnAsphalt": 0.0058,
+    "orthoRedCovered": 0.9423,
+    "orthoRedUncovered_m2": 1.81,
+    "orthoRed50Covered": 0.956,
+    "orthoRed50Uncovered_m2": 1.26
+   },
+   "after": {
+    "kerbArea_m2": 68.01,
+    "kerbOnKerbPaint": 0.9144,
+    "kerbOnAsphalt": 0.0072,
+    "whiteArea_m2": 34.8,
+    "whiteOnWhitePaint": 0.8161,
+    "whiteOnAsphalt": 0.0488,
+    "orthoRedCovered": 0.8619,
+    "orthoRedUncovered_m2": 4.33,
+    "orthoRed50Covered": 0.9514,
+    "orthoRed50Uncovered_m2": 1.39
+   }
+  },
+  "k5": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 130.19,
+    "kerbOnKerbPaint": 0.9498,
+    "kerbOnAsphalt": 0.0041,
+    "whiteArea_m2": 31.61,
+    "whiteOnWhitePaint": 0.8873,
+    "whiteOnAsphalt": 0.0008,
+    "orthoRedCovered": 0.934,
+    "orthoRedUncovered_m2": 3.89,
+    "orthoRed50Covered": 0.9456,
+    "orthoRed50Uncovered_m2": 2.99
+   },
+   "after": {
+    "kerbArea_m2": 115.61,
+    "kerbOnKerbPaint": 0.9795,
+    "kerbOnAsphalt": 0.0013,
+    "whiteArea_m2": 59.85,
+    "whiteOnWhitePaint": 0.8996,
+    "whiteOnAsphalt": 0.0216,
+    "orthoRedCovered": 0.8464,
+    "orthoRedUncovered_m2": 9.06,
+    "orthoRed50Covered": 0.9238,
+    "orthoRed50Uncovered_m2": 4.19
+   }
+  },
+  "k6": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 195.75,
+    "kerbOnKerbPaint": 0.918,
+    "kerbOnAsphalt": 0.0168,
+    "whiteArea_m2": 44.98,
+    "whiteOnWhitePaint": 0.8878,
+    "whiteOnAsphalt": 0.0003,
+    "orthoRedCovered": 0.9393,
+    "orthoRedUncovered_m2": 5.38,
+    "orthoRed50Covered": 0.952,
+    "orthoRed50Uncovered_m2": 3.84
+   },
+   "after": {
+    "kerbArea_m2": 165.41,
+    "kerbOnKerbPaint": 0.9821,
+    "kerbOnAsphalt": 0.0046,
+    "whiteArea_m2": 86.86,
+    "whiteOnWhitePaint": 0.8855,
+    "whiteOnAsphalt": 0.0256,
+    "orthoRedCovered": 0.8236,
+    "orthoRedUncovered_m2": 15.66,
+    "orthoRed50Covered": 0.9172,
+    "orthoRed50Uncovered_m2": 6.62
+   }
+  },
+  "k7": {
+   "side": "left",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 61.06,
+    "kerbOnKerbPaint": 0.9035,
+    "kerbOnAsphalt": 0.0234,
+    "whiteArea_m2": 10.8,
+    "whiteOnWhitePaint": 0.8136,
+    "whiteOnAsphalt": 0.0282,
+    "orthoRedCovered": 0.9169,
+    "orthoRedUncovered_m2": 2.36,
+    "orthoRed50Covered": 0.9601,
+    "orthoRed50Uncovered_m2": 0.98
+   },
+   "after": {
+    "kerbArea_m2": 54.4,
+    "kerbOnKerbPaint": 0.9482,
+    "kerbOnAsphalt": 0.0139,
+    "whiteArea_m2": 24.76,
+    "whiteOnWhitePaint": 0.8695,
+    "whiteOnAsphalt": 0.0395,
+    "orthoRedCovered": 0.8276,
+    "orthoRedUncovered_m2": 4.9,
+    "orthoRed50Covered": 0.9239,
+    "orthoRed50Uncovered_m2": 1.87
+   }
+  },
+  "k8": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 89.9,
+    "kerbOnKerbPaint": 0.9506,
+    "kerbOnAsphalt": 0.0035,
+    "whiteArea_m2": 15.45,
+    "whiteOnWhitePaint": 0.8859,
+    "whiteOnAsphalt": 0.0,
+    "orthoRedCovered": 0.966,
+    "orthoRedUncovered_m2": 1.46,
+    "orthoRed50Covered": 0.9848,
+    "orthoRed50Uncovered_m2": 0.56
+   },
+   "after": {
+    "kerbArea_m2": 78.98,
+    "kerbOnKerbPaint": 0.9806,
+    "kerbOnAsphalt": 0.0032,
+    "whiteArea_m2": 32.1,
+    "whiteOnWhitePaint": 0.8381,
+    "whiteOnAsphalt": 0.0399,
+    "orthoRedCovered": 0.8727,
+    "orthoRedUncovered_m2": 5.46,
+    "orthoRed50Covered": 0.9546,
+    "orthoRed50Uncovered_m2": 1.67
+   }
+  },
+  "k9": {
+   "side": "left",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 102.24,
+    "kerbOnKerbPaint": 0.9468,
+    "kerbOnAsphalt": 0.0263,
+    "whiteArea_m2": 19.34,
+    "whiteOnWhitePaint": 0.8625,
+    "whiteOnAsphalt": 0.0136,
+    "orthoRedCovered": 0.9663,
+    "orthoRedUncovered_m2": 1.6,
+    "orthoRed50Covered": 0.9792,
+    "orthoRed50Uncovered_m2": 0.9
+   },
+   "after": {
+    "kerbArea_m2": 95.72,
+    "kerbOnKerbPaint": 0.9598,
+    "kerbOnAsphalt": 0.02,
+    "whiteArea_m2": 41.3,
+    "whiteOnWhitePaint": 0.8075,
+    "whiteOnAsphalt": 0.0536,
+    "orthoRedCovered": 0.9206,
+    "orthoRedUncovered_m2": 3.77,
+    "orthoRed50Covered": 0.9572,
+    "orthoRed50Uncovered_m2": 1.86
+   }
+  },
+  "k10": {
+   "side": "left",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 35.69,
+    "kerbOnKerbPaint": 0.915,
+    "kerbOnAsphalt": 0.03,
+    "whiteArea_m2": 8.91,
+    "whiteOnWhitePaint": 0.8132,
+    "whiteOnAsphalt": 0.055,
+    "orthoRedCovered": 0.9168,
+    "orthoRedUncovered_m2": 1.18,
+    "orthoRed50Covered": 0.9511,
+    "orthoRed50Uncovered_m2": 0.6
+   },
+   "after": {
+    "kerbArea_m2": 30.9,
+    "kerbOnKerbPaint": 0.9463,
+    "kerbOnAsphalt": 0.026,
+    "whiteArea_m2": 19.57,
+    "whiteOnWhitePaint": 0.8355,
+    "whiteOnAsphalt": 0.0726,
+    "orthoRedCovered": 0.8378,
+    "orthoRedUncovered_m2": 2.31,
+    "orthoRed50Covered": 0.9251,
+    "orthoRed50Uncovered_m2": 0.92
+   }
+  },
+  "k11": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 176.61,
+    "kerbOnKerbPaint": 0.9287,
+    "kerbOnAsphalt": 0.0241,
+    "whiteArea_m2": 28.45,
+    "whiteOnWhitePaint": 0.9048,
+    "whiteOnAsphalt": 0.0033,
+    "orthoRedCovered": 0.9659,
+    "orthoRedUncovered_m2": 2.68,
+    "orthoRed50Covered": 0.9911,
+    "orthoRed50Uncovered_m2": 0.6
+   },
+   "after": {
+    "kerbArea_m2": 147.04,
+    "kerbOnKerbPaint": 0.9827,
+    "kerbOnAsphalt": 0.0048,
+    "whiteArea_m2": 57.18,
+    "whiteOnWhitePaint": 0.7937,
+    "whiteOnAsphalt": 0.0675,
+    "orthoRedCovered": 0.8562,
+    "orthoRedUncovered_m2": 11.32,
+    "orthoRed50Covered": 0.9544,
+    "orthoRed50Uncovered_m2": 3.05
+   }
+  },
+  "k12": {
+   "side": "left",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 133.05,
+    "kerbOnKerbPaint": 0.9678,
+    "kerbOnAsphalt": 0.0154,
+    "whiteArea_m2": 24.91,
+    "whiteOnWhitePaint": 0.9011,
+    "whiteOnAsphalt": 0.0029,
+    "orthoRedCovered": 0.9578,
+    "orthoRedUncovered_m2": 2.65,
+    "orthoRed50Covered": 0.9704,
+    "orthoRed50Uncovered_m2": 1.72
+   },
+   "after": {
+    "kerbArea_m2": 130.37,
+    "kerbOnKerbPaint": 0.9779,
+    "kerbOnAsphalt": 0.009,
+    "whiteArea_m2": 50.96,
+    "whiteOnWhitePaint": 0.8733,
+    "whiteOnAsphalt": 0.0411,
+    "orthoRedCovered": 0.9405,
+    "orthoRedUncovered_m2": 3.73,
+    "orthoRed50Covered": 0.966,
+    "orthoRed50Uncovered_m2": 1.97
+   }
+  },
+  "k13": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 28.19,
+    "kerbOnKerbPaint": 0.9117,
+    "kerbOnAsphalt": 0.0552,
+    "whiteArea_m2": 7.59,
+    "whiteOnWhitePaint": 0.8205,
+    "whiteOnAsphalt": 0.0418,
+    "orthoRedCovered": 0.9517,
+    "orthoRedUncovered_m2": 0.62,
+    "orthoRed50Covered": 0.9599,
+    "orthoRed50Uncovered_m2": 0.49
+   },
+   "after": {
+    "kerbArea_m2": 26.72,
+    "kerbOnKerbPaint": 0.9442,
+    "kerbOnAsphalt": 0.0395,
+    "whiteArea_m2": 17.52,
+    "whiteOnWhitePaint": 0.8658,
+    "whiteOnAsphalt": 0.0357,
+    "orthoRedCovered": 0.9044,
+    "orthoRedUncovered_m2": 1.23,
+    "orthoRed50Covered": 0.9441,
+    "orthoRed50Uncovered_m2": 0.69
+   }
+  },
+  "k14": {
+   "side": "right",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 140.15,
+    "kerbOnKerbPaint": 0.9222,
+    "kerbOnAsphalt": 0.0149,
+    "whiteArea_m2": 30.38,
+    "whiteOnWhitePaint": 0.9062,
+    "whiteOnAsphalt": 0.0009,
+    "orthoRedCovered": 0.9295,
+    "orthoRedUncovered_m2": 4.52,
+    "orthoRed50Covered": 0.9625,
+    "orthoRed50Uncovered_m2": 2.14
+   },
+   "after": {
+    "kerbArea_m2": 119.0,
+    "kerbOnKerbPaint": 0.9872,
+    "kerbOnAsphalt": 0.0024,
+    "whiteArea_m2": 58.91,
+    "whiteOnWhitePaint": 0.8771,
+    "whiteOnAsphalt": 0.0329,
+    "orthoRedCovered": 0.8288,
+    "orthoRedUncovered_m2": 10.98,
+    "orthoRed50Covered": 0.9278,
+    "orthoRed50Uncovered_m2": 4.13
+   }
+  },
+  "k15": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 103.55,
+    "kerbOnKerbPaint": 0.8808,
+    "kerbOnAsphalt": 0.0728,
+    "whiteArea_m2": 16.17,
+    "whiteOnWhitePaint": 0.5237,
+    "whiteOnAsphalt": 0.0045,
+    "orthoRedCovered": 0.8109,
+    "orthoRedUncovered_m2": 18.68,
+    "orthoRed50Covered": 0.8085,
+    "orthoRed50Uncovered_m2": 18.86
+   },
+   "after": {
+    "kerbArea_m2": 149.2,
+    "kerbOnKerbPaint": 0.9206,
+    "kerbOnAsphalt": 0.0521,
+    "whiteArea_m2": 40.55,
+    "whiteOnWhitePaint": 0.8135,
+    "whiteOnAsphalt": 0.0651,
+    "orthoRedCovered": 0.9802,
+    "orthoRedUncovered_m2": 1.96,
+    "orthoRed50Covered": 0.9814,
+    "orthoRed50Uncovered_m2": 1.83
+   }
+  },
+  "k16": {
+   "side": "right",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 97.61,
+    "kerbOnKerbPaint": 0.8593,
+    "kerbOnAsphalt": 0.026,
+    "whiteArea_m2": 22.48,
+    "whiteOnWhitePaint": 0.8431,
+    "whiteOnAsphalt": 0.0036,
+    "orthoRedCovered": 0.928,
+    "orthoRedUncovered_m2": 2.81,
+    "orthoRed50Covered": 0.9536,
+    "orthoRed50Uncovered_m2": 1.62
+   },
+   "after": {
+    "kerbArea_m2": 87.05,
+    "kerbOnKerbPaint": 0.9318,
+    "kerbOnAsphalt": 0.0096,
+    "whiteArea_m2": 44.0,
+    "whiteOnWhitePaint": 0.8672,
+    "whiteOnAsphalt": 0.0381,
+    "orthoRedCovered": 0.8418,
+    "orthoRedUncovered_m2": 6.18,
+    "orthoRed50Covered": 0.9346,
+    "orthoRed50Uncovered_m2": 2.29
+   }
+  },
+  "k17": {
+   "side": "right",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 170.58,
+    "kerbOnKerbPaint": 0.9386,
+    "kerbOnAsphalt": 0.0442,
+    "whiteArea_m2": 31.97,
+    "whiteOnWhitePaint": 0.894,
+    "whiteOnAsphalt": 0.001,
+    "orthoRedCovered": 0.9719,
+    "orthoRedUncovered_m2": 2.13,
+    "orthoRed50Covered": 0.9842,
+    "orthoRed50Uncovered_m2": 1.1
+   },
+   "after": {
+    "kerbArea_m2": 162.16,
+    "kerbOnKerbPaint": 0.9582,
+    "kerbOnAsphalt": 0.0274,
+    "whiteArea_m2": 65.18,
+    "whiteOnWhitePaint": 0.8405,
+    "whiteOnAsphalt": 0.0512,
+    "orthoRedCovered": 0.9407,
+    "orthoRedUncovered_m2": 4.51,
+    "orthoRed50Covered": 0.9699,
+    "orthoRed50Uncovered_m2": 2.1
+   }
+  },
+  "k18": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 69.67,
+    "kerbOnKerbPaint": 0.8736,
+    "kerbOnAsphalt": 0.0261,
+    "whiteArea_m2": 16.38,
+    "whiteOnWhitePaint": 0.8582,
+    "whiteOnAsphalt": 0.0095,
+    "orthoRedCovered": 0.9237,
+    "orthoRedUncovered_m2": 2.49,
+    "orthoRed50Covered": 0.9474,
+    "orthoRed50Uncovered_m2": 1.55
+   },
+   "after": {
+    "kerbArea_m2": 60.03,
+    "kerbOnKerbPaint": 0.9606,
+    "kerbOnAsphalt": 0.0091,
+    "whiteArea_m2": 32.22,
+    "whiteOnWhitePaint": 0.8716,
+    "whiteOnAsphalt": 0.0299,
+    "orthoRedCovered": 0.8195,
+    "orthoRedUncovered_m2": 5.89,
+    "orthoRed50Covered": 0.9171,
+    "orthoRed50Uncovered_m2": 2.44
+   }
+  },
+  "k19": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 58.78,
+    "kerbOnKerbPaint": 0.8833,
+    "kerbOnAsphalt": 0.0069,
+    "whiteArea_m2": 14.03,
+    "whiteOnWhitePaint": 0.8455,
+    "whiteOnAsphalt": 0.0,
+    "orthoRedCovered": 0.9003,
+    "orthoRedUncovered_m2": 2.61,
+    "orthoRed50Covered": 0.8614,
+    "orthoRed50Uncovered_m2": 3.59
+   },
+   "after": {
+    "kerbArea_m2": 54.64,
+    "kerbOnKerbPaint": 0.9822,
+    "kerbOnAsphalt": 0.0004,
+    "whiteArea_m2": 26.93,
+    "whiteOnWhitePaint": 0.9351,
+    "whiteOnAsphalt": 0.0135,
+    "orthoRedCovered": 0.8119,
+    "orthoRedUncovered_m2": 4.93,
+    "orthoRed50Covered": 0.9227,
+    "orthoRed50Uncovered_m2": 2.0
+   }
+  },
+  "k20": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 49.66,
+    "kerbOnKerbPaint": 0.9409,
+    "kerbOnAsphalt": 0.024,
+    "whiteArea_m2": 10.6,
+    "whiteOnWhitePaint": 0.7673,
+    "whiteOnAsphalt": 0.0908,
+    "orthoRedCovered": 0.9481,
+    "orthoRedUncovered_m2": 1.17,
+    "orthoRed50Covered": 0.9684,
+    "orthoRed50Uncovered_m2": 0.65
+   },
+   "after": {
+    "kerbArea_m2": 49.42,
+    "kerbOnKerbPaint": 0.928,
+    "kerbOnAsphalt": 0.0357,
+    "whiteArea_m2": 24.59,
+    "whiteOnWhitePaint": 0.8307,
+    "whiteOnAsphalt": 0.0632,
+    "orthoRedCovered": 0.917,
+    "orthoRedUncovered_m2": 1.87,
+    "orthoRed50Covered": 0.95,
+    "orthoRed50Uncovered_m2": 1.03
+   }
+  },
+  "k21": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 65.95,
+    "kerbOnKerbPaint": 0.8146,
+    "kerbOnAsphalt": 0.0322,
+    "whiteArea_m2": 15.96,
+    "whiteOnWhitePaint": 0.7701,
+    "whiteOnAsphalt": 0.0227,
+    "orthoRedCovered": 0.8122,
+    "orthoRedUncovered_m2": 5.98,
+    "orthoRed50Covered": 0.8934,
+    "orthoRed50Uncovered_m2": 2.82
+   },
+   "after": {
+    "kerbArea_m2": 58.07,
+    "kerbOnKerbPaint": 0.9243,
+    "kerbOnAsphalt": 0.0259,
+    "whiteArea_m2": 33.84,
+    "whiteOnWhitePaint": 0.8266,
+    "whiteOnAsphalt": 0.0722,
+    "orthoRedCovered": 0.7343,
+    "orthoRedUncovered_m2": 8.46,
+    "orthoRed50Covered": 0.892,
+    "orthoRed50Uncovered_m2": 2.86
+   }
+  },
+  "k22": {
+   "side": "right",
+   "inside": false,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 121.04,
+    "kerbOnKerbPaint": 0.9314,
+    "kerbOnAsphalt": 0.0199,
+    "whiteArea_m2": 21.52,
+    "whiteOnWhitePaint": 0.8898,
+    "whiteOnAsphalt": 0.005,
+    "orthoRedCovered": 0.9691,
+    "orthoRedUncovered_m2": 1.61,
+    "orthoRed50Covered": 0.973,
+    "orthoRed50Uncovered_m2": 1.33
+   },
+   "after": {
+    "kerbArea_m2": 106.53,
+    "kerbOnKerbPaint": 0.9701,
+    "kerbOnAsphalt": 0.0095,
+    "whiteArea_m2": 45.23,
+    "whiteOnWhitePaint": 0.8473,
+    "whiteOnAsphalt": 0.0451,
+    "orthoRedCovered": 0.8895,
+    "orthoRedUncovered_m2": 5.76,
+    "orthoRed50Covered": 0.9382,
+    "orthoRed50Uncovered_m2": 3.04
+   }
+  },
+  "k23": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 110.38,
+    "kerbOnKerbPaint": 0.912,
+    "kerbOnAsphalt": 0.041,
+    "whiteArea_m2": 16.77,
+    "whiteOnWhitePaint": 0.5135,
+    "whiteOnAsphalt": 0.0046,
+    "orthoRedCovered": 0.8169,
+    "orthoRedUncovered_m2": 19.27,
+    "orthoRed50Covered": 0.8249,
+    "orthoRed50Uncovered_m2": 17.85
+   },
+   "after": {
+    "kerbArea_m2": 151.59,
+    "kerbOnKerbPaint": 0.9618,
+    "kerbOnAsphalt": 0.0269,
+    "whiteArea_m2": 38.46,
+    "whiteOnWhitePaint": 0.849,
+    "whiteOnAsphalt": 0.0372,
+    "orthoRedCovered": 0.9737,
+    "orthoRedUncovered_m2": 2.77,
+    "orthoRed50Covered": 0.9803,
+    "orthoRed50Uncovered_m2": 2.01
+   }
+  },
+  "k24": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": false,
+   "before": {
+    "kerbArea_m2": 37.69,
+    "kerbOnKerbPaint": 0.9296,
+    "kerbOnAsphalt": 0.0255,
+    "whiteArea_m2": 9.76,
+    "whiteOnWhitePaint": 0.7341,
+    "whiteOnAsphalt": 0.0912,
+    "orthoRedCovered": 0.9424,
+    "orthoRedUncovered_m2": 0.91,
+    "orthoRed50Covered": 0.9444,
+    "orthoRed50Uncovered_m2": 0.82
+   },
+   "after": {
+    "kerbArea_m2": 34.78,
+    "kerbOnKerbPaint": 0.9617,
+    "kerbOnAsphalt": 0.0158,
+    "whiteArea_m2": 20.62,
+    "whiteOnWhitePaint": 0.8448,
+    "whiteOnAsphalt": 0.0444,
+    "orthoRedCovered": 0.8846,
+    "orthoRedUncovered_m2": 1.83,
+    "orthoRed50Covered": 0.934,
+    "orthoRed50Uncovered_m2": 0.98
+   }
+  },
+  "kDunlopR": {
+   "side": "right",
+   "inside": true,
+   "addedOutsideCg": true,
+   "before": {
+    "kerbArea_m2": 0.0,
+    "kerbOnKerbPaint": null,
+    "kerbOnAsphalt": null,
+    "whiteArea_m2": 4.87,
+    "whiteOnWhitePaint": 0.6333,
+    "whiteOnAsphalt": 0.3035,
+    "orthoRedCovered": 0.0,
+    "orthoRedUncovered_m2": 12.03,
+    "orthoRed50Covered": 0.0,
+    "orthoRed50Uncovered_m2": 10.64
+   },
+   "after": {
+    "kerbArea_m2": 21.94,
+    "kerbOnKerbPaint": 0.8755,
+    "kerbOnAsphalt": 0.016,
+    "whiteArea_m2": 10.94,
+    "whiteOnWhitePaint": 0.8156,
+    "whiteOnAsphalt": 0.0843,
+    "orthoRedCovered": 0.7799,
+    "orthoRedUncovered_m2": 2.65,
+    "orthoRed50Covered": 0.9084,
+    "orthoRed50Uncovered_m2": 0.97
+   }
+  }
+ }
+}

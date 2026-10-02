@@ -3,6 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { sampleReplay, projectPointToCenterline, sampleTrackSurface, sampleTrackRoll } from "../replay/interpolation";
 import { registeredVehicleGeometry, registeredVehicleWidth } from "../replay/visualAlignment";
+import { sampleReplayWithLeadIn } from "../replay/delta";
 import type { LapData, ReplaySample, TrackData } from "../replay/types";
 import { ChaseCamera, CinematicCamera, CockpitCamera, FreeCamera, TopCamera, TvCamera } from "./cameras";
 import type { CameraMode, CarCameraState, ReplayCameraController } from "./cameras";
@@ -16,6 +17,7 @@ import { Effects } from "./Effects";
 import { setupSky } from "./Sky";
 import type { QualityPreset } from "./Effects";
 import { applyVehicleRigGeometry, GENERIC_WHEEL_DIMENSIONS } from "./vehicleRigGeometry";
+import { PoseSmoother, type PoseAtTime } from "./poseSmoothing";
 
 const ELEVATION_SCALE = 1;
 const CAR_MODEL_URL = "/assets/MIDSHIP_ROADSTER.glb";
@@ -123,6 +125,13 @@ export class ReplayScene {
 
   // Hot-path scratch objects – reused every frame to avoid per-frame allocations
   private readonly _targetPose = new THREE.Quaternion();
+  private readonly poseSmoother = new PoseSmoother();
+  /** Target pose at another replay time (the smoother's look-ahead input). */
+  private readonly poseAtTime: PoseAtTime = (out, time) => {
+    if (!this.lap || !this.track) return out.copy(this._targetPose);
+    const ahead = sampleReplay(this.lap, this.track, time);
+    return this.setPoseQuaternion(out, ahead.heading, ahead.pitch, ahead.roll);
+  };
   private readonly _cameraState: CarCameraState = {
     position: new THREE.Vector3(),
     quaternion: new THREE.Quaternion(),
@@ -523,7 +532,9 @@ export class ReplayScene {
 
     // Ghost update
     if (this.ghostRig && this.ghostLap && ghostTime !== null) {
-      const ghostSample = sampleReplay(this.ghostLap, this.track, ghostTime);
+      // ghostTime can precede the ghost's first sample at the lap start (see
+      // ghostTimeForMainTime); extrapolate there instead of clamping.
+      const ghostSample = sampleReplayWithLeadIn(this.ghostLap, this.track, ghostTime);
       this.updateGhostCar(ghostSample);
     }
 
@@ -770,12 +781,10 @@ export class ReplayScene {
     this.carRig.root.position.set(sample.x, this.groundedY(sample), sample.z);
 
     const targetPose = this.setPoseQuaternion(this._targetPose, sample.heading, sample.pitch, sample.roll);
-    if (playbackDelta <= 0 || playbackDelta > 0.25) {
-      this.carRig.poseQuaternion.copy(targetPose);
-    } else {
-      const alpha = 1 - Math.exp(-(playbackDelta * 1000) / 140);
-      this.carRig.poseQuaternion.slerp(targetPose, alpha);
-    }
+    // Lag-compensated smoothing (see poseSmoothing.ts): the filter chases the
+    // pose one group delay ahead, so the drawn heading (and the cockpit view)
+    // no longer trails the target by yawRate × 140 ms. Pause/seek still snap.
+    this.poseSmoother.update(this.carRig.poseQuaternion, targetPose, sample.time, playbackDelta, this.poseAtTime);
     this.carRig.root.quaternion.copy(this.carRig.poseQuaternion);
     this.carRig.forward.set(0, 0, 1).applyQuaternion(this.carRig.poseQuaternion).normalize();
     this.carRig.up.set(0, 1, 0).applyQuaternion(this.carRig.poseQuaternion).normalize();

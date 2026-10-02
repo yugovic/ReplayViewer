@@ -1,0 +1,1062 @@
+{
+ "task": "GPS-REG-08 iteration 2 (FIX-DATA): 7/30 logger-clock channels re-timed from the native XRK with shifts referenced to the 7/29 session",
+ "stages": {
+  "baseline": "unshifted (before any re-timing)",
+  "iter1": "per-lap shift = -(mean accx/accy IMU-vs-GPS lag) [IMU lag -> 0]; linear interpolation of the 10 Hz CSV",
+  "iter2": "per-lap shift = -median over 5 channel pairs of (lag_7/30 - median lag of the pair over the 7/29 laps); values re-sampled from the native XRK series (convert_aim replay on the delayed 10 Hz grid)"
+ },
+ "shiftSecondsByLap": {
+  "iter1": {
+   "1": 0.468,
+   "2": 0.465,
+   "3": 0.49,
+   "4": 0.515,
+   "5": 0.526,
+   "6": 0.524
+  },
+  "iter2": {
+   "1": 0.497,
+   "2": 0.523,
+   "3": 0.523,
+   "4": 0.555,
+   "5": 0.565,
+   "6": 0.583
+  }
+ },
+ "reference0729MedianLagS": {
+  "accxVsGpsAlong": -0.003,
+  "accyVsGpsLateral": 0.034,
+  "brakeVsGpsDecel": -0.129,
+  "steerVsGpsCourseRate": -0.048,
+  "yawGyroVsGpsCourseRate": 0.036
+ },
+ "residualVs0729SessionMedianS": {
+  "baseline": {
+   "accxVsGpsAlong": -0.514,
+   "accyVsGpsLateral": -0.522,
+   "brakeVsGpsDecel": -0.539,
+   "steerVsGpsCourseRate": -0.582,
+   "yawGyroVsGpsCourseRate": -0.567,
+   "medianOverPairsOfLapMedians": -0.539
+  },
+  "iter1": {
+   "accxVsGpsAlong": -0.016,
+   "accyVsGpsLateral": -0.032,
+   "brakeVsGpsDecel": -0.042,
+   "steerVsGpsCourseRate": -0.072,
+   "yawGyroVsGpsCourseRate": -0.071,
+   "medianOverPairsOfLapMedians": -0.045
+  },
+  "iter2": {
+   "accxVsGpsAlong": 0.036,
+   "accyVsGpsLateral": 0.016,
+   "brakeVsGpsDecel": -0.002,
+   "steerVsGpsCourseRate": -0.032,
+   "yawGyroVsGpsCourseRate": -0.026,
+   "medianOverPairsOfLapMedians": -0.002
+  }
+ },
+ "residualNote": "residual = lag of the 7/30 lap minus the 7/29 median of the same pair; 0 = 7/30 channels relate to GPS like 7/29. The pairs of one lap disagree by 0.04-0.10 s (accel pairs higher, course-rate pairs lower); the per-lap median is the brake pair in all six laps.",
+ "nativeSelfCheck": {
+  "shift0ReproducesEveryCsvRowAndUnalignedLapBytes": true,
+  "unalignedRebuildEqualsBaselineSnapshot": true
+ },
+ "gpsArraysIdenticalAllStages": {
+  "1": true,
+  "2": true,
+  "3": true,
+  "4": true,
+  "5": true,
+  "6": true
+ },
+ "peaks": {
+  "1": {
+   "accx": {
+    "baselineMaxAbsG": 1.1286,
+    "iter1MaxAbsG": 1.0809,
+    "iter2MaxAbsG": 1.1201,
+    "iter1ChangePct": -4.2,
+    "iter2ChangePct": -0.8,
+    "baselineRmsG": 0.2702,
+    "iter1RmsG": 0.267,
+    "iter2RmsG": 0.2703,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": false,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 20.5,
+     "iter1": 0.0,
+     "iter2": 15.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.0967,
+      "median": 1.1653,
+      "max": 1.1973
+     },
+     "iter1": {
+      "min": 1.0967,
+      "median": 1.1653,
+      "max": 1.1973
+     },
+     "iter2": {
+      "min": 1.0967,
+      "median": 1.1653,
+      "max": 1.1973
+     }
+    },
+    "native50HzMaxAbsG": 1.1973
+   },
+   "accy": {
+    "baselineMaxAbsG": 1.6165,
+    "iter1MaxAbsG": 1.4106,
+    "iter2MaxAbsG": 1.5904,
+    "iter1ChangePct": -12.7,
+    "iter2ChangePct": -1.6,
+    "baselineRmsG": 0.657,
+    "iter1RmsG": 0.6555,
+    "iter2RmsG": 0.657,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 77.5,
+     "iter1": 14.0,
+     "iter2": 70.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.3919,
+      "median": 1.5032,
+      "max": 1.6406
+     },
+     "iter1": {
+      "min": 1.3919,
+      "median": 1.5032,
+      "max": 1.6406
+     },
+     "iter2": {
+      "min": 1.3919,
+      "median": 1.5032,
+      "max": 1.6406
+     }
+    },
+    "native50HzMaxAbsG": 1.6406
+   }
+  },
+  "2": {
+   "accx": {
+    "baselineMaxAbsG": 1.1758,
+    "iter1MaxAbsG": 1.1668,
+    "iter2MaxAbsG": 1.1772,
+    "iter1ChangePct": -0.8,
+    "iter2ChangePct": 0.1,
+    "baselineRmsG": 0.2801,
+    "iter1RmsG": 0.2762,
+    "iter2RmsG": 0.2803,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 21.5,
+     "iter1": 6.0,
+     "iter2": 24.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.1633,
+      "median": 1.1902,
+      "max": 1.1973
+     },
+     "iter1": {
+      "min": 1.1633,
+      "median": 1.1902,
+      "max": 1.1973
+     },
+     "iter2": {
+      "min": 1.1633,
+      "median": 1.1902,
+      "max": 1.1973
+     }
+    },
+    "native50HzMaxAbsG": 1.1973
+   },
+   "accy": {
+    "baselineMaxAbsG": 1.9668,
+    "iter1MaxAbsG": 1.715,
+    "iter2MaxAbsG": 2.0762,
+    "iter1ChangePct": -12.8,
+    "iter2ChangePct": 5.6,
+    "baselineRmsG": 0.6761,
+    "iter1RmsG": 0.6739,
+    "iter2RmsG": 0.6767,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 50.5,
+     "iter1": 1.0,
+     "iter2": 93.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.7111,
+      "median": 1.9629,
+      "max": 2.0898
+     },
+     "iter1": {
+      "min": 1.7111,
+      "median": 1.9629,
+      "max": 2.0898
+     },
+     "iter2": {
+      "min": 1.7111,
+      "median": 1.9629,
+      "max": 2.0898
+     }
+    },
+    "native50HzMaxAbsG": 2.0898
+   }
+  },
+  "3": {
+   "accx": {
+    "baselineMaxAbsG": 1.1375,
+    "iter1MaxAbsG": 1.1339,
+    "iter2MaxAbsG": 1.1312,
+    "iter1ChangePct": -0.3,
+    "iter2ChangePct": -0.6,
+    "baselineRmsG": 0.2791,
+    "iter1RmsG": 0.278,
+    "iter2RmsG": 0.2789,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 86.5,
+     "iter1": 69.5,
+     "iter2": 61.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.1018,
+      "median": 1.1271,
+      "max": 1.1387
+     },
+     "iter1": {
+      "min": 1.1018,
+      "median": 1.1271,
+      "max": 1.1387
+     },
+     "iter2": {
+      "min": 1.1018,
+      "median": 1.1271,
+      "max": 1.1387
+     }
+    },
+    "native50HzMaxAbsG": 1.1387
+   },
+   "accy": {
+    "baselineMaxAbsG": 1.6056,
+    "iter1MaxAbsG": 1.559,
+    "iter2MaxAbsG": 1.5169,
+    "iter1ChangePct": -2.9,
+    "iter2ChangePct": -5.5,
+    "baselineRmsG": 0.6631,
+    "iter1RmsG": 0.6627,
+    "iter2RmsG": 0.6631,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 86.5,
+     "iter1": 51.0,
+     "iter2": 35.0
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.4115,
+      "median": 1.5565,
+      "max": 1.6182
+     },
+     "iter1": {
+      "min": 1.4115,
+      "median": 1.5565,
+      "max": 1.6182
+     },
+     "iter2": {
+      "min": 1.4115,
+      "median": 1.5565,
+      "max": 1.6182
+     }
+    },
+    "native50HzMaxAbsG": 1.6182
+   }
+  },
+  "4": {
+   "accx": {
+    "baselineMaxAbsG": 1.1481,
+    "iter1MaxAbsG": 1.1124,
+    "iter2MaxAbsG": 1.1365,
+    "iter1ChangePct": -3.1,
+    "iter2ChangePct": -1.0,
+    "baselineRmsG": 0.2684,
+    "iter1RmsG": 0.2665,
+    "iter2RmsG": 0.2679,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 60.0,
+     "iter1": 31.0,
+     "iter2": 49.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.0612,
+      "median": 1.1378,
+      "max": 1.168
+     },
+     "iter1": {
+      "min": 1.0612,
+      "median": 1.1378,
+      "max": 1.168
+     },
+     "iter2": {
+      "min": 1.0612,
+      "median": 1.1378,
+      "max": 1.168
+     }
+    },
+    "native50HzMaxAbsG": 1.168
+   },
+   "accy": {
+    "baselineMaxAbsG": 1.5361,
+    "iter1MaxAbsG": 1.3937,
+    "iter2MaxAbsG": 1.4233,
+    "iter1ChangePct": -9.3,
+    "iter2ChangePct": -7.3,
+    "baselineRmsG": 0.6954,
+    "iter1RmsG": 0.6947,
+    "iter2RmsG": 0.6956,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 99.5,
+     "iter1": 24.0,
+     "iter2": 31.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.3579,
+      "median": 1.4748,
+      "max": 1.5361
+     },
+     "iter1": {
+      "min": 1.3579,
+      "median": 1.4748,
+      "max": 1.5361
+     },
+     "iter2": {
+      "min": 1.3579,
+      "median": 1.4748,
+      "max": 1.5361
+     }
+    },
+    "native50HzMaxAbsG": 1.5361
+   }
+  },
+  "5": {
+   "accx": {
+    "baselineMaxAbsG": 1.1613,
+    "iter1MaxAbsG": 1.1273,
+    "iter2MaxAbsG": 1.1359,
+    "iter1ChangePct": -2.9,
+    "iter2ChangePct": -2.2,
+    "baselineRmsG": 0.2683,
+    "iter1RmsG": 0.266,
+    "iter2RmsG": 0.2684,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 82.5,
+     "iter1": 38.0,
+     "iter2": 48.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.0981,
+      "median": 1.1379,
+      "max": 1.1699
+     },
+     "iter1": {
+      "min": 1.0981,
+      "median": 1.1379,
+      "max": 1.1699
+     },
+     "iter2": {
+      "min": 1.0981,
+      "median": 1.1379,
+      "max": 1.1699
+     }
+    },
+    "native50HzMaxAbsG": 1.1699
+   },
+   "accy": {
+    "baselineMaxAbsG": 2.1108,
+    "iter1MaxAbsG": 1.8728,
+    "iter2MaxAbsG": 1.9928,
+    "iter1ChangePct": -11.3,
+    "iter2ChangePct": -5.6,
+    "baselineRmsG": 0.6953,
+    "iter1RmsG": 0.6942,
+    "iter2RmsG": 0.6954,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 85.5,
+     "iter1": 18.0,
+     "iter2": 41.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.7783,
+      "median": 2.0259,
+      "max": 2.127
+     },
+     "iter1": {
+      "min": 1.7783,
+      "median": 2.0259,
+      "max": 2.127
+     },
+     "iter2": {
+      "min": 1.7783,
+      "median": 2.0259,
+      "max": 2.127
+     }
+    },
+    "native50HzMaxAbsG": 2.127
+   }
+  },
+  "6": {
+   "accx": {
+    "baselineMaxAbsG": 1.224,
+    "iter1MaxAbsG": 1.1586,
+    "iter2MaxAbsG": 1.2262,
+    "iter1ChangePct": -5.3,
+    "iter2ChangePct": 0.2,
+    "baselineRmsG": 0.2706,
+    "iter1RmsG": 0.2684,
+    "iter2RmsG": 0.2709,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": true,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 79.5,
+     "iter1": 9.0,
+     "iter2": 85.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.1476,
+      "median": 1.2064,
+      "max": 1.2314
+     },
+     "iter1": {
+      "min": 1.1476,
+      "median": 1.2064,
+      "max": 1.2314
+     },
+     "iter2": {
+      "min": 1.1476,
+      "median": 1.2064,
+      "max": 1.2314
+     }
+    },
+    "native50HzMaxAbsG": 1.2314
+   },
+   "accy": {
+    "baselineMaxAbsG": 1.365,
+    "iter1MaxAbsG": 1.3307,
+    "iter2MaxAbsG": 1.4089,
+    "iter1ChangePct": -2.5,
+    "iter2ChangePct": 3.2,
+    "baselineRmsG": 0.6697,
+    "iter1RmsG": 0.6687,
+    "iter2RmsG": 0.6696,
+    "insideEnvelope": {
+     "baseline": true,
+     "iter1": false,
+     "iter2": true
+    },
+    "phaseRankPct": {
+     "baseline": 52.5,
+     "iter1": 0.0,
+     "iter2": 86.5
+    },
+    "tenHzPhaseEnvelope": {
+     "baseline": {
+      "min": 1.3453,
+      "median": 1.3603,
+      "max": 1.4219
+     },
+     "iter1": {
+      "min": 1.3453,
+      "median": 1.3603,
+      "max": 1.4219
+     },
+     "iter2": {
+      "min": 1.3453,
+      "median": 1.3603,
+      "max": 1.4219
+     }
+    },
+    "native50HzMaxAbsG": 1.4219
+   }
+  }
+ },
+ "peakSummary": {
+  "iter1ChangePctRange": [
+   -12.8,
+   -0.3
+  ],
+  "iter2ChangePctRange": [
+   -7.3,
+   5.6
+  ],
+  "iter1ChangePctMean": -5.7,
+  "iter2ChangePctMean": -1.3,
+  "note": "A 10 Hz lap maximum of the 50 Hz IMU depends on the sampling phase: tenHzPhaseEnvelope gives its range over the 100 possible 1 ms phases of each stage's window and phaseRankPct where the shipped value sits (50 = typical point sample). Baseline and iteration 2 are point samples of the native series; iteration 1 interpolated between two 10 Hz samples and sits at the bottom of (or below) the envelope.",
+  "insideTenHzPhaseEnvelope": {
+   "baseline": "12/12",
+   "iter1": "10/12",
+   "iter2": "12/12"
+  },
+  "meanPhaseRankPct": {
+   "baseline": 66.9,
+   "iter1": 21.8,
+   "iter2": 53.6
+  }
+ },
+ "videoCheck": {
+  "tool": "scripts/quality/audit-fuji-channel-timing.py (SmartyCam overlay THROTTLE/BRAKE bars and windshield optical-flow yaw vs the shipped channels; local videos, no frames stored)",
+  "source": {
+   "baseline": "artifacts/improvement-eval-2026-10-02/eval/timing-video/audit-before.json",
+   "iter1": "artifacts/improvement-eval-2026-10-02/eval/timing-video/audit-after.json",
+   "iter2": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/video-audit-iter2.json"
+  },
+  "reference0729": {
+   "overlayThrottleAfterRecordedS": 0.1,
+   "overlayBrakeAfterRecordedS": 0.087,
+   "gpsCourseRateAfterVideoS": 0.185,
+   "imuAccyOverSpeedAfterVideoS": 0.215
+  },
+  "0730": {
+   "baseline": {
+    "overlayThrottleAfterRecordedS": 0.633,
+    "overlayBrakeAfterRecordedS": 0.623,
+    "gpsCourseRateAfterVideoS": 0.235,
+    "imuAccyOverSpeedAfterVideoS": -0.268
+   },
+   "iter1": {
+    "overlayThrottleAfterRecordedS": 0.143,
+    "overlayBrakeAfterRecordedS": 0.128,
+    "gpsCourseRateAfterVideoS": 0.235,
+    "imuAccyOverSpeedAfterVideoS": 0.23
+   },
+   "iter2": {
+    "overlayThrottleAfterRecordedS": 0.098,
+    "overlayBrakeAfterRecordedS": 0.075,
+    "gpsCourseRateAfterVideoS": 0.235,
+    "imuAccyOverSpeedAfterVideoS": 0.285
+   }
+  },
+  "0730PerLapOverlayBrakeAfterRecordedS": {
+   "baseline": {
+    "1": 0.62,
+    "2": 0.56,
+    "3": 0.59,
+    "4": 0.625,
+    "5": 0.775,
+    "6": 0.655
+   },
+   "iter1": {
+    "1": 0.155,
+    "2": 0.105,
+    "3": 0.105,
+    "4": 0.115,
+    "5": 0.245,
+    "6": 0.14
+   },
+   "iter2": {
+    "1": 0.12,
+    "2": 0.045,
+    "3": 0.06,
+    "4": 0.075,
+    "5": 0.21,
+    "6": 0.075
+   }
+  },
+  "dataAudit": {
+   "baseline": {
+    "imuVsGpsMedianShiftS": {
+     "fuji_aim_01": 0.014,
+     "fuji_aim_2020_07_30": -0.507
+    },
+    "gpsDecelAfterBrakeMedianS": {
+     "fuji_aim_01": 0.103,
+     "fuji_aim_2020_07_30": 0.641
+    }
+   },
+   "iter1": {
+    "imuVsGpsMedianShiftS": {
+     "fuji_aim_01": 0.014,
+     "fuji_aim_2020_07_30": -0.008
+    },
+    "gpsDecelAfterBrakeMedianS": {
+     "fuji_aim_01": 0.103,
+     "fuji_aim_2020_07_30": 0.151
+    }
+   },
+   "iter2": {
+    "imuVsGpsMedianShiftS": {
+     "fuji_aim_01": 0.014,
+     "fuji_aim_2020_07_30": 0.042
+    },
+    "gpsDecelAfterBrakeMedianS": {
+     "fuji_aim_01": 0.103,
+     "fuji_aim_2020_07_30": 0.099
+    }
+   }
+  },
+  "note": "overlay*AfterRecordedS compares the logger data burned into the video with the shipped channel on the lap clock: equal to 7/29 = same logger-vs-lap timing. gpsCourseRateAfterVideoS does not depend on the re-timing; imuAccyOverSpeedAfterVideoS minus it is the IMU-vs-GPS relation seen through the video yaw."
+ },
+ "dependents": {
+  "fuji_aim_01": {
+   "kerbContactShiftSecondsByLap": {
+    "iter1": {
+     "1": 0.014,
+     "2": 0.014,
+     "3": 0.014,
+     "4": 0.014
+    },
+    "iter2": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0
+    }
+   },
+   "labelCounts": {
+    "iter1": {
+     "strong": 1,
+     "silent": 51,
+     "mild": 4
+    },
+    "iter2": {
+     "strong": 1,
+     "silent": 51,
+     "mild": 4
+    }
+   },
+   "labelChanges": [],
+   "apexKpiLabelCheckFlags": {
+    "iter1": [
+     "1:k13:silent-but-deep",
+     "1:kDunlopR:silent-but-deep"
+    ],
+    "iter2": [
+     "1:k13:silent-but-deep",
+     "1:kDunlopR:silent-but-deep"
+    ]
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "kerbContactShiftSecondsByLap": {
+    "iter1": {
+     "1": 0.468,
+     "2": 0.465,
+     "3": 0.49,
+     "4": 0.515,
+     "5": 0.526,
+     "6": 0.524
+    },
+    "iter2": {
+     "1": 0.497,
+     "2": 0.523,
+     "3": 0.523,
+     "4": 0.555,
+     "5": 0.565,
+     "6": 0.583
+    }
+   },
+   "labelCounts": {
+    "iter1": {
+     "strong": 17,
+     "silent": 42,
+     "mild": 25
+    },
+    "iter2": {
+     "strong": 17,
+     "silent": 41,
+     "mild": 26
+    }
+   },
+   "labelChanges": [
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "before": [
+      "strong",
+      "high",
+      4.48
+     ],
+     "after": [
+      "mild",
+      "low",
+      4.48
+     ]
+    },
+    {
+     "lap": 2,
+     "kerb": "k23",
+     "before": [
+      "mild",
+      null,
+      4.48
+     ],
+     "after": [
+      "strong",
+      "high",
+      4.48
+     ]
+    },
+    {
+     "lap": 5,
+     "kerb": "k23",
+     "before": [
+      "silent",
+      null,
+      0.75
+     ],
+     "after": [
+      "mild",
+      null,
+      0.82
+     ]
+    }
+   ],
+   "apexKpiLabelCheckFlags": {
+    "iter1": [
+     "2:k21:strong-but-off",
+     "5:k10:strong-but-off",
+     "5:k9:silent-but-deep"
+    ],
+    "iter2": [
+     "2:k21:strong-but-off",
+     "2:k23:strong-but-off",
+     "5:k10:strong-but-off",
+     "5:k9:silent-but-deep"
+    ]
+   },
+   "registrationOffsets": {
+    "iter1": {
+     "shipped": {
+      "1": [
+       -0.084,
+       -2.783
+      ],
+      "2": [
+       -0.432,
+       -2.612
+      ],
+      "3": [
+       -0.329,
+       -2.511
+      ],
+      "4": [
+       -0.031,
+       -3.034
+      ],
+      "5": [
+       -0.298,
+       -2.558
+      ],
+      "6": [
+       -0.316,
+       -2.446
+      ]
+     },
+     "kerbCandidate": {
+      "1": [
+       0.08,
+       -2.496
+      ],
+      "2": [
+       0.194,
+       -2.411
+      ],
+      "3": [
+       0.059,
+       -2.367
+      ],
+      "4": [
+       0.334,
+       -2.621
+      ],
+      "5": [
+       0.142,
+       -2.142
+      ],
+      "6": [
+       0.095,
+       -2.308
+      ]
+     },
+     "kerbCandidateSession": [
+      0.177,
+      -2.296
+     ],
+     "kerbCandidateUnresolved": [
+      "2:k21:strong"
+     ],
+     "kerbCandidateLabelSummary": {
+      "strongUsed": 15,
+      "silentUsed": 40,
+      "strongKerbs": [
+       "k1",
+       "k10",
+       "k13",
+       "k15",
+       "k3",
+       "k7",
+       "kDunlopR"
+      ],
+      "notUsed": 4
+     }
+    },
+    "iter2": {
+     "shipped": {
+      "1": [
+       -0.084,
+       -2.783
+      ],
+      "2": [
+       -0.432,
+       -2.612
+      ],
+      "3": [
+       -0.329,
+       -2.511
+      ],
+      "4": [
+       -0.031,
+       -3.034
+      ],
+      "5": [
+       -0.298,
+       -2.558
+      ],
+      "6": [
+       -0.316,
+       -2.446
+      ]
+     },
+     "kerbCandidate": {
+      "1": [
+       0.08,
+       -2.496
+      ],
+      "2": [
+       0.194,
+       -2.411
+      ],
+      "3": [
+       0.059,
+       -2.367
+      ],
+      "4": [
+       0.334,
+       -2.621
+      ],
+      "5": [
+       0.142,
+       -2.142
+      ],
+      "6": [
+       0.095,
+       -2.308
+      ]
+     },
+     "kerbCandidateSession": [
+      0.177,
+      -2.296
+     ],
+     "kerbCandidateUnresolved": [
+      "2:k21:strong",
+      "2:k23:strong"
+     ],
+     "kerbCandidateLabelSummary": {
+      "strongUsed": 15,
+      "silentUsed": 39,
+      "strongKerbs": [
+       "k1",
+       "k10",
+       "k13",
+       "k15",
+       "k3",
+       "k7",
+       "kDunlopR"
+      ],
+      "notUsed": 4
+     }
+    }
+   },
+   "kerbCandidateHeldOut": {
+    "source": {
+     "iter1": "artifacts/improvement-eval-2026-10-02/after/registration-candidate/evaluation.json",
+     "iter2": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/registration-candidate/evaluation.json"
+    },
+    "metric": "[contradictions, AUC] of the published labels (strong/silent) at the evaluated offsets",
+    "raw": {
+     "allLabels": {
+      "iter1": [
+       11,
+       0.896
+      ],
+      "iter2": [
+       12,
+       0.857
+      ]
+     },
+     "withoutAnomalyLabels": {
+      "iter1": [
+       9,
+       0.902
+      ],
+      "iter2": [
+       9,
+       0.899
+      ]
+     }
+    },
+    "shipped": {
+     "allLabels": {
+      "iter1": [
+       3,
+       0.884
+      ],
+      "iter2": [
+       4,
+       0.874
+      ]
+     },
+     "withoutAnomalyLabels": {
+      "iter1": [
+       2,
+       0.933
+      ],
+      "iter2": [
+       2,
+       0.933
+      ]
+     }
+    },
+    "trackOnlySessionPlusLap": {
+     "allLabels": {
+      "iter1": [
+       7,
+       0.85
+      ],
+      "iter2": [
+       7,
+       0.849
+      ]
+     },
+     "withoutAnomalyLabels": {
+      "iter1": [
+       5,
+       0.9
+      ],
+      "iter2": [
+       5,
+       0.903
+      ]
+     }
+    },
+    "candidateLOKO": {
+     "allLabels": {
+      "iter1": [
+       2,
+       0.938
+      ],
+      "iter2": [
+       3,
+       0.915
+      ]
+     },
+     "withoutAnomalyLabels": {
+      "iter1": [
+       1,
+       0.978
+      ],
+      "iter2": [
+       1,
+       0.978
+      ]
+     }
+    },
+    "candidateLOLO": {
+     "allLabels": {
+      "iter1": [
+       4,
+       0.915
+      ],
+      "iter2": [
+       5,
+       0.894
+      ]
+     },
+     "withoutAnomalyLabels": {
+      "iter1": [
+       3,
+       0.95
+      ],
+      "iter2": [
+       3,
+       0.952
+      ]
+     }
+    }
+   }
+  }
+ },
+ "evidence": {
+  "alignReport": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/align-report.json",
+  "alignReportSha256": "296fbbefe949e0116339d829a56b52aa8ae35a51b2a9cdbd3c9cc0c42ec4e6a0"
+ }
+}

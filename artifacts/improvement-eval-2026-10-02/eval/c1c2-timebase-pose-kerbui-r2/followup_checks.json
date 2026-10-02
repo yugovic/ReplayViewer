@@ -1,0 +1,151 @@
+{
+ "afterGhostPosOver5cm": {
+  "pairsAffected": 60,
+  "examples": [
+   {
+    "source": "fuji_aim_01/L1",
+    "dm": 0.007,
+    "dg": 0.037,
+    "badSampleIdx": [
+     0
+    ],
+    "maxM": 1.421
+   },
+   {
+    "source": "fuji_aim_01/L1",
+    "dm": 0.007,
+    "dg": 0.067,
+    "badSampleIdx": [
+     0
+    ],
+    "maxM": 2.842
+   },
+   {
+    "source": "fuji_aim_01/L1",
+    "dm": 0.007,
+    "dg": 0.097,
+    "badSampleIdx": [
+     0
+    ],
+    "maxM": 4.263
+   },
+   {
+    "source": "fuji_aim_01/L1",
+    "dm": 0.037,
+    "dg": 0.067,
+    "badSampleIdx": [
+     0
+    ],
+    "maxM": 1.421
+   },
+   {
+    "source": "fuji_aim_01/L1",
+    "dm": 0.037,
+    "dg": 0.097,
+    "badSampleIdx": [
+     0
+    ],
+    "maxM": 2.842
+   },
+   {
+    "source": "fuji_aim_01/L1",
+    "dm": 0.067,
+    "dg": 0.097,
+    "badSampleIdx": [
+     0
+    ],
+    "maxM": 1.421
+   }
+  ],
+  "allAtLapStart": true
+ },
+ "realPairModelResidual": {
+  "maxInsideMs": 0.001,
+  "rowsWithStartSamples": [
+   {
+    "pair": "fuji_aim_01/L1 vs fuji_aim_01/L2",
+    "maxResidInsideMs": 0.001,
+    "maxResidBeforeGhostFirstSampleMs": 43.96,
+    "samplesBeforeGhostFirstSample": 1
+   },
+   {
+    "pair": "fuji_aim_01/L1 vs fuji_aim_01/L3",
+    "maxResidInsideMs": 0.001,
+    "maxResidBeforeGhostFirstSampleMs": 9.12,
+    "samplesBeforeGhostFirstSample": 1
+   },
+   {
+    "pair": "fuji_aim_01/L1 vs fuji_aim_01/L4",
+    "maxResidInsideMs": 0.001,
+    "maxResidBeforeGhostFirstSampleMs": 24.13,
+    "samplesBeforeGhostFirstSample": 1
+   },
+   {
+    "pair": "fuji_aim_01/L3 vs fuji_aim_01/L2",
+    "maxResidInsideMs": 0.001,
+    "maxResidBeforeGhostFirstSampleMs": 34.63,
+    "samplesBeforeGhostFirstSample": 1
+   },
+   {
+    "pair": "fuji_aim_01/L3 vs fuji_aim_01/L4",
+    "maxResidInsideMs": 0.001,
+    "maxResidBeforeGhostFirstSampleMs": 15.04,
+    "samplesBeforeGhostFirstSample": 1
+   },
+   {
+    "pair": "fuji_aim_01/L4 vs fuji_aim_01/L2",
+    "maxResidInsideMs": 0.001,
+    "maxResidBeforeGhostFirstSampleMs": 19.2,
+    "samplesBeforeGhostFirstSample": 1
+   }
+  ]
+ },
+ "endOfLapHudDeltaVsOfficial": {
+  "note": "truth at the main's last sample ~= official lap-time difference (both cars <0.1 s before the line on the straight); residual = path-length basis + last-sample gap",
+  "absErrorMs_before": {
+   "median": 79.5,
+   "max": 1644.0
+  },
+  "absErrorMs_after": {
+   "median": 62.5,
+   "max": 1716.0
+  },
+  "worst5_after": [
+   {
+    "pair": "fuji_aim_01/L1 vs fuji_aim_01/L4",
+    "officialDeltaS": -20.161,
+    "hudEndBeforeS": -18.517,
+    "hudEndAfterS": -18.445,
+    "pathLenDiffM": -18.92
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L3 vs fuji_aim_2020_07_30/L6",
+    "officialDeltaS": -8.684,
+    "hudEndBeforeS": -7.585,
+    "hudEndAfterS": -7.763,
+    "pathLenDiffM": -14.27
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L2 vs fuji_aim_2020_07_30/L6",
+    "officialDeltaS": -8.725,
+    "hudEndBeforeS": -8.125,
+    "hudEndAfterS": -8.146,
+    "pathLenDiffM": -7.28
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L4 vs fuji_aim_2020_07_30/L6",
+    "officialDeltaS": -9.607,
+    "hudEndBeforeS": -8.846,
+    "hudEndAfterS": -9.07,
+    "pathLenDiffM": -10.86
+   },
+   {
+    "pair": "fuji_aim_2020_07_30/L5 vs fuji_aim_2020_07_30/L6",
+    "officialDeltaS": -9.645,
+    "hudEndBeforeS": -9.07,
+    "hudEndAfterS": -9.132,
+    "pathLenDiffM": -7.98
+   }
+  ]
+ }
+}

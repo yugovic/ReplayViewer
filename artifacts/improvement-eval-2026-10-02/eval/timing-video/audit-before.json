@@ -1,0 +1,816 @@
+{
+ "scope": "GPS position vs logger-clock channel timing (Fuji 2020-07-29/30). Read-only audit; no data modified.",
+ "signConventions": {
+  "imuShiftS": "s maximising corr(GPS-derived(t), IMU(t+s)); negative = IMU features occur earlier than GPS",
+  "AfterRecordedS / AfterVideoS": "positive = the first-named signal happens later"
+ },
+ "racesDir": "races",
+ "data": {
+  "fuji_aim_01": {
+   "laps": [
+    {
+     "lap": 1,
+     "imuAccxShiftS": 0.058,
+     "rAccx": 0.936,
+     "imuAccyShiftS": 0.074,
+     "rAccy": 0.99,
+     "firstSampleAfterLapStartS": 0.007,
+     "lapStartRawGpsStationM": 138.05
+    },
+    {
+     "lap": 2,
+     "imuAccxShiftS": -0.008,
+     "rAccx": 0.922,
+     "imuAccyShiftS": 0.01,
+     "rAccy": 0.991,
+     "firstSampleAfterLapStartS": 0.051,
+     "lapStartRawGpsStationM": 138.06
+    },
+    {
+     "lap": 3,
+     "imuAccxShiftS": 0.002,
+     "rAccx": 0.946,
+     "imuAccyShiftS": 0.018,
+     "rAccy": 0.99,
+     "firstSampleAfterLapStartS": 0.016,
+     "lapStartRawGpsStationM": 138.08
+    },
+    {
+     "lap": 4,
+     "imuAccxShiftS": -0.076,
+     "rAccx": 0.924,
+     "imuAccyShiftS": 0.05,
+     "rAccy": 0.987,
+     "firstSampleAfterLapStartS": 0.031,
+     "lapStartRawGpsStationM": 138.06
+    }
+   ],
+   "imuVsGpsMedianShiftS": 0.014,
+   "imuVsGpsRangeS": [
+    -0.076,
+    0.074
+   ],
+   "brakingZones": 29,
+   "gpsDecelAfterBrakeMedianS": 0.103,
+   "gpsDecelAfterBrakeMedianM": 3.8,
+   "imuDecelAfterBrakeMedianS": 0.075,
+   "zones": [
+    {
+     "lap": 1,
+     "distM": 521.8,
+     "speedKmh": 185.4,
+     "gpsDecelAfterBrakeS": 0.101,
+     "gpsDecelAfterBrakeM": 5.2,
+     "imuDecelAfterBrakeS": 0.077
+    },
+    {
+     "lap": 1,
+     "distM": 737.5,
+     "speedKmh": 60.2,
+     "gpsDecelAfterBrakeS": 0.348,
+     "gpsDecelAfterBrakeM": 5.8,
+     "imuDecelAfterBrakeS": 0.118
+    },
+    {
+     "lap": 1,
+     "distM": 1180.8,
+     "speedKmh": 149.3,
+     "gpsDecelAfterBrakeS": 0.089,
+     "gpsDecelAfterBrakeM": 3.7,
+     "imuDecelAfterBrakeS": 0.093
+    },
+    {
+     "lap": 1,
+     "distM": 1889.8,
+     "speedKmh": 122.1,
+     "gpsDecelAfterBrakeS": 0.124,
+     "gpsDecelAfterBrakeM": 4.2,
+     "imuDecelAfterBrakeS": 0.121
+    },
+    {
+     "lap": 1,
+     "distM": 1950.9,
+     "speedKmh": 79.7,
+     "gpsDecelAfterBrakeS": -0.327,
+     "gpsDecelAfterBrakeM": -7.2,
+     "imuDecelAfterBrakeS": 22.434
+    },
+    {
+     "lap": 1,
+     "distM": 2654.3,
+     "speedKmh": 158.9,
+     "gpsDecelAfterBrakeS": 0.132,
+     "gpsDecelAfterBrakeM": 5.8,
+     "imuDecelAfterBrakeS": 0.073
+    },
+    {
+     "lap": 1,
+     "distM": 3046.9,
+     "speedKmh": 97.7,
+     "gpsDecelAfterBrakeS": 0.114,
+     "gpsDecelAfterBrakeM": 3.1,
+     "imuDecelAfterBrakeS": 0.085
+    },
+    {
+     "lap": 1,
+     "distM": 3288.3,
+     "speedKmh": 106.3,
+     "gpsDecelAfterBrakeS": 0.094,
+     "gpsDecelAfterBrakeM": 2.8,
+     "imuDecelAfterBrakeS": 0.094
+    },
+    {
+     "lap": 1,
+     "distM": 3547.1,
+     "speedKmh": 113.4,
+     "gpsDecelAfterBrakeS": 0.127,
+     "gpsDecelAfterBrakeM": 4.0,
+     "imuDecelAfterBrakeS": 0.154
+    },
+    {
+     "lap": 2,
+     "distM": 559.5,
+     "speedKmh": 172.7,
+     "gpsDecelAfterBrakeS": 0.055,
+     "gpsDecelAfterBrakeM": 2.6,
+     "imuDecelAfterBrakeS": 0.09
+    },
+    {
+     "lap": 2,
+     "distM": 678.9,
+     "speedKmh": 108.1,
+     "gpsDecelAfterBrakeS": 0.098,
+     "gpsDecelAfterBrakeM": 2.9,
+     "imuDecelAfterBrakeS": 0.084
+    },
+    {
+     "lap": 2,
+     "distM": 1177.9,
+     "speedKmh": 140.3,
+     "gpsDecelAfterBrakeS": 0.417,
+     "gpsDecelAfterBrakeM": 16.3,
+     "imuDecelAfterBrakeS": 0.379
+    },
+    {
+     "lap": 2,
+     "distM": 1255.9,
+     "speedKmh": 113.1,
+     "gpsDecelAfterBrakeS": -0.482,
+     "gpsDecelAfterBrakeM": -15.2,
+     "imuDecelAfterBrakeS": -1.289
+    },
+    {
+     "lap": 2,
+     "distM": 1896.7,
+     "speedKmh": 128.2,
+     "gpsDecelAfterBrakeS": 0.099,
+     "gpsDecelAfterBrakeM": 3.5,
+     "imuDecelAfterBrakeS": 0.082
+    },
+    {
+     "lap": 2,
+     "distM": 2685.2,
+     "speedKmh": 138.1,
+     "gpsDecelAfterBrakeS": 0.13,
+     "gpsDecelAfterBrakeM": 5.0,
+     "imuDecelAfterBrakeS": 0.077
+    },
+    {
+     "lap": 2,
+     "distM": 3058.5,
+     "speedKmh": 98.3,
+     "gpsDecelAfterBrakeS": 0.146,
+     "gpsDecelAfterBrakeM": 4.0,
+     "imuDecelAfterBrakeS": 0.068
+    },
+    {
+     "lap": 2,
+     "distM": 3565.7,
+     "speedKmh": 112.8,
+     "gpsDecelAfterBrakeS": 0.129,
+     "gpsDecelAfterBrakeM": 4.0,
+     "imuDecelAfterBrakeS": 0.139
+    },
+    {
+     "lap": 3,
+     "distM": 544.4,
+     "speedKmh": 188.8,
+     "gpsDecelAfterBrakeS": 0.073,
+     "gpsDecelAfterBrakeM": 3.8,
+     "imuDecelAfterBrakeS": 0.006
+    },
+    {
+     "lap": 3,
+     "distM": 1168.8,
+     "speedKmh": 141.1,
+     "gpsDecelAfterBrakeS": -0.034,
+     "gpsDecelAfterBrakeM": -1.3,
+     "imuDecelAfterBrakeS": 0.027
+    },
+    {
+     "lap": 3,
+     "distM": 1905.7,
+     "speedKmh": 129.6,
+     "gpsDecelAfterBrakeS": 0.099,
+     "gpsDecelAfterBrakeM": 3.6,
+     "imuDecelAfterBrakeS": 0.067
+    },
+    {
+     "lap": 3,
+     "distM": 2665.8,
+     "speedKmh": 171.3,
+     "gpsDecelAfterBrakeS": 0.103,
+     "gpsDecelAfterBrakeM": 4.9,
+     "imuDecelAfterBrakeS": 0.046
+    },
+    {
+     "lap": 3,
+     "distM": 3060.8,
+     "speedKmh": 97.7,
+     "gpsDecelAfterBrakeS": 0.092,
+     "gpsDecelAfterBrakeM": 2.5,
+     "imuDecelAfterBrakeS": 0.042
+    },
+    {
+     "lap": 3,
+     "distM": 3288.4,
+     "speedKmh": 109.1,
+     "gpsDecelAfterBrakeS": 0.156,
+     "gpsDecelAfterBrakeM": 4.7,
+     "imuDecelAfterBrakeS": 0.109
+    },
+    {
+     "lap": 3,
+     "distM": 3572.7,
+     "speedKmh": 114.9,
+     "gpsDecelAfterBrakeS": 0.117,
+     "gpsDecelAfterBrakeM": 3.7,
+     "imuDecelAfterBrakeS": 0.073
+    },
+    {
+     "lap": 4,
+     "distM": 561.4,
+     "speedKmh": 190.6,
+     "gpsDecelAfterBrakeS": 0.109,
+     "gpsDecelAfterBrakeM": 5.8,
+     "imuDecelAfterBrakeS": 0.029
+    },
+    {
+     "lap": 4,
+     "distM": 1170.8,
+     "speedKmh": 152.4,
+     "gpsDecelAfterBrakeS": 0.115,
+     "gpsDecelAfterBrakeM": 4.9,
+     "imuDecelAfterBrakeS": 0.048
+    },
+    {
+     "lap": 4,
+     "distM": 2683.7,
+     "speedKmh": 168.1,
+     "gpsDecelAfterBrakeS": 0.104,
+     "gpsDecelAfterBrakeM": 4.8,
+     "imuDecelAfterBrakeS": 0.019
+    },
+    {
+     "lap": 4,
+     "distM": 3319.3,
+     "speedKmh": 94.4,
+     "gpsDecelAfterBrakeS": -0.288,
+     "gpsDecelAfterBrakeM": -7.6,
+     "imuDecelAfterBrakeS": -0.148
+    },
+    {
+     "lap": 4,
+     "distM": 3567.4,
+     "speedKmh": 103.1,
+     "gpsDecelAfterBrakeS": -0.235,
+     "gpsDecelAfterBrakeM": -6.7,
+     "imuDecelAfterBrakeS": -0.105
+    }
+   ]
+  },
+  "fuji_aim_2020_07_30": {
+   "laps": [
+    {
+     "lap": 1,
+     "imuAccxShiftS": -0.476,
+     "rAccx": 0.96,
+     "imuAccyShiftS": -0.46,
+     "rAccy": 0.993,
+     "firstSampleAfterLapStartS": 0.057,
+     "lapStartRawGpsStationM": 138.03
+    },
+    {
+     "lap": 2,
+     "imuAccxShiftS": -0.488,
+     "rAccx": 0.95,
+     "imuAccyShiftS": -0.442,
+     "rAccy": 0.991,
+     "firstSampleAfterLapStartS": 0.022,
+     "lapStartRawGpsStationM": 138.06
+    },
+    {
+     "lap": 3,
+     "imuAccxShiftS": -0.51,
+     "rAccx": 0.961,
+     "imuAccyShiftS": -0.47,
+     "rAccy": 0.994,
+     "firstSampleAfterLapStartS": 0.08,
+     "lapStartRawGpsStationM": 138.07
+    },
+    {
+     "lap": 4,
+     "imuAccxShiftS": -0.524,
+     "rAccx": 0.958,
+     "imuAccyShiftS": -0.506,
+     "rAccy": 0.995,
+     "firstSampleAfterLapStartS": 0.097,
+     "lapStartRawGpsStationM": 138.06
+    },
+    {
+     "lap": 5,
+     "imuAccxShiftS": -0.53,
+     "rAccx": 0.961,
+     "imuAccyShiftS": -0.522,
+     "rAccy": 0.995,
+     "firstSampleAfterLapStartS": 0.037,
+     "lapStartRawGpsStationM": 138.07
+    },
+    {
+     "lap": 6,
+     "imuAccxShiftS": -0.54,
+     "rAccx": 0.962,
+     "imuAccyShiftS": -0.508,
+     "rAccy": 0.994,
+     "firstSampleAfterLapStartS": 0.015,
+     "lapStartRawGpsStationM": 138.04
+    }
+   ],
+   "imuVsGpsMedianShiftS": -0.507,
+   "imuVsGpsRangeS": [
+    -0.54,
+    -0.442
+   ],
+   "brakingZones": 39,
+   "gpsDecelAfterBrakeMedianS": 0.641,
+   "gpsDecelAfterBrakeMedianM": 24.6,
+   "imuDecelAfterBrakeMedianS": 0.08,
+   "zones": [
+    {
+     "lap": 1,
+     "distM": 549.7,
+     "speedKmh": 190.8,
+     "gpsDecelAfterBrakeS": 0.593,
+     "gpsDecelAfterBrakeM": 31.4,
+     "imuDecelAfterBrakeS": 0.074
+    },
+    {
+     "lap": 1,
+     "distM": 1177.7,
+     "speedKmh": 154.4,
+     "gpsDecelAfterBrakeS": 0.598,
+     "gpsDecelAfterBrakeM": 25.6,
+     "imuDecelAfterBrakeS": 0.07
+    },
+    {
+     "lap": 1,
+     "distM": 1868.6,
+     "speedKmh": 134.9,
+     "gpsDecelAfterBrakeS": 0.621,
+     "gpsDecelAfterBrakeM": 23.3,
+     "imuDecelAfterBrakeS": 0.103
+    },
+    {
+     "lap": 1,
+     "distM": 2653.9,
+     "speedKmh": 172.4,
+     "gpsDecelAfterBrakeS": 0.632,
+     "gpsDecelAfterBrakeM": 30.3,
+     "imuDecelAfterBrakeS": 0.082
+    },
+    {
+     "lap": 1,
+     "distM": 3306.2,
+     "speedKmh": 98.6,
+     "gpsDecelAfterBrakeS": 0.53,
+     "gpsDecelAfterBrakeM": 14.5,
+     "imuDecelAfterBrakeS": 0.047
+    },
+    {
+     "lap": 1,
+     "distM": 3534.7,
+     "speedKmh": 114.4,
+     "gpsDecelAfterBrakeS": 0.586,
+     "gpsDecelAfterBrakeM": 18.6,
+     "imuDecelAfterBrakeS": 0.047
+    },
+    {
+     "lap": 2,
+     "distM": 556.1,
+     "speedKmh": 195.2,
+     "gpsDecelAfterBrakeS": 0.609,
+     "gpsDecelAfterBrakeM": 33.0,
+     "imuDecelAfterBrakeS": 0.089
+    },
+    {
+     "lap": 2,
+     "distM": 1176.1,
+     "speedKmh": 156.2,
+     "gpsDecelAfterBrakeS": 0.625,
+     "gpsDecelAfterBrakeM": 27.1,
+     "imuDecelAfterBrakeS": 0.08
+    },
+    {
+     "lap": 2,
+     "distM": 1856.6,
+     "speedKmh": 130.6,
+     "gpsDecelAfterBrakeS": 0.605,
+     "gpsDecelAfterBrakeM": 21.9,
+     "imuDecelAfterBrakeS": 0.032
+    },
+    {
+     "lap": 2,
+     "distM": 2650.6,
+     "speedKmh": 172.7,
+     "gpsDecelAfterBrakeS": 0.628,
+     "gpsDecelAfterBrakeM": 30.1,
+     "imuDecelAfterBrakeS": 0.059
+    },
+    {
+     "lap": 2,
+     "distM": 3274.6,
+     "speedKmh": 118.5,
+     "gpsDecelAfterBrakeS": 0.564,
+     "gpsDecelAfterBrakeM": 18.6,
+     "imuDecelAfterBrakeS": 0.049
+    },
+    {
+     "lap": 2,
+     "distM": 3543.9,
+     "speedKmh": 116.7,
+     "gpsDecelAfterBrakeS": 0.617,
+     "gpsDecelAfterBrakeM": 20.0,
+     "imuDecelAfterBrakeS": 0.132
+    },
+    {
+     "lap": 3,
+     "distM": 552.6,
+     "speedKmh": 189.5,
+     "gpsDecelAfterBrakeS": 0.64,
+     "gpsDecelAfterBrakeM": 33.7,
+     "imuDecelAfterBrakeS": 0.071
+    },
+    {
+     "lap": 3,
+     "distM": 1172.6,
+     "speedKmh": 155.4,
+     "gpsDecelAfterBrakeS": 0.61,
+     "gpsDecelAfterBrakeM": 26.3,
+     "imuDecelAfterBrakeS": 0.055
+    },
+    {
+     "lap": 3,
+     "distM": 1868.5,
+     "speedKmh": 135.7,
+     "gpsDecelAfterBrakeS": 0.653,
+     "gpsDecelAfterBrakeM": 24.6,
+     "imuDecelAfterBrakeS": 0.083
+    },
+    {
+     "lap": 3,
+     "distM": 2635.6,
+     "speedKmh": 173.0,
+     "gpsDecelAfterBrakeS": 0.664,
+     "gpsDecelAfterBrakeM": 31.9,
+     "imuDecelAfterBrakeS": 0.087
+    },
+    {
+     "lap": 3,
+     "distM": 3270.3,
+     "speedKmh": 116.4,
+     "gpsDecelAfterBrakeS": 0.658,
+     "gpsDecelAfterBrakeM": 21.3,
+     "imuDecelAfterBrakeS": 0.199
+    },
+    {
+     "lap": 3,
+     "distM": 3528.3,
+     "speedKmh": 117.3,
+     "gpsDecelAfterBrakeS": 0.604,
+     "gpsDecelAfterBrakeM": 19.7,
+     "imuDecelAfterBrakeS": 0.112
+    },
+    {
+     "lap": 4,
+     "distM": 555.3,
+     "speedKmh": 185.8,
+     "gpsDecelAfterBrakeS": 0.668,
+     "gpsDecelAfterBrakeM": 34.5,
+     "imuDecelAfterBrakeS": 0.078
+    },
+    {
+     "lap": 4,
+     "distM": 1167.9,
+     "speedKmh": 154.1,
+     "gpsDecelAfterBrakeS": 0.684,
+     "gpsDecelAfterBrakeM": 29.3,
+     "imuDecelAfterBrakeS": 0.087
+    },
+    {
+     "lap": 4,
+     "distM": 1861.5,
+     "speedKmh": 137.1,
+     "gpsDecelAfterBrakeS": 0.641,
+     "gpsDecelAfterBrakeM": 24.4,
+     "imuDecelAfterBrakeS": 0.095
+    },
+    {
+     "lap": 4,
+     "distM": 2628.6,
+     "speedKmh": 172.8,
+     "gpsDecelAfterBrakeS": 0.682,
+     "gpsDecelAfterBrakeM": 32.8,
+     "imuDecelAfterBrakeS": 0.092
+    },
+    {
+     "lap": 4,
+     "distM": 3270.3,
+     "speedKmh": 118.5,
+     "gpsDecelAfterBrakeS": 0.652,
+     "gpsDecelAfterBrakeM": 21.5,
+     "imuDecelAfterBrakeS": 0.037
+    },
+    {
+     "lap": 4,
+     "distM": 3532.8,
+     "speedKmh": 117.5,
+     "gpsDecelAfterBrakeS": 0.644,
+     "gpsDecelAfterBrakeM": 21.0,
+     "imuDecelAfterBrakeS": 0.061
+    },
+    {
+     "lap": 5,
+     "distM": 550.4,
+     "speedKmh": 187.5,
+     "gpsDecelAfterBrakeS": 0.684,
+     "gpsDecelAfterBrakeM": 35.6,
+     "imuDecelAfterBrakeS": 0.093
+    },
+    {
+     "lap": 5,
+     "distM": 1179.9,
+     "speedKmh": 155.7,
+     "gpsDecelAfterBrakeS": 0.64,
+     "gpsDecelAfterBrakeM": 27.7,
+     "imuDecelAfterBrakeS": 0.061
+    },
+    {
+     "lap": 5,
+     "distM": 1878.4,
+     "speedKmh": 134.8,
+     "gpsDecelAfterBrakeS": 0.641,
+     "gpsDecelAfterBrakeM": 24.0,
+     "imuDecelAfterBrakeS": 0.079
+    },
+    {
+     "lap": 5,
+     "distM": 2650.9,
+     "speedKmh": 173.9,
+     "gpsDecelAfterBrakeS": 0.645,
+     "gpsDecelAfterBrakeM": 31.2,
+     "imuDecelAfterBrakeS": 0.087
+    },
+    {
+     "lap": 5,
+     "distM": 3255.0,
+     "speedKmh": 119.0,
+     "gpsDecelAfterBrakeS": 0.65,
+     "gpsDecelAfterBrakeM": 21.5,
+     "imuDecelAfterBrakeS": 0.051
+    },
+    {
+     "lap": 5,
+     "distM": 3535.6,
+     "speedKmh": 117.0,
+     "gpsDecelAfterBrakeS": 0.68,
+     "gpsDecelAfterBrakeM": 22.1,
+     "imuDecelAfterBrakeS": 0.125
+    },
+    {
+     "lap": 6,
+     "distM": 569.2,
+     "speedKmh": 188.9,
+     "gpsDecelAfterBrakeS": 0.678,
+     "gpsDecelAfterBrakeM": 35.6,
+     "imuDecelAfterBrakeS": 0.08
+    },
+    {
+     "lap": 6,
+     "distM": 1174.7,
+     "speedKmh": 154.9,
+     "gpsDecelAfterBrakeS": 0.674,
+     "gpsDecelAfterBrakeM": 29.0,
+     "imuDecelAfterBrakeS": 0.056
+    },
+    {
+     "lap": 6,
+     "distM": 1874.0,
+     "speedKmh": 136.9,
+     "gpsDecelAfterBrakeS": 0.689,
+     "gpsDecelAfterBrakeM": 26.2,
+     "imuDecelAfterBrakeS": 0.088
+    },
+    {
+     "lap": 6,
+     "distM": 2652.0,
+     "speedKmh": 172.6,
+     "gpsDecelAfterBrakeS": 0.682,
+     "gpsDecelAfterBrakeM": 32.7,
+     "imuDecelAfterBrakeS": 0.047
+    },
+    {
+     "lap": 6,
+     "distM": 3050.3,
+     "speedKmh": 106.3,
+     "gpsDecelAfterBrakeS": 0.348,
+     "gpsDecelAfterBrakeM": 10.3,
+     "imuDecelAfterBrakeS": -0.204
+    },
+    {
+     "lap": 6,
+     "distM": 3265.0,
+     "speedKmh": 117.8,
+     "gpsDecelAfterBrakeS": 0.714,
+     "gpsDecelAfterBrakeM": 23.3,
+     "imuDecelAfterBrakeS": 0.074
+    },
+    {
+     "lap": 6,
+     "distM": 3535.6,
+     "speedKmh": 116.4,
+     "gpsDecelAfterBrakeS": 0.416,
+     "gpsDecelAfterBrakeM": 13.4,
+     "imuDecelAfterBrakeS": 0.104
+    },
+    {
+     "lap": 6,
+     "distM": 4329.7,
+     "speedKmh": 97.7,
+     "gpsDecelAfterBrakeS": 0.768,
+     "gpsDecelAfterBrakeM": 20.9,
+     "imuDecelAfterBrakeS": 0.144
+    },
+    {
+     "lap": 6,
+     "distM": 4381.5,
+     "speedKmh": 73.7,
+     "gpsDecelAfterBrakeS": -1.329,
+     "gpsDecelAfterBrakeM": -27.2,
+     "imuDecelAfterBrakeS": 0.094
+    }
+   ]
+  }
+ },
+ "video": {
+  "fuji_aim_01": {
+   "laps": [
+    {
+     "lap": 1,
+     "lapStartPts": 170.636,
+     "overlayThrottleAfterRecordedS": 0.085,
+     "rThrottle": 0.973,
+     "overlayBrakeAfterRecordedS": 0.095,
+     "rBrake": 0.985,
+     "gpsCourseRateAfterVideoS": 0.17,
+     "r_gpsCourseRate": 0.72,
+     "imuAccyOverSpeedAfterVideoS": 0.23,
+     "r_imuAccyOverSpeed": 0.721
+    },
+    {
+     "lap": 2,
+     "lapStartPts": 315.262,
+     "overlayThrottleAfterRecordedS": 0.05,
+     "rThrottle": 0.977,
+     "overlayBrakeAfterRecordedS": 0.025,
+     "rBrake": 0.98,
+     "gpsCourseRateAfterVideoS": 0.2,
+     "r_gpsCourseRate": 0.781,
+     "imuAccyOverSpeedAfterVideoS": 0.2,
+     "r_imuAccyOverSpeed": 0.783
+    },
+    {
+     "lap": 3,
+     "lapStartPts": 459.894,
+     "overlayThrottleAfterRecordedS": 0.115,
+     "rThrottle": 0.974,
+     "overlayBrakeAfterRecordedS": 0.08,
+     "rBrake": 0.988,
+     "gpsCourseRateAfterVideoS": 0.375,
+     "r_gpsCourseRate": 0.776,
+     "imuAccyOverSpeedAfterVideoS": 0.335,
+     "r_imuAccyOverSpeed": 0.775
+    },
+    {
+     "lap": 4,
+     "lapStartPts": 601.249,
+     "overlayThrottleAfterRecordedS": 0.185,
+     "rThrottle": 0.986,
+     "overlayBrakeAfterRecordedS": 0.125,
+     "rBrake": 0.99,
+     "gpsCourseRateAfterVideoS": 0.04,
+     "r_gpsCourseRate": 0.801,
+     "imuAccyOverSpeedAfterVideoS": 0.165,
+     "r_imuAccyOverSpeed": 0.805
+    }
+   ],
+   "medians": {
+    "overlayThrottleAfterRecordedS": 0.1,
+    "overlayBrakeAfterRecordedS": 0.087,
+    "gpsCourseRateAfterVideoS": 0.185,
+    "imuAccyOverSpeedAfterVideoS": 0.215
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "laps": [
+    {
+     "lap": 1,
+     "lapStartPts": 151.59,
+     "overlayThrottleAfterRecordedS": 0.62,
+     "rThrottle": 0.968,
+     "overlayBrakeAfterRecordedS": 0.62,
+     "rBrake": 0.98,
+     "gpsCourseRateAfterVideoS": 0.165,
+     "r_gpsCourseRate": 0.777,
+     "imuAccyOverSpeedAfterVideoS": -0.27,
+     "r_imuAccyOverSpeed": 0.776
+    },
+    {
+     "lap": 2,
+     "lapStartPts": 285.238,
+     "overlayThrottleAfterRecordedS": 0.55,
+     "rThrottle": 0.96,
+     "overlayBrakeAfterRecordedS": 0.56,
+     "rBrake": 0.987,
+     "gpsCourseRateAfterVideoS": 0.27,
+     "r_gpsCourseRate": 0.777,
+     "imuAccyOverSpeedAfterVideoS": -0.235,
+     "r_imuAccyOverSpeed": 0.772
+    },
+    {
+     "lap": 3,
+     "lapStartPts": 416.947,
+     "overlayThrottleAfterRecordedS": 0.62,
+     "rThrottle": 0.969,
+     "overlayBrakeAfterRecordedS": 0.59,
+     "rBrake": 0.989,
+     "gpsCourseRateAfterVideoS": 0.325,
+     "r_gpsCourseRate": 0.814,
+     "imuAccyOverSpeedAfterVideoS": -0.2,
+     "r_imuAccyOverSpeed": 0.813
+    },
+    {
+     "lap": 4,
+     "lapStartPts": 548.73,
+     "overlayThrottleAfterRecordedS": 0.645,
+     "rThrottle": 0.967,
+     "overlayBrakeAfterRecordedS": 0.625,
+     "rBrake": 0.989,
+     "gpsCourseRateAfterVideoS": 0.23,
+     "r_gpsCourseRate": 0.769,
+     "imuAccyOverSpeedAfterVideoS": -0.3,
+     "r_imuAccyOverSpeed": 0.768
+    },
+    {
+     "lap": 5,
+     "lapStartPts": 679.51,
+     "overlayThrottleAfterRecordedS": 0.78,
+     "rThrottle": 0.962,
+     "overlayBrakeAfterRecordedS": 0.775,
+     "rBrake": 0.985,
+     "gpsCourseRateAfterVideoS": 0.2,
+     "r_gpsCourseRate": 0.771,
+     "imuAccyOverSpeedAfterVideoS": -0.335,
+     "r_imuAccyOverSpeed": 0.771
+    },
+    {
+     "lap": 6,
+     "lapStartPts": 810.442,
+     "overlayThrottleAfterRecordedS": 0.65,
+     "rThrottle": 0.971,
+     "overlayBrakeAfterRecordedS": 0.655,
+     "rBrake": 0.98,
+     "gpsCourseRateAfterVideoS": 0.24,
+     "r_gpsCourseRate": 0.798,
+     "imuAccyOverSpeedAfterVideoS": -0.265,
+     "r_imuAccyOverSpeed": 0.795
+    }
+   ],
+   "medians": {
+    "overlayThrottleAfterRecordedS": 0.633,
+    "overlayBrakeAfterRecordedS": 0.623,
+    "gpsCourseRateAfterVideoS": 0.235,
+    "imuAccyOverSpeedAfterVideoS": -0.268
+   }
+  }
+ }
+}

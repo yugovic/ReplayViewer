@@ -1,0 +1,392 @@
+{
+ "fuji_aim_01": {
+  "shippedRegistrationV3Zones": {
+   "strong": 1,
+   "silent": 51,
+   "auc": 0.941,
+   "strongMedianGMin": -0.03,
+   "contradictions": [
+    [
+     1,
+     "k13",
+     "silent-but-deep",
+     -0.7
+    ],
+    [
+     1,
+     "kDunlopR",
+     "silent-but-deep",
+     -0.57
+    ]
+   ],
+   "contradictionCount": 2
+  },
+  "legacyZonesNote": "course_v2_kerbs.json with the assumed Dunlop-R block (paint + 0.42 m), same code and labels",
+  "gBlockFrontChangeV3MinusV2": {
+   "k13": {
+    "median": 0.03,
+    "min": 0.02,
+    "max": 0.05,
+    "n": 4
+   },
+   "k1": {
+    "median": -0.06,
+    "min": -0.06,
+    "max": -0.04,
+    "n": 4
+   },
+   "k15": {
+    "median": 0.05,
+    "min": -0.01,
+    "max": 0.07,
+    "n": 4
+   },
+   "k3": {
+    "median": 0.04,
+    "min": 0.0,
+    "max": 0.05,
+    "n": 4
+   },
+   "k18": {
+    "median": -0.01,
+    "min": -0.02,
+    "max": 0.02,
+    "n": 4
+   },
+   "k19": {
+    "median": 0.02,
+    "min": 0.01,
+    "max": 0.03,
+    "n": 4
+   },
+   "kDunlopR": {
+    "median": 0.04,
+    "min": 0.01,
+    "max": 0.15,
+    "n": 4
+   },
+   "k7": {
+    "median": -0.04,
+    "min": -0.04,
+    "max": -0.03,
+    "n": 4
+   },
+   "k20": {
+    "median": 0.03,
+    "min": -0.03,
+    "max": 0.03,
+    "n": 4
+   },
+   "k21": {
+    "median": 0.01,
+    "min": 0.01,
+    "max": 0.02,
+    "n": 4
+   },
+   "k9": {
+    "median": 0.01,
+    "min": 0.0,
+    "max": 0.01,
+    "n": 4
+   },
+   "k10": {
+    "median": -0.02,
+    "min": -0.02,
+    "max": -0.01,
+    "n": 4
+   },
+   "k23": {
+    "median": 0.16,
+    "min": 0.12,
+    "max": 0.2,
+    "n": 4
+   },
+   "k24": {
+    "median": -0.01,
+    "min": -0.05,
+    "max": 0.01,
+    "n": 4
+   }
+  },
+  "shippedRegistrationV2Zones": {
+   "strong": 1,
+   "silent": 51,
+   "auc": 0.941,
+   "strongMedianGMin": 0.01,
+   "contradictions": [
+    [
+     1,
+     "k13",
+     "silent-but-deep",
+     -0.73
+    ],
+    [
+     1,
+     "kDunlopR",
+     "silent-but-deep",
+     -0.63
+    ]
+   ],
+   "contradictionCount": 2
+  },
+  "gBlockFrontDeltaSpread": {
+   "k13": {
+    "n": 4,
+    "maxAbsDelta": 3.73
+   },
+   "k1": {
+    "n": 4,
+    "maxAbsDelta": 0.88
+   },
+   "k15": {
+    "n": 4,
+    "maxAbsDelta": 2.68
+   },
+   "k3": {
+    "n": 4,
+    "maxAbsDelta": 0.68
+   },
+   "k18": {
+    "n": 4,
+    "maxAbsDelta": 4.7
+   },
+   "k19": {
+    "n": 4,
+    "maxAbsDelta": 3.72
+   },
+   "kDunlopR": {
+    "n": 4,
+    "maxAbsDelta": 4.4
+   },
+   "k7": {
+    "n": 4,
+    "maxAbsDelta": 0.6
+   },
+   "k20": {
+    "n": 4,
+    "maxAbsDelta": 4.1
+   },
+   "k21": {
+    "n": 4,
+    "maxAbsDelta": 0.9
+   },
+   "k9": {
+    "n": 4,
+    "maxAbsDelta": 0.74
+   },
+   "k10": {
+    "n": 4,
+    "maxAbsDelta": 0.53
+   },
+   "k23": {
+    "n": 4,
+    "maxAbsDelta": 1.17
+   },
+   "k24": {
+    "n": 4,
+    "maxAbsDelta": 2.14
+   }
+  }
+ },
+ "fuji_aim_2020_07_30": {
+  "shippedRegistrationV3Zones": {
+   "strong": 17,
+   "silent": 42,
+   "auc": 0.883,
+   "strongMedianGMin": -0.42,
+   "contradictions": [
+    [
+     2,
+     "k21",
+     "strong-but-off",
+     1.66
+    ],
+    [
+     5,
+     "k9",
+     "silent-but-deep",
+     -0.92
+    ],
+    [
+     5,
+     "k10",
+     "strong-but-off",
+     0.42
+    ]
+   ],
+   "contradictionCount": 3
+  },
+  "legacyZonesNote": "course_v2_kerbs.json with the assumed Dunlop-R block (paint + 0.42 m), same code and labels",
+  "gBlockFrontChangeV3MinusV2": {
+   "k13": {
+    "median": 0.05,
+    "min": 0.02,
+    "max": 0.06,
+    "n": 6
+   },
+   "k1": {
+    "median": -0.06,
+    "min": -0.06,
+    "max": -0.03,
+    "n": 6
+   },
+   "k15": {
+    "median": 0.03,
+    "min": -0.02,
+    "max": 0.05,
+    "n": 6
+   },
+   "k3": {
+    "median": 0.05,
+    "min": -0.02,
+    "max": 0.07,
+    "n": 6
+   },
+   "k18": {
+    "median": -0.02,
+    "min": -0.02,
+    "max": -0.02,
+    "n": 6
+   },
+   "k19": {
+    "median": 0.01,
+    "min": 0.0,
+    "max": 0.04,
+    "n": 6
+   },
+   "kDunlopR": {
+    "median": 0.06,
+    "min": 0.02,
+    "max": 0.15,
+    "n": 6
+   },
+   "k7": {
+    "median": -0.04,
+    "min": -0.05,
+    "max": -0.03,
+    "n": 6
+   },
+   "k20": {
+    "median": 0.01,
+    "min": -0.02,
+    "max": 0.03,
+    "n": 6
+   },
+   "k21": {
+    "median": 0.02,
+    "min": -0.02,
+    "max": 0.02,
+    "n": 6
+   },
+   "k9": {
+    "median": -0.01,
+    "min": -0.04,
+    "max": 0.02,
+    "n": 6
+   },
+   "k10": {
+    "median": -0.02,
+    "min": -0.04,
+    "max": -0.0,
+    "n": 6
+   },
+   "k23": {
+    "median": 0.12,
+    "min": 0.09,
+    "max": 0.14,
+    "n": 6
+   },
+   "k24": {
+    "median": -0.0,
+    "min": -0.06,
+    "max": 0.02,
+    "n": 6
+   }
+  },
+  "shippedRegistrationV2Zones": {
+   "strong": 17,
+   "silent": 42,
+   "auc": 0.875,
+   "strongMedianGMin": -0.39,
+   "contradictions": [
+    [
+     2,
+     "k21",
+     "strong-but-off",
+     1.68
+    ],
+    [
+     5,
+     "k9",
+     "silent-but-deep",
+     -0.91
+    ],
+    [
+     5,
+     "k10",
+     "strong-but-off",
+     0.45
+    ]
+   ],
+   "contradictionCount": 3
+  },
+  "gBlockFrontDeltaSpread": {
+   "k13": {
+    "n": 6,
+    "maxAbsDelta": 1.34
+   },
+   "k1": {
+    "n": 6,
+    "maxAbsDelta": 0.63
+   },
+   "k15": {
+    "n": 6,
+    "maxAbsDelta": 1.4
+   },
+   "k3": {
+    "n": 6,
+    "maxAbsDelta": 4.49
+   },
+   "k18": {
+    "n": 6,
+    "maxAbsDelta": 3.26
+   },
+   "k19": {
+    "n": 6,
+    "maxAbsDelta": 3.22
+   },
+   "kDunlopR": {
+    "n": 6,
+    "maxAbsDelta": 0.49
+   },
+   "k7": {
+    "n": 6,
+    "maxAbsDelta": 0.5
+   },
+   "k20": {
+    "n": 6,
+    "maxAbsDelta": 1.13
+   },
+   "k21": {
+    "n": 6,
+    "maxAbsDelta": 3.06
+   },
+   "k9": {
+    "n": 6,
+    "maxAbsDelta": 4.19
+   },
+   "k10": {
+    "n": 6,
+    "maxAbsDelta": 3.76
+   },
+   "k23": {
+    "n": 6,
+    "maxAbsDelta": 1.38
+   },
+   "k24": {
+    "n": 6,
+    "maxAbsDelta": 0.76
+   }
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "fuji_aim_2020_07_30": {
+  "straight": {
+   "n": 657,
+   "medianLR": 0.99,
+   "p90": 1.24,
+   "p10": 0.66,
+   "fracAbove1p25": 0.1,
+   "fracBelow0p8": 0.24
+  },
+  "posLat": {
+   "n": 808,
+   "medianLR": 0.82,
+   "p90": 1.09,
+   "p10": 0.41,
+   "fracAbove1p25": 0.03,
+   "fracBelow0p8": 0.48
+  },
+  "negLat": {
+   "n": 400,
+   "medianLR": 1.31,
+   "p90": 3.0,
+   "p10": 0.91,
+   "fracAbove1p25": 0.55,
+   "fracBelow0p8": 0.04
+  }
+ },
+ "fuji_aim_01": {
+  "straight": {
+   "n": 545,
+   "medianLR": 1.02,
+   "p90": 1.41,
+   "p10": 0.79,
+   "fracAbove1p25": 0.18,
+   "fracBelow0p8": 0.11
+  },
+  "posLat": {
+   "n": 596,
+   "medianLR": 0.88,
+   "p90": 1.19,
+   "p10": 0.5,
+   "fracAbove1p25": 0.08,
+   "fracBelow0p8": 0.38
+  },
+  "negLat": {
+   "n": 301,
+   "medianLR": 1.15,
+   "p90": 1.91,
+   "p10": 0.88,
+   "fracAbove1p25": 0.42,
+   "fracBelow0p8": 0.05
+  }
+ }
+}

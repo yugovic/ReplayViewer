@@ -1,0 +1,99 @@
+{
+  "race_id": "fuji_aim_2020_07_30",
+  "channels": [
+    "aps",
+    "brake",
+    "steer",
+    "gear",
+    "accx",
+    "accy"
+  ],
+  "estimator": "s maximising corr(GPS-derived(t), IMU(t+s)); cubic splines on a 10 ms grid, s in [-1.0, 0.5) step 2 ms; GPS along/lateral acceleration from the shipped smoothed lat/lng",
+  "mode": "per-lap",
+  "laps": {
+    "1": {
+      "shiftSeconds": 0.468,
+      "estimate": {
+        "method": "imu-vs-gps-xcorr-v1",
+        "basis": "per-lap mean of accx and accy lags",
+        "lagS": -0.468,
+        "imuAccxLagS": -0.476,
+        "rAccx": 0.96,
+        "imuAccyLagS": -0.46,
+        "rAccy": 0.993,
+        "sessionMedianLagS": -0.507,
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "2": {
+      "shiftSeconds": 0.465,
+      "estimate": {
+        "method": "imu-vs-gps-xcorr-v1",
+        "basis": "per-lap mean of accx and accy lags",
+        "lagS": -0.465,
+        "imuAccxLagS": -0.488,
+        "rAccx": 0.95,
+        "imuAccyLagS": -0.442,
+        "rAccy": 0.991,
+        "sessionMedianLagS": -0.507,
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "3": {
+      "shiftSeconds": 0.49,
+      "estimate": {
+        "method": "imu-vs-gps-xcorr-v1",
+        "basis": "per-lap mean of accx and accy lags",
+        "lagS": -0.49,
+        "imuAccxLagS": -0.51,
+        "rAccx": 0.961,
+        "imuAccyLagS": -0.47,
+        "rAccy": 0.994,
+        "sessionMedianLagS": -0.507,
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "4": {
+      "shiftSeconds": 0.515,
+      "estimate": {
+        "method": "imu-vs-gps-xcorr-v1",
+        "basis": "per-lap mean of accx and accy lags",
+        "lagS": -0.515,
+        "imuAccxLagS": -0.524,
+        "rAccx": 0.958,
+        "imuAccyLagS": -0.506,
+        "rAccy": 0.995,
+        "sessionMedianLagS": -0.507,
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "5": {
+      "shiftSeconds": 0.526,
+      "estimate": {
+        "method": "imu-vs-gps-xcorr-v1",
+        "basis": "per-lap mean of accx and accy lags",
+        "lagS": -0.526,
+        "imuAccxLagS": -0.53,
+        "rAccx": 0.961,
+        "imuAccyLagS": -0.522,
+        "rAccy": 0.995,
+        "sessionMedianLagS": -0.507,
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    },
+    "6": {
+      "shiftSeconds": 0.524,
+      "estimate": {
+        "method": "imu-vs-gps-xcorr-v1",
+        "basis": "per-lap mean of accx and accy lags",
+        "lagS": -0.524,
+        "imuAccxLagS": -0.54,
+        "rAccx": 0.962,
+        "imuAccyLagS": -0.508,
+        "rAccy": 0.994,
+        "sessionMedianLagS": -0.507,
+        "tool": "scripts/quality/align-fuji-channel-timing.py"
+      }
+    }
+  }
+}

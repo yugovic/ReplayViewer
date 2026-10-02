@@ -1,0 +1,113 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.6 [39m[90mD:/00_Dev/ReplayViewer[39m
+
+ [32m✓[39m src/replay/kerbContacts.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+ [31m❯[39m src/replay/apexKpi.test.ts [2m([22m[2m8 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 101[2mms[22m[39m
+   [32m✓[39m apex_kpi.json (shipped)[2m > [22mparses both Fuji races only for their own race/track[32m 6[2mms[22m[39m
+   [32m✓[39m apex_kpi.json (shipped)[2m > [22mstates the ±0.7 m absolute uncertainty with its reason and the delta as primary comparison[32m 5[2mms[22m[39m
+   [32m✓[39m apex_kpi.json (shipped)[2m > [22mhas one row per inside kerb and lap, in course order, with readable corner names[32m 24[2mms[22m[39m
+   [32m✓[39m apex_kpi.json (shipped)[2m > [22mdeltas are value minus the per-corner session median[32m 9[2mms[22m[39m
+   [32m✓[39m apex_kpi.json (shipped)[2m > [22mcarries the same IMU labels as kerb_contacts.json[32m 10[2mms[22m[39m
+[31m   [31m×[31m apex_kpi.json (shipped)[2m > [22mflags label/geometry disagreements without hiding the row[39m[32m 38[2mms[22m[39m
+[31m     → expected [ '2:k21:strong-but-off', …(3) ] to deeply equal [ '2:k21:strong-but-off', …(2) ][39m
+   [32m✓[39m KPI number formatting[2m > [22mformats metres and signed deltas[32m 1[2mms[22m[39m
+   [32m✓[39m KPI number formatting[2m > [22mdrops malformed rows and keeps unknown kerbs last[32m 3[2mms[22m[39m
+ [32m✓[39m src/replay/gpsRegistration.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 166[2mms[22m[39m
+ [32m✓[39m src/replay/visualAlignment.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 294[2mms[22m[39m
+ [32m✓[39m src/replay/interpolation.test.ts [2m([22m[2m22 tests[22m[2m)[22m[33m 334[2mms[22m[39m
+ [32m✓[39m src/engine/track/featureBuilder.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 326[2mms[22m[39m
+ [32m✓[39m src/engine/track/groundDetail.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 153[2mms[22m[39m
+[90mstdout[2m | src/replay/interpolation.bench.test.ts[2m > [22m[2mprojectPointToCenterline drape-scale benchmark[2m > [22m[2mprojects a 193x193 drape lattice over fuji in well under a second
+[22m[39mdrape lattice: 37249 queries in 527.4 ms (checksum 18705744)
+
+ [32m✓[39m src/replay/interpolation.bench.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 543[2mms[22m[39m
+   [33m[2m✓[22m[39m projectPointToCenterline drape-scale benchmark[2m > [22mprojects a 193x193 drape lattice over fuji in well under a second [33m 537[2mms[22m[39m
+[90mstderr[2m | src/engine/track/fujiReferenceStudy.test.ts[2m > [22m[2mkeeps reference road faces upward and photo UVs aligned to geographic vertices
+[22m[39mTHREE.Material: parameter 'map' has value of undefined.
+
+ [32m✓[39m src/engine/track/fujiReferenceStudy.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+[90mstderr[2m | src/engine/track/features3dBuilder.test.ts[2m > [22m[2mbuildFeatures3dGroup[2m > [22m[2mmerges all buildings into a single mesh + one outline (two draw calls)
+[22m[39mTHREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed.
+THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed.
+
+[90mstderr[2m | src/engine/track/features3dBuilder.test.ts[2m > [22m[2mbuildFeatures3dGroup[2m > [22m[2mbuilds a stepped grandstand (more verts than a box, top at height)
+[22m[39mTHREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed.
+
+[90mstderr[2m | src/engine/track/features3dBuilder.test.ts[2m > [22m[2mbuildFeatures3dGroup[2m > [22m[2mbuilds a control tower with an antenna mast above the measured height
+[22m[39mTHREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed.
+
+[90mstderr[2m | src/engine/track/features3dBuilder.test.ts[2m > [22m[2mbuildFeatures3dGroup[2m > [22m[2mkeeps untagged buildings as plain extruded boxes (24 verts)
+[22m[39mTHREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed.
+
+ [32m✓[39m src/engine/track/features3dBuilder.test.ts [2m([22m[2m26 tests[22m[2m)[22m[33m 579[2mms[22m[39m
+ [32m✓[39m src/engine/track/FujiCgStudy.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 518[2mms[22m[39m
+   [33m[2m✓[22m[39m Fuji delivered geometry regressions[2m > [22mhas no downward-facing road or marking triangles anywhere in the loop [33m 334[2mms[22m[39m
+ [32m✓[39m src/engine/cameras/director.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m src/replay/delta.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 62[2mms[22m[39m
+ [32m✓[39m src/replay/registrationInputs.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/engine/track/curbBuilder.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/engine/poseSmoothing.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/engine/track/groundMath.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/engine/track/FujiBarrierKit.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/state/replayStore.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/engine/track/RoadEdgeLines.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/engine/vehicleRigGeometry.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/engine/track/acOverlay.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/engine/track/detailTexture.test.ts [2m([22m[2m20 tests[22m[2m)[22m[33m 1758[2mms[22m[39m
+   [33m[2m✓[22m[39m generateDetailNoise[2m > [22mkeeps asphalt values within [0, 1] and within the configured amplitude band [33m 429[2mms[22m[39m
+   [33m[2m✓[22m[39m generateDetailNoise[2m > [22mkeeps grass values within [0, 1] and within the configured amplitude band [33m 473[2mms[22m[39m
+ [32m✓[39m src/engine/track/FujiCgEditor.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 1783[2mms[22m[39m
+   [33m[2m✓[22m[39m interactive curb adjustments[2m > [22mdoes not fold rendered triangles at adjustment limits in the hairpin [33m 1439[2mms[22m[39m
+ [32m✓[39m src/replay/satelliteVariants.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/replay/dataLoader.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/engine/track/overlays.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/engine/cameras/cameraMath.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/replay/lapClock.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/engine/trailColor.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/replay/registrationVariant.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/engine/track/FujiReviewedBarriers.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/ui/credits.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/engine/cameras/ChaseCamera.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/engine/track/EnhancedCorridorGround.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/engine/track/FujiCgContext.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/replay/projection.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/replay/showcase.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/ui/imageryCredits.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m src/engine/track/FujiKerbZones.test.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 2257[2mms[22m[39m
+   [33m[2m✓[22m[39m delivered Fuji kerb zones[2m > [22mfollows the corrected lines at kerbs 15 and 23 instead of the old CG kerb [33m 938[2mms[22m[39m
+   [33m[2m✓[22m[39m delivered Fuji kerb zones[2m > [22mmoves zone kerbs with the interactive CG kerb editor [33m 1134[2mms[22m[39m
+ [32m✓[39m src/engine/track/trackBuilder.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 3015[2mms[22m[39m
+   [33m[2m✓[22m[39m OSM feature drape (sky-smear regression)[2m > [22mkeeps every feature vertex finite, inside the scene envelope, and never above the road [33m 2764[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/replay/apexKpi.test.ts[2m > [22mapex_kpi.json (shipped)[2m > [22mflags label/geometry disagreements without hiding the row
+[31m[1mAssertionError[22m: expected [ '2:k21:strong-but-off', …(3) ] to deeply equal [ '2:k21:strong-but-off', …(2) ][39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  [[22m
+[2m    "2:k21:strong-but-off",[22m
+[31m+   "2:k23:strong-but-off",[39m
+[2m    "5:k10:strong-but-off",[22m
+[2m    "5:k9:silent-but-deep",[22m
+[2m  ][22m
+
+[36m [2m❯[22m src/replay/apexKpi.test.ts:[2m99:28[22m[39m
+    [90m 97| [39m      rows.filter((r) => r.labelCheck && r.labelCheck !== "ok").map((r…
+    [90m 98| [39m    // the three known shipped-registration contradictions of the v3 r…
+    [90m 99| [39m    expect(flagged.sort()).toEqual(["2:k21:strong-but-off", "5:k10:str…
+    [90m   | [39m                           [31m^[39m
+    [90m100| [39m    [34mexpect[39m([34mlabelCheckText[39m([32m"strong-but-off"[39m))[33m.[39m[34mtoMatch[39m([36m/GPS/[39m)[33m;[39m
+    [90m101| [39m    [34mexpect[39m([34mlabelCheckText[39m([32m"ok"[39m))[33m.[39m[34mtoBeNull[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m40 passed[39m[22m[90m (41)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m372 passed[39m[22m[90m (373)[39m
+[2m   Start at [22m 16:43:50
+[2m   Duration [22m 4.51s[2m (transform 3.13s, setup 0ms, collect 10.85s, tests 12.47s, environment 14ms, prepare 15.04s)[22m
+
+exit 1
