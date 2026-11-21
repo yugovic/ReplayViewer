@@ -10,3 +10,4 @@ public/data/races/fuji_aim_01/*.json -text
 public/data/races/fuji_aim_2020_07_30/*.json -text
 public/data/tracks/fuji/track.json -text
 public/data/tracks/fuji/cg_study/*.json -text
+public/data/vehicles/*.json -text
