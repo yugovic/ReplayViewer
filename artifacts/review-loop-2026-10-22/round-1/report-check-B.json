@@ -1,0 +1,173 @@
+{
+ "url": "docs/fuji-event-truth-evaluation-2026-10-22.html",
+ "externalAnsweredLocally": [
+  "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
+ ],
+ "runs": [
+  {
+   "scheme": "light",
+   "width": 390,
+   "errors": [],
+   "overflowPx": 0,
+   "missing": [],
+   "stillPresent": [],
+   "camRows": [
+    [
+     "590 f 472 px・高さ1.25 m 10/03の推定",
+     "-3.3 m",
+     "+0.12 秒",
+     "-3.6 m"
+    ],
+    [
+     "889 f 711 px・高さ1.25 m 仕様の画角84°・このページの値",
+     "+0.3 m",
+     "-0.01 秒",
+     "+0.4 m"
+    ],
+    [
+     "1066 f 711 px・高さ1.50 m 高さを高めに見た場合",
+     "+2.1 m",
+     "-0.07 秒",
+     "+3.3 m"
+    ],
+    [
+     "1218 f 967 px・高さ1.26 m 動画からの当初の推定",
+     "+4.2 m",
+     "-0.12 秒",
+     "+5.1 m"
+    ]
+   ],
+   "camCardVisible": true,
+   "camTableScrollOverflowPx": 0,
+   "bg": "rgb(241, 243, 242)",
+   "cmTables": 2,
+   "gapRows": 9,
+   "strips": 11,
+   "lbars": 10
+  },
+  {
+   "scheme": "light",
+   "width": 1100,
+   "errors": [],
+   "overflowPx": 0,
+   "missing": [],
+   "stillPresent": [],
+   "camRows": [
+    [
+     "590 f 472 px・高さ1.25 m 10/03の推定",
+     "-3.3 m",
+     "+0.12 秒",
+     "-3.6 m"
+    ],
+    [
+     "889 f 711 px・高さ1.25 m 仕様の画角84°・このページの値",
+     "+0.3 m",
+     "-0.01 秒",
+     "+0.4 m"
+    ],
+    [
+     "1066 f 711 px・高さ1.50 m 高さを高めに見た場合",
+     "+2.1 m",
+     "-0.07 秒",
+     "+3.3 m"
+    ],
+    [
+     "1218 f 967 px・高さ1.26 m 動画からの当初の推定",
+     "+4.2 m",
+     "-0.12 秒",
+     "+5.1 m"
+    ]
+   ],
+   "camCardVisible": true,
+   "camTableScrollOverflowPx": 0,
+   "bg": "rgb(241, 243, 242)",
+   "cmTables": 2,
+   "gapRows": 9,
+   "strips": 11,
+   "lbars": 10
+  },
+  {
+   "scheme": "dark",
+   "width": 390,
+   "errors": [],
+   "overflowPx": 0,
+   "missing": [],
+   "stillPresent": [],
+   "camRows": [
+    [
+     "590 f 472 px・高さ1.25 m 10/03の推定",
+     "-3.3 m",
+     "+0.12 秒",
+     "-3.6 m"
+    ],
+    [
+     "889 f 711 px・高さ1.25 m 仕様の画角84°・このページの値",
+     "+0.3 m",
+     "-0.01 秒",
+     "+0.4 m"
+    ],
+    [
+     "1066 f 711 px・高さ1.50 m 高さを高めに見た場合",
+     "+2.1 m",
+     "-0.07 秒",
+     "+3.3 m"
+    ],
+    [
+     "1218 f 967 px・高さ1.26 m 動画からの当初の推定",
+     "+4.2 m",
+     "-0.12 秒",
+     "+5.1 m"
+    ]
+   ],
+   "camCardVisible": true,
+   "camTableScrollOverflowPx": 0,
+   "bg": "rgb(16, 19, 21)",
+   "cmTables": 2,
+   "gapRows": 9,
+   "strips": 11,
+   "lbars": 10
+  },
+  {
+   "scheme": "dark",
+   "width": 1100,
+   "errors": [],
+   "overflowPx": 0,
+   "missing": [],
+   "stillPresent": [],
+   "camRows": [
+    [
+     "590 f 472 px・高さ1.25 m 10/03の推定",
+     "-3.3 m",
+     "+0.12 秒",
+     "-3.6 m"
+    ],
+    [
+     "889 f 711 px・高さ1.25 m 仕様の画角84°・このページの値",
+     "+0.3 m",
+     "-0.01 秒",
+     "+0.4 m"
+    ],
+    [
+     "1066 f 711 px・高さ1.50 m 高さを高めに見た場合",
+     "+2.1 m",
+     "-0.07 秒",
+     "+3.3 m"
+    ],
+    [
+     "1218 f 967 px・高さ1.26 m 動画からの当初の推定",
+     "+4.2 m",
+     "-0.12 秒",
+     "+5.1 m"
+    ]
+   ],
+   "camCardVisible": true,
+   "camTableScrollOverflowPx": 0,
+   "bg": "rgb(16, 19, 21)",
+   "cmTables": 2,
+   "gapRows": 9,
+   "strips": 11,
+   "lbars": 10
+  }
+ ],
+ "allOk": true
+}

@@ -1,0 +1,251 @@
+{
+  "status": "independent numeric fitter and fixed-label polyline audit",
+  "primaryParameters": [
+    472.3330956945948,
+    18.20854664390703,
+    -0.6934100796703133,
+    1.8433014912273966
+  ],
+  "horizontalFovDeg": 107.14383081974574,
+  "verticalFovDeg": 74.62741395423676,
+  "multistart": [
+    {
+      "start": [
+        435,
+        7,
+        0,
+        0
+      ],
+      "result": [
+        472.3327578676955,
+        18.208556866260412,
+        -0.6934150992999474,
+        1.843306103226121
+      ],
+      "cost": 116.94022684012796,
+      "success": true,
+      "activeBounds": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "start": [
+        600,
+        14,
+        0,
+        0
+      ],
+      "result": [
+        472.33301540938317,
+        18.20854944556439,
+        -0.6934115330838269,
+        1.8433017421861524
+      ],
+      "cost": 116.94022683959577,
+      "success": true,
+      "activeBounds": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "start": [
+        840,
+        24,
+        0,
+        0
+      ],
+      "result": [
+        471.25754144482954,
+        18.24649056711517,
+        -0.695963309535308,
+        1.8437068776477752
+      ],
+      "cost": 116.93758997181945,
+      "success": true,
+      "activeBounds": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "start": [
+        550,
+        18,
+        5,
+        -4
+      ],
+      "result": [
+        471.2573922433141,
+        18.246490096919484,
+        -0.6959816859977423,
+        1.8437214091585243
+      ],
+      "cost": 116.93758997348901,
+      "success": true,
+      "activeBounds": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "start": [
+        700,
+        12,
+        -5,
+        4
+      ],
+      "result": [
+        471.2571939880582,
+        18.246499599395076,
+        -0.6959758941325649,
+        1.8437157092094472
+      ],
+      "cost": 116.93758997068952,
+      "success": true,
+      "activeBounds": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "train": [
+    {
+      "id": "2020-07-29-L3-47.000",
+      "beforeMedianPx": 133.80774633241575,
+      "afterMedianPx": 11.176780940385301,
+      "afterP95Px": 16.889851025998304,
+      "joinMatches": 0,
+      "noJoinMedianPx": 11.176780940385301,
+      "pointCount": 11
+    },
+    {
+      "id": "2020-07-29-L3-55.000",
+      "beforeMedianPx": 121.9013624527263,
+      "afterMedianPx": 11.33751381973173,
+      "afterP95Px": 16.219409263863298,
+      "joinMatches": 0,
+      "noJoinMedianPx": 11.33751381973173,
+      "pointCount": 6
+    },
+    {
+      "id": "2020-07-29-L3-68.000",
+      "beforeMedianPx": 141.57778801663275,
+      "afterMedianPx": 8.047540978405902,
+      "afterP95Px": 19.909682773740496,
+      "joinMatches": 1,
+      "noJoinMedianPx": 8.047540978405902,
+      "pointCount": 13
+    }
+  ],
+  "holdout": [
+    {
+      "id": "2020-07-29-L3-60.000",
+      "beforeMedianPx": 131.05050900068687,
+      "afterMedianPx": 9.5572126710963,
+      "afterP95Px": 22.343796963687808,
+      "joinMatches": 0,
+      "noJoinMedianPx": 9.5572126710963,
+      "pointCount": 9
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "beforeMedianPx": 144.1456340458752,
+      "afterMedianPx": 9.286123108506356,
+      "afterP95Px": 15.98122431001309,
+      "joinMatches": 0,
+      "noJoinMedianPx": 9.286123108506356,
+      "pointCount": 5
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "beforeMedianPx": 129.348950064811,
+      "afterMedianPx": 11.213829444135996,
+      "afterP95Px": 45.51098969788566,
+      "joinMatches": 0,
+      "noJoinMedianPx": 11.213829444135996,
+      "pointCount": 11
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "beforeMedianPx": 136.70110854623329,
+      "afterMedianPx": 33.30696555909758,
+      "afterP95Px": 50.24278938205948,
+      "joinMatches": 0,
+      "noJoinMedianPx": 33.30696555909758,
+      "pointCount": 7
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "beforeMedianPx": 121.29732632000965,
+      "afterMedianPx": 8.980527764426833,
+      "afterP95Px": 12.4333564330367,
+      "joinMatches": 0,
+      "noJoinMedianPx": 8.980527764426833,
+      "pointCount": 7
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "beforeMedianPx": 127.05785620974069,
+      "afterMedianPx": 7.633311577763402,
+      "afterP95Px": 20.629537113884012,
+      "joinMatches": 0,
+      "noJoinMedianPx": 7.633311577763402,
+      "pointCount": 11
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "beforeMedianPx": 130.34464473454548,
+      "afterMedianPx": 54.49074606564242,
+      "afterP95Px": 87.851739657109,
+      "joinMatches": 0,
+      "noJoinMedianPx": 54.49074606564242,
+      "pointCount": 15
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "beforeMedianPx": 143.24528820714866,
+      "afterMedianPx": 3.892351729453284,
+      "afterP95Px": 22.71472563329577,
+      "joinMatches": 0,
+      "noJoinMedianPx": 3.892351729453284,
+      "pointCount": 13
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "beforeMedianPx": 137.3230048428462,
+      "afterMedianPx": 2.32105513563435,
+      "afterP95Px": 9.597211025070727,
+      "joinMatches": 0,
+      "noJoinMedianPx": 2.32105513563435,
+      "pointCount": 11
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "beforeMedianPx": 140.44597576330725,
+      "afterMedianPx": 11.324806100220984,
+      "afterP95Px": 19.234663623192983,
+      "joinMatches": 1,
+      "noJoinMedianPx": 11.324806100220984,
+      "pointCount": 9
+    }
+  ],
+  "geometrySha256": "52f31699fe6e54e54052b7429de714168da79f3fdceafa5d3658697c2b82d19f",
+  "holdoutSha256": "b8703b30db26a7a3e65406ef16363f2243924277c1fbcc19063e803d13d8989a",
+  "notes": [
+    "No camera/path/time refitting on holdout.",
+    "No-join test removes artificial polyline segments joining marking classes at kerb-zone endpoints.",
+    "Per scene statistics; correlated points do not determine independent sample count."
+  ]
+}

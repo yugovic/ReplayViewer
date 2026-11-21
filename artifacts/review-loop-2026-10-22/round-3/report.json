@@ -1,0 +1,33 @@
+{
+ "kind": "review-loop-change-log",
+ "round": 3,
+ "area": "report",
+ "date": "2026-10-22",
+ "owner": "implementer (Opus) for report B docs/fuji-event-truth-evaluation-2026-10-22.html",
+ "scope": "Edited one bullet in docs/fuji-event-truth-evaluation-2026-10-22.html (untracked). No tracked file changed. Nothing was published or downloaded: the headless check answered non-file:// requests (Google Fonts) locally with an empty body. Dev servers were not touched.",
+ "backupsBeforeChanges": [
+  "artifacts/review-loop-2026-10-22/round-3/report-prev/fuji-event-truth-evaluation-2026-10-22.before-report-round3.html"
+ ],
+ "carriedOverFromAnalysis": "The analysis implementer reported no headline number change this round (null). The embedded data block (const D = ...) is identical to the pre-round-3 backup (string comparison in Python), so no regeneration was needed.",
+ "timeline": [
+  "23:26 Read the R3-03 finding, the bullet in 「これで何が言えるか」, the lede, the 結論 tiles and the note under the gap table; read round-2 report.json and its Playwright check for the existing check pattern.",
+  "Recomputed from join/summary.json (alongTrack.*.fuji_aim_2020_07_30.dt): contactFirstBlock n 20, median +0.030, medianAbs 0.141, p90Abs 0.356 (matches the finding). For the two events the bullet keeps under '数十ミリ秒': turnInHeading50 n 66, median +0.007, medianAbs 0.043, p90Abs 0.119; minSpeed n 44, median +0.022, medianAbs 0.059, p90Abs 0.206. So '数十ミリ秒' holds per event (typical) for turn-in and minimum speed but not for kerb contact.",
+  "23:27 Backed up B to round-3/report-prev/, then edited the bullet.",
+  "Wrote and ran report-check-round3.mjs (Playwright, channel chrome, headless, file://, light/dark at 320/390/1100 px). allOk true. Looked at report-shots/r3-mean-bullets-dark-390.png: the bullet wraps cleanly, no overflow.",
+  "23:28 Checked the diff against the backup: exactly one line changed (1 removed, 1 added); D block unchanged; no absolute personal paths, no <img>, no data:image in B."
+ ],
+ "findings": [
+  {
+   "id": "R3-03",
+   "status": "fixed",
+   "whatChanged": "B, 「これで何が言えるか」 bullet 1. Old: '切り始め・最低速度・縁石に乗る瞬間の時刻は、ロガーと数十ミリ秒で合っています。' New: '切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。' This is the reviewer's text plus the subset in brackets, using the same wording as the note under the gap table ('3DCGのタイヤが縁石の線を越えた20件'), so a reader knows the 0.14 / 0.36 s apply to those 20 contacts. '典型' and '90%値' are already defined on the page (note under the gap table). The rest of the bullet (video sync, visible turn-in caveat) is unchanged.",
+   "acceptanceCheck": "report-check-round3.mjs reads summary.alongTrack.contactFirstBlock.fuji_aim_2020_07_30.dt and rounds as the page prints: median +0.03, medianAbs 0.141 -> 0.14, p90Abs 0.356 -> 0.36, n 20. In the rendered bullet (innerText of the first li after #h-mean) it finds '中央値では+0.03秒', then '典型0.14秒', then '90%値0.36秒' in that order within 60 characters of each other (perEventNextToMedian true), '20件' present, '時計のずれではなく' and '浅い角度' present, the old clause '縁石に乗る瞬間の時刻は' gone from the bullet and from the whole page, and the kept clause for turn-in and minimum speed present. In all 6 views (light/dark x 320/390/1100 px): 0 console/page errors, page overflow 0 px, body background set (light rgb(241,243,242), dark rgb(16,19,21)). allOk true.",
+   "evidence": "artifacts/review-loop-2026-10-22/round-3/report-check-round3.json (allOk true, expectFromSummary holds the raw summary values), report-shots/r3-mean-bullets-light-390.png and r3-mean-bullets-dark-390.png (report text only, no video pixels).",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html"]
+  }
+ ],
+ "observedNotChanged": [
+  "The lede says '3DCGの時刻はロガーと0.03秒以内で合っていました。' right after naming the three truth moments including kerb contact. The 結論 tile directly below scopes '±0.03 秒' to 切り始め・最低速度・ヨーレートの山, and the kerb-contact median (+0.03 s) is also within 0.03 s, so the sentence is a median statement and not wrong; it was not flagged this round and was left unchanged. A future round could add '（中央値）' there if the reviewer wants the same per-event caution in the lede."
+ ],
+ "headlineNumbersChanged": "none"
+}

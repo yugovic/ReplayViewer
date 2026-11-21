@@ -1,0 +1,144 @@
+{
+ "fuji_aim_01": {
+  "lapMappingSpeedRmsKmh": {
+   "1": 0.00029,
+   "2": 0.00029,
+   "3": 0.00029,
+   "4": 0.00029
+  },
+  "medianSampleMs": {
+   "InlineAcc": 20.0,
+   "LateralAcc": 20.0,
+   "VerticalAcc": 20.0,
+   "RollRate": 20.0,
+   "PitchRate": 20.0,
+   "YawRate": 20.0,
+   "ECU_STEER_ANG": 50.0,
+   "ECU_RPM": 50.0,
+   "ECU_WS_FL": 50.0,
+   "ECU_WS_FR": 50.0,
+   "ECU_WS_RL": 50.0,
+   "ECU_WS_RR": 50.0,
+   "ECU_BRK_P": 50.0,
+   "ECU_PPS": 50.0,
+   "GPS Speed": 100.0,
+   "GPS_Yaw_Rate": 100.0,
+   "GPS Latitude": 100.0,
+   "GPS Longitude": 100.0
+  },
+  "lapInfo": {
+   "1": {
+    "delta": 0.007,
+    "tc0Ms": 180700.0,
+    "shift": 0.0,
+    "kcShift": 0.0,
+    "lapStartPts": 170.636,
+    "tEnd": 144.5
+   },
+   "2": {
+    "delta": 0.051,
+    "tc0Ms": 325300.0,
+    "shift": 0.0,
+    "kcShift": 0.0,
+    "lapStartPts": 315.262,
+    "tEnd": 144.5
+   },
+   "3": {
+    "delta": 0.016,
+    "tc0Ms": 469900.0,
+    "shift": 0.0,
+    "kcShift": 0.0,
+    "lapStartPts": 459.894,
+    "tEnd": 141.3
+   },
+   "4": {
+    "delta": 0.031,
+    "tc0Ms": 611300.0,
+    "shift": 0.0,
+    "kcShift": 0.0,
+    "lapStartPts": 601.249,
+    "tEnd": 164.6
+   }
+  }
+ },
+ "fuji_aim_2020_07_30": {
+  "lapMappingSpeedRmsKmh": {
+   "1": 0.00029,
+   "2": 0.00029,
+   "3": 0.00029,
+   "4": 0.00029,
+   "5": 0.00028,
+   "6": 0.00029
+  },
+  "medianSampleMs": {
+   "InlineAcc": 20.0,
+   "LateralAcc": 20.0,
+   "VerticalAcc": 20.0,
+   "RollRate": 20.0,
+   "PitchRate": 20.0,
+   "YawRate": 20.0,
+   "ECU_STEER_ANG": 50.0,
+   "ECU_RPM": 50.0,
+   "ECU_WS_FL": 50.0,
+   "ECU_WS_FR": 50.0,
+   "ECU_WS_RL": 50.0,
+   "ECU_WS_RR": 50.0,
+   "ECU_BRK_P": 50.0,
+   "ECU_PPS": 50.0,
+   "GPS Speed": 100.0,
+   "GPS_Yaw_Rate": 100.0,
+   "GPS Latitude": 100.0,
+   "GPS Longitude": 100.0
+  },
+  "lapInfo": {
+   "1": {
+    "delta": 0.057,
+    "tc0Ms": 162200.0,
+    "shift": 0.497,
+    "kcShift": 0.497,
+    "lapStartPts": 151.59,
+    "tEnd": 133.5
+   },
+   "2": {
+    "delta": 0.022,
+    "tc0Ms": 295800.0,
+    "shift": 0.523,
+    "kcShift": 0.523,
+    "lapStartPts": 285.238,
+    "tEnd": 131.7
+   },
+   "3": {
+    "delta": 0.08,
+    "tc0Ms": 427600.0,
+    "shift": 0.523,
+    "kcShift": 0.523,
+    "lapStartPts": 416.947,
+    "tEnd": 131.7
+   },
+   "4": {
+    "delta": 0.097,
+    "tc0Ms": 559400.0,
+    "shift": 0.555,
+    "kcShift": 0.555,
+    "lapStartPts": 548.73,
+    "tEnd": 130.7
+   },
+   "5": {
+    "delta": 0.037,
+    "tc0Ms": 690200.0,
+    "shift": 0.565,
+    "kcShift": 0.565,
+    "lapStartPts": 679.51,
+    "tEnd": 130.7
+   },
+   "6": {
+    "delta": 0.015,
+    "tc0Ms": 821000.0,
+    "shift": 0.583,
+    "kcShift": 0.583,
+    "lapStartPts": 810.442,
+    "tEnd": 140.4
+   }
+  }
+ }
+}

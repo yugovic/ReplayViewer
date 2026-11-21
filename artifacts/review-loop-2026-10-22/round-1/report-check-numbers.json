@@ -1,0 +1,379 @@
+{
+ "kind": "report-B number check (round 1, report area)",
+ "n": 32,
+ "failures": [],
+ "checks": [
+  {
+   "finding": "R1-01",
+   "what": "late laps L1-L5, range",
+   "value": [
+    0.085,
+    0.355
+   ],
+   "phrase": "7/30の6周中5周（L1〜L5）で3DCGの接触が0.09〜0.36秒遅く始まり、L6だけ0.12秒早く始まります",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "L6 early",
+   "value": [
+    -0.116
+   ],
+   "phrase": "7/30の6周中5周で0.09〜0.36秒遅れ、L6だけ0.12秒早い",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "median of six laps ~0.2 s",
+   "value": 0.215,
+   "phrase": "6周の中央値は約0.2秒遅れ",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "verifier medians reproduced",
+   "value": [
+    -0.063,
+    -0.145
+   ],
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "50 % rise per-lap range",
+   "value": [
+    -0.063,
+    0.104
+   ],
+   "phrase": "k1の遅れは周ごと−0.06〜+0.10秒に縮みます",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "other kerbs under 50 %: 3DCG crosses 0.15 s early",
+   "value": -0.145,
+   "phrase": "他の縁石で3DCGが0.15秒早く線を越える",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "relative to other kerbs 0.2-0.3 s under both rules",
+   "value": {
+    "threshold": 0.273,
+    "onset50": 0.192
+   },
+   "phrase": "他の縁石より0.2〜0.3秒遅く",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "durations",
+   "value": {
+    "cgOnSecondsRange": [
+     0.226,
+     0.418
+    ],
+    "truthOnSecondsFirstBurstRange": [
+     0.585,
+     2.038
+    ],
+    "cgShorterEveryLap": true
+   },
+   "phrase": "3DCG 0.23〜0.42秒、実際0.6〜2.0秒",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-01",
+   "what": "no \"every lap\" claim",
+   "value": null,
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "four 7/30 sensitivity medians in D.cam",
+   "value": [
+    -3.27,
+    0.31,
+    2.12,
+    4.2
+   ],
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "range sentence",
+   "value": [
+    -3.27,
+    0.31,
+    2.12,
+    4.2
+   ],
+   "phrase": "7/30の中央値で−3.3〜+4.2 m",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "camera-free basis",
+   "value": [
+    -0.2,
+    -0.59,
+    -0.59
+   ],
+   "phrase": "カメラを使わない切り始め（7/30 −0.2 m、7/29 −0.6 m）と縁石接触（7/30 −0.6 m）で支えています",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "camera height for f 711 from road width",
+   "value": [
+    1.262,
+    [
+     1.136,
+     1.313
+    ]
+   ],
+   "phrase": "カメラの高さ1.26 m（f 711 pxのとき、四分位1.14〜1.31 m）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "focal from rotation ~540-800 px",
+   "value": [
+    537,
+    795.9582255012676
+   ],
+   "phrase": "焦点距離（約540〜800 px）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "same range in next steps and table",
+   "value": 3,
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "clipping / kerb ends at f*h 889 within 0.03 s of the contact median",
+   "value": {
+    "clipDt": -0.008,
+    "kerbEnds": [
+     -0.024,
+     -0.016
+    ],
+    "contactDt": 0.03
+   },
+   "phrase": "縁石の端の時刻が、カメラを使わない縁石接触と7/30で±0.03秒以内に揃うのは整合性の確認で、独立の証明ではない",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-02",
+   "what": "tile caveat",
+   "value": [
+    -3.27,
+    0.31,
+    2.12,
+    4.2
+   ],
+   "phrase": "クリッピングの偏りはカメラの尺度しだいで−3〜+4 m動く",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-03",
+   "what": "medians",
+   "value": [
+    0.01,
+    -0.079
+   ],
+   "phrase": "（7/30 +0.01秒、7/29 −0.08秒）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-03",
+   "what": "p90",
+   "value": [
+    0.357,
+    0.758
+   ],
+   "phrase": "10件に1件は0.36秒（7/29は0.76秒）以上ずれます",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-03",
+   "what": "large deviations are all 3DCG early",
+   "value": {
+    "fuji_aim_2020_07_30": [
+     -0.723,
+     -0.88,
+     -1.19,
+     -0.844
+    ],
+    "fuji_aim_01": [
+     -1.067,
+     -0.865,
+     -1.0
+    ]
+   },
+   "phrase": "大きくずれるときは、どれも3DCGの方が早く曲がり始めます",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-03",
+   "what": "CG t10 after steering onset (median)",
+   "value": [
+    0.135,
+    0.243
+   ],
+   "phrase": "中央値で0.14秒後（7/29は0.24秒後）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-03",
+   "what": "CG turns before steering onset in some cases",
+   "value": {
+    "fuji_aim_2020_07_30": [
+     8,
+     40,
+     2,
+     -0.866
+    ],
+    "fuji_aim_01": [
+     2,
+     26,
+     2,
+     -0.66
+    ]
+   },
+   "phrase": "7/30の40件中8件（7/29は26件中2件）では、ステアを切る前に向きが変わり始めて見えます（最大0.9秒前。ジャイロでは各日2件）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08a",
+   "what": "FN / FP medians for 7/30",
+   "value": [
+    0.24,
+    -0.29
+   ],
+   "phrase": "中央値0.24 m（7/30の10件）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08a",
+   "what": "FP phrase",
+   "value": null,
+   "phrase": "中央値0.29 m（7/30の11件）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08b",
+   "what": "p90 range of clipping / turn-in",
+   "value": [
+    4.09,
+    4.44,
+    3.31,
+    3.28
+   ],
+   "phrase": "90%値3.3〜4.4 m",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08c",
+   "what": "7/29 adopted offsets",
+   "value": [
+    0.177,
+    0.234,
+    0.218,
+    0.171
+   ],
+   "phrase": "7/29 採用値0.17〜0.23秒（推定。妥当な幅0.17〜0.30秒）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08c",
+   "what": "plausible range from the verifier verdict",
+   "value": "not confirmed: own video yaw +0.04..+0.10 s higher, two audio events 0.03-0.05 s lower; L in ~0.17-0.30 s",
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08d",
+   "what": "clipping lateral typical ~0.5 m, sign depends on camera",
+   "value": {
+    "typ": {
+     "7/30": 0.54,
+     "7/29": 0.485
+    },
+    "nominalMedian": 0.02,
+    "page889Median": -0.34
+   },
+   "phrase": "クリッピングでの横は典型0.5 m前後で、カメラの尺度に左右される",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08e",
+   "what": "correlation with n",
+   "value": [
+    39,
+    11
+   ],
+   "phrase": "相関0.89（7/30、39件）・0.96（7/29、11件）",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "R1-08f",
+   "what": "clipping definition matches T3 tip docstring",
+   "value": "T3 analyze.py: tip",
+   "phrase": "動画の決まった高さ（276行目＝前方の一定の距離）で、内側の縁石の縁が画面の中央に最も近づいたコマの時刻",
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "hygiene",
+   "what": "no personal absolute path in page",
+   "value": null,
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  },
+  {
+   "finding": "hygiene",
+   "what": "no image / media element in page",
+   "value": null,
+   "phrase": null,
+   "valueOk": true,
+   "phraseFound": true
+  }
+ ]
+}

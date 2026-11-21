@@ -1,0 +1,286 @@
+{
+ "generated": "2026-10-22T14:02:19.440Z",
+ "page": "docs/fuji-event-truth-evaluation-2026-10-22.html",
+ "results": {
+  "light-320": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "boxes": [
+    {
+     "table": "gap-table",
+     "tableW": 306,
+     "clientW": 282,
+     "scrollW": 342,
+     "needsScroll": true,
+     "hintShown": true
+    },
+    {
+     "table": "cam-table",
+     "tableW": 294,
+     "clientW": 246,
+     "scrollW": 294,
+     "needsScroll": true,
+     "hintShown": true
+    },
+    {
+     "table": "fix-table",
+     "tableW": 246,
+     "clientW": 282,
+     "scrollW": 282,
+     "needsScroll": false,
+     "hintShown": false
+    }
+   ],
+   "gapHeaders": [
+    "正解の瞬間",
+    "日",
+    "件数",
+    "中央値",
+    "典型",
+    "90%値"
+   ],
+   "fixRowDisplay": "block",
+   "fixHeadDisplay": "none",
+   "gapRows": 9,
+   "camRows": 4,
+   "bodyBg": "rgb(241, 243, 242)"
+  },
+  "light-390": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "boxes": [
+    {
+     "table": "gap-table",
+     "tableW": 316,
+     "clientW": 352,
+     "scrollW": 352,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "cam-table",
+     "tableW": 316,
+     "clientW": 316,
+     "scrollW": 316,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "fix-table",
+     "tableW": 316,
+     "clientW": 352,
+     "scrollW": 352,
+     "needsScroll": false,
+     "hintShown": false
+    }
+   ],
+   "gapHeaders": [
+    "正解の瞬間",
+    "日",
+    "件数",
+    "中央値",
+    "典型",
+    "90%値"
+   ],
+   "fixRowDisplay": "block",
+   "fixHeadDisplay": "none",
+   "gapRows": 9,
+   "camRows": 4,
+   "bodyBg": "rgb(241, 243, 242)"
+  },
+  "light-1100": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "boxes": [
+    {
+     "table": "gap-table",
+     "tableW": 866,
+     "clientW": 902,
+     "scrollW": 902,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "cam-table",
+     "tableW": 422,
+     "clientW": 866,
+     "scrollW": 866,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "fix-table",
+     "tableW": 866,
+     "clientW": 902,
+     "scrollW": 902,
+     "needsScroll": false,
+     "hintShown": false
+    }
+   ],
+   "gapHeaders": [
+    "正解の瞬間",
+    "日",
+    "件数",
+    "中央値",
+    "典型（|値|の中央値）",
+    "90%値"
+   ],
+   "fixRowDisplay": "table-row",
+   "fixHeadDisplay": "table-header-group",
+   "gapRows": 9,
+   "camRows": 4,
+   "bodyBg": "rgb(241, 243, 242)",
+   "l5Tips": [
+    "縁石に乗った瞬間 7/30 / 7/30 L5 コカ・コーラ（振動1回目・確かさ中） / -6.92 m",
+    "縁石に乗った瞬間 7/30 / 7/30 L5 コカ・コーラ（振動2回目・確かさ高） / +13.88 m（軸の外）"
+   ]
+  },
+  "dark-320": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "boxes": [
+    {
+     "table": "gap-table",
+     "tableW": 306,
+     "clientW": 282,
+     "scrollW": 342,
+     "needsScroll": true,
+     "hintShown": true
+    },
+    {
+     "table": "cam-table",
+     "tableW": 294,
+     "clientW": 246,
+     "scrollW": 294,
+     "needsScroll": true,
+     "hintShown": true
+    },
+    {
+     "table": "fix-table",
+     "tableW": 246,
+     "clientW": 282,
+     "scrollW": 282,
+     "needsScroll": false,
+     "hintShown": false
+    }
+   ],
+   "gapHeaders": [
+    "正解の瞬間",
+    "日",
+    "件数",
+    "中央値",
+    "典型",
+    "90%値"
+   ],
+   "fixRowDisplay": "block",
+   "fixHeadDisplay": "none",
+   "gapRows": 9,
+   "camRows": 4,
+   "bodyBg": "rgb(16, 19, 21)"
+  },
+  "dark-390": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "boxes": [
+    {
+     "table": "gap-table",
+     "tableW": 316,
+     "clientW": 352,
+     "scrollW": 352,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "cam-table",
+     "tableW": 316,
+     "clientW": 316,
+     "scrollW": 316,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "fix-table",
+     "tableW": 316,
+     "clientW": 352,
+     "scrollW": 352,
+     "needsScroll": false,
+     "hintShown": false
+    }
+   ],
+   "gapHeaders": [
+    "正解の瞬間",
+    "日",
+    "件数",
+    "中央値",
+    "典型",
+    "90%値"
+   ],
+   "fixRowDisplay": "block",
+   "fixHeadDisplay": "none",
+   "gapRows": 9,
+   "camRows": 4,
+   "bodyBg": "rgb(16, 19, 21)"
+  },
+  "dark-1100": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "boxes": [
+    {
+     "table": "gap-table",
+     "tableW": 866,
+     "clientW": 902,
+     "scrollW": 902,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "cam-table",
+     "tableW": 422,
+     "clientW": 866,
+     "scrollW": 866,
+     "needsScroll": false,
+     "hintShown": false
+    },
+    {
+     "table": "fix-table",
+     "tableW": 866,
+     "clientW": 902,
+     "scrollW": 902,
+     "needsScroll": false,
+     "hintShown": false
+    }
+   ],
+   "gapHeaders": [
+    "正解の瞬間",
+    "日",
+    "件数",
+    "中央値",
+    "典型（|値|の中央値）",
+    "90%値"
+   ],
+   "fixRowDisplay": "table-row",
+   "fixHeadDisplay": "table-header-group",
+   "gapRows": 9,
+   "camRows": 4,
+   "bodyBg": "rgb(16, 19, 21)"
+  }
+ },
+ "text": {
+  "k1BulletMentionsTwoBursts": true,
+  "k1BulletMentions041": true,
+  "k1BulletPerLapCountUnchanged": true,
+  "basisMentionsTwoBursts": true,
+  "conclusionMentionsL5": true,
+  "camNoteHasTimeSign": true,
+  "gapNoteDefinesTyp": true
+ },
+ "verdict": {
+  "noErrors": true,
+  "noPageOverflow": true,
+  "gapAndFixTablesFitAt390": true,
+  "hintShownExactlyWhenScrollNeeded": true,
+  "textChecks": true,
+  "l5TooltipsDistinct": true,
+  "allOk": true
+ }
+}

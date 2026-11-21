@@ -1,0 +1,460 @@
+{
+ "kind": "yaw-rate amplitude scale check (open item OI-1)",
+ "generated": "2026-10-22",
+ "tool": "artifacts/kerb-event-truth-2026-10-22/join/yaw_scale_check.py",
+ "rule": "The join's whole-lap cross-correlation (summary.headingTimingWholeLap) found scaleCgOverImu 1.21-1.22 on all 10 laps:\nthe viewer's heading rate (from the GPS course, +-0.6 s chord) is ~21 % larger than the gyro yaw rate. This script\nchecks, per lap and from the raw logger samples only, which side the other sensors agree with, and whether the\namplitude matters for the turn-in timing result:",
+ "label": "measured (logger samples) / derived (ratios)",
+ "inputs": {
+  "xrk": [
+   "$JOIN_T1_WORK/xrk_native_fuji_aim_01.npz",
+   "$JOIN_T1_WORK/xrk_native_fuji_aim_2020_07_30.npz"
+  ],
+  "t1": "T1-logger-events/events.json",
+  "t4": "T4-cg-traces/cg_events.json",
+  "join": "join/event_table.json, join/summary.json"
+ },
+ "perLap": {
+  "fuji_aim_01/L1": {
+   "drawnHeadingOverImu_join": 1.211,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.205,
+    "stdRatio": 1.208,
+    "r": 0.9991,
+    "lagS": -0.1,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.166,
+    "stdRatio": 1.172,
+    "r": 0.9984,
+    "lagS": -0.01,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.969,
+    "stdRatio": 0.974,
+    "r": 0.9987,
+    "lagS": 0.1,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.163,
+    "stdRatio": 0.175,
+    "r": 0.9236,
+    "lagS": -0.13,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.4,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  },
+  "fuji_aim_01/L2": {
+   "drawnHeadingOverImu_join": 1.214,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.208,
+    "stdRatio": 1.212,
+    "r": 0.9981,
+    "lagS": -0.14,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.177,
+    "stdRatio": 1.183,
+    "r": 0.9976,
+    "lagS": -0.02,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.971,
+    "stdRatio": 0.975,
+    "r": 0.9988,
+    "lagS": 0.13,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.16,
+    "stdRatio": 0.173,
+    "r": 0.9191,
+    "lagS": -0.02,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.2,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  },
+  "fuji_aim_01/L3": {
+   "drawnHeadingOverImu_join": 1.218,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.212,
+    "stdRatio": 1.215,
+    "r": 0.9987,
+    "lagS": -0.13,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.167,
+    "stdRatio": 1.174,
+    "r": 0.9978,
+    "lagS": 0.02,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.967,
+    "stdRatio": 0.97,
+    "r": 0.9989,
+    "lagS": 0.15,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.16,
+    "stdRatio": 0.173,
+    "r": 0.918,
+    "lagS": -0.05,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.2,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  },
+  "fuji_aim_01/L4": {
+   "drawnHeadingOverImu_join": 1.222,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.215,
+    "stdRatio": 1.218,
+    "r": 0.999,
+    "lagS": -0.14,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.166,
+    "stdRatio": 1.173,
+    "r": 0.9975,
+    "lagS": 0.01,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.958,
+    "stdRatio": 0.962,
+    "r": 0.9981,
+    "lagS": 0.17,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.154,
+    "stdRatio": 0.169,
+    "r": 0.9134,
+    "lagS": -0.02,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 8.9,
+    "yawAmplitudeLossFromTiltPct": 1.2
+   }
+  },
+  "fuji_aim_2020_07_30/L1": {
+   "drawnHeadingOverImu_join": 1.214,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.211,
+    "stdRatio": 1.213,
+    "r": 0.999,
+    "lagS": -0.65,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.175,
+    "stdRatio": 1.181,
+    "r": 0.9972,
+    "lagS": -0.08,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.979,
+    "stdRatio": 0.983,
+    "r": 0.9988,
+    "lagS": 0.61,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.164,
+    "stdRatio": 0.176,
+    "r": 0.9349,
+    "lagS": -0.15,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.4,
+    "yawAmplitudeLossFromTiltPct": 1.4
+   }
+  },
+  "fuji_aim_2020_07_30/L2": {
+   "drawnHeadingOverImu_join": 1.215,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.211,
+    "stdRatio": 1.212,
+    "r": 0.9989,
+    "lagS": -0.67,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.179,
+    "stdRatio": 1.187,
+    "r": 0.9968,
+    "lagS": -0.05,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.986,
+    "stdRatio": 0.991,
+    "r": 0.9986,
+    "lagS": 0.65,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.156,
+    "stdRatio": 0.174,
+    "r": 0.9038,
+    "lagS": -0.12,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.0,
+    "yawAmplitudeLossFromTiltPct": 1.2
+   }
+  },
+  "fuji_aim_2020_07_30/L3": {
+   "drawnHeadingOverImu_join": 1.217,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.214,
+    "stdRatio": 1.216,
+    "r": 0.9991,
+    "lagS": -0.66,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.182,
+    "stdRatio": 1.187,
+    "r": 0.9972,
+    "lagS": -0.1,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.983,
+    "stdRatio": 0.986,
+    "r": 0.9991,
+    "lagS": 0.66,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.162,
+    "stdRatio": 0.175,
+    "r": 0.9279,
+    "lagS": -0.08,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.3,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  },
+  "fuji_aim_2020_07_30/L4": {
+   "drawnHeadingOverImu_join": 1.214,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.213,
+    "stdRatio": 1.214,
+    "r": 0.9991,
+    "lagS": -0.68,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.179,
+    "stdRatio": 1.185,
+    "r": 0.9973,
+    "lagS": -0.07,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.982,
+    "stdRatio": 0.986,
+    "r": 0.9993,
+    "lagS": 0.66,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.163,
+    "stdRatio": 0.175,
+    "r": 0.9349,
+    "lagS": -0.15,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.4,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  },
+  "fuji_aim_2020_07_30/L5": {
+   "drawnHeadingOverImu_join": 1.213,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.211,
+    "stdRatio": 1.212,
+    "r": 0.9991,
+    "lagS": -0.7,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.179,
+    "stdRatio": 1.185,
+    "r": 0.9967,
+    "lagS": -0.06,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.986,
+    "stdRatio": 0.989,
+    "r": 0.9992,
+    "lagS": 0.69,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.162,
+    "stdRatio": 0.174,
+    "r": 0.9343,
+    "lagS": -0.14,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.3,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  },
+  "fuji_aim_2020_07_30/L6": {
+   "drawnHeadingOverImu_join": 1.214,
+   "A_loggerGpsYawRateOverImu": {
+    "slope": 1.212,
+    "stdRatio": 1.213,
+    "r": 0.9992,
+    "lagS": -0.7,
+    "lagAtSearchEdge": false
+   },
+   "B_latAccOverSpeedOverImu": {
+    "slope": 1.169,
+    "stdRatio": 1.175,
+    "r": 0.9968,
+    "lagS": -0.06,
+    "lagAtSearchEdge": false
+   },
+   "C_imuLatAccOverGpsLatAcc": {
+    "slope": 0.98,
+    "stdRatio": 0.982,
+    "r": 0.9993,
+    "lagS": 0.7,
+    "lagAtSearchEdge": false
+   },
+   "D_rollRateOnYawRate": {
+    "slope": 0.163,
+    "stdRatio": 0.176,
+    "r": 0.9326,
+    "lagS": -0.16,
+    "lagAtSearchEdge": false,
+    "impliedTiltDeg": 9.4,
+    "yawAmplitudeLossFromTiltPct": 1.3
+   }
+  }
+ },
+ "E_turnIn50_gyroRescaled": {
+  "rule": "dtHeading50 = CG drawn-heading t50 - IMU (1.2 s boxcar) t50 with cgpose.rate_onset; IMU multiplied by the lap scaleCgOverImu",
+  "selfCheck_unscaledReproducesJoin_maxAbsDiffS": 0.000497,
+  "onsetFlagChanges": [
+   "fuji_aim_2020_07_30/L4 k20"
+  ],
+  "bySession": {
+   "fuji_aim_01": {
+    "asBuilt": {
+     "n": 38,
+     "median": 0.028,
+     "medianAbs": 0.05,
+     "p90Abs": 0.143
+    },
+    "gyroRescaled": {
+     "n": 38,
+     "median": 0.027,
+     "medianAbs": 0.05,
+     "p90Abs": 0.142
+    },
+    "perEventChange": {
+     "n": 38,
+     "median": 0.0,
+     "medianAbs": 0.0,
+     "p90Abs": 0.0
+    },
+    "maxAbsPerEventChangeS": 0.0
+   },
+   "fuji_aim_2020_07_30": {
+    "asBuilt": {
+     "n": 66,
+     "median": 0.007,
+     "medianAbs": 0.043,
+     "p90Abs": 0.119
+    },
+    "gyroRescaled": {
+     "n": 66,
+     "median": 0.007,
+     "medianAbs": 0.043,
+     "p90Abs": 0.119
+    },
+    "perEventChange": {
+     "n": 66,
+     "median": 0.0,
+     "medianAbs": 0.0,
+     "p90Abs": 0.0
+    },
+    "maxAbsPerEventChangeS": 0.0
+   },
+   "pooled": {
+    "asBuilt": {
+     "n": 104,
+     "median": 0.011,
+     "medianAbs": 0.046,
+     "p90Abs": 0.136
+    },
+    "gyroRescaled": {
+     "n": 104,
+     "median": 0.011,
+     "medianAbs": 0.046,
+     "p90Abs": 0.136
+    },
+    "perEventChange": {
+     "n": 104,
+     "median": 0.0,
+     "medianAbs": 0.0,
+     "p90Abs": 0.0
+    },
+    "maxAbsPerEventChangeS": 0.0
+   }
+  }
+ },
+ "summary": {
+  "drawnHeadingOverImu": [
+   1.211,
+   1.222
+  ],
+  "loggerGpsYawRateOverImu": [
+   1.205,
+   1.215
+  ],
+  "latAccOverSpeedOverImu": [
+   1.166,
+   1.182
+  ],
+  "imuLatAccOverGpsLatAcc": [
+   0.958,
+   0.986
+  ],
+  "rollRateOnYawRateSlope": [
+   0.154,
+   0.164
+  ],
+  "rollRateOnYawRateR": [
+   0.9038,
+   0.9349
+  ],
+  "impliedTiltDeg": [
+   8.9,
+   9.4
+  ],
+  "yawAmplitudeLossFromTiltPct": [
+   1.2,
+   1.4
+  ],
+  "gpsYawLagAtSearchEdge": [],
+  "gyroLowByPct": [
+   14.2,
+   18.2
+  ]
+ },
+ "conclusion": "Two independent sensor paths (GPS course and accelerometer / speed) agree that the gyro yaw channel reads low: the logger's own GPS yaw rate is 1.205-1.215x, lateral acceleration / GPS speed 1.166-1.182x and the drawn heading rate 1.211-1.222x the gyro, on every lap of both days, while the accelerometer agrees with the GPS lateral acceleration (0.958-0.986x). So the gyro amplitude is ~14.2-18.2 % low and the drawn heading is consistent with GPS and accelerometer. Yaw leaks into the roll gyro (slope 0.154-0.164, r 0.9038-0.9349), consistent with a ~8.9-9.4 deg mount tilt, which explains only 1.2-1.4 % of the amplitude loss; the rest (a gyro scale factor / configuration) is not identified. Timing is unaffected: with the gyro rescaled the turn-in 50 % difference changes by median 0.0 s (max 0.0 s, n 104); onset-flag changes: 1."
+}

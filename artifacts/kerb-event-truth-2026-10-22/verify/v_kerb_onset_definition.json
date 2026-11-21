@@ -1,0 +1,86 @@
+{
+ "all": {
+  "gapAtT1Onset": {
+   "n": 26,
+   "median": 0.2,
+   "q25": -0.135,
+   "q75": 0.968,
+   "medAbs": 0.374,
+   "p90abs": 2.501
+  },
+  "gapAtOwnOnset50": {
+   "n": 26,
+   "median": 0.044,
+   "q25": -0.271,
+   "q75": 0.376,
+   "medAbs": 0.33,
+   "p90abs": 0.932
+  },
+  "cgCrossMinusT1": {
+   "n": 19,
+   "median": 0.031,
+   "q25": -0.12,
+   "q75": 0.165,
+   "medAbs": 0.126,
+   "p90abs": 0.306
+  },
+  "cgCrossMinusOwnOnset50": {
+   "n": 19,
+   "median": -0.063,
+   "q25": -0.168,
+   "q75": 0.022,
+   "medAbs": 0.092,
+   "p90abs": 0.259
+  },
+  "ownMinusT1Onset": {
+   "n": 26,
+   "median": 0.069,
+   "q25": -0.058,
+   "q75": 0.168,
+   "medAbs": 0.099,
+   "p90abs": 0.274
+  }
+ },
+ "excl_k1": {
+  "gapAtT1Onset": {
+   "n": 20,
+   "median": 0.115,
+   "q25": -0.175,
+   "q75": 0.307,
+   "medAbs": 0.301,
+   "p90abs": 0.745
+  },
+  "gapAtOwnOnset50": {
+   "n": 20,
+   "median": -0.073,
+   "q25": -0.3,
+   "q75": 0.229,
+   "medAbs": 0.27,
+   "p90abs": 0.99
+  },
+  "cgCrossMinusT1": {
+   "n": 13,
+   "median": -0.058,
+   "q25": -0.155,
+   "q75": 0.056,
+   "medAbs": 0.125,
+   "p90abs": 0.273
+  },
+  "cgCrossMinusOwnOnset50": {
+   "n": 13,
+   "median": -0.145,
+   "q25": -0.195,
+   "q75": -0.042,
+   "medAbs": 0.145,
+   "p90abs": 0.274
+  },
+  "ownMinusT1Onset": {
+   "n": 20,
+   "median": 0.03,
+   "q25": -0.069,
+   "q75": 0.112,
+   "medAbs": 0.08,
+   "p90abs": 0.276
+  }
+ }
+}

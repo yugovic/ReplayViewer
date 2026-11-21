@@ -1,6 +1,6 @@
 import type * as THREE from "three";
 
-export type CameraMode = "chase" | "cockpit" | "top" | "free" | "tv" | "cinematic";
+export type CameraMode = "chase" | "cockpit" | "onboard" | "top" | "free" | "tv" | "cinematic";
 
 /** Channel values used by the cinematic director to pick shots */
 export interface CameraTelemetry {

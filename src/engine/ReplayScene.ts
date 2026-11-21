@@ -5,7 +5,7 @@ import { sampleReplay, projectPointToCenterline, sampleTrackSurface, sampleTrack
 import { registeredVehicleGeometry, registeredVehicleWidth } from "../replay/visualAlignment";
 import { sampleReplayWithLeadIn } from "../replay/delta";
 import type { LapData, ReplaySample, TrackData } from "../replay/types";
-import { ChaseCamera, CinematicCamera, CockpitCamera, FreeCamera, TopCamera, TvCamera } from "./cameras";
+import { ChaseCamera, CinematicCamera, CockpitCamera, OnboardCamera, FreeCamera, TopCamera, TvCamera } from "./cameras";
 import type { CameraMode, CarCameraState, ReplayCameraController } from "./cameras";
 import { buildTrack, type TrackBuildResult } from "./track/TrackBuilder";
 import { loadAcOverlay, type AcOverlayHandle } from "./track/AcOverlay";
@@ -18,6 +18,7 @@ import { setupSky } from "./Sky";
 import type { QualityPreset } from "./Effects";
 import { applyVehicleRigGeometry, GENERIC_WHEEL_DIMENSIONS } from "./vehicleRigGeometry";
 import { PoseSmoother, type PoseAtTime } from "./poseSmoothing";
+import { FUJI_ONBOARD_CAMERA_PROFILE, validateOnboardCameraProfile, type OnboardCameraProfile } from "./cameras/onboardCameraMath";
 
 const ELEVATION_SCALE = 1;
 const CAR_MODEL_URL = "/assets/MIDSHIP_ROADSTER.glb";
@@ -115,6 +116,19 @@ export class ReplayScene {
   private ghostLap: LapData | null = null;
   private track: TrackData | null = null;
   private activeCameraMode: CameraMode | null = null;
+  private onboardCameraProfile: OnboardCameraProfile = { ...FUJI_ONBOARD_CAMERA_PROFILE };
+
+  /** Apply one global camera model only; replay pose/time and GPS stay intact. */
+  configureOnboardCamera(profile: OnboardCameraProfile | null): void {
+    const next = profile ?? FUJI_ONBOARD_CAMERA_PROFILE;
+    validateOnboardCameraProfile(next);
+    this.onboardCameraProfile = { ...next };
+  }
+
+  getOnboardCameraProfile(): OnboardCameraProfile {
+    return { ...this.onboardCameraProfile };
+  }
+
   private lastSampleTime: number | null = null;
   private lastSample: ReplaySample | null = null;
   private trackCenter = new THREE.Vector3();
@@ -207,6 +221,9 @@ export class ReplayScene {
     return {
       chase: new ChaseCamera(this.camera),
       cockpit: new CockpitCamera(this.camera),
+      onboard: new OnboardCamera(this.camera, () =>
+        this.track?.trackId === "fuji" && this.track.visualProfile === "cg"
+          ? this.onboardCameraProfile : null),
       top: new TopCamera(this.camera),
       free: new FreeCamera(this.camera, this.controls),
       // Barber is hilly: keep TV cameras high and close to the road corridor so
@@ -869,7 +886,7 @@ export class ReplayScene {
     this.cameras[mode].update(state, dt);
     const cinematic = this.cameras.cinematic;
     const cockpitView =
-      mode === "cockpit" ||
+      mode === "cockpit" || mode === "onboard" ||
       (mode === "cinematic" && cinematic instanceof CinematicCamera && cinematic.isCockpitShot);
     this.carRig.root.visible = !cockpitView;
   }

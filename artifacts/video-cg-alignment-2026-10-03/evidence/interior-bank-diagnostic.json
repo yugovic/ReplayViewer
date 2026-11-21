@@ -1,0 +1,3302 @@
+{
+  "scope": "Read-only source-driven interior DTM bank candidate; all parameters frozen before computation in interior-bank-method.json. Camera-only ablation with the original frozen camera profile; no fit, GPS, station, track surface or vehicle height changes. NOT adopted.",
+  "methodSha256": "9bcca4787bbc4041aeb35f011affe949ff4db2859a72d67e86268eb85f1d18f3",
+  "legacyBakeReproduction": {
+    "method": "Exact default legacy bake geometry and bilinear convention on current licensed terrain; 20m circular moving mean and0.08 clamp.",
+    "medianAbsDifferenceDeg": 0.002446158678452548,
+    "p95AbsDifferenceDeg": 0.004205142225942926,
+    "maxAbsDifferenceDeg": 0.004402192856611364,
+    "samplesOver0_1Degree": 0,
+    "count": 651
+  },
+  "bankEstimates": [
+    {
+      "id": "2020-07-29-L3-47.000",
+      "stationMeters": 1820.2246214066267,
+      "currentBodyRollDeg": 2.544068927234732,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 168,
+        "bankDeg": 2.541762988170682,
+        "slope": 0.04439125741794929,
+        "clampedBankDeg": 2.541762988170682,
+        "longitudinalGradient": 0.009065424967568583,
+        "planeResidualMedianAbsMeters": 0.008645734623485168,
+        "planeResidualP95AbsMeters": 0.018889854342700123,
+        "downWeightedSamples": 0
+      },
+      "sensitivityBankMinDeg": 2.5226908519549243,
+      "sensitivityBankMaxDeg": 2.5466395397896107,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 97,
+          "bankDeg": 2.528474395691131,
+          "slope": 0.04415887307772839,
+          "clampedBankDeg": 2.528474395691131,
+          "longitudinalGradient": 0.009245663005589176,
+          "planeResidualMedianAbsMeters": 0.003253116313430837,
+          "planeResidualP95AbsMeters": 0.010888599506779421,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 179,
+          "bankDeg": 2.537096938094436,
+          "slope": 0.04430965929558962,
+          "clampedBankDeg": 2.537096938094436,
+          "longitudinalGradient": 0.009064212150804878,
+          "planeResidualMedianAbsMeters": 0.008552418993190258,
+          "planeResidualP95AbsMeters": 0.018272079673749882,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 259,
+          "bankDeg": 2.5226908519549243,
+          "slope": 0.04405773481029666,
+          "clampedBankDeg": 2.5226908519549243,
+          "longitudinalGradient": 0.009087489703319865,
+          "planeResidualMedianAbsMeters": 0.017269789274223513,
+          "planeResidualP95AbsMeters": 0.042175235175523074,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 91,
+          "bankDeg": 2.535972063279366,
+          "slope": 0.04428998799758681,
+          "clampedBankDeg": 2.535972063279366,
+          "longitudinalGradient": 0.0092421701868435,
+          "planeResidualMedianAbsMeters": 0.0032011437890560046,
+          "planeResidualP95AbsMeters": 0.008403311240158473,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 168,
+          "bankDeg": 2.541762988170682,
+          "slope": 0.04439125741794929,
+          "clampedBankDeg": 2.541762988170682,
+          "longitudinalGradient": 0.009065424967568583,
+          "planeResidualMedianAbsMeters": 0.008645734623485168,
+          "planeResidualP95AbsMeters": 0.018889854342700123,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 243,
+          "bankDeg": 2.5261862011948115,
+          "slope": 0.04411885874391583,
+          "clampedBankDeg": 2.5261862011948115,
+          "longitudinalGradient": 0.00909768462894512,
+          "planeResidualMedianAbsMeters": 0.01710173443768781,
+          "planeResidualP95AbsMeters": 0.04366766462272833,
+          "downWeightedSamples": 15
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 85,
+          "bankDeg": 2.5399667004342277,
+          "slope": 0.044359844546305156,
+          "clampedBankDeg": 2.5399667004342277,
+          "longitudinalGradient": 0.00918137058232009,
+          "planeResidualMedianAbsMeters": 0.0027143763298909107,
+          "planeResidualP95AbsMeters": 0.008191837577714975,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 157,
+          "bankDeg": 2.5466395397896107,
+          "slope": 0.04447653734234572,
+          "clampedBankDeg": 2.5466395397896107,
+          "longitudinalGradient": 0.009041158189436495,
+          "planeResidualMedianAbsMeters": 0.00777617832238775,
+          "planeResidualP95AbsMeters": 0.01756131839979389,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 227,
+          "bankDeg": 2.529204980312991,
+          "slope": 0.04417164905677509,
+          "clampedBankDeg": 2.529204980312991,
+          "longitudinalGradient": 0.009093279210850971,
+          "planeResidualMedianAbsMeters": 0.017641778387201157,
+          "planeResidualP95AbsMeters": 0.04287089873214425,
+          "downWeightedSamples": 15
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "stationMeters": 2002.0615276899318,
+      "currentBodyRollDeg": 1.542353312848452,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": 1.7205703250941975,
+        "slope": 0.03003864712400724,
+        "clampedBankDeg": 1.7205703250941975,
+        "longitudinalGradient": 0.05038267226840561,
+        "planeResidualMedianAbsMeters": 0.009232411691073139,
+        "planeResidualP95AbsMeters": 0.028203172427254234,
+        "downWeightedSamples": 1
+      },
+      "sensitivityBankMinDeg": 1.7154236296229295,
+      "sensitivityBankMaxDeg": 1.7384601243965345,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": 1.7384601243965345,
+          "slope": 0.030351167702483375,
+          "clampedBankDeg": 1.7384601243965345,
+          "longitudinalGradient": 0.05063173902586389,
+          "planeResidualMedianAbsMeters": 0.00645192294774688,
+          "planeResidualP95AbsMeters": 0.016061365999831875,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": 1.7254045092404215,
+          "slope": 0.030123095899194895,
+          "clampedBankDeg": 1.7254045092404215,
+          "longitudinalGradient": 0.05037919302265133,
+          "planeResidualMedianAbsMeters": 0.00918438912253805,
+          "planeResidualP95AbsMeters": 0.030121838804626575,
+          "downWeightedSamples": 2
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": 1.7226238064666177,
+          "slope": 0.0300745195128897,
+          "clampedBankDeg": 1.7226238064666177,
+          "longitudinalGradient": 0.05035275525643797,
+          "planeResidualMedianAbsMeters": 0.012855075147854222,
+          "planeResidualP95AbsMeters": 0.048868715669129856,
+          "downWeightedSamples": 18
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": 1.738441110845738,
+          "slope": 0.03035083554772567,
+          "clampedBankDeg": 1.738441110845738,
+          "longitudinalGradient": 0.05066314936908892,
+          "planeResidualMedianAbsMeters": 0.0064024447136716844,
+          "planeResidualP95AbsMeters": 0.015091659066558804,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": 1.7205703250941975,
+          "slope": 0.03003864712400724,
+          "clampedBankDeg": 1.7205703250941975,
+          "longitudinalGradient": 0.05038267226840561,
+          "planeResidualMedianAbsMeters": 0.009232411691073139,
+          "planeResidualP95AbsMeters": 0.028203172427254234,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": 1.7218572009791926,
+          "slope": 0.030061127626749784,
+          "clampedBankDeg": 1.7218572009791926,
+          "longitudinalGradient": 0.05031648310627173,
+          "planeResidualMedianAbsMeters": 0.012966004348925253,
+          "planeResidualP95AbsMeters": 0.04365937123740194,
+          "downWeightedSamples": 15
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": 1.735914357442522,
+          "slope": 0.03030669481661421,
+          "clampedBankDeg": 1.735914357442522,
+          "longitudinalGradient": 0.050678487862579426,
+          "planeResidualMedianAbsMeters": 0.00631525407072786,
+          "planeResidualP95AbsMeters": 0.014696435401145893,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": 1.7161289021519917,
+          "slope": 0.029961059905126267,
+          "clampedBankDeg": 1.7161289021519917,
+          "longitudinalGradient": 0.0504250311141278,
+          "planeResidualMedianAbsMeters": 0.008248125122122474,
+          "planeResidualP95AbsMeters": 0.027285235014903715,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": 1.7154236296229295,
+          "slope": 0.02994873953225934,
+          "clampedBankDeg": 1.7154236296229295,
+          "longitudinalGradient": 0.05032373779248463,
+          "planeResidualMedianAbsMeters": 0.012144106466507765,
+          "planeResidualP95AbsMeters": 0.043907430946359224,
+          "downWeightedSamples": 12
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-55.000",
+      "stationMeters": 2088.882836428457,
+      "currentBodyRollDeg": -2.6265416987504735,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -2.5339817163490004,
+        "slope": -0.04425518180155549,
+        "clampedBankDeg": -2.5339817163490004,
+        "longitudinalGradient": 0.02682585822604231,
+        "planeResidualMedianAbsMeters": 0.013952764790815309,
+        "planeResidualP95AbsMeters": 0.04150036037474365,
+        "downWeightedSamples": 9
+      },
+      "sensitivityBankMinDeg": -2.567576581937475,
+      "sensitivityBankMaxDeg": -2.5102968652596003,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -2.5102968652596003,
+          "slope": -0.04384100110990679,
+          "clampedBankDeg": -2.5102968652596003,
+          "longitudinalGradient": 0.026236027362931208,
+          "planeResidualMedianAbsMeters": 0.008392227616752734,
+          "planeResidualP95AbsMeters": 0.02376267766701971,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -2.531179538220192,
+          "slope": -0.04420617888715152,
+          "clampedBankDeg": -2.531179538220192,
+          "longitudinalGradient": 0.02680990229262087,
+          "planeResidualMedianAbsMeters": 0.014115627674641473,
+          "planeResidualP95AbsMeters": 0.04378518309899845,
+          "downWeightedSamples": 13
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 227,
+          "bankDeg": -2.555127549203072,
+          "slope": -0.04462497508499655,
+          "clampedBankDeg": -2.555127549203072,
+          "longitudinalGradient": 0.026837409242948026,
+          "planeResidualMedianAbsMeters": 0.019951181115061445,
+          "planeResidualP95AbsMeters": 0.06428528230204618,
+          "downWeightedSamples": 42
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -2.5123950733869003,
+          "slope": -0.043877692195136514,
+          "clampedBankDeg": -2.5123950733869003,
+          "longitudinalGradient": 0.026276015350571648,
+          "planeResidualMedianAbsMeters": 0.007691645229101596,
+          "planeResidualP95AbsMeters": 0.022396734313753084,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -2.5339817163490004,
+          "slope": -0.04425518180155549,
+          "clampedBankDeg": -2.5339817163490004,
+          "longitudinalGradient": 0.02682585822604231,
+          "planeResidualMedianAbsMeters": 0.013952764790815309,
+          "planeResidualP95AbsMeters": 0.04150036037474365,
+          "downWeightedSamples": 9
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 211,
+          "bankDeg": -2.5595166528553244,
+          "slope": -0.044701732206415684,
+          "clampedBankDeg": -2.5595166528553244,
+          "longitudinalGradient": 0.02684012831115551,
+          "planeResidualMedianAbsMeters": 0.019179487628662173,
+          "planeResidualP95AbsMeters": 0.0610470297145298,
+          "downWeightedSamples": 36
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -2.5170256330503458,
+          "slope": -0.04395866659078789,
+          "clampedBankDeg": -2.5170256330503458,
+          "longitudinalGradient": 0.02629291904946205,
+          "planeResidualMedianAbsMeters": 0.006957489367209746,
+          "planeResidualP95AbsMeters": 0.02149827208059492,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -2.5399795752259986,
+          "slope": -0.0443600696959928,
+          "clampedBankDeg": -2.5399795752259986,
+          "longitudinalGradient": 0.02682735640615424,
+          "planeResidualMedianAbsMeters": 0.012835722897079904,
+          "planeResidualP95AbsMeters": 0.039211363178526415,
+          "downWeightedSamples": 6
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 195,
+          "bankDeg": -2.567576581937475,
+          "slope": -0.04484268649136906,
+          "clampedBankDeg": -2.567576581937475,
+          "longitudinalGradient": 0.026834765256176965,
+          "planeResidualMedianAbsMeters": 0.01855613174177506,
+          "planeResidualP95AbsMeters": 0.06060642314176897,
+          "downWeightedSamples": 27
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-60.000",
+      "stationMeters": 2214.869867344822,
+      "currentBodyRollDeg": -4.088392753202225,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 180,
+        "bankDeg": -4.057278421261658,
+        "slope": -0.07093146782828649,
+        "clampedBankDeg": -4.057278421261658,
+        "longitudinalGradient": -0.016982550203169154,
+        "planeResidualMedianAbsMeters": 0.0075338532585647044,
+        "planeResidualP95AbsMeters": 0.02040428161762975,
+        "downWeightedSamples": 0
+      },
+      "sensitivityBankMinDeg": -4.073081501823664,
+      "sensitivityBankMaxDeg": -4.040537548805539,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 105,
+          "bankDeg": -4.062208748983122,
+          "slope": -0.071017951751639,
+          "clampedBankDeg": -4.062208748983122,
+          "longitudinalGradient": -0.016937820836599324,
+          "planeResidualMedianAbsMeters": 0.004148020295815513,
+          "planeResidualP95AbsMeters": 0.01111631076366848,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 191,
+          "bankDeg": -4.053864627648596,
+          "slope": -0.07087158636975097,
+          "clampedBankDeg": -4.053864627648596,
+          "longitudinalGradient": -0.016989005813568187,
+          "planeResidualMedianAbsMeters": 0.007668086972785204,
+          "planeResidualP95AbsMeters": 0.020412227801728022,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 281,
+          "bankDeg": -4.040537548805539,
+          "slope": -0.070637820507546,
+          "clampedBankDeg": -4.040537548805539,
+          "longitudinalGradient": -0.01704009449324928,
+          "planeResidualMedianAbsMeters": 0.014469560517795799,
+          "planeResidualP95AbsMeters": 0.039832438522807934,
+          "downWeightedSamples": 14
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 99,
+          "bankDeg": -4.067844737599487,
+          "slope": -0.07111681511715859,
+          "clampedBankDeg": -4.067844737599487,
+          "longitudinalGradient": -0.01691881111525989,
+          "planeResidualMedianAbsMeters": 0.003874845819609618,
+          "planeResidualP95AbsMeters": 0.010427380496969361,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 180,
+          "bankDeg": -4.057278421261658,
+          "slope": -0.07093146782828649,
+          "clampedBankDeg": -4.057278421261658,
+          "longitudinalGradient": -0.016982550203169154,
+          "planeResidualMedianAbsMeters": 0.0075338532585647044,
+          "planeResidualP95AbsMeters": 0.02040428161762975,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 265,
+          "bankDeg": -4.041701445882987,
+          "slope": -0.07065823573298144,
+          "clampedBankDeg": -4.041701445882987,
+          "longitudinalGradient": -0.017040637748507892,
+          "planeResidualMedianAbsMeters": 0.01415419171053145,
+          "planeResidualP95AbsMeters": 0.03983375275274736,
+          "downWeightedSamples": 13
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 93,
+          "bankDeg": -4.073081501823664,
+          "slope": -0.07120867675096278,
+          "clampedBankDeg": -4.073081501823664,
+          "longitudinalGradient": -0.01692218820860189,
+          "planeResidualMedianAbsMeters": 0.0036081105572520755,
+          "planeResidualP95AbsMeters": 0.010482999518740143,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 169,
+          "bankDeg": -4.062400129438818,
+          "slope": -0.07102130881807138,
+          "clampedBankDeg": -4.062400129438818,
+          "longitudinalGradient": -0.016967116335042977,
+          "planeResidualMedianAbsMeters": 0.007581988659353556,
+          "planeResidualP95AbsMeters": 0.019216267565366252,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 249,
+          "bankDeg": -4.043742499004491,
+          "slope": -0.07069403677167459,
+          "clampedBankDeg": -4.043742499004491,
+          "longitudinalGradient": -0.01703567500019622,
+          "planeResidualMedianAbsMeters": 0.014155865513430399,
+          "planeResidualP95AbsMeters": 0.03771454948187056,
+          "downWeightedSamples": 10
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "stationMeters": 2345.9983253688815,
+      "currentBodyRollDeg": -1.6857666242095888,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -1.7167557829981603,
+        "slope": -0.029972010864974814,
+        "clampedBankDeg": -1.7167557829981603,
+        "longitudinalGradient": -0.018032047575658523,
+        "planeResidualMedianAbsMeters": 0.011232644396500291,
+        "planeResidualP95AbsMeters": 0.04560293696964664,
+        "downWeightedSamples": 12
+      },
+      "sensitivityBankMinDeg": -1.7242830617482228,
+      "sensitivityBankMaxDeg": -1.7077200786409685,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -1.7077200786409685,
+          "slope": -0.029814167150673795,
+          "clampedBankDeg": -1.7077200786409685,
+          "longitudinalGradient": -0.018244634678621672,
+          "planeResidualMedianAbsMeters": 0.007523770943180352,
+          "planeResidualP95AbsMeters": 0.025570916236995343,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -1.711718553553027,
+          "slope": -0.02988401588057923,
+          "clampedBankDeg": -1.711718553553027,
+          "longitudinalGradient": -0.0180387058230613,
+          "planeResidualMedianAbsMeters": 0.01198748588313947,
+          "planeResidualP95AbsMeters": 0.05121444927606831,
+          "downWeightedSamples": 17
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": -1.71364573895721,
+          "slope": -0.029917681683568557,
+          "clampedBankDeg": -1.71364573895721,
+          "longitudinalGradient": -0.017925811232865733,
+          "planeResidualMedianAbsMeters": 0.01971440529382562,
+          "planeResidualP95AbsMeters": 0.0755297453399578,
+          "downWeightedSamples": 53
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -1.7143942645258403,
+          "slope": -0.029930757617763124,
+          "clampedBankDeg": -1.7143942645258403,
+          "longitudinalGradient": -0.01825736803233423,
+          "planeResidualMedianAbsMeters": 0.006906756706257511,
+          "planeResidualP95AbsMeters": 0.02441953340347709,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -1.7167557829981603,
+          "slope": -0.029972010864974814,
+          "clampedBankDeg": -1.7167557829981603,
+          "longitudinalGradient": -0.018032047575658523,
+          "planeResidualMedianAbsMeters": 0.011232644396500291,
+          "planeResidualP95AbsMeters": 0.04560293696964664,
+          "downWeightedSamples": 12
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": -1.720223375819458,
+          "slope": -0.030032586254011055,
+          "clampedBankDeg": -1.720223375819458,
+          "longitudinalGradient": -0.017919966935977874,
+          "planeResidualMedianAbsMeters": 0.01817698860395467,
+          "planeResidualP95AbsMeters": 0.06931156348973101,
+          "downWeightedSamples": 42
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -1.7198580609659666,
+          "slope": -0.030026204557407944,
+          "clampedBankDeg": -1.7198580609659666,
+          "longitudinalGradient": -0.018268838775131687,
+          "planeResidualMedianAbsMeters": 0.005835072580396172,
+          "planeResidualP95AbsMeters": 0.02272607740650301,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -1.7227899256489827,
+          "slope": -0.030077421462199237,
+          "clampedBankDeg": -1.7227899256489827,
+          "longitudinalGradient": -0.018035076025162647,
+          "planeResidualMedianAbsMeters": 0.010674454660374977,
+          "planeResidualP95AbsMeters": 0.0405577219060774,
+          "downWeightedSamples": 7
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": -1.7242830617482228,
+          "slope": -0.030103505199102328,
+          "clampedBankDeg": -1.7242830617482228,
+          "longitudinalGradient": -0.017915869534810162,
+          "planeResidualMedianAbsMeters": 0.016419496396963495,
+          "planeResidualP95AbsMeters": 0.06371630238095918,
+          "downWeightedSamples": 36
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-68.000",
+      "stationMeters": 2480.1764951203136,
+      "currentBodyRollDeg": 0.8743617967326721,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": 1.3984302980160546,
+        "slope": 0.02441206077213553,
+        "clampedBankDeg": 1.3984302980160546,
+        "longitudinalGradient": -0.02427470544720498,
+        "planeResidualMedianAbsMeters": 0.00428245517787218,
+        "planeResidualP95AbsMeters": 0.011663541905522835,
+        "downWeightedSamples": 0
+      },
+      "sensitivityBankMinDeg": 1.384681740218846,
+      "sensitivityBankMaxDeg": 1.423964254965648,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": 1.4210255484821612,
+          "slope": 0.02480666112666281,
+          "clampedBankDeg": 1.4210255484821612,
+          "longitudinalGradient": -0.024071433149708502,
+          "planeResidualMedianAbsMeters": 0.0038981656815622046,
+          "planeResidualP95AbsMeters": 0.010656205835545043,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": 1.3959065152629269,
+          "slope": 0.024367986250314954,
+          "clampedBankDeg": 1.3959065152629269,
+          "longitudinalGradient": -0.024276435496649717,
+          "planeResidualMedianAbsMeters": 0.004357408772648341,
+          "planeResidualP95AbsMeters": 0.014368993277855678,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": 1.3866503705024689,
+          "slope": 0.02420634075483104,
+          "clampedBankDeg": 1.3866503705024689,
+          "longitudinalGradient": -0.024552266333163028,
+          "planeResidualMedianAbsMeters": 0.005366199291131579,
+          "planeResidualP95AbsMeters": 0.016190151068116165,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": 1.423964254965648,
+          "slope": 0.024857982858306465,
+          "clampedBankDeg": 1.423964254965648,
+          "longitudinalGradient": -0.024056815910939076,
+          "planeResidualMedianAbsMeters": 0.004046986387493234,
+          "planeResidualP95AbsMeters": 0.009791316433290825,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": 1.3984302980160546,
+          "slope": 0.02441206077213553,
+          "clampedBankDeg": 1.3984302980160546,
+          "longitudinalGradient": -0.02427470544720498,
+          "planeResidualMedianAbsMeters": 0.00428245517787218,
+          "planeResidualP95AbsMeters": 0.011663541905522835,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": 1.3869594388355857,
+          "slope": 0.02421173817631252,
+          "clampedBankDeg": 1.3869594388355857,
+          "longitudinalGradient": -0.02455387899915956,
+          "planeResidualMedianAbsMeters": 0.0050636772274401665,
+          "planeResidualP95AbsMeters": 0.01518710981296748,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": 1.4204230257971056,
+          "slope": 0.02479613865349683,
+          "clampedBankDeg": 1.4204230257971056,
+          "longitudinalGradient": -0.024075041072167177,
+          "planeResidualMedianAbsMeters": 0.003667312353854868,
+          "planeResidualP95AbsMeters": 0.009052518298250335,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": 1.3960410056993993,
+          "slope": 0.024370334945202556,
+          "clampedBankDeg": 1.3960410056993993,
+          "longitudinalGradient": -0.024258277162866784,
+          "planeResidualMedianAbsMeters": 0.004402926986188049,
+          "planeResidualP95AbsMeters": 0.012313333601434806,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": 1.384681740218846,
+          "slope": 0.024171961570609597,
+          "clampedBankDeg": 1.384681740218846,
+          "longitudinalGradient": -0.02455821879497589,
+          "planeResidualMedianAbsMeters": 0.0047461324185178455,
+          "planeResidualP95AbsMeters": 0.013298896006438096,
+          "downWeightedSamples": 0
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "stationMeters": 935.5354145901933,
+      "currentBodyRollDeg": 1.1929227889427552,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 140,
+        "bankDeg": 1.3011088188973783,
+        "slope": 0.022712537099605884,
+        "clampedBankDeg": 1.3011088188973783,
+        "longitudinalGradient": -0.09557675977150845,
+        "planeResidualMedianAbsMeters": 0.03213087334665943,
+        "planeResidualP95AbsMeters": 0.12931310383057726,
+        "downWeightedSamples": 31
+      },
+      "sensitivityBankMinDeg": 1.2159080627213166,
+      "sensitivityBankMaxDeg": 1.4455559593991723,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 81,
+          "bankDeg": 1.4455559593991723,
+          "slope": 0.02523506560264148,
+          "clampedBankDeg": 1.4455559593991723,
+          "longitudinalGradient": -0.0947992128883284,
+          "planeResidualMedianAbsMeters": 0.022815763068251727,
+          "planeResidualP95AbsMeters": 0.09710742984555054,
+          "downWeightedSamples": 20
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 151,
+          "bankDeg": 1.2990587715893211,
+          "slope": 0.022676738595849136,
+          "clampedBankDeg": 1.2990587715893211,
+          "longitudinalGradient": -0.0954116945883716,
+          "planeResidualMedianAbsMeters": 0.03730682651905681,
+          "planeResidualP95AbsMeters": 0.13633520361400997,
+          "downWeightedSamples": 37
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 221,
+          "bankDeg": 1.2358731256178475,
+          "slope": 0.021573401081945866,
+          "clampedBankDeg": 1.2358731256178475,
+          "longitudinalGradient": -0.09571801987944145,
+          "planeResidualMedianAbsMeters": 0.04904124616177796,
+          "planeResidualP95AbsMeters": 0.1850368766882866,
+          "downWeightedSamples": 46
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 75,
+          "bankDeg": 1.4400153997934146,
+          "slope": 0.025138303250914304,
+          "clampedBankDeg": 1.4400153997934146,
+          "longitudinalGradient": -0.09496405095897766,
+          "planeResidualMedianAbsMeters": 0.021882886853973105,
+          "planeResidualP95AbsMeters": 0.07876377736414494,
+          "downWeightedSamples": 17
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 140,
+          "bankDeg": 1.3011088188973783,
+          "slope": 0.022712537099605884,
+          "clampedBankDeg": 1.3011088188973783,
+          "longitudinalGradient": -0.09557675977150845,
+          "planeResidualMedianAbsMeters": 0.03213087334665943,
+          "planeResidualP95AbsMeters": 0.12931310383057726,
+          "downWeightedSamples": 31
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 205,
+          "bankDeg": 1.2159080627213166,
+          "slope": 0.021224785430086122,
+          "clampedBankDeg": 1.2159080627213166,
+          "longitudinalGradient": -0.09578382867615778,
+          "planeResidualMedianAbsMeters": 0.04687692592949588,
+          "planeResidualP95AbsMeters": 0.16586216324355973,
+          "downWeightedSamples": 43
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 69,
+          "bankDeg": 1.4171031451844536,
+          "slope": 0.024738160263196612,
+          "clampedBankDeg": 1.4171031451844536,
+          "longitudinalGradient": -0.09490431571913588,
+          "planeResidualMedianAbsMeters": 0.02081067625158539,
+          "planeResidualP95AbsMeters": 0.07632193731017194,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 129,
+          "bankDeg": 1.2874474188943799,
+          "slope": 0.022473978976861583,
+          "clampedBankDeg": 1.2874474188943799,
+          "longitudinalGradient": -0.09566554115601433,
+          "planeResidualMedianAbsMeters": 0.034226767696736715,
+          "planeResidualP95AbsMeters": 0.11580504390319671,
+          "downWeightedSamples": 25
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 189,
+          "bankDeg": 1.2314524416835673,
+          "slope": 0.02149620981137223,
+          "clampedBankDeg": 1.2314524416835673,
+          "longitudinalGradient": -0.09593930316869492,
+          "planeResidualMedianAbsMeters": 0.04211149030754768,
+          "planeResidualP95AbsMeters": 0.16613726972993842,
+          "downWeightedSamples": 44
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "stationMeters": 1916.2423326068936,
+      "currentBodyRollDeg": 2.574737988633823,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 176,
+        "bankDeg": 2.5727078861441943,
+        "slope": 0.04493242509482362,
+        "clampedBankDeg": 2.5727078861441943,
+        "longitudinalGradient": 0.05050056466035065,
+        "planeResidualMedianAbsMeters": 0.015936059705438765,
+        "planeResidualP95AbsMeters": 0.04592478898086938,
+        "downWeightedSamples": 16
+      },
+      "sensitivityBankMinDeg": 2.5231502685392,
+      "sensitivityBankMaxDeg": 2.5810984817472433,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 102,
+          "bankDeg": 2.5787545148592694,
+          "slope": 0.045038172240533025,
+          "clampedBankDeg": 2.5787545148592694,
+          "longitudinalGradient": 0.0507370582637859,
+          "planeResidualMedianAbsMeters": 0.007252116480060522,
+          "planeResidualP95AbsMeters": 0.023850993011723155,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 187,
+          "bankDeg": 2.574306360427592,
+          "slope": 0.044960380094327276,
+          "clampedBankDeg": 2.574306360427592,
+          "longitudinalGradient": 0.05049638154128691,
+          "planeResidualMedianAbsMeters": 0.0160998572207518,
+          "planeResidualP95AbsMeters": 0.05194059004101062,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 272,
+          "bankDeg": 2.5457394377460085,
+          "slope": 0.044460796532652974,
+          "clampedBankDeg": 2.5457394377460085,
+          "longitudinalGradient": 0.05065879611372375,
+          "planeResidualMedianAbsMeters": 0.029653513323637526,
+          "planeResidualP95AbsMeters": 0.10255612295804893,
+          "downWeightedSamples": 52
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 96,
+          "bankDeg": 2.5810984817472433,
+          "slope": 0.04507916523907251,
+          "clampedBankDeg": 2.5810984817472433,
+          "longitudinalGradient": 0.050698123196428926,
+          "planeResidualMedianAbsMeters": 0.007068471763943762,
+          "planeResidualP95AbsMeters": 0.02256874707057932,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 176,
+          "bankDeg": 2.5727078861441943,
+          "slope": 0.04493242509482362,
+          "clampedBankDeg": 2.5727078861441943,
+          "longitudinalGradient": 0.05050056466035065,
+          "planeResidualMedianAbsMeters": 0.015936059705438765,
+          "planeResidualP95AbsMeters": 0.04592478898086938,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 256,
+          "bankDeg": 2.5386467770605283,
+          "slope": 0.04433676222901498,
+          "clampedBankDeg": 2.5386467770605283,
+          "longitudinalGradient": 0.05063519560279698,
+          "planeResidualMedianAbsMeters": 0.02930468688197152,
+          "planeResidualP95AbsMeters": 0.10084035632090149,
+          "downWeightedSamples": 51
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 90,
+          "bankDeg": 2.56708655318586,
+          "slope": 0.0448341166813429,
+          "clampedBankDeg": 2.56708655318586,
+          "longitudinalGradient": 0.05072837155487347,
+          "planeResidualMedianAbsMeters": 0.006496945626281558,
+          "planeResidualP95AbsMeters": 0.020984608926579537,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 165,
+          "bankDeg": 2.5621936728219383,
+          "slope": 0.04474854848040897,
+          "clampedBankDeg": 2.5621936728219383,
+          "longitudinalGradient": 0.050495204644744524,
+          "planeResidualMedianAbsMeters": 0.01564501117184136,
+          "planeResidualP95AbsMeters": 0.04479116271061224,
+          "downWeightedSamples": 12
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 240,
+          "bankDeg": 2.5231502685392,
+          "slope": 0.04406576870942483,
+          "clampedBankDeg": 2.5231502685392,
+          "longitudinalGradient": 0.05063704676970282,
+          "planeResidualMedianAbsMeters": 0.02878071548752814,
+          "planeResidualP95AbsMeters": 0.09563651375144668,
+          "downWeightedSamples": 44
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "stationMeters": 2006.947193792811,
+      "currentBodyRollDeg": 1.349652831167984,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": 1.5809707109533873,
+        "slope": 0.02760014938804966,
+        "clampedBankDeg": 1.5809707109533873,
+        "longitudinalGradient": 0.04894931458442017,
+        "planeResidualMedianAbsMeters": 0.009828294035401086,
+        "planeResidualP95AbsMeters": 0.03240373078939456,
+        "downWeightedSamples": 1
+      },
+      "sensitivityBankMinDeg": 1.5500442993923855,
+      "sensitivityBankMaxDeg": 1.5971418109896725,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": 1.5971418109896725,
+          "slope": 0.027882605535801384,
+          "clampedBankDeg": 1.5971418109896725,
+          "longitudinalGradient": 0.04894238202895946,
+          "planeResidualMedianAbsMeters": 0.0076148535078459645,
+          "planeResidualP95AbsMeters": 0.021913540206350033,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": 1.5822553635554293,
+          "slope": 0.027622587899513093,
+          "clampedBankDeg": 1.5822553635554293,
+          "longitudinalGradient": 0.04896220833707017,
+          "planeResidualMedianAbsMeters": 0.00978417860449099,
+          "planeResidualP95AbsMeters": 0.03419022464182717,
+          "downWeightedSamples": 2
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": 1.5626408047915572,
+          "slope": 0.027279991287166707,
+          "clampedBankDeg": 1.5626408047915572,
+          "longitudinalGradient": 0.04904468274244142,
+          "planeResidualMedianAbsMeters": 0.015755804482239455,
+          "planeResidualP95AbsMeters": 0.05300398901307515,
+          "downWeightedSamples": 23
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": 1.5924651113684023,
+          "slope": 0.027800918457425428,
+          "clampedBankDeg": 1.5924651113684023,
+          "longitudinalGradient": 0.04892188507286848,
+          "planeResidualMedianAbsMeters": 0.00753084979032792,
+          "planeResidualP95AbsMeters": 0.019469801279933554,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": 1.5809707109533873,
+          "slope": 0.02760014938804966,
+          "clampedBankDeg": 1.5809707109533873,
+          "longitudinalGradient": 0.04894931458442017,
+          "planeResidualMedianAbsMeters": 0.009828294035401086,
+          "planeResidualP95AbsMeters": 0.03240373078939456,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": 1.5567111002228675,
+          "slope": 0.02717642169163132,
+          "clampedBankDeg": 1.5567111002228675,
+          "longitudinalGradient": 0.04901876838699852,
+          "planeResidualMedianAbsMeters": 0.015141801343020234,
+          "planeResidualP95AbsMeters": 0.05306850028007933,
+          "downWeightedSamples": 18
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": 1.5860571819936096,
+          "slope": 0.0276889928994127,
+          "clampedBankDeg": 1.5860571819936096,
+          "longitudinalGradient": 0.048956768060839304,
+          "planeResidualMedianAbsMeters": 0.006987452114231019,
+          "planeResidualP95AbsMeters": 0.020078735219465217,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": 1.5757361701887393,
+          "slope": 0.027508720052040837,
+          "clampedBankDeg": 1.5757361701887393,
+          "longitudinalGradient": 0.04897281616053547,
+          "planeResidualMedianAbsMeters": 0.009528918211856308,
+          "planeResidualP95AbsMeters": 0.0311265572087052,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": 1.5500442993923855,
+          "slope": 0.02705997849741125,
+          "clampedBankDeg": 1.5500442993923855,
+          "longitudinalGradient": 0.04904323487680598,
+          "planeResidualMedianAbsMeters": 0.014578967378611196,
+          "planeResidualP95AbsMeters": 0.0476873501145178,
+          "downWeightedSamples": 15
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "stationMeters": 2085.353184235972,
+      "currentBodyRollDeg": -2.450006617600679,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -2.366611278361725,
+        "slope": -0.04132866543059589,
+        "clampedBankDeg": -2.366611278361725,
+        "longitudinalGradient": 0.028165994393627387,
+        "planeResidualMedianAbsMeters": 0.01159552507567696,
+        "planeResidualP95AbsMeters": 0.03858394206780531,
+        "downWeightedSamples": 6
+      },
+      "sensitivityBankMinDeg": -2.383181352195295,
+      "sensitivityBankMaxDeg": -2.358888947723185,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -2.3600233491895573,
+          "slope": -0.041213488528089856,
+          "clampedBankDeg": -2.3600233491895573,
+          "longitudinalGradient": 0.028425334265829362,
+          "planeResidualMedianAbsMeters": 0.006991724855993198,
+          "planeResidualP95AbsMeters": 0.02050202953232656,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -2.3654397233652853,
+          "slope": -0.04130818303033161,
+          "clampedBankDeg": -2.3654397233652853,
+          "longitudinalGradient": 0.028183039574311425,
+          "planeResidualMedianAbsMeters": 0.01247996812992369,
+          "planeResidualP95AbsMeters": 0.0432266065759279,
+          "downWeightedSamples": 10
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": -2.3776254637443746,
+          "slope": -0.04152122910878514,
+          "clampedBankDeg": -2.3776254637443746,
+          "longitudinalGradient": 0.028048185526888675,
+          "planeResidualMedianAbsMeters": 0.019595079749308297,
+          "planeResidualP95AbsMeters": 0.06334510854317159,
+          "downWeightedSamples": 36
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -2.358888947723185,
+          "slope": -0.041193655873949964,
+          "clampedBankDeg": -2.358888947723185,
+          "longitudinalGradient": 0.028439392620983855,
+          "planeResidualMedianAbsMeters": 0.005969274542337644,
+          "planeResidualP95AbsMeters": 0.020137382840772485,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -2.366611278361725,
+          "slope": -0.04132866543059589,
+          "clampedBankDeg": -2.366611278361725,
+          "longitudinalGradient": 0.028165994393627387,
+          "planeResidualMedianAbsMeters": 0.01159552507567696,
+          "planeResidualP95AbsMeters": 0.03858394206780531,
+          "downWeightedSamples": 6
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": -2.379204883934942,
+          "slope": -0.041548842747266015,
+          "clampedBankDeg": -2.379204883934942,
+          "longitudinalGradient": 0.028046686042507284,
+          "planeResidualMedianAbsMeters": 0.018198627590891192,
+          "planeResidualP95AbsMeters": 0.0617329905760755,
+          "downWeightedSamples": 32
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -2.3598535107783927,
+          "slope": -0.041210519254067615,
+          "clampedBankDeg": -2.3598535107783927,
+          "longitudinalGradient": 0.028407024679020954,
+          "planeResidualMedianAbsMeters": 0.005946172369647229,
+          "planeResidualP95AbsMeters": 0.018795670354342067,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -2.370096957569796,
+          "slope": -0.04138960607518382,
+          "clampedBankDeg": -2.370096957569796,
+          "longitudinalGradient": 0.02817811614762574,
+          "planeResidualMedianAbsMeters": 0.011195621698618652,
+          "planeResidualP95AbsMeters": 0.03623043924199007,
+          "downWeightedSamples": 6
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": -2.383181352195295,
+          "slope": -0.041618365221509045,
+          "clampedBankDeg": -2.383181352195295,
+          "longitudinalGradient": 0.02804529673563353,
+          "planeResidualMedianAbsMeters": 0.018125646764246994,
+          "planeResidualP95AbsMeters": 0.058819409151612934,
+          "downWeightedSamples": 22
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "stationMeters": 3146.99361354746,
+      "currentBodyRollDeg": 1.3287653981406604,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 156,
+        "bankDeg": 1.3904982407884054,
+        "slope": 0.024273538220878285,
+        "clampedBankDeg": 1.3904982407884054,
+        "longitudinalGradient": 0.0804799037257161,
+        "planeResidualMedianAbsMeters": 0.007923234142936053,
+        "planeResidualP95AbsMeters": 0.02290118084690107,
+        "downWeightedSamples": 0
+      },
+      "sensitivityBankMinDeg": 1.360011229226422,
+      "sensitivityBankMaxDeg": 1.4887389968790274,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 91,
+          "bankDeg": 1.4887389968790274,
+          "slope": 0.02598924622827835,
+          "clampedBankDeg": 1.4887389968790274,
+          "longitudinalGradient": 0.08072342274797317,
+          "planeResidualMedianAbsMeters": 0.007019916276817639,
+          "planeResidualP95AbsMeters": 0.018896868794968213,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 167,
+          "bankDeg": 1.3965730728730457,
+          "slope": 0.02437962678659823,
+          "clampedBankDeg": 1.3965730728730457,
+          "longitudinalGradient": 0.08048542568562864,
+          "planeResidualMedianAbsMeters": 0.007850279709373353,
+          "planeResidualP95AbsMeters": 0.02383621932597179,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 243,
+          "bankDeg": 1.3623135373633335,
+          "slope": 0.023781338345719424,
+          "clampedBankDeg": 1.3623135373633335,
+          "longitudinalGradient": 0.08028780502801824,
+          "planeResidualMedianAbsMeters": 0.01000546096497601,
+          "planeResidualP95AbsMeters": 0.026739108050890078,
+          "downWeightedSamples": 3
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 85,
+          "bankDeg": 1.485928759459331,
+          "slope": 0.02594016526611112,
+          "clampedBankDeg": 1.485928759459331,
+          "longitudinalGradient": 0.08062023390184926,
+          "planeResidualMedianAbsMeters": 0.008989544851829123,
+          "planeResidualP95AbsMeters": 0.018273775886109428,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 156,
+          "bankDeg": 1.3904982407884054,
+          "slope": 0.024273538220878285,
+          "clampedBankDeg": 1.3904982407884054,
+          "longitudinalGradient": 0.0804799037257161,
+          "planeResidualMedianAbsMeters": 0.007923234142936053,
+          "planeResidualP95AbsMeters": 0.02290118084690107,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 227,
+          "bankDeg": 1.360691328682519,
+          "slope": 0.023753009469742646,
+          "clampedBankDeg": 1.360691328682519,
+          "longitudinalGradient": 0.08029338122452134,
+          "planeResidualMedianAbsMeters": 0.009369158235813302,
+          "planeResidualP95AbsMeters": 0.026962515766354042,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 79,
+          "bankDeg": 1.4882555347315138,
+          "slope": 0.025980802524472237,
+          "clampedBankDeg": 1.4882555347315138,
+          "longitudinalGradient": 0.08063547527082625,
+          "planeResidualMedianAbsMeters": 0.0068050935267365276,
+          "planeResidualP95AbsMeters": 0.019390653230050247,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 145,
+          "bankDeg": 1.3913229604176764,
+          "slope": 0.024287940779902886,
+          "clampedBankDeg": 1.3913229604176764,
+          "longitudinalGradient": 0.08051553373258544,
+          "planeResidualMedianAbsMeters": 0.007871574361274725,
+          "planeResidualP95AbsMeters": 0.02365833714475227,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 211,
+          "bankDeg": 1.360011229226422,
+          "slope": 0.023741132801236218,
+          "clampedBankDeg": 1.360011229226422,
+          "longitudinalGradient": 0.08030421518615137,
+          "planeResidualMedianAbsMeters": 0.009112030894698364,
+          "planeResidualP95AbsMeters": 0.02549783325395083,
+          "downWeightedSamples": 3
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "stationMeters": 3432.9161911951055,
+      "currentBodyRollDeg": -2.985320806881315,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -2.9814352644080784,
+        "slope": -0.05208287909424764,
+        "clampedBankDeg": -2.9814352644080784,
+        "longitudinalGradient": 0.014511107408304878,
+        "planeResidualMedianAbsMeters": 0.016213881540238617,
+        "planeResidualP95AbsMeters": 0.03723931173876736,
+        "downWeightedSamples": 5
+      },
+      "sensitivityBankMinDeg": -3.006767971768016,
+      "sensitivityBankMaxDeg": -2.910500646209881,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -3.006767971768016,
+          "slope": -0.05252622784268347,
+          "clampedBankDeg": -3.006767971768016,
+          "longitudinalGradient": 0.015390239017820224,
+          "planeResidualMedianAbsMeters": 0.009280192743062798,
+          "planeResidualP95AbsMeters": 0.02749885366424108,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -2.9885212530045244,
+          "slope": -0.05220688920631966,
+          "clampedBankDeg": -2.9885212530045244,
+          "longitudinalGradient": 0.014507500866884904,
+          "planeResidualMedianAbsMeters": 0.01818194711694332,
+          "planeResidualP95AbsMeters": 0.04011114384032337,
+          "downWeightedSamples": 8
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": -2.9468181515448673,
+          "slope": -0.05147707656507029,
+          "clampedBankDeg": -2.9468181515448673,
+          "longitudinalGradient": 0.014470909146257913,
+          "planeResidualMedianAbsMeters": 0.03493522141110361,
+          "planeResidualP95AbsMeters": 0.09356720160291729,
+          "downWeightedSamples": 33
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -2.9896120814262606,
+          "slope": -0.05222597966352036,
+          "clampedBankDeg": -2.9896120814262606,
+          "longitudinalGradient": 0.015580109167394503,
+          "planeResidualMedianAbsMeters": 0.007826050969583775,
+          "planeResidualP95AbsMeters": 0.025866296870293577,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -2.9814352644080784,
+          "slope": -0.05208287909424764,
+          "clampedBankDeg": -2.9814352644080784,
+          "longitudinalGradient": 0.014511107408304878,
+          "planeResidualMedianAbsMeters": 0.016213881540238617,
+          "planeResidualP95AbsMeters": 0.03723931173876736,
+          "downWeightedSamples": 5
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": -2.9296459964735777,
+          "slope": -0.05117657634653497,
+          "clampedBankDeg": -2.9296459964735777,
+          "longitudinalGradient": 0.01452001442276598,
+          "planeResidualMedianAbsMeters": 0.033699419895015126,
+          "planeResidualP95AbsMeters": 0.09511818196132252,
+          "downWeightedSamples": 35
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -2.9741883864216336,
+          "slope": -0.05195605494959961,
+          "clampedBankDeg": -2.9741883864216336,
+          "longitudinalGradient": 0.01551805069097717,
+          "planeResidualMedianAbsMeters": 0.008731385551129733,
+          "planeResidualP95AbsMeters": 0.023824807082525015,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -2.967359406216836,
+          "slope": -0.051836545759603316,
+          "clampedBankDeg": -2.967359406216836,
+          "longitudinalGradient": 0.014452924258431116,
+          "planeResidualMedianAbsMeters": 0.016026331853367992,
+          "planeResidualP95AbsMeters": 0.041201503686409034,
+          "downWeightedSamples": 7
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": -2.910500646209881,
+          "slope": -0.050841557513249556,
+          "clampedBankDeg": -2.910500646209881,
+          "longitudinalGradient": 0.014521556484132475,
+          "planeResidualMedianAbsMeters": 0.034752901195645336,
+          "planeResidualP95AbsMeters": 0.09435115657701089,
+          "downWeightedSamples": 28
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "stationMeters": 3911.2705345881964,
+      "currentBodyRollDeg": 2.690175427223049,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 153,
+        "bankDeg": 2.818778778285185,
+        "slope": 0.04923670019385949,
+        "clampedBankDeg": 2.818778778285185,
+        "longitudinalGradient": -0.0020486166508089237,
+        "planeResidualMedianAbsMeters": 0.008746158757162448,
+        "planeResidualP95AbsMeters": 0.026146042019718152,
+        "downWeightedSamples": 0
+      },
+      "sensitivityBankMinDeg": 2.803238348757768,
+      "sensitivityBankMaxDeg": 2.827482975277774,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 90,
+          "bankDeg": 2.803238348757768,
+          "slope": 0.04896481462159939,
+          "clampedBankDeg": 2.803238348757768,
+          "longitudinalGradient": -0.0021982036537394195,
+          "planeResidualMedianAbsMeters": 0.005713163599125437,
+          "planeResidualP95AbsMeters": 0.01810838067029294,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 164,
+          "bankDeg": 2.809296111644342,
+          "slope": 0.04907079656660281,
+          "clampedBankDeg": 2.809296111644342,
+          "longitudinalGradient": -0.002063843301237149,
+          "planeResidualMedianAbsMeters": 0.008807230733339111,
+          "planeResidualP95AbsMeters": 0.028753397143901793,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 239,
+          "bankDeg": 2.8112399465150495,
+          "slope": 0.049104804634485105,
+          "clampedBankDeg": 2.8112399465150495,
+          "longitudinalGradient": -0.0020336379068293664,
+          "planeResidualMedianAbsMeters": 0.012164505201440079,
+          "planeResidualP95AbsMeters": 0.04122394767110791,
+          "downWeightedSamples": 13
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": 2.811578034022129,
+          "slope": 0.04911071960470504,
+          "clampedBankDeg": 2.811578034022129,
+          "longitudinalGradient": -0.002190940352164078,
+          "planeResidualMedianAbsMeters": 0.005767132350854354,
+          "planeResidualP95AbsMeters": 0.01701749406935845,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 153,
+          "bankDeg": 2.818778778285185,
+          "slope": 0.04923670019385949,
+          "clampedBankDeg": 2.818778778285185,
+          "longitudinalGradient": -0.0020486166508089237,
+          "planeResidualMedianAbsMeters": 0.008746158757162448,
+          "planeResidualP95AbsMeters": 0.026146042019718152,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 223,
+          "bankDeg": 2.8184738740251896,
+          "slope": 0.04923136571115464,
+          "clampedBankDeg": 2.8184738740251896,
+          "longitudinalGradient": -0.0020269834544958815,
+          "planeResidualMedianAbsMeters": 0.012280696770176291,
+          "planeResidualP95AbsMeters": 0.03814739123881733,
+          "downWeightedSamples": 9
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": 2.8198233775071118,
+          "slope": 0.04925497610429037,
+          "clampedBankDeg": 2.8198233775071118,
+          "longitudinalGradient": -0.0021994124222117772,
+          "planeResidualMedianAbsMeters": 0.005385760535432382,
+          "planeResidualP95AbsMeters": 0.01531501300105446,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 142,
+          "bankDeg": 2.827482975277774,
+          "slope": 0.04938898651531604,
+          "clampedBankDeg": 2.827482975277774,
+          "longitudinalGradient": -0.0020497416328517856,
+          "planeResidualMedianAbsMeters": 0.007889150232983866,
+          "planeResidualP95AbsMeters": 0.025924561969009097,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 207,
+          "bankDeg": 2.8263139089554903,
+          "slope": 0.04936853270838372,
+          "clampedBankDeg": 2.8263139089554903,
+          "longitudinalGradient": -0.0020364707303884427,
+          "planeResidualMedianAbsMeters": 0.011467284644140818,
+          "planeResidualP95AbsMeters": 0.035856360647790055,
+          "downWeightedSamples": 6
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-44.000",
+      "stationMeters": 1879.0073300522286,
+      "currentBodyRollDeg": 2.8918419769853263,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 199,
+        "bankDeg": 2.508755365383481,
+        "slope": 0.043814045182574514,
+        "clampedBankDeg": 2.508755365383481,
+        "longitudinalGradient": 0.03654939617747303,
+        "planeResidualMedianAbsMeters": 0.014324185160717207,
+        "planeResidualP95AbsMeters": 0.052733382342910314,
+        "downWeightedSamples": 21
+      },
+      "sensitivityBankMinDeg": 2.476460335860433,
+      "sensitivityBankMaxDeg": 2.540201110081764,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 113,
+          "bankDeg": 2.4941841147314503,
+          "slope": 0.043559243512716776,
+          "clampedBankDeg": 2.4941841147314503,
+          "longitudinalGradient": 0.03637932048728563,
+          "planeResidualMedianAbsMeters": 0.0062467085692787805,
+          "planeResidualP95AbsMeters": 0.02249015593624789,
+          "downWeightedSamples": 3
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 210,
+          "bankDeg": 2.5187671644810234,
+          "slope": 0.04398912082407982,
+          "clampedBankDeg": 2.5187671644810234,
+          "longitudinalGradient": 0.036528983240165847,
+          "planeResidualMedianAbsMeters": 0.014402164128625827,
+          "planeResidualP95AbsMeters": 0.05360012466643411,
+          "downWeightedSamples": 25
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 307,
+          "bankDeg": 2.540201110081764,
+          "slope": 0.04436394381788294,
+          "clampedBankDeg": 2.540201110081764,
+          "longitudinalGradient": 0.036575252433169655,
+          "planeResidualMedianAbsMeters": 0.027642055283649825,
+          "planeResidualP95AbsMeters": 0.09825938275660058,
+          "downWeightedSamples": 65
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 107,
+          "bankDeg": 2.483255759305433,
+          "slope": 0.04336814741052783,
+          "clampedBankDeg": 2.483255759305433,
+          "longitudinalGradient": 0.036427201378215104,
+          "planeResidualMedianAbsMeters": 0.005813051245240786,
+          "planeResidualP95AbsMeters": 0.020415109224927595,
+          "downWeightedSamples": 3
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 199,
+          "bankDeg": 2.508755365383481,
+          "slope": 0.043814045182574514,
+          "clampedBankDeg": 2.508755365383481,
+          "longitudinalGradient": 0.03654939617747303,
+          "planeResidualMedianAbsMeters": 0.014324185160717207,
+          "planeResidualP95AbsMeters": 0.052733382342910314,
+          "downWeightedSamples": 21
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 291,
+          "bankDeg": 2.5261238142779567,
+          "slope": 0.044117767767427235,
+          "clampedBankDeg": 2.5261238142779567,
+          "longitudinalGradient": 0.03656990723570074,
+          "planeResidualMedianAbsMeters": 0.027641790635811958,
+          "planeResidualP95AbsMeters": 0.09499558909067218,
+          "downWeightedSamples": 61
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 101,
+          "bankDeg": 2.476460335860433,
+          "slope": 0.04324932244081565,
+          "clampedBankDeg": 2.476460335860433,
+          "longitudinalGradient": 0.03633229555866993,
+          "planeResidualMedianAbsMeters": 0.005606433126672528,
+          "planeResidualP95AbsMeters": 0.02043071958451037,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 188,
+          "bankDeg": 2.5066286377438027,
+          "slope": 0.0437768555883348,
+          "clampedBankDeg": 2.5066286377438027,
+          "longitudinalGradient": 0.03651214632115393,
+          "planeResidualMedianAbsMeters": 0.01390695912772344,
+          "planeResidualP95AbsMeters": 0.049979152613610724,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 275,
+          "bankDeg": 2.5190040031143317,
+          "slope": 0.043993262437499785,
+          "clampedBankDeg": 2.5190040031143317,
+          "longitudinalGradient": 0.036521227856282285,
+          "planeResidualMedianAbsMeters": 0.027948173663048692,
+          "planeResidualP95AbsMeters": 0.08897244217754406,
+          "downWeightedSamples": 54
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-44.500",
+      "stationMeters": 1897.5919727594653,
+      "currentBodyRollDeg": 2.7791722938574783,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 178,
+        "bankDeg": 2.4788648888604503,
+        "slope": 0.04329136838416834,
+        "clampedBankDeg": 2.4788648888604503,
+        "longitudinalGradient": 0.04385653703606757,
+        "planeResidualMedianAbsMeters": 0.014847648859870333,
+        "planeResidualP95AbsMeters": 0.050367394295778925,
+        "downWeightedSamples": 15
+      },
+      "sensitivityBankMinDeg": 2.4390357786241643,
+      "sensitivityBankMaxDeg": 2.4930224745671388,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 103,
+          "bankDeg": 2.4930224745671388,
+          "slope": 0.04353893061617339,
+          "clampedBankDeg": 2.4930224745671388,
+          "longitudinalGradient": 0.04331212933207328,
+          "planeResidualMedianAbsMeters": 0.005592330789909283,
+          "planeResidualP95AbsMeters": 0.02360793265448818,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 189,
+          "bankDeg": 2.4875861457058153,
+          "slope": 0.04344386930907739,
+          "clampedBankDeg": 2.4875861457058153,
+          "longitudinalGradient": 0.043823340119609575,
+          "planeResidualMedianAbsMeters": 0.014967809034033053,
+          "planeResidualP95AbsMeters": 0.053314244649868656,
+          "downWeightedSamples": 17
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 277,
+          "bankDeg": 2.465519989109749,
+          "slope": 0.043058021782688645,
+          "clampedBankDeg": 2.465519989109749,
+          "longitudinalGradient": 0.04402389168110084,
+          "planeResidualMedianAbsMeters": 0.030803267110741217,
+          "planeResidualP95AbsMeters": 0.09306337209625325,
+          "downWeightedSamples": 47
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 97,
+          "bankDeg": 2.4844505393109055,
+          "slope": 0.043389039494308806,
+          "clampedBankDeg": 2.4844505393109055,
+          "longitudinalGradient": 0.043422074369520204,
+          "planeResidualMedianAbsMeters": 0.005215361870909874,
+          "planeResidualP95AbsMeters": 0.021618628258443073,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 178,
+          "bankDeg": 2.4788648888604503,
+          "slope": 0.04329136838416834,
+          "clampedBankDeg": 2.4788648888604503,
+          "longitudinalGradient": 0.04385653703606757,
+          "planeResidualMedianAbsMeters": 0.014847648859870333,
+          "planeResidualP95AbsMeters": 0.050367394295778925,
+          "downWeightedSamples": 15
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 261,
+          "bankDeg": 2.4510682244353537,
+          "slope": 0.042805326011116876,
+          "clampedBankDeg": 2.4510682244353537,
+          "longitudinalGradient": 0.044020895989639555,
+          "planeResidualMedianAbsMeters": 0.030552545648561136,
+          "planeResidualP95AbsMeters": 0.08988451998777691,
+          "downWeightedSamples": 43
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 91,
+          "bankDeg": 2.4758858794640712,
+          "slope": 0.043239277535682435,
+          "clampedBankDeg": 2.4758858794640712,
+          "longitudinalGradient": 0.043522908890913634,
+          "planeResidualMedianAbsMeters": 0.00535618755395717,
+          "planeResidualP95AbsMeters": 0.02114431495027702,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 167,
+          "bankDeg": 2.4691349435030197,
+          "slope": 0.043121231784693584,
+          "clampedBankDeg": 2.4691349435030197,
+          "longitudinalGradient": 0.043909648068909575,
+          "planeResidualMedianAbsMeters": 0.015042298083017158,
+          "planeResidualP95AbsMeters": 0.04740427943816028,
+          "downWeightedSamples": 14
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 245,
+          "bankDeg": 2.4390357786241643,
+          "slope": 0.04259493731004492,
+          "clampedBankDeg": 2.4390357786241643,
+          "longitudinalGradient": 0.044065438566653126,
+          "planeResidualMedianAbsMeters": 0.030245677853827146,
+          "planeResidualP95AbsMeters": 0.09003949946704773,
+          "downWeightedSamples": 40
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-45.500",
+      "stationMeters": 1934.482287706358,
+      "currentBodyRollDeg": 2.182703634873273,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 171,
+        "bankDeg": 2.4568810792431606,
+        "slope": 0.04290696580095203,
+        "clampedBankDeg": 2.4568810792431606,
+        "longitudinalGradient": 0.05971511144054586,
+        "planeResidualMedianAbsMeters": 0.015184171720875383,
+        "planeResidualP95AbsMeters": 0.054198359436952614,
+        "downWeightedSamples": 16
+      },
+      "sensitivityBankMinDeg": 2.4407305502259375,
+      "sensitivityBankMaxDeg": 2.458428740785868,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 99,
+          "bankDeg": 2.4407305502259375,
+          "slope": 0.04262457035856261,
+          "clampedBankDeg": 2.4407305502259375,
+          "longitudinalGradient": 0.05953310147519636,
+          "planeResidualMedianAbsMeters": 0.00913094165525763,
+          "planeResidualP95AbsMeters": 0.02434545326300394,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 182,
+          "bankDeg": 2.4414152240931375,
+          "slope": 0.04263654188901199,
+          "clampedBankDeg": 2.4414152240931375,
+          "longitudinalGradient": 0.05964399917095563,
+          "planeResidualMedianAbsMeters": 0.01581496239577973,
+          "planeResidualP95AbsMeters": 0.05697997210369288,
+          "downWeightedSamples": 20
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 261,
+          "bankDeg": 2.451938162316255,
+          "slope": 0.04282053712157647,
+          "clampedBankDeg": 2.451938162316255,
+          "longitudinalGradient": 0.059595970603701434,
+          "planeResidualMedianAbsMeters": 0.02790498648198536,
+          "planeResidualP95AbsMeters": 0.09883820848006053,
+          "downWeightedSamples": 50
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 93,
+          "bankDeg": 2.449833697006966,
+          "slope": 0.04278373998300139,
+          "clampedBankDeg": 2.449833697006966,
+          "longitudinalGradient": 0.05970894838313945,
+          "planeResidualMedianAbsMeters": 0.00802761515092243,
+          "planeResidualP95AbsMeters": 0.024278942587761768,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 171,
+          "bankDeg": 2.4568810792431606,
+          "slope": 0.04290696580095203,
+          "clampedBankDeg": 2.4568810792431606,
+          "longitudinalGradient": 0.05971511144054586,
+          "planeResidualMedianAbsMeters": 0.015184171720875383,
+          "planeResidualP95AbsMeters": 0.054198359436952614,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 245,
+          "bankDeg": 2.458428740785868,
+          "slope": 0.042934027350862596,
+          "clampedBankDeg": 2.458428740785868,
+          "longitudinalGradient": 0.0596363538188823,
+          "planeResidualMedianAbsMeters": 0.028126224937636835,
+          "planeResidualP95AbsMeters": 0.09533664296684487,
+          "downWeightedSamples": 48
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 87,
+          "bankDeg": 2.4536334465055694,
+          "slope": 0.04285017970304518,
+          "clampedBankDeg": 2.4536334465055694,
+          "longitudinalGradient": 0.05983938985705822,
+          "planeResidualMedianAbsMeters": 0.007695159241052352,
+          "planeResidualP95AbsMeters": 0.024491176635467585,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 160,
+          "bankDeg": 2.45618247589456,
+          "slope": 0.042894750431467885,
+          "clampedBankDeg": 2.45618247589456,
+          "longitudinalGradient": 0.05975161411525988,
+          "planeResidualMedianAbsMeters": 0.015756690056832667,
+          "planeResidualP95AbsMeters": 0.051834154333431554,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 229,
+          "bankDeg": 2.4517905096837542,
+          "slope": 0.04281795537204683,
+          "clampedBankDeg": 2.4517905096837542,
+          "longitudinalGradient": 0.059647405940798176,
+          "planeResidualMedianAbsMeters": 0.027593477858317783,
+          "planeResidualP95AbsMeters": 0.0915902250689669,
+          "downWeightedSamples": 43
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-46.000",
+      "stationMeters": 1952.544509158524,
+      "currentBodyRollDeg": 2.0870981972441194,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 151,
+        "bankDeg": 2.169388722823173,
+        "slope": 0.03788107986708554,
+        "clampedBankDeg": 2.169388722823173,
+        "longitudinalGradient": 0.06658175548702533,
+        "planeResidualMedianAbsMeters": 0.012154573174370853,
+        "planeResidualP95AbsMeters": 0.04156213712644785,
+        "downWeightedSamples": 11
+      },
+      "sensitivityBankMinDeg": 2.13542111246625,
+      "sensitivityBankMaxDeg": 2.179665176639839,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 87,
+          "bankDeg": 2.13542111246625,
+          "slope": 0.03728739576970594,
+          "clampedBankDeg": 2.13542111246625,
+          "longitudinalGradient": 0.06673479369821542,
+          "planeResidualMedianAbsMeters": 0.007407880780419873,
+          "planeResidualP95AbsMeters": 0.024643673485161353,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 162,
+          "bankDeg": 2.1667145283050733,
+          "slope": 0.03783433947514993,
+          "clampedBankDeg": 2.1667145283050733,
+          "longitudinalGradient": 0.06656563104018029,
+          "planeResidualMedianAbsMeters": 0.012499269329453,
+          "planeResidualP95AbsMeters": 0.046145516742802775,
+          "downWeightedSamples": 11
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 236,
+          "bankDeg": 2.1767273048819766,
+          "slope": 0.038009346704703705,
+          "clampedBankDeg": 2.1767273048819766,
+          "longitudinalGradient": 0.06627868289046823,
+          "planeResidualMedianAbsMeters": 0.020362576208128758,
+          "planeResidualP95AbsMeters": 0.07387138667741056,
+          "downWeightedSamples": 44
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 81,
+          "bankDeg": 2.1371728532823795,
+          "slope": 0.037318011957564914,
+          "clampedBankDeg": 2.1371728532823795,
+          "longitudinalGradient": 0.06678259408282446,
+          "planeResidualMedianAbsMeters": 0.006880551903236665,
+          "planeResidualP95AbsMeters": 0.023186873688814558,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 151,
+          "bankDeg": 2.169388722823173,
+          "slope": 0.03788107986708554,
+          "clampedBankDeg": 2.169388722823173,
+          "longitudinalGradient": 0.06658175548702533,
+          "planeResidualMedianAbsMeters": 0.012154573174370853,
+          "planeResidualP95AbsMeters": 0.04156213712644785,
+          "downWeightedSamples": 11
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 220,
+          "bankDeg": 2.179665176639839,
+          "slope": 0.03806069641830359,
+          "clampedBankDeg": 2.179665176639839,
+          "longitudinalGradient": 0.06629822046462848,
+          "planeResidualMedianAbsMeters": 0.01995599321236341,
+          "planeResidualP95AbsMeters": 0.07107331864781936,
+          "downWeightedSamples": 37
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 75,
+          "bankDeg": 2.1386357999694723,
+          "slope": 0.03734358077685829,
+          "clampedBankDeg": 2.1386357999694723,
+          "longitudinalGradient": 0.06681536011892214,
+          "planeResidualMedianAbsMeters": 0.0070785545216267565,
+          "planeResidualP95AbsMeters": 0.021093221006128714,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 140,
+          "bankDeg": 2.1709256331317874,
+          "slope": 0.0379079425315913,
+          "clampedBankDeg": 2.1709256331317874,
+          "longitudinalGradient": 0.06657550522374184,
+          "planeResidualMedianAbsMeters": 0.01100302343581916,
+          "planeResidualP95AbsMeters": 0.03859156921304816,
+          "downWeightedSamples": 6
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 204,
+          "bankDeg": 2.178961455359405,
+          "slope": 0.03804839637841671,
+          "clampedBankDeg": 2.178961455359405,
+          "longitudinalGradient": 0.06630188417478582,
+          "planeResidualMedianAbsMeters": 0.01926498011272315,
+          "planeResidualP95AbsMeters": 0.06854171490205088,
+          "downWeightedSamples": 32
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-93.000",
+      "stationMeters": 3398.1639897194636,
+      "currentBodyRollDeg": -2.2064218338100408,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -2.174480913700783,
+        "slope": -0.03797008319814564,
+        "clampedBankDeg": -2.174480913700783,
+        "longitudinalGradient": -0.006229767202186688,
+        "planeResidualMedianAbsMeters": 0.012861036115737079,
+        "planeResidualP95AbsMeters": 0.03729246949402523,
+        "downWeightedSamples": 7
+      },
+      "sensitivityBankMinDeg": -2.18967029505543,
+      "sensitivityBankMaxDeg": -2.1288198334808706,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -2.189009301493858,
+          "slope": -0.0382240194266617,
+          "clampedBankDeg": -2.189009301493858,
+          "longitudinalGradient": -0.006460546556863102,
+          "planeResidualMedianAbsMeters": 0.006786627455028338,
+          "planeResidualP95AbsMeters": 0.02292848311078046,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -2.18967029505543,
+          "slope": -0.038235572801460636,
+          "clampedBankDeg": -2.18967029505543,
+          "longitudinalGradient": -0.006218511796989831,
+          "planeResidualMedianAbsMeters": 0.013248146399121197,
+          "planeResidualP95AbsMeters": 0.03969210361237853,
+          "downWeightedSamples": 8
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": -2.1545012864632853,
+          "slope": -0.03762087478399018,
+          "clampedBankDeg": -2.1545012864632853,
+          "longitudinalGradient": -0.006074672183434781,
+          "planeResidualMedianAbsMeters": 0.02366271028859046,
+          "planeResidualP95AbsMeters": 0.07851178439296404,
+          "downWeightedSamples": 44
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -2.1739959886284033,
+          "slope": -0.03796160745961598,
+          "clampedBankDeg": -2.1739959886284033,
+          "longitudinalGradient": -0.006477808720080545,
+          "planeResidualMedianAbsMeters": 0.006799440181850969,
+          "planeResidualP95AbsMeters": 0.019815749811772306,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -2.174480913700783,
+          "slope": -0.03797008319814564,
+          "clampedBankDeg": -2.174480913700783,
+          "longitudinalGradient": -0.006229767202186688,
+          "planeResidualMedianAbsMeters": 0.012861036115737079,
+          "planeResidualP95AbsMeters": 0.03729246949402523,
+          "downWeightedSamples": 7
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": -2.140260502581795,
+          "slope": -0.03737197676111975,
+          "clampedBankDeg": -2.140260502581795,
+          "longitudinalGradient": -0.006062790528495097,
+          "planeResidualMedianAbsMeters": 0.023460064589301055,
+          "planeResidualP95AbsMeters": 0.0767660855515885,
+          "downWeightedSamples": 37
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -2.173747172334534,
+          "slope": -0.03795725853863084,
+          "clampedBankDeg": -2.173747172334534,
+          "longitudinalGradient": -0.006477906203227857,
+          "planeResidualMedianAbsMeters": 0.0060545921302264105,
+          "planeResidualP95AbsMeters": 0.018043212851051753,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -2.170391414361607,
+          "slope": -0.03789860525990231,
+          "clampedBankDeg": -2.170391414361607,
+          "longitudinalGradient": -0.006230484701777027,
+          "planeResidualMedianAbsMeters": 0.012739105427840514,
+          "planeResidualP95AbsMeters": 0.034417032247523564,
+          "downWeightedSamples": 5
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": -2.1288198334808706,
+          "slope": -0.03717202202386183,
+          "clampedBankDeg": -2.1288198334808706,
+          "longitudinalGradient": -0.006087499644862573,
+          "planeResidualMedianAbsMeters": 0.024213441329379748,
+          "planeResidualP95AbsMeters": 0.07181730209235297,
+          "downWeightedSamples": 35
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-93.500",
+      "stationMeters": 3414.482856159789,
+      "currentBodyRollDeg": -2.6577193341140894,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -2.5823521431998904,
+        "slope": -0.04510109024484202,
+        "clampedBankDeg": -2.5823521431998904,
+        "longitudinalGradient": 0.006360253558698112,
+        "planeResidualMedianAbsMeters": 0.019210782458799258,
+        "planeResidualP95AbsMeters": 0.04520898501780266,
+        "downWeightedSamples": 13
+      },
+      "sensitivityBankMinDeg": -2.5989516119634986,
+      "sensitivityBankMaxDeg": -2.4863409200661715,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -2.5989516119634986,
+          "slope": -0.045391398742760575,
+          "clampedBankDeg": -2.5989516119634986,
+          "longitudinalGradient": 0.00630612564050613,
+          "planeResidualMedianAbsMeters": 0.008156561407759,
+          "planeResidualP95AbsMeters": 0.022401563720666217,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -2.5963991942135247,
+          "slope": -0.045346758953413634,
+          "clampedBankDeg": -2.5963991942135247,
+          "longitudinalGradient": 0.006416839094683283,
+          "planeResidualMedianAbsMeters": 0.01871638656041341,
+          "planeResidualP95AbsMeters": 0.04922756730350101,
+          "downWeightedSamples": 14
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 224,
+          "bankDeg": -2.5238126230748077,
+          "slope": -0.04407735143042214,
+          "clampedBankDeg": -2.5238126230748077,
+          "longitudinalGradient": 0.0062977766824738254,
+          "planeResidualMedianAbsMeters": 0.03553140891540352,
+          "planeResidualP95AbsMeters": 0.09443195152513226,
+          "downWeightedSamples": 33
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -2.584069232795651,
+          "slope": -0.04513112011236034,
+          "clampedBankDeg": -2.584069232795651,
+          "longitudinalGradient": 0.006197396987826238,
+          "planeResidualMedianAbsMeters": 0.008113120258656181,
+          "planeResidualP95AbsMeters": 0.019210573890160263,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -2.5823521431998904,
+          "slope": -0.04510109024484202,
+          "clampedBankDeg": -2.5823521431998904,
+          "longitudinalGradient": 0.006360253558698112,
+          "planeResidualMedianAbsMeters": 0.019210782458799258,
+          "planeResidualP95AbsMeters": 0.04520898501780266,
+          "downWeightedSamples": 13
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 208,
+          "bankDeg": -2.503365734241551,
+          "slope": -0.04371979818455262,
+          "clampedBankDeg": -2.503365734241551,
+          "longitudinalGradient": 0.006261517424406053,
+          "planeResidualMedianAbsMeters": 0.034947503632281496,
+          "planeResidualP95AbsMeters": 0.09351326294250269,
+          "downWeightedSamples": 30
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -2.5723767487957208,
+          "slope": -0.04492663399108293,
+          "clampedBankDeg": -2.5723767487957208,
+          "longitudinalGradient": 0.006199847284432514,
+          "planeResidualMedianAbsMeters": 0.007410607315307516,
+          "planeResidualP95AbsMeters": 0.019917594071301895,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -2.5766637983170027,
+          "slope": -0.045001608395782544,
+          "clampedBankDeg": -2.5766637983170027,
+          "longitudinalGradient": 0.006284582142858472,
+          "planeResidualMedianAbsMeters": 0.018739568725266054,
+          "planeResidualP95AbsMeters": 0.04681844986517374,
+          "downWeightedSamples": 11
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 192,
+          "bankDeg": -2.4863409200661715,
+          "slope": -0.04342209502354097,
+          "clampedBankDeg": -2.4863409200661715,
+          "longitudinalGradient": 0.006215119357490521,
+          "planeResidualMedianAbsMeters": 0.03421679186277515,
+          "planeResidualP95AbsMeters": 0.09026574450260226,
+          "downWeightedSamples": 23
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-94.500",
+      "stationMeters": 3451.0642227095254,
+      "currentBodyRollDeg": -3.330978959061999,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 144,
+        "bankDeg": -3.2337948249476947,
+        "slope": -0.05650037403757273,
+        "clampedBankDeg": -3.2337948249476947,
+        "longitudinalGradient": 0.02525474040655105,
+        "planeResidualMedianAbsMeters": 0.018799306569746932,
+        "planeResidualP95AbsMeters": 0.044928612650153354,
+        "downWeightedSamples": 15
+      },
+      "sensitivityBankMinDeg": -3.2851033498889937,
+      "sensitivityBankMaxDeg": -3.1952595372445,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 85,
+          "bankDeg": -3.2851033498889937,
+          "slope": -0.05739878113463674,
+          "clampedBankDeg": -3.2851033498889937,
+          "longitudinalGradient": 0.025600844245484426,
+          "planeResidualMedianAbsMeters": 0.009991048244842204,
+          "planeResidualP95AbsMeters": 0.02409539794794,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 155,
+          "bankDeg": -3.2474692110227172,
+          "slope": -0.05673980221313975,
+          "clampedBankDeg": -3.2474692110227172,
+          "longitudinalGradient": 0.025238929422725178,
+          "planeResidualMedianAbsMeters": 0.019177606737571296,
+          "planeResidualP95AbsMeters": 0.04487652988785839,
+          "downWeightedSamples": 15
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 225,
+          "bankDeg": -3.2287798333359716,
+          "slope": -0.056412566940676256,
+          "clampedBankDeg": -3.2287798333359716,
+          "longitudinalGradient": 0.024866703007656466,
+          "planeResidualMedianAbsMeters": 0.03887070646021584,
+          "planeResidualP95AbsMeters": 0.09381752067431531,
+          "downWeightedSamples": 39
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 79,
+          "bankDeg": -3.276986648900193,
+          "slope": -0.057256652406441885,
+          "clampedBankDeg": -3.276986648900193,
+          "longitudinalGradient": 0.02546518005153814,
+          "planeResidualMedianAbsMeters": 0.009843928299005711,
+          "planeResidualP95AbsMeters": 0.027210581731571884,
+          "downWeightedSamples": 0
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 144,
+          "bankDeg": -3.2337948249476947,
+          "slope": -0.05650037403757273,
+          "clampedBankDeg": -3.2337948249476947,
+          "longitudinalGradient": 0.02525474040655105,
+          "planeResidualMedianAbsMeters": 0.018799306569746932,
+          "planeResidualP95AbsMeters": 0.044928612650153354,
+          "downWeightedSamples": 15
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 209,
+          "bankDeg": -3.2060044130653664,
+          "slope": -0.05601380477493989,
+          "clampedBankDeg": -3.2060044130653664,
+          "longitudinalGradient": 0.024806521820154175,
+          "planeResidualMedianAbsMeters": 0.038934896136879615,
+          "planeResidualP95AbsMeters": 0.09162749660779354,
+          "downWeightedSamples": 42
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 73,
+          "bankDeg": -3.2754150864610545,
+          "slope": -0.05722913358973373,
+          "clampedBankDeg": -3.2754150864610545,
+          "longitudinalGradient": 0.025383337204088596,
+          "planeResidualMedianAbsMeters": 0.009502928138090283,
+          "planeResidualP95AbsMeters": 0.023387823906477926,
+          "downWeightedSamples": 1
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 133,
+          "bankDeg": -3.224829364785878,
+          "slope": -0.056343399105651865,
+          "clampedBankDeg": -3.224829364785878,
+          "longitudinalGradient": 0.025244933378363876,
+          "planeResidualMedianAbsMeters": 0.019851828966352514,
+          "planeResidualP95AbsMeters": 0.04456045479678323,
+          "downWeightedSamples": 12
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 193,
+          "bankDeg": -3.1952595372445,
+          "slope": -0.05582568489312001,
+          "clampedBankDeg": -3.1952595372445,
+          "longitudinalGradient": 0.0248081429851239,
+          "planeResidualMedianAbsMeters": 0.03792589154591042,
+          "planeResidualP95AbsMeters": 0.092022944573182,
+          "downWeightedSamples": 35
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-95.000",
+      "stationMeters": 3468.903418460078,
+      "currentBodyRollDeg": -3.666761754830641,
+      "primary": {
+        "marginMeters": 1,
+        "windowMeters": 20,
+        "samples": 143,
+        "bankDeg": -3.62949896239729,
+        "slope": -0.0634315759863988,
+        "clampedBankDeg": -3.62949896239729,
+        "longitudinalGradient": 0.03371555634078738,
+        "planeResidualMedianAbsMeters": 0.02365322687387561,
+        "planeResidualP95AbsMeters": 0.05400678672093591,
+        "downWeightedSamples": 16
+      },
+      "sensitivityBankMinDeg": -3.6524593912816816,
+      "sensitivityBankMaxDeg": -3.5132450759910276,
+      "sensitivity": [
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 10,
+          "samples": 84,
+          "bankDeg": -3.6524593912816816,
+          "slope": -0.06383393370085566,
+          "clampedBankDeg": -3.6524593912816816,
+          "longitudinalGradient": 0.034764942931846475,
+          "planeResidualMedianAbsMeters": 0.011682250791807292,
+          "planeResidualP95AbsMeters": 0.03596962140351249,
+          "downWeightedSamples": 2
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 20,
+          "samples": 154,
+          "bankDeg": -3.6381358867267277,
+          "slope": -0.0635829267248279,
+          "clampedBankDeg": -3.6381358867267277,
+          "longitudinalGradient": 0.03381913737394268,
+          "planeResidualMedianAbsMeters": 0.020377627441916957,
+          "planeResidualP95AbsMeters": 0.05381128117291496,
+          "downWeightedSamples": 23
+        },
+        {
+          "marginMeters": 0.5,
+          "windowMeters": 30,
+          "samples": 225,
+          "bankDeg": -3.5666668711984237,
+          "slope": -0.06233061291227162,
+          "clampedBankDeg": -3.5666668711984237,
+          "longitudinalGradient": 0.03374793208938437,
+          "planeResidualMedianAbsMeters": 0.040596584532863744,
+          "planeResidualP95AbsMeters": 0.11239995954260838,
+          "downWeightedSamples": 38
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 10,
+          "samples": 78,
+          "bankDeg": -3.6355799867041148,
+          "slope": -0.06353813763685709,
+          "clampedBankDeg": -3.6355799867041148,
+          "longitudinalGradient": 0.03475477102607263,
+          "planeResidualMedianAbsMeters": 0.014156565889493322,
+          "planeResidualP95AbsMeters": 0.04294088722371609,
+          "downWeightedSamples": 6
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 20,
+          "samples": 143,
+          "bankDeg": -3.62949896239729,
+          "slope": -0.0634315759863988,
+          "clampedBankDeg": -3.62949896239729,
+          "longitudinalGradient": 0.03371555634078738,
+          "planeResidualMedianAbsMeters": 0.02365322687387561,
+          "planeResidualP95AbsMeters": 0.05400678672093591,
+          "downWeightedSamples": 16
+        },
+        {
+          "marginMeters": 1,
+          "windowMeters": 30,
+          "samples": 209,
+          "bankDeg": -3.5430355535967872,
+          "slope": -0.061916576844528136,
+          "clampedBankDeg": -3.5430355535967872,
+          "longitudinalGradient": 0.03375366874188228,
+          "planeResidualMedianAbsMeters": 0.03872911561552428,
+          "planeResidualP95AbsMeters": 0.1125988055721791,
+          "downWeightedSamples": 32
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 10,
+          "samples": 72,
+          "bankDeg": -3.624822689119333,
+          "slope": -0.06334963165628611,
+          "clampedBankDeg": -3.624822689119333,
+          "longitudinalGradient": 0.03480806370990314,
+          "planeResidualMedianAbsMeters": 0.011241580426485598,
+          "planeResidualP95AbsMeters": 0.03615111793682218,
+          "downWeightedSamples": 2
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 20,
+          "samples": 132,
+          "bankDeg": -3.6339542577926003,
+          "slope": -0.06350964881612714,
+          "clampedBankDeg": -3.6339542577926003,
+          "longitudinalGradient": 0.033778332072218115,
+          "planeResidualMedianAbsMeters": 0.020105814673286204,
+          "planeResidualP95AbsMeters": 0.05369733980386967,
+          "downWeightedSamples": 19
+        },
+        {
+          "marginMeters": 1.5,
+          "windowMeters": 30,
+          "samples": 193,
+          "bankDeg": -3.5132450759910276,
+          "slope": -0.06139465839783268,
+          "clampedBankDeg": -3.5132450759910276,
+          "longitudinalGradient": 0.0337982572114851,
+          "planeResidualMedianAbsMeters": 0.04021816193176164,
+          "planeResidualP95AbsMeters": 0.1093117942775278,
+          "downWeightedSamples": 29
+        }
+      ]
+    }
+  ],
+  "cameraOnlyDiagnostic": [
+    {
+      "id": "2020-07-29-L3-60.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 9.557212671096101,
+        "p95Px": 22.34379696368761,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 14.998061585591092,
+            "p95Px": 23.487074874365014
+          },
+          "paintR": {
+            "medianPx": 5.990764552016593,
+            "p95Px": 9.921331210442897
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 9.342263445381946,
+        "p95Px": 22.103817917747406,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 14.775453765964624,
+            "p95Px": 23.244772907924062
+          },
+          "paintR": {
+            "medianPx": 6.022818164873019,
+            "p95Px": 9.923203728095231
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 9.286123108506501,
+        "p95Px": 15.981224310013278,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 9.286123108506501,
+            "p95Px": 15.981224310013278
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 9.45960777501075,
+        "p95Px": 16.19741259954185,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 9.45960777501075,
+            "p95Px": 16.19741259954185
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 11.213829444135396,
+        "p95Px": 45.510989697885044,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 22.71651751901253,
+            "p95Px": 47.68304626537217
+          },
+          "paintR": {
+            "medianPx": 9.70050425234981,
+            "p95Px": 11.024045972240327
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 10.344566672424687,
+        "p95Px": 45.14804593700781,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 22.71760726856626,
+            "p95Px": 47.29200283806731
+          },
+          "paintR": {
+            "medianPx": 8.891299978396678,
+            "p95Px": 10.160206783390024
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 33.30696555909758,
+        "p95Px": 50.24278938205948,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 33.30696555909758,
+            "p95Px": 50.24278938205948
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 33.30321513444619,
+        "p95Px": 50.23739280786802,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 33.30321513444619,
+            "p95Px": 50.23739280786802
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 8.980527764427569,
+        "p95Px": 12.433356433036952,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 8.980527764427569,
+            "p95Px": 12.433356433036952
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 9.0448840814454,
+        "p95Px": 12.467097319856066,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 9.0448840814454,
+            "p95Px": 12.467097319856066
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 7.633311577763672,
+        "p95Px": 20.62953711388539,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 8.683882952712738,
+            "p95Px": 22.292868916249123
+          },
+          "paintR": {
+            "medianPx": 1.5182974479436857,
+            "p95Px": 2.6051834210474385
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 7.692386229314027,
+        "p95Px": 20.46202946365551,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 8.65011438038596,
+            "p95Px": 22.11425057928743
+          },
+          "paintR": {
+            "medianPx": 1.8610162790273792,
+            "p95Px": 2.3666847702931992
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 54.490746065642455,
+        "p95Px": 87.85173965711249,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 61.60746547786426,
+            "p95Px": 88.6230277408934
+          },
+          "paintR": {
+            "medianPx": 19.56473922882655,
+            "p95Px": 26.02248196368712
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 54.47224632444895,
+        "p95Px": 87.85103527223521,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 61.59304811189196,
+            "p95Px": 88.61678767786672
+          },
+          "paintR": {
+            "medianPx": 19.55033168145009,
+            "p95Px": 25.994379212786093
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 3.8923517294531997,
+        "p95Px": 22.714725633295366,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 11.624710782542174,
+            "p95Px": 24.859935406835667
+          },
+          "paintR": {
+            "medianPx": 0.8933294889860353,
+            "p95Px": 3.468450638498767
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 3.2847962022437676,
+        "p95Px": 22.319372321792795,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 11.460818608640741,
+            "p95Px": 24.434717982157217
+          },
+          "paintR": {
+            "medianPx": 1.167800174094413,
+            "p95Px": 3.113511231462855
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 2.32105513563435,
+        "p95Px": 9.597211025070727,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 2.2820046520536774,
+            "p95Px": 7.873228499914307
+          },
+          "paintR": {
+            "medianPx": 4.12039008963938,
+            "p95Px": 9.22219814394385
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 2.473841912286914,
+        "p95Px": 10.118953310603732,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 2.473841912286914,
+            "p95Px": 8.455882806249587
+          },
+          "paintR": {
+            "medianPx": 4.20578321273663,
+            "p95Px": 9.447250019675847
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "cohort": "originalHeldout",
+      "original": {
+        "medianPx": 11.324806100220984,
+        "p95Px": 19.234663623192983,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 18.862221218241636,
+            "p95Px": 19.326926835861894
+          },
+          "paintR": {
+            "medianPx": 7.598130653567825,
+            "p95Px": 10.711803300901778
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 11.611895062030923,
+        "p95Px": 20.826804726093485,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 20.322607014535738,
+            "p95Px": 21.01331770214699
+          },
+          "paintR": {
+            "medianPx": 8.498777901261162,
+            "p95Px": 11.060180177468833
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-44.000",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 15.134502238514028,
+        "p95Px": 76.2754726512898,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 10.852728764443768,
+            "p95Px": 12.528256283178523
+          },
+          "paintR": {
+            "medianPx": 74.37471248237135,
+            "p95Px": 76.54351154822564
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 14.480062088793261,
+        "p95Px": 75.8171290303976,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 8.779725554805701,
+            "p95Px": 10.952312413519872
+          },
+          "paintR": {
+            "medianPx": 74.01879827435455,
+            "p95Px": 76.12138608648745
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-44.500",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 9.922182373655055,
+        "p95Px": 81.43019527016799,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 6.770863423479322,
+            "p95Px": 9.781919380983172
+          },
+          "paintR": {
+            "medianPx": 64.00953653804567,
+            "p95Px": 81.46255499780189
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 8.865162027401007,
+        "p95Px": 81.0117679333307,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 5.155652296010567,
+            "p95Px": 8.682269905216023
+          },
+          "paintR": {
+            "medianPx": 63.78869709876136,
+            "p95Px": 81.0739340022138
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-45.500",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 5.625135992985058,
+        "p95Px": 20.54351432346986,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 1.6401129094486946,
+            "p95Px": 5.166956804236386
+          },
+          "paintR": {
+            "medianPx": 9.947766621008597,
+            "p95Px": 21.21795414022624
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 5.202384878484769,
+        "p95Px": 20.714464317268643,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 0.9535674278133119,
+            "p95Px": 3.0814464714671512
+          },
+          "paintR": {
+            "medianPx": 11.320761416442444,
+            "p95Px": 20.833484437041413
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-46.000",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 7.367787720917509,
+        "p95Px": 22.761500799298982,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 3.0095331512749866,
+            "p95Px": 5.8326715364123025
+          },
+          "paintR": {
+            "medianPx": 15.856037235628694,
+            "p95Px": 23.20148012625623
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 7.222033485660346,
+        "p95Px": 22.214657966599223,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 2.6143939811349197,
+            "p95Px": 5.302114888754872
+          },
+          "paintR": {
+            "medianPx": 15.447412601023359,
+            "p95Px": 22.64153646315716
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-93.000",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 26.377289333670184,
+        "p95Px": 56.472117728910476,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 51.730936026909134,
+            "p95Px": 59.058838962048945
+          },
+          "paintR": {
+            "medianPx": 21.719753531780064,
+            "p95Px": 26.389097507223113
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 26.13719517918674,
+        "p95Px": 56.508039709249054,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 51.64225593540442,
+            "p95Px": 59.09370602052298
+          },
+          "paintR": {
+            "medianPx": 21.581429392344514,
+            "p95Px": 26.154669260535595
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-93.500",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 25.379700025865358,
+        "p95Px": 70.17771185709043,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 63.58818880557111,
+            "p95Px": 70.20993763685033
+          },
+          "paintR": {
+            "medianPx": 21.199014960231697,
+            "p95Px": 25.44230783599215
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 24.84618529260588,
+        "p95Px": 70.12956309182539,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 63.40399748603718,
+            "p95Px": 70.23847496422616
+          },
+          "paintR": {
+            "medianPx": 20.8726259408983,
+            "p95Px": 24.862560043148996
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-94.500",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 29.518715214230376,
+        "p95Px": 65.97965743552788,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 58.57545927297805,
+            "p95Px": 67.53204523209297
+          },
+          "paintR": {
+            "medianPx": 15.650495079360045,
+            "p95Px": 22.88900572471284
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 29.905880987842934,
+        "p95Px": 65.75122964328415,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 57.947509260067676,
+            "p95Px": 67.59939538448099
+          },
+          "paintR": {
+            "medianPx": 15.282511320052398,
+            "p95Px": 22.153316317116825
+          }
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-95.000",
+      "cohort": "diagnosticSequence",
+      "original": {
+        "medianPx": 20.817873992997683,
+        "p95Px": 93.95428244536006,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 88.16062910809468,
+            "p95Px": 94.45114087400295
+          },
+          "paintR": {
+            "medianPx": 13.388598623129177,
+            "p95Px": 21.039882410264195
+          }
+        }
+      },
+      "interiorBankCameraOnly": {
+        "medianPx": 20.545437982839083,
+        "p95Px": 93.9479281935821,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 88.35059656627388,
+            "p95Px": 94.29821342751475
+          },
+          "paintR": {
+            "medianPx": 13.247704164054234,
+            "p95Px": 20.75830780290833
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "originalHeldout": {
+      "scenes": 10,
+      "improved": 5,
+      "originalMeanSceneMedianPx": 15.20069291559778,
+      "candidateMeanSceneMedianPx": 15.102970283903355,
+      "originalMedianSceneMedianPx": 9.421667889801302,
+      "candidateMedianSceneMedianPx": 9.400935610196349
+    },
+    "diagnosticSequence": {
+      "scenes": 8,
+      "improved": 7,
+      "originalMeanSceneMedianPx": 17.517898361604406,
+      "candidateMeanSceneMedianPx": 17.150542740351753,
+      "originalMedianSceneMedianPx": 17.976188115755853,
+      "candidateMedianSceneMedianPx": 17.512750035816172
+    }
+  },
+  "limits": [
+    "The candidate has not passed full road-surface/vehicle consistency checks; camera-only replacement does not make a coherent road model.",
+    "Fixed original mount roll was calibrated conditional on the original bank; its parameters may absorb some bank bias. No new global refit was performed.",
+    "DTM and raw pavement trace are not independent surveyed ground truth.",
+    "1m grid cannot characterize narrow paint/curb structure or suspension body roll.",
+    "Source-derived slope sensitivity is reported rather than choosing a parameter set that improves video metrics."
+  ]
+}

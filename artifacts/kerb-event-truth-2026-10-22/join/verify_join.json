@@ -1,0 +1,80 @@
+{
+ "1_gapAtOnset_vs_T4_storedArrays": {
+  "n": 34,
+  "maxAbsDiffM": 0.0013,
+  "medianAbsDiffM": 0.0003,
+  "note": "linear interpolation of the stored 100 Hz gaps vs cgpose recomputation at the exact instant"
+ },
+ "2_cgFirstContact_vs_T4_cg_events": {
+  "n": 25,
+  "maxAbsDiffS": 0.0
+ },
+ "3_videoTipDt_byHand": {
+  "n": 58,
+  "maxAbsDiffS": 0.001
+ },
+ "4_sameRuleResidual_vs_T2": {
+  "join": {
+   "n": 23,
+   "median": 0.013
+  },
+  "t2": {
+   "n": 23,
+   "median": 0.013
+  },
+  "agree": true
+ },
+ "5_noPersonalAbsolutePaths": {
+  "hits": [],
+  "ok": true,
+  "scope": "all .json / .py / .svg in this folder (drive-letter user/dev paths, the local media folder, the login name)"
+ },
+ "6_detectionTolerance_rederived": {
+  "mismatches": [],
+  "cgContactFlagVsGapSignInconsistent": 0,
+  "r0730_tol025": {
+   "withinTol": 9,
+   "n": 84,
+   "agreement": 0.857,
+   "agreementAmongClearPasses": 0.8
+  },
+  "ok": true
+ },
+ "7_contactAlongTrackConditioning": {
+  "bySession": {
+   "fuji_aim_01": {
+    "primary": 2,
+    "withValue": 1,
+    "summary": [
+     2,
+     1
+    ],
+    "familyN": 1
+   },
+   "fuji_aim_2020_07_30": {
+    "primary": 27,
+    "withValue": 20,
+    "summary": [
+     27,
+     20
+    ],
+    "familyN": 20
+   }
+  },
+  "ok": true
+ },
+ "8_openItemYawScale": {
+  "present": true,
+  "range": [
+   1.211,
+   1.222
+  ],
+  "recomputed": [
+   1.211,
+   1.222
+  ],
+  "yawScaleCheckSelfCheckMaxAbsDiffS": 0.000497,
+  "ok": true
+ },
+ "allOk": true
+}

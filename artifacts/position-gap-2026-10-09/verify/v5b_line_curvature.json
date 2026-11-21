@@ -1,0 +1,425 @@
+{
+ "paintL": {
+  "spacingMedianM": 0.5,
+  "rows": [
+   {
+    "station": 1850.0,
+    "yawDeg": -72.08,
+    "dYawPer5m": null,
+    "radiusM": null
+   },
+   {
+    "station": 1855.0,
+    "yawDeg": -73.57,
+    "dYawPer5m": -1.49,
+    "radiusM": 192.6
+   },
+   {
+    "station": 1860.0,
+    "yawDeg": -74.97,
+    "dYawPer5m": -1.41,
+    "radiusM": 203.5
+   },
+   {
+    "station": 1865.0,
+    "yawDeg": -76.53,
+    "dYawPer5m": -1.56,
+    "radiusM": 184.0
+   },
+   {
+    "station": 1870.0,
+    "yawDeg": -78.65,
+    "dYawPer5m": -2.12,
+    "radiusM": 135.3
+   },
+   {
+    "station": 1875.0,
+    "yawDeg": -81.95,
+    "dYawPer5m": -3.3,
+    "radiusM": 86.7
+   },
+   {
+    "station": 1880.0,
+    "yawDeg": -85.48,
+    "dYawPer5m": -3.53,
+    "radiusM": 81.2
+   },
+   {
+    "station": 1885.0,
+    "yawDeg": -88.17,
+    "dYawPer5m": -2.69,
+    "radiusM": 106.6
+   },
+   {
+    "station": 1890.0,
+    "yawDeg": -91.32,
+    "dYawPer5m": -3.15,
+    "radiusM": 90.8
+   },
+   {
+    "station": 1895.0,
+    "yawDeg": -94.65,
+    "dYawPer5m": -3.33,
+    "radiusM": 86.1
+   },
+   {
+    "station": 1900.0,
+    "yawDeg": -97.97,
+    "dYawPer5m": -3.32,
+    "radiusM": 86.3
+   },
+   {
+    "station": 1905.0,
+    "yawDeg": -101.12,
+    "dYawPer5m": -3.15,
+    "radiusM": 91.1
+   },
+   {
+    "station": 1910.0,
+    "yawDeg": -104.63,
+    "dYawPer5m": -3.51,
+    "radiusM": 81.6
+   },
+   {
+    "station": 1915.0,
+    "yawDeg": -108.29,
+    "dYawPer5m": -3.66,
+    "radiusM": 78.2
+   },
+   {
+    "station": 1920.0,
+    "yawDeg": -111.51,
+    "dYawPer5m": -3.21,
+    "radiusM": 89.1
+   },
+   {
+    "station": 1925.0,
+    "yawDeg": -114.66,
+    "dYawPer5m": -3.15,
+    "radiusM": 91.0
+   },
+   {
+    "station": 1930.0,
+    "yawDeg": -117.27,
+    "dYawPer5m": -2.61,
+    "radiusM": 109.7
+   },
+   {
+    "station": 1935.0,
+    "yawDeg": -119.93,
+    "dYawPer5m": -2.67,
+    "radiusM": 107.5
+   },
+   {
+    "station": 1940.0,
+    "yawDeg": -123.47,
+    "dYawPer5m": -3.54,
+    "radiusM": 81.0
+   },
+   {
+    "station": 1945.0,
+    "yawDeg": -126.79,
+    "dYawPer5m": -3.32,
+    "radiusM": 86.3
+   },
+   {
+    "station": 1950.0,
+    "yawDeg": -126.83,
+    "dYawPer5m": -0.04,
+    "radiusM": 6732.4
+   },
+   {
+    "station": 1955.0,
+    "yawDeg": -132.47,
+    "dYawPer5m": -5.64,
+    "radiusM": 50.8
+   },
+   {
+    "station": 1960.0,
+    "yawDeg": -138.99,
+    "dYawPer5m": -6.52,
+    "radiusM": 44.0
+   },
+   {
+    "station": 1965.0,
+    "yawDeg": -139.24,
+    "dYawPer5m": -0.26,
+    "radiusM": 1107.8
+   },
+   {
+    "station": 1970.0,
+    "yawDeg": -141.79,
+    "dYawPer5m": -2.54,
+    "radiusM": 112.6
+   },
+   {
+    "station": 1975.0,
+    "yawDeg": -143.23,
+    "dYawPer5m": -1.44,
+    "radiusM": 199.4
+   },
+   {
+    "station": 1980.0,
+    "yawDeg": -143.56,
+    "dYawPer5m": -0.33,
+    "radiusM": 858.7
+   },
+   {
+    "station": 1985.0,
+    "yawDeg": -143.77,
+    "dYawPer5m": -0.21,
+    "radiusM": 1380.0
+   },
+   {
+    "station": 1990.0,
+    "yawDeg": -143.69,
+    "dYawPer5m": 0.08,
+    "radiusM": 3731.2
+   },
+   {
+    "station": 1995.0,
+    "yawDeg": -143.46,
+    "dYawPer5m": 0.24,
+    "radiusM": 1215.0
+   },
+   {
+    "station": 2000.0,
+    "yawDeg": -143.39,
+    "dYawPer5m": 0.06,
+    "radiusM": 4732.6
+   },
+   {
+    "station": 2005.0,
+    "yawDeg": -143.51,
+    "dYawPer5m": -0.12,
+    "radiusM": 2449.2
+   },
+   {
+    "station": 2010.0,
+    "yawDeg": -143.69,
+    "dYawPer5m": -0.18,
+    "radiusM": 1623.0
+   },
+   {
+    "station": 2015.0,
+    "yawDeg": -143.67,
+    "dYawPer5m": 0.02,
+    "radiusM": 13267.9
+   }
+  ]
+ },
+ "paintR": {
+  "spacingMedianM": 0.5,
+  "rows": [
+   {
+    "station": 1850.0,
+    "yawDeg": -78.08,
+    "dYawPer5m": null,
+    "radiusM": null
+   },
+   {
+    "station": 1855.0,
+    "yawDeg": -79.96,
+    "dYawPer5m": -1.88,
+    "radiusM": 152.1
+   },
+   {
+    "station": 1860.0,
+    "yawDeg": -77.95,
+    "dYawPer5m": 2.01,
+    "radiusM": 142.4
+   },
+   {
+    "station": 1865.0,
+    "yawDeg": -73.83,
+    "dYawPer5m": 4.12,
+    "radiusM": 69.6
+   },
+   {
+    "station": 1870.0,
+    "yawDeg": -69.52,
+    "dYawPer5m": 4.31,
+    "radiusM": 66.5
+   },
+   {
+    "station": 1875.0,
+    "yawDeg": -63.57,
+    "dYawPer5m": 5.95,
+    "radiusM": 48.1
+   },
+   {
+    "station": 1880.0,
+    "yawDeg": -70.83,
+    "dYawPer5m": -7.25,
+    "radiusM": 39.5
+   },
+   {
+    "station": 1885.0,
+    "yawDeg": -85.73,
+    "dYawPer5m": -14.9,
+    "radiusM": 19.2
+   },
+   {
+    "station": 1890.0,
+    "yawDeg": -90.73,
+    "dYawPer5m": -5.0,
+    "radiusM": 57.2
+   },
+   {
+    "station": 1895.0,
+    "yawDeg": -92.9,
+    "dYawPer5m": -2.16,
+    "radiusM": 132.4
+   },
+   {
+    "station": 1900.0,
+    "yawDeg": -94.22,
+    "dYawPer5m": -1.32,
+    "radiusM": 216.2
+   },
+   {
+    "station": 1905.0,
+    "yawDeg": -97.92,
+    "dYawPer5m": -3.7,
+    "radiusM": 77.4
+   },
+   {
+    "station": 1910.0,
+    "yawDeg": -104.09,
+    "dYawPer5m": -6.16,
+    "radiusM": 46.5
+   },
+   {
+    "station": 1915.0,
+    "yawDeg": -109.34,
+    "dYawPer5m": -5.25,
+    "radiusM": 54.6
+   },
+   {
+    "station": 1920.0,
+    "yawDeg": -112.39,
+    "dYawPer5m": -3.06,
+    "radiusM": 93.7
+   },
+   {
+    "station": 1925.0,
+    "yawDeg": -113.92,
+    "dYawPer5m": -1.53,
+    "radiusM": 187.7
+   },
+   {
+    "station": 1930.0,
+    "yawDeg": -115.13,
+    "dYawPer5m": -1.21,
+    "radiusM": 236.3
+   },
+   {
+    "station": 1935.0,
+    "yawDeg": -116.75,
+    "dYawPer5m": -1.62,
+    "radiusM": 176.4
+   },
+   {
+    "station": 1940.0,
+    "yawDeg": -118.23,
+    "dYawPer5m": -1.47,
+    "radiusM": 194.6
+   },
+   {
+    "station": 1945.0,
+    "yawDeg": -119.76,
+    "dYawPer5m": -1.54,
+    "radiusM": 186.2
+   },
+   {
+    "station": 1950.0,
+    "yawDeg": -122.74,
+    "dYawPer5m": -2.97,
+    "radiusM": 96.4
+   },
+   {
+    "station": 1955.0,
+    "yawDeg": -129.47,
+    "dYawPer5m": -6.73,
+    "radiusM": 42.6
+   },
+   {
+    "station": 1960.0,
+    "yawDeg": -136.21,
+    "dYawPer5m": -6.74,
+    "radiusM": 42.5
+   },
+   {
+    "station": 1965.0,
+    "yawDeg": -139.88,
+    "dYawPer5m": -3.68,
+    "radiusM": 77.9
+   },
+   {
+    "station": 1970.0,
+    "yawDeg": -142.38,
+    "dYawPer5m": -2.49,
+    "radiusM": 114.8
+   },
+   {
+    "station": 1975.0,
+    "yawDeg": -143.5,
+    "dYawPer5m": -1.12,
+    "radiusM": 256.2
+   },
+   {
+    "station": 1980.0,
+    "yawDeg": -143.61,
+    "dYawPer5m": -0.11,
+    "radiusM": 2526.0
+   },
+   {
+    "station": 1985.0,
+    "yawDeg": -143.58,
+    "dYawPer5m": 0.03,
+    "radiusM": 9127.9
+   },
+   {
+    "station": 1990.0,
+    "yawDeg": -143.21,
+    "dYawPer5m": 0.37,
+    "radiusM": 767.3
+   },
+   {
+    "station": 1995.0,
+    "yawDeg": -143.12,
+    "dYawPer5m": 0.08,
+    "radiusM": 3520.1
+   },
+   {
+    "station": 2000.0,
+    "yawDeg": -143.61,
+    "dYawPer5m": -0.49,
+    "radiusM": 584.7
+   },
+   {
+    "station": 2005.0,
+    "yawDeg": -143.71,
+    "dYawPer5m": -0.09,
+    "radiusM": 3075.1
+   },
+   {
+    "station": 2010.0,
+    "yawDeg": -143.55,
+    "dYawPer5m": 0.16,
+    "radiusM": 1797.1
+   },
+   {
+    "station": 2015.0,
+    "yawDeg": -143.78,
+    "dYawPer5m": -0.24,
+    "radiusM": 1215.2
+   }
+  ]
+ },
+ "carPathRadiusFromAccyM": {
+  "median": 126.3843828100414,
+  "p10": 113.2375521055139,
+  "p90": 162.46136127063585
+ }
+}

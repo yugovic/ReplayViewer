@@ -1,0 +1,182 @@
+{
+  "reviewer": "GPT-6.1 Sol independent alignment review",
+  "createdAt": "2026-10-03T00:51:00+09:00",
+  "status": "Independent review complete: opt-in camera framing and confined outer-road renderer repair accepted with explicit physical/GPS limits",
+  "scope": "Camera-only Fuji video/CG framing calibration with current GPS, course geometry, telemetry, and timer mapping fixed.",
+  "evidenceRead": [
+    "AGENTS.md",
+    "WORKLOG.md",
+    "artifacts/onboard-comparison-2026-10-03/manifest.json",
+    "artifacts/gps-accuracy-2026-09-22/video/boundary-audit.json",
+    "artifacts/gps-accuracy-2026-09-22/video/sync-audit.json",
+    "artifacts/fuji-landmark-evaluation-2026-09-19/observations.json",
+    "artifacts/video-position-gap-2026-10-02/channel-timing-audit.json",
+    "artifacts/improvement-eval-2026-10-02/eval/iter2/evaluation-iter2.json",
+    "artifacts/apex-kerb-kpi-2026-10-02/gyro_vs_gps.json",
+    "scripts/quality/apex_kpi/camproj.py",
+    "scripts/quality/apex_kpi/camfit.py",
+    "scripts/quality/audit-fuji-channel-timing.py",
+    "src/engine/cameras/cameraMath.ts",
+    "src/engine/cameras/CockpitCamera.ts",
+    "src/engine/ReplayScene.ts",
+    "src/replay/interpolation.ts",
+    "src/engine/track/FujiCgStudy.ts",
+    "src/engine/track/FujiKerbZones.ts"
+  ],
+  "findings": [
+    {
+      "priority": 1,
+      "finding": "The shipped cockpit view is systematically unsuitable for image alignment: 0.78 m eye height, driver-right 0.28 m, zero downward mount pitch, vertical FOV 58 degrees (~89 degrees horizontal at 16:9). The source videos have a much higher visible horizon in the image, consistent with a downward-facing fixed mount.",
+      "evidence": "cameraMath.ts COCKPIT_EYE_OFFSET and computeCockpitCameraFrame; current wet47 video and CG images inspected visually.",
+      "confidence": "High for runtime values and visual framing difference; actual physical camera height remains unmeasured."
+    },
+    {
+      "priority": 1,
+      "finding": "The old camfit prototype is underconstrained for GPS inference. It fits camera f,k1,h,pitch,yaw,roll together with per-frame lateral and heading corrections, and snaps candidate edges around the prediction. Reusing its fitted residual as independent validation would be circular.",
+      "decision": "Use fixed manual line-class observations; global camera parameters only; no per-frame pose, position, time, or GPS correction."
+    },
+    {
+      "priority": 1,
+      "finding": "Old camproj geometry does not exactly match the renderer: it uses stale geometry.curbs instead of currently resolved kerb zones, approximate dot-normal lateral values, and surface clamping -0.5..1.5 instead of runtime 0..1.",
+      "decision": "Export line positions through runtime sampleTrackSurface plus lateralAt and resolveKerbZones. Zone paint/block start elevations are surface+0.012 m; ordinary road-facing paint edge is row[col] minus sign*0.16 m, not outer road edge."
+    },
+    {
+      "priority": 1,
+      "finding": "Video optical-flow yaw lag cannot justify translating the GPS trajectory in time. GPS course rate is body yaw rate plus slip-angle derivative; image flow additionally includes scene translation/depth, wipers, foreground vehicles, and lens effects. The observed per-lap GPS-after-video values span 0.04..0.375 s on wet laps.",
+      "evidence": "channel-timing-audit.json; audit-fuji-channel-timing.py uses Farneback horizontal median flow in two windshield ROIs, not a calibrated rotation-only estimate.",
+      "decision": "Keep validated timer PTS mapping and current lap delta fixed. Do not apply wet0.375/dry0.270 to positions or headings from this evidence."
+    },
+    {
+      "priority": 2,
+      "finding": "The 9/22 boundary observations remain useful image observations but carry no independently calibrated metric truth. Archived wet55 reads54.99 and wet132 reads131.97 on their timer, consistent within one frame with current PTS mapping. The wet132 right line is the centre of a pit separator, not outer roadR.",
+      "decision": "Do not use wet132 right against roadR. Old landmark region markers are explicitly not 2D-3D correspondences."
+    },
+    {
+      "priority": 2,
+      "finding": "Camera chirality requires care: the Three car quaternion local +X is driver-left when forward is +Z, while video screen-right and driver-right point toward world -X at that heading. The old projector uses right=(-cos(heading),0,sin(heading)).",
+      "decision": "Profile driver-right offset must map to car local -X. Use full car quaternion for mounted eye, direction, and up; current cockpit ignores body roll."
+    },
+    {
+      "priority": 2,
+      "finding": "Even after a camera framing improvement, course boundary uncertainty, time-varying lateral GPS error, body/course heading difference, lens distortion, and missing interior geometry remain distinguishable unresolved explanations.",
+      "decision": "Claim pixel framing improvement against held-out visible road boundaries, not surveyed tyre position or centimetre-level GPS accuracy."
+    }
+  ],
+  "preregisteredSplit": {
+    "train": [
+      "2020-07-29-L3-47.000",
+      "2020-07-29-L3-55.000",
+      "2020-07-29-L3-68.000"
+    ],
+    "holdoutWithinLap": [
+      "2020-07-29-L3-52.387",
+      "2020-07-29-L3-60.000",
+      "2020-07-29-L3-64.367"
+    ],
+    "holdoutCrossDay": [
+      "2020-07-30-L2-18.000",
+      "2020-07-30-L2-45.000",
+      "2020-07-30-L2-47.522",
+      "2020-07-30-L2-50.000",
+      "2020-07-30-L2-84.000",
+      "2020-07-30-L2-94.000",
+      "2020-07-30-L2-112.000"
+    ],
+    "selection": "Root confirmed this split before fitting; independent evidence agent marks holdouts without seeing candidate CG."
+  },
+  "recommendedAcceptanceGate": {
+    "intervention": "Only global camera mount/intrinsics; GPS/course/clock/telemetry/pose invariance.",
+    "metric": "Per scene median manually observed point-to-correct-labelled-polyline distance in 1280x720 pixels; equal weight per scene. Curves and adjacent sampled points are correlated, not independent sample count.",
+    "holdoutImprovement": "At least 8 of 10 held-out scenes improve; aggregate median at least 30% lower; no greater-than-5px scene regression unless annotation ambiguity was documented before viewing candidate CG.",
+    "height": "Primary fixed1.25m chosen before holdout. Fixed1.0m/1.5m candidates are sensitivity results, not selected by holdout score.",
+    "numerical": "Global parameter bounds/profile sensitivities and multiple starts checked. A pressed bound or near-singular fit weakens intrinsic identification even if framing improves.",
+    "projection": "Reprojection through exported runtime geometry and current captured quaternion/position must match actual browser camera pixel coordinates.",
+    "claim": "A camera model generalizes to withheld visible boundaries under frozen replay inputs. Physical camera calibration and true GPS/course metric accuracy are not established."
+  },
+  "verificationActuallyPerformed": [
+    "Read named local evidence and current source implementations.",
+    "Visually inspected current wet47 video and CG; archived wet55/wet132; current dry18 video.",
+    "Confirmed ELEVATION_SCALE is1 in ReplayScene.ts.",
+    "Summarized saved gyro-vs-GPS residuals: wetL3 median -0.03s across13corners, range -0.10..0.11s; dryL2 median -0.06s, range -0.30..0.05s. These saved results use prior channel-clock shift and are not a newly rerun XRK analysis.",
+    "Independently implemented matrix projection and labelled point-to-segment scores, reproduced all10heldout camera results.",
+    "Ran five independent optimizer starts and a false-zone-join removal sensitivity check.",
+    "Read new runtime onboard camera implementation and tests; transforms and source chirality consistent by inspection.",
+    "Recomputed actual three kerb outer-road protrusion maxima from current source data.",
+    "Created grounded Japanese review document with pending course state explicitly marked.",
+    "Independently checked actual emitted mesh triangle sets, signed areas and Shapely unions/differences:64 triangles replaced, zero outside-old area, zero overlap, zero holes, exact27outer source points.",
+    "Read independently frozen roll/interior-DTM/sequence evidence; documented negative results and non-adopted choices.",
+    "Directly inspected six final top views and six final oblique views; removed wedges covered, no new exposed holes in those repaired regions, pre-existing nearby black slits acknowledged."
+  ],
+  "notPerformed": [
+    "New XRK or optical-flow measurement",
+    "Independent surveyed course/GPS validation",
+    "Independent browser parity rerun",
+    "Independent rerun of full app test suite/build; parent reported390src tests and production build success"
+  ],
+  "candidateReview": {
+    "decision": "Accept opt-in global camera profile; preserve GPS/course/time/telemetry inputs",
+    "holdoutScenes": 10,
+    "heldoutPoints": 98,
+    "sceneMedianBeforePx": 133.87580877346008,
+    "sceneMedianAfterPx": 9.421667889801302,
+    "allScenesImproved": true,
+    "independentAudit": "artifacts/video-cg-alignment-2026-10-03/sol-fit-audit.json",
+    "globalStarts": 5,
+    "parametersStableWithinFocalPixels": 1.08,
+    "parametersStableWithinPitchDegrees": 0.038,
+    "activeBounds": "none",
+    "artificialJoinRemoval": "Every scene median unchanged",
+    "largeResiduals": "dry45 median33.31px p9550.24; dry94 median54.49px p9587.85",
+    "runtimeProjectionEvidence": "Recorded root actual-browser parity:26views,1508points,max1.85e-11px; source and result inspected, not independently rerun here",
+    "document": "docs/fuji-video-cg-alignment-review-2026-10-03.md",
+    "metricScope": "Primary experiment froze the pre-road-trim course on both sides; final after images also include renderer trim. Independent final emitted-paint rescoring leaves all10median/p95 values unchanged."
+  },
+  "courseReview": {
+    "decision": "Accept confined outer-only asphalt trim plus licensed ground bed after independent numeric and top/oblique visual checks",
+    "maxBeyondOuterMeters": {
+      "k21": 1.5386115318415523,
+      "k19": 1.065453261720285,
+      "k16": 0.9006196450964548
+    },
+    "restriction": "Only rendered asphalt beyond resolved outer line; source geometry, kerb paint/block/outer lines, GPS and time unchanged",
+    "risk": "Exact outer points at endpoints have tangential displacement .397/.599/.822m vs.5mgrid, producing two inverted road triangles in first attempt",
+    "acceptance": "Three simple polygon patches; exact traced outer vertices; no overlap, holes, new asphalt outside old footprint, downward or nonfinite triangles; terrain cutout coverage must also be fixed and inspected",
+    "actualEmittedAudit": "artifacts/video-cg-alignment-2026-10-03/sol-road-mesh-audit.json",
+    "numericResult": {
+      "replacedTriangles": 64,
+      "afterTriangleCount": 72937,
+      "removedAsphaltAreaM2": 10.484688000000006,
+      "addedAsphaltOutsideOldAreaM2": 0,
+      "overlapUnchangedRoadAreaM2": 0,
+      "holes": 0,
+      "exactClippedSourceOuterPoints": 27,
+      "redWhiteGreenBatchesExactlyUnchanged": true,
+      "ordinaryMarkingTransitionsChanged": 3
+    },
+    "visualCondition": "Initial asphalt-only visual failed. Final confined existing-material ground bed covers the removed wedge in top and oblique views. Pre-existing nearby road/terrain black slits remain; whole-course hole-free rendering is not claimed.",
+    "groundRepairAudit": {
+      "areaM2": 67.40296009375001,
+      "missingRemovedAreaM2": 0,
+      "outsideOriginalPatchM2": 0,
+      "triangleOverlapM2": "numerical roundoff below1e-13",
+      "runtimeHeight": "Existing heightAt reused; Y=0 snapshot footprint audit alone does not validate elevation"
+    },
+    "finalPaintMetricParity": {
+      "file": "artifacts/video-cg-alignment-2026-10-03/evidence/final-road-camera-effect.json",
+      "refit": false,
+      "sceneCount": 10,
+      "maxMedianChangePx": 0,
+      "maxP95ChangePx": 0,
+      "scope": "The three ordinary endpoint markings change; frozen observation errors do not. No new camera acceptance or surveyed truth."
+    }
+  },
+  "exploratoryDiagnostics": {
+    "staticInterior": "7 dry scenes64..86 inliers, raw median displacement1.01..1.63px; major remount less likely, physical intrinsics/body pose not calibrated",
+    "rollRemoval": "Non-adopted; only2/10 original heldouts improve, median-of-scene-medians9.42→11.23px, wet60 worsens9.56→21.47 despite dry94 improvement54.49→22.08",
+    "rollSign": "quaternion local-forward roll at dry94−2.985degrees; root productionRoll diagnostic is opposite sign, magnitude same",
+    "dtmProbeRisk": "535/651 fixed±6.5m probes outside traced asphalt >0.1m, methodological risk only",
+    "dtmNegativeFollowup": "source-only robust interior planes nearly identical to existing bank at45/94/60; candidate10-scene mean15.201→15.103 and dry9454.491→54.472; does not support off-road sampling as main cause",
+    "sequence": "8 post-selected adjacent frames95points; both boundaries reveal right44/44.5 medians74/64px and left93..95 medians52..88px; not new preregistered acceptance",
+    "timing": "production±0.2s original10 +0.2 improves5/worsens5 with0.13pxmean gain; additional8 ±0.2 worsens macro means; none adopted"
+  }
+}

@@ -1,0 +1,76 @@
+{
+ "kind": "review-loop-change-log",
+ "round": 3,
+ "area": "comparison-page",
+ "date": "2026-10-22",
+ "owner": "implementer (Opus) for the local-only comparison page",
+ "scope": "artifacts/event-comparison-2026-10-22/ (gitignored) and docs/fuji-event-comparison-2026-10-22.html (gitignored); helper scripts and evidence in artifacts/review-loop-2026-10-22/round-3/. No tracked file was modified (git check-ignore confirms the page, events.json, schematics and scripts are ignored; git ls-files lists 0 files under them). Nothing published or downloaded. No 3DCG recapture was needed (the schematics are numbers-only matplotlib images); the dev server 5200 was only read by qa_page.mjs (HTTP 200), not started or stopped; 5199 not touched. No video was opened.",
+ "backupsBeforeChanges": [
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/events.json (sha256 f8bc079d...)",
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/verify.json",
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/page-qa.json",
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/fuji-event-comparison-2026-10-22.html",
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/scripts/{build_events.py, build_schematics.py, build_page.py}",
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/schematic/ (all 108 files of 19:55/20:38) + schematic_sha_before.txt",
+  "qa_page.mjs was NOT backed up before editing; the change is two added structure fields and two added checks (staleK1Text, summary0729)."
+ ],
+ "timeline": [
+  "23:1x Read the WORKLOG head, the two findings, build_schematics.py:306, build_events.py:249, events.json k1 entries, verify.json round2Recheck and the round-2 7/29 metrics.",
+  "Confirmed the facts for the new k1 wording from events.json discrepancy.dtFirstBlock (first vibration per lap): L1 +0.085, L2 +0.266, L3 +0.355, L4 +0.227, L5(1st) +0.204, L6 -0.116; L5 2nd -0.405 -> half-up 0.09-0.36 s late on 5 of 6 laps, L6 0.12 s early, L5 2nd 0.41 s early (same as the page NOTE_MAP text).",
+  "Backed up events.json, verify.json, page-qa.json, the page, three builders and the whole schematic folder (+ sha256 list).",
+  "Edited build_schematics.py: k1 note is now built from events.json (k1_contact_note, half-up rounding of the stored 3-decimal values) and asserted equal to the reviewed sentence K1_NOTE_EXPECTED.",
+  "Edited build_events.py: notesJa sentence moved to constant K1_NOTE_JA (keeps the leading 'k1（コカ' for build_page NOTE_MAP) with data assertions on dtFirstBlock (laps late = L1-L5, range 0.09-0.36, L6 -0.12, L5 2nd -0.41).",
+  "23:20 Patched events.json in place with round-3/comparison-page-patch-events.py: exact JSON-string replacement x7 (CRLF and every other byte kept), field-by-field assertion that only those 7 notesJa changed; sha256 f8bc079d... -> a56b0149...",
+  "Dry-ran the edited build_events.py into tmp/round3-impl/dryrun/out (OUT_DIR/ROOT substituted in a copy): its assertions pass and its output equals the patched events.json except 'generated' (so a future regeneration carries the same text).",
+  "23:21 build_schematics.py --only <7 k1 ids>: written 7, failures 0, sizes ok (gap assertions passed). Viewed contact-0730-L5-k1-2_top.png and a 2x zoom of the note line of contact-0730-L1-k1_top.png: the new note is legible.",
+  "23:21 Full build_schematics.py run (106, failures 0) to refresh schematic/schematics.json (events sha256 and textJa.note of the 7 k1 rows; nothing else in the manifest changed). The 99 other event PNGs and legend_top.png are byte-identical to the 19:55 files; only the 7 k1 PNGs differ.",
+  "Added verify.json round3Recheck (eventsJson previous/new sha256 and reason, schematics, page) via round-3/comparison-page-verify-provenance.py, keeping the file's serialization (indent 1, CRLF).",
+  "Edited build_page.py: asserts the provenance chain (schematics sha = events sha = round3Recheck.newSha256; frames manifest sha in {current, previousSha256}) and the absence of the retracted wording in notesJa; R3-02 counts recomputed from verify/adversarial/round2-vp0730/metrics.json with the pair rule and asserted against verify.json countsPairRule.clipping0729 (4 vs 5 of 9) and the reviewed values; added the 7/29 sentence to the summary and verify.json to the source list.",
+  "Edited qa_page.mjs: staleK1Text (DOM textContent has none of 約0.15秒 / 全周で3DCG / 0.15秒遅) and summary0729 checks.",
+  "23:24 Rebuilt the page (106 cards, 424 figures) and ran qa_page.mjs: passed, 531/531 images, 110 guides, 0 console errors, 0 page errors, phone 390 px no overflow, iframe and dev-server checks ok. Viewed the summary in qa/desktop.png by eye.",
+  "Ran round-3/comparison-page-acceptance.py -> comparison-page-acceptance.json: all 8 checks passed."
+ ],
+ "findings": [
+  {
+   "id": "R3-01",
+   "severity": "medium",
+   "status": "fixed",
+   "changes": [
+    "scripts/build_schematics.py: note for 7/30 k1 kerb-contact cards = '注: k1は3DCGのブロック線の先端形状で乗った瞬間の距離が大きく出る（7/30は6周中5周で0.09〜0.36秒遅れ、L6は0.12秒早い。個別確認待ち）', built from events.json and asserted",
+    "scripts/build_events.py: K1_NOTE_JA = 'k1（コカ・コーラ）: …評価では7/30の6周中5周（L1〜L5）で3DCGの接触が0.09〜0.36秒遅く始まり、L6だけ0.12秒早い（L5は振動が2回あり、周ごとの数え方は1回目が基準。2回目を基準にすると0.41秒早い）。個別確認待ち。' + data assertions",
+    "events.json: 7 notesJa strings replaced in place (sha256 a56b0149e35623acddc7c42fea5fe45edc5b9db7c284a200bc29a5ffae7c9204)",
+    "schematic/: 7 k1 PNGs regenerated (then all 107 rewritten by the full run; 100 byte-identical), schematics.json refreshed",
+    "verify.json: round3Recheck with previous/new events sha256 and why frames were not re-extracted; build_page.py asserts the chain"
+   ],
+   "acceptance": {
+    "grep": "'0.15秒' and '全周で' -> 0 hits in scripts/build_schematics.py, scripts/build_events.py, events.json (also 0 in schematic/schematics.json; page: 0 for 約0.15秒 / 全周で3DCG)",
+    "pngs": "7 contact-*-k1*_top.png have new bytes and mtime after the fix; the other 100 PNGs (99 events + legend) are byte-identical (all 107 rewritten with 0 failures)",
+    "eye": "contact-0730-L5-k1-2_top.png and the zoomed note of contact-0730-L1-k1_top.png show the new note",
+    "gapAssertions": "build_schematics kerbContactGapRecomputed / cgContactStartGap assertions passed (0 failures in both runs)",
+    "qa": "qa_page.mjs passed: 531/531 images, 110 guides, 0 console errors"
+   }
+  },
+  {
+   "id": "R3-02",
+   "severity": "low",
+   "status": "fixed",
+   "changes": [
+    "scripts/build_page.py: summary adds '7/29のクリッピングポイントは、雨とワイパーなどで照合に使えるのが14件中9件しかなく、補正後が近いのは4件・補正前が近いのは5件で、判定できません（評価資料と同じカメラの向きで照合）。' with the numbers recomputed from the round-2 metrics (pair rule >= 200 px) and asserted equal to verify.json round2Recheck.adversarialRerun0729.countsPairRule.clipping0729",
+    "scripts/qa_page.mjs: summary0729 check"
+   ],
+   "wordingNote": "Reviewer's sentence extended with the denominator (14 clipping events on 7/29) and 'など' (not every unusable event is wiper/rain: e.g. hidden kerb, red livery), and the camera basis.",
+   "acceptance": "Page summary contains the sentence with 14 / 9 / 4 / 5 (builder asserts against verify.json; acceptance script re-reads verify.json); qa_page.mjs passed."
+  }
+ ],
+ "evidence": [
+  "artifacts/review-loop-2026-10-22/round-3/comparison-page-acceptance.json (8/8 checks passed)",
+  "artifacts/event-comparison-2026-10-22/page-qa.json (status passed, generated 2026-10-22T14:24:16Z)",
+  "artifacts/event-comparison-2026-10-22/verify.json round3Recheck",
+  "artifacts/event-comparison-2026-10-22/tmp/round3-impl/ (backups, sha256 lists, dry-run output, note zoom crops)"
+ ],
+ "notDone": [
+  "frames/manifest.json still records the pre-patch events.json sha256 by design (frames depend only on the unchanged timing block); the link is recorded in verify.json round3Recheck and asserted by build_page.py rather than by re-extracting frames.",
+  "build_events.py itself was not re-run in place (it would rewrite 'generated'); it was verified by the dry run into tmp.",
+  "The k1 card note is the same on all 7 k1 cards (lap basis = first vibration); the L5 second-vibration card relies on its own dt line and the page note for the 0.41 s figure."
+ ]
+}

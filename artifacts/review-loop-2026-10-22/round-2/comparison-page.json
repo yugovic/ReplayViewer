@@ -1,0 +1,92 @@
+{
+  "kind": "review-loop-change-log",
+  "round": 2,
+  "area": "comparison-page",
+  "date": "2026-10-22",
+  "owner": "implementer (Opus) for the local-only comparison page",
+  "scope": "artifacts/event-comparison-2026-10-22/ (gitignored) and docs/fuji-event-comparison-2026-10-22.html (gitignored). No tracked file was modified (git ls-files -m: none newer than the round-2 backups); nothing was published or downloaded. Dev server 5200 used as found (HTTP 200; not started/stopped); 5199 not touched.",
+  "backupsBeforeChanges": [
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/build_page.before-round2.py",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/qa_page.before-round2.mjs",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/capture_cg_vpfix.before-round2.mjs",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/adversarial_compare.before-round2.py",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/adversarial_control.before-round2.py",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/page.before-round2.html",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/verify.before-round2.json",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/page-qa.before-round2.json",
+    "artifacts/event-comparison-2026-10-22/tmp/round2-impl/scale_sensitivity.before-round2.json",
+    "artifacts/event-comparison-2026-10-22/cg/superseded/vpfix-per-session-2026-10-22T2204/ (106 onboard JPEGs + manifest_onboard_vpfix.json of the round-1 22:04 JST run)"
+  ],
+  "timeline": [
+    "Read the WORKLOG top entries, capture_cg_vpfix.mjs, build_page.py, qa_page.mjs, adversarial_compare.py / adversarial_control.py / scale_sensitivity.py, verify.json, T3 analyze.py vp() and summarize.py, vp_calib.json summary. Confirmed the finding: analyze.py vp() reads only fuji_aim_2020_07_30 (624.38, 196.825) for both days, while the round-1 capture aimed 7/29 at its own point (651.76, 186.73; 11 frames, IQR 610-678 / 176-198).",
+    "Backed up all files I change (tmp/round2-impl/*.before-round2.*) and copied the round-1 onboard run (106 JPEGs + manifest) to cg/superseded/vpfix-per-session-2026-10-22T2204/ before overwriting.",
+    "capture_cg_vpfix.mjs: new --vp-session option (default fuji_aim_2020_07_30; 'per-session' reproduces round 1). profileFor(), the in-page rendered-vanishing-point check and the manifest (version 3, top-level and per-session vanishingPointSession + vanishingPoint720, cameraProfile.vanishingPointWhy) use the aiming session.",
+    "Test capture of 2 events (clip-0729-L2-k9, clip-0730-L3-k23) into a scratch folder (moved to tmp/round2-impl/capture-test): both sessions pitch 12.8807 / yaw 1.6383, rendered VP 624.38, 196.82, 0 failures.",
+    "Full recapture of the 106 onboard images on the running 5200 server (22:47:50-22:48:42 JST, 51.8 s): 0 failures, onboardActive 106, max rendered-VP error 0.0006 px, 0 page/console errors, 0 bad responses.",
+    "Measured the change (tmp/round2-impl/shift_check.py): 7/29 images moved dx -21.5 / dy +7.4 px at 960x540 (expected from the two vanishing points -20.5 / +7.6); 7/30 images dx 0 / dy 0 (mean abs pixel difference <= 1.06 grey levels, render noise).",
+    "Mount check (tmp/round2-impl/mount_check.py, numbers only): median video images per day; dashboard/cabin region shift 7/29 -> 7/30 = 0.12 px (response 0.89); dashboard-edge rows per column band equal within 1 row. Supports the page sentence that the camera mount is the same on both days.",
+    "Re-ran scale_sensitivity.py on the recaptured 7/30 images: counts unchanged (19/30, 24/30, 23/30; controls 16/8/4, 13/13/2, 14/11/3); f*h 889 median chamfer moved 14.48/20.23 -> 14.54/20.29 px (render noise), updated in verify.json.",
+    "build_page.py: asserts manifest vanishingPointSession == fuji_aim_2020_07_30, each session profile == the 7/30 solution (12.8807 / 1.6383) and both profiles equal, AIM29 == AIM30 == '下向き12.9°・右向き1.6°'. Header sentence replaced (reviewer's text, plus the evidence in plain words: ダッシュボードが両日とも同じ位置に写っている); onboard figcaption now '7/30の動画の消失点に合わせた値。両日共通'; 数字の読み方 says the 3DCG camera is aimed at the 7/30 point like the evaluation and 7/29 uses the same aim. Rebuilt the page.",
+    "qa_page.mjs: added checks staleAim29Text (no '下向き13.7°' / '左向き0.5°'), commonAimText, onboardCaptionsCommonAim == 106. Re-ran QA: passed.",
+    "Optional part done: adversarial_compare.py got --vp-session (default fuji_aim_2020_07_30, adds videoVpSession and homographyMaxDevFromIdentity per event); adversarial_control.py takes the same video orientation via A.video_vp(). Re-ran the 26 7/29 events into verify/adversarial/round2-vp0730/ (homography identity, max deviation 0.0005).",
+    "Spot-checked two 7/29 clipping events by eye on x4 crops at the guide row (tmp/round2-impl/<id>_cgzoom.jpg).",
+    "verify.json: R2-05 wording, round2Recheck section, round1Recheck.onboardRecapture.supersededBy, cameraScaleSensitivity.scales.fh889.round2Note.",
+    "Ran artifacts/review-loop-2026-10-22/round-2/comparison-page-acceptance.py -> comparison-page-acceptance.json: allAcceptancePassed true."
+  ],
+  "findings": [
+    {
+      "id": "R2-01",
+      "severity": "medium",
+      "status": "fixed",
+      "whatChanged": "All 106 3DCG onboard images recaptured with both days aimed at the 7/30 vanishing point (pitch 12.8807, yaw 1.6383, as T3 analyze.py vp()); capture_cg_vpfix.mjs --vp-session option and manifest field vanishingPointSession; round-1 per-session run moved to cg/superseded/vpfix-per-session-2026-10-22T2204/; build_page.py asserts the common aim; header text, onboard figcaptions and 数字の読み方 now say both days use the 7/30 point; qa_page.mjs checks the stale 7/29 aim text is gone. Optional: 7/29 image metric re-run with the identity homography.",
+      "filesChanged": [
+        "artifacts/event-comparison-2026-10-22/scripts/capture_cg_vpfix.mjs",
+        "artifacts/event-comparison-2026-10-22/cg/*_cg_onboard.jpg (106) and cg/manifest_onboard_vpfix.json",
+        "artifacts/event-comparison-2026-10-22/cg/superseded/vpfix-per-session-2026-10-22T2204/ (new, previous run)",
+        "artifacts/event-comparison-2026-10-22/scripts/build_page.py",
+        "artifacts/event-comparison-2026-10-22/scripts/qa_page.mjs",
+        "artifacts/event-comparison-2026-10-22/scripts/adversarial_compare.py",
+        "artifacts/event-comparison-2026-10-22/scripts/adversarial_control.py",
+        "artifacts/event-comparison-2026-10-22/verify/adversarial/round2-vp0730/ (new: metrics.json + 52 composites, local only)",
+        "artifacts/event-comparison-2026-10-22/verify/scale_sensitivity.json (re-run)",
+        "artifacts/event-comparison-2026-10-22/verify.json",
+        "artifacts/event-comparison-2026-10-22/page-qa.json, qa/ (QA re-run)",
+        "docs/fuji-event-comparison-2026-10-22.html (rebuilt)"
+      ],
+      "acceptance": {
+        "manifest": "sessions.fuji_aim_01.profile pitchDeg 12.8807 / yawDeg 1.6383 == fuji_aim_2020_07_30 (profiles equal: true); vanishingPointSession 'fuji_aim_2020_07_30' at top level and per session",
+        "summary": "failures 0, onboardActive 106, captures 106, maxVpErrorPx720 0.00057, pageErrors 0, unexpectedBadResponses 0, elapsed 51.8 s",
+        "mtimes": "106 of 106 *_cg_onboard.jpg inside the run window 2026-10-22T13:47:50.889Z - 13:48:42.873Z",
+        "buildAsserts": "build_page.py asserts vanishingPointSession, pitch 12.8807 / yaw 1.6383 per session, equal profiles, AIM29 == AIM30 == '下向き12.9°・右向き1.6°' (build ran without assertion errors)",
+        "pageText": "'下向き13.7°・左向き0.5°' 0 times, '13.7°' 0, '左向き0.5°' 0; '両日とも7/30の値を使っています' 1; '下向き12.9°・右向き1.6°' 1; onboard captions with the common aim 106",
+        "qa": "qa_page.mjs status passed, failures [], images 531/531, lazy 424, console errors 0, clippingGuides 110 (55 of 55 clipping cards with two guides, 0 other cards), new checks staleAim29Text false / commonAimText true / onboardCaptionsCommonAim 106",
+        "evidenceFile": "artifacts/review-loop-2026-10-22/round-2/comparison-page-acceptance.json (allAcceptancePassed true)"
+      },
+      "pageTextNow": "下向きと左右の向きは、車の真正面が7/30の動画の消失点（本コース直線の白線の交点）に来るように合わせました（下向き12.9°・右向き1.6°。7/29の消失点は雨で11コマしか測れず不安定なので、評価資料と同じく両日とも7/30の値を使っています。ダッシュボードが両日とも同じ位置に写っているので、カメラの取付は両日同じです）。傾き・車内でのカメラの位置は10/03の推定値のままです。",
+      "deviationsFromSuggestedFix": [
+        "Previous run was COPIED to cg/superseded/ before the recapture overwrote cg/ (same end state as 'move', but the page never pointed at missing files if the capture had failed).",
+        "Header sentence: the reviewer's text plus the evidence for the same mount in plain words, and '傾き・取付位置は10/03の推定値' reworded to '傾き・車内でのカメラの位置' so '取付' is not used with two meanings."
+      ],
+      "extraChecks": {
+        "imageShift": "7/29 images moved dx -21.5 / dy +7.4 px at 960x540 (expected -20.5 / +7.6 from the two vanishing points); 7/30 unchanged (0 / 0)",
+        "mountCheck": "median video images per day: dashboard/cabin shift 0.12 px (960x540), dashboard-edge rows equal within 1 row -> same camera-to-car mount on both days (does not cover car body attitude in the wet)",
+        "scaleSensitivityRerun": "7/30 counts unchanged 19/30, 24/30, 23/30",
+        "adversarial0729WithEvaluationCamera": "clipping 4 vs 5 of 9 usable (round-1 per-day aim: 2 vs 7), turn-in 2 vs 2 of 4 (round 1: 3 vs 1), kerb contact 0 usable; homography identity. 7/29 remains inconclusive; recorded in verify.json round2Recheck.adversarialRerun0729.",
+        "eyeSpotCheck": "inner kerb edge on the guide row (x of 960): clip-0729-L2-k9 video ~398, round 2 ~430, round 1 ~440 (round 2 closer); clip-0729-L3-k24 video ~605, round 2 ~588, round 1 ~610 (round 1 closer). Mixed: the 21 px aim change is the size of the 3DCG position error there, so images cannot choose the aim; the fix rests on consistency with the evaluation camera and the mount check."
+      }
+    },
+    {
+      "id": "R2-05",
+      "severity": "low",
+      "status": "fixed",
+      "whatChanged": "verify.json verdictSummary.check1_wholeSetMetric now ends: 'So the images are consistent with the direction of the correction under the assumed camera (f*h 889; 19/30, 24/30, 23/30 at f*h 590/889/1209) but neither prove it independently nor fix the size of L; independent support: kerb audio vs IMU and video yaw vs gyro (evaluation).' The 7/29 sentence notes the round-2 recheck with the 7/30 point (4 vs 5 of 9). The old wording is kept as history in check1_wholeSetMetric_editedRound2.",
+      "filesChanged": ["artifacts/event-comparison-2026-10-22/verify.json"],
+      "acceptance": "check1_wholeSetMetric contains 'under the assumed camera (f*h 889' and '19/30, 24/30, 23/30 at f*h 590/889/1209'; 'So the images support the direction of the correction' no longer present (comparison-page-acceptance.json R2-05 all true)."
+    }
+  ],
+  "notDone": [
+    "No lens calibration; the guide comparison still assumes the uncalibrated f 711 / h 1.25 camera on both days.",
+    "Car body attitude differences between the wet 7/29 and dry 7/30 runs are not modelled (the mount check covers only camera-to-car).",
+    "The page's 要旨 still reports only the 7/30 image check (7/29 remains inconclusive and is not summarised on the page; it is in verify.json)."
+  ]
+}

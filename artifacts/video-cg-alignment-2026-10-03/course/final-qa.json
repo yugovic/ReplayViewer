@@ -1,0 +1,279 @@
+{
+  "status": "passed",
+  "meshStatus": "passed",
+  "scope": "Rendering-layer consistency with already accepted same-source CC BY 4.0 kerb traces; no surveyed geometry or GPS accuracy claim.",
+  "baseline": {
+    "areaM2": 69902.1573645002,
+    "triangles": 72937,
+    "vertices": 145907,
+    "downward": 0,
+    "degenerate": 0,
+    "nonFinite": 0
+  },
+  "after": {
+    "areaM2": 69891.67267650018,
+    "triangles": 72937,
+    "vertices": 145849,
+    "downward": 0,
+    "degenerate": 0,
+    "nonFinite": 0
+  },
+  "removedAsphaltAreaM2": 10.484688000025926,
+  "originalProtrusions": [
+    {
+      "id": "k16",
+      "maxOutwardAsphaltBeyondOuterMeters": 0.9006196450964548,
+      "approxStationIntegralAreaM2": 1.8961697405137241,
+      "affectedStations": [
+        2130.0,
+        2130.5,
+        2131.0,
+        2131.5,
+        2132.0,
+        2132.5,
+        2133.0,
+        2133.5,
+        2134.0
+      ]
+    },
+    {
+      "id": "k19",
+      "maxOutwardAsphaltBeyondOuterMeters": 1.065453261720285,
+      "approxStationIntegralAreaM2": 1.0806204236027046,
+      "affectedStations": [
+        2716.0,
+        2716.5,
+        2717.0,
+        2717.5,
+        2718.0
+      ]
+    },
+    {
+      "id": "k21",
+      "maxOutwardAsphaltBeyondOuterMeters": 1.5386115318415523,
+      "approxStationIntegralAreaM2": 5.049978811237359,
+      "affectedStations": [
+        3342.0,
+        3342.5,
+        3343.0,
+        3343.5,
+        3344.0,
+        3344.5,
+        3345.0,
+        3345.5,
+        3346.0,
+        3346.5,
+        3347.0,
+        3347.5,
+        3348.0
+      ]
+    }
+  ],
+  "independentMeshAudit": {
+    "file": "../sol-road-mesh-audit.json",
+    "pass": true,
+    "sourceTrianglesBefore": 72937,
+    "sourceTrianglesAfter": 72937,
+    "removedTriangles": 64,
+    "addedTriangles": 64,
+    "changedOldUnionValid": true,
+    "changedNewUnionValid": true,
+    "addedTriangleAreaSumM2": 56.918272093749984,
+    "addedTriangleUnionAreaM2": 56.91827209375001,
+    "newTriangleOverlapAreaM2": -2.842170943040401e-14,
+    "newTriangleOutsideOriginalChangedAreaM2": 0.0,
+    "newTriangleOverlapWithUnchangedRoadAreaM2": 0.0,
+    "removedAreaM2": 10.484688000000006,
+    "changedPatchComponents": 3,
+    "changedPatchHoleCount": 0,
+    "changedPatchBounds": [
+      [
+        -324.81924999999995,
+        576.998,
+        -315.372,
+        581.87
+      ],
+      [
+        57.18,
+        622.707,
+        63.26025,
+        626.99575
+      ],
+      [
+        247.13625,
+        121.675,
+        253.546,
+        129.07
+      ]
+    ],
+    "redBatchExactlyUnchanged": true,
+    "whiteBatchExactlyUnchanged": true,
+    "greenBatchExactlyUnchanged": true,
+    "beforeDownwardTriangles": 0,
+    "beforeDegenerateTriangles": 0,
+    "beforeAreaSumM2": 69902.1573645002,
+    "beforeNonfiniteTriangles": 0,
+    "afterDownwardTriangles": 0,
+    "afterDegenerateTriangles": 0,
+    "afterAreaSumM2": 69891.67267650018,
+    "afterNonfiniteTriangles": 0,
+    "paintRemovedTriangles": 6,
+    "paintAddedTriangles": 6,
+    "clippedSourceOuterPoints": 27,
+    "missingExactClippedSourceOuterXZ": [],
+    "underlayTriangleCount": 64,
+    "underlayAreaM2": 67.40296009375001,
+    "underlayUnionValid": true,
+    "underlayMissingRemovedAsphaltAreaM2": 0.0,
+    "underlayOutsideOriginalChangedAreaM2": 0.0,
+    "underlayTriangleOverlapAreaM2": -1.4210854715202004e-14,
+    "underlayUvsFinite": true,
+    "underlayHeightLimit": "XZ footprint and atlas UV export. Y=0 for planar coverage audit only; runtime uses the unchanged heightAt function.",
+    "underlaySha256": "811ff12d8b4ab62fefa02f16c912d576adfd9289d0964120f47748f1774de066",
+    "missingExactIndexedInnerSeamXYZ": [],
+    "beforeUniqueTriangleKeys": 72937,
+    "afterUniqueTriangleKeys": 72937
+  },
+  "sourceFiles": [
+    {
+      "name": "geometry.json",
+      "beforeSha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+      "afterSha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+    },
+    {
+      "name": "kerb_zones.json",
+      "beforeSha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+      "afterSha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6"
+    }
+  ],
+  "materialInvariants": {
+    "red": true,
+    "white": true,
+    "green": true
+  },
+  "zonePaintBatchUnchanged": true,
+  "changedOrdinaryMarkingSegments": [
+    {
+      "side": "right",
+      "startStation": 2134,
+      "endStation": 2134.5,
+      "startPoint": [
+        249.6051070051646,
+        -17.965727480278172,
+        122.63181994717122
+      ],
+      "endPoint": [
+        250.10137987361392,
+        -18.03590519131013,
+        121.81570346965542
+      ],
+      "kind": "ordinary-road-facing-white-line",
+      "beforeStartPoint": [
+        250.49268659118957,
+        -17.902725736200434,
+        122.2146078768042
+      ],
+      "beforeEndPoint": [
+        250.10137987361392,
+        -18.03590519131013,
+        121.81570346965542
+      ]
+    },
+    {
+      "side": "right",
+      "startStation": 2718,
+      "endStation": 2718.5,
+      "startPoint": [
+        58.394446425206624,
+        -33.714514285714415,
+        624.6500607926895
+      ],
+      "endPoint": [
+        57.68589755658614,
+        -33.72623421318693,
+        623.6418259846334
+      ],
+      "kind": "ordinary-road-facing-white-line",
+      "beforeStartPoint": [
+        58.16254988819725,
+        -33.714514285714415,
+        623.4501828730283
+      ],
+      "beforeEndPoint": [
+        57.68589755658614,
+        -33.72623421318693,
+        623.6418259846334
+      ]
+    },
+    {
+      "side": "right",
+      "startStation": 3348,
+      "endStation": 3348.5,
+      "startPoint": [
+        -316.26816840801087,
+        -15.729788571428628,
+        579.3447102109455
+      ],
+      "endPoint": [
+        -315.8556747592567,
+        -15.730647501538536,
+        580.9403522311136
+      ],
+      "kind": "ordinary-road-facing-white-line",
+      "beforeStartPoint": [
+        -316.29614656879875,
+        -15.729788571428628,
+        581.0868079925434
+      ],
+      "beforeEndPoint": [
+        -315.8556747592567,
+        -15.730647501538536,
+        580.9403522311136
+      ]
+    }
+  ],
+  "groundRepair": {
+    "name": "cg-road-cutout-repair",
+    "footprintAreaM2": 67.40296009375,
+    "triangles": 64,
+    "source": "Existing landcover-reviewed.png atlas, landcover-meta.json UV mapping, and existing heightAt; no alphaMap on this bed.",
+    "footprintExport": "underlay-batch.json",
+    "visiblePurpose": "Old road-cutout.png masks the removed asphalt too; the confined bed restores ground under those holes. Retained asphalt/kerbs hide the remainder.",
+    "independentAudit": "passed: exact footprint covers all removed area, lies wholly within original affected strips; no overlap or invalid UVs. Y=0 audit does not verify runtime elevation."
+  },
+  "verification": {
+    "unitTestReport": "final-tests.json",
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "typeScript": "passed",
+    "diffCheck": "passed"
+  },
+  "visualReview": {
+    "status": "passed",
+    "reviewed": [
+      "k16-before-top.png",
+      "k16-before-oblique.png",
+      "k16-after-top.png",
+      "k16-after-oblique.png",
+      "k19-before-top.png",
+      "k19-before-oblique.png",
+      "k19-after-top.png",
+      "k19-after-oblique.png",
+      "k21-before-top.png",
+      "k21-before-oblique.png",
+      "k21-after-top.png",
+      "k21-after-oblique.png"
+    ],
+    "note": "Final top and oblique views reviewed by root; all three oblique before/after pairs independently reviewed by camera agent. Removed asphalt wedges now show the existing landcover ground bed with no new broad black cutout holes. Existing narrow black slits adjacent to the old road/kerb boundary remain visible in both before and after; this repair does not claim to fix those preexisting seams.",
+    "runtimeGroundMaterial": "Existing landcover-reviewed.png map; alphaMap null on the confined 128-vertex repair bed; runtime uses unchanged heightAt.",
+    "obliqueCapture": "oblique-visual-capture.json",
+    "runtimeUiCheck": "../app-ui-qa.json"
+  },
+  "codeSha256": "ea1ea6a0fcfabcc72209a231f98773897834fc121442773f7e2e238a660000e1",
+  "files": [
+    "src/engine/track/FujiCgStudy.ts",
+    "src/engine/track/FujiRoadBoundary.test.ts",
+    "src/engine/track/FujiKerbZones.test.ts"
+  ]
+}

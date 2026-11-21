@@ -1,0 +1,375 @@
+{
+ "kind": "synthetic onset-bias check (estimator only; burst model is an assumption)",
+ "tool": "artifacts/kerb-event-truth-2026-10-22/T1-logger-events/verify_contact_onset_bias.py",
+ "errorDefinition": "estimated onset - true onset (s); negative = estimate early",
+ "burstModel": "6-20 Hz band-limited noise, rectangular 0.30 s envelope (rise 0 or 40 ms), burst RMS = R x baseline median RMS",
+ "ratiosNote": "measured peakRatio of the detected contacts: median ~6 (VA) / ~16 (RR); see summary.json",
+ "seed": 20261022,
+ "nPerCell": 150,
+ "results": {
+  "fuji_aim_01": {
+   "VA": {
+    "R4_rise0ms": {
+     "n": 147,
+     "missed": 3,
+     "medianErrS": 0.0203,
+     "q25": -0.0101,
+     "q75": 0.0622,
+     "p5": -0.1865,
+     "p95": 0.1729,
+     "fracWithin20ms": 0.354,
+     "fracWithin40ms": 0.524
+    },
+    "R4_rise40ms": {
+     "n": 142,
+     "missed": 8,
+     "medianErrS": 0.0393,
+     "q25": 0.0138,
+     "q75": 0.0843,
+     "p5": -0.2221,
+     "p95": 0.1844,
+     "fracWithin20ms": 0.19,
+     "fracWithin40ms": 0.401
+    },
+    "R8_rise0ms": {
+     "n": 147,
+     "missed": 3,
+     "medianErrS": -0.0125,
+     "q25": -0.0223,
+     "q75": 0.004,
+     "p5": -0.0655,
+     "p95": 0.057,
+     "fracWithin20ms": 0.537,
+     "fracWithin40ms": 0.844
+    },
+    "R8_rise40ms": {
+     "n": 148,
+     "missed": 2,
+     "medianErrS": 0.013,
+     "q25": -0.003,
+     "q75": 0.0292,
+     "p5": -0.4548,
+     "p95": 0.0776,
+     "fracWithin20ms": 0.493,
+     "fracWithin40ms": 0.709
+    },
+    "R16_rise0ms": {
+     "n": 149,
+     "missed": 1,
+     "medianErrS": -0.0232,
+     "q25": -0.0328,
+     "q75": -0.0143,
+     "p5": -0.1689,
+     "p95": 0.0104,
+     "fracWithin20ms": 0.349,
+     "fracWithin40ms": 0.819
+    },
+    "R16_rise40ms": {
+     "n": 150,
+     "missed": 0,
+     "medianErrS": -0.0053,
+     "q25": -0.0131,
+     "q75": 0.0065,
+     "p5": -0.1923,
+     "p95": 0.0243,
+     "fracWithin20ms": 0.773,
+     "fracWithin40ms": 0.907
+    },
+    "R32_rise0ms": {
+     "n": 150,
+     "missed": 0,
+     "medianErrS": -0.0356,
+     "q25": -0.0663,
+     "q75": -0.0241,
+     "p5": -0.2692,
+     "p95": -0.0028,
+     "fracWithin20ms": 0.153,
+     "fracWithin40ms": 0.547
+    },
+    "R32_rise40ms": {
+     "n": 149,
+     "missed": 1,
+     "medianErrS": -0.0183,
+     "q25": -0.029,
+     "q75": -0.0112,
+     "p5": -0.1851,
+     "p95": 0.0065,
+     "fracWithin20ms": 0.557,
+     "fracWithin40ms": 0.826
+    }
+   },
+   "RR": {
+    "R4_rise0ms": {
+     "n": 33,
+     "missed": 117,
+     "medianErrS": 0.0626,
+     "q25": 0.0281,
+     "q75": 0.1211,
+     "p5": -0.0072,
+     "p95": 0.2324,
+     "fracWithin20ms": 0.152,
+     "fracWithin40ms": 0.333
+    },
+    "R4_rise40ms": {
+     "n": 31,
+     "missed": 119,
+     "medianErrS": 0.0743,
+     "q25": 0.0417,
+     "q75": 0.1603,
+     "p5": -0.0413,
+     "p95": 0.2322,
+     "fracWithin20ms": 0.0,
+     "fracWithin40ms": 0.161
+    },
+    "R8_rise0ms": {
+     "n": 139,
+     "missed": 11,
+     "medianErrS": 0.016,
+     "q25": -0.005,
+     "q75": 0.0722,
+     "p5": -0.0261,
+     "p95": 0.1635,
+     "fracWithin20ms": 0.453,
+     "fracWithin40ms": 0.597
+    },
+    "R8_rise40ms": {
+     "n": 143,
+     "missed": 7,
+     "medianErrS": 0.0603,
+     "q25": 0.027,
+     "q75": 0.1167,
+     "p5": 0.0108,
+     "p95": 0.2199,
+     "fracWithin20ms": 0.168,
+     "fracWithin40ms": 0.371
+    },
+    "R16_rise0ms": {
+     "n": 148,
+     "missed": 2,
+     "medianErrS": -0.0079,
+     "q25": -0.0195,
+     "q75": 0.0092,
+     "p5": -0.0336,
+     "p95": 0.0521,
+     "fracWithin20ms": 0.608,
+     "fracWithin40ms": 0.892
+    },
+    "R16_rise40ms": {
+     "n": 148,
+     "missed": 2,
+     "medianErrS": 0.0153,
+     "q25": 0.003,
+     "q75": 0.0348,
+     "p5": -0.0058,
+     "p95": 0.0801,
+     "fracWithin20ms": 0.574,
+     "fracWithin40ms": 0.764
+    },
+    "R32_rise0ms": {
+     "n": 147,
+     "missed": 3,
+     "medianErrS": -0.0223,
+     "q25": -0.0313,
+     "q75": -0.0094,
+     "p5": -0.0551,
+     "p95": 0.0199,
+     "fracWithin20ms": 0.401,
+     "fracWithin40ms": 0.891
+    },
+    "R32_rise40ms": {
+     "n": 149,
+     "missed": 1,
+     "medianErrS": -0.0019,
+     "q25": -0.0103,
+     "q75": 0.0082,
+     "p5": -0.0189,
+     "p95": 0.0333,
+     "fracWithin20ms": 0.839,
+     "fracWithin40ms": 0.953
+    }
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "VA": {
+    "R4_rise0ms": {
+     "n": 144,
+     "missed": 6,
+     "medianErrS": 0.0204,
+     "q25": -0.0113,
+     "q75": 0.0709,
+     "p5": -0.2134,
+     "p95": 0.1839,
+     "fracWithin20ms": 0.326,
+     "fracWithin40ms": 0.542
+    },
+    "R4_rise40ms": {
+     "n": 145,
+     "missed": 5,
+     "medianErrS": 0.0412,
+     "q25": 0.0161,
+     "q75": 0.0884,
+     "p5": -0.2217,
+     "p95": 0.1649,
+     "fracWithin20ms": 0.186,
+     "fracWithin40ms": 0.407
+    },
+    "R8_rise0ms": {
+     "n": 147,
+     "missed": 3,
+     "medianErrS": -0.012,
+     "q25": -0.0286,
+     "q75": 0.0035,
+     "p5": -0.3989,
+     "p95": 0.0393,
+     "fracWithin20ms": 0.442,
+     "fracWithin40ms": 0.789
+    },
+    "R8_rise40ms": {
+     "n": 149,
+     "missed": 1,
+     "medianErrS": 0.0124,
+     "q25": -0.003,
+     "q75": 0.0376,
+     "p5": -0.4368,
+     "p95": 0.0808,
+     "fracWithin20ms": 0.49,
+     "fracWithin40ms": 0.664
+    },
+    "R16_rise0ms": {
+     "n": 150,
+     "missed": 0,
+     "medianErrS": -0.0253,
+     "q25": -0.0361,
+     "q75": -0.0144,
+     "p5": -0.1971,
+     "p95": 0.0087,
+     "fracWithin20ms": 0.347,
+     "fracWithin40ms": 0.813
+    },
+    "R16_rise40ms": {
+     "n": 150,
+     "missed": 0,
+     "medianErrS": -0.0072,
+     "q25": -0.0163,
+     "q75": 0.0045,
+     "p5": -0.3695,
+     "p95": 0.0239,
+     "fracWithin20ms": 0.727,
+     "fracWithin40ms": 0.867
+    },
+    "R32_rise0ms": {
+     "n": 149,
+     "missed": 1,
+     "medianErrS": -0.0339,
+     "q25": -0.0756,
+     "q75": -0.0234,
+     "p5": -0.3446,
+     "p95": -0.0034,
+     "fracWithin20ms": 0.168,
+     "fracWithin40ms": 0.584
+    },
+    "R32_rise40ms": {
+     "n": 148,
+     "missed": 2,
+     "medianErrS": -0.0206,
+     "q25": -0.043,
+     "q75": -0.0094,
+     "p5": -0.3335,
+     "p95": 0.0043,
+     "fracWithin20ms": 0.473,
+     "fracWithin40ms": 0.73
+    }
+   },
+   "RR": {
+    "R4_rise0ms": {
+     "n": 26,
+     "missed": 124,
+     "medianErrS": 0.1123,
+     "q25": 0.0312,
+     "q75": 0.179,
+     "p5": -0.3037,
+     "p95": 0.2256,
+     "fracWithin20ms": 0.115,
+     "fracWithin40ms": 0.192
+    },
+    "R4_rise40ms": {
+     "n": 27,
+     "missed": 123,
+     "medianErrS": 0.1418,
+     "q25": 0.0935,
+     "q75": 0.217,
+     "p5": 0.0359,
+     "p95": 0.2569,
+     "fracWithin20ms": 0.0,
+     "fracWithin40ms": 0.074
+    },
+    "R8_rise0ms": {
+     "n": 137,
+     "missed": 13,
+     "medianErrS": 0.03,
+     "q25": 0.0018,
+     "q75": 0.0727,
+     "p5": -0.0219,
+     "p95": 0.1746,
+     "fracWithin20ms": 0.365,
+     "fracWithin40ms": 0.547
+    },
+    "R8_rise40ms": {
+     "n": 137,
+     "missed": 13,
+     "medianErrS": 0.0654,
+     "q25": 0.0292,
+     "q75": 0.1123,
+     "p5": 0.01,
+     "p95": 0.21,
+     "fracWithin20ms": 0.124,
+     "fracWithin40ms": 0.35
+    },
+    "R16_rise0ms": {
+     "n": 147,
+     "missed": 3,
+     "medianErrS": -0.0088,
+     "q25": -0.0191,
+     "q75": 0.0082,
+     "p5": -0.0331,
+     "p95": 0.0634,
+     "fracWithin20ms": 0.619,
+     "fracWithin40ms": 0.905
+    },
+    "R16_rise40ms": {
+     "n": 150,
+     "missed": 0,
+     "medianErrS": 0.0126,
+     "q25": 0.0003,
+     "q75": 0.0287,
+     "p5": -0.0076,
+     "p95": 0.0776,
+     "fracWithin20ms": 0.6,
+     "fracWithin40ms": 0.793
+    },
+    "R32_rise0ms": {
+     "n": 148,
+     "missed": 2,
+     "medianErrS": -0.0198,
+     "q25": -0.029,
+     "q75": -0.0087,
+     "p5": -0.0522,
+     "p95": 0.0169,
+     "fracWithin20ms": 0.466,
+     "fracWithin40ms": 0.912
+    },
+    "R32_rise40ms": {
+     "n": 150,
+     "missed": 0,
+     "medianErrS": -0.0041,
+     "q25": -0.0118,
+     "q75": 0.0075,
+     "p5": -0.025,
+     "p95": 0.0317,
+     "fracWithin20ms": 0.813,
+     "fracWithin40ms": 0.96
+    }
+   }
+  }
+ }
+}

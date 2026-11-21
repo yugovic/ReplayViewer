@@ -1,0 +1,303 @@
+{
+ "FUJI_WET_XRK": {
+  ".xrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.xrk",
+   "size": 3283910,
+   "sha256": "18055a88997fe1475bcaa94fe0081e26da83c0bf900162ca578e4d5a0d441a43",
+   "magic_hex": "3c68434e4600de1d0000013e3c684348",
+   "magic_ascii": "<hCNF.Þ\u001d",
+   "header_tokens": {
+    "GPS": 7922,
+    "CHS": 48,
+    "CDE": 48,
+    "CAL": 7,
+    "LAP": 6,
+    "RCR": 2,
+    "VEH": 2,
+    "CMP": 2,
+    "VTY": 2,
+    "iSLV": 2,
+    "CNF": 1,
+    "GRP": 1,
+    "NDV": 1,
+    "SRC": 1,
+    "ENF": 1,
+    "MAN": 1,
+    "MOD": 1,
+    "TRK": 1,
+    "TMD": 1,
+    "TMT": 1,
+    "+LM": 1,
+    "VPVp": 1,
+    "NTE": 1
+   },
+   "tagged_header_counts": {
+    "GPS": 7922,
+    "GPS1": 0,
+    "GNFI": 0,
+    "RAWX": 0,
+    "SFRB": 0,
+    "RXM": 0,
+    "RAW": 0,
+    "NAV": 0,
+    "SBAS": 0,
+    "GPSR": 0,
+    "SVIN": 0,
+    "NSOL": 0,
+    "PSOL": 0
+   }
+  },
+  ".drk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.drk",
+   "size": 1498366,
+   "sha256": "d13318af6c50594c134bfa8972a96b87b9ec838b8e2bfcd7da2dee72ccaf3ab2",
+   "magic_hex": "52445802d91a00000000000000000000",
+   "magic_ascii": "RDX\u0002Ù\u001a..",
+   "ascii_strings_first4k": [
+    "Osaki_HMR Demio 101_Fuji_Generic te.drk",
+    "29-07-20 16:00:34",
+    "HMR Demio 101",
+    "Osaki_HMR Demio 101_Fuji_Generic testin",
+    "Day1-04",
+    "MAZDA MX5 ND",
+    "Logger Temperature",
+    "External Voltage"
+   ]
+  },
+  ".bak": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.bak",
+   "size": 1498366,
+   "sha256": "70d97d994efa0639875f11cf66018a75d6614e09e5af7a60177b73538f1c6e3e",
+   "magic_hex": "52445802d91a00000000000000000000",
+   "magic_ascii": "RDX\u0002Ù\u001a..",
+   "ascii_strings_first4k": [
+    "Osaki_HMR Demio 101_Fuji_Generic te.drk",
+    "29-07-20 16:00:34",
+    "HMR Demio 101",
+    "Osaki_HMR Demio 101_Fuji_Generic testin",
+    "Day1-04",
+    "MAZDA MX5 ND",
+    "Logger Temperature",
+    "External Voltage"
+   ]
+  },
+  ".gpk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.gpk",
+   "size": 2281632,
+   "sha256": "8224743f123b9ac528fe276f63e0b061bf4a51d82fcade022bc1348383f916f3",
+   "magic_hex": "50524f56000100000000000000000000",
+   "magic_ascii": "PROV.\u0001..",
+   "tag_counts": {
+    "PSOL": 15845
+   },
+   "record_stride_bytes": {
+    "PSOL": {
+     "144": 15843,
+     "16": 1
+    }
+   },
+   "first_tags": [
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL"
+   ]
+  },
+  ".rrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.rrk",
+   "size": 507072,
+   "sha256": "4cc592efeaa9c145cc7d5ba912b30bf9760a1d36b0c61436465fb4dc2f487bf7",
+   "magic_hex": "48454144000100000000000000000000",
+   "magic_ascii": "HEAD.\u0001..",
+   "tag_counts": {
+    "NSOL": 7923
+   },
+   "record_stride_bytes": {
+    "NSOL": {
+     "64": 7921,
+     "16": 1
+    }
+   },
+   "first_tags": [
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL"
+   ]
+  },
+  "drk_vs_bak": {
+   "identical": false,
+   "n_diff_bytes": 2,
+   "first_diff_offsets": [
+    1060,
+    1449
+   ]
+  }
+ },
+ "FUJI_DRY_XRK": {
+  ".xrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.xrk",
+   "size": 4040243,
+   "sha256": "5dc8ece620a19ca2c89fac4064aed373511d2f516bb1a27f75223eec203d455a",
+   "magic_hex": "3c68434e4600de1d0000013e3c684348",
+   "magic_ascii": "<hCNF.Þ\u001d",
+   "header_tokens": {
+    "GPS": 9741,
+    "CHS": 48,
+    "CDE": 48,
+    "LAP": 8,
+    "CAL": 7,
+    "RCR": 2,
+    "VEH": 2,
+    "CMP": 2,
+    "VTY": 2,
+    "iSLV": 2,
+    "CNF": 1,
+    "GRP": 1,
+    "NDV": 1,
+    "SRC": 1,
+    "ENF": 1,
+    "MAN": 1,
+    "MOD": 1,
+    "TRK": 1,
+    "TMD": 1,
+    "TMT": 1,
+    "+LM": 1,
+    "NTE": 1
+   },
+   "tagged_header_counts": {
+    "GPS": 9741,
+    "GPS1": 0,
+    "GNFI": 0,
+    "RAWX": 0,
+    "SFRB": 0,
+    "RXM": 0,
+    "RAW": 0,
+    "NAV": 0,
+    "SBAS": 0,
+    "GPSR": 0,
+    "SVIN": 0,
+    "NSOL": 0,
+    "PSOL": 0
+   }
+  },
+  ".drk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.drk",
+   "size": 1827634,
+   "sha256": "178b7376440807016e0dc992622da22d66de6d55e74e01d3c0c7ab262277201a",
+   "magic_hex": "52445802fe1a00000000000000000000",
+   "magic_ascii": "RDX\u0002þ\u001a..",
+   "ascii_strings_first4k": [
+    "Osaki_HMR Demio 101_Fuji_Generic te.drk",
+    "30-07-20 15:53:29",
+    "HMR Demio 101",
+    "Osaki_HMR Demio 101_Fuji_Generic testin",
+    "Day2-02",
+    "MAZDA MX5 ND",
+    "Logger Temperature",
+    "External Voltage"
+   ]
+  },
+  ".bak": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.bak",
+   "size": 1827634,
+   "sha256": "235bc290c8de861702340902bab65834d751707e3837ae634cab1f5636844258",
+   "magic_hex": "52445802fe1a00000000000000000000",
+   "magic_ascii": "RDX\u0002þ\u001a..",
+   "ascii_strings_first4k": [
+    "Osaki_HMR Demio 101_Fuji_Generic te.drk",
+    "30-07-20 15:53:29",
+    "HMR Demio 101",
+    "Osaki_HMR Demio 101_Fuji_Generic testin",
+    "Day2-02",
+    "MAZDA MX5 ND",
+    "Logger Temperature",
+    "External Voltage"
+   ]
+  },
+  ".gpk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.gpk",
+   "size": 2805504,
+   "sha256": "b3fb8277d791ee8bcc4eed60b2edac76deaee4a773a11780a219266989319f6c",
+   "magic_hex": "50524f56000100000000000000000000",
+   "magic_ascii": "PROV.\u0001..",
+   "tag_counts": {
+    "PSOL": 19483
+   },
+   "record_stride_bytes": {
+    "PSOL": {
+     "144": 19481,
+     "16": 1
+    }
+   },
+   "first_tags": [
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL",
+    "PSOL"
+   ]
+  },
+  ".rrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.rrk",
+   "size": 623488,
+   "sha256": "aaa4803917116aa65d58c14ef2a43d24bc77c4ca1954845cc36f1e5ab9cd8f1f",
+   "magic_hex": "48454144000100000000000000000000",
+   "magic_ascii": "HEAD.\u0001..",
+   "tag_counts": {
+    "NSOL": 9742
+   },
+   "record_stride_bytes": {
+    "NSOL": {
+     "64": 9740,
+     "16": 1
+    }
+   },
+   "first_tags": [
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL",
+    "NSOL"
+   ]
+  },
+  "drk_vs_bak": {
+   "identical": false,
+   "n_diff_bytes": 2,
+   "first_diff_offsets": [
+    1060,
+    1449
+   ]
+  }
+ }
+}

@@ -1,0 +1,18 @@
+{
+  "rev": "HEAD",
+  "commit": "51abd5c9a47549addf4bb66763d97a3ab04df57b",
+  "modes": {
+    "windowsDefaultClone": {
+      "autocrlf": "true",
+      "passed": true,
+      "failureCount": 0,
+      "failures": []
+    },
+    "lfClone": {
+      "autocrlf": "false",
+      "passed": true,
+      "failureCount": 0,
+      "failures": []
+    }
+  }
+}

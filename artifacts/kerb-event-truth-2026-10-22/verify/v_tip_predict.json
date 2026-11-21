@@ -1,0 +1,227 @@
+[
+ {
+  "session": "fuji_aim_2020_07_30",
+  "lap": 2,
+  "kerb": "k13",
+  "ownVideoTipPts": 300.869,
+  "t3VideoTipPts": 300.9163,
+  "ownMinusT3": -0.047,
+  "tTruthJoinL": 15.85,
+  "Ljoin": 0.241,
+  "LownVideoYaw": 0.2467,
+  "cams": {
+   "f711_h1.25": {
+    "cgTipT": 16.108,
+    "atEdge": false,
+    "dt_joinL": 0.257,
+    "dS_joinL": -4.87,
+    "dt_ownL": 0.252,
+    "dS_ownL": -4.76,
+    "speed": 18.92
+   },
+   "f967_h1.26": {
+    "cgTipT": 15.886,
+    "atEdge": false,
+    "dt_joinL": 0.035,
+    "dS_joinL": -0.67,
+    "dt_ownL": 0.03,
+    "dS_ownL": -0.56,
+    "speed": 19.01
+   },
+   "f472_h1.25": {
+    "cgTipT": 16.291,
+    "atEdge": false,
+    "dt_joinL": 0.441,
+    "dS_joinL": -8.37,
+    "dt_ownL": 0.435,
+    "dS_ownL": -8.26,
+    "speed": 18.99
+   }
+  },
+  "join": {
+   "dtNominal": -0.542,
+   "dtSpecFov": -0.013,
+   "dtF472": 0.304
+  }
+ },
+ {
+  "session": "fuji_aim_2020_07_30",
+  "lap": 4,
+  "kerb": "k7",
+  "ownVideoTipPts": 627.578,
+  "t3VideoTipPts": 627.6055,
+  "ownMinusT3": -0.027,
+  "tTruthJoinL": 78.968,
+  "Ljoin": 0.217,
+  "LownVideoYaw": 0.2285,
+  "cams": {
+   "f711_h1.25": {
+    "cgTipT": 78.879,
+    "atEdge": false,
+    "dt_joinL": -0.089,
+    "dS_joinL": 1.71,
+    "dt_ownL": -0.1,
+    "dS_ownL": 1.94,
+    "speed": 19.29
+   },
+   "f967_h1.26": {
+    "cgTipT": 78.659,
+    "atEdge": false,
+    "dt_joinL": -0.309,
+    "dS_joinL": 5.9,
+    "dt_ownL": -0.32,
+    "dS_ownL": 6.12,
+    "speed": 19.1
+   },
+   "f472_h1.25": {
+    "cgTipT": 79.064,
+    "atEdge": false,
+    "dt_joinL": 0.096,
+    "dS_joinL": -1.87,
+    "dt_ownL": 0.084,
+    "dS_ownL": -1.64,
+    "speed": 19.49
+   }
+  },
+  "join": {
+   "dtNominal": -0.071,
+   "dtSpecFov": 0.004,
+   "dtF472": 0.13
+  }
+ },
+ {
+  "session": "fuji_aim_2020_07_30",
+  "lap": 3,
+  "kerb": "k24",
+  "ownVideoTipPts": 526.766,
+  "t3VideoTipPts": 526.7923,
+  "ownMinusT3": -0.026,
+  "tTruthJoinL": 109.944,
+  "Ljoin": 0.205,
+  "LownVideoYaw": 0.2122,
+  "cams": {
+   "f711_h1.25": {
+    "cgTipT": 109.935,
+    "atEdge": false,
+    "dt_joinL": -0.009,
+    "dS_joinL": 0.2,
+    "dt_ownL": -0.016,
+    "dS_ownL": 0.37,
+    "speed": 23.65
+   },
+   "f967_h1.26": {
+    "cgTipT": 109.771,
+    "atEdge": false,
+    "dt_joinL": -0.173,
+    "dS_joinL": 4.06,
+    "dt_ownL": -0.181,
+    "dS_ownL": 4.23,
+    "speed": 23.41
+   },
+   "f472_h1.25": {
+    "cgTipT": 110.075,
+    "atEdge": false,
+    "dt_joinL": 0.131,
+    "dS_joinL": -3.11,
+    "dt_ownL": 0.123,
+    "dS_ownL": -2.94,
+    "speed": 23.8
+   }
+  },
+  "join": {
+   "dtNominal": -0.079,
+   "dtSpecFov": -0.02,
+   "dtF472": 0.113
+  }
+ },
+ {
+  "session": "fuji_aim_01",
+  "lap": 3,
+  "kerb": "k24",
+  "ownVideoTipPts": 578.962,
+  "t3VideoTipPts": 578.9988,
+  "ownMinusT3": -0.036,
+  "tTruthJoinL": 119.27,
+  "Ljoin": 0.218,
+  "LownVideoYaw": 0.2562,
+  "cams": {
+   "f711_h1.25": {
+    "cgTipT": 119.269,
+    "atEdge": false,
+    "dt_joinL": -0.001,
+    "dS_joinL": 0.03,
+    "dt_ownL": -0.039,
+    "dS_ownL": 0.81,
+    "speed": 20.54
+   },
+   "f967_h1.26": {
+    "cgTipT": 119.086,
+    "atEdge": false,
+    "dt_joinL": -0.185,
+    "dS_joinL": 3.74,
+    "dt_ownL": -0.223,
+    "dS_ownL": 4.51,
+    "speed": 20.25
+   },
+   "f472_h1.25": {
+    "cgTipT": 119.432,
+    "atEdge": false,
+    "dt_joinL": 0.161,
+    "dS_joinL": -3.36,
+    "dt_ownL": 0.123,
+    "dS_ownL": -2.56,
+    "speed": 20.85
+   }
+  },
+  "join": {
+   "dtNominal": -0.141,
+   "dtSpecFov": 0.002,
+   "dtF472": 0.119
+  }
+ },
+ {
+  "session": "fuji_aim_01",
+  "lap": 3,
+  "kerb": "k3",
+  "ownVideoTipPts": 517.222,
+  "t3VideoTipPts": 517.167,
+  "ownMinusT3": 0.055,
+  "tTruthJoinL": 57.53,
+  "Ljoin": 0.218,
+  "LownVideoYaw": 0.2562,
+  "cams": {
+   "f711_h1.25": {
+    "cgTipT": 57.213,
+    "atEdge": false,
+    "dt_joinL": -0.317,
+    "dS_joinL": 6.33,
+    "dt_ownL": -0.355,
+    "dS_ownL": 7.09,
+    "speed": 19.97
+   },
+   "f967_h1.26": {
+    "cgTipT": 57.09,
+    "atEdge": false,
+    "dt_joinL": -0.439,
+    "dS_joinL": 8.69,
+    "dt_ownL": -0.478,
+    "dS_ownL": 9.45,
+    "speed": 19.78
+   },
+   "f472_h1.25": {
+    "cgTipT": 57.384,
+    "atEdge": false,
+    "dt_joinL": -0.145,
+    "dS_joinL": 2.93,
+    "dt_ownL": -0.184,
+    "dS_ownL": 3.7,
+    "speed": 20.15
+   }
+  },
+  "join": {
+   "dtNominal": -0.27,
+   "dtSpecFov": -0.12,
+   "dtF472": -0.02
+  }
+ }
+]

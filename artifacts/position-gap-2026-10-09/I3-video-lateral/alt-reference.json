@@ -1,0 +1,120 @@
+{
+ "alternativeCamera": [
+  523.8141443790012,
+  16.90980123383412,
+  6.078654664304402,
+  1.330675480266893
+ ],
+ "trainingCommonDyMeters": -1.1758041143320614,
+ "costAlt": 78.03608059773059,
+ "costFrozen": 116.94022683968052,
+ "scenes": {
+  "2020-07-29-L3-47.000": {
+   "fixedYawDy": -0.3933745354420078,
+   "medianPx": 5.34431004602043,
+   "note": "in-sample; the common training offset itself is b"
+  },
+  "2020-07-29-L3-55.000": {
+   "fixedYawDy": -1.1781914367181516,
+   "medianPx": 0.6254341801448047,
+   "note": "in-sample; the common training offset itself is b"
+  },
+  "2020-07-29-L3-68.000": {
+   "fixedYawDy": -2.779295890250626,
+   "medianPx": 2.400157265302748,
+   "note": "in-sample; the common training offset itself is b"
+  },
+  "2020-07-29-L3-60.000": {
+   "fixedYawDy": -3.523339471386931,
+   "baselineMedianPx": 18.61874856297514,
+   "medianPx": 8.819012507390024
+  },
+  "2020-07-29-L3-64.367": {
+   "fixedYawDy": -3.7125475357793682,
+   "baselineMedianPx": 19.02560988959572,
+   "medianPx": 0.29374802785258997
+  },
+  "2020-07-30-L2-18.000": {
+   "fixedYawDy": -4.999999999999749,
+   "baselineMedianPx": 18.687791351787734,
+   "medianPx": 8.11847040244459
+  },
+  "2020-07-30-L2-45.000": {
+   "fixedYawDy": 1.2197454322219687,
+   "baselineMedianPx": 18.61368646210517,
+   "medianPx": 12.306107660690024
+  },
+  "2020-07-30-L2-50.000": {
+   "fixedYawDy": -0.8709933341092052,
+   "baselineMedianPx": 24.591038575105117,
+   "medianPx": 3.381521188638814
+  },
+  "2020-07-30-L2-84.000": {
+   "fixedYawDy": -2.1801347547161956,
+   "baselineMedianPx": 20.18246038899418,
+   "medianPx": 8.084429617588478
+  },
+  "2020-07-30-L2-94.000": {
+   "fixedYawDy": 0.6082689481449912,
+   "baselineMedianPx": 28.469692692138942,
+   "medianPx": 21.459543537014188
+  },
+  "2020-07-30-L2-112.000": {
+   "fixedYawDy": -2.2428896759643533,
+   "baselineMedianPx": 21.946849693367373,
+   "medianPx": 4.40155247768106
+  },
+  "2020-07-29-L3-52.387": {
+   "fixedYawDy": -1.1824159655802184,
+   "baselineMedianPx": 6.130534402899172,
+   "medianPx": 3.6427911258768737
+  },
+  "2020-07-30-L2-47.522": {
+   "fixedYawDy": 0.3401515524866168,
+   "baselineMedianPx": 4.3634898901539305,
+   "medianPx": 2.1967155784287375
+  },
+  "2020-07-30-L2-44.000": {
+   "fixedYawDy": 2.81865026440277,
+   "baselineMedianPx": 8.043771197466956,
+   "medianPx": 9.553702124134066
+  },
+  "2020-07-30-L2-44.500": {
+   "fixedYawDy": 1.3641778897556653,
+   "baselineMedianPx": 4.769356804726642,
+   "medianPx": 7.84248073161984
+  },
+  "2020-07-30-L2-45.500": {
+   "fixedYawDy": -2.2395911037983605,
+   "baselineMedianPx": 11.307024824725367,
+   "medianPx": 5.989054555267216
+  },
+  "2020-07-30-L2-46.000": {
+   "fixedYawDy": -1.9683514100063557,
+   "baselineMedianPx": 18.441638369157612,
+   "medianPx": 1.6084090301087062
+  },
+  "2020-07-30-L2-93.000": {
+   "fixedYawDy": 0.039549106286466434,
+   "baselineMedianPx": 17.99764530799951,
+   "medianPx": 17.602386596746555
+  },
+  "2020-07-30-L2-93.500": {
+   "fixedYawDy": 0.31184978000252034,
+   "baselineMedianPx": 21.17179463361731,
+   "medianPx": 19.12706099225061
+  },
+  "2020-07-30-L2-94.500": {
+   "fixedYawDy": 0.9756378011512995,
+   "baselineMedianPx": 20.208457215134292,
+   "medianPx": 19.694609633630844
+  },
+  "2020-07-30-L2-95.000": {
+   "fixedYawDy": 1.2959204959243853,
+   "baselineMedianPx": 20.084504721155447,
+   "medianPx": 13.552704935543806
+  }
+ },
+ "heldoutMedianOfSceneMediansPxAlt": 18.856700620691726,
+ "heldoutMeanOfSceneMediansPxAlt": 18.06299019091225
+}

@@ -1,0 +1,69 @@
+{
+  "round": 3,
+  "reviewer": "Fable (independent reviewer, round 3 of 3)",
+  "date": "2026-10-22",
+  "checksOfPreviousFixes": [
+    {
+      "findingId": "R2-01",
+      "verdict": "resolved",
+      "detail": "cg/manifest_onboard_vpfix.json is version 3 with vanishingPointSession = fuji_aim_2020_07_30 at top level and in both sessions; fuji_aim_01 profile pitchDeg 12.8807 / yawDeg 1.6383 identical to fuji_aim_2020_07_30; summary failures 0, onboardActive 106, maxVpErrorPx720 0.00057. All 106 *_cg_onboard.jpg mtimes 22:47:57-22:48:42 JST lie inside the run window (started 13:47:50Z, generated 13:48:42Z); chase JPEGs untouched (19:42-19:45). build_page.py asserts vanishingPointSession, both profiles == 12.8807/1.6383, profile equality and AIM29 == AIM30 == '下向き12.9°・右向き1.6°'. Page: '下向き13.7°・左向き0.5°' 0 occurrences, '両日とも7/30の値を使っています' present, 106 onboard captions '7/30の動画の消失点に合わせた値。両日共通'. page-qa.json (generated 23:02:51, after the last page build at 23:02:47): status passed, failures [], 531/531 images, clippingGuides 110 (55 cards x 2), staleAim29Text false, commonAimText true. Own composites (tmp/round3): on clip-0729-L2-k9 and clip-0729-L3-k24 the 3DCG kerb edge now crosses row 276 within ~20 px (of 960) of the video's; clip-0730-L3-k23 unchanged; clip-0730-L1-k9 3DCG kerb above the line as expected for dt +0.27 s."
+    },
+    {
+      "findingId": "R2-02",
+      "verdict": "resolved",
+      "detail": "Own Playwright run (round-3/render-dump.mjs, file://, fonts answered locally) at 390 px: gap-table 316 px in a 352 px card (parentScroll 352, no scrolling), fix-table 316/352, cam-table 316/316, 2x2 tables 311/311. 0 console errors, 0 page errors, documentElement scrollWidth == clientWidth at 390 and 1100 px in light and dark for B and C."
+    },
+    {
+      "findingId": "R2-03",
+      "verdict": "resolved",
+      "detail": "B mentions the two L5 bursts in the conclusion bullet, the 縁石一致 k1 bullet and the 根拠 correction, with -0.41 s (2 occurrences), 'with the second burst 4 of 6 late, six-lap median about 0.16 s'. Recomputed from event_table: L5 bursts dtFirst +0.204 (medium, RR, 33.061 s) and -0.405 (high, VA+RR, 33.670 s); six-lap median 0.2155 with burst 1, 0.156 with burst 2; k1 CG contact 0.226 s long inside burst 1 (0.585 s). The per-lap sentence (6周中5周 L1-L5 0.09-0.36秒, L6 0.12秒早い) is unchanged. Chart tooltips are built at runtime as （振動N回目・確かさX） for duplicate lap/kerb contacts (verified in the script). C: the k1 note with the two-burst clause and 0.41秒 appears on all 7 k1 contact cards."
+    },
+    {
+      "findingId": "R2-04",
+      "verdict": "resolved",
+      "detail": "cam-table note now reads '前後の＋は「3DCGが先にいる」、時刻の＋は「3DCGでは、縁石の先端が画面の同じ高さ（276行目）に来るのが遅い」です。遅く来るのは3DCGの車が後ろにいるためなので、前後と時刻は符号が逆になります。' Signs match event_table signConventions and D.cam (fh590 dt +0.117 / dS -3.27)."
+    },
+    {
+      "findingId": "R2-05",
+      "verdict": "resolved",
+      "detail": "verify.json verdictSummary.check1_wholeSetMetric contains 'consistent with the direction of the correction under the assumed camera (f*h 889; 19/30, 24/30, 23/30 at f*h 590/889/1209) but neither prove it independently nor fix the size of L; independent support: kerb audio vs IMU and video yaw vs gyro (evaluation)'; the phrase 'support the direction' is gone; the old text is preserved in check1_wholeSetMetric_editedRound2; the 7/29 recheck (4 vs 5 of 9 with the 7/30 point) is appended."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R3-01",
+      "area": "comparison-page",
+      "severity": "medium",
+      "title": "The retracted k1 claim ('約0.15秒遅れ' / '7/30全周で…約0.15秒遅い') survives inside the 7 k1 top-view PNGs and in events.json notesJa",
+      "problem": "R1-01 removed the false k1 sentence from the HTML of B and C, but the comparison page's top-view schematics are PNGs generated at 19:55 (all 107, before round 1) by scripts/build_schematics.py, whose note for kerbContact/k1 is hard-coded as '注: k1は3DCGのブロック線の先端形状で乗った瞬間の距離が大きく出る（約0.15秒遅れの指摘・個別確認待ち）'. That line is printed on the 7 k1 contact cards directly under the card note that now says '0.09〜0.36秒遅く始まり（L6だけ0.12秒早い）…0.41秒早く'. scripts/build_events.py line 249 likewise writes '評価では7/30全周で3DCGの接触が約0.15秒遅いと指摘' into events.json notesJa for the same 7 events; the page hides it only because build_page.py's NOTE_MAP substitutes the text, so the data file and any future regeneration still carry the claim. Both text-based acceptance checks of R1-01 (grep on the HTML) could not see it.",
+      "evidence": "scripts/build_schematics.py:306; scripts/build_events.py:249; events.json notesJa of contact-0730-L1-k1 … L6-k1 (7 events); schematic/*.png all mtime 19:55 (107 files); viewed contact-0730-L1-k1, contact-0730-L5-k1-1 and contact-0730-L5-k1-2 top views in artifacts/event-comparison-2026-10-22/tmp/round3/*_r3.jpg — the stale note is legible on each; the page HTML has 0 occurrences of '約0.15秒' / '全周で3DCG' (NOTE_MAP override).",
+      "fix": "1) In build_schematics.py replace the note with '注: k1は3DCGのブロック線の先端形状で乗った瞬間の距離が大きく出る（7/30は6周中5周で0.09〜0.36秒遅れ、L6は0.12秒早い。個別確認待ち）'. 2) In build_events.py replace the notesJa sentence with the same facts (keep the leading 'k1（コカ・コーラ）' so NOTE_MAP's key 'k1（コカ' still matches), and patch the 7 notesJa strings in events.json in place with a small python script (no other field changes); because frames/manifest.json records the old events.json sha256, record the new sha256 and the reason in verify.json (or in the frames manifest as a note) so the provenance chain stays explicit. 3) Regenerate only the 7 k1 schematics: pipeline/.venv-sr python -I scripts/build_schematics.py --only contact-0730-L1-k1 contact-0730-L2-k1 contact-0730-L3-k1 contact-0730-L4-k1 contact-0730-L5-k1-1 contact-0730-L5-k1-2 contact-0730-L6-k1 (numbers only, no video, no server; the builder re-asserts the recomputed CG gaps against events.json within 0.01 m). 4) Rebuild the page (build_page.py) and re-run qa_page.mjs.",
+      "acceptance": "grep '0.15秒' and '全周で' over scripts/build_schematics.py, scripts/build_events.py and events.json returns 0 hits; the 7 contact-*-k1*_top.png have an mtime after the fix and the other 100 schematic PNGs are unchanged (or all 107 regenerated with 0 failures); one regenerated PNG viewed by eye shows the new note; build_schematics gap assertions pass; qa_page.mjs passed with 531/531 images, 110 guides, 0 console errors.",
+      "effort": "small (two strings, 7-image regeneration, page rebuild + QA; ~10 min)"
+    },
+    {
+      "id": "R3-02",
+      "area": "comparison-page",
+      "severity": "low",
+      "title": "要旨 reports the image check for 7/30 only; the 7/29 recheck with the evaluation camera (4 vs 5 of 9) is only in verify.json",
+      "problem": "After R2-01 the 26 7/29 events were re-scored with the 7/30 vanishing point (verify.json round2Recheck: clipping 4 corrected-closer vs 5 uncorrected-closer of 9 usable; turn-in 2 vs 2 of 4; kerb contact 0 usable). The page's 要旨 says nothing about 7/29, so a reader cannot tell whether 7/29 was checked and found inconclusive or not checked at all.",
+      "evidence": "artifacts/event-comparison-2026-10-22/verify.json round2Recheck.adversarialRerun0729.countsPairRule; page 要旨 paragraph (build_page.py line ~877) mentions only the 7/30 counts.",
+      "fix": "Append one sentence to the 要旨 paragraph in build_page.py, data-driven from verify.json round2Recheck: '7/29は雨とワイパーで使えるのが9件しかなく、補正後が近いのは4件・補正前が近いのは5件で、判定できません。' Rebuild and re-run qa_page.mjs.",
+      "acceptance": "The page 要旨 contains the 7/29 sentence with 9 / 4 / 5 read from verify.json (assert in the builder); qa_page.mjs passes.",
+      "effort": "trivial"
+    },
+    {
+      "id": "R3-03",
+      "area": "report",
+      "severity": "low",
+      "title": "'縁石に乗る瞬間の時刻は、ロガーと数十ミリ秒で合っています' is true for the median only",
+      "problem": "In これで何が言えるか bullet 1 the kerb-contact time is listed with turn-in and minimum speed as agreeing with the logger 'within tens of milliseconds'. For the 20 7/30 contacts where the 3DCG reaches the block line, the median dt is +0.03 s but the per-event |dt| is typically 0.14 s and 0.36 s at the 90 % point, because the contact instant depends on the lateral position error at a shallow approach angle (the 3.3 m typical along-track error stated under the gap table). A reader will take the clause as a per-event timing accuracy, which it is not.",
+      "evidence": "summary.alongTrack.contactFirstBlock.fuji_aim_2020_07_30.dt: n 20, median 0.03, medianAbs 0.141, p90Abs 0.356 (reproduced from event_table block.dtFirst in this round).",
+      "fix": "Change the clause to '切り始め・最低速度の時刻はロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます。これは時計のずれではなく、浅い角度で縁石に近づくため横の位置誤差が時刻の差になるものです。'",
+      "acceptance": "B contains the 0.14 s / 0.36 s per-event values next to the +0.03 s median; the values equal summary.alongTrack.contactFirstBlock 7/30 dt medianAbs / p90Abs (0.141 / 0.356).",
+      "effort": "trivial (text)"
+    }
+  ],
+  "overallAssessment": "All five round-2 fixes are verified against their acceptance checks and resolved. Independent re-checks in this round: verify_join.py allOk on re-run (8 checks); every number in report B's tiles, gap table, lateral table, camera-scale table, agreement tables and k1 sentences reproduces from event_table.json / summary.json (clipping fh889 7/30 +0.31/1.12/4.09 m, 7/29 +0.41/1.39/4.44 m; turn-in -0.20/1.03/3.31 and -0.59/1.22/3.28 m; contacts n 20 -0.59/3.30/9.42 m; lateral +0.23/0.43, excl k1 +0.12/0.30; clipping dLat -0.34/0.54 and +0.01/0.48; TP/FN/FP/TN 20/10/11/43 and 1/1/4/50; camera medians -3.3/+0.3/+2.1/+4.2 and -3.6/+0.4/+3.3/+5.1 m; time base 0.177-0.274 and the verifier's 0.206-0.265; k1 per-lap dtFirst and the L5 two-burst variants); all 106 comparison-page cards carry exactly the event_table values (clipping fh889 dt/dS/dLat, turn-in dtHeading50/dSHeading50, contact gap/dtFirst/dSFirst/cgShowsContact, truth times) and only the 29 primary contacts; B has no media tags and no personal paths, kerb-event-truth has no personal paths; both pages render with 0 errors and 0 overflow at 390/1100 px, light and dark; the tracked modified set is still the same 29 files. Image sample (own composites in tmp/round3): the 7/29 recapture now aims like the evaluation camera and the row-276 comparison reads correctly on the sampled clipping cards. The one remaining issue that can be fixed with the existing data is a leftover of R1-01 that text-based checks could not see: the 7 k1 top-view PNGs (and events.json notesJa) still print the retracted '約0.15秒遅れ' / '7/30全周' claim right under the corrected card text (R3-01, medium, ~10 min). Two low polish items remain (7/29 image-check sentence on the page; the kerb-contact clause in B's conclusions). For the orchestrator: WORKLOG entries 12:44 ('k1 約0.15秒') and 20:43 ('yaw stayed at the 10/03 estimate', 'image check confirmed the correction direction') are still contradicted by the stored outputs; the 20:43 entry's '7/29は13.7°・7/30は12.9°' is also superseded (both days 12.88°/+1.64° from the 7/30 vanishing point). Review scripts/outputs: artifacts/review-loop-2026-10-22/round-3/render-dump.mjs, render-dump.json, B-rendered.txt, C-rendered-head.txt; video-derived composites only in artifacts/event-comparison-2026-10-22/tmp/round3/.",
+  "stop": false
+}

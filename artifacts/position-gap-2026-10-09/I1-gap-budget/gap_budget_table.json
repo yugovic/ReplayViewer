@@ -1,0 +1,999 @@
+{
+ "generatedBy": "artifacts/position-gap-2026-10-09/I1-gap-budget/table.py",
+ "rows": [
+  {
+   "group": "1 timing",
+   "component": "7/29 logger-clock channels vs GPS (clock pairs accx/accy)",
+   "direction": "along (HUD/pedal/brake-lamp vs car, not car position)",
+   "value": {
+    "perLapS": {
+     "1": {
+      "accx_along": 0.044,
+      "accy_lateral": 0.042
+     },
+     "2": {
+      "accx_along": 0.004,
+      "accy_lateral": 0.008
+     },
+     "3": {
+      "accx_along": -0.012,
+      "accy_lateral": -0.004
+     },
+     "4": {
+      "accx_along": -0.042,
+      "accy_lateral": -0.028
+     }
+    },
+    "maxAbsS": 0.044,
+    "medianS": "~0 (accx -0.004, accy +0.002)",
+    "metres": {
+     "s": 0.044,
+     "m@60": 0.733,
+     "m@80": 0.978,
+     "m@100": 1.222,
+     "m@median_0729": 1.284,
+     "m@median_0730": 1.494,
+     "m@top_0729": 2.336,
+     "m@top_0730": 2.392
+    }
+   },
+   "unit": "s / m",
+   "scope": "fuji_aim_01 L1-L4",
+   "grade": "measured",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/iter2/lags_vs_0729.json (sg rawLags 0729)",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": "Physical pairs brake->decel -0.13 s and steer->course -0.05 s are vehicle dynamics, not clock error."
+  },
+  {
+   "group": "1 timing",
+   "component": "7/30 channels after native re-timing, residual vs 7/29 relation",
+   "direction": "along (HUD/pedal vs car)",
+   "value": {
+    "sessionMedianS": {
+     "accx_along": 0.024,
+     "accy_lateral": 0.025,
+     "brake_decel": -0.004,
+     "steer_courseRate": -0.031
+    },
+    "perLapRangeS": {
+     "accx_along": [
+      0.006,
+      0.026
+     ],
+     "accy_lateral": [
+      0.008,
+      0.034
+     ],
+     "brake_decel": [
+      -0.009,
+      0.001
+     ],
+     "steer_courseRate": [
+      -0.071,
+      -0.013
+     ]
+    },
+    "metres_accel0.024": {
+     "s": 0.024,
+     "m@60": 0.4,
+     "m@80": 0.533,
+     "m@100": 0.667,
+     "m@median_0729": 0.7,
+     "m@median_0730": 0.815,
+     "m@top_0729": 1.274,
+     "m@top_0730": 1.305
+    },
+    "metres_turn0.031": {
+     "s": 0.031,
+     "m@60": 0.517,
+     "m@80": 0.689,
+     "m@100": 0.861,
+     "m@median_0729": 0.905,
+     "m@median_0730": 1.052,
+     "m@top_0729": 1.646,
+     "m@top_0730": 1.685
+    },
+    "metres_brake0.004": {
+     "s": 0.004,
+     "m@60": 0.067,
+     "m@80": 0.089,
+     "m@100": 0.111,
+     "m@median_0729": 0.117,
+     "m@median_0730": 0.136,
+     "m@top_0729": 0.212,
+     "m@top_0730": 0.217
+    },
+    "videoOverlayPedalCheck": {
+     "brake_0730_minus_0729_s": -0.012,
+     "throttle_0730_minus_0729_s": -0.002,
+     "resolution_s": "+-0.03..0.05"
+    }
+   },
+   "unit": "s / m",
+   "scope": "fuji_aim_2020_07_30 L1-L6",
+   "grade": "measured",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/iter2/lags_vs_0729.json, evaluation-iter2.json",
+   "state": "committed d9a1ea9 (in 7ebf89b)",
+   "note": "Residuals are below the video-overlay check resolution; 7/30 L5 pedal overlay 0.21 s vs ~0.08 s others = mapping outlier."
+  },
+  {
+   "group": "1 timing",
+   "component": "Video PTS <-> lap time mapping (overlay LAP timer reads)",
+   "direction": "along (car position)",
+   "value": {
+    "withinLapReadDeviation": {
+     "fuji_aim_01": {
+      "maxAbs": 0.03866666666665941,
+      "rms": 0.017299646752973328
+     },
+     "fuji_aim_2020_07_30": {
+      "maxAbs": 0.03666666666666292,
+      "rms": 0.018776462807342832
+     }
+    },
+    "comparison13Scenes_overlayMinusRequested_maxAbsS": 0.023,
+    "overlayUpdateGranularityS": "~0.05 (reads trail 0-50 ms)",
+    "outlier_0730L5_correctionS": 0.09,
+    "metres_typical0.03": {
+     "s": 0.03,
+     "m@60": 0.5,
+     "m@80": 0.667,
+     "m@100": 0.833,
+     "m@median_0729": 0.875,
+     "m@median_0730": 1.019,
+     "m@top_0729": 1.592,
+     "m@top_0730": 1.631
+    },
+    "metres_L5_0.09": {
+     "s": 0.09,
+     "m@60": 1.5,
+     "m@80": 2.0,
+     "m@100": 2.5,
+     "m@median_0729": 2.626,
+     "m@median_0730": 3.056,
+     "m@top_0729": 4.777,
+     "m@top_0730": 4.892
+    }
+   },
+   "unit": "s / m",
+   "scope": "both sessions, all laps (timer reads at 10/50/90 % of each lap); 13 comparison scenes",
+   "grade": "measured",
+   "evidence": "artifacts/video-position-gap-2026-10-02/video-timer-reads.json; artifacts/onboard-comparison-2026-10-03/manifest.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "1 timing",
+   "component": "Frame quantisation and decoded-frame offset",
+   "direction": "along",
+   "value": {
+    "halfFrame_1over60": {
+     "s": 0.0167,
+     "m@60": 0.278,
+     "m@80": 0.37,
+     "m@100": 0.463,
+     "m@median_0729": 0.486,
+     "m@median_0730": 0.566,
+     "m@top_0729": 0.885,
+     "m@top_0730": 0.906
+    },
+    "fullFrame_1over30": {
+     "s": 0.0333,
+     "m@60": 0.556,
+     "m@80": 0.741,
+     "m@100": 0.926,
+     "m@median_0729": 0.973,
+     "m@median_0730": 1.132,
+     "m@top_0729": 1.769,
+     "m@top_0730": 1.812
+    },
+    "decodedMinusRequested_13scenes_s": [
+     0.006,
+     0.019,
+     0.006,
+     0.006,
+     0.0057,
+     0.006,
+     0.0287,
+     0.0287,
+     0.0067,
+     0.0287,
+     0.0287,
+     0.0287,
+     0.0287
+    ],
+    "decodedOffsetAlong_13scenes_m": [
+     0.206,
+     0.664,
+     0.162,
+     0.153,
+     0.193,
+     0.235,
+     0.619,
+     1.066,
+     0.242,
+     0.708,
+     0.719,
+     0.927,
+     0.737
+    ]
+   },
+   "unit": "s / m",
+   "scope": "13 comparison scenes (7/30 scenes: video frame 0.0287 s later than the CG time)",
+   "grade": "measured",
+   "evidence": "artifacts/onboard-comparison-2026-10-03/manifest.json",
+   "state": "comparison artefact (fixable by sampling CG at decoded PTS)",
+   "note": ""
+  },
+  {
+   "group": "1 timing",
+   "component": "Video image vs logger data lag (window-flow yaw proxy vs GPS course rate / IMU ay/v)",
+   "direction": "along (if it is a timing offset: replay behind video)",
+   "value": {
+    "gpsCourseRateAfterVideoYaw_medianS": {
+     "0729": 0.185,
+     "0730": 0.235
+    },
+    "perLapRangeS": [
+     0.04,
+     0.375
+    ],
+    "imuAyOverV_AfterVideoYaw_medianS": {
+     "0729": 0.215,
+     "0730": 0.285
+    },
+    "metres_0.185": {
+     "s": 0.185,
+     "m@60": 3.083,
+     "m@80": 4.111,
+     "m@100": 5.139,
+     "m@median_0729": 5.399,
+     "m@median_0730": 6.281,
+     "m@top_0729": 9.82,
+     "m@top_0730": 10.056
+    },
+    "metres_0.235": {
+     "s": 0.235,
+     "m@60": 3.917,
+     "m@80": 5.222,
+     "m@100": 6.528,
+     "m@median_0729": 6.858,
+     "m@median_0730": 7.979,
+     "m@top_0729": 12.475,
+     "m@top_0730": 12.774
+    },
+    "probe_pm0.2s": "held-out 10 scenes: +0.2 s improved 5/worsened 5 (mean 15.20->15.07 px); diagnostic sequence: +0.2 s worse in 6/8"
+   },
+   "unit": "s / m",
+   "scope": "both sessions, per lap",
+   "grade": "unknown (measured lag; its split into overlay latency vs yaw/sideslip physics is not identified)",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/iter2/evaluation-iter2.json; artifacts/video-cg-alignment-2026-10-03/evidence/time-diagnostic-evaluation.json, sequence/sequence-evaluation.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": "GPS and IMU agree within +-0.04 s, so the ~0.2 s is between the video image and all logger data. Plausible timing share 0..0.24 s; a 0.08-0.09 s overlay latency is suggested by the pedal overlay but not proven for the timer itself. Not applied."
+  },
+  {
+   "group": "1 timing",
+   "component": "Lap clock delta (first 10 Hz sample vs true lap start)",
+   "direction": "along",
+   "value": {
+    "before_m": {
+     "medianOfLapMedians": 1.05,
+     "max": 5.02
+    },
+    "after_m": 0,
+    "deltaRangeS": [
+     0.007,
+     0.097
+    ]
+   },
+   "unit": "m",
+   "scope": "all 10 laps",
+   "grade": "measured",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/c1c2-timebase-pose-kerbui-r2/summary.json",
+   "state": "committed d9a1ea9 (fixed)",
+   "note": ""
+  },
+  {
+   "group": "2 GPS lateral",
+   "component": "Registration internal variability (half-lap refit minus full-lap fit), fuji_aim_01",
+   "direction": "lateral (and along)",
+   "value": {
+    "halfSplitNormM": {
+     "median": 0.8521868626685901,
+     "max": 1.8289762163571182
+    },
+    "lateralMedianAlongLapM": {
+     "median": 0.4433006710864995,
+     "max": 0.7407523515066208
+    },
+    "lateralP95AlongLapM": {
+     "median": 0.8436344593481648,
+     "max": 1.7983356541534357
+    },
+    "jackknifeSigmaM": {
+     "1": [
+      0.707,
+      0.406
+     ],
+     "2": [
+      0.048,
+      0.043
+     ],
+     "3": [
+      0.048,
+      0.12
+     ],
+     "4": [
+      0.062,
+      0.084
+     ]
+    },
+    "registeredMaxBeyondLimitM": {
+     "1": 0.819,
+     "2": 0.153,
+     "3": 0.177,
+     "4": 0.136
+    },
+    "rawBiasRemoved_lateralMedianM": {
+     "1": 1.06,
+     "2": 0.75,
+     "3": 0.72,
+     "4": 0.68
+    }
+   },
+   "unit": "m",
+   "scope": "fuji_aim_01",
+   "grade": "derived (conditional sensitivity, not absolute accuracy)",
+   "evidence": "artifacts/gps-accuracy-2026-09-22/registration/analysis-summary.json; public/data/races/*/gps_registration.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "2 GPS lateral",
+   "component": "Registration internal variability (half-lap refit minus full-lap fit), fuji_aim_2020_07_30",
+   "direction": "lateral (and along)",
+   "value": {
+    "halfSplitNormM": {
+     "median": 0.5436557512717493,
+     "max": 1.6679619300211859
+    },
+    "lateralMedianAlongLapM": {
+     "median": 0.3956236289823067,
+     "max": 1.461978614630189
+    },
+    "lateralP95AlongLapM": {
+     "median": 0.5372266467700275,
+     "max": 1.6461619901078668
+    },
+    "jackknifeSigmaM": {
+     "1": [
+      0.157,
+      0.191
+     ],
+     "2": [
+      0.293,
+      0.296
+     ],
+     "3": [
+      0.106,
+      0.098
+     ],
+     "4": [
+      0.246,
+      0.377
+     ],
+     "5": [
+      0.086,
+      0.08
+     ],
+     "6": [
+      0.133,
+      0.126
+     ]
+    },
+    "registeredMaxBeyondLimitM": {
+     "1": 0.314,
+     "2": 0.583,
+     "3": 0.288,
+     "4": 0.488,
+     "5": 0.083,
+     "6": 0.179
+    },
+    "rawBiasRemoved_lateralMedianM": {
+     "1": 2.17,
+     "2": 2.11,
+     "3": 2.02,
+     "4": 2.36,
+     "5": 2.05,
+     "6": 1.97
+    }
+   },
+   "unit": "m",
+   "scope": "fuji_aim_2020_07_30",
+   "grade": "derived (conditional sensitivity, not absolute accuracy)",
+   "evidence": "artifacts/gps-accuracy-2026-09-22/registration/analysis-summary.json; public/data/races/*/gps_registration.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "2 GPS lateral",
+   "component": "Shipped registration vs kerb-contact candidate (?gps=kerb), per lap",
+   "direction": "lateral",
+   "value": {
+    "lateralMedianM": {
+     "median": 0.44529068067364086,
+     "max": 0.5825243596011886
+    },
+    "lateralP95M": {
+     "median": 0.49110947435040697,
+     "max": 0.6547832706887696
+    },
+    "normM": {
+     "median": 0.4923622067229624,
+     "max": 0.6574777562777314
+    },
+    "perLap": {
+     "1": {
+      "lat_med": 0.3,
+      "along_med": 0.13
+     },
+     "2": {
+      "lat_med": 0.55,
+      "along_med": 0.36
+     },
+     "3": {
+      "lat_med": 0.36,
+      "along_med": 0.21
+     },
+     "4": {
+      "lat_med": 0.53,
+      "along_med": 0.17
+     },
+     "5": {
+      "lat_med": 0.58,
+      "along_med": 0.17
+     },
+     "6": {
+      "lat_med": 0.36,
+      "along_med": 0.23
+     }
+    }
+   },
+   "unit": "m",
+   "scope": "fuji_aim_2020_07_30 L1-L6",
+   "grade": "derived (disagreement of two plausible fits)",
+   "evidence": "public/data/races/fuji_aim_2020_07_30/gps_registration.json vs gps_registration_kerb.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "2 GPS lateral",
+   "component": "IMU kerb-contact label consistency with shipped registration",
+   "direction": "lateral",
+   "value": {
+    "labels": 58,
+    "contradictions": 4,
+    "contradictionsDetail_lap_kerb_class_gMinM": [
+     [
+      2,
+      "k21",
+      "strong",
+      1.664
+     ],
+     [
+      2,
+      "k23",
+      "strong",
+      0.329
+     ],
+     [
+      5,
+      "k9",
+      "silent",
+      -0.918
+     ],
+     [
+      5,
+      "k10",
+      "strong",
+      0.421
+     ]
+    ],
+    "auc": 0.874,
+    "toleranceSensitivityShipped": {
+     "tol0": {
+      "all": 6,
+      "withoutAnomaly": 4
+     },
+     "tol0.1": {
+      "all": 4,
+      "withoutAnomaly": 2
+     },
+     "tol0.15": {
+      "all": 4,
+      "withoutAnomaly": 2
+     },
+     "tol0.25": {
+      "all": 4,
+      "withoutAnomaly": 2
+     },
+     "tol0.7": {
+      "all": 1,
+      "withoutAnomaly": 0
+     }
+    },
+    "rawGps": {
+     "n": 58,
+     "contradictionCount": 12,
+     "auc": 0.857
+    },
+    "labelFeasibleWidthM": "0.4-0.7 (feasibleRegion)",
+    "statedAbsoluteKpiIntervalM": 0.7,
+    "basis": "lower bound: label-feasible widths of 0.4-0.7 m (feasibleRegion), held-out contradictions within 0.15 m tolerance, 2019 ortho kerb lines (~0.2-0.3 m georeferencing, not verified against 2020). Compare laps at the same corner first."
+   },
+   "unit": "m / count",
+   "scope": "fuji_aim_2020_07_30 (58 labels); fuji_aim_01 has 1 strong label -> not bounded",
+   "grade": "measured labels; interval = estimated lower bound",
+   "evidence": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/registration-candidate/evaluation.json; gps_registration_kerb.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "2 GPS lateral",
+   "component": "7/30 L2 place-dependent GPS error (anomaly sector)",
+   "direction": "lateral",
+   "value": {
+    "stationRangeM": [
+     3250,
+     3900
+    ],
+    "extentM": 650,
+    "shareOfLap": 0.143,
+    "magnitudeM": "1-2 (k21 strong label at gMin +1.664 m with shipped registration; k24 silent -0.99 m in v3 report)",
+    "comparisonScenesInside": [
+     "2020-07-30-L2-94.000 (station 3432.9)",
+     "sequence 93.0-95.0 s (3398-3469)"
+    ]
+   },
+   "unit": "m",
+   "scope": "fuji_aim_2020_07_30 L2 only (the lap used for the 7/30 video comparison)",
+   "grade": "derived from measured contradictions",
+   "evidence": "public/data/races/fuji_aim_2020_07_30/gps_registration_kerb.json gpsAnomalies; docs/fuji-apex-kerb-kpi-2026-10-02.md",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "2 GPS lateral",
+   "component": "Antenna lever arm (not measured; assumed at wheelbase centre)",
+   "direction": "lateral/along",
+   "value": {
+    "registrationShiftFor0.5mRightM": {
+     "fuji_aim_01": 0.293,
+     "fuji_aim_2020_07_30": 0.209
+    },
+    "registrationShiftFor1mForwardM": {
+     "fuji_aim_01": 0.012,
+     "fuji_aim_2020_07_30": 0.015
+    },
+    "kerbFitAntennaEstimateM": {
+     "right": -0.02,
+     "forward": 0.04,
+     "costRisesAt": "+-0.4 m"
+    }
+   },
+   "unit": "m",
+   "scope": "both sessions",
+   "grade": "estimated (sensitivity scenarios; lever arm unknown)",
+   "evidence": "artifacts/gps-accuracy-2026-09-22/registration/sensitivity-audit.json; docs/fuji-apex-kerb-kpi-2026-10-02.md",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": "Forward offset is essentially unconstrained by the registration (<=0.02 m response to 1 m) -> drawn car/camera could be up to ~1 m along-track off."
+  },
+  {
+   "group": "3 GPS along",
+   "component": "Registration along-track variability (half-lap refit)",
+   "direction": "along",
+   "value": {
+    "fuji_aim_01": {
+     "median": 0.7821130786963901,
+     "max": 1.672255947436699
+    },
+    "fuji_aim_2020_07_30": {
+     "median": 0.504044591344847,
+     "max": 0.8836139736645503
+    }
+   },
+   "unit": "m",
+   "scope": "both sessions",
+   "grade": "derived (conditional)",
+   "evidence": "artifacts/gps-accuracy-2026-09-22/registration/analysis-summary.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "3 GPS along",
+   "component": "GPS timing vs logger clock (GPS along-acc vs IMU accx, 7/29 reference)",
+   "direction": "along",
+   "value": {
+    "perLapLagS": {
+     "1": 0.044,
+     "2": 0.004,
+     "3": -0.012,
+     "4": -0.042
+    },
+    "metres_0.044": {
+     "s": 0.044,
+     "m@60": 0.733,
+     "m@80": 0.978,
+     "m@100": 1.222,
+     "m@median_0729": 1.284,
+     "m@median_0730": 1.494,
+     "m@top_0729": 2.336,
+     "m@top_0730": 2.392
+    }
+   },
+   "unit": "s / m",
+   "scope": "fuji_aim_01",
+   "grade": "measured",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/iter2/lags_vs_0729.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": "Lap start GPS positions 138.03-138.08 m on all 10 laps (consistency only; lap beacon is GPS-based, not an absolute check)."
+  },
+  {
+   "group": "3 GPS along",
+   "component": "Absolute along-track GPS vs reality (braking point / S-F line vs video)",
+   "direction": "along",
+   "value": {
+    "value": "not measured"
+   },
+   "unit": "m",
+   "scope": "both",
+   "grade": "unknown",
+   "evidence": "no landmark-crossing comparison exists",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "4 course",
+   "component": "Kerb lines vs the 2019 ortho they were drawn from",
+   "direction": "lateral",
+   "value": {
+    "paintMedianM": -0.002,
+    "paintP95absM": 0.03,
+    "blockMedianM": 0.014,
+    "blockP95absM": 0.128
+   },
+   "unit": "m",
+   "scope": "14 kerbs",
+   "grade": "measured (same-image consistency, not survey)",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/kerb-geometry-ortho/results.json",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "4 course",
+   "component": "Ortho georeferencing (VIRTUAL SHIZUOKA 2019, 20 cm)",
+   "direction": "lateral/along",
+   "value": {
+    "rangeM": [
+     0.2,
+     0.3
+    ]
+   },
+   "unit": "m",
+   "scope": "whole course",
+   "grade": "estimated (not measured)",
+   "evidence": "kerb-geometry-ortho/results.json not_survey_truth; gps_registration_kerb.json uncertainty",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "4 course",
+   "component": "Road mesh overshoot beyond kerb outer line at kerb ends",
+   "direction": "lateral (rendering of road edge)",
+   "value": {
+    "committed_maxM": {
+     "k16": 0.901,
+     "k19": 1.065,
+     "k21": 1.539
+    },
+    "workingTree_maxM": 0.0,
+    "removedAreaM2": 10.48
+   },
+   "unit": "m",
+   "scope": "k16 2130-2134 m, k19 2716-2718 m, k21 3342-3348 m",
+   "grade": "measured (same-source geometry)",
+   "evidence": "docs/fuji-video-cg-alignment-review-2026-10-03.md; artifacts/video-cg-alignment-2026-10-03/sol-road-mesh-audit.json",
+   "state": "committed 7ebf89b: present; uncommitted working tree (Codex onboard camera + road repair) on 7ebf89b: repaired",
+   "note": "Repair did not change the 98-point boundary residuals (final-road-camera-effect.json)."
+  },
+  {
+   "group": "4 course",
+   "component": "2019 imagery vs 2020 track state",
+   "direction": "lateral",
+   "value": {
+    "value": "not verified"
+   },
+   "unit": "m",
+   "scope": "whole course",
+   "grade": "unknown",
+   "evidence": "-",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "5 rendering",
+   "component": "Heading lag after look-ahead smoothing",
+   "direction": "lateral at 30 m ahead",
+   "value": {
+    "headingErrDeg": {
+     "median": 0.011,
+     "p95": 0.075,
+     "p99": 0.136,
+     "max": 0.309
+    },
+    "lateralAt30mM": {
+     "median": 0.006,
+     "p95": 0.039,
+     "p99": 0.071,
+     "max": 0.162
+    }
+   },
+   "unit": "deg / m",
+   "scope": "10 laps, 60 fps",
+   "grade": "measured",
+   "evidence": "artifacts/improvement-eval-2026-10-02/eval/c1c2-timebase-pose-kerbui-r2/summary.json",
+   "state": "committed d9a1ea9",
+   "note": ""
+  },
+  {
+   "group": "5 rendering",
+   "component": "Drawn heading (GPS chord) vs drawn path tangent",
+   "direction": "lateral at 30 m ahead",
+   "value": {
+    "deg": {
+     "median": 0.129,
+     "p95": 0.868,
+     "max": 5.15
+    },
+    "lateralAt30mM": {
+     "median": 0.068,
+     "p95": 0.455,
+     "max": 2.704
+    }
+   },
+   "unit": "deg / m",
+   "scope": "10 laps",
+   "grade": "measured",
+   "evidence": "same",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "5 rendering",
+   "component": "Body yaw vs course (sideslip) and suspension roll/pitch not rendered",
+   "direction": "image rotation / lateral at depth",
+   "value": {
+    "sideslipDeg": "~1-3 at the limit (typical FWD value, not measured)",
+    "rollDeg": "~2-5 at 1.0-1.2 g (typical, not measured)",
+    "pxAt300to500pxRadiusPer3degRoll": [
+     16,
+     26
+    ],
+    "heldOutResidualVsAbsLateralG_spearman": {
+     "rho": 0.721,
+     "p": 0.019,
+     "n": 10,
+     "note": "exploratory; scenes correlated; |ax| rank is the mirror (rho -0.721)"
+    }
+   },
+   "unit": "deg / px",
+   "scope": "all; worst at high lateral g",
+   "grade": "estimated (magnitudes) / derived (correlation)",
+   "evidence": "px_to_metres_summary.json + artifacts/onboard-comparison-2026-10-03/manifest.json telemetry",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": ""
+  },
+  {
+   "group": "5 rendering",
+   "component": "Car model placement (Mazda2 track/wheelbase, generic body)",
+   "direction": "lateral",
+   "value": {
+    "bodyWidthM": 1.695,
+    "tyreOuterFrontM": 1.68,
+    "tyreOuterRearM": 1.665,
+    "tyreWidthAssumptionM": "0.185 (0.195 option -> +-0.005 per side)"
+   },
+   "unit": "m",
+   "scope": "both",
+   "grade": "measured spec / estimated fitment",
+   "evidence": "public/data/vehicles/mazda2-dj.json; gps_registration.json method.vehicleGeometry",
+   "state": "same in committed 7ebf89b and working tree (public data unchanged)",
+   "note": "Placement relative to the GPS point is dominated by the unknown antenna lever arm (see group 2)."
+  },
+  {
+   "group": "5 rendering",
+   "component": "Camera (a): default cockpit camera vs SmartyCam",
+   "direction": "image",
+   "value": {
+    "cockpit": {
+     "eyeUpM": 0.78,
+     "eyeRightM": 0.28,
+     "eyeBackM": 0.55,
+     "pitchDeg": 0,
+     "vfovDeg": 58,
+     "hfovDeg": 89
+    },
+    "smartyCamFit": {
+     "upM": "1.25 (assumed)",
+     "rightM": 0,
+     "pitchDeg": 18.2,
+     "hfovDeg": 107.1,
+     "f_px": 472.3
+    },
+    "heldOutBoundaryResidualPx": {
+     "medianOfSceneMedians": 133.88,
+     "sceneRange": [
+      121.3,
+      144.15
+     ]
+    },
+    "apparentLateralFromEyeOffsetM": 0.28
+   },
+   "unit": "px / m",
+   "scope": "10 held-out scenes",
+   "grade": "measured px",
+   "evidence": "docs/fuji-video-cg-alignment-review-2026-10-03.md; evidence/independent-camera-evaluation.json",
+   "state": "committed 7ebf89b (only camera available there)",
+   "note": "Horizon at image centre vs y~205/720: the two views are not commensurable; a metric conversion is not meaningful."
+  },
+  {
+   "group": "5 rendering",
+   "component": "Camera (b): Codex estimated onboard camera",
+   "direction": "image",
+   "value": {
+    "heldOutBoundaryResidualPx": {
+     "medianOfSceneMedians": 9.42,
+     "worst": {
+      "7/30 L2 94 s": 54.49,
+      "7/30 L2 45 s": 33.31
+     }
+    },
+    "heightSensitivity_f_px": {
+     "1.0m": 487.1,
+     "1.25m": 472.3,
+     "1.5m": 466.9
+    },
+    "rollSensitivityDeg": {
+     "1.0m": 0.53,
+     "1.25m": 1.84,
+     "1.5m": 3.02
+    }
+   },
+   "unit": "px",
+   "scope": "10 held-out scenes (+8 post-selection)",
+   "grade": "measured px; camera parameters estimated",
+   "evidence": "evidence/independent-camera-evaluation.json; camera-fit.json",
+   "state": "uncommitted working tree (Codex onboard camera + road repair) on 7ebf89b",
+   "note": ""
+  },
+  {
+   "group": "6 video-CG residual in metres",
+   "component": "Minimum 3D displacement explaining each pixel residual (px * depth / f)",
+   "direction": "any direction perpendicular to the ray",
+   "value": {
+    "medianOfSceneMediansM": 0.341,
+    "pointsAll": {
+     "n": 98,
+     "median": 0.39424708929847097,
+     "p25": 0.20064863363525826,
+     "p75": 0.8209360765555902,
+     "p95": 6.630481374044626,
+     "max": 8.449990582950873
+    },
+    "sceneRangeM": [
+     0.06,
+     1.98
+    ]
+   },
+   "unit": "m",
+   "scope": "10 held-out scenes, 98 points",
+   "grade": "derived",
+   "evidence": "artifacts/position-gap-2026-10-09/I1-gap-budget/px_to_metres_summary.json",
+   "state": "uncommitted working tree (Codex onboard camera + road repair) on 7ebf89b",
+   "note": ""
+  },
+  {
+   "group": "6 video-CG residual in metres",
+   "component": "Equivalent lateral ground offset of the boundary (ray-road-plane intersection, line orientation accounted)",
+   "direction": "lateral",
+   "value": {
+    "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+    "conditionedPoints": 58,
+    "unconditionedPoints": 40,
+    "sceneMedianM": {
+     "2020-07-29-L3-60.000": 2.168,
+     "2020-07-29-L3-64.367": 2.398,
+     "2020-07-30-L2-18.000": 4.129,
+     "2020-07-30-L2-45.000": 2.615,
+     "2020-07-30-L2-50.000": 0.371,
+     "2020-07-30-L2-84.000": 1.218,
+     "2020-07-30-L2-94.000": 1.357,
+     "2020-07-30-L2-112.000": 1.2,
+     "2020-07-29-L3-52.387": 0.305,
+     "2020-07-30-L2-47.522": 1.689
+    },
+    "medianOfSceneMediansM": 1.689,
+    "maxSceneMedianM": 4.129,
+    "pointsM": {
+     "n": 58,
+     "median": 1.38176178168101,
+     "p25": 0.8693757874082724,
+     "p75": 2.458342359509511,
+     "p95": 4.152767843015586,
+     "max": 4.510287893186177
+    },
+    "pick4pxNoiseFloorM": {
+     "n": 58,
+     "median": 0.4230271741377942,
+     "p25": 0.1874276634477392,
+     "p75": 0.6057127312772902,
+     "p95": 0.8249762736922482,
+     "max": 0.9669740893733714
+    },
+    "lateralOverNaiveRatio": {
+     "n": 89,
+     "median": 5.043559389255735,
+     "p25": 3.2102503339168105,
+     "p75": 6.962901654926999,
+     "p95": 36.086863550148685,
+     "max": 328.4167322075237
+    },
+    "heightSensitivity_medOfMed": {
+     "1.0m": 2.029,
+     "1.5m": 1.702
+    },
+    "sequence8_postselection": {
+     "medianOfSceneMediansM": 1.633,
+     "maxSceneMedianM": 4.445
+    },
+    "note94s": "only 1/14 points convertible: picks lie near/above the CG horizon -> attitude (roll/pitch) mismatch, not a lateral offset"
+   },
+   "unit": "m",
+   "scope": "10 held-out scenes (58/98 well-conditioned points)",
+   "grade": "derived (camera height assumed; mixes GPS, attitude, lens, course)",
+   "evidence": "artifacts/position-gap-2026-10-09/I1-gap-budget/px_to_metres_summary.json, px_to_metres_points.json",
+   "state": "uncommitted working tree (Codex onboard camera + road repair) on 7ebf89b",
+   "note": ""
+  }
+ ],
+ "speedsKmh": {
+  "fuji_aim_01": {
+   "timeWeighted": {
+    "p10": 65.8976,
+    "p50": 105.059,
+    "p90": 164.9032,
+    "max": 191.099
+   },
+   "cornerMinima": {
+    "n": 28,
+    "min": 38.044,
+    "median": 69.2195,
+    "max": 98.532
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "timeWeighted": {
+    "p10": 76.95519999999999,
+    "p50": 122.225,
+    "p90": 172.8616,
+    "max": 195.689
+   },
+   "cornerMinima": {
+    "n": 41,
+    "min": 47.064,
+    "median": 78.37,
+    "max": 123.879
+   }
+  }
+ }
+}

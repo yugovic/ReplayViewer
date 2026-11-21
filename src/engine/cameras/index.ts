@@ -1,5 +1,8 @@
 export { ChaseCamera } from "./ChaseCamera";
 export { CockpitCamera } from "./CockpitCamera";
+export { OnboardCamera } from "./OnboardCamera";
+export { FUJI_ONBOARD_CAMERA_PROFILE, computeOnboardCameraFrame, projectOnboardPoint } from "./onboardCameraMath";
+export type { OnboardCameraProfile } from "./onboardCameraMath";
 export { CinematicCamera } from "./CinematicCamera";
 export { FreeCamera } from "./FreeCamera";
 export { TopCamera } from "./TopCamera";

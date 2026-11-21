@@ -1,0 +1,140 @@
+{
+  "kind": "review-loop round 1 (independent reviewer, Fable)",
+  "generated": "2026-10-22 (JST, evening)",
+  "scope": "A analysis artifacts/kerb-event-truth-2026-10-22/, B docs/fuji-event-truth-evaluation-2026-10-22.html, C docs/fuji-event-comparison-2026-10-22.html + artifacts/event-comparison-2026-10-22/",
+  "checksRun": [
+    "Re-derived every chart/table number of B from its embedded JSON (const D) and compared with join/summary.json: clipping 7/30 median +0.31 / typ 1.12 / p90 4.09, 7/29 +0.41 / 1.39 / 4.44; turn-in 7/30 -0.20 / 1.03 / 3.31, 7/29 -0.59 / 1.22 / 3.28; contact dS 7/30 -0.59 / 3.30 / 9.42; contact gap 7/30 +0.23 / 0.43 (excl k1 +0.12 / 0.30); audio before +0.21 -> after -0.00 typ 0.05; detection 7/30 TP20 FN10 FP11 TN43 = 75 %, 7/29 91 %. All agree.",
+    "Per-lap L and verifier re-estimates (v_summary.json) agree with B; 7/29 L adopted 0.171-0.234 from the data track + 7/30 calibration, verifier's own video yaw 0.22-0.335 (not confirmed).",
+    "Camera-scale sensitivity read from summary.cameraSensitivityClippingPoint (7/30 median dS: f*h 590 -> -3.27 m, 889 -> +0.31, 1066 -> +2.12, 1218 -> +4.20, 1450 -> +6.75).",
+    "k1 contacts from join/event_table.json block.dtFirst: L1 +0.085, L2 +0.266, L3 +0.355, L4 +0.227, L5 +0.204 / -0.405 (second burst), L6 -0.116 (CG earlier, gap -0.668 m); CG contact durations 0.23-0.42 s vs truth 0.59-2.04 s.",
+    "Comparison page builder (build_page.py) still reads cg/manifest.json (19:45, pitch 18.2 deg) and asserts the old 4-6 deg horizon mismatch, while the onboard JPEGs come from manifest_onboard_pitchfix.json (20:41, pitch 12.93/13.70, 106 onboardActive, 0 failures); page text in 数字の読み方 still says the 276-row guide is not drawn on the 3DCG because the camera orientation differs.",
+    "Looked at frames/cg/schematic for clip-0730-L3-k23, contact-0730-L2-k1, the verifier's clip-0730-L5-k20 compare image and the page screenshot; the CSS guide sits at 38.333 % = row 276/720, consistent with T3 (1280x720).",
+    "Rendered B with Playwright at 390 px and 1100 px (light + dark): 0 console/page errors, no page overflow (gap table scrolls inside its card), 11 strips / 329 dots / 5 out-of-axis dots / 10 lap bars / 9 table rows / 2 agreement tables."
+  ],
+  "checksOfPreviousFixes": [],
+  "findings": [
+    {
+      "id": "R1-01",
+      "area": "report",
+      "severity": "medium",
+      "title": "k1 (Coca-Cola) claim '7/30の全周で約0.15秒遅く' is false for L6 and overstated",
+      "problem": "結論 bullet 3 and 縁石一致 bullet 3 say the 3DCG contact at k1 starts about 0.15 s late on every 7/30 lap. event_table block.dtFirst: L1 +0.085, L2 +0.266, L3 +0.355, L4 +0.227, L5 +0.204 (first burst; the second L5 burst is -0.405) and L6 -0.116 s with the CG already 0.67 m into the kerb at the onset. So 5 of 6 laps are late (0.09-0.36 s, median 0.23 s with the threshold onset; ~0.15 s with the verifier's 50 % rise), L6 is early. The same wording is copied into the comparison page (NOTE_MAP 'k1（コカ' note on every k1 card).",
+      "evidence": "artifacts/kerb-event-truth-2026-10-22/join/event_table.json kerbContacts k1 primary; summary.perKerb.contactFirstBlock['0730/k1'].medianDt = 0.204; verify/v_summary.json kerbContactOnsetDefinition (all vs excl_k1).",
+      "fix": "Reword in B (two places) and in build_page.py NOTE_MAP: 'コカ・コーラ（k1）は7/30の6周中5周（L1〜L5）で3DCGの接触が0.09〜0.36秒遅く始まり（中央値0.2秒、立ち上がり50%の定義では約0.15秒）、L6だけ0.12秒早い。乗っている時間は全周で短い（3DCG 0.23〜0.42秒、実際0.6〜2.0秒）'. Rebuild the page.",
+      "acceptance": "grep '全周で' in both HTML files finds no sentence claiming k1 is late on every lap; the stated per-lap range matches event_table block.dtFirst for k1 (min +0.085, max +0.355, L6 -0.116).",
+      "effort": "small (text in 2 files + page rebuild)"
+    },
+    {
+      "id": "R1-02",
+      "area": "report",
+      "severity": "medium",
+      "title": "Clipping-point 'no along-track bias' is conditional on the chosen camera scale; the dependence is not quantified and the camera row in the correction table is partly circular",
+      "problem": "The tile '前後のずれ 偏り ≤1 m' and the correction row '動画比較用のカメラの尺度を仕様の画角に合わせる…±0.03秒以内に揃う → 採用を推奨' read as if the clipping points independently show no bias. But f*h = 889 was preferred partly because it makes the clipping dt ≈ 0 after L; with other plausible scales the 7/30 clipping median dS is -3.3 m (f*h 590, the 10/03 profile), +2.1 m (1066), +4.2 m (1218, T3 nominal). The camera-free families carry the no-bias result on their own (turn-in -0.2 m 7/30 / -0.6 m 7/29, contacts -0.6 m), and they are what should be cited. The independent support for 889 (spec FOV 84 deg -> f 711; h 1.22 m IQR 1.09-1.27 from the road width; yaw-flow f 540-810) is not mentioned in B.",
+      "evidence": "summary.cameraSensitivityClippingPoint.fuji_aim_2020_07_30 (fh590 -3.27, fh889 +0.31, fh1066 +2.12, fh1218 +4.20); summary.alongTrack.turnInHeading50 / contactFirstBlock medians; T3 vp_height.json (h 1.2155, IQR 1.094-1.265); T3 yaw_focal.json and verify impliedFocalPx_0730 (704-749 / 537-598).",
+      "fix": "Under the gap table add one sentence + a 4-value mini table: 'クリッピングの前後の偏りはカメラ尺度で動く（f×h 590: −3.3 m、889: +0.3 m、1066: +2.1 m、1218: +4.2 m、7/30中央値）。偏りがないという結論はカメラに依らない切り始め（−0.2/−0.6 m）と縁石接触（−0.6 m）で支えている'. In the correction row replace the justification with: 'f 711（仕様の画角84°）・高さ1.22 m（白線幅から、四分位1.09〜1.27）・映像の回転からのf 540〜810と整合。この尺度でクリッピング時刻が±0.03秒で揃うのは整合性の確認であり、独立の証明ではない'. Put the same caveat in one line of the 結論 tile subtitle.",
+      "acceptance": "B contains the four sensitivity values (−3.3/+0.3/+2.1/+4.2 m) and names the camera-free families as the basis for 'no bias'; the correction row no longer presents the ±0.03 s agreement as the reason to adopt the scale.",
+      "effort": "small (text + one small table, numbers already in summary.json)"
+    },
+    {
+      "id": "R1-03",
+      "area": "report",
+      "severity": "medium",
+      "title": "Visible turn-in lead of the drawn car (10 % point) is omitted from the 'いつは正しい' conclusion",
+      "problem": "The ±0.03 s timing claim uses the 50 % point of a 1.2 s box-car-smoothed gyro vs the chord-based CG heading. The analysis also measured the visible onset (CG drawn-heading 10 % vs unsmoothed gyro 10 %): 7/30 median +0.01 s but |dt| p90 0.36 s (dS p90 9.8 m); 7/29 median -0.08 s, p90 0.76 s (16.9 m). For a viewer looking at the car's nose next to the video this is the relevant quantity and it is not stated anywhere in B.",
+      "evidence": "summary.alongTrack.turnInVisibleT10 (7/30 n 40: median 0.01, medianAbs 0.072, p90Abs 0.357; 7/29 n 26: median -0.079, medianAbs 0.119, p90Abs 0.758); steerToYawReference (CG t10 still 0.13-0.24 s after the steering onset).",
+      "fix": "Add one bullet to 限界 (or これで何が言えるか): '描かれた向きは前後0.6秒の区間から求めるため、見た目の切り始め（向きの10%点）は実際と中央値ではほぼ同時（7/30 +0.01秒）だが、10件に1件は0.36秒（7/29は0.76秒）以上ずれ、ステアを切る前に鼻が動き始めることがある。ステアの切り始めより早く動くことはない（0.13〜0.24秒後）'.",
+      "acceptance": "B states the 10 % point medians and p90 values for both days.",
+      "effort": "small"
+    },
+    {
+      "id": "R1-04",
+      "area": "analysis",
+      "severity": "medium",
+      "title": "Kerb yes/no agreement uses a hard 0 m threshold; a tolerance view shows most disagreements are within the known lateral error",
+      "problem": "The 75 % (7/30) agreement counts a miss of 0.016 m (L5 k7) or 0.04 m (L6 k3) as a full disagreement. Of the 21 disagreements, 9 are within 0.25 m of the block line (FN min gap ≤0.25: 5 of 10; FP depth ≤0.25: 4 of 11) and 12 within 0.30 m. With a ±0.25 m tolerance the agreement is 86 %, with ±0.30 m 89 %. The report's '75%しか合わない' therefore overstates how often the 3DCG is qualitatively wrong.",
+      "evidence": "summary.detection.fuji_aim_2020_07_30.FN_list / FP_list (min gaps 0.207, 0.264, 0.202, 0.016, 0.42, 0.04, 0.155, 0.317, 1.665, 5.793; depths 0.011, 0.2, 0.337, 0.444, 0.163, 0.789, 0.291, 0.957, 0.278, 1.166, 0.068).",
+      "fix": "In build_join.py add detection.tolerance = {0.10, 0.25, 0.50 m: TP/FN/FP/TN counted with |gap| ≤ tol treated as agreement} and regenerate summary.json; in B add one sentence under the agreement tables: '不一致21件のうち9件は縁石の線から0.25 m以内（12件が0.30 m以内）で、横の典型誤差の範囲。0.25 mの許容で一致は86%'.",
+      "acceptance": "summary.json contains detection.tolerance with the three tolerances for 7/30 and 7/29; the 0.25 m agreement printed in B equals (TP+TN+within)/84 from that block (86 %).",
+      "effort": "small (one function in build_join.py + text)"
+    },
+    {
+      "id": "R1-05",
+      "area": "comparison-page",
+      "severity": "medium",
+      "title": "Row-276 guide is not drawn on the 3DCG onboard image; the stated reason is stale after the pitch-fix recapture",
+      "problem": "For clipping events the truth is 'kerb edge nearest the image centre at row 276'. The page draws the yellow guide on the video only and says in 数字の読み方 '3DCGはカメラの向きが違うため引いていません'. After the recapture the onboard camera has pitch = the vanishing-point pitch (12.93/13.70 deg), f 711, h 1.25 — the same vertical geometry as the T3 specFov model (only yaw differs by 0.6-1.6 deg, horizontal). With the guide on the 3DCG image the reader can see directly whether the 3DCG kerb tip sits on the line at t*, which is the measurement itself; without it the card gives numbers but no visual check.",
+      "evidence": "build_page.py: GUIDE is inserted only in the video figure; 数字の読み方 text; cg/manifest_onboard_pitchfix.json cameraProfile.applied pitchDeg 12.93; T3 camera.py solves pitch/yaw from the same vp_calib vanishing point.",
+      "fix": "In build_page.py add GUIDE (same CSS) inside the onboard figure button for is_clip cards (label '判定の高さ（同じ276行目）'), make the lightbox show it for that slot, and replace the 数字の読み方 sentence with '3DCGの車載カメラにも同じ高さの線を引いています（下向きの角度を動画の消失点に合わせたため比較できます。左右の向きは0.6〜1.6°違うので横には少しずれます）'. Rebuild and spot-check 3 events: clip-0730-L3-k23 (dt −0.026 s) should show the 3DCG kerb edge crossing the line near the centre, clip-0730-L1-k9 (dt +0.27 s) clearly below it.",
+      "acceptance": "All 55 clipping cards contain two .guide elements (video and 3DCG onboard); the phrase 'カメラの向きが違うため引いていません' is gone; qa_page.mjs passes (0 errors, 531 images) after rebuild.",
+      "effort": "small (builder + CSS + rebuild + QA rerun)"
+    },
+    {
+      "id": "R1-06",
+      "area": "comparison-page",
+      "severity": "medium",
+      "title": "Builder reads the pre-recapture CG manifest; footer cites the wrong data source",
+      "problem": "build_page.py loads cg/manifest.json (generated 19:45, pitch 18.2 deg) and asserts the old 4-6 deg horizon mismatch (HZ / PITCH_VP block), while the onboard JPEGs on disk were overwritten by the pitch-fix run recorded in cg/manifest_onboard_pitchfix.json (20:41). The header text was updated by hand, but the footer still names cg/manifest.json as the source of the 3DCG images and the builder would silently pass with stale assumptions on the next rebuild.",
+      "evidence": "build_page.py lines 23-24 and the assert block after 'HZ ='; cg/manifest.json cameraProfile.applied.pitchDeg 18.2085 vs manifest_onboard_pitchfix.json 12.93; file mtimes 19:45 vs 20:41.",
+      "fix": "Load manifest_onboard_pitchfix.json for the onboard captures (assert summary.onboardActive == 106, failures 0, cameraModeUsed == 'onboard', pitchDeg == 13.70/12.93 per session) and cg/manifest.json for the chase captures only; delete the HZ/PITCH_VP assertion; cite both manifests in the footer; rebuild.",
+      "acceptance": "build_page.py runs without error; the page footer names manifest_onboard_pitchfix.json; a one-line check shows every cg/*_cg_onboard.jpg mtime ≥ 20:40 and every *_cg_chase.jpg from the 19:45 run.",
+      "effort": "small"
+    },
+    {
+      "id": "R1-07",
+      "area": "comparison-page",
+      "severity": "medium",
+      "title": "'補正の向きは画像でも裏付けられました（30件中24件）' is conditional on the camera scale that was itself chosen to make clipping times agree",
+      "problem": "The adversarial chamfer metric compares video frames with a 3DCG rendered at f 711 / h 1.25 (f*h 889). At that scale the 3DCG kerb tip is on row 276 at t* by construction of the camera choice (median dt −0.008 s), so the corrected frame (the T3 tip frame) must match best. With f*h 1218 the 3DCG tip at t* would sit lower in the image and a later frame (towards the uncorrected one) would win. The 要旨 presents the 24/30 result as image evidence for the direction of L; it is a consistency check at one camera scale, not independent support. The direction of L is independently established by audio-vs-IMU and video-yaw-vs-gyro, which should be cited instead.",
+      "evidence": "verify.json check1_wholeSet (fixedCloser 24/30 at the capture camera only; early-control frame wins 20 of 40); summary.cameraSensitivityClippingPoint (dt median −0.122 s at f*h 1218).",
+      "fix": "Reword the 要旨: '7/30のクリッピングでは30件中24件で補正後の方が3DCGに近いが、これはカメラ尺度 f×h≈890（クリッピング時刻が合うように選んだ値）を前提にした整合性の確認で、補正の向きの独立した裏付けは音声と映像の回転（評価資料）にある'. Optional one-step robustness test: recapture the 41 7/30 clipping onboard images at upMeters 0.83 and 1.70 (f*h 590 / 1209; the 106-image run took 33 s on the running 5200 server) into a sub-folder, rerun scripts/adversarial_compare.py and record fixedCloser counts per scale in verify.json.",
+      "acceptance": "要旨 text no longer calls the image result a '裏付け' of the correction direction without the camera-scale condition; if the optional test is run, verify.json has cameraScaleSensitivity with fixedCloser/rawCloser for f*h 590, 889, 1209.",
+      "effort": "small for the wording; moderate (~1 h) for the optional recapture test"
+    },
+    {
+      "id": "R1-08",
+      "area": "report",
+      "severity": "low",
+      "title": "Small numeric/wording inconsistencies in B",
+      "problem": "(a) FN/FP bullets quote pooled medians (0.26 / 0.34 m) under the per-day tables; 7/30 values are 0.24 / 0.29 m. (b) Tile '90%値3〜4 m' — actual 3.3-4.4 m. (c) Correction table says 7/29 '0.17〜0.23秒（推定）' while the rest of B says 0.17-0.30 s (0.17-0.23 are the adopted values, 0.17-0.30 the plausible range; the verifier's own 7/29 estimates reach 0.335). (d) Lateral tile '0.3〜0.45 m' is contacts only; the clipping lateral is 0.54 m (7/30) and its sign flips with camera scale (−0.34 m at f*h 889, +0.02 m at 1218) — say it is camera-dependent. (e) '相関0.89/0.96' lacks n (39 / 11) and the 7/29 value rests on 11 points. (f) 正解の決め方 describes the clipping point as '縁石の先端が画面の決まった高さを通る時刻'; T3 defines it as the frame where the kerb edge on row 276 is nearest the image centre (the page already uses the correct wording).",
+      "evidence": "summary.detection (7/30 FN median 0.24, FP −0.29; pooled 0.26 / −0.34); summary.alongTrack p90Abs values; summary.timeBase.perLap fuji_aim_01; summary.lateral.videoTipLateralNominal vs D.clip.dLat; summary.betweenLapAtClippingPoint n 11 / 39; T3 analyze.py docstring.",
+      "fix": "Use 7/30 values under the 7/30 table (or label them 'pooled'); write '90%値3〜4.5 m'; write '採用値 0.17〜0.23秒（妥当な幅 0.17〜0.30秒）'; add '（クリッピングでの横は0.5 m前後、カメラ尺度に依存）' to the lateral tile subtitle; add n to the correlation sentence; align the clipping definition with T3.",
+      "acceptance": "Each number in B matches summary.json for the day it is shown under; the clipping definition sentence matches T3's docstring.",
+      "effort": "small"
+    },
+    {
+      "id": "R1-09",
+      "area": "analysis",
+      "severity": "low",
+      "title": "Unexplained 1.21 scale between the drawn heading rate and the IMU yaw rate is not recorded as an open item",
+      "problem": "headingTimingWholeLap gives scaleCgOverImu 1.211-1.222 on all 10 laps (r 0.997-0.999): the GPS-course heading rate is 21 % larger than the IMU gyro yaw rate. It does not affect the timing families (50 % points and cross-correlation lags are scale-free), but it points to a gyro unit/scale factor or a tilted mount and is nowhere mentioned.",
+      "evidence": "summary.headingTimingWholeLap; summary.corrections.C5_poseTimeShift.",
+      "fix": "Add an 'openItems' note in join/summary.json (or the join README) stating the scale and that it is unexplained; mention it in B's 限界 in one clause ('ジャイロの振幅はGPSの向きの変化より約17%小さく、原因未確認。時刻の比較には影響しない').",
+      "acceptance": "summary.json or B contains the 1.21 scale note.",
+      "effort": "small"
+    },
+    {
+      "id": "R1-10",
+      "area": "analysis",
+      "severity": "low",
+      "title": "Contact along-track statistics are conditional on the 3DCG showing contact",
+      "problem": "contactFirstBlock uses only passes where the CG crosses the block line (20 of 27 primary 7/30 contacts); the 7 FN events (CG never touches, min gap 0.02-5.8 m) have no dS and are absent from '典型3.3 m'. B does not say so.",
+      "evidence": "summary.familyDefinitions.contactFirstBlock; summary.counts; D.contacts entries with dS null.",
+      "fix": "Add to the gap-table note: '縁石接触の前後は3DCGが線に乗った20件のみ（乗らなかった7件は前後を出せない）'.",
+      "acceptance": "Note present; n=20 of 27 stated.",
+      "effort": "small"
+    },
+    {
+      "id": "R1-11",
+      "area": "comparison-page",
+      "severity": "low",
+      "title": "Minor consistency items on the comparison page",
+      "problem": "(a) Capture yaw −0.69 deg (10/03 profile) vs T3's vanishing-point yaw (−1.26 deg 7/30, +0.95 deg 7/29) → 7-20 px horizontal offset between the onboard render and the T3 model. (b) The 7/29 card note says the corrected frame may be off by '最大で約±0.05秒（2〜3コマ）' but the verifier's own 7/29 L estimates are +0.04 to +0.10 s higher (L2 0.335 vs 0.234 = 3 frames) — say '最大+0.1秒（3コマ）早め'. (c) Kerb-contact cards: the onboard video cannot show the contact (kerb under the car / behind the dashboard); say on contact cards that the chase and top views are the comparison, so readers do not look for it in the video.",
+      "evidence": "capture_cg_pitchfix.mjs PITCH only; T3 camera.py; verify/v_summary.json offsetL.fuji_aim_01; verify.json check1 events contact-0730-L1-k15 / L6-k10 (contact hidden).",
+      "fix": "(a) set yawDeg per session from vp_calib u_vp in capture_cg_pitchfix.mjs and recapture the 106 onboard images (~35 s); (b),(c) text in NOTE_MAP / card truth line; rebuild.",
+      "acceptance": "Manifest yawDeg equals atan((u_vp−640)/711) per session; contact cards carry the sentence; 7/29 note states +0.1 s.",
+      "effort": "small"
+    }
+  ],
+  "overallAssessment": "The analysis is sound and the report's numbers reproduce exactly from the embedded data and join/summary.json; sign conventions are consistent across A, B and C, and the independent verifier's checks (per-lap L, pose re-implementation, PTS mapping) hold. No high-severity error was found. The issues that matter are: one factually wrong sentence about k1 ('全周で遅い' — L6 is early), the unquantified and partly circular camera-scale dependence behind the clipping-based 'no bias' and behind the page's image 'support' for the video lag, the omitted visible turn-in lead, and on the comparison page the stale builder/text after the pitch-fix recapture plus the missing 276-row guide on the 3DCG image, which is the one change that would let the owner see the clipping measurement directly. All are fixable with existing data in one step each.",
+  "stop": false
+}

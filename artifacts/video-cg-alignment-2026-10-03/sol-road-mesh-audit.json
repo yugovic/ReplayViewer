@@ -1,0 +1,69 @@
+{
+  "scope": "Independent audit of actual emitted local mesh batches using triangle-coordinate sets, Shapely union/difference and signed triangle areas; not browser visual verification or surveyed geometry.",
+  "beforeSha256": "7dc45b46c25dd3ec2df092313c053dbdfc87b34b196898b34d9e672438dbb280",
+  "afterSha256": "511e3a0a04a2d25c8e7e6f817beaba6710a75cbc71d493b68dc1884245e5ccf2",
+  "checks": {
+    "sourceTrianglesBefore": 72937,
+    "sourceTrianglesAfter": 72937,
+    "removedTriangles": 64,
+    "addedTriangles": 64,
+    "changedOldUnionValid": true,
+    "changedNewUnionValid": true,
+    "addedTriangleAreaSumM2": 56.918272093749984,
+    "addedTriangleUnionAreaM2": 56.91827209375001,
+    "newTriangleOverlapAreaM2": -2.842170943040401e-14,
+    "newTriangleOutsideOriginalChangedAreaM2": 0.0,
+    "newTriangleOverlapWithUnchangedRoadAreaM2": 0.0,
+    "removedAreaM2": 10.484688000000006,
+    "changedPatchComponents": 3,
+    "changedPatchHoleCount": 0,
+    "changedPatchBounds": [
+      [
+        -324.81924999999995,
+        576.998,
+        -315.372,
+        581.87
+      ],
+      [
+        57.18,
+        622.707,
+        63.26025,
+        626.99575
+      ],
+      [
+        247.13625,
+        121.675,
+        253.546,
+        129.07
+      ]
+    ],
+    "redBatchExactlyUnchanged": true,
+    "whiteBatchExactlyUnchanged": true,
+    "greenBatchExactlyUnchanged": true,
+    "beforeDownwardTriangles": 0,
+    "beforeDegenerateTriangles": 0,
+    "beforeAreaSumM2": 69902.1573645002,
+    "beforeNonfiniteTriangles": 0,
+    "afterDownwardTriangles": 0,
+    "afterDegenerateTriangles": 0,
+    "afterAreaSumM2": 69891.67267650018,
+    "afterNonfiniteTriangles": 0,
+    "paintRemovedTriangles": 6,
+    "paintAddedTriangles": 6,
+    "clippedSourceOuterPoints": 27,
+    "missingExactClippedSourceOuterXZ": [],
+    "underlayTriangleCount": 64,
+    "underlayAreaM2": 67.40296009375001,
+    "underlayUnionValid": true,
+    "underlayMissingRemovedAsphaltAreaM2": 0.0,
+    "underlayOutsideOriginalChangedAreaM2": 0.0,
+    "underlayTriangleOverlapAreaM2": -1.4210854715202004e-14,
+    "underlayUvsFinite": true,
+    "underlayHeightLimit": "XZ footprint and atlas UV export. Y=0 for planar coverage audit only; runtime uses the unchanged heightAt function.",
+    "underlaySha256": "811ff12d8b4ab62fefa02f16c912d576adfd9289d0964120f47748f1774de066",
+    "missingExactIndexedInnerSeamXYZ": [],
+    "beforeUniqueTriangleKeys": 72937,
+    "afterUniqueTriangleKeys": 72937
+  },
+  "pass": true
+}

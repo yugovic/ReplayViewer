@@ -1,0 +1,360 @@
+{
+ "fuji_aim_2020_07_30": {
+  "committedShipped": {
+   "n": 58,
+   "strong": 17,
+   "silent": 41,
+   "contradictions": 4,
+   "list": [
+    [
+     2,
+     "k21",
+     "strong",
+     1.66
+    ],
+    [
+     2,
+     "k23",
+     "strong",
+     0.33
+    ],
+    [
+     5,
+     "k9",
+     "silent",
+     -0.92
+    ],
+    [
+     5,
+     "k10",
+     "strong",
+     0.42
+    ]
+   ],
+   "auc": 0.8723
+  },
+  "i2ShippedVsCommittedMaxAbsDiffM": 0.0050000000000000044,
+  "i2PairsMatched": 58,
+  "variants": {
+   "shipped": {
+    "mine": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.8737
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.874
+    }
+   },
+   "rawGps": {
+    "mine": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.8687
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.869
+    }
+   },
+   "fusedBest": {
+    "mine": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.8709
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.871
+    }
+   },
+   "fusedGM": {
+    "mine": {
+     "n": 58,
+     "contradictions": 7,
+     "auc": 0.8092
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 7,
+     "auc": 0.809
+    }
+   },
+   "fusedAccy": {
+    "mine": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.8723
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.872
+    }
+   },
+   "imuPhysical": {
+    "mine": {
+     "n": 58,
+     "contradictions": 17,
+     "auc": 0.6858
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 17,
+     "auc": 0.686
+    }
+   },
+   "imuHeavy": {
+    "mine": {
+     "n": 58,
+     "contradictions": 17,
+     "auc": 0.6514
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 17,
+     "auc": 0.651
+    }
+   },
+   "imuPhysicalAccy": {
+    "mine": {
+     "n": 58,
+     "contradictions": 13,
+     "auc": 0.7346
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 13,
+     "auc": 0.735
+    }
+   },
+   "lolo": {
+    "mine": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.8709
+    },
+    "i2Reported": {
+     "n": 58,
+     "contradictions": 4,
+     "auc": 0.871
+    }
+   }
+  },
+  "contradictionSigns": [
+   {
+    "lap": 2,
+    "kerb": "k21",
+    "cls": "strong",
+    "g": 1.66,
+    "kerbSide": "right",
+    "carMustMove": "right",
+    "zone": [
+     3253.5,
+     3348
+    ]
+   },
+   {
+    "lap": 2,
+    "kerb": "k23",
+    "cls": "strong",
+    "g": 0.33,
+    "kerbSide": "right",
+    "carMustMove": "right",
+    "zone": [
+     3594.5,
+     3676.5
+    ]
+   },
+   {
+    "lap": 5,
+    "kerb": "k9",
+    "cls": "silent",
+    "g": -0.92,
+    "kerbSide": "left",
+    "carMustMove": "right",
+    "zone": [
+     3352,
+     3454.5
+    ]
+   },
+   {
+    "lap": 5,
+    "kerb": "k10",
+    "cls": "strong",
+    "g": 0.42,
+    "kerbSide": "left",
+    "carMustMove": "left",
+    "zone": [
+     3541.5,
+     3601
+    ]
+   }
+  ]
+ },
+ "fuji_aim_01": {
+  "committedShipped": {
+   "n": 52,
+   "strong": 1,
+   "silent": 51,
+   "contradictions": 2,
+   "list": [
+    [
+     1,
+     "k13",
+     "silent",
+     -0.7
+    ],
+    [
+     1,
+     "kDunlopR",
+     "silent",
+     -0.57
+    ]
+   ],
+   "auc": 0.9412
+  },
+  "i2ShippedVsCommittedMaxAbsDiffM": 0.0050000000000001155,
+  "i2PairsMatched": 52,
+  "variants": {
+   "shipped": {
+    "mine": {
+     "n": 52,
+     "contradictions": 2,
+     "auc": 0.9412
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 2,
+     "auc": 0.941
+    }
+   },
+   "rawGps": {
+    "mine": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.9412
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.941
+    }
+   },
+   "fusedBest": {
+    "mine": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.9412
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.941
+    }
+   },
+   "fusedGM": {
+    "mine": {
+     "n": 52,
+     "contradictions": 4,
+     "auc": 0.8824
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 4,
+     "auc": 0.882
+    }
+   },
+   "fusedAccy": {
+    "mine": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.9412
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.941
+    }
+   },
+   "imuPhysical": {
+    "mine": {
+     "n": 52,
+     "contradictions": 3,
+     "auc": 0.549
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 3,
+     "auc": 0.549
+    }
+   },
+   "imuHeavy": {
+    "mine": {
+     "n": 52,
+     "contradictions": 5,
+     "auc": 0.4902
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 5,
+     "auc": 0.49
+    }
+   },
+   "imuPhysicalAccy": {
+    "mine": {
+     "n": 52,
+     "contradictions": 9,
+     "auc": 0.4314
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 9,
+     "auc": 0.431
+    }
+   },
+   "lolo": {
+    "mine": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.9412
+    },
+    "i2Reported": {
+     "n": 52,
+     "contradictions": 1,
+     "auc": 0.941
+    }
+   }
+  },
+  "contradictionSigns": [
+   {
+    "lap": 1,
+    "kerb": "k13",
+    "cls": "silent",
+    "g": -0.7,
+    "kerbSide": "right",
+    "carMustMove": "left",
+    "zone": [
+     875.5,
+     932
+    ]
+   },
+   {
+    "lap": 1,
+    "kerb": "kDunlopR",
+    "cls": "silent",
+    "g": -0.57,
+    "kerbSide": "right",
+    "carMustMove": "left",
+    "zone": [
+     2962.5,
+     2997
+    ]
+   }
+  ]
+ }
+}

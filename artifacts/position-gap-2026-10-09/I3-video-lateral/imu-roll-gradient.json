@@ -1,0 +1,95 @@
+{
+ "method": "Body-roll gradient (deg per g) of the car from the logger IMU, for the camera-roll diagnostic of I3.",
+ "smoothingSeconds": 0.5,
+ "speedMaskKmh": 60,
+ "sessions": {
+  "fuji_aim_01": {
+   "samples": 34297,
+   "A_derivative": {
+    "slopeDegPerG": -0.049490003187493144,
+    "r2": 6.248314885082262e-05,
+    "ci95": [
+     -0.3324691716840226,
+     0.23243631925086422
+    ]
+   },
+   "B_integratedHighPass": {
+    "slopeDegPerG": 0.9435729124228738,
+    "r2": 0.00719667290944237,
+    "ci95": [
+     0.14328167044206463,
+     1.7624878263295973
+    ]
+   },
+   "lateralAccVsLapAccyCorrelation": 0.9999999985017675,
+   "C_lapWithTerrain": {
+    "lap": 3,
+    "slopeDegPerG": -0.3738694878736301,
+    "terrainRateCoef": 0.8528064515019028,
+    "r2": 0.05248992988032475,
+    "ci95Slope": [
+     -0.985095233568978,
+     0.06523022034655618
+    ],
+    "ci95TerrainCoef": [
+     0.32124472138891597,
+     1.4002601761964395
+    ],
+    "samples": 6660,
+    "medianStationMinusDist": 149.35837826347029,
+    "note": "terrainRateCoef ~ +1 or -1 tells the gyro sign relative to the bank convention (+ = left side higher)"
+   },
+   "C_lapWithoutTerrain": {
+    "slopeDegPerG": 0.09042616199166473,
+    "r2": 0.00023358410496399085
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "samples": 45070,
+   "A_derivative": {
+    "slopeDegPerG": -0.2736271134906704,
+    "r2": 0.0025537797074383084,
+    "ci95": [
+     -0.4539926210335369,
+     -0.10229310505461267
+    ]
+   },
+   "B_integratedHighPass": {
+    "slopeDegPerG": 0.1914337829880718,
+    "r2": 0.000490586794719694,
+    "ci95": [
+     -0.2907302256547979,
+     0.6630008274598399
+    ]
+   },
+   "lateralAccVsLapAccyCorrelation": 0.9999964150520427,
+   "C_lapWithTerrain": {
+    "lap": 2,
+    "slopeDegPerG": -0.6129853871280131,
+    "terrainRateCoef": 0.9020930953742653,
+    "r2": 0.047688936157572415,
+    "ci95Slope": [
+     -1.1257213616348376,
+     -0.08905104315993885
+    ],
+    "ci95TerrainCoef": [
+     -0.018488950984590247,
+     1.713296334137796
+    ],
+    "samples": 6463,
+    "medianStationMinusDist": 153.16397005222848,
+    "note": "terrainRateCoef ~ +1 or -1 tells the gyro sign relative to the bank convention (+ = left side higher)"
+   },
+   "C_lapWithoutTerrain": {
+    "slopeDegPerG": -0.2141123775254924,
+    "r2": 0.001661775864730708
+   }
+  }
+ },
+ "adoptedRollGradientDegPerG": 0.5589567723759398,
+ "perSessionCameraRollGradient": [
+  0.4383989910198233,
+  0.6795145537320562
+ ],
+ "adoptedRule": "camera roll gradient k = -(slope / terrainRateCoef) of fit C (terrain-corrected, gyro sign taken from the terrain coefficient), mean of the two scene laps; droll = +k*accy. Low r2: the roll-rate signal is dominated by vibration/terrain; treat k as an order of magnitude."
+}

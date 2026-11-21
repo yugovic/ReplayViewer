@@ -165,6 +165,7 @@ export function Hud({ developerMode = false }: HudProps) {
   const currentTime = useReplayStore((state) => state.currentTime);
   const telemetry = useReplayStore((state) => state.telemetry);
   const cameraMode = useReplayStore((state) => state.cameraMode);
+  const track = useReplayStore((state) => state.track);
   const setCameraMode = useReplayStore((state) => state.setCameraMode);
   const setShowLapSelector = useReplayStore((state) => state.setShowLapSelector);
   const activeLap = useReplayStore((state) => state.activeLap);
@@ -191,6 +192,8 @@ export function Hud({ developerMode = false }: HudProps) {
     { mode: "free" as const, label: "Free", key: "4" },
     { mode: "tv" as const, label: "TV", key: "5" },
     { mode: "cinematic" as const, label: "Cinematic", key: "6" },
+    ...(track?.trackId === "fuji" && track.visualProfile === "cg"
+      ? [{ mode: "onboard" as const, label: "動画比較", key: "0" }] : []),
   ];
 
   // --- Delta time ---
@@ -302,8 +305,9 @@ export function Hud({ developerMode = false }: HudProps) {
             key={mode}
             type="button"
             className={`cam-btn${cameraMode === mode ? " cam-btn--active" : ""}`}
+            aria-pressed={cameraMode === mode}
             onClick={() => setCameraMode(mode)}
-            title={`Camera: ${label} [${key}]`}
+            title={mode === "onboard" ? "動画比較用・推定カメラ [0]。画角・取付姿勢を合わせる表示。GPSの精度を保証するものではありません。" : `Camera: ${label} [${key}]`}
           >
             <span className="cam-key">{key}</span> {label}
           </button>

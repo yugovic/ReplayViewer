@@ -1,0 +1,115 @@
+{
+ "generated": "2026-10-22T13:39:12.705Z",
+ "results": {
+  "B-light-390": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [
+    "TABLE.",
+    "THEAD.",
+    "TR.",
+    "TH.num",
+    "TH.num",
+    "TBODY."
+   ],
+   "camRows": 4,
+   "gapRows": 9,
+   "guides": 0,
+   "cards": 0,
+   "bodyBg": "rgb(241, 243, 242)",
+   "cmTables": 2,
+   "title": "動画・Gを正解にした3DCG検証"
+  },
+  "B-light-1100": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [],
+   "camRows": 4,
+   "gapRows": 9,
+   "guides": 0,
+   "cards": 0,
+   "bodyBg": "rgb(241, 243, 242)",
+   "cmTables": 2,
+   "title": "動画・Gを正解にした3DCG検証"
+  },
+  "B-dark-390": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [
+    "TABLE.",
+    "THEAD.",
+    "TR.",
+    "TH.num",
+    "TH.num",
+    "TBODY."
+   ],
+   "camRows": 4,
+   "gapRows": 9,
+   "guides": 0,
+   "cards": 0,
+   "bodyBg": "rgb(16, 19, 21)",
+   "cmTables": 2,
+   "title": "動画・Gを正解にした3DCG検証"
+  },
+  "B-dark-1100": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [],
+   "camRows": 4,
+   "gapRows": 9,
+   "guides": 0,
+   "cards": 0,
+   "bodyBg": "rgb(16, 19, 21)",
+   "cmTables": 2,
+   "title": "動画・Gを正解にした3DCG検証"
+  },
+  "C-light-390": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [],
+   "camRows": 0,
+   "gapRows": 0,
+   "guides": 110,
+   "cards": 106,
+   "bodyBg": "rgb(241, 243, 242)",
+   "cmTables": 0,
+   "title": "実映像と3DCGの比較"
+  },
+  "C-light-1100": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [],
+   "camRows": 0,
+   "gapRows": 0,
+   "guides": 110,
+   "cards": 106,
+   "bodyBg": "rgb(241, 243, 242)",
+   "cmTables": 0,
+   "title": "実映像と3DCGの比較"
+  },
+  "C-dark-390": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [],
+   "camRows": 0,
+   "gapRows": 0,
+   "guides": 110,
+   "cards": 106,
+   "bodyBg": "rgb(16, 19, 21)",
+   "cmTables": 0,
+   "title": "実映像と3DCGの比較"
+  },
+  "C-dark-1100": {
+   "errors": [],
+   "pageOverflowPx": 0,
+   "innerOverflow": [],
+   "camRows": 0,
+   "gapRows": 0,
+   "guides": 110,
+   "cards": 106,
+   "bodyBg": "rgb(16, 19, 21)",
+   "cmTables": 0,
+   "title": "実映像と3DCGの比較"
+  }
+ }
+}

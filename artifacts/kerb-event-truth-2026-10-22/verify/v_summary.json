@@ -1,0 +1,229 @@
+{
+ "kind": "adversarial-verification of the kerb-event-truth join (2026-10-22)",
+ "labels": {
+  "measured": "own scripts on raw XRK / video pixels / audio PCM / shipped lap JSON",
+  "derived": "arithmetic on measured values"
+ },
+ "scripts": {
+  "v_xrk.py": "own XRK extraction + lap map (tc0 by GPS-speed least squares)",
+  "v_video_flow2.py": "own Farneback flow, per-row intercept = yaw proxy (v_video_flow.py = plain median, superseded)",
+  "v_audio_env.py": "audio stream 1/2 band envelopes, seek-free PCM decode",
+  "v_offset.py / v_offset_flankfit.py / v_offset_rows.py": "video<->logger offset L per lap (whole-lap transient xcorr, flank LSQ + bootstrap, row-band sensitivity); v_offset_flanks.py per-corner 50% crossings = too noisy, superseded",
+  "v_audio_prior_test.py / v_audio_bursts.py": "T2-like audio burst rule on own signals; prior sensitivity; all strong IMU bursts",
+  "v_kerb_events.py": "first-crossing onset rule attempt: too noisy on multi-burst kerbs (kept for the record)",
+  "v_cgpose.py": "own viewer-pose re-implementation from src/ (no cgpose import)",
+  "v_kerb_compare.py": "per-contact table: T1 onset vs own onset50, own audio L, own CG gap / first crossing",
+  "v_tip_edges.py / v_tip_predict.py": "own pixel kerb-edge tip per row; own flat-ground CG tip prediction"
+ },
+ "offsetL": {
+  "fuji_aim_2020_07_30": {
+   "join": [
+    0.202,
+    0.241,
+    0.205,
+    0.217,
+    0.135,
+    0.274
+   ],
+   "ownVideoYawTransient": [
+    0.206,
+    0.247,
+    0.212,
+    0.229,
+    0.148,
+    0.265
+   ],
+   "ownFlankFit": [
+    0.208,
+    0.269,
+    0.188,
+    0.218,
+    0.142,
+    0.267
+   ],
+   "ownAudioStrongKerbEvents": {
+    "n": 19,
+    "L_median": 0.212,
+    "minusJoinL_median": -0.01,
+    "minusJoinL_iqr": [
+     -0.037,
+     0.039
+    ],
+    "priorInsensitive": "median 0.212-0.213 for priors 0.0-0.4 s"
+   },
+   "ownAudioAllStrongBursts": {
+    "n": 15,
+    "L_median": 0.228,
+    "minusOwnVideoL_median": -0.006
+   },
+   "verdict": "confirmed (per-lap, incl. the low L5)"
+  },
+  "fuji_aim_01": {
+   "join": [
+    0.177,
+    0.234,
+    0.218,
+    0.171
+   ],
+   "ownVideoYawTransient": [
+    0.252,
+    0.335,
+    0.256,
+    0.22
+   ],
+   "ownFlankFit": [
+    0.261,
+    0.322,
+    0.248,
+    0.297
+   ],
+   "transientR": [
+    0.32,
+    0.45,
+    0.39,
+    0.31
+   ],
+   "ownAudioPlausibleEvents": {
+    "L3_k7": 0.182,
+    "L3_107.5s": 0.173
+   },
+   "verdict": "not confirmed: own video yaw +0.04..+0.10 s higher, two audio events 0.03-0.05 s lower; L in ~0.17-0.30 s"
+  }
+ },
+ "checks": {
+  "lapMap": "own tc0 = T1 / meta lapStartTimecodeMs for all 10 laps (rms 0.0003 km/h)",
+  "overlayFrames": {
+   "0730_PTS_345.267": "LAP 3 1:00.02 (data L2, predicted 60.029)",
+   "0729_PTS_520.000": "LAP 4 1:00.10 (data L3, predicted 60.106)"
+  },
+  "shiftOnce": "7/30 gyro-vs-GPS-course lag with shift -0.048..+0.043 s, without -0.53..-0.58 s; join L reproduced only with the shift applied once",
+  "cgGapsReproduced": "own pose re-implementation = join gapAtOnset at all 38 onsets within 2 mm, dtFirst within 1 ms",
+  "gpsCourseMinusGyro": {
+   "0730_level": [
+    -0.038,
+    0.043
+   ],
+   "0729_level": [
+    0.036,
+    0.061
+   ],
+   "0730_transient": [
+    -0.048,
+    0.024
+   ],
+   "0729_transient": [
+    -0.001,
+    0.034
+   ]
+  },
+  "impliedFocalPx_0730": {
+   "videoOnGyro": [
+    704,
+    749
+   ],
+   "gyroOnVideo": [
+    537,
+    598
+   ]
+  }
+ },
+ "kerbContactOnsetDefinition_0730_primary": {
+  "all": {
+   "gapAtT1Onset": {
+    "n": 26,
+    "median": 0.2,
+    "q25": -0.135,
+    "q75": 0.968,
+    "medAbs": 0.374,
+    "p90abs": 2.501
+   },
+   "gapAtOwnOnset50": {
+    "n": 26,
+    "median": 0.044,
+    "q25": -0.271,
+    "q75": 0.376,
+    "medAbs": 0.33,
+    "p90abs": 0.932
+   },
+   "cgCrossMinusT1": {
+    "n": 19,
+    "median": 0.031,
+    "q25": -0.12,
+    "q75": 0.165,
+    "medAbs": 0.126,
+    "p90abs": 0.306
+   },
+   "cgCrossMinusOwnOnset50": {
+    "n": 19,
+    "median": -0.063,
+    "q25": -0.168,
+    "q75": 0.022,
+    "medAbs": 0.092,
+    "p90abs": 0.259
+   },
+   "ownMinusT1Onset": {
+    "n": 26,
+    "median": 0.069,
+    "q25": -0.058,
+    "q75": 0.168,
+    "medAbs": 0.099,
+    "p90abs": 0.274
+   }
+  },
+  "excl_k1": {
+   "gapAtT1Onset": {
+    "n": 20,
+    "median": 0.115,
+    "q25": -0.175,
+    "q75": 0.307,
+    "medAbs": 0.301,
+    "p90abs": 0.745
+   },
+   "gapAtOwnOnset50": {
+    "n": 20,
+    "median": -0.073,
+    "q25": -0.3,
+    "q75": 0.229,
+    "medAbs": 0.27,
+    "p90abs": 0.99
+   },
+   "cgCrossMinusT1": {
+    "n": 13,
+    "median": -0.058,
+    "q25": -0.155,
+    "q75": 0.056,
+    "medAbs": 0.125,
+    "p90abs": 0.273
+   },
+   "cgCrossMinusOwnOnset50": {
+    "n": 13,
+    "median": -0.145,
+    "q25": -0.195,
+    "q75": -0.042,
+    "medAbs": 0.145,
+    "p90abs": 0.274
+   },
+   "ownMinusT1Onset": {
+    "n": 20,
+    "median": 0.03,
+    "q25": -0.069,
+    "q75": 0.112,
+    "medAbs": 0.08,
+    "p90abs": 0.276
+   }
+  }
+ },
+ "videoTipOwnMinusT3_s": {
+  "0730_L2_k13": -0.047,
+  "0730_L4_k7": -0.028,
+  "0730_L3_k24": -0.026,
+  "0729_L3_k24": -0.037,
+  "0729_L3_k3": 0.055
+ },
+ "videoTipCaveats": {
+  "0730_L4_k7": "car ahead overlaps the kerb near row 276",
+  "0729_L3_k24": "wiper blade sweeps next to the kerb edge"
+ },
+ "joinWordingError": "summary 'Video minus 3DCG camera-to-kerb distance' is stored as dLat = 3DCG minus video (7/29 +0.665 => video - CG = -0.665)",
+ "repository": "no tracked file changed (29 modified tracked files before and after); nothing downloaded; frames / grids / audio envelopes only in the local work folder"
+}

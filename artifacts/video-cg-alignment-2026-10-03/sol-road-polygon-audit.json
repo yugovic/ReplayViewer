@@ -1,0 +1,217 @@
+{
+  "scope": "Independent source-only polygon check, not runtime triangulation or external surveyed truth. Shapely validity and difference; no source edits.",
+  "geometrySha256": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+  "zonesSha256": "d9787ccf5fb4feb8e38434b2e1d4cd99470648f1d94c25b2e8332fbb85f712b6",
+  "patches": [
+    {
+      "zones": [
+        "k16"
+      ],
+      "side": "right",
+      "clippedStations": 9,
+      "immediateJoin": {
+        "startStation": 2129.5,
+        "endStation": 2134.5,
+        "valid": true,
+        "validity": "Valid Geometry"
+      },
+      "firstFiveSimpleCandidates": [
+        {
+          "startStation": 2129.5,
+          "endStation": 2134.5,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 0.0,
+          "newAreaM2": 21.185024093750034,
+          "oldAreaM2": 23.68445959375005,
+          "removedAreaM2": 2.4994355000000144,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2129.5,
+          "endStation": 2135.0,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 0.5,
+          "newAreaM2": 23.77401028124997,
+          "oldAreaM2": 26.27344578124999,
+          "removedAreaM2": 2.4994355000000144,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2129.0,
+          "endStation": 2134.5,
+          "extraStartMeters": 0.5,
+          "extraEndMeters": 0.0,
+          "newAreaM2": 23.40736721875005,
+          "oldAreaM2": 25.90680271875006,
+          "removedAreaM2": 2.4994355000000144,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2129.5,
+          "endStation": 2135.5,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 1.0,
+          "newAreaM2": 26.463783250000013,
+          "oldAreaM2": 28.963218750000024,
+          "removedAreaM2": 2.4994355000000144,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2129.0,
+          "endStation": 2135.0,
+          "extraStartMeters": 0.5,
+          "extraEndMeters": 0.5,
+          "newAreaM2": 25.996353406249984,
+          "oldAreaM2": 28.49578890625001,
+          "removedAreaM2": 2.4994355000000144,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        }
+      ]
+    },
+    {
+      "zones": [
+        "k19"
+      ],
+      "side": "right",
+      "clippedStations": 5,
+      "immediateJoin": {
+        "startStation": 2715.5,
+        "endStation": 2718.5,
+        "valid": false,
+        "validity": "Self-intersection[58.3782987962041 624.460862588601]"
+      },
+      "firstFiveSimpleCandidates": [
+        {
+          "startStation": 2715.5,
+          "endStation": 2719.0,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 0.5,
+          "newAreaM2": 12.134770250000049,
+          "oldAreaM2": 13.88753225000011,
+          "removedAreaM2": 1.7527620000000608,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2715.5,
+          "endStation": 2719.5,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 1.0,
+          "newAreaM2": 14.112146468749962,
+          "oldAreaM2": 15.864908468750027,
+          "removedAreaM2": 1.7527620000000608,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2715.0,
+          "endStation": 2719.0,
+          "extraStartMeters": 0.5,
+          "extraEndMeters": 0.5,
+          "newAreaM2": 14.058871437500162,
+          "oldAreaM2": 15.811633437500223,
+          "removedAreaM2": 1.7527620000000608,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2715.5,
+          "endStation": 2720.0,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 1.5,
+          "newAreaM2": 16.039078874999984,
+          "oldAreaM2": 17.79184087500005,
+          "removedAreaM2": 1.7527620000000608,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 2715.0,
+          "endStation": 2719.5,
+          "extraStartMeters": 0.5,
+          "extraEndMeters": 1.0,
+          "newAreaM2": 16.036247656250076,
+          "oldAreaM2": 17.78900965625014,
+          "removedAreaM2": 1.7527620000000608,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        }
+      ]
+    },
+    {
+      "zones": [
+        "k21"
+      ],
+      "side": "right",
+      "clippedStations": 13,
+      "immediateJoin": {
+        "startStation": 3341.5,
+        "endStation": 3348.5,
+        "valid": false,
+        "validity": "Self-intersection[-316.535500807796 579.602138417481]"
+      },
+      "firstFiveSimpleCandidates": [
+        {
+          "startStation": 3341.5,
+          "endStation": 3349.0,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 0.5,
+          "newAreaM2": 23.59847775000003,
+          "oldAreaM2": 29.830968249999955,
+          "removedAreaM2": 6.23249049999993,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 3341.5,
+          "endStation": 3349.5,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 1.0,
+          "newAreaM2": 25.636970875000102,
+          "oldAreaM2": 31.86946137500003,
+          "removedAreaM2": 6.23249049999993,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 3341.0,
+          "endStation": 3349.0,
+          "extraStartMeters": 0.5,
+          "extraEndMeters": 0.5,
+          "newAreaM2": 25.496096812499978,
+          "oldAreaM2": 31.728587312499915,
+          "removedAreaM2": 6.23249049999993,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 3341.5,
+          "endStation": 3350.0,
+          "extraStartMeters": 0.0,
+          "extraEndMeters": 1.5,
+          "newAreaM2": 27.649539500000067,
+          "oldAreaM2": 33.88202999999999,
+          "removedAreaM2": 6.23249049999993,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        },
+        {
+          "startStation": 3341.0,
+          "endStation": 3349.5,
+          "extraStartMeters": 0.5,
+          "extraEndMeters": 1.0,
+          "newAreaM2": 27.53458993750006,
+          "oldAreaM2": 33.767080437499985,
+          "removedAreaM2": 6.23249049999993,
+          "outsideOriginalAreaM2": 0.0,
+          "originalValid": true
+        }
+      ]
+    }
+  ]
+}

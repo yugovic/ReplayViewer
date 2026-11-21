@@ -1,0 +1,208 @@
+{
+  "scope": "No-refit independent rescoring of10 frozen holdouts at original production poses with the frozen original camera. New lines come from actual emitted road-facing paint segments after road repair; disconnected segment endpoints are never joined.",
+  "profileSha256": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+  "annotationsSha256": "cf62adb4d893a7a185d3dfd73ab1f4c2c24275fb201f6295f3fe82240e8a3f2d",
+  "emittedSegmentFileSha256": "35e225f592e64efbbf3f71dfd55482641b542789058907e107322c571236fdf6",
+  "rows": [
+    {
+      "id": "2020-07-29-L3-60.000",
+      "points": 9,
+      "originalRuntimeLineMedianPx": 9.557212671096101,
+      "finalEmittedSegmentMedianPx": 9.557212671096101,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 22.34379696368761,
+      "finalEmittedSegmentP95Px": 22.34379696368761,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 14.998061585591092,
+          "p95Px": 23.487074874365014
+        },
+        "paintR": {
+          "medianPx": 5.990764552016593,
+          "p95Px": 9.921331210442897
+        }
+      }
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "points": 5,
+      "originalRuntimeLineMedianPx": 9.286123108506501,
+      "finalEmittedSegmentMedianPx": 9.286123108506501,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 15.981224310013278,
+      "finalEmittedSegmentP95Px": 15.981224310013278,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 9.286123108506501,
+          "p95Px": 15.981224310013278
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "points": 11,
+      "originalRuntimeLineMedianPx": 11.213829444135396,
+      "finalEmittedSegmentMedianPx": 11.213829444135396,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 45.510989697885044,
+      "finalEmittedSegmentP95Px": 45.510989697885044,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 22.71651751901253,
+          "p95Px": 47.68304626537217
+        },
+        "paintR": {
+          "medianPx": 9.70050425234981,
+          "p95Px": 11.024045972240327
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "points": 7,
+      "originalRuntimeLineMedianPx": 33.30696555909758,
+      "finalEmittedSegmentMedianPx": 33.30696555909758,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 50.24278938205948,
+      "finalEmittedSegmentP95Px": 50.24278938205948,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintR": {
+          "medianPx": 33.30696555909758,
+          "p95Px": 50.24278938205948
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "points": 7,
+      "originalRuntimeLineMedianPx": 8.980527764427569,
+      "finalEmittedSegmentMedianPx": 8.980527764427569,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 12.433356433036952,
+      "finalEmittedSegmentP95Px": 12.433356433036952,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintR": {
+          "medianPx": 8.980527764427569,
+          "p95Px": 12.433356433036952
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "points": 11,
+      "originalRuntimeLineMedianPx": 7.633311577763672,
+      "finalEmittedSegmentMedianPx": 7.633311577763672,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 20.62953711388539,
+      "finalEmittedSegmentP95Px": 20.62953711388539,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 8.683882952712738,
+          "p95Px": 22.292868916249123
+        },
+        "paintR": {
+          "medianPx": 1.5182974479436857,
+          "p95Px": 2.6051834210474385
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "points": 15,
+      "originalRuntimeLineMedianPx": 54.490746065642455,
+      "finalEmittedSegmentMedianPx": 54.490746065642455,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 87.85173965711249,
+      "finalEmittedSegmentP95Px": 87.85173965711249,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 61.60746547786426,
+          "p95Px": 88.6230277408934
+        },
+        "paintR": {
+          "medianPx": 19.56473922882655,
+          "p95Px": 26.02248196368712
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "points": 13,
+      "originalRuntimeLineMedianPx": 3.8923517294531997,
+      "finalEmittedSegmentMedianPx": 3.8923517294531997,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 22.714725633295366,
+      "finalEmittedSegmentP95Px": 22.714725633295366,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 11.624710782542174,
+          "p95Px": 24.859935406835667
+        },
+        "paintR": {
+          "medianPx": 0.8933294889860353,
+          "p95Px": 3.468450638498767
+        }
+      }
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "points": 11,
+      "originalRuntimeLineMedianPx": 2.32105513563435,
+      "finalEmittedSegmentMedianPx": 2.32105513563435,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 9.597211025070727,
+      "finalEmittedSegmentP95Px": 9.597211025070727,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 2.2820046520536774,
+          "p95Px": 7.873228499914307
+        },
+        "paintR": {
+          "medianPx": 4.12039008963938,
+          "p95Px": 9.22219814394385
+        }
+      }
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "points": 9,
+      "originalRuntimeLineMedianPx": 11.324806100220984,
+      "finalEmittedSegmentMedianPx": 11.324806100220984,
+      "medianDifferencePx": 0.0,
+      "originalRuntimeLineP95Px": 19.234663623192983,
+      "finalEmittedSegmentP95Px": 19.234663623192983,
+      "p95DifferencePx": 0.0,
+      "perBoundary": {
+        "paintL": {
+          "medianPx": 18.862221218241636,
+          "p95Px": 19.326926835861894
+        },
+        "paintR": {
+          "medianPx": 7.673815442348294,
+          "p95Px": 10.711803300901778
+        }
+      }
+    }
+  ],
+  "summary": {
+    "scenes": 10,
+    "points": 98,
+    "medianOfSceneMediansPx": 9.421667889801302,
+    "meanOfSceneMediansPx": 15.20069291559778,
+    "maximumAbsoluteSceneMedianChangePx": 0.0,
+    "maximumAbsoluteSceneP95ChangePx": 0.0
+  },
+  "limitations": [
+    "This is a fixed-camera regression check of rendered line support, not an additional independent camera fit/acceptance or GPS accuracy measurement.",
+    "Mesh clipping mostly changes asphalt outside kerb; unchanged screen-boundary metrics do not imply the mesh repair lacks visual effect."
+  ]
+}

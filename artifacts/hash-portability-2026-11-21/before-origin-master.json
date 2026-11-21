@@ -1,0 +1,50 @@
+{
+  "rev": "origin/master",
+  "commit": "7ebf89b4723f92b46aa9843f8e7930f1aeed572e",
+  "modes": {
+    "windowsDefaultClone": {
+      "autocrlf": "true",
+      "passed": false,
+      "failureCount": 20,
+      "failures": [
+        "FAIL: fuji_aim_01: input SHA differs or file missing: public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_001.json",
+        "FAIL: fuji_aim_01: input SHA differs or file missing: public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_002.json",
+        "FAIL: fuji_aim_01: input SHA differs or file missing: public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json",
+        "FAIL: fuji_aim_01: input SHA differs or file missing: public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_004.json",
+        "FAIL: fuji_aim_01: lap SHA differs or file missing: osaki_hmr_demio_101_lap_001.json",
+        "FAIL: fuji_aim_01: lap SHA differs or file missing: osaki_hmr_demio_101_lap_002.json",
+        "FAIL: fuji_aim_01: lap SHA differs or file missing: osaki_hmr_demio_101_lap_003.json",
+        "FAIL: fuji_aim_01: lap SHA differs or file missing: osaki_hmr_demio_101_lap_004.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_001.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_003.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_004.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_005.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_006.json",
+        "FAIL: fuji_aim_2020_07_30: lap SHA differs or file missing: osaki_hmr_demio_101_lap_001.json",
+        "FAIL: fuji_aim_2020_07_30: lap SHA differs or file missing: osaki_hmr_demio_101_lap_002.json",
+        "FAIL: fuji_aim_2020_07_30: lap SHA differs or file missing: osaki_hmr_demio_101_lap_003.json",
+        "FAIL: fuji_aim_2020_07_30: lap SHA differs or file missing: osaki_hmr_demio_101_lap_004.json",
+        "FAIL: fuji_aim_2020_07_30: lap SHA differs or file missing: osaki_hmr_demio_101_lap_005.json",
+        "FAIL: fuji_aim_2020_07_30: lap SHA differs or file missing: osaki_hmr_demio_101_lap_006.json"
+      ]
+    },
+    "lfClone": {
+      "autocrlf": "false",
+      "passed": false,
+      "failureCount": 10,
+      "failures": [
+        "FAIL: fuji_aim_01: registration SHA differs",
+        "FAIL: fuji_aim_01: input SHA differs or file missing: public/data/tracks/fuji/cg_study/geometry.json",
+        "FAIL: fuji_aim_01: input SHA differs or file missing: public/data/tracks/fuji/track.json",
+        "FAIL: fuji_aim_01: limits SHA differs or file missing",
+        "FAIL: fuji_aim_01: referenceTrack SHA differs or file missing",
+        "FAIL: fuji_aim_2020_07_30: registration SHA differs",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/tracks/fuji/cg_study/geometry.json",
+        "FAIL: fuji_aim_2020_07_30: input SHA differs or file missing: public/data/tracks/fuji/track.json",
+        "FAIL: fuji_aim_2020_07_30: limits SHA differs or file missing",
+        "FAIL: fuji_aim_2020_07_30: referenceTrack SHA differs or file missing"
+      ]
+    }
+  }
+}

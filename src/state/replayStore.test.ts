@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { useReplayStore } from "./replayStore";
-import type { LapData, LapIndexRecord } from "../replay/types";
+import type { LapData, LapIndexRecord, TrackData } from "../replay/types";
 
 describe("scene layer flags", () => {
   it("defaults layers to visible except OSM features (covers the satellite photo)", () => {
@@ -174,5 +174,47 @@ describe("GPS registration toggle", () => {
     useReplayStore.getState().setGpsRegistrationEnabled(false);
     expect(useReplayStore.getState().activeLap).toBe(plain);
     useReplayStore.getState().setGpsRegistrationEnabled(true);
+  });
+});
+
+
+describe("estimated onboard camera context", () => {
+  const track = (trackId: string, visualProfile?: TrackData["visualProfile"]) =>
+    ({ trackId, visualProfile } as TrackData);
+
+  it("keeps onboard for Fuji CG but normalizes track/look transitions to cockpit", () => {
+    const before = useReplayStore.getState();
+    try {
+      useReplayStore.getState().setCameraMode("onboard");
+      useReplayStore.getState().setTrack(track("fuji", "cg"));
+      expect(useReplayStore.getState().cameraMode).toBe("onboard");
+      for (const destination of [track("fuji"), track("fuji", "reference"), track("suzuka", "cg")]) {
+        useReplayStore.getState().setCameraMode("onboard");
+        useReplayStore.getState().setTrack(destination);
+        expect(useReplayStore.getState().cameraMode).toBe("cockpit");
+        expect(useReplayStore.getState().track).toBe(destination);
+      }
+      useReplayStore.getState().setTrack(track("fuji", "cg"));
+      expect(useReplayStore.getState().cameraMode).toBe("cockpit");
+      useReplayStore.getState().setCameraMode("onboard");
+      expect(useReplayStore.getState().cameraMode).toBe("onboard");
+    } finally {
+      useReplayStore.setState({ cameraMode: before.cameraMode, track: before.track });
+    }
+  });
+
+  it("preserves every other explicit camera choice across track/look transitions", () => {
+    const before = useReplayStore.getState();
+    try {
+      for (const mode of ["chase", "cockpit", "top", "free", "tv", "cinematic"] as const) {
+        useReplayStore.getState().setCameraMode(mode);
+        useReplayStore.getState().setTrack(track("suzuka"));
+        expect(useReplayStore.getState().cameraMode).toBe(mode);
+        useReplayStore.getState().setTrack(track("fuji", "cg"));
+        expect(useReplayStore.getState().cameraMode).toBe(mode);
+      }
+    } finally {
+      useReplayStore.setState({ cameraMode: before.cameraMode, track: before.track });
+    }
   });
 });

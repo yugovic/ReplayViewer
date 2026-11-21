@@ -1,0 +1,33 @@
+{
+ "expectedStrings": {
+  "R1-04 disagreements": "7/30の不一致21件のうち9件",
+  "R1-04 within0.30": "0.30 m以内なら12件",
+  "R1-04 tol agreement": "一致は86%（7/29は93%）",
+  "R1-04 clear passes": "通過（60件）だけで数えると一致は80%",
+  "R1-04 conclusion bullet": "食い違い21件のうち9件は縁石の線から0.25 m以内の僅差で、この許容で数えると86%",
+  "R1-10 n with value": "線を越えた20件だけで求めています",
+  "R1-10 n primary / excluded": "主な接触27件のうち残りの7件",
+  "R1-10 gap range": "0.02〜2.0 m、中央値0.20 m",
+  "R1-10 lateral n in text": "横のずれ（27件）",
+  "R1-09 pct": "約14〜18%小さく"
+ },
+ "checks": {
+  "R1-04 byHand==block": true,
+  "R1-04 n==84": true,
+  "R1-10 lo rounds to 0.02": true,
+  "R1-10 lateral n": true,
+  "R1-09 timing unchanged": true,
+  "R1-09 openItems in summary": true,
+  "text: R1-04 disagreements": true,
+  "text: R1-04 within0.30": true,
+  "text: R1-04 tol agreement": true,
+  "text: R1-04 clear passes": true,
+  "text: R1-04 conclusion bullet": true,
+  "text: R1-10 n with value": true,
+  "text: R1-10 n primary / excluded": true,
+  "text: R1-10 gap range": true,
+  "text: R1-10 lateral n in text": true,
+  "text: R1-09 pct": true
+ },
+ "allOk": true
+}

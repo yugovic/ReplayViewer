@@ -1,0 +1,340 @@
+{
+ "script": "navsol_gyro_band.py",
+ "kind": "measurement on local XRK (no video)",
+ "sessions": {
+  "fuji_aim_01": {
+   "race": "fuji_aim_01",
+   "bands": {
+    "3250-3900": {
+     "1": {
+      "headingResidualRmsDeg": 2.179,
+      "headingResidualMaxAbsDeg": 6.498,
+      "impliedLateralDetrendedMaxAbsM": 3.57
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.936,
+      "headingResidualMaxAbsDeg": 3.954,
+      "impliedLateralDetrendedMaxAbsM": 1.31
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.672,
+      "headingResidualMaxAbsDeg": 2.855,
+      "impliedLateralDetrendedMaxAbsM": 0.9
+     },
+     "4": {
+      "headingResidualRmsDeg": 1.099,
+      "headingResidualMaxAbsDeg": 2.931,
+      "impliedLateralDetrendedMaxAbsM": 1.76
+     }
+    },
+    "600-1250": {
+     "1": {
+      "headingResidualRmsDeg": 0.602,
+      "headingResidualMaxAbsDeg": 3.281,
+      "impliedLateralDetrendedMaxAbsM": 0.82
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.357,
+      "headingResidualMaxAbsDeg": 1.331,
+      "impliedLateralDetrendedMaxAbsM": 0.37
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.365,
+      "headingResidualMaxAbsDeg": 1.335,
+      "impliedLateralDetrendedMaxAbsM": 0.47
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.524,
+      "headingResidualMaxAbsDeg": 2.777,
+      "impliedLateralDetrendedMaxAbsM": 1.0
+     }
+    },
+    "1300-1950": {
+     "1": {
+      "headingResidualRmsDeg": 0.549,
+      "headingResidualMaxAbsDeg": 2.051,
+      "impliedLateralDetrendedMaxAbsM": 0.76
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.799,
+      "headingResidualMaxAbsDeg": 3.576,
+      "impliedLateralDetrendedMaxAbsM": 1.19
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.495,
+      "headingResidualMaxAbsDeg": 1.41,
+      "impliedLateralDetrendedMaxAbsM": 0.75
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.484,
+      "headingResidualMaxAbsDeg": 1.355,
+      "impliedLateralDetrendedMaxAbsM": 0.71
+     }
+    },
+    "1950-2600": {
+     "1": {
+      "headingResidualRmsDeg": 1.515,
+      "headingResidualMaxAbsDeg": 4.297,
+      "impliedLateralDetrendedMaxAbsM": 2.69
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.499,
+      "headingResidualMaxAbsDeg": 1.645,
+      "impliedLateralDetrendedMaxAbsM": 0.6
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.473,
+      "headingResidualMaxAbsDeg": 1.611,
+      "impliedLateralDetrendedMaxAbsM": 0.65
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.675,
+      "headingResidualMaxAbsDeg": 3.49,
+      "impliedLateralDetrendedMaxAbsM": 1.07
+     }
+    },
+    "2600-3250": {
+     "1": {
+      "headingResidualRmsDeg": 1.557,
+      "headingResidualMaxAbsDeg": 7.961,
+      "impliedLateralDetrendedMaxAbsM": 2.76
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.927,
+      "headingResidualMaxAbsDeg": 3.734,
+      "impliedLateralDetrendedMaxAbsM": 1.14
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.957,
+      "headingResidualMaxAbsDeg": 4.678,
+      "impliedLateralDetrendedMaxAbsM": 1.27
+     },
+     "4": {
+      "headingResidualRmsDeg": 2.087,
+      "headingResidualMaxAbsDeg": 9.979,
+      "impliedLateralDetrendedMaxAbsM": 4.2
+     }
+    },
+    "3900-4450": {
+     "1": {
+      "headingResidualRmsDeg": 0.19,
+      "headingResidualMaxAbsDeg": 0.569,
+      "impliedLateralDetrendedMaxAbsM": 0.22
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.189,
+      "headingResidualMaxAbsDeg": 0.656,
+      "impliedLateralDetrendedMaxAbsM": 0.21
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.217,
+      "headingResidualMaxAbsDeg": 0.778,
+      "impliedLateralDetrendedMaxAbsM": 0.25
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.252,
+      "headingResidualMaxAbsDeg": 1.133,
+      "impliedLateralDetrendedMaxAbsM": 0.35
+     }
+    }
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "race": "fuji_aim_2020_07_30",
+   "bands": {
+    "3250-3900": {
+     "1": {
+      "headingResidualRmsDeg": 0.765,
+      "headingResidualMaxAbsDeg": 2.153,
+      "impliedLateralDetrendedMaxAbsM": 1.04
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.756,
+      "headingResidualMaxAbsDeg": 2.576,
+      "impliedLateralDetrendedMaxAbsM": 0.9
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.91,
+      "headingResidualMaxAbsDeg": 3.505,
+      "impliedLateralDetrendedMaxAbsM": 1.32
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.495,
+      "headingResidualMaxAbsDeg": 2.211,
+      "impliedLateralDetrendedMaxAbsM": 0.54
+     },
+     "5": {
+      "headingResidualRmsDeg": 0.77,
+      "headingResidualMaxAbsDeg": 2.628,
+      "impliedLateralDetrendedMaxAbsM": 1.12
+     },
+     "6": {
+      "headingResidualRmsDeg": 0.734,
+      "headingResidualMaxAbsDeg": 2.346,
+      "impliedLateralDetrendedMaxAbsM": 0.77
+     }
+    },
+    "600-1250": {
+     "1": {
+      "headingResidualRmsDeg": 0.529,
+      "headingResidualMaxAbsDeg": 2.278,
+      "impliedLateralDetrendedMaxAbsM": 0.52
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.584,
+      "headingResidualMaxAbsDeg": 1.74,
+      "impliedLateralDetrendedMaxAbsM": 1.29
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.274,
+      "headingResidualMaxAbsDeg": 1.439,
+      "impliedLateralDetrendedMaxAbsM": 0.35
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.521,
+      "headingResidualMaxAbsDeg": 2.145,
+      "impliedLateralDetrendedMaxAbsM": 0.84
+     },
+     "5": {
+      "headingResidualRmsDeg": 0.468,
+      "headingResidualMaxAbsDeg": 2.432,
+      "impliedLateralDetrendedMaxAbsM": 0.84
+     },
+     "6": {
+      "headingResidualRmsDeg": 0.438,
+      "headingResidualMaxAbsDeg": 2.231,
+      "impliedLateralDetrendedMaxAbsM": 0.54
+     }
+    },
+    "1300-1950": {
+     "1": {
+      "headingResidualRmsDeg": 0.436,
+      "headingResidualMaxAbsDeg": 1.385,
+      "impliedLateralDetrendedMaxAbsM": 0.58
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.411,
+      "headingResidualMaxAbsDeg": 1.318,
+      "impliedLateralDetrendedMaxAbsM": 0.71
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.685,
+      "headingResidualMaxAbsDeg": 2.308,
+      "impliedLateralDetrendedMaxAbsM": 1.08
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.548,
+      "headingResidualMaxAbsDeg": 1.616,
+      "impliedLateralDetrendedMaxAbsM": 0.76
+     },
+     "5": {
+      "headingResidualRmsDeg": 0.585,
+      "headingResidualMaxAbsDeg": 1.963,
+      "impliedLateralDetrendedMaxAbsM": 0.7
+     },
+     "6": {
+      "headingResidualRmsDeg": 0.415,
+      "headingResidualMaxAbsDeg": 1.107,
+      "impliedLateralDetrendedMaxAbsM": 0.51
+     }
+    },
+    "1950-2600": {
+     "1": {
+      "headingResidualRmsDeg": 0.53,
+      "headingResidualMaxAbsDeg": 1.908,
+      "impliedLateralDetrendedMaxAbsM": 0.71
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.516,
+      "headingResidualMaxAbsDeg": 1.808,
+      "impliedLateralDetrendedMaxAbsM": 0.83
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.501,
+      "headingResidualMaxAbsDeg": 2.351,
+      "impliedLateralDetrendedMaxAbsM": 0.56
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.531,
+      "headingResidualMaxAbsDeg": 1.207,
+      "impliedLateralDetrendedMaxAbsM": 0.98
+     },
+     "5": {
+      "headingResidualRmsDeg": 0.388,
+      "headingResidualMaxAbsDeg": 1.85,
+      "impliedLateralDetrendedMaxAbsM": 0.5
+     },
+     "6": {
+      "headingResidualRmsDeg": 0.568,
+      "headingResidualMaxAbsDeg": 1.914,
+      "impliedLateralDetrendedMaxAbsM": 0.99
+     }
+    },
+    "2600-3250": {
+     "1": {
+      "headingResidualRmsDeg": 0.498,
+      "headingResidualMaxAbsDeg": 1.984,
+      "impliedLateralDetrendedMaxAbsM": 0.73
+     },
+     "2": {
+      "headingResidualRmsDeg": 1.068,
+      "headingResidualMaxAbsDeg": 2.656,
+      "impliedLateralDetrendedMaxAbsM": 2.41
+     },
+     "3": {
+      "headingResidualRmsDeg": 1.086,
+      "headingResidualMaxAbsDeg": 4.654,
+      "impliedLateralDetrendedMaxAbsM": 1.64
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.744,
+      "headingResidualMaxAbsDeg": 4.196,
+      "impliedLateralDetrendedMaxAbsM": 1.08
+     },
+     "5": {
+      "headingResidualRmsDeg": 0.637,
+      "headingResidualMaxAbsDeg": 2.874,
+      "impliedLateralDetrendedMaxAbsM": 0.96
+     },
+     "6": {
+      "headingResidualRmsDeg": 0.519,
+      "headingResidualMaxAbsDeg": 1.902,
+      "impliedLateralDetrendedMaxAbsM": 0.9
+     }
+    },
+    "3900-4450": {
+     "1": {
+      "headingResidualRmsDeg": 0.162,
+      "headingResidualMaxAbsDeg": 0.411,
+      "impliedLateralDetrendedMaxAbsM": 0.22
+     },
+     "2": {
+      "headingResidualRmsDeg": 0.125,
+      "headingResidualMaxAbsDeg": 0.328,
+      "impliedLateralDetrendedMaxAbsM": 0.16
+     },
+     "3": {
+      "headingResidualRmsDeg": 0.201,
+      "headingResidualMaxAbsDeg": 0.486,
+      "impliedLateralDetrendedMaxAbsM": 0.29
+     },
+     "4": {
+      "headingResidualRmsDeg": 0.171,
+      "headingResidualMaxAbsDeg": 0.554,
+      "impliedLateralDetrendedMaxAbsM": 0.28
+     },
+     "5": {
+      "headingResidualRmsDeg": 0.149,
+      "headingResidualMaxAbsDeg": 0.466,
+      "impliedLateralDetrendedMaxAbsM": 0.22
+     },
+     "6": {
+      "headingResidualRmsDeg": 0.395,
+      "headingResidualMaxAbsDeg": 1.5,
+      "impliedLateralDetrendedMaxAbsM": 0.61
+     }
+    }
+   }
+  }
+ }
+}

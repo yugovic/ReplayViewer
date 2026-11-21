@@ -1,0 +1,260 @@
+{
+ "script": "navsol_band_check.py",
+ "kind": "measurement on local XRK (no video)",
+ "sessions": {
+  "fuji_aim_01": {
+   "race": "fuji_aim_01",
+   "tauS": 0.09,
+   "laps": [
+    {
+     "lap": 1,
+     "pathLenPosM": 4491.82,
+     "pathLenDopplerM": 4498.04,
+     "scalePpm": -1383.0,
+     "endDiscrepancyM": {
+      "along": -6.29,
+      "cross": -3.34
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.181,
+      "detrendedMaxAbsM": 0.577,
+      "detrendedRmsM": 0.237,
+      "netChangeM": -1.51
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.058,
+      "detrendedMaxAbsM": 0.591,
+      "detrendedRmsM": 0.257,
+      "netChangeM": -0.117
+     }
+    },
+    {
+     "lap": 2,
+     "pathLenPosM": 4505.5,
+     "pathLenDopplerM": 4510.81,
+     "scalePpm": -1178.0,
+     "endDiscrepancyM": {
+      "along": -5.38,
+      "cross": -2.73
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.247,
+      "detrendedMaxAbsM": 0.278,
+      "detrendedRmsM": 0.102,
+      "netChangeM": -1.434
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.182,
+      "detrendedMaxAbsM": 0.442,
+      "detrendedRmsM": 0.229,
+      "netChangeM": -0.828
+     }
+    },
+    {
+     "lap": 3,
+     "pathLenPosM": 4507.47,
+     "pathLenDopplerM": 4512.52,
+     "scalePpm": -1120.0,
+     "endDiscrepancyM": {
+      "along": -5.12,
+      "cross": -1.88
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.186,
+      "detrendedMaxAbsM": 0.249,
+      "detrendedRmsM": 0.109,
+      "netChangeM": -0.908
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.059,
+      "detrendedMaxAbsM": 0.252,
+      "detrendedRmsM": 0.111,
+      "netChangeM": -0.097
+     }
+    },
+    {
+     "lap": 4,
+     "pathLenPosM": 4510.17,
+     "pathLenDopplerM": 4515.5,
+     "scalePpm": -1179.0,
+     "endDiscrepancyM": {
+      "along": -5.41,
+      "cross": -1.55
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.208,
+      "detrendedMaxAbsM": 0.269,
+      "detrendedRmsM": 0.116,
+      "netChangeM": -1.693
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.095,
+      "detrendedMaxAbsM": 0.453,
+      "detrendedRmsM": 0.245,
+      "netChangeM": -0.349
+     }
+    }
+   ],
+   "crossLapRepeatability": {
+    "medianCurveRmsM": 0.601,
+    "lapMinusMedianRmsM": {
+     "1": 0.58,
+     "2": 0.311,
+     "3": 0.281,
+     "4": 0.36
+    },
+    "note": "If the slow cross discrepancy is mostly the median curve (same every lap), it is systematic (receiver/geometry/processing), not lap-specific GNSS error."
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "race": "fuji_aim_2020_07_30",
+   "tauS": 0.1,
+   "laps": [
+    {
+     "lap": 1,
+     "pathLenPosM": 4511.18,
+     "pathLenDopplerM": 4514.13,
+     "scalePpm": -652.0,
+     "endDiscrepancyM": {
+      "along": -3.01,
+      "cross": 2.5
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.125,
+      "detrendedMaxAbsM": 0.249,
+      "detrendedRmsM": 0.147,
+      "netChangeM": -0.674
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.121,
+      "detrendedMaxAbsM": 1.157,
+      "detrendedRmsM": 0.562,
+      "netChangeM": 0.366
+     }
+    },
+    {
+     "lap": 2,
+     "pathLenPosM": 4492.83,
+     "pathLenDopplerM": 4495.43,
+     "scalePpm": -579.0,
+     "endDiscrepancyM": {
+      "along": -2.68,
+      "cross": 1.01
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.045,
+      "detrendedMaxAbsM": 0.405,
+      "detrendedRmsM": 0.213,
+      "netChangeM": -0.424
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": 0.137,
+      "detrendedMaxAbsM": 0.588,
+      "detrendedRmsM": 0.317,
+      "netChangeM": 1.342
+     }
+    },
+    {
+     "lap": 3,
+     "pathLenPosM": 4490.71,
+     "pathLenDopplerM": 4493.02,
+     "scalePpm": -515.0,
+     "endDiscrepancyM": {
+      "along": -2.38,
+      "cross": 1.48
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.11,
+      "detrendedMaxAbsM": 0.19,
+      "detrendedRmsM": 0.104,
+      "netChangeM": -0.774
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.23,
+      "detrendedMaxAbsM": 1.083,
+      "detrendedRmsM": 0.615,
+      "netChangeM": -0.474
+     }
+    },
+    {
+     "lap": 4,
+     "pathLenPosM": 4494.25,
+     "pathLenDopplerM": 4497.55,
+     "scalePpm": -735.0,
+     "endDiscrepancyM": {
+      "along": -3.38,
+      "cross": 2.33
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.135,
+      "detrendedMaxAbsM": 0.321,
+      "detrendedRmsM": 0.159,
+      "netChangeM": -0.584
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.053,
+      "detrendedMaxAbsM": 1.185,
+      "detrendedRmsM": 0.632,
+      "netChangeM": 0.798
+     }
+    },
+    {
+     "lap": 5,
+     "pathLenPosM": 4502.04,
+     "pathLenDopplerM": 4504.43,
+     "scalePpm": -531.0,
+     "endDiscrepancyM": {
+      "along": -2.44,
+      "cross": -1.52
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.109,
+      "detrendedMaxAbsM": 0.251,
+      "detrendedRmsM": 0.111,
+      "netChangeM": -0.768
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": -0.3,
+      "detrendedMaxAbsM": 0.896,
+      "detrendedRmsM": 0.456,
+      "netChangeM": -0.952
+     }
+    },
+    {
+     "lap": 6,
+     "pathLenPosM": 4501.56,
+     "pathLenDopplerM": 4506.89,
+     "scalePpm": -1183.0,
+     "endDiscrepancyM": {
+      "along": -5.39,
+      "cross": -1.17
+     },
+     "band3250_3900_along": {
+      "trendM_per_100m": -0.32,
+      "detrendedMaxAbsM": 0.471,
+      "detrendedRmsM": 0.206,
+      "netChangeM": -1.734
+     },
+     "band3250_3900_cross": {
+      "trendM_per_100m": 0.036,
+      "detrendedMaxAbsM": 0.693,
+      "detrendedRmsM": 0.354,
+      "netChangeM": 0.977
+     }
+    }
+   ],
+   "crossLapRepeatability": {
+    "medianCurveRmsM": 0.515,
+    "lapMinusMedianRmsM": {
+     "1": 0.337,
+     "2": 0.326,
+     "3": 0.397,
+     "4": 0.431,
+     "5": 0.791,
+     "6": 0.716
+    },
+    "note": "If the slow cross discrepancy is mostly the median curve (same every lap), it is systematic (receiver/geometry/processing), not lap-specific GNSS error."
+   }
+  }
+ }
+}

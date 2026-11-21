@@ -1,0 +1,1085 @@
+{
+ "kind": "measured (XRK IMU channels; cabin audio for reference)",
+ "sessions": {
+  "fuji_aim_01": {
+   "events": [
+    {
+     "lap": 3,
+     "kerb": "k7",
+     "peak": 1.63,
+     "onset50": {
+      "VerticalAcc": 85.269,
+      "LateralAcc": 85.451,
+      "InlineAcc": 85.828,
+      "RollRate": 85.858,
+      "PitchRate": 85.475,
+      "YawRate": 84.975
+     }
+    },
+    {
+     "lap": 3,
+     "kerb": "k11",
+     "peak": 1.12,
+     "onset50": {
+      "VerticalAcc": 113.608,
+      "LateralAcc": 113.561,
+      "RollRate": 113.603,
+      "PitchRate": 113.59,
+      "YawRate": 113.679
+     }
+    },
+    {
+     "lap": 4,
+     "kerb": "k24",
+     "peak": 1.06,
+     "onset50": {
+      "LateralAcc": 125.443,
+      "InlineAcc": 125.534,
+      "RollRate": 125.219,
+      "PitchRate": 125.062,
+      "YawRate": 125.459
+     }
+    }
+   ],
+   "onsetMinusVerticalAccS": {
+    "LateralAcc": {
+     "n": 2,
+     "median": 0.067,
+     "iqr": [
+      0.01,
+      0.125
+     ]
+    },
+    "InlineAcc": {
+     "n": 1,
+     "median": 0.559,
+     "iqr": [
+      0.559,
+      0.559
+     ]
+    },
+    "RollRate": {
+     "n": 2,
+     "median": 0.292,
+     "iqr": [
+      0.143,
+      0.44
+     ]
+    },
+    "PitchRate": {
+     "n": 2,
+     "median": 0.094,
+     "iqr": [
+      0.038,
+      0.15
+     ]
+    },
+    "YawRate": {
+     "n": 2,
+     "median": -0.112,
+     "iqr": [
+      -0.203,
+      -0.02
+     ]
+    }
+   },
+   "wholeLapEnvelopeLagVsVerticalAccS": {
+    "LateralAcc": {
+     "perLap": [
+      [
+       -0.004,
+       0.282
+      ],
+      [
+       0.027,
+       0.221
+      ],
+      [
+       -0.005,
+       0.258
+      ],
+      [
+       0.01,
+       0.36
+      ]
+     ],
+     "median": 0.003
+    },
+    "InlineAcc": {
+     "perLap": [
+      [
+       -0.003,
+       0.283
+      ],
+      [
+       0.009,
+       0.242
+      ],
+      [
+       0.062,
+       0.284
+      ],
+      [
+       -0.022,
+       0.396
+      ]
+     ],
+     "median": 0.003
+    },
+    "RollRate": {
+     "perLap": [
+      [
+       0.063,
+       0.264
+      ],
+      [
+       -0.012,
+       0.254
+      ],
+      [
+       -0.022,
+       0.356
+      ],
+      [
+       0.125,
+       0.254
+      ]
+     ],
+     "median": 0.026
+    },
+    "PitchRate": {
+     "perLap": [
+      [
+       -0.028,
+       0.403
+      ],
+      [
+       -0.092,
+       0.332
+      ],
+      [
+       -0.012,
+       0.442
+      ],
+      [
+       0.012,
+       0.336
+      ]
+     ],
+     "median": -0.02
+    },
+    "YawRate": {
+     "perLap": [
+      [
+       -0.008,
+       0.28
+      ],
+      [
+       -0.021,
+       0.201
+      ],
+      [
+       0.002,
+       0.29
+      ],
+      [
+       0.124,
+       0.283
+      ]
+     ],
+     "median": -0.003
+    }
+   },
+   "signConvention": "positive = the channel's vibration occurs later than VerticalAcc"
+  },
+  "fuji_aim_2020_07_30": {
+   "events": [
+    {
+     "lap": 1,
+     "kerb": "k13",
+     "peak": 1.37,
+     "onset50": {
+      "LateralAcc": 17.14,
+      "RollRate": 16.9,
+      "YawRate": 16.78
+     }
+    },
+    {
+     "lap": 1,
+     "kerb": "k1",
+     "peak": 2.61,
+     "onset50": {
+      "VerticalAcc": 32.887,
+      "LateralAcc": 32.889,
+      "InlineAcc": 32.904,
+      "RollRate": 32.92,
+      "PitchRate": 32.896,
+      "YawRate": 33.058
+     }
+    },
+    {
+     "lap": 1,
+     "kerb": "k15",
+     "peak": 1.93,
+     "onset50": {
+      "VerticalAcc": 35.523,
+      "LateralAcc": 35.099,
+      "InlineAcc": 34.898,
+      "RollRate": 32.817,
+      "PitchRate": 35.059,
+      "YawRate": 35.057
+     }
+    },
+    {
+     "lap": 1,
+     "kerb": "k3",
+     "peak": 2.42,
+     "onset50": {
+      "VerticalAcc": 52.619,
+      "LateralAcc": 52.641,
+      "InlineAcc": 52.656,
+      "RollRate": 52.558,
+      "PitchRate": 52.482,
+      "YawRate": 52.368
+     }
+    },
+    {
+     "lap": 1,
+     "kerb": "kDunlopR",
+     "peak": 1.02,
+     "onset50": {
+      "VerticalAcc": 75.94,
+      "LateralAcc": 76.322,
+      "RollRate": 76.108,
+      "PitchRate": 76.357
+     }
+    },
+    {
+     "lap": 1,
+     "kerb": "k21",
+     "peak": 1.18,
+     "onset50": {
+      "VerticalAcc": 90.201,
+      "LateralAcc": 90.448,
+      "InlineAcc": 90.626,
+      "RollRate": 90.368,
+      "PitchRate": 90.443,
+      "YawRate": 90.254
+     }
+    },
+    {
+     "lap": 1,
+     "kerb": "k11",
+     "peak": 1.29,
+     "onset50": {
+      "VerticalAcc": 107.799,
+      "LateralAcc": 108.119,
+      "InlineAcc": 107.933,
+      "RollRate": 107.999,
+      "PitchRate": 107.78,
+      "YawRate": 107.879
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k13",
+     "peak": 4.47,
+     "onset50": {
+      "VerticalAcc": 16.408,
+      "LateralAcc": 16.379,
+      "InlineAcc": 16.586,
+      "RollRate": 16.317,
+      "PitchRate": 16.324,
+      "YawRate": 16.27
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k1",
+     "peak": 2.27,
+     "onset50": {
+      "VerticalAcc": 32.512,
+      "LateralAcc": 32.324,
+      "InlineAcc": 32.318,
+      "RollRate": 32.329,
+      "PitchRate": 32.488,
+      "YawRate": 32.388
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k15",
+     "peak": 1.03,
+     "onset50": {
+      "LateralAcc": 33.752
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k15",
+     "peak": 3.06,
+     "onset50": {
+      "VerticalAcc": 34.78,
+      "LateralAcc": 34.489,
+      "InlineAcc": 34.365,
+      "RollRate": 35.319,
+      "PitchRate": 34.407,
+      "YawRate": 34.368
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k6",
+     "peak": 1.15,
+     "onset50": {
+      "VerticalAcc": 72.512,
+      "LateralAcc": 72.286,
+      "RollRate": 72.239
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "kDunlopR",
+     "peak": 2.06,
+     "onset50": {
+      "VerticalAcc": 76.442,
+      "LateralAcc": 76.337,
+      "InlineAcc": 76.328,
+      "RollRate": 76.628,
+      "PitchRate": 76.312,
+      "YawRate": 76.235
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k7",
+     "peak": 2.39,
+     "onset50": {
+      "VerticalAcc": 79.83,
+      "LateralAcc": 79.668,
+      "InlineAcc": 79.811,
+      "RollRate": 79.562,
+      "PitchRate": 79.567,
+      "YawRate": 79.503
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k21",
+     "peak": 1.59,
+     "onset50": {
+      "VerticalAcc": 89.598,
+      "LateralAcc": 89.462,
+      "InlineAcc": 89.667,
+      "RollRate": 89.236,
+      "PitchRate": 89.554,
+      "YawRate": 89.659
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "peak": 1.44,
+     "onset50": {
+      "VerticalAcc": 97.815,
+      "LateralAcc": 97.986,
+      "RollRate": 97.716,
+      "PitchRate": 97.661,
+      "YawRate": 97.73
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k10",
+     "peak": 1.05,
+     "onset50": {
+      "VerticalAcc": 98.719,
+      "InlineAcc": 98.728,
+      "PitchRate": 98.813,
+      "YawRate": 98.735
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": "k23",
+     "peak": 4.48,
+     "onset50": {
+      "VerticalAcc": 99.549,
+      "LateralAcc": 99.281,
+      "RollRate": 99.208,
+      "PitchRate": 98.809,
+      "YawRate": 98.736
+     }
+    },
+    {
+     "lap": 2,
+     "kerb": null,
+     "peak": 1.1,
+     "onset50": {
+      "VerticalAcc": 115.679,
+      "InlineAcc": 115.698,
+      "RollRate": 115.56,
+      "PitchRate": 115.583,
+      "YawRate": 115.606
+     }
+    },
+    {
+     "lap": 3,
+     "kerb": "k1",
+     "peak": 3.01,
+     "onset50": {
+      "VerticalAcc": 33.214,
+      "LateralAcc": 32.868,
+      "InlineAcc": 32.731,
+      "RollRate": 32.735,
+      "PitchRate": 32.856,
+      "YawRate": 32.836
+     }
+    },
+    {
+     "lap": 3,
+     "kerb": "k3",
+     "peak": 1.15,
+     "onset50": {
+      "VerticalAcc": 52.633,
+      "RollRate": 52.433,
+      "PitchRate": 52.479,
+      "YawRate": 52.507
+     }
+    },
+    {
+     "lap": 3,
+     "kerb": "k11",
+     "peak": 1.15,
+     "onset50": {
+      "VerticalAcc": 105.175,
+      "LateralAcc": 105.088,
+      "InlineAcc": 105.268,
+      "RollRate": 105.011,
+      "PitchRate": 105.075,
+      "YawRate": 105.044
+     }
+    },
+    {
+     "lap": 3,
+     "kerb": "k24",
+     "peak": 1.21,
+     "onset50": {
+      "VerticalAcc": 110.015,
+      "LateralAcc": 110.09,
+      "InlineAcc": 110.048,
+      "RollRate": 109.977,
+      "PitchRate": 109.112,
+      "YawRate": 109.89
+     }
+    },
+    {
+     "lap": 4,
+     "kerb": "k13",
+     "peak": 8.38,
+     "onset50": {
+      "VerticalAcc": 17.067,
+      "LateralAcc": 17.101,
+      "InlineAcc": 17.218,
+      "RollRate": 16.984,
+      "PitchRate": 16.919,
+      "YawRate": 16.981
+     }
+    },
+    {
+     "lap": 4,
+     "kerb": "k1",
+     "peak": 2.73,
+     "onset50": {
+      "VerticalAcc": 33.425,
+      "LateralAcc": 33.144,
+      "InlineAcc": 33.088,
+      "RollRate": 33.109,
+      "PitchRate": 33.038,
+      "YawRate": 33.349
+     }
+    },
+    {
+     "lap": 4,
+     "kerb": "k15",
+     "peak": 1.23,
+     "onset50": {
+      "VerticalAcc": 34.472,
+      "LateralAcc": 34.455,
+      "RollRate": 34.388,
+      "YawRate": 34.356
+     }
+    },
+    {
+     "lap": 4,
+     "kerb": "k19",
+     "peak": 1.07,
+     "onset50": {
+      "VerticalAcc": 66.212,
+      "LateralAcc": 66.309,
+      "RollRate": 66.33,
+      "PitchRate": 66.308,
+      "YawRate": 66.622
+     }
+    },
+    {
+     "lap": 4,
+     "kerb": "k7",
+     "peak": 1.13,
+     "onset50": {
+      "LateralAcc": 79.155,
+      "InlineAcc": 79.152,
+      "RollRate": 78.944,
+      "PitchRate": 78.79,
+      "YawRate": 79.148
+     }
+    },
+    {
+     "lap": 5,
+     "kerb": "k1",
+     "peak": 1.03,
+     "onset50": {
+      "LateralAcc": 33.105,
+      "InlineAcc": 33.304,
+      "RollRate": 33.012,
+      "PitchRate": 33.026
+     }
+    },
+    {
+     "lap": 5,
+     "kerb": "k1",
+     "peak": 1.12,
+     "onset50": {
+      "VerticalAcc": 33.445,
+      "LateralAcc": 33.09,
+      "InlineAcc": 33.611,
+      "RollRate": 33.014,
+      "YawRate": 33.305
+     }
+    },
+    {
+     "lap": 5,
+     "kerb": null,
+     "peak": 1.68,
+     "onset50": {
+      "VerticalAcc": 42.477,
+      "LateralAcc": 42.56,
+      "InlineAcc": 42.467,
+      "RollRate": 42.456,
+      "PitchRate": 42.279,
+      "YawRate": 42.474
+     }
+    },
+    {
+     "lap": 5,
+     "kerb": "k7",
+     "peak": 2.94,
+     "onset50": {
+      "VerticalAcc": 79.465,
+      "LateralAcc": 79.394,
+      "InlineAcc": 79.313,
+      "RollRate": 79.328,
+      "PitchRate": 79.377,
+      "YawRate": 79.332
+     }
+    },
+    {
+     "lap": 5,
+     "kerb": "k10",
+     "peak": 1.83,
+     "onset50": {
+      "VerticalAcc": 98.377,
+      "LateralAcc": 98.362,
+      "InlineAcc": 98.236,
+      "RollRate": 98.157,
+      "PitchRate": 98.598,
+      "YawRate": 98.477
+     }
+    },
+    {
+     "lap": 5,
+     "kerb": "k11",
+     "peak": 1.23,
+     "onset50": {
+      "RollRate": 106.063
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "k1",
+     "peak": 2.67,
+     "onset50": {
+      "VerticalAcc": 33.156,
+      "LateralAcc": 33.24,
+      "InlineAcc": 32.942,
+      "RollRate": 32.924,
+      "PitchRate": 32.909,
+      "YawRate": 33.057
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "k2",
+     "peak": 1.29,
+     "onset50": {
+      "LateralAcc": 46.697,
+      "RollRate": 46.61,
+      "PitchRate": 46.912,
+      "YawRate": 46.905
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "k3",
+     "peak": 1.25,
+     "onset50": {
+      "VerticalAcc": 52.428,
+      "LateralAcc": 52.521,
+      "InlineAcc": 52.362,
+      "RollRate": 52.352,
+      "PitchRate": 52.329,
+      "YawRate": 52.322
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "kDunlopR",
+     "peak": 1.16,
+     "onset50": {
+      "VerticalAcc": 75.532,
+      "LateralAcc": 75.725,
+      "InlineAcc": 75.713,
+      "RollRate": 75.393,
+      "PitchRate": 75.821,
+      "YawRate": 75.693
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "k22",
+     "peak": 1.06,
+     "onset50": {
+      "RollRate": 96.456
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "k10",
+     "peak": 3.01,
+     "onset50": {
+      "VerticalAcc": 98.018,
+      "LateralAcc": 97.959,
+      "InlineAcc": 97.924,
+      "RollRate": 97.86,
+      "PitchRate": 97.804,
+      "YawRate": 98.121
+     }
+    },
+    {
+     "lap": 6,
+     "kerb": "k24",
+     "peak": 1.0,
+     "onset50": {
+      "VerticalAcc": 108.746,
+      "LateralAcc": 108.678,
+      "RollRate": 108.585,
+      "PitchRate": 108.018,
+      "YawRate": 108.729
+     }
+    }
+   ],
+   "onsetMinusVerticalAccS": {
+    "LateralAcc": {
+     "n": 31,
+     "median": -0.029,
+     "iqr": [
+      -0.175,
+      0.084
+     ]
+    },
+    "InlineAcc": {
+     "n": 26,
+     "median": -0.0,
+     "iqr": [
+      -0.149,
+      0.087
+     ]
+    },
+    "RollRate": {
+     "n": 33,
+     "median": -0.137,
+     "iqr": [
+      -0.232,
+      -0.038
+     ]
+    },
+    "PitchRate": {
+     "n": 31,
+     "median": -0.13,
+     "iqr": [
+      -0.255,
+      -0.022
+     ]
+    },
+    "YawRate": {
+     "n": 32,
+     "median": -0.102,
+     "iqr": [
+      -0.139,
+      0.025
+     ]
+    }
+   },
+   "wholeLapEnvelopeLagVsVerticalAccS": {
+    "LateralAcc": {
+     "perLap": [
+      [
+       0.022,
+       0.345
+      ],
+      [
+       0.039,
+       0.359
+      ],
+      [
+       0.004,
+       0.246
+      ],
+      [
+       0.015,
+       0.351
+      ],
+      [
+       0.01,
+       0.212
+      ],
+      [
+       0.047,
+       0.312
+      ]
+     ],
+     "median": 0.018
+    },
+    "InlineAcc": {
+     "perLap": [
+      [
+       0.002,
+       0.354
+      ],
+      [
+       -0.011,
+       0.364
+      ],
+      [
+       -0.018,
+       0.29
+      ],
+      [
+       0.01,
+       0.242
+      ],
+      [
+       0.011,
+       0.23
+      ],
+      [
+       -0.013,
+       0.272
+      ]
+     ],
+     "median": -0.004
+    },
+    "RollRate": {
+     "perLap": [
+      [
+       -0.063,
+       0.395
+      ],
+      [
+       -0.056,
+       0.485
+      ],
+      [
+       -0.051,
+       0.344
+      ],
+      [
+       -0.073,
+       0.386
+      ],
+      [
+       -0.018,
+       0.283
+      ],
+      [
+       -0.058,
+       0.38
+      ]
+     ],
+     "median": -0.057
+    },
+    "PitchRate": {
+     "perLap": [
+      [
+       -0.085,
+       0.502
+      ],
+      [
+       -0.066,
+       0.586
+      ],
+      [
+       -0.06,
+       0.446
+      ],
+      [
+       -0.052,
+       0.461
+      ],
+      [
+       -0.042,
+       0.482
+      ],
+      [
+       -0.039,
+       0.523
+      ]
+     ],
+     "median": -0.056
+    },
+    "YawRate": {
+     "perLap": [
+      [
+       -0.137,
+       0.384
+      ],
+      [
+       -0.056,
+       0.51
+      ],
+      [
+       -0.053,
+       0.278
+      ],
+      [
+       -0.045,
+       0.367
+      ],
+      [
+       -0.048,
+       0.276
+      ],
+      [
+       -0.037,
+       0.389
+      ]
+     ],
+     "median": -0.051
+    }
+   },
+   "signConvention": "positive = the channel's vibration occurs later than VerticalAcc"
+  }
+ },
+ "kerbResidualsVsCorrectedVideo": {
+  "label": "measured",
+  "definition": "single-channel IMU burst onset - (audio or shake onset on the overlay map + lap bestOffsetS), s",
+  "sessions": {
+   "fuji_aim_01": {
+    "VerticalAcc_minusAudio": {
+     "n": 1,
+     "median": 0.115,
+     "iqr": [
+      0.115,
+      0.115
+     ]
+    },
+    "VerticalAcc_minusShake": {
+     "n": 1,
+     "median": -0.03,
+     "iqr": [
+      -0.03,
+      -0.03
+     ]
+    },
+    "LateralAcc_minusAudio": {
+     "n": 1,
+     "median": 0.297,
+     "iqr": [
+      0.297,
+      0.297
+     ]
+    },
+    "LateralAcc_minusShake": {
+     "n": 1,
+     "median": 0.152,
+     "iqr": [
+      0.152,
+      0.152
+     ]
+    },
+    "InlineAcc_minusAudio": {
+     "n": 1,
+     "median": 0.674,
+     "iqr": [
+      0.674,
+      0.674
+     ]
+    },
+    "InlineAcc_minusShake": {
+     "n": 1,
+     "median": 0.529,
+     "iqr": [
+      0.529,
+      0.529
+     ]
+    },
+    "RollRate_minusAudio": {
+     "n": 1,
+     "median": 0.704,
+     "iqr": [
+      0.704,
+      0.704
+     ]
+    },
+    "RollRate_minusShake": {
+     "n": 1,
+     "median": 0.559,
+     "iqr": [
+      0.559,
+      0.559
+     ]
+    },
+    "PitchRate_minusAudio": {
+     "n": 1,
+     "median": 0.321,
+     "iqr": [
+      0.321,
+      0.321
+     ]
+    },
+    "PitchRate_minusShake": {
+     "n": 1,
+     "median": 0.176,
+     "iqr": [
+      0.176,
+      0.176
+     ]
+    },
+    "YawRate_minusAudio": {
+     "n": 1,
+     "median": -0.179,
+     "iqr": [
+      -0.179,
+      -0.179
+     ]
+    },
+    "YawRate_minusShake": {
+     "n": 1,
+     "median": -0.324,
+     "iqr": [
+      -0.324,
+      -0.324
+     ]
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "VerticalAcc_minusAudio": {
+     "n": 21,
+     "median": 0.077,
+     "iqr": [
+      -0.03,
+      0.148
+     ]
+    },
+    "VerticalAcc_minusShake": {
+     "n": 20,
+     "median": 0.009,
+     "iqr": [
+      -0.128,
+      0.143
+     ]
+    },
+    "LateralAcc_minusAudio": {
+     "n": 23,
+     "median": -0.024,
+     "iqr": [
+      -0.06,
+      0.047
+     ]
+    },
+    "LateralAcc_minusShake": {
+     "n": 21,
+     "median": -0.073,
+     "iqr": [
+      -0.115,
+      0.016
+     ]
+    },
+    "InlineAcc_minusAudio": {
+     "n": 21,
+     "median": -0.019,
+     "iqr": [
+      -0.076,
+      0.059
+     ]
+    },
+    "InlineAcc_minusShake": {
+     "n": 19,
+     "median": -0.072,
+     "iqr": [
+      -0.121,
+      -0.052
+     ]
+    },
+    "RollRate_minusAudio": {
+     "n": 23,
+     "median": -0.113,
+     "iqr": [
+      -0.212,
+      -0.055
+     ]
+    },
+    "RollRate_minusShake": {
+     "n": 21,
+     "median": -0.181,
+     "iqr": [
+      -0.299,
+      -0.079
+     ]
+    },
+    "PitchRate_minusAudio": {
+     "n": 22,
+     "median": -0.066,
+     "iqr": [
+      -0.146,
+      0.009
+     ]
+    },
+    "PitchRate_minusShake": {
+     "n": 20,
+     "median": -0.116,
+     "iqr": [
+      -0.243,
+      -0.016
+     ]
+    },
+    "YawRate_minusAudio": {
+     "n": 22,
+     "median": -0.074,
+     "iqr": [
+      -0.158,
+      0.133
+     ]
+    },
+    "YawRate_minusShake": {
+     "n": 21,
+     "median": -0.154,
+     "iqr": [
+      -0.257,
+      0.054
+     ]
+    }
+   }
+  }
+ }
+}

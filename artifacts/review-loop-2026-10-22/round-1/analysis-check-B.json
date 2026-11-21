@@ -1,0 +1,90 @@
+{
+ "url": "docs/fuji-event-truth-evaluation-2026-10-22.html",
+ "runs": [
+  {
+   "scheme": "light",
+   "width": 390,
+   "errors": [],
+   "overflowPx": 0,
+   "found": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "agreementNotes": [
+    "一致 75%",
+    "一致 91%"
+   ],
+   "cmTables": 2,
+   "gapRows": 9
+  },
+  {
+   "scheme": "light",
+   "width": 1100,
+   "errors": [],
+   "overflowPx": 0,
+   "found": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "agreementNotes": [
+    "一致 75%",
+    "一致 91%"
+   ],
+   "cmTables": 2,
+   "gapRows": 9
+  },
+  {
+   "scheme": "dark",
+   "width": 390,
+   "errors": [],
+   "overflowPx": 0,
+   "found": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "agreementNotes": [
+    "一致 75%",
+    "一致 91%"
+   ],
+   "cmTables": 2,
+   "gapRows": 9
+  },
+  {
+   "scheme": "dark",
+   "width": 1100,
+   "errors": [],
+   "overflowPx": 0,
+   "found": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "agreementNotes": [
+    "一致 75%",
+    "一致 91%"
+   ],
+   "cmTables": 2,
+   "gapRows": 9
+  }
+ ],
+ "allOk": true
+}

@@ -1,0 +1,1432 @@
+{
+ "wet_L3": {
+  "race": "fuji_aim_01",
+  "lap": 3,
+  "delta": 0.016,
+  "shiftSeconds": 0.0,
+  "tc0Ms": 469900.0,
+  "lapStartPtsOverlay": 459.894,
+  "rowFit": {
+   "framesReplaced": 502,
+   "frames": 4538,
+   "yawLevel": {
+    "L": 0.3078,
+    "r": 0.918,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.3078,
+    "r": 0.918
+   },
+   "yawTransient": {
+    "L": 0.2562,
+    "r": 0.388,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.3278,
+     "r": 0.92
+    },
+    {
+     "L": 0.4726,
+     "r": 0.852
+    },
+    {
+     "L": 0.1778,
+     "r": 0.945
+    },
+    {
+     "L": 0.1944,
+     "r": 0.929
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.3358,
+    "r": 0.91,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.4123,
+    "r": 0.313,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0036,
+    "r": 0.829
+   },
+   "degPerPx": -0.19112,
+   "impliedFocalPxFullRes": 599.6,
+   "impliedFocalPxFullRes_reverse": 501.0
+  },
+  "medianDx": {
+   "framesReplaced": 224,
+   "frames": 4538,
+   "yawLevel": {
+    "L": 0.233,
+    "r": 0.764,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.233,
+    "r": 0.764
+   },
+   "yawTransient": {
+    "L": 0.3387,
+    "r": 0.202,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.1991,
+     "r": 0.749
+    },
+    {
+     "L": 0.3804,
+     "r": 0.711
+    },
+    {
+     "L": 0.0043,
+     "r": 0.824
+    },
+    {
+     "L": 0.0032,
+     "r": 0.791
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.1774,
+    "r": 0.754,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.5269,
+    "r": 0.168,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0036,
+    "r": 0.829
+   },
+   "degPerPx": -0.35515,
+   "impliedFocalPxFullRes": 322.7,
+   "impliedFocalPxFullRes_reverse": 189.5
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0365,
+   "r": 0.996,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": 0.0365,
+   "r": 0.996
+  },
+  "audioVib": {
+   "L": 0.5966,
+   "r": 0.059,
+   "sign": 1.0
+  },
+  "audioVib_b120_400": {
+   "L": 0.7664,
+   "r": 0.038,
+   "sign": 1.0
+  },
+  "audioVib_b400_2000": {
+   "L": 0.0658,
+   "r": 0.052,
+   "sign": 1.0
+  },
+  "audioStream2Vib": {
+   "L": -0.1823,
+   "r": 0.052,
+   "sign": -1.0
+  }
+ },
+ "dry_L2": {
+  "race": "fuji_aim_2020_07_30",
+  "lap": 2,
+  "delta": 0.022,
+  "shiftSeconds": 0.523,
+  "tc0Ms": 295800.0,
+  "lapStartPtsOverlay": 285.238,
+  "rowFit": {
+   "framesReplaced": 138,
+   "frames": 4253,
+   "yawLevel": {
+    "L": 0.2627,
+    "r": 0.9,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.2846,
+    "r": 0.9
+   },
+   "yawTransient": {
+    "L": 0.2467,
+    "r": 0.539,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2606,
+     "r": 0.937
+    },
+    {
+     "L": 0.2947,
+     "r": 0.814
+    },
+    {
+     "L": 0.1981,
+     "r": 0.901
+    },
+    {
+     "L": 0.0017,
+     "r": 0.944
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.2774,
+    "r": 0.898,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2444,
+    "r": 0.474,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0138,
+    "r": 0.811
+   },
+   "degPerPx": -0.16104,
+   "impliedFocalPxFullRes": 711.6,
+   "impliedFocalPxFullRes_reverse": 557.8
+  },
+  "medianDx": {
+   "framesReplaced": 36,
+   "frames": 4253,
+   "yawLevel": {
+    "L": 0.0996,
+    "r": 0.716,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.4715,
+    "r": 0.718
+   },
+   "yawTransient": {
+    "L": 0.2355,
+    "r": 0.273,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2031,
+     "r": 0.769
+    },
+    {
+     "L": -1.0,
+     "r": 0.706
+    },
+    {
+     "L": 0.0399,
+     "r": 0.704
+    },
+    {
+     "L": -0.7338,
+     "r": 0.825
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.0696,
+    "r": 0.714,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2894,
+    "r": 0.233,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0138,
+    "r": 0.811
+   },
+   "degPerPx": -0.30068,
+   "impliedFocalPxFullRes": 381.1,
+   "impliedFocalPxFullRes_reverse": 184.4
+  },
+  "gyroMinusGpsCourse": {
+   "lag": -0.0194,
+   "r": 0.996,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": -0.5423,
+   "r": 1.0
+  },
+  "audioVib": {
+   "L": 0.3714,
+   "r": 0.128,
+   "sign": 1.0
+  },
+  "audioVib_b120_400": {
+   "L": -0.1023,
+   "r": 0.11,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": 0.9413,
+   "r": 0.061,
+   "sign": -1.0
+  },
+  "audioStream2Vib": {
+   "L": -0.1515,
+   "r": 0.048,
+   "sign": 1.0
+  }
+ },
+ "wet_L1": {
+  "race": "fuji_aim_01",
+  "lap": 1,
+  "delta": 0.007,
+  "shiftSeconds": 0.0,
+  "tc0Ms": 180700.0,
+  "lapStartPtsOverlay": 170.636,
+  "rowFit": {
+   "framesReplaced": 464,
+   "frames": 4634,
+   "yawLevel": {
+    "L": 0.2168,
+    "r": 0.868,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.2168,
+    "r": 0.868
+   },
+   "yawTransient": {
+    "L": 0.2524,
+    "r": 0.321,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2375,
+     "r": 0.915
+    },
+    {
+     "L": 0.5116,
+     "r": 0.827
+    },
+    {
+     "L": 0.0048,
+     "r": 0.842
+    },
+    {
+     "L": 0.2537,
+     "r": 0.948
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.1443,
+    "r": 0.863,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.0411,
+    "r": 0.281,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": -0.0014,
+    "r": 0.847
+   },
+   "degPerPx": -0.19683,
+   "impliedFocalPxFullRes": 582.2,
+   "impliedFocalPxFullRes_reverse": 436.1
+  },
+  "medianDx": {
+   "framesReplaced": 188,
+   "frames": 4634,
+   "yawLevel": {
+    "L": 0.171,
+    "r": 0.719,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.171,
+    "r": 0.719
+   },
+   "yawTransient": {
+    "L": 0.2426,
+    "r": 0.191,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.226,
+     "r": 0.81
+    },
+    {
+     "L": 0.3314,
+     "r": 0.673
+    },
+    {
+     "L": -0.049,
+     "r": 0.718
+    },
+    {
+     "L": 0.2455,
+     "r": 0.806
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.0769,
+    "r": 0.716,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.1294,
+    "r": 0.145,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": -0.0014,
+    "r": 0.847
+   },
+   "degPerPx": -0.36775,
+   "impliedFocalPxFullRes": 311.6,
+   "impliedFocalPxFullRes_reverse": 162.8
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0565,
+   "r": 0.997,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": 0.0565,
+   "r": 0.997
+  },
+  "audioVib": {
+   "L": 0.4841,
+   "r": 0.053,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": 0.211,
+   "r": 0.053,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": 0.3106,
+   "r": 0.085,
+   "sign": -1.0
+  },
+  "audioStream2Vib": {
+   "L": -0.1961,
+   "r": 0.043,
+   "sign": 1.0
+  }
+ },
+ "wet_L2": {
+  "race": "fuji_aim_01",
+  "lap": 2,
+  "delta": 0.051,
+  "shiftSeconds": 0.0,
+  "tc0Ms": 325300.0,
+  "lapStartPtsOverlay": 315.262,
+  "rowFit": {
+   "framesReplaced": 478,
+   "frames": 4634,
+   "yawLevel": {
+    "L": 0.3168,
+    "r": 0.917,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.3168,
+    "r": 0.917
+   },
+   "yawTransient": {
+    "L": 0.3348,
+    "r": 0.447,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2415,
+     "r": 0.9
+    },
+    {
+     "L": 0.4763,
+     "r": 0.835
+    },
+    {
+     "L": 0.2406,
+     "r": 0.952
+    },
+    {
+     "L": 0.3683,
+     "r": 0.952
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.276,
+    "r": 0.904,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.3666,
+    "r": 0.319,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0252,
+    "r": 0.809
+   },
+   "degPerPx": -0.19929,
+   "impliedFocalPxFullRes": 575.0,
+   "impliedFocalPxFullRes_reverse": 476.0
+  },
+  "medianDx": {
+   "framesReplaced": 211,
+   "frames": 4634,
+   "yawLevel": {
+    "L": 0.2173,
+    "r": 0.784,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.2173,
+    "r": 0.784
+   },
+   "yawTransient": {
+    "L": 0.3778,
+    "r": 0.26,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": -0.0017,
+     "r": 0.733
+    },
+    {
+     "L": 0.3466,
+     "r": 0.729
+    },
+    {
+     "L": 0.1437,
+     "r": 0.852
+    },
+    {
+     "L": 0.3735,
+     "r": 0.82
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.0876,
+    "r": 0.773,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.4678,
+    "r": 0.241,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0252,
+    "r": 0.809
+   },
+   "degPerPx": -0.36451,
+   "impliedFocalPxFullRes": 314.4,
+   "impliedFocalPxFullRes_reverse": 194.0
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0604,
+   "r": 0.995,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": 0.0604,
+   "r": 0.995
+  },
+  "audioVib": {
+   "L": -0.9855,
+   "r": 0.054,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": -0.7946,
+   "r": 0.06,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": 0.607,
+   "r": 0.059,
+   "sign": -1.0
+  },
+  "audioStream2Vib": {
+   "L": 0.8252,
+   "r": 0.044,
+   "sign": 1.0
+  }
+ },
+ "wet_L4": {
+  "race": "fuji_aim_01",
+  "lap": 4,
+  "delta": 0.031,
+  "shiftSeconds": 0.0,
+  "tc0Ms": 611300.0,
+  "lapStartPtsOverlay": 601.249,
+  "rowFit": {
+   "framesReplaced": 516,
+   "frames": 5240,
+   "yawLevel": {
+    "L": 0.2501,
+    "r": 0.924,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.2501,
+    "r": 0.924
+   },
+   "yawTransient": {
+    "L": 0.2204,
+    "r": 0.307,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.3204,
+     "r": 0.946
+    },
+    {
+     "L": 0.8285,
+     "r": 0.854
+    },
+    {
+     "L": 0.1765,
+     "r": 0.95
+    },
+    {
+     "L": 0.0034,
+     "r": 0.965
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.2244,
+    "r": 0.919,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.7205,
+    "r": 0.247,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0344,
+    "r": 0.818
+   },
+   "degPerPx": -0.17634,
+   "impliedFocalPxFullRes": 649.8,
+   "impliedFocalPxFullRes_reverse": 543.8
+  },
+  "medianDx": {
+   "framesReplaced": 296,
+   "frames": 5240,
+   "yawLevel": {
+    "L": 0.189,
+    "r": 0.78,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": 0.189,
+    "r": 0.78
+   },
+   "yawTransient": {
+    "L": 0.5052,
+    "r": 0.159,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.1505,
+     "r": 0.842
+    },
+    {
+     "L": 0.4493,
+     "r": 0.714
+    },
+    {
+     "L": 0.1875,
+     "r": 0.811
+    },
+    {
+     "L": 0.0,
+     "r": 0.797
+    }
+   ],
+   "gpsCourse": {
+    "L": -0.1509,
+    "r": 0.779,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.6791,
+    "r": 0.211,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0344,
+    "r": 0.818
+   },
+   "degPerPx": -0.30766,
+   "impliedFocalPxFullRes": 372.5,
+   "impliedFocalPxFullRes_reverse": 225.2
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0612,
+   "r": 0.997,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": 0.0612,
+   "r": 0.997
+  },
+  "audioVib": {
+   "L": -0.3975,
+   "r": 0.068,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": -0.4118,
+   "r": 0.054,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": -0.7725,
+   "r": 0.048,
+   "sign": 1.0
+  },
+  "audioStream2Vib": {
+   "L": 0.2549,
+   "r": 0.032,
+   "sign": -1.0
+  }
+ },
+ "dry_L1": {
+  "race": "fuji_aim_2020_07_30",
+  "lap": 1,
+  "delta": 0.057,
+  "shiftSeconds": 0.497,
+  "tc0Ms": 162200.0,
+  "lapStartPtsOverlay": 151.59,
+  "rowFit": {
+   "framesReplaced": 129,
+   "frames": 4304,
+   "yawLevel": {
+    "L": 0.2153,
+    "r": 0.913,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.3013,
+    "r": 0.914
+   },
+   "yawTransient": {
+    "L": 0.2064,
+    "r": 0.638,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2379,
+     "r": 0.939
+    },
+    {
+     "L": 0.2441,
+     "r": 0.873
+    },
+    {
+     "L": 0.1093,
+     "r": 0.896
+    },
+    {
+     "L": 0.1062,
+     "r": 0.947
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.2518,
+    "r": 0.906,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2575,
+    "r": 0.466,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": -0.0479,
+    "r": 0.795
+   },
+   "degPerPx": -0.15339,
+   "impliedFocalPxFullRes": 747.1,
+   "impliedFocalPxFullRes_reverse": 595.3
+  },
+  "medianDx": {
+   "framesReplaced": 44,
+   "frames": 4304,
+   "yawLevel": {
+    "L": 0.1561,
+    "r": 0.755,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.3632,
+    "r": 0.757
+   },
+   "yawTransient": {
+    "L": 0.1935,
+    "r": 0.362,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.1166,
+     "r": 0.774
+    },
+    {
+     "L": 0.1705,
+     "r": 0.684
+    },
+    {
+     "L": -0.0537,
+     "r": 0.734
+    },
+    {
+     "L": 0.1674,
+     "r": 0.837
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.1568,
+    "r": 0.75,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.3014,
+    "r": 0.244,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": -0.0479,
+    "r": 0.795
+   },
+   "degPerPx": -0.26914,
+   "impliedFocalPxFullRes": 425.8,
+   "impliedFocalPxFullRes_reverse": 227.6
+  },
+  "gyroMinusGpsCourse": {
+   "lag": -0.0377,
+   "r": 0.995,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": -0.5348,
+   "r": 0.999
+  },
+  "audioVib": {
+   "L": -0.0405,
+   "r": 0.058,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": -0.9284,
+   "r": 0.067,
+   "sign": 1.0
+  },
+  "audioVib_b400_2000": {
+   "L": -0.8059,
+   "r": 0.035,
+   "sign": 1.0
+  },
+  "audioStream2Vib": {
+   "L": -0.5961,
+   "r": 0.036,
+   "sign": -1.0
+  }
+ },
+ "dry_L3": {
+  "race": "fuji_aim_2020_07_30",
+  "lap": 3,
+  "delta": 0.08,
+  "shiftSeconds": 0.523,
+  "tc0Ms": 427600.0,
+  "lapStartPtsOverlay": 416.947,
+  "rowFit": {
+   "framesReplaced": 127,
+   "frames": 4253,
+   "yawLevel": {
+    "L": 0.2704,
+    "r": 0.912,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.2834,
+    "r": 0.912
+   },
+   "yawTransient": {
+    "L": 0.2122,
+    "r": 0.566,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2799,
+     "r": 0.933
+    },
+    {
+     "L": 0.3522,
+     "r": 0.839
+    },
+    {
+     "L": 0.1319,
+     "r": 0.91
+    },
+    {
+     "L": 0.0025,
+     "r": 0.955
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.3083,
+    "r": 0.91,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2047,
+    "r": 0.461,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0126,
+    "r": 0.831
+   },
+   "degPerPx": -0.15305,
+   "impliedFocalPxFullRes": 748.7,
+   "impliedFocalPxFullRes_reverse": 597.8
+  },
+  "medianDx": {
+   "framesReplaced": 33,
+   "frames": 4253,
+   "yawLevel": {
+    "L": 0.2196,
+    "r": 0.757,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.3342,
+    "r": 0.758
+   },
+   "yawTransient": {
+    "L": 0.2286,
+    "r": 0.316,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.8291,
+     "r": 0.797
+    },
+    {
+     "L": 0.2192,
+     "r": 0.67
+    },
+    {
+     "L": 0.0604,
+     "r": 0.754
+    },
+    {
+     "L": -0.0004,
+     "r": 0.834
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.2145,
+    "r": 0.758,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2385,
+    "r": 0.264,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0126,
+    "r": 0.831
+   },
+   "degPerPx": -0.27763,
+   "impliedFocalPxFullRes": 412.8,
+   "impliedFocalPxFullRes_reverse": 223.6
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0397,
+   "r": 0.997,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": -0.5286,
+   "r": 1.0
+  },
+  "audioVib": {
+   "L": 0.9045,
+   "r": 0.073,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": 0.8575,
+   "r": 0.07,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": -0.2251,
+   "r": 0.051,
+   "sign": 1.0
+  },
+  "audioStream2Vib": {
+   "L": 0.2171,
+   "r": 0.043,
+   "sign": 1.0
+  }
+ },
+ "dry_L4": {
+  "race": "fuji_aim_2020_07_30",
+  "lap": 4,
+  "delta": 0.097,
+  "shiftSeconds": 0.555,
+  "tc0Ms": 559400.0,
+  "lapStartPtsOverlay": 548.73,
+  "rowFit": {
+   "framesReplaced": 100,
+   "frames": 4223,
+   "yawLevel": {
+    "L": 0.2354,
+    "r": 0.89,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.3429,
+    "r": 0.891
+   },
+   "yawTransient": {
+    "L": 0.2285,
+    "r": 0.574,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.2383,
+     "r": 0.923
+    },
+    {
+     "L": 0.3155,
+     "r": 0.849
+    },
+    {
+     "L": 0.1066,
+     "r": 0.854
+    },
+    {
+     "L": 0.0015,
+     "r": 0.961
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.2531,
+    "r": 0.883,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2373,
+    "r": 0.458,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0236,
+    "r": 0.85
+   },
+   "degPerPx": -0.16285,
+   "impliedFocalPxFullRes": 703.7,
+   "impliedFocalPxFullRes_reverse": 536.7
+  },
+  "medianDx": {
+   "framesReplaced": 28,
+   "frames": 4223,
+   "yawLevel": {
+    "L": 0.1024,
+    "r": 0.721,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.4864,
+    "r": 0.723
+   },
+   "yawTransient": {
+    "L": 0.2218,
+    "r": 0.337,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.851,
+     "r": 0.802
+    },
+    {
+     "L": 0.1646,
+     "r": 0.673
+    },
+    {
+     "L": 0.0004,
+     "r": 0.72
+    },
+    {
+     "L": -0.7104,
+     "r": 0.787
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.0628,
+    "r": 0.717,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2555,
+    "r": 0.301,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0236,
+    "r": 0.85
+   },
+   "degPerPx": -0.31193,
+   "impliedFocalPxFullRes": 367.4,
+   "impliedFocalPxFullRes_reverse": 182.6
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0301,
+   "r": 0.996,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": -0.5615,
+   "r": 1.001
+  },
+  "audioVib": {
+   "L": 0.6862,
+   "r": 0.052,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": 0.4255,
+   "r": 0.07,
+   "sign": 1.0
+  },
+  "audioVib_b400_2000": {
+   "L": 1.0,
+   "r": 0.05,
+   "sign": -1.0
+  },
+  "audioStream2Vib": {
+   "L": -0.5261,
+   "r": 0.056,
+   "sign": 1.0
+  }
+ },
+ "dry_L5": {
+  "race": "fuji_aim_2020_07_30",
+  "lap": 5,
+  "delta": 0.037,
+  "shiftSeconds": 0.565,
+  "tc0Ms": 690200.0,
+  "lapStartPtsOverlay": 679.51,
+  "rowFit": {
+   "framesReplaced": 125,
+   "frames": 4223,
+   "yawLevel": {
+    "L": 0.1753,
+    "r": 0.905,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.4132,
+    "r": 0.907
+   },
+   "yawTransient": {
+    "L": 0.1485,
+    "r": 0.584,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.1889,
+     "r": 0.908
+    },
+    {
+     "L": 0.2447,
+     "r": 0.862
+    },
+    {
+     "L": 0.1047,
+     "r": 0.908
+    },
+    {
+     "L": -0.0014,
+     "r": 0.951
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.1789,
+    "r": 0.9,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.1482,
+    "r": 0.478,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": -0.0135,
+    "r": 0.847
+   },
+   "degPerPx": -0.16279,
+   "impliedFocalPxFullRes": 703.9,
+   "impliedFocalPxFullRes_reverse": 554.3
+  },
+  "medianDx": {
+   "framesReplaced": 30,
+   "frames": 4223,
+   "yawLevel": {
+    "L": 0.1133,
+    "r": 0.728,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.4755,
+    "r": 0.73
+   },
+   "yawTransient": {
+    "L": 0.1425,
+    "r": 0.331,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.5711,
+     "r": 0.856
+    },
+    {
+     "L": 0.2471,
+     "r": 0.669
+    },
+    {
+     "L": 0.0047,
+     "r": 0.752
+    },
+    {
+     "L": -1.0,
+     "r": 0.78
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.0546,
+    "r": 0.722,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.1519,
+    "r": 0.262,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": -0.0135,
+    "r": 0.847
+   },
+   "degPerPx": -0.31842,
+   "impliedFocalPxFullRes": 359.9,
+   "impliedFocalPxFullRes_reverse": 178.9
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0235,
+   "r": 0.996,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": -0.5777,
+   "r": 1.0
+  },
+  "audioVib": {
+   "L": -0.3329,
+   "r": 0.076,
+   "sign": -1.0
+  },
+  "audioVib_b120_400": {
+   "L": 0.6802,
+   "r": 0.057,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": -0.3803,
+   "r": 0.077,
+   "sign": -1.0
+  },
+  "audioStream2Vib": {
+   "L": 0.1964,
+   "r": 0.04,
+   "sign": -1.0
+  }
+ },
+ "dry_L6": {
+  "race": "fuji_aim_2020_07_30",
+  "lap": 6,
+  "delta": 0.015,
+  "shiftSeconds": 0.583,
+  "tc0Ms": 821000.0,
+  "lapStartPtsOverlay": 810.442,
+  "rowFit": {
+   "framesReplaced": 121,
+   "frames": 4514,
+   "yawLevel": {
+    "L": 0.2714,
+    "r": 0.915,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.3361,
+    "r": 0.915
+   },
+   "yawTransient": {
+    "L": 0.2645,
+    "r": 0.583,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.4484,
+     "r": 0.965
+    },
+    {
+     "L": 0.3415,
+     "r": 0.867
+    },
+    {
+     "L": 0.2285,
+     "r": 0.921
+    },
+    {
+     "L": 0.2527,
+     "r": 0.952
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.2579,
+    "r": 0.91,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2205,
+    "r": 0.469,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0193,
+    "r": 0.818
+   },
+   "degPerPx": -0.15335,
+   "impliedFocalPxFullRes": 747.2,
+   "impliedFocalPxFullRes_reverse": 594.6
+  },
+  "medianDx": {
+   "framesReplaced": 51,
+   "frames": 4514,
+   "yawLevel": {
+    "L": 0.2332,
+    "r": 0.743,
+    "sign": -1.0
+   },
+   "yawLevel_noShift": {
+    "L": -0.3765,
+    "r": 0.744
+   },
+   "yawTransient": {
+    "L": 0.2823,
+    "r": 0.325,
+    "sign": -1.0
+   },
+   "yawLevelQuarters": [
+    {
+     "L": 0.6718,
+     "r": 0.845
+    },
+    {
+     "L": 0.2703,
+     "r": 0.692
+    },
+    {
+     "L": -0.2372,
+     "r": 0.764
+    },
+    {
+     "L": 0.1912,
+     "r": 0.732
+    }
+   ],
+   "gpsCourse": {
+    "L": 0.1713,
+    "r": 0.738,
+    "sign": 1.0
+   },
+   "gpsCourseTransient": {
+    "L": 0.2576,
+    "r": 0.215,
+    "sign": 1.0
+   },
+   "gyroMinusCourseTransient": {
+    "lag": 0.0193,
+    "r": 0.818
+   },
+   "degPerPx": -0.27787,
+   "impliedFocalPxFullRes": 412.4,
+   "impliedFocalPxFullRes_reverse": 215.9
+  },
+  "gyroMinusGpsCourse": {
+   "lag": 0.0428,
+   "r": 0.996,
+   "note": "gyro (with shift) features later than GPS course by lag"
+  },
+  "gyroNoShiftMinusGpsCourse": {
+   "lag": -0.5787,
+   "r": 1.0
+  },
+  "audioVib": {
+   "L": 0.3749,
+   "r": 0.088,
+   "sign": 1.0
+  },
+  "audioVib_b120_400": {
+   "L": 0.5143,
+   "r": 0.078,
+   "sign": -1.0
+  },
+  "audioVib_b400_2000": {
+   "L": 0.1089,
+   "r": 0.068,
+   "sign": 1.0
+  },
+  "audioStream2Vib": {
+   "L": -0.1364,
+   "r": 0.045,
+   "sign": -1.0
+  }
+ }
+}

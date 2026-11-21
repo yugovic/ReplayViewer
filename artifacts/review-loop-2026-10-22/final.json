@@ -1,0 +1,109 @@
+{
+  "kind": "review-loop-final-verdict",
+  "date": "2026-10-22",
+  "reviewer": "independent final reviewer (Fable)",
+  "scope": "Verification of the round-3 fixes against their acceptance checks, then a verdict over the whole 3-round loop (A analysis, B published report, C local comparison page).",
+  "checksRunByThisReviewer": [
+    "grep for '0.15秒' and '全周で' over scripts/build_schematics.py, scripts/build_events.py, events.json, schematic/schematics.json, build_page.py and both HTML pages",
+    "sha256 of all 107 schematic PNGs recomputed and compared with the pre-round-3 copies in artifacts/event-comparison-2026-10-22/tmp/round3-impl/before/schematic (7 k1 PNGs changed, 100 byte-identical); mtimes listed",
+    "contact-0730-L1-k1_top.png viewed by eye (new note legible)",
+    "page-qa.json read (generated 2026-10-22T14:24:16.713Z, 0.46 s after the final page build at 23:24:16.257 JST): status passed, 531/531 images, 110 guides on 55 clipping cards, 0 console/page errors, staleK1Text [], summary0729 true, commonAimText true, onboardCaptionsCommonAim 106, contactNote 29",
+    "7/29 adversarial counts recomputed from verify/adversarial/round2-vp0730/metrics.json with the pair rule (all three red masks >= 200 px): clipping 14 total / 9 usable / 4 fixed / 5 raw; turn-in 4 usable 2 vs 2; kerb contact 0 of 2 usable",
+    "7/30 kerb-contact dt re-derived from event_table.json (27 primary, 20 with dtFirst): median +0.030, medianAbs 0.141, p90Abs 0.356, maxAbs 0.405 = summary.alongTrack.contactFirstBlock",
+    "k1 per lap re-derived: +0.085/+0.266/+0.355/+0.227/+0.204 (L5 burst 1, medium)/-0.405 (L5 burst 2, high)/-0.116; k1 median 0.204 (0.2155 without burst 2) vs other kerbs -0.058 -> k1 later by 0.26-0.27 s under the threshold rule",
+    "B's embedded D re-parsed and recomputed: clipping fh889 7/30 n41 +0.31/1.12/4.09 m, 7/29 n14 +0.40/1.39/4.44 m (equal to event_table cameraVariants.fh889 for the 55 non-suspect events); turn-in 7/30 n66 -0.20/1.03/3.31, 7/29 n38 -0.59/1.22/3.28; contacts 7/30 n27 gap +0.23/0.43, dS n20 -0.59/3.30/9.42; passes TP/FN/FP/TN 20/10/11/43 and 1/1/4/50; D.cam equals summary.cameraSensitivityClippingPoint medians (-3.27/+0.31/+2.12/+4.2 and -3.62/+0.4/+3.29/+5.1)",
+    "summary.detection tolerance blocks read: 7/30 0.25 m -> 0.857 counting near-line as agreement, 0.80 among 60 clear passes (48/60); 0.10 -> 0.798, 0.30 -> 0.893, 0.50 -> 0.94; 7/29 0.25 m -> 0.929",
+    "verify_join.py re-run with pipeline/.venv-sr: allOk true on 8 checks",
+    "Playwright render check (copy of round-3 render-dump.mjs, file://, non-file requests answered locally so nothing was downloaded) on B and C at 390/1100 px, light and dark: 0 console errors, 0 page errors, 0 px horizontal overflow, body background set, no table wider than its card; outputs in artifacts/review-loop-2026-10-22/final/",
+    "B: no personal paths (PC_User, D:/), no <img>/<video>/<audio>/data:image; only external references are Google Fonts. artifacts/kerb-event-truth-2026-10-22: no personal paths, no jpg/mp4/wav; 7 PNGs are matplotlib charts (join_*.png, marker_timing_spread.png, offsets_per_lap.png)",
+    "git: tracked modified set still the same 29 files as at session start; B untracked; C and artifacts/event-comparison-2026-10-22/ gitignored",
+    "diff of B against the round-3 backup: 2 diff lines (one line changed); diff of C against the pre-round-3 copy: 4 diff lines (要旨 paragraph and source list)",
+    "cg/manifest_onboard_vpfix.json: version 3, vanishingPointSession fuji_aim_2020_07_30 at top level and in both sessions, both profiles pitch 12.8807 / yaw 1.6383, onboardActive 106, failures 0, maxVpErrorPx720 0.00057"
+  ],
+  "notRunByThisReviewer": [
+    "scripts/build_schematics.py gap assertions (relied on the implementer's run and the 100 byte-identical PNGs)",
+    "qa_page.mjs itself (relied on page-qa.json generated after the final build plus my own Playwright render check)",
+    "build_page.py / build_events.py dry run",
+    "by-eye comparison of video frames beyond the one regenerated top-view PNG"
+  ],
+  "checksOfLastFixes": [
+    {
+      "findingId": "R3-01",
+      "verdict": "resolved",
+      "detail": "Acceptance met. grep '0.15秒' / '全周で' = 0 in build_schematics.py, build_events.py, events.json and schematics.json (build_page.py's only hits are its own guard assertion and the NOTE_MAP sentence '乗っている時間も全周で短い', which is true for all 6 laps). My own sha256 comparison against the pre-round-3 copies: exactly the 7 contact-0730-*-k1*_top.png changed, the other 100 PNGs are byte-identical (all 107 were rewritten at 23:21 by the full run, which the acceptance allows). contact-0730-L1-k1_top.png viewed by eye shows the new note '7/30は6周中5周で0.09〜0.36秒遅れ、L6は0.12秒早い。個別確認待ち'. page-qa.json (after the final build): passed, 531/531 images, 110 guides, 0 console errors, staleK1Text []. The provenance chain (events.json sha f8bc079d… -> a56b0149…, frames manifest left on the old sha by design) is recorded in verify.json round3Recheck and asserted by build_page.py."
+    },
+    {
+      "findingId": "R3-02",
+      "verdict": "resolved",
+      "detail": "The 要旨 of C contains, once, '7/29のクリッピングポイントは、雨とワイパーなどで照合に使えるのが14件中9件しかなく、補正後が近いのは4件・補正前が近いのは5件で、判定できません（評価資料と同じカメラの向きで照合）'. I recomputed the counts from verify/adversarial/round2-vp0730/metrics.json with the pair rule: clipping 14 total, 9 usable, 4 fixed-closer, 5 raw-closer (turn-in 2 vs 2 of 4, contact 0 of 2), matching verify.json round2Recheck and the page. qa summary0729 true."
+    },
+    {
+      "findingId": "R3-03",
+      "verdict": "resolved",
+      "detail": "B's これで何が言えるか bullet 1 now reads '切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく…'. The old clause occurs 0 times. Re-derived from event_table (20 of 27 primary 7/30 contacts with dtFirst): median +0.030, medianAbs 0.141, p90Abs 0.356 = summary. The round-3 diff of B is a single line; the embedded D block is unchanged."
+    }
+  ],
+  "improved": [
+    "k1 (Coca-Cola) claim: '7/30の全周で約0.15秒遅い' (false for L6, not reproducible under the 50 % rule) -> '6周中5周（L1〜L5）で0.09〜0.36秒遅く、L6だけ0.12秒早い、6周の中央値約0.2秒、他の縁石より0.2〜0.3秒遅い; L5は振動2回（2回目基準なら−0.41秒）'. Fixed in B (3 places), C's NOTE_MAP, the 7 k1 top-view PNGs and events.json notesJa.",
+    "Kerb yes/no agreement: strict 75 % only -> strict 75 % plus a tolerance view in summary.json and B: ±0.25 m 86 % (7/29 93 %), clear passes only 80 % (48/60); ±0.10 m 80 %, ±0.30 m 89 %, ±0.50 m 94 %.",
+    "Clipping-point 'no along-track bias': unconditional -> quantified camera-scale dependence in B (7/30 median dS −3.3 / +0.3 / +2.1 / +4.2 m at f×h 590/889/1066/1218; 7/29 −3.6/+0.4/+3.3/+5.1 m) with the sign rule for the time column; basis for 'no bias' moved to the camera-free turn-in (−0.2 / −0.6 m) and contacts (−0.6 m); camera row chip '● 採用を推奨' -> '▲ レンズ校正までの暫定値'; camera height from road width corrected 1.22 -> 1.26 m (f 711, IQR 1.14–1.31); focal range 540–790 -> 540–800 px.",
+    "Visible turn-in (10 % point) now stated in B: medians +0.01 s (7/30) / −0.08 s (7/29), p90 0.36 / 0.76 s, all large deviations are the 3DCG turning early; nose before steering in 8/40 (7/30) and 2/26 (7/29) events (IMU 2/2).",
+    "Kerb-contact timing: 'ロガーと数十ミリ秒で合う' (median only) -> median +0.03 s with per-event typical 0.14 s / p90 0.36 s and the cause (lateral error at a shallow angle); along-track contact statistics declared conditional on the 20 of 27 contacts where the 3DCG reaches the line (the 7 others: 0.02–2.0 m short, median 0.20 m).",
+    "Open item recorded: drawn heading rate / gyro yaw rate = 1.211–1.222 on all 10 laps (gyro 14–18 % low vs GPS yaw rate and latG/speed; cause unidentified; turn-in timing unchanged when rescaled) as summary.openItems OI-1 and a B 限界 bullet.",
+    "Small numeric fixes in B: FN/FP medians 0.26/0.34 m (pooled) -> 0.24/0.29 m (7/30, n 10/11); p90 tile 3〜4 -> 3.3〜4.4 m; 7/29 offset '0.17〜0.23秒' -> '採用値0.17〜0.23秒（妥当な幅0.17〜0.30秒）'; lateral tile adds the clipping lateral ~0.5 m (camera-dependent); correlation 0.89/0.96 now with n 39/11; clipping definition aligned with T3 (inner kerb edge on row 276 nearest the image centre).",
+    "B at phone width: gap table 418 px and correction table 403 px in a 352 px card (hidden horizontal scroll) -> 316 px, no scrolling at 390 px; a 58 px page overflow at 320 px removed; 0 overflow at 390/1100 px light and dark (re-verified).",
+    "Comparison page camera: onboard pitch 18.2° (10/03 profile) -> 13.70/12.93° (pitch fix) -> exact vanishing-point solve, then both days aimed at the 7/30 vanishing point as the evaluation camera is (pitch 12.88°, yaw +1.64°, rendered VP error ≤ 0.0006 px); the 7/29 images moved ~21 px / 7 px (960×540) and the false header claim '7/29は下向き13.7°・左向き0.5°' is gone; a dashboard-position check supports the same mount on both days (0.12 px).",
+    "Comparison page builder: read the stale cg/manifest.json (pitch 18.2°) -> reads the chase manifest and the onboard manifest that actually produced the JPEGs, asserts counts/failures/VP error/profile equality and an mtime window, and checks the events.json provenance chain; footer cites both manifests.",
+    "Row-276 guide drawn on the 3DCG onboard image of every clipping card (guides 55 -> 110) so the clipping measurement is visible; kerb-contact cards state that the contact is hidden in the onboard video and that chase/top views are the comparison; 7/29 cards state the +0.04–0.10 s (1–3 frame) uncertainty of L.",
+    "Image-check claim: '補正の向きは画像でも裏付けられました（30件中24件）' -> stated as a consistency check at f×h≈890 with the scale-sensitivity test actually run (corrected closer 19/30, 24/30, 23/30 at f×h 590/889/1209; early-control best 16/8/4, 13/13/2, 14/11/3), independent support named (kerb audio vs IMU, video yaw vs gyro); 7/29 recheck with the evaluation camera 4 vs 5 of 9 (was 2 vs 7 with the unusable 7/29 VP) now on the page; verify.json verdict harmonised.",
+    "Latent bug fixed: adversarial_compare.py / adversarial_control.py had the capture pitch hard-coded (18.21°) and would have double-rotated recaptured images; they now read the capture manifest."
+  ],
+  "remaining": [
+    {
+      "item": "Lens / focal length uncalibrated (f 540–800 px from yaw-flow; f×h ≈ 890 adopted as a provisional value)",
+      "why": "data limit: needs calibration images of the SmartyCam or a known-geometry scene; with the present footage the clipping-point along-track bias cannot be pinned better than the −3.3…+4.2 m band, and the comparison-page image metric cannot measure the size of L"
+    },
+    {
+      "item": "7/29 (wet) remains thin: 14 clipping events, 2 contacts, per-lap video offset L uncertain (adopted 0.17–0.23 s, plausible 0.17–0.30 s), image check inconclusive (4 vs 5 of 9)",
+      "why": "data limit: wiper/rain frames and an unusable 7/29 vanishing point; no further extraction can fix it"
+    },
+    {
+      "item": "Kerb-contact onset definition (threshold vs 50 % rise) moves the contact along-track bias by ~0.1 s / 2 m and the k1 lag (0.26 s vs ~0.19 s vs other kerbs)",
+      "why": "owner's decision: both definitions are reported; the analysis does not pick one"
+    },
+    {
+      "item": "Gyro yaw amplitude reads 14–18 % low against GPS heading change and latG/speed (OI-1); mount tilt (~9°) explains only 1–2 %",
+      "why": "data limit / hardware: needs the logger's gyro scale setting or a bench check; timing results are amplitude-free"
+    },
+    {
+      "item": "Human annotation is still sparse (3 clipping frames by eye in T3, a handful of composites per round); kerb yes/no disagreements beyond 0.25 m (12 of 21 on 7/30) and the k1 kerb line / GPS are not individually confirmed",
+      "why": "work not done (needs the owner's eyes on the comparison page; no new data required)"
+    },
+    {
+      "item": "B's lede sentence '3DCGの時刻はロガーと0.03秒以内で合っていました' is a median/50 %-point statement; the tile and 限界 scope it (turn-in, minimum speed, yaw peak; per-event 0.14 s for contacts) but the lede itself does not say '中央値'",
+      "why": "work not done (one-word change flagged by the round-3 report implementer; not raised as a finding)"
+    },
+    {
+      "item": "WORKLOG.md entries 12:44 ('k1（コカ・コーラ）だけ7/30全周で約0.15秒遅い') and 20:43 ('7/29は13.7°・7/30は12.9°', '左右の向き…は10/03の推定値のまま', '補正の向きは裏付けられた') are contradicted by the stored outputs; the 21:44 entry is still '進行中'",
+      "why": "tracked file, outside the loop's write scope: the orchestrator records it"
+    },
+    {
+      "item": "Report B has not been republished to the existing Artifact (https://claude.ai/artifact/NGKFitR6qVSGhgGyVDS69E per WORKLOG 12:44); docs/viewer.html snapshot not refreshed",
+      "why": "orchestrator step by design"
+    },
+    {
+      "item": "frames/manifest.json still records the pre-round-3 events.json sha256 (f8bc079d…)",
+      "why": "accepted by design (frames depend only on the unchanged timing block); the link to the new sha (a56b0149…) is recorded in verify.json round3Recheck and asserted by build_page.py"
+    }
+  ],
+  "consistency": {
+    "verdict": "consistent",
+    "detail": "B's embedded D reproduces event_table.json exactly for the 55 clipping, 104 turn-in, 29 primary contacts (38 rows) and 140 passes, and D.cam equals summary.cameraSensitivityClippingPoint; every number I re-derived (clipping +0.31/1.12/4.09 m, turn-in −0.20/1.03/3.31 m, contact gap +0.23/0.43 m, contact dt +0.03/0.14/0.36 s, TP/FN/FP/TN 20/10/11/43, tolerance 86 % / 80 %, k1 per lap and 0.26–0.27 s vs other kerbs) matches the text of B. C's cards carry the same event_table values (verified in round 3), its 要旨 matches verify.json (24/30; 19/30 and 23/30 at f×h 590/1209; 7/29 4 vs 5 of 9), its onboard camera equals the T3 evaluation camera for both days, and the k1 wording is now the same in B, C's HTML, the top-view PNGs and events.json. verify_join.py allOk; both pages render with 0 errors and 0 overflow at 390/1100 px in light and dark; B contains no video pixels or personal paths; the tracked file set is unchanged (29 modified, same as at session start)."
+  },
+  "nextSteps": [
+    "Calibrate the SmartyCam lens (focal length and distortion) — new data: a chessboard or a known-size target in front of the car, or a static scene with surveyed points — then recapture the onboard 3DCG images and re-run the clipping-point families and the comparison-page metric; this is the only way to turn the ±0.03 s clipping agreement into an independent check and to measure the size of L from images.",
+    "Owner's decision on the kerb-contact onset rule (threshold vs 50 % rise) and on the camera-scale status (keep f×h≈890 as provisional or wait for calibration), then apply the per-lap video offset L to the comparison features (BACKLOG GPS-REG-26) — approval pending.",
+    "Owner's eyes on the comparison page: confirm by eye the 12 clear 7/30 kerb yes/no disagreements (>0.25 m), the k1 kerb line and GPS at Coca-Cola, and a sample of the 7/29 clipping cards; and check the AiM gyro yaw scale setting / mount on the car (OI-1) — these need the owner, not more computation."
+  ],
+  "verdict": "PASS with open items. All three round-3 fixes verified against their acceptance checks (R3-01, R3-02, R3-03 resolved); all 11 round-1 and 5 round-2 findings were already verified resolved in rounds 2–3 and I re-checked their key numbers. No headline number changed over the loop; what changed is that every unconditional or false claim found (k1 'every lap', camera-independent 'no bias', image 'support' for the correction direction, 7/29 camera aim, contact timing 'tens of ms') is now stated with its condition or its per-event spread, and the stored data, the report and the local page agree with each other. What remains is limited by data (lens calibration, wet-day footage, gyro scale) or waits on the owner (onset definition, human confirmation, WORKLOG wording, republish)."
+}

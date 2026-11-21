@@ -1,0 +1,107 @@
+{
+ "script": "navsol_yaw_lag.py",
+ "kind": "measurement on local XRK (no video)",
+ "signConvention": "positive = GNSS-derived course rate occurs later than the logger gyro YawRate",
+ "sessions": {
+  "fuji_aim_01": {
+   "race": "fuji_aim_01",
+   "perLap": [
+    {
+     "lap": 1,
+     "dopplerCourseRateLagS": 0.0585,
+     "corrDoppler": 0.9942,
+     "positionCourseRateLagS": -0.0346,
+     "corrPosition": 0.993,
+     "dopplerMinusPositionS": 0.093
+    },
+    {
+     "lap": 2,
+     "dopplerCourseRateLagS": 0.0489,
+     "corrDoppler": 0.9915,
+     "positionCourseRateLagS": -0.0397,
+     "corrPosition": 0.9901,
+     "dopplerMinusPositionS": 0.0886
+    },
+    {
+     "lap": 3,
+     "dopplerCourseRateLagS": 0.075,
+     "corrDoppler": 0.9938,
+     "positionCourseRateLagS": -0.0143,
+     "corrPosition": 0.9923,
+     "dopplerMinusPositionS": 0.0893
+    },
+    {
+     "lap": 4,
+     "dopplerCourseRateLagS": 0.0598,
+     "corrDoppler": 0.9927,
+     "positionCourseRateLagS": -0.0305,
+     "corrPosition": 0.9898,
+     "dopplerMinusPositionS": 0.0903
+    }
+   ],
+   "median": {
+    "dopplerLagS": 0.05915,
+    "positionLagS": -0.032549999999999996,
+    "dopplerMinusPositionS": 0.0898
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "race": "fuji_aim_2020_07_30",
+   "perLap": [
+    {
+     "lap": 1,
+     "dopplerCourseRateLagS": 0.6108,
+     "corrDoppler": 0.9935,
+     "positionCourseRateLagS": 0.5202,
+     "corrPosition": 0.9925,
+     "dopplerMinusPositionS": 0.0906
+    },
+    {
+     "lap": 2,
+     "dopplerCourseRateLagS": 0.6062,
+     "corrDoppler": 0.9938,
+     "positionCourseRateLagS": 0.5139,
+     "corrPosition": 0.9932,
+     "dopplerMinusPositionS": 0.0923
+    },
+    {
+     "lap": 3,
+     "dopplerCourseRateLagS": 0.6067,
+     "corrDoppler": 0.9953,
+     "positionCourseRateLagS": 0.5092,
+     "corrPosition": 0.9942,
+     "dopplerMinusPositionS": 0.0975
+    },
+    {
+     "lap": 4,
+     "dopplerCourseRateLagS": 0.6315,
+     "corrDoppler": 0.9953,
+     "positionCourseRateLagS": 0.5472,
+     "corrPosition": 0.9946,
+     "dopplerMinusPositionS": 0.0843
+    },
+    {
+     "lap": 5,
+     "dopplerCourseRateLagS": 0.6527,
+     "corrDoppler": 0.9954,
+     "positionCourseRateLagS": 0.5612,
+     "corrPosition": 0.9944,
+     "dopplerMinusPositionS": 0.0915
+    },
+    {
+     "lap": 6,
+     "dopplerCourseRateLagS": 0.658,
+     "corrDoppler": 0.9949,
+     "positionCourseRateLagS": 0.5575,
+     "corrPosition": 0.9934,
+     "dopplerMinusPositionS": 0.1006
+    }
+   ],
+   "median": {
+    "dopplerLagS": 0.62115,
+    "positionLagS": 0.5337000000000001,
+    "dopplerMinusPositionS": 0.0919
+   }
+  }
+ }
+}
