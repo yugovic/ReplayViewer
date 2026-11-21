@@ -1,0 +1,871 @@
+{
+  "scope": "Additional post-selection residual diagnosis. Eight frames from two known problematic corner sequences, both boundaries manually annotated before viewing their CG. One frozen global camera; no refitting. Adjacent frames correlated, region selection informed by earlier residuals; not independent camera acceptance or GPS truth.",
+  "cameraProfileSha256": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+  "runtimePosesSha256": "6c0666b99b927bc60b9fbb61527419b3b11ce3da51c8a47864eae0a3b2543c36",
+  "annotationSha256": "ae15dbdada632c49170fad5a8bd2c2a54cde4ef85ba8794d15ff0c8bf0b59299",
+  "summary": [
+    {
+      "offsetSeconds": -0.2,
+      "medianOfSceneMediansPx": 16.374086204349766,
+      "meanOfSceneMediansPx": 21.614418893909303,
+      "improvedScenesVsZero": 4,
+      "worsenedScenesVsZero": 4,
+      "maxSceneMedianPx": 56.41884330594659
+    },
+    {
+      "offsetSeconds": 0,
+      "medianOfSceneMediansPx": 17.976188115755853,
+      "meanOfSceneMediansPx": 17.517898361604406,
+      "improvedScenesVsZero": 0,
+      "worsenedScenesVsZero": 0,
+      "maxSceneMedianPx": 29.518715214230376
+    },
+    {
+      "offsetSeconds": 0.2,
+      "medianOfSceneMediansPx": 21.448487565591186,
+      "meanOfSceneMediansPx": 21.146983117748043,
+      "improvedScenesVsZero": 2,
+      "worsenedScenesVsZero": 6,
+      "maxSceneMedianPx": 56.56949531570484
+    }
+  ],
+  "rows": [
+    {
+      "id": "2020-07-30-L2-44.000",
+      "time": 44,
+      "points": 12,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 15.134502238514028,
+          "p95Px": 76.2754726512898,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 10.852728764443768,
+              "p95Px": 12.528256283178523,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                1.0490163263437466,
+                10.80191123744541
+              ]
+            },
+            "paintR": {
+              "medianPx": 74.37471248237135,
+              "p95Px": 76.54351154822564,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                51.921824940502574,
+                -18.432469190507078
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 16.283057579076274,
+          "p95Px": 80.43681712736553,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 12.333838956779303,
+              "p95Px": 13.474137026973883,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                1.3008580061833754,
+                12.265045937929273
+              ]
+            },
+            "paintR": {
+              "medianPx": 77.87776866327954,
+              "p95Px": 80.5864294796926,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                53.72012367993216,
+                -22.415769012373204
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 17.069824187682357,
+          "p95Px": 76.31410279705521,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 10.09908790022033,
+              "p95Px": 12.597030139734581,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                0.8638045549952835,
+                10.062078220086846
+              ]
+            },
+            "paintR": {
+              "medianPx": 72.73305064739316,
+              "p95Px": 76.74814900727024,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                53.55465901101411,
+                -13.62943942421461
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 153.13165180816506,
+          "p95Px": 164.07150006741975,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 146.40782962592164,
+              "p95Px": 153.64845308802973,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                5.371923935463997,
+                146.30924444136974
+              ]
+            },
+            "paintR": {
+              "medianPx": 162.06300555325353,
+              "p95Px": 164.30958314984937,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                74.53904616664556,
+                132.12782750756486
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-44.500",
+      "time": 44.5,
+      "points": 11,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 9.922182373655055,
+          "p95Px": 81.43019527016799,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 6.770863423479322,
+              "p95Px": 9.781919380983172,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                0.5984854781206081,
+                6.744361098865397
+              ]
+            },
+            "paintR": {
+              "medianPx": 64.00953653804567,
+              "p95Px": 81.46255499780189,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                58.862309467152784,
+                -14.160016629422245
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 9.357532953135523,
+          "p95Px": 72.16658201236936,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 6.078487069090329,
+              "p95Px": 9.21929351920116,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                0.5265283946860109,
+                6.0556397596527916
+              ]
+            },
+            "paintR": {
+              "medianPx": 53.04872881792234,
+              "p95Px": 72.53144167032193,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                47.306544496823676,
+                -13.900036790157415
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 10.487641952099157,
+          "p95Px": 89.66128391937315,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 7.512596064200149,
+              "p95Px": 10.384286449151793,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                0.65681027401655,
+                7.483829226257228
+              ]
+            },
+            "paintR": {
+              "medianPx": 70.08187312747803,
+              "p95Px": 89.98982203632531,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                62.53940207051369,
+                -22.480784942133724
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 149.65427273916072,
+          "p95Px": 158.19983716976878,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 143.99305815840856,
+              "p95Px": 151.61212355090214,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                5.0780259332253195,
+                143.90655185130424
+              ]
+            },
+            "paintR": {
+              "medianPx": 155.82078538962372,
+              "p95Px": 158.54401376481525,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                89.68578133695388,
+                124.13069732892157
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-45.500",
+      "time": 45.5,
+      "points": 12,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 5.625135992985058,
+          "p95Px": 20.16781505947627,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 1.6401129094486946,
+              "p95Px": 5.166956804236386,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.1525801991691651,
+                -1.6330001955179796
+              ]
+            },
+            "paintR": {
+              "medianPx": 9.947766621008597,
+              "p95Px": 21.01302726895701,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.927243852226411,
+                -4.697264649829776
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 7.535803795077355,
+          "p95Px": 19.90575143496905,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 3.406507536697073,
+              "p95Px": 6.889633546172684,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.3172614003366334,
+                -3.3917014611298555
+              ]
+            },
+            "paintR": {
+              "medianPx": 10.767493131076176,
+              "p95Px": 20.265193888789675,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.5839604948382657,
+                -7.260319541109993
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 4.15163439254231,
+          "p95Px": 28.950976095585407,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 2.03759347193605,
+              "p95Px": 2.7240217844730394,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.01794430144235548,
+                -0.1788235917341865
+              ]
+            },
+            "paintR": {
+              "medianPx": 15.300549582656599,
+              "p95Px": 31.874023139451023,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -5.541691873281252,
+                -1.467819745127855
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 131.68808241865838,
+          "p95Px": 146.62069487527577,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 136.14605066222168,
+              "p95Px": 143.10391704243068,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                6.279068036694525,
+                135.99454887755223
+              ]
+            },
+            "paintR": {
+              "medianPx": 122.4854169292513,
+              "p95Px": 147.15714802079214,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                17.417488413906312,
+                120.93674970402037
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-46.000",
+      "time": 46,
+      "points": 10,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 7.367787720917509,
+          "p95Px": 22.761500799298982,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 3.0095331512749866,
+              "p95Px": 5.8326715364123025,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.312564100128327,
+                -2.9932521057281036
+              ]
+            },
+            "paintR": {
+              "medianPx": 15.856037235628694,
+              "p95Px": 23.20148012625623,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -6.113031945445357,
+                14.626434648465363
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 16.17756503337039,
+          "p95Px": 33.33422021490629,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 6.442835867017628,
+              "p95Px": 10.362166815651287,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.5847591565852781,
+                -6.410423114655927
+              ]
+            },
+            "paintR": {
+              "medianPx": 30.962170764963396,
+              "p95Px": 33.33841070728375,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -10.319808772222302,
+                29.05644457643939
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 2.2101577936015038,
+          "p95Px": 3.6918337783093,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 2.0239965705999916,
+              "p95Px": 2.319318392126356,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                0.23403246251086784,
+                2.0103835934417873
+              ]
+            },
+            "paintR": {
+              "medianPx": 2.2101577936015038,
+              "p95Px": 4.051419035429616,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -0.03644445923407602,
+                0.11451961412018363
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 135.67987826719926,
+          "p95Px": 144.53419386695865,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 135.44151565091704,
+              "p95Px": 140.35781963560217,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                6.941447161363129,
+                135.2611547143691
+              ]
+            },
+            "paintR": {
+              "medianPx": 135.67987826719926,
+              "p95Px": 144.936000443875,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -34.21672058636938,
+                130.42018170802845
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-93.000",
+      "time": 93,
+      "points": 12,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 26.377289333670184,
+          "p95Px": 56.472117728910476,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 51.730936026909134,
+              "p95Px": 59.058838962048945,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                36.93181054980073,
+                31.478750072252808
+              ]
+            },
+            "paintR": {
+              "medianPx": 21.719753531780064,
+              "p95Px": 26.389097507223113,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.794038912681458,
+                21.539290611245633
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 26.196785783544662,
+          "p95Px": 57.56980260148231,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 51.442012148221814,
+              "p95Px": 60.117031826196694,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                37.19334859861294,
+                32.68033974233202
+              ]
+            },
+            "paintR": {
+              "medianPx": 21.8954751487652,
+              "p95Px": 26.258559130515156,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.8196186896633435,
+                21.713166108034443
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 26.62047066526535,
+          "p95Px": 61.42405218217465,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 54.92440340861347,
+              "p95Px": 62.953527600056354,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                12.598107679783652,
+                -43.40483137348309
+              ]
+            },
+            "paintR": {
+              "medianPx": 21.894626144177117,
+              "p95Px": 26.714782624009434,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.7284918350484304,
+                21.723949601749638
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 134.78692374294593,
+          "p95Px": 157.7067828856192,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 102.63122548884485,
+              "p95Px": 123.59112881820357,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -14.819271564915539,
+                101.55568736229105
+              ]
+            },
+            "paintR": {
+              "medianPx": 148.33371350199323,
+              "p95Px": 158.23383646566316,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -4.060450068618593,
+                148.28197594779692
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-93.500",
+      "time": 93.5,
+      "points": 11,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 25.379700025865358,
+          "p95Px": 70.17771185709043,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 63.58818880557111,
+              "p95Px": 70.20993763685033,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                21.82717146301127,
+                -50.96896121216929
+              ]
+            },
+            "paintR": {
+              "medianPx": 21.199014960231697,
+              "p95Px": 25.44230783599215,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.7826117473049408,
+                21.015596759261626
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 24.48064787150039,
+          "p95Px": 66.97665311900614,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 60.92113895491829,
+              "p95Px": 68.45146633308663,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                16.01558468096954,
+                -50.68917899982257
+              ]
+            },
+            "paintR": {
+              "medianPx": 21.129983242824693,
+              "p95Px": 24.683479849383545,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.770625966313787,
+                20.94754934585046
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 25.827150943500012,
+          "p95Px": 70.0767121875676,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 63.277416804953525,
+              "p95Px": 70.34559587096393,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                14.211922714950305,
+                -51.06291228947504
+              ]
+            },
+            "paintR": {
+              "medianPx": 21.680782046484772,
+              "p95Px": 26.047853209871924,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.7869866028743218,
+                21.500907325565947
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 132.54253580059952,
+          "p95Px": 154.12555562553763,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 105.07826207713138,
+              "p95Px": 121.79189079231718,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -15.963930159961535,
+                102.92160618628012
+              ]
+            },
+            "paintR": {
+              "medianPx": 145.44790344650477,
+              "p95Px": 154.6073569010021,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -3.7613872842396177,
+                145.39925922329087
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-94.500",
+      "time": 94.5,
+      "points": 15,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 29.518715214230376,
+          "p95Px": 65.97965743552788,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 58.57545927297805,
+              "p95Px": 67.53204523209297,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                13.066561634943184,
+                -14.889158378615107
+              ]
+            },
+            "paintR": {
+              "medianPx": 15.650495079360045,
+              "p95Px": 22.88900572471284,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.1137786843477215,
+                15.507093083575342
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 56.41884330594659,
+          "p95Px": 102.72559794276032,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 68.08419880687612,
+              "p95Px": 107.19953354939102,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                16.201971435737477,
+                -61.26619676558016
+              ]
+            },
+            "paintR": {
+              "medianPx": 14.905439030966926,
+              "p95Px": 22.45620565563168,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -1.97547432579438,
+                14.773950517515601
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 56.56949531570484,
+          "p95Px": 73.77309361449745,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 63.06745106603624,
+              "p95Px": 75.5646484206853,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                15.472078877703979,
+                -57.687418392825876
+              ]
+            },
+            "paintR": {
+              "medianPx": 16.76731004036601,
+              "p95Px": 24.735436361049075,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.3504418328403744,
+                16.60175018424843
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 126.06344402484436,
+          "p95Px": 148.23233916519072,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 114.6981813544048,
+              "p95Px": 132.09286192288278,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -12.888598031487618,
+                113.72229630540346
+              ]
+            },
+            "paintR": {
+              "medianPx": 140.04277846397187,
+              "p95Px": 149.53595709142942,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.451796447303991,
+                140.0198034319872
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-95.000",
+      "time": 95,
+      "points": 12,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 20.817873992997683,
+          "p95Px": 93.95428244536006,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 88.16062910809468,
+              "p95Px": 94.45114087400295,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                43.206718721627624,
+                74.46978595971785
+              ]
+            },
+            "paintR": {
+              "medianPx": 13.388598623129177,
+              "p95Px": 21.039882410264195,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -1.999460163176991,
+                13.238456562119495
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": -0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 16.465114829623253,
+          "p95Px": 124.52247720744978,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 109.37899029066611,
+              "p95Px": 124.81302318258193,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                19.552593847899175,
+                -93.84374372897165
+              ]
+            },
+            "paintR": {
+              "medianPx": 10.195122915023857,
+              "p95Px": 16.595109068117193,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -1.4455166482852064,
+                10.09212628101605
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0.2,
+          "camera": "frozenEstimatedOnboard",
+          "medianPx": 26.239489691588837,
+          "p95Px": 62.22033422575857,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 48.99385476155939,
+              "p95Px": 66.43199554036771,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                24.515183958958687,
+                42.41937717429607
+              ]
+            },
+            "paintR": {
+              "medianPx": 16.998779823188997,
+              "p95Px": 26.578201717718642,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.6391935305189236,
+                16.792652351124417
+              ]
+            }
+          }
+        },
+        {
+          "offsetSeconds": 0,
+          "camera": "oldCockpit",
+          "medianPx": 117.44209654143657,
+          "p95Px": 146.19818917409475,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 84.19304675601272,
+              "p95Px": 106.17713284466524,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -9.135309596939408,
+                83.64330692501841
+              ]
+            },
+            "paintR": {
+              "medianPx": 135.69653962601961,
+              "p95Px": 146.37222049565193,
+              "medianNearestProjectionMinusObservationDxDyPx": [
+                -2.3668500400917765,
+                135.67509900699542
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "allFrameShaPtsAndInternalTimeMatch": true,
+    "runtimeErrors": [],
+    "manualLapClockMaxDifferenceSeconds": 0.02
+  },
+  "notAdopted": [
+    "No new camera, GPS, per-frame offset, course, or synchronization values were adopted.",
+    "Only +/-0.2s timing probes; other offsets and velocity-dependent models are not established."
+  ],
+  "limits": [
+    "Small nearest-polyline residual does not prove correct tangent correspondence.",
+    "Absolute GPS, track geometry and body yaw/sideslip cannot be separated from these constraints alone."
+  ]
+}

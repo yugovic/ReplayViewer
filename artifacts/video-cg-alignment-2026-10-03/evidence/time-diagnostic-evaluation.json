@@ -1,0 +1,575 @@
+{
+  "scope": "NON-ADOPTED diagnostic: exact production sampled positions/quaternions at +/-0.2s under one frozen global camera. Does not change fitting or synchronization. These fixed perturbations are sensitivity probes, not selected corrections.",
+  "cameraProfileSha256": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+  "runtimeCaptureSha256": "0dd243cbe7878960cbe0cc4f5c63ec3306869826a595c165464acc1e908ad363",
+  "annotationSha256": "cf62adb4d893a7a185d3dfd73ab1f4c2c24275fb201f6295f3fe82240e8a3f2d",
+  "summary": [
+    {
+      "offsetSeconds": -0.2,
+      "medianOfSceneMediansPx": 10.842439004158791,
+      "meanOfSceneMediansPx": 16.366317384499308,
+      "improvedScenesVsZero": 4,
+      "worsenedScenesVsZero": 6,
+      "maxSceneMedianPx": 54.084250515315524
+    },
+    {
+      "offsetSeconds": 0,
+      "medianOfSceneMediansPx": 9.421667889801302,
+      "meanOfSceneMediansPx": 15.20069291559778,
+      "improvedScenesVsZero": 0,
+      "worsenedScenesVsZero": 0,
+      "maxSceneMedianPx": 54.490746065642455
+    },
+    {
+      "offsetSeconds": 0.2,
+      "medianOfSceneMediansPx": 7.778765080040982,
+      "meanOfSceneMediansPx": 15.070749029123693,
+      "improvedScenesVsZero": 5,
+      "worsenedScenesVsZero": 5,
+      "maxSceneMedianPx": 55.37487596967459
+    }
+  ],
+  "rows": [
+    {
+      "id": "2020-07-29-L3-60.000",
+      "points": 9,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 9.557212671096101,
+          "p95Px": 22.34379696368761,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 14.998061585591092,
+              "p95Px": 23.487074874365014
+            },
+            "paintR": {
+              "medianPx": 5.990764552016593,
+              "p95Px": 9.921331210442897
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 11.078227233238646,
+          "p95Px": 23.992739914133793,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 16.78002341516875,
+              "p95Px": 25.116776105315036
+            },
+            "paintR": {
+              "medianPx": 7.315098957817778,
+              "p95Px": 10.684127292841861
+            }
+          },
+          "worldDisplacementMeters": 5.089108157257832,
+          "orientationDifferenceDeg": 3.395090289275333
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 7.88816271838192,
+          "p95Px": 20.6320095107075,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 13.322659691241551,
+              "p95Px": 21.77047131120854
+            },
+            "paintR": {
+              "medianPx": 4.916919818788076,
+              "p95Px": 9.3818482329901
+            }
+          },
+          "worldDisplacementMeters": 5.184462346993749,
+          "orientationDifferenceDeg": 3.226059770493352
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "points": 5,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 9.286123108506501,
+          "p95Px": 15.981224310013278,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 9.286123108506501,
+              "p95Px": 15.981224310013278
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 10.606650775078935,
+          "p95Px": 17.478020468880487,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 10.606650775078935,
+              "p95Px": 17.478020468880487
+            }
+          },
+          "worldDisplacementMeters": 6.828569200739019,
+          "orientationDifferenceDeg": 0.5902806446693397
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 7.669367441700044,
+          "p95Px": 13.567826863822326,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 7.669367441700044,
+              "p95Px": 13.567826863822326
+            }
+          },
+          "worldDisplacementMeters": 6.90079925541221,
+          "orientationDifferenceDeg": 0.5287377222117946
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "points": 11,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 11.213829444135396,
+          "p95Px": 45.510989697885044,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 22.71651751901253,
+              "p95Px": 47.68304626537217
+            },
+            "paintR": {
+              "medianPx": 9.70050425234981,
+              "p95Px": 11.024045972240327
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 17.695463945278032,
+          "p95Px": 57.69671891628218,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 28.224004925396446,
+              "p95Px": 60.443850335467765
+            },
+            "paintR": {
+              "medianPx": 5.392430444962896,
+              "p95Px": 29.415094569685273
+            }
+          },
+          "worldDisplacementMeters": 4.318039118126605,
+          "orientationDifferenceDeg": 5.847087448741894
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 12.893697188573691,
+          "p95Px": 29.250613857677372,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 16.418763741742328,
+              "p95Px": 30.687250439613624
+            },
+            "paintR": {
+              "medianPx": 12.774784353368625,
+              "p95Px": 13.238568227449806
+            }
+          },
+          "worldDisplacementMeters": 4.420605561803455,
+          "orientationDifferenceDeg": 5.395803779731486
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "points": 7,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 33.30696555909758,
+          "p95Px": 50.24278938205948,
+          "perBoundary": {
+            "paintR": {
+              "medianPx": 33.30696555909758,
+              "p95Px": 50.24278938205948
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 34.422108342943694,
+          "p95Px": 48.28499820868491,
+          "perBoundary": {
+            "paintR": {
+              "medianPx": 34.422108342943694,
+              "p95Px": 48.28499820868491
+            }
+          },
+          "worldDisplacementMeters": 7.432296977155666,
+          "orientationDifferenceDeg": 3.582103472223537
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 30.6052238145209,
+          "p95Px": 48.650025167800464,
+          "perBoundary": {
+            "paintR": {
+              "medianPx": 30.6052238145209,
+              "p95Px": 48.650025167800464
+            }
+          },
+          "worldDisplacementMeters": 7.3811498725607745,
+          "orientationDifferenceDeg": 3.6163617621859854
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "points": 7,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 8.980527764427569,
+          "p95Px": 12.433356433036952,
+          "perBoundary": {
+            "paintR": {
+              "medianPx": 8.980527764427569,
+              "p95Px": 12.433356433036952
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 5.852581329484491,
+          "p95Px": 9.846739206123093,
+          "perBoundary": {
+            "paintR": {
+              "medianPx": 5.852581329484491,
+              "p95Px": 9.846739206123093
+            }
+          },
+          "worldDisplacementMeters": 5.026733538969343,
+          "orientationDifferenceDeg": 1.1900501949309947
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 12.8371828701196,
+          "p95Px": 17.245500442915528,
+          "perBoundary": {
+            "paintR": {
+              "medianPx": 12.8371828701196,
+              "p95Px": 17.245500442915528
+            }
+          },
+          "worldDisplacementMeters": 4.910085260099973,
+          "orientationDifferenceDeg": 1.432968202224048
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "points": 11,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 7.633311577763672,
+          "p95Px": 20.62953711388539,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 8.683882952712738,
+              "p95Px": 22.292868916249123
+            },
+            "paintR": {
+              "medianPx": 1.5182974479436857,
+              "p95Px": 2.6051834210474385
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 6.909320558330989,
+          "p95Px": 28.500311539846713,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 10.935969309901974,
+              "p95Px": 30.770784411315237
+            },
+            "paintR": {
+              "medianPx": 1.6835610604600877,
+              "p95Px": 2.080696067166598
+            }
+          },
+          "worldDisplacementMeters": 5.002200686139603,
+          "orientationDifferenceDeg": 3.362534776214889
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 7.37188887207953,
+          "p95Px": 11.43619114720508,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 8.099733916109184,
+              "p95Px": 12.357963801833339
+            },
+            "paintR": {
+              "medianPx": 1.8276413552474207,
+              "p95Px": 4.626058641556368
+            }
+          },
+          "worldDisplacementMeters": 5.067237731034872,
+          "orientationDifferenceDeg": 3.1070356156592127
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "points": 15,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 54.490746065642455,
+          "p95Px": 87.85173965711249,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 61.60746547786426,
+              "p95Px": 88.6230277408934
+            },
+            "paintR": {
+              "medianPx": 19.56473922882655,
+              "p95Px": 26.02248196368712
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 54.084250515315524,
+          "p95Px": 93.01521673195789,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 61.339137949174315,
+              "p95Px": 97.04693348927151
+            },
+            "paintR": {
+              "medianPx": 19.068251068968774,
+              "p95Px": 25.427573382971644
+            }
+          },
+          "worldDisplacementMeters": 6.45385327503831,
+          "orientationDifferenceDeg": 3.966551969290193
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 55.37487596967459,
+          "p95Px": 75.58833458473809,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 61.86336094374268,
+              "p95Px": 76.58757694329606
+            },
+            "paintR": {
+              "medianPx": 19.944208810154922,
+              "p95Px": 26.21029862354897
+            }
+          },
+          "worldDisplacementMeters": 6.505027771840596,
+          "orientationDifferenceDeg": 3.9937940739722455
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "points": 13,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 3.8923517294531997,
+          "p95Px": 22.714725633295366,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 11.624710782542174,
+              "p95Px": 24.859935406835667
+            },
+            "paintR": {
+              "medianPx": 0.8933294889860353,
+              "p95Px": 3.468450638498767
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 3.619288850886908,
+          "p95Px": 31.864294481168297,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 15.660725231687088,
+              "p95Px": 34.71232380523601
+            },
+            "paintR": {
+              "medianPx": 1.3945565441775258,
+              "p95Px": 3.583831555256088
+            }
+          },
+          "worldDisplacementMeters": 5.153086382452853,
+          "orientationDifferenceDeg": 2.093535877994407
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 4.147753422227416,
+          "p95Px": 13.081436158437475,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 7.352620397894841,
+              "p95Px": 14.516059939931068
+            },
+            "paintR": {
+              "medianPx": 0.9546143861832513,
+              "p95Px": 3.9755011987626503
+            }
+          },
+          "worldDisplacementMeters": 5.237048748802965,
+          "orientationDifferenceDeg": 1.8830623539296343
+        }
+      ]
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "points": 11,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 2.32105513563435,
+          "p95Px": 9.597211025070727,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 2.2820046520536774,
+              "p95Px": 7.873228499914307
+            },
+            "paintR": {
+              "medianPx": 4.12039008963938,
+              "p95Px": 9.22219814394385
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 5.531896471289297,
+          "p95Px": 12.864434924095768,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 5.531896471289297,
+              "p95Px": 11.392492398368207
+            },
+            "paintR": {
+              "medianPx": 5.502366507270555,
+              "p95Px": 12.226303705220325
+            }
+          },
+          "worldDisplacementMeters": 6.996139657982367,
+          "orientationDifferenceDeg": 1.9358658268793745
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 6.0103383411834885,
+          "p95Px": 9.245375474366021,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 4.3445613072858915,
+              "p95Px": 9.496005805491352
+            },
+            "paintR": {
+              "medianPx": 6.3459349027946885,
+              "p95Px": 8.273248311967764
+            }
+          },
+          "worldDisplacementMeters": 7.011220616383572,
+          "orientationDifferenceDeg": 1.5432730620951427
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "points": 9,
+      "results": [
+        {
+          "offsetSeconds": 0,
+          "medianPx": 11.324806100220984,
+          "p95Px": 19.234663623192983,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 18.862221218241636,
+              "p95Px": 19.326926835861894
+            },
+            "paintR": {
+              "medianPx": 7.598130653567825,
+              "p95Px": 10.711803300901778
+            }
+          },
+          "worldDisplacementMeters": 0.0,
+          "orientationDifferenceDeg": 0.0
+        },
+        {
+          "offsetSeconds": -0.2,
+          "medianPx": 13.863385823146553,
+          "p95Px": 29.3882164360605,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 28.405741881647536,
+              "p95Px": 29.73058683890219
+            },
+            "paintR": {
+              "medianPx": 11.59094351163349,
+              "p95Px": 13.463446014577672
+            }
+          },
+          "worldDisplacementMeters": 7.251035059350302,
+          "orientationDifferenceDeg": 2.1918579195243604
+        },
+        {
+          "offsetSeconds": 0.2,
+          "medianPx": 5.9089996527757584,
+          "p95Px": 8.698171617287011,
+          "perBoundary": {
+            "paintL": {
+              "medianPx": 6.655421005190229,
+              "p95Px": 8.267359782363089
+            },
+            "paintR": {
+              "medianPx": 4.200325285613202,
+              "p95Px": 8.789876912710474
+            }
+          },
+          "worldDisplacementMeters": 7.274866927905429,
+          "orientationDifferenceDeg": 1.7795359240866053
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only two perturbed offsets tested; this does not establish optimal delay or sensor latency.",
+    "Static camera fit and image boundaries confound GPS position, body heading/sideslip, track boundary tracing and lens distortion.",
+    "Positive offset evaluates the complete car pose later while the video stays fixed.",
+    "Point-to-polyline errors ignore tangent correspondence; need independent corner sequences and anchored landmarks for timing.",
+    "Expanded -20..195m station domain handles displaced poses; zero-pose metrics should be checked against original fixed-domain score."
+  ]
+}

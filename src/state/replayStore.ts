@@ -192,7 +192,8 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
   loop: true,
 
   // Camera / rendering
-  cameraMode: "chase",
+  cameraMode: typeof window !== "undefined" && new URLSearchParams(window.location.search).get("camera") === "onboard"
+    ? "onboard" : "chase",
   quality: "high",
 
   // Main lap
@@ -284,7 +285,14 @@ export const useReplayStore = create<ReplayState>((set, get) => ({
 
   setTelemetry: (telemetry) => set({ telemetry }),
 
-  setTrack: (track) => set({ track }),
+  setTrack: (track) => set((state) => ({
+    track,
+    // The estimated video camera is qualified only for the Fuji CG study.
+    // Keep the selected HUD control consistent with the rendered fallback.
+    cameraMode: state.cameraMode === "onboard" &&
+      !(track.trackId === "fuji" && track.visualProfile === "cg")
+      ? "cockpit" : state.cameraMode,
+  })),
 
   setLapsIndex: (lapsIndex) => set({ lapsIndex }),
 

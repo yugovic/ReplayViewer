@@ -1,0 +1,130 @@
+{
+  "scope": "Static car-interior cross-day registration only. Reference wetL3T55. Mask excludes all exterior, timer/telemetry overlays and driver. Supports camera-to-interior stability; cannot establish external camera intrinsics or optical pose truth.",
+  "regionsXYXY": [
+    [
+      250,
+      340,
+      690,
+      460
+    ],
+    [
+      270,
+      430,
+      550,
+      490
+    ],
+    [
+      260,
+      330,
+      570,
+      350
+    ]
+  ],
+  "method": "SIFT descriptors, ratio0.7, RANSAC partial affine threshold2px. No CG fitting. Inlier displacements measured directly before affine fitting.",
+  "referenceId": "2020-07-29-L3-55.000",
+  "rows": [
+    {
+      "id": "2020-07-30-L2-18.000",
+      "putativeMatches": 78,
+      "inliers": 68,
+      "displacementMedianPx": 1.634563684463501,
+      "displacementP95Px": 2.329393148422241,
+      "similarityRotationDeg": 0.15932932327934035,
+      "similarityScale": 1.00206046544062,
+      "translationPixels": [
+        -1.453354830182122,
+        -2.1317256879333373
+      ],
+      "fitResidualP95Px": 1.390009045158569
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "putativeMatches": 85,
+      "inliers": 74,
+      "displacementMedianPx": 1.5113645792007446,
+      "displacementP95Px": 2.297990322113037,
+      "similarityRotationDeg": 0.16526841812756038,
+      "similarityScale": 1.0016407149139672,
+      "translationPixels": [
+        -1.07873426526327,
+        -1.8506401356720097
+      ],
+      "fitResidualP95Px": 1.33048930364854
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "putativeMatches": 93,
+      "inliers": 86,
+      "displacementMedianPx": 1.2626450061798096,
+      "displacementP95Px": 2.0911169052124023,
+      "similarityRotationDeg": 0.14920368955827656,
+      "similarityScale": 1.0025612887182966,
+      "translationPixels": [
+        -1.3358007384373416,
+        -2.2838261663111044
+      ],
+      "fitResidualP95Px": 1.3417214573164806
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "putativeMatches": 70,
+      "inliers": 64,
+      "displacementMedianPx": 1.0119593143463135,
+      "displacementP95Px": 1.6392951011657715,
+      "similarityRotationDeg": 0.004495324124773838,
+      "similarityScale": 1.000113486243049,
+      "translationPixels": [
+        -1.0108855505816499,
+        -0.009143081864026277
+      ],
+      "fitResidualP95Px": 1.0635276967137455
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "putativeMatches": 90,
+      "inliers": 81,
+      "displacementMedianPx": 1.5126200914382935,
+      "displacementP95Px": 2.1208558082580566,
+      "similarityRotationDeg": 0.0766153643471496,
+      "similarityScale": 1.0017661915587823,
+      "translationPixels": [
+        -1.7015063488584288,
+        -1.086290784568688
+      ],
+      "fitResidualP95Px": 1.3246925283329347
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "putativeMatches": 94,
+      "inliers": 82,
+      "displacementMedianPx": 1.1135163307189941,
+      "displacementP95Px": 2.136847734451294,
+      "similarityRotationDeg": -0.15834811301573307,
+      "similarityScale": 1.0012523206498303,
+      "translationPixels": [
+        -2.4182742023026154,
+        1.6392610850342637
+      ],
+      "fitResidualP95Px": 1.3609971064382538
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "putativeMatches": 86,
+      "inliers": 77,
+      "displacementMedianPx": 1.3634635210037231,
+      "displacementP95Px": 2.0031588077545166,
+      "similarityRotationDeg": 0.06759113185905848,
+      "similarityScale": 1.002341547194905,
+      "translationPixels": [
+        -1.8655707406799016,
+        -1.1682090727062955
+      ],
+      "fitResidualP95Px": 1.321895904141367
+    }
+  ],
+  "limitations": [
+    "Interior physical motion and vibrations are possible.",
+    "One reference and static car interior cannot independently calibrate focal length, radial distortion or mount height.",
+    "Subpixel match consistency is algorithmic, not camera pose accuracy."
+  ]
+}

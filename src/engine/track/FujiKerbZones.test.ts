@@ -164,10 +164,13 @@ describe("delivered Fuji kerb zones", () => {
     // One strip quad per zone segment replaces exactly one 0.16 m edge-marking
     // quad on that side, so the paint batch keeps its size.
     expect(after.paint.positions.length).toBe(before.paint.positions.length);
-    // Asphalt fill only at the few kerb ends where the paint lies outside the CG road edge.
+    // Exterior fill remains bounded; trimmed outer strips now share vertices
+    // across stations rather than emitting independent quads. Detailed area
+    // and containment checks live in FujiRoadBoundary.test.ts.
     const fill = (after.road.positions.length-before.road.positions.length)/3;
     expect(fill).toBeGreaterThan(0); expect(fill).toBeLessThan(400);
-    expect(before.road.indices.length/3+fill/3).toBe(after.road.indices.length/3);
+    expect(after.road.indices.length).toBeGreaterThan(before.road.indices.length);
+    expect(after.road.indices.length-before.road.indices.length).toBeLessThan(600);
   });
   it("draws Dunlop-R where the CG had no kerb", () => {
     const dunlop = byId.get("kDunlopR")!, kerb = (b: typeof after) => [...vertices(b.red), ...vertices(b.white)];

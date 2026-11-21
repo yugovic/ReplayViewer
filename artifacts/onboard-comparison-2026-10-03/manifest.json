@@ -1,0 +1,2408 @@
+{
+  "version": 1,
+  "createdAt": "2026-10-03T00:04:58+09:00",
+  "baselineLabel": "2026-10-02 改善前の保存スナップショット",
+  "latestLabel": "現在の作業ツリー（2026-10-03撮影）",
+  "comparisonDefinition": "同じ表示ラップ時刻Tで比較。実車載PTS=ラップ開始PTS+T。改善前の内部t=T、改善後の内部t=T−δ。補正候補gps=kerbは使わず、両版で既定GPS登録を有効。",
+  "provenance": [
+    {
+      "raceId": "fuji_aim_01",
+      "name": "SCHD0613.MOV",
+      "sha256": "972dd5fede59e549caf06c791d226235388ace5e991d1c287b62e98e3e5a84fb",
+      "size": 991733117,
+      "permission": "User supplied; local frame extraction and comparison only. No public redistribution licence.",
+      "permissionEvidence": [
+        "artifacts/fuji-onboard-2026-09-16/source.json",
+        "docs/fuji-video-position-gap-2026-10-02.md"
+      ],
+      "processing": "ffmpeg accurate PTS frame extraction, scale/JPEG only; no AI enhancement."
+    },
+    {
+      "raceId": "fuji_aim_2020_07_30",
+      "name": "SCHD0624.MOV",
+      "sha256": "e7e473bb899c94c35da5cc66192f5af347f0fdccabbbb147806d344e2d1e731d",
+      "size": 2063827118,
+      "permission": "User supplied; local frame extraction and comparison only. No public redistribution licence.",
+      "permissionEvidence": [
+        "artifacts/video-position-gap-2026-10-02/video-timer-reads.json",
+        "docs/fuji-video-position-gap-2026-10-02.md"
+      ],
+      "processing": "ffmpeg accurate PTS frame extraction, scale/JPEG only; no AI enhancement."
+    }
+  ],
+  "shots": [
+    {
+      "id": "2020-07-29-L3-47.000",
+      "raceId": "fuji_aim_01",
+      "date": "2020-07-29",
+      "lap": 3,
+      "overlayLap": 4,
+      "label": "ラップ 47.000 秒",
+      "time": 47,
+      "delta": 0.016,
+      "videoPtsSeconds": 506.894,
+      "beforePlaybackSeconds": 47,
+      "afterPlaybackSeconds": 46.984,
+      "video": "video/2020-07-29-L3-47.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-29-L3-47.000-cockpit.png",
+          "after": "after/2020-07-29-L3-47.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 123.852,
+              "aps": 50.375,
+              "brake": 0,
+              "steer": -56.88,
+              "gear": 4,
+              "accx": -0.0008,
+              "accy": 0.982,
+              "dist": 1676.287
+            },
+            "pose": [
+              -0.014208386198448966,
+              -0.4960522945106855,
+              0.01746228370454243,
+              0.868000755483624
+            ],
+            "position": [
+              484.00691643254476,
+              -30.741921272844774,
+              279.053685999573
+            ],
+            "cameraPosition": [
+              484.3387405035917,
+              -29.961921272844773,
+              278.5333084579037
+            ],
+            "cameraFov": 58,
+            "sampleTime": 47
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 123.86848,
+              "aps": 49.40204000000012,
+              "brake": 0,
+              "steer": -57.44959999999993,
+              "gear": 4,
+              "accx": -0.016863999999998006,
+              "accy": 0.9847519999999996,
+              "dist": 1675.7406
+            },
+            "pose": [
+              -0.015180300623846517,
+              -0.5104775554910234,
+              0.01680307693379756,
+              0.8595928573565719
+            ],
+            "position": [
+              484.4874942383281,
+              -30.74913360381432,
+              278.79510527777427
+            ],
+            "cameraPosition": [
+              484.83652987931106,
+              -29.96913360381432,
+              278.2861120348686
+            ],
+            "cameraFov": 58,
+            "sampleTime": 46.984
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-29-L3-47.000-chase.png",
+          "after": "after/2020-07-29-L3-47.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 123.852,
+              "aps": 50.375,
+              "brake": 0,
+              "steer": -56.88,
+              "gear": 4,
+              "accx": -0.0008,
+              "accy": 0.982,
+              "dist": 1676.287
+            },
+            "pose": [
+              -0.014208386198448966,
+              -0.4960522945106855,
+              0.01746228370454243,
+              0.868000755483624
+            ],
+            "position": [
+              484.00691643254476,
+              -30.741921272844774,
+              279.053685999573
+            ],
+            "cameraPosition": [
+              494.2955437761196,
+              -27.334288358294273,
+              272.57770045153904
+            ],
+            "cameraFov": 60,
+            "sampleTime": 47
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 123.86848,
+              "aps": 49.40204000000012,
+              "brake": 0,
+              "steer": -57.44959999999993,
+              "gear": 4,
+              "accx": -0.016863999999998006,
+              "accy": 0.9847519999999996,
+              "dist": 1675.7406
+            },
+            "pose": [
+              -0.015180300623846517,
+              -0.5104775554910234,
+              0.01680307693379756,
+              0.8595928573565719
+            ],
+            "position": [
+              484.4874942383281,
+              -30.74913360381432,
+              278.79510527777427
+            ],
+            "cameraPosition": [
+              494.93437079266397,
+              -27.354470572049557,
+              272.5579151486119
+            ],
+            "cameraFov": 60,
+            "sampleTime": 46.984
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 123.852,
+          "aps": 50.375,
+          "brake": 0,
+          "steer": -56.88,
+          "gear": 4,
+          "accx": -0.0008,
+          "accy": 0.982,
+          "dist": 1676.287
+        },
+        "after": {
+          "speed": 123.86848,
+          "aps": 49.40204000000012,
+          "brake": 0,
+          "steer": -57.44959999999993,
+          "gear": 4,
+          "accx": -0.016863999999998006,
+          "accy": 0.9847519999999996,
+          "dist": 1675.7406
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.375,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "baselineLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "decodedFramePtsSeconds": 506.9,
+      "videoOverlayLapTimeSeconds": 47.02,
+      "overlayMinusRequestedLapSeconds": 0.02
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "raceId": "fuji_aim_01",
+      "date": "2020-07-29",
+      "lap": 3,
+      "overlayLap": 4,
+      "label": "ラップ 52.387 秒",
+      "time": 52.387,
+      "delta": 0.016,
+      "videoPtsSeconds": 512.281,
+      "beforePlaybackSeconds": 52.387,
+      "afterPlaybackSeconds": 52.371,
+      "video": "video/2020-07-29-L3-52.387.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-29-L3-52.387-cockpit.png",
+          "after": "after/2020-07-29-L3-52.387-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 125.78584000000001,
+              "aps": 100,
+              "brake": 0,
+              "steer": -27.042799999999886,
+              "gear": 4,
+              "accx": 0.11934300000000019,
+              "accy": 0.5984159999999996,
+              "dist": 1861.1585200000002
+            },
+            "pose": [
+              -0.02214533924865406,
+              -0.9505526293282207,
+              -0.020991885887267,
+              0.3090608735405753
+            ],
+            "position": [
+              323.0569181461453,
+              -22.723029003603248,
+              232.9194217340847
+            ],
+            "cameraPosition": [
+              323.60661616566233,
+              -21.943029003603247,
+              233.20001412054418
+            ],
+            "cameraFov": 58,
+            "sampleTime": 52.387
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 125.76472000000001,
+              "aps": 100,
+              "brake": 0,
+              "steer": -27.932399999999774,
+              "gear": 4,
+              "accx": 0.11791900000000036,
+              "accy": 0.6021279999999991,
+              "dist": 1860.5991600000002
+            },
+            "pose": [
+              -0.020707483770177303,
+              -0.9535054569745818,
+              -0.02102280676278368,
+              0.2999276333241351
+            ],
+            "position": [
+              323.3719124404527,
+              -22.750585380849014,
+              233.38199721972768
+            ],
+            "cameraPosition": [
+              323.9161421758835,
+              -21.970585380849013,
+              233.67305390677154
+            ],
+            "cameraFov": 58,
+            "sampleTime": 52.371
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-29-L3-52.387-chase.png",
+          "after": "after/2020-07-29-L3-52.387-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 125.78584000000001,
+              "aps": 100,
+              "brake": 0,
+              "steer": -27.042799999999886,
+              "gear": 4,
+              "accx": 0.11934300000000019,
+              "accy": 0.5984159999999996,
+              "dist": 1861.1585200000002
+            },
+            "pose": [
+              -0.02214533924865406,
+              -0.9505526293282207,
+              -0.020991885887267,
+              0.3090608735405753
+            ],
+            "position": [
+              323.0569181461453,
+              -22.723029003603248,
+              232.9194217340847
+            ],
+            "cameraPosition": [
+              330.5053522339671,
+              -19.884292211291342,
+              242.8128593035492
+            ],
+            "cameraFov": 60,
+            "sampleTime": 52.387
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 125.76472000000001,
+              "aps": 100,
+              "brake": 0,
+              "steer": -27.932399999999774,
+              "gear": 4,
+              "accx": 0.11791900000000036,
+              "accy": 0.6021279999999991,
+              "dist": 1860.5991600000002
+            },
+            "pose": [
+              -0.020707483770177303,
+              -0.9535054569745818,
+              -0.02102280676278368,
+              0.2999276333241351
+            ],
+            "position": [
+              323.3719124404527,
+              -22.750585380849014,
+              233.38199721972768
+            ],
+            "cameraPosition": [
+              330.66871797439205,
+              -19.90274916939964,
+              243.3852943785436
+            ],
+            "cameraFov": 60,
+            "sampleTime": 52.371
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 125.78584000000001,
+          "aps": 100,
+          "brake": 0,
+          "steer": -27.042799999999886,
+          "gear": 4,
+          "accx": 0.11934300000000019,
+          "accy": 0.5984159999999996,
+          "dist": 1861.1585200000002
+        },
+        "after": {
+          "speed": 125.76472000000001,
+          "aps": 100,
+          "brake": 0,
+          "steer": -27.932399999999774,
+          "gear": 4,
+          "accx": 0.11791900000000036,
+          "accy": 0.6021279999999991,
+          "dist": 1860.5991600000002
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.375,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "baselineLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "decodedFramePtsSeconds": 512.3,
+      "videoOverlayLapTimeSeconds": 52.41,
+      "overlayMinusRequestedLapSeconds": 0.023
+    },
+    {
+      "id": "2020-07-29-L3-55.000",
+      "raceId": "fuji_aim_01",
+      "date": "2020-07-29",
+      "lap": 3,
+      "overlayLap": 4,
+      "label": "ラップ 55.000 秒",
+      "time": 55,
+      "delta": 0.016,
+      "videoPtsSeconds": 514.894,
+      "beforePlaybackSeconds": 55,
+      "afterPlaybackSeconds": 54.984,
+      "video": "video/2020-07-29-L3-55.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-29-L3-55.000-cockpit.png",
+          "after": "after/2020-07-29-L3-55.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 96.589,
+              "aps": 0,
+              "brake": 50.68,
+              "steer": 26.24,
+              "gear": 0,
+              "accx": -0.5739,
+              "accy": -0.0999,
+              "dist": 1948.071
+            },
+            "pose": [
+              -0.01597830395810234,
+              0.9542170114527205,
+              0.02114728943662911,
+              -0.29793855240022926
+            ],
+            "position": [
+              276.6948662095409,
+              -19.056410988217817,
+              159.42587439979934
+            ],
+            "cameraPosition": [
+              277.2382639931668,
+              -18.276410988217815,
+              159.7184813866442
+            ],
+            "cameraFov": 58,
+            "sampleTime": 55
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 96.92163999999995,
+              "aps": 0,
+              "brake": 50.161600000000064,
+              "steer": 24.800000000000175,
+              "gear": 0,
+              "accx": -0.573996,
+              "accy": -0.08766000000000151,
+              "dist": 1947.64668
+            },
+            "pose": [
+              -0.017311000873197122,
+              0.9527026716436586,
+              0.021179500386247208,
+              -0.30267041060399863
+            ],
+            "position": [
+              276.93305112233645,
+              -19.071024891896034,
+              159.77120093764404
+            ],
+            "cameraPosition": [
+              277.47933623549187,
+              -18.291024891896033,
+              160.05838132545762
+            ],
+            "cameraFov": 58,
+            "sampleTime": 54.984
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-29-L3-55.000-chase.png",
+          "after": "after/2020-07-29-L3-55.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 96.589,
+              "aps": 0,
+              "brake": 50.68,
+              "steer": 26.24,
+              "gear": 0,
+              "accx": -0.5739,
+              "accy": -0.0999,
+              "dist": 1948.071
+            },
+            "pose": [
+              -0.01597830395810234,
+              0.9542170114527205,
+              0.02114728943662911,
+              -0.29793855240022926
+            ],
+            "position": [
+              276.6948662095409,
+              -19.056410988217817,
+              159.42587439979934
+            ],
+            "cameraPosition": [
+              283.1088312019809,
+              -15.932183175020823,
+              169.0664490823747
+            ],
+            "cameraFov": 60,
+            "sampleTime": 55
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 96.92163999999995,
+              "aps": 0,
+              "brake": 50.161600000000064,
+              "steer": 24.800000000000175,
+              "gear": 0,
+              "accx": -0.573996,
+              "accy": -0.08766000000000151,
+              "dist": 1947.64668
+            },
+            "pose": [
+              -0.017311000873197122,
+              0.9527026716436586,
+              0.021179500386247208,
+              -0.30267041060399863
+            ],
+            "position": [
+              276.93305112233645,
+              -19.071024891896034,
+              159.77120093764404
+            ],
+            "cameraPosition": [
+              283.4069595036569,
+              -15.938848090089227,
+              169.3813670606223
+            ],
+            "cameraFov": 60,
+            "sampleTime": 54.984
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 96.589,
+          "aps": 0,
+          "brake": 50.68,
+          "steer": 26.24,
+          "gear": 0,
+          "accx": -0.5739,
+          "accy": -0.0999,
+          "dist": 1948.071
+        },
+        "after": {
+          "speed": 96.92163999999995,
+          "aps": 0,
+          "brake": 50.161600000000064,
+          "steer": 24.800000000000175,
+          "gear": 0,
+          "accx": -0.573996,
+          "accy": -0.08766000000000151,
+          "dist": 1947.64668
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.375,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "baselineLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "decodedFramePtsSeconds": 514.9,
+      "videoOverlayLapTimeSeconds": 54.99,
+      "overlayMinusRequestedLapSeconds": -0.01
+    },
+    {
+      "id": "2020-07-29-L3-60.000",
+      "raceId": "fuji_aim_01",
+      "date": "2020-07-29",
+      "lap": 3,
+      "overlayLap": 4,
+      "label": "ラップ 60.000 秒",
+      "time": 60,
+      "delta": 0.016,
+      "videoPtsSeconds": 519.894,
+      "beforePlaybackSeconds": 60,
+      "afterPlaybackSeconds": 59.984,
+      "video": "video/2020-07-29-L3-60.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-29-L3-60.000-cockpit.png",
+          "after": "after/2020-07-29-L3-60.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 91.714,
+              "aps": 100,
+              "brake": 0,
+              "steer": 43.44,
+              "gear": 3,
+              "accx": 0.2108,
+              "accy": -0.6411,
+              "dist": 2059.152
+            },
+            "pose": [
+              0.018471774792462398,
+              -0.2926819419926744,
+              -0.03151006070878884,
+              0.9555120043419344
+            ],
+            "position": [
+              187.8573482884091,
+              -19.354158414162534,
+              163.32986679930787
+            ],
+            "cameraPosition": [
+              187.93378881711715,
+              -18.574158414162532,
+              162.7174479511567
+            ],
+            "cameraFov": 58,
+            "sampleTime": 60
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 91.59928000000001,
+              "aps": 100,
+              "brake": 0,
+              "steer": 43.99039999999993,
+              "gear": 3,
+              "accx": 0.20641600000000054,
+              "accy": -0.6577559999999979,
+              "dist": 2058.74256
+            },
+            "pose": [
+              0.017921082152404524,
+              -0.27624249018965985,
+              -0.03195799169111772,
+              0.960389300333658
+            ],
+            "position": [
+              188.07401216461838,
+              -19.35106931138692,
+              162.9804275841094
+            ],
+            "cameraPosition": [
+              188.12939371215697,
+              -18.571069311386918,
+              162.36574646011726
+            ],
+            "cameraFov": 58,
+            "sampleTime": 59.984
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-29-L3-60.000-chase.png",
+          "after": "after/2020-07-29-L3-60.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 91.714,
+              "aps": 100,
+              "brake": 0,
+              "steer": 43.44,
+              "gear": 3,
+              "accx": 0.2108,
+              "accy": -0.6411,
+              "dist": 2059.152
+            },
+            "pose": [
+              0.018471774792462398,
+              -0.2926819419926744,
+              -0.03151006070878884,
+              0.9555120043419344
+            ],
+            "position": [
+              187.8573482884091,
+              -19.354158414162534,
+              163.32986679930787
+            ],
+            "cameraPosition": [
+              194.55965964479893,
+              -15.69346570955723,
+              154.26279832678898
+            ],
+            "cameraFov": 60,
+            "sampleTime": 60
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 91.59928000000001,
+              "aps": 100,
+              "brake": 0,
+              "steer": 43.99039999999993,
+              "gear": 3,
+              "accx": 0.20641600000000054,
+              "accy": -0.6577559999999979,
+              "dist": 2058.74256
+            },
+            "pose": [
+              0.017921082152404524,
+              -0.27624249018965985,
+              -0.03195799169111772,
+              0.960389300333658
+            ],
+            "position": [
+              188.07401216461838,
+              -19.35106931138692,
+              162.9804275841094
+            ],
+            "cameraPosition": [
+              194.53076687740725,
+              -15.691961361565934,
+              153.73541096325545
+            ],
+            "cameraFov": 60,
+            "sampleTime": 59.984
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 91.714,
+          "aps": 100,
+          "brake": 0,
+          "steer": 43.44,
+          "gear": 3,
+          "accx": 0.2108,
+          "accy": -0.6411,
+          "dist": 2059.152
+        },
+        "after": {
+          "speed": 91.59928000000001,
+          "aps": 100,
+          "brake": 0,
+          "steer": 43.99039999999993,
+          "gear": 3,
+          "accx": 0.20641600000000054,
+          "accy": -0.6577559999999979,
+          "dist": 2058.74256
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.375,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "baselineLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "decodedFramePtsSeconds": 519.9,
+      "videoOverlayLapTimeSeconds": 59.99,
+      "overlayMinusRequestedLapSeconds": -0.01
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "raceId": "fuji_aim_01",
+      "date": "2020-07-29",
+      "lap": 3,
+      "overlayLap": 4,
+      "label": "ラップ 64.367 秒",
+      "time": 64.367,
+      "delta": 0.016,
+      "videoPtsSeconds": 524.261,
+      "beforePlaybackSeconds": 64.367,
+      "afterPlaybackSeconds": 64.351,
+      "video": "video/2020-07-29-L3-64.367.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-29-L3-64.367-cockpit.png",
+          "after": "after/2020-07-29-L3-64.367-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 122.39524,
+              "aps": 100,
+              "brake": 0,
+              "steer": 3,
+              "gear": 4,
+              "accx": 0.14299800000000046,
+              "accy": -0.06275699999999933,
+              "dist": 2191.6654399999998
+            },
+            "pose": [
+              0.008157310659036715,
+              0.07781882594965536,
+              -0.01718576801412962,
+              0.9967860041094044
+            ],
+            "position": [
+              177.09852802474754,
+              -21.573701928394122,
+              292.4982186871324
+            ],
+            "cameraPosition": [
+              176.73672026018673,
+              -20.79370192839412,
+              291.9982235456525
+            ],
+            "cameraFov": 58,
+            "sampleTime": 64.367
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 122.31971999999999,
+              "aps": 100,
+              "brake": 0,
+              "steer": 3,
+              "gear": 4,
+              "accx": 0.1382939999999993,
+              "accy": -0.06962100000000104,
+              "dist": 2191.1163199999996
+            },
+            "pose": [
+              0.008363143034855827,
+              0.08023954442359972,
+              -0.015429459961340422,
+              0.9966210940545926
+            ],
+            "position": [
+              177.01001233317157,
+              -21.56211402842947,
+              291.95594887504643
+            ],
+            "cameraPosition": [
+              176.6457669081029,
+              -20.78211402842947,
+              291.4577267656248
+            ],
+            "cameraFov": 58,
+            "sampleTime": 64.351
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-29-L3-64.367-chase.png",
+          "after": "after/2020-07-29-L3-64.367-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 122.39524,
+              "aps": 100,
+              "brake": 0,
+              "steer": 3,
+              "gear": 4,
+              "accx": 0.14299800000000046,
+              "accy": -0.06275699999999933,
+              "dist": 2191.6654399999998
+            },
+            "pose": [
+              0.008157310659036715,
+              0.07781882594965536,
+              -0.01718576801412962,
+              0.9967860041094044
+            ],
+            "position": [
+              177.09852802474754,
+              -21.573701928394122,
+              292.4982186871324
+            ],
+            "cameraPosition": [
+              175.38244450077087,
+              -17.83853527699479,
+              280.5479918667192
+            ],
+            "cameraFov": 60,
+            "sampleTime": 64.367
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 122.31971999999999,
+              "aps": 100,
+              "brake": 0,
+              "steer": 3,
+              "gear": 4,
+              "accx": 0.1382939999999993,
+              "accy": -0.06962100000000104,
+              "dist": 2191.1163199999996
+            },
+            "pose": [
+              0.008363143034855827,
+              0.08023954442359972,
+              -0.015429459961340422,
+              0.9966210940545926
+            ],
+            "position": [
+              177.01001233317157,
+              -21.56211402842947,
+              291.95594887504643
+            ],
+            "cameraPosition": [
+              175.23641150683747,
+              -17.824365943804334,
+              280.0174657576401
+            ],
+            "cameraFov": 60,
+            "sampleTime": 64.351
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 122.39524,
+          "aps": 100,
+          "brake": 0,
+          "steer": 3,
+          "gear": 4,
+          "accx": 0.14299800000000046,
+          "accy": -0.06275699999999933,
+          "dist": 2191.6654399999998
+        },
+        "after": {
+          "speed": 122.31971999999999,
+          "aps": 100,
+          "brake": 0,
+          "steer": 3,
+          "gear": 4,
+          "accx": 0.1382939999999993,
+          "accy": -0.06962100000000104,
+          "dist": 2191.1163199999996
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.375,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "baselineLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "decodedFramePtsSeconds": 524.266667,
+      "videoOverlayLapTimeSeconds": 64.36,
+      "overlayMinusRequestedLapSeconds": -0.007
+    },
+    {
+      "id": "2020-07-29-L3-68.000",
+      "raceId": "fuji_aim_01",
+      "date": "2020-07-29",
+      "lap": 3,
+      "overlayLap": 4,
+      "label": "ラップ 68.000 秒",
+      "time": 68,
+      "delta": 0.016,
+      "videoPtsSeconds": 527.894,
+      "beforePlaybackSeconds": 68,
+      "afterPlaybackSeconds": 67.984,
+      "video": "video/2020-07-29-L3-68.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-29-L3-68.000-cockpit.png",
+          "after": "after/2020-07-29-L3-68.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 141.264,
+              "aps": 100,
+              "brake": 0,
+              "steer": -34.12,
+              "gear": 4,
+              "accx": 0.1478,
+              "accy": 0.6148,
+              "dist": 2326.574
+            },
+            "pose": [
+              0.010761875329861465,
+              -0.10358493955787458,
+              0.009196661234070522,
+              0.9945198659445279
+            ],
+            "position": [
+              182.42011348904387,
+              -24.362896288503826,
+              426.08848159928203
+            ],
+            "cameraPosition": [
+              182.2593535100067,
+              -23.582896288503825,
+              425.49261565031367
+            ],
+            "cameraFov": 58,
+            "sampleTime": 68
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 141.20224,
+              "aps": 100,
+              "brake": 0,
+              "steer": -33.85119999999989,
+              "gear": 4,
+              "accx": 0.16256800000000576,
+              "accy": 0.6370560000000087,
+              "dist": 2325.9437599999997
+            },
+            "pose": [
+              0.010935880975392158,
+              -0.11340042789851605,
+              0.008926407003183649,
+              0.9934490770632076
+            ],
+            "position": [
+              182.56403450527912,
+              -24.349398921491428,
+              425.4740415083852
+            ],
+            "cameraPosition": [
+              182.41507678385278,
+              -23.569398921491427,
+              424.8751161397227
+            ],
+            "cameraFov": 58,
+            "sampleTime": 67.984
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-29-L3-68.000-chase.png",
+          "after": "after/2020-07-29-L3-68.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 141.264,
+              "aps": 100,
+              "brake": 0,
+              "steer": -34.12,
+              "gear": 4,
+              "accx": 0.1478,
+              "accy": 0.6148,
+              "dist": 2326.574
+            },
+            "pose": [
+              0.010761875329861465,
+              -0.10358493955787458,
+              0.009196661234070522,
+              0.9945198659445279
+            ],
+            "position": [
+              182.42011348904387,
+              -24.362896288503826,
+              426.08848159928203
+            ],
+            "cameraPosition": [
+              184.82531183992572,
+              -20.577164801575215,
+              413.7929859226255
+            ],
+            "cameraFov": 60,
+            "sampleTime": 68
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 141.20224,
+              "aps": 100,
+              "brake": 0,
+              "steer": -33.85119999999989,
+              "gear": 4,
+              "accx": 0.16256800000000576,
+              "accy": 0.6370560000000087,
+              "dist": 2325.9437599999997
+            },
+            "pose": [
+              0.010935880975392158,
+              -0.11340042789851605,
+              0.008926407003183649,
+              0.9934490770632076
+            ],
+            "position": [
+              182.56403450527912,
+              -24.349398921491428,
+              425.4740415083852
+            ],
+            "cameraPosition": [
+              185.1350015896031,
+              -20.559595052132508,
+              413.21448715081874
+            ],
+            "cameraFov": 60,
+            "sampleTime": 67.984
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 141.264,
+          "aps": 100,
+          "brake": 0,
+          "steer": -34.12,
+          "gear": 4,
+          "accx": 0.1478,
+          "accy": 0.6148,
+          "dist": 2326.574
+        },
+        "after": {
+          "speed": 141.20224,
+          "aps": 100,
+          "brake": 0,
+          "steer": -33.85119999999989,
+          "gear": 4,
+          "accx": 0.16256800000000576,
+          "accy": 0.6370560000000087,
+          "dist": 2325.9437599999997
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.375,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "baselineLapSha256": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+      "decodedFramePtsSeconds": 527.9,
+      "videoOverlayLapTimeSeconds": 68.01,
+      "overlayMinusRequestedLapSeconds": 0.01
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ラップ 18.000 秒",
+      "time": 18,
+      "delta": 0.022,
+      "videoPtsSeconds": 303.238,
+      "beforePlaybackSeconds": 18,
+      "afterPlaybackSeconds": 17.978,
+      "video": "video/2020-07-30-L2-18.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-18.000-cockpit.png",
+          "after": "after/2020-07-30-L2-18.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 77.883,
+              "aps": 100,
+              "brake": 0,
+              "steer": -46,
+              "gear": 3,
+              "accx": 0.2272,
+              "accy": 0.7998,
+              "dist": 783.032
+            },
+            "pose": [
+              0.04475616074325645,
+              0.22156841337379518,
+              0.00020908814203572304,
+              0.9741171800931815
+            ],
+            "position": [
+              747.0579808305412,
+              -6.520835420584937,
+              -485.99349640024514
+            ],
+            "cameraPosition": [
+              746.5673022477339,
+              -5.740835420584936,
+              -486.3678418668589
+            ],
+            "cameraFov": 58,
+            "sampleTime": 18
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 77.70546000000002,
+              "aps": 100,
+              "brake": 0,
+              "steer": -71.49519999999976,
+              "gear": 3,
+              "accx": 0.11265799999999854,
+              "accy": 1.1836040000000012,
+              "dist": 782.5546
+            },
+            "pose": [
+              0.04487754493806305,
+              0.19431482312055187,
+              0.0016831638476488286,
+              0.9799106706406575
+            ],
+            "position": [
+              746.8817492491786,
+              -6.485266829922862,
+              -486.43970208395365
+            ],
+            "cameraPosition": [
+              746.4126956038513,
+              -5.705266829922862,
+              -486.84081139300184
+            ],
+            "cameraFov": 58,
+            "sampleTime": 17.978
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-18.000-chase.png",
+          "after": "after/2020-07-30-L2-18.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 77.883,
+              "aps": 100,
+              "brake": 0,
+              "steer": -46,
+              "gear": 3,
+              "accx": 0.2272,
+              "accy": 0.7998,
+              "dist": 783.032
+            },
+            "pose": [
+              0.04475616074325645,
+              0.22156841337379518,
+              0.00020908814203572304,
+              0.9741171800931815
+            ],
+            "position": [
+              747.0579808305412,
+              -6.520835420584937,
+              -485.99349640024514
+            ],
+            "cameraPosition": [
+              742.0599599553173,
+              -2.1070936015016644,
+              -495.3727017684028
+            ],
+            "cameraFov": 60,
+            "sampleTime": 18
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 77.70546000000002,
+              "aps": 100,
+              "brake": 0,
+              "steer": -71.49519999999976,
+              "gear": 3,
+              "accx": 0.11265799999999854,
+              "accy": 1.1836040000000012,
+              "dist": 782.5546
+            },
+            "pose": [
+              0.04487754493806305,
+              0.19431482312055187,
+              0.0016831638476488286,
+              0.9799106706406575
+            ],
+            "position": [
+              746.8817492491786,
+              -6.485266829922862,
+              -486.43970208395365
+            ],
+            "cameraPosition": [
+              742.303071972769,
+              -2.0681190296719176,
+              -496.0296963802484
+            ],
+            "cameraFov": 60,
+            "sampleTime": 17.978
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 77.883,
+          "aps": 100,
+          "brake": 0,
+          "steer": -46,
+          "gear": 3,
+          "accx": 0.2272,
+          "accy": 0.7998,
+          "dist": 783.032
+        },
+        "after": {
+          "speed": 77.70546000000002,
+          "aps": 100,
+          "brake": 0,
+          "steer": -71.49519999999976,
+          "gear": 3,
+          "accx": 0.11265799999999854,
+          "accy": 1.1836040000000012,
+          "dist": 782.5546
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 303.266667,
+      "videoOverlayLapTimeSeconds": 18,
+      "overlayMinusRequestedLapSeconds": 0
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ラップ 45.000 秒",
+      "time": 45,
+      "delta": 0.022,
+      "videoPtsSeconds": 330.238,
+      "beforePlaybackSeconds": 45,
+      "afterPlaybackSeconds": 44.978,
+      "video": "video/2020-07-30-L2-45.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-45.000-cockpit.png",
+          "after": "after/2020-07-30-L2-45.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 133.858,
+              "aps": 41.124,
+              "brake": 0,
+              "steer": -46.68,
+              "gear": 4,
+              "accx": 0.1981,
+              "accy": 1.1309,
+              "dist": 1764.006
+            },
+            "pose": [
+              -0.03402606197282683,
+              -0.791693533911614,
+              -0.006614156699038068,
+              0.6099342820339926
+            ],
+            "position": [
+              388.5808183447125,
+              -27.921676848811963,
+              286.1832495996359
+            ],
+            "cameraPosition": [
+              389.18420001220557,
+              -27.14167684881196,
+              286.0535169386239
+            ],
+            "cameraFov": 58,
+            "sampleTime": 45
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 133.91234,
+              "aps": 46.54499999999998,
+              "brake": 0,
+              "steer": -46.66000000000004,
+              "gear": 4,
+              "accx": 0.10406800000000001,
+              "accy": 1.127313999999999,
+              "dist": 1763.1911200000002
+            },
+            "pose": [
+              -0.034036378016909265,
+              -0.802008288205421,
+              -0.008164842067346348,
+              0.5962864797857791
+            ],
+            "position": [
+              389.35898439067824,
+              -27.96725616931242,
+              286.4206689416006
+            ],
+            "cameraPosition": [
+              389.9664545973996,
+              -27.18725616931242,
+              286.3116737676436
+            ],
+            "cameraFov": 58,
+            "sampleTime": 44.978
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-45.000-chase.png",
+          "after": "after/2020-07-30-L2-45.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 133.858,
+              "aps": 41.124,
+              "brake": 0,
+              "steer": -46.68,
+              "gear": 4,
+              "accx": 0.1981,
+              "accy": 1.1309,
+              "dist": 1764.006
+            },
+            "pose": [
+              -0.03402606197282683,
+              -0.791693533911614,
+              -0.006614156699038068,
+              0.6099342820339926
+            ],
+            "position": [
+              388.5808183447125,
+              -27.921676848811963,
+              286.1832495996359
+            ],
+            "cameraPosition": [
+              400.82044368881213,
+              -25.071532857125934,
+              289.0198836122988
+            ],
+            "cameraFov": 60,
+            "sampleTime": 45
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 133.91234,
+              "aps": 46.54499999999998,
+              "brake": 0,
+              "steer": -46.66000000000004,
+              "gear": 4,
+              "accx": 0.10406800000000001,
+              "accy": 1.127313999999999,
+              "dist": 1763.1911200000002
+            },
+            "pose": [
+              -0.034036378016909265,
+              -0.802008288205421,
+              -0.008164842067346348,
+              0.5962864797857791
+            ],
+            "position": [
+              389.35898439067824,
+              -27.96725616931242,
+              286.4206689416006
+            ],
+            "cameraPosition": [
+              401.5400200258158,
+              -25.132723697222115,
+              289.54450593139984
+            ],
+            "cameraFov": 60,
+            "sampleTime": 44.978
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 133.858,
+          "aps": 41.124,
+          "brake": 0,
+          "steer": -46.68,
+          "gear": 4,
+          "accx": 0.1981,
+          "accy": 1.1309,
+          "dist": 1764.006
+        },
+        "after": {
+          "speed": 133.91234,
+          "aps": 46.54499999999998,
+          "brake": 0,
+          "steer": -46.66000000000004,
+          "gear": 4,
+          "accx": 0.10406800000000001,
+          "accy": 1.127313999999999,
+          "dist": 1763.1911200000002
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 330.266667,
+      "videoOverlayLapTimeSeconds": 45.01,
+      "overlayMinusRequestedLapSeconds": 0.01
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ブレーキ時刻の比較",
+      "time": 47.522,
+      "delta": 0.022,
+      "videoPtsSeconds": 332.76,
+      "beforePlaybackSeconds": 47.522,
+      "afterPlaybackSeconds": 47.5,
+      "video": "video/2020-07-30-L2-47.522.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-47.522-cockpit.png",
+          "after": "after/2020-07-30-L2-47.522-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 130.55453999999997,
+              "aps": 0,
+              "brake": 17.53999999999991,
+              "steer": -1.6863999999999792,
+              "gear": 4,
+              "accx": -0.18264999999999607,
+              "accy": 0.07919800000000146,
+              "dist": 1855.77504
+            },
+            "pose": [
+              -0.020257484589531763,
+              -0.9543545777289594,
+              -0.021051700070215746,
+              0.2972436714381623
+            ],
+            "position": [
+              318.64603648034057,
+              -22.429420917729626,
+              229.79826181581305
+            ],
+            "cameraPosition": [
+              319.18862494876515,
+              -21.649420917729625,
+              230.09236682075627
+            ],
+            "cameraFov": 58,
+            "sampleTime": 47.522
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 130.498,
+              "aps": 90.594,
+              "brake": 0,
+              "steer": -25.6,
+              "gear": 4,
+              "accx": 0.1163,
+              "accy": 0.7771,
+              "dist": 1854.976
+            },
+            "pose": [
+              -0.018626644086125285,
+              -0.9573929675485305,
+              -0.021125043610915488,
+              0.28741170183404885
+            ],
+            "position": [
+              319.0758925247029,
+              -22.46673739039605,
+              230.47092919978698
+            ],
+            "cameraPosition": [
+              319.61233564651957,
+              -21.68673739039605,
+              230.77609927868662
+            ],
+            "cameraFov": 58,
+            "sampleTime": 47.5
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-47.522-chase.png",
+          "after": "after/2020-07-30-L2-47.522-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 130.55453999999997,
+              "aps": 0,
+              "brake": 17.53999999999991,
+              "steer": -1.6863999999999792,
+              "gear": 4,
+              "accx": -0.18264999999999607,
+              "accy": 0.07919800000000146,
+              "dist": 1855.77504
+            },
+            "pose": [
+              -0.020257484589531763,
+              -0.9543545777289594,
+              -0.021051700070215746,
+              0.2972436714381623
+            ],
+            "position": [
+              318.64603648034057,
+              -22.429420917729626,
+              229.79826181581305
+            ],
+            "cameraPosition": [
+              325.9157242142304,
+              -19.572593434494177,
+              239.9648033612349
+            ],
+            "cameraFov": 60,
+            "sampleTime": 47.522
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 130.498,
+              "aps": 90.594,
+              "brake": 0,
+              "steer": -25.6,
+              "gear": 4,
+              "accx": 0.1163,
+              "accy": 0.7771,
+              "dist": 1854.976
+            },
+            "pose": [
+              -0.018626644086125285,
+              -0.9573929675485305,
+              -0.021125043610915488,
+              0.28741170183404885
+            ],
+            "position": [
+              319.0758925247029,
+              -22.46673739039605,
+              230.47092919978698
+            ],
+            "cameraPosition": [
+              326.1860775914979,
+              -19.600811044797606,
+              240.74719951576844
+            ],
+            "cameraFov": 60,
+            "sampleTime": 47.5
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 130.55453999999997,
+          "aps": 0,
+          "brake": 17.53999999999991,
+          "steer": -1.6863999999999792,
+          "gear": 4,
+          "accx": -0.18264999999999607,
+          "accy": 0.07919800000000146,
+          "dist": 1855.77504
+        },
+        "after": {
+          "speed": 130.498,
+          "aps": 90.594,
+          "brake": 0,
+          "steer": -25.6,
+          "gear": 4,
+          "accx": 0.1163,
+          "accy": 0.7771,
+          "dist": 1854.976
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 332.766667,
+      "videoOverlayLapTimeSeconds": 47.5,
+      "overlayMinusRequestedLapSeconds": -0.022
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ラップ 50.000 秒",
+      "time": 50,
+      "delta": 0.022,
+      "videoPtsSeconds": 335.238,
+      "beforePlaybackSeconds": 50,
+      "afterPlaybackSeconds": 49.978,
+      "video": "video/2020-07-30-L2-50.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-50.000-cockpit.png",
+          "after": "after/2020-07-30-L2-50.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 88.697,
+              "aps": 0,
+              "brake": 15.6,
+              "steer": 27.24,
+              "gear": 0,
+              "accx": -0.2841,
+              "accy": -0.4154,
+              "dist": 1934.29
+            },
+            "pose": [
+              -0.014422855976452245,
+              0.9520808048451953,
+              0.021253185958435963,
+              -0.3047661798123672
+            ],
+            "position": [
+              278.0370240087906,
+              -19.205725622555732,
+              162.66369079978492
+            ],
+            "cameraPosition": [
+              278.58454711061813,
+              -18.42572562255573,
+              162.94850381382238
+            ],
+            "cameraFov": 58,
+            "sampleTime": 50
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 88.95351999999998,
+              "aps": 0,
+              "brake": 11.127999999999956,
+              "steer": 1.8160000000000405,
+              "gear": 0,
+              "accx": -0.17943599999999893,
+              "accy": -0.13905599999999974,
+              "dist": 1933.74264
+            },
+            "pose": [
+              -0.01553310447653255,
+              0.9503205619375865,
+              0.021286877563108635,
+              -0.31015547886111045
+            ],
+            "position": [
+              278.35784352942375,
+              -19.22421966649408,
+              163.10414599060664
+            ],
+            "cameraPosition": [
+              278.9085670161776,
+              -18.444219666494078,
+              163.3827202915349
+            ],
+            "cameraFov": 58,
+            "sampleTime": 49.978
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-50.000-chase.png",
+          "after": "after/2020-07-30-L2-50.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 88.697,
+              "aps": 0,
+              "brake": 15.6,
+              "steer": 27.24,
+              "gear": 0,
+              "accx": -0.2841,
+              "accy": -0.4154,
+              "dist": 1934.29
+            },
+            "pose": [
+              -0.014422855976452245,
+              0.9520808048451953,
+              0.021253185958435963,
+              -0.3047661798123672
+            ],
+            "position": [
+              278.0370240087906,
+              -19.205725622555732,
+              162.66369079978492
+            ],
+            "cameraPosition": [
+              284.4973749040681,
+              -16.080208024423484,
+              172.07166933722016
+            ],
+            "cameraFov": 60,
+            "sampleTime": 50
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 88.95351999999998,
+              "aps": 0,
+              "brake": 11.127999999999956,
+              "steer": 1.8160000000000405,
+              "gear": 0,
+              "accx": -0.17943599999999893,
+              "accy": -0.13905599999999974,
+              "dist": 1933.74264
+            },
+            "pose": [
+              -0.01553310447653255,
+              0.9503205619375865,
+              0.021286877563108635,
+              -0.31015547886111045
+            ],
+            "position": [
+              278.35784352942375,
+              -19.22421966649408,
+              163.10414599060664
+            ],
+            "cameraPosition": [
+              284.89017843907936,
+              -16.091864183454156,
+              172.46799037080757
+            ],
+            "cameraFov": 60,
+            "sampleTime": 49.978
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 88.697,
+          "aps": 0,
+          "brake": 15.6,
+          "steer": 27.24,
+          "gear": 0,
+          "accx": -0.2841,
+          "accy": -0.4154,
+          "dist": 1934.29
+        },
+        "after": {
+          "speed": 88.95351999999998,
+          "aps": 0,
+          "brake": 11.127999999999956,
+          "steer": 1.8160000000000405,
+          "gear": 0,
+          "accx": -0.17943599999999893,
+          "accy": -0.13905599999999974,
+          "dist": 1933.74264
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 335.266667,
+      "videoOverlayLapTimeSeconds": 50,
+      "overlayMinusRequestedLapSeconds": 0
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ラップ 84.000 秒",
+      "time": 84,
+      "delta": 0.022,
+      "videoPtsSeconds": 369.238,
+      "beforePlaybackSeconds": 84,
+      "afterPlaybackSeconds": 83.978,
+      "video": "video/2020-07-30-L2-84.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-84.000-cockpit.png",
+          "after": "after/2020-07-30-L2-84.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 90.311,
+              "aps": 100,
+              "brake": 0,
+              "steer": -33.62,
+              "gear": 3,
+              "accx": 0.1968,
+              "accy": 0.6374,
+              "dist": 2975.481
+            },
+            "pose": [
+              -0.032867663199285746,
+              -0.7919220322737585,
+              -0.0251566571466696,
+              0.6092178215682983
+            ],
+            "position": [
+              -268.04743194557335,
+              -26.5334663588072,
+              711.5147055996065
+            ],
+            "cameraPosition": [
+              -267.44391040168665,
+              -25.7534663588072,
+              711.3856252135496
+            ],
+            "cameraFov": 58,
+            "sampleTime": 84
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 90.24279999999999,
+              "aps": 100,
+              "brake": 0,
+              "steer": -45.93999999999993,
+              "gear": 3,
+              "accx": 0.15817800000000273,
+              "accy": 0.7077339999999993,
+              "dist": 2974.93012
+            },
+            "pose": [
+              -0.03310486540541646,
+              -0.8015821262557474,
+              -0.025113336073656838,
+              0.596439001998575
+            ],
+            "position": [
+              -267.51968061443273,
+              -26.58042372051222,
+              711.6774706103583
+            ],
+            "cameraPosition": [
+              -266.91232355137976,
+              -25.800423720512217,
+              711.5678467171614
+            ],
+            "cameraFov": 58,
+            "sampleTime": 83.978
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-84.000-chase.png",
+          "after": "after/2020-07-30-L2-84.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 90.311,
+              "aps": 100,
+              "brake": 0,
+              "steer": -33.62,
+              "gear": 3,
+              "accx": 0.1968,
+              "accy": 0.6374,
+              "dist": 2975.481
+            },
+            "pose": [
+              -0.032867663199285746,
+              -0.7919220322737585,
+              -0.0251566571466696,
+              0.6092178215682983
+            ],
+            "position": [
+              -268.04743194557335,
+              -26.5334663588072,
+              711.5147055996065
+            ],
+            "cameraPosition": [
+              -256.82514486557756,
+              -23.960849028295794,
+              714.1968413678088
+            ],
+            "cameraFov": 60,
+            "sampleTime": 84
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 90.24279999999999,
+              "aps": 100,
+              "brake": 0,
+              "steer": -45.93999999999993,
+              "gear": 3,
+              "accx": 0.15817800000000273,
+              "accy": 0.7077339999999993,
+              "dist": 2974.93012
+            },
+            "pose": [
+              -0.03310486540541646,
+              -0.8015821262557474,
+              -0.025113336073656838,
+              0.596439001998575
+            ],
+            "position": [
+              -267.51968061443273,
+              -26.58042372051222,
+              711.6774706103583
+            ],
+            "cameraPosition": [
+              -256.3678258293722,
+              -24.005559439367644,
+              714.6324903199342
+            ],
+            "cameraFov": 60,
+            "sampleTime": 83.978
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 90.311,
+          "aps": 100,
+          "brake": 0,
+          "steer": -33.62,
+          "gear": 3,
+          "accx": 0.1968,
+          "accy": 0.6374,
+          "dist": 2975.481
+        },
+        "after": {
+          "speed": 90.24279999999999,
+          "aps": 100,
+          "brake": 0,
+          "steer": -45.93999999999993,
+          "gear": 3,
+          "accx": 0.15817800000000273,
+          "accy": 0.7077339999999993,
+          "dist": 2974.93012
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 369.266667,
+      "videoOverlayLapTimeSeconds": 84.02,
+      "overlayMinusRequestedLapSeconds": 0.02
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ラップ 94.000 秒",
+      "time": 94,
+      "delta": 0.022,
+      "videoPtsSeconds": 379.238,
+      "beforePlaybackSeconds": 94,
+      "afterPlaybackSeconds": 93.978,
+      "video": "video/2020-07-30-L2-94.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-94.000-cockpit.png",
+          "after": "after/2020-07-30-L2-94.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 116.526,
+              "aps": 82.147,
+              "brake": 0,
+              "steer": 49.38,
+              "gear": 3,
+              "accx": 0.1224,
+              "accy": -1.1699,
+              "dist": 3252.118
+            },
+            "pose": [
+              -0.026319310051907456,
+              0.9566141282230296,
+              -0.0007434218251746348,
+              0.29016573010346147
+            ],
+            "position": [
+              -259.7408984513207,
+              -16.382103749754833,
+              518.5548439998901
+            ],
+            "cameraPosition": [
+              -259.8134113856948,
+              -15.602103749754834,
+              519.1677402997226
+            ],
+            "cameraFov": 58,
+            "sampleTime": 94
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 116.44657999999997,
+              "aps": 53.21480000000016,
+              "brake": 0,
+              "steer": 50,
+              "gear": 3,
+              "accx": 0.06096799999999826,
+              "accy": -1.2059459999999924,
+              "dist": 3251.40586
+            },
+            "pose": [
+              -0.027293640162549235,
+              0.9619071528904436,
+              0.000799204469555715,
+              0.27200927869669106
+            ],
+            "position": [
+              -260.112987105422,
+              -16.390651603188644,
+              519.1633136696288
+            ],
+            "cameraPosition": [
+              -260.1622163825261,
+              -15.610651603188645,
+              519.778518089538
+            ],
+            "cameraFov": 58,
+            "sampleTime": 93.978
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-94.000-chase.png",
+          "after": "after/2020-07-30-L2-94.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 116.526,
+              "aps": 82.147,
+              "brake": 0,
+              "steer": 49.38,
+              "gear": 3,
+              "accx": 0.1224,
+              "accy": -1.1699,
+              "dist": 3252.118
+            },
+            "pose": [
+              -0.026319310051907456,
+              0.9566141282230296,
+              -0.0007434218251746348,
+              0.29016573010346147
+            ],
+            "position": [
+              -259.7408984513207,
+              -16.382103749754833,
+              518.5548439998901
+            ],
+            "cameraPosition": [
+              -266.7585249586149,
+              -13.027022952500344,
+              528.2897264207589
+            ],
+            "cameraFov": 60,
+            "sampleTime": 94
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 116.44657999999997,
+              "aps": 53.21480000000016,
+              "brake": 0,
+              "steer": 50,
+              "gear": 3,
+              "accx": 0.06096799999999826,
+              "accy": -1.2059459999999924,
+              "dist": 3251.40586
+            },
+            "pose": [
+              -0.027293640162549235,
+              0.9619071528904436,
+              0.000799204469555715,
+              0.27200927869669106
+            ],
+            "position": [
+              -260.112987105422,
+              -16.390651603188644,
+              519.1633136696288
+            ],
+            "cameraPosition": [
+              -266.8793246794755,
+              -13.057099139128526,
+              529.0857816051712
+            ],
+            "cameraFov": 60,
+            "sampleTime": 93.978
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 116.526,
+          "aps": 82.147,
+          "brake": 0,
+          "steer": 49.38,
+          "gear": 3,
+          "accx": 0.1224,
+          "accy": -1.1699,
+          "dist": 3252.118
+        },
+        "after": {
+          "speed": 116.44657999999997,
+          "aps": 53.21480000000016,
+          "brake": 0,
+          "steer": 50,
+          "gear": 3,
+          "accx": 0.06096799999999826,
+          "accy": -1.2059459999999924,
+          "dist": 3251.40586
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 379.266667,
+      "videoOverlayLapTimeSeconds": 94.01,
+      "overlayMinusRequestedLapSeconds": 0.01
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "raceId": "fuji_aim_2020_07_30",
+      "date": "2020-07-30",
+      "lap": 2,
+      "overlayLap": 3,
+      "label": "ラップ 112.000 秒",
+      "time": 112,
+      "delta": 0.022,
+      "videoPtsSeconds": 397.238,
+      "beforePlaybackSeconds": 112,
+      "afterPlaybackSeconds": 111.978,
+      "video": "video/2020-07-30-L2-112.000.jpg",
+      "cameras": {
+        "cockpit": {
+          "before": "before/2020-07-30-L2-112.000-cockpit.png",
+          "after": "after/2020-07-30-L2-112.000-cockpit.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 92.714,
+              "aps": 100,
+              "brake": 0,
+              "steer": -20.76,
+              "gear": 3,
+              "accx": 0.2108,
+              "accy": 0.3375,
+              "dist": 3717.235
+            },
+            "pose": [
+              0.022005305944740036,
+              0.9382705405168217,
+              0.008441312326208025,
+              0.34509839691711286
+            ],
+            "position": [
+              -477.9528343925889,
+              0.4430430007588418,
+              438.441179599636
+            ],
+            "cameraPosition": [
+              -478.09594590663886,
+              1.2230430007588418,
+              439.0415287435067
+            ],
+            "cameraFov": 58,
+            "sampleTime": 112
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 92.56307999999996,
+              "aps": 100,
+              "brake": 0,
+              "steer": -30,
+              "gear": 3,
+              "accx": 0.24165799999999854,
+              "accy": 0.3898679999999996,
+              "dist": 3716.66476
+            },
+            "pose": [
+              0.021998033747229542,
+              0.9347606197042391,
+              0.008193718524036336,
+              0.35450181006329484
+            ],
+            "position": [
+              -478.3348691706952,
+              0.43864935785266246,
+              438.8670925378656
+            ],
+            "cameraPosition": [
+              -478.48999286720056,
+              1.2186493578526625,
+              439.46445058693035
+            ],
+            "cameraFov": 58,
+            "sampleTime": 111.978
+          }
+        },
+        "chase": {
+          "before": "before/2020-07-30-L2-112.000-chase.png",
+          "after": "after/2020-07-30-L2-112.000-chase.png",
+          "beforeCapture": {
+            "telemetry": {
+              "speed": 92.714,
+              "aps": 100,
+              "brake": 0,
+              "steer": -20.76,
+              "gear": 3,
+              "accx": 0.2108,
+              "accy": 0.3375,
+              "dist": 3717.235
+            },
+            "pose": [
+              0.022005305944740036,
+              0.9382705405168217,
+              0.008441312326208025,
+              0.34509839691711286
+            ],
+            "position": [
+              -477.9528343925889,
+              0.4430430007588418,
+              438.441179599636
+            ],
+            "cameraPosition": [
+              -485.092779473067,
+              3.904572637893489,
+              447.29651912828894
+            ],
+            "cameraFov": 60,
+            "sampleTime": 112
+          },
+          "afterCapture": {
+            "telemetry": {
+              "speed": 92.56307999999996,
+              "aps": 100,
+              "brake": 0,
+              "steer": -30,
+              "gear": 3,
+              "accx": 0.24165799999999854,
+              "accy": 0.3898679999999996,
+              "dist": 3716.66476
+            },
+            "pose": [
+              0.021998033747229542,
+              0.9347606197042391,
+              0.008193718524036336,
+              0.35450181006329484
+            ],
+            "position": [
+              -478.3348691706952,
+              0.43864935785266246,
+              438.8670925378656
+            ],
+            "cameraPosition": [
+              -485.6104998994589,
+              3.9094043673499828,
+              447.6031601041507
+            ],
+            "cameraFov": 60,
+            "sampleTime": 111.978
+          }
+        }
+      },
+      "telemetry": {
+        "before": {
+          "speed": 92.714,
+          "aps": 100,
+          "brake": 0,
+          "steer": -20.76,
+          "gear": 3,
+          "accx": 0.2108,
+          "accy": 0.3375,
+          "dist": 3717.235
+        },
+        "after": {
+          "speed": 92.56307999999996,
+          "aps": 100,
+          "brake": 0,
+          "steer": -30,
+          "gear": 3,
+          "accx": 0.24165799999999854,
+          "accy": 0.3898679999999996,
+          "dist": 3716.66476
+        }
+      },
+      "alignment": {
+        "imageYawLagSeconds": 0.27,
+        "uncertaintySeconds": 0.05
+      },
+      "latestLapSha256": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500",
+      "baselineLapSha256": "2ec015882fe50640d44d499c8ef8ae7ba826d2e997dde331e9ef36ad0e15de45",
+      "decodedFramePtsSeconds": 397.266667,
+      "videoOverlayLapTimeSeconds": 111.98,
+      "overlayMinusRequestedLapSeconds": -0.02
+    }
+  ],
+  "qa": {
+    "captureFps": 60,
+    "prerollSeconds": 2,
+    "captureMethod": "各対象時刻まで2秒を60fpsで決定的に進めた直後の描画を保存。再生時の姿勢追従を保持。",
+    "notes": [
+      "7/29の配信ラップはbaselineにないため、改善評価で不変が確認された現在のラップを共用。道路/車両/柵の共通資産も現在のpublicから読み、旧srcと旧7/30ラップだけを隔離。",
+      "PTSはffmpegの正確な入力シーク。旧OpenCV秒は使わない。GPS/映像ヨー差は比較に加算していない。"
+    ],
+    "beforeSourceSha256": "bdf6cdb16d5df4cc0c9361e13893b2897ce35262f838bcbfc39e8396dd89dac8",
+    "beforeSourceFiles": 99,
+    "afterSourceSha256": "3886cd2b43d071099d47e2082f40a4fdf63f58d13e8fdc02ec9cae45cc677e3b",
+    "afterSourceFiles": 113,
+    "browserErrors": [],
+    "badRequests": [],
+    "orientationDifferenceDegrees": [
+      {
+        "id": "2020-07-29-L3-47.000",
+        "degrees": 1.9180539628460789
+      },
+      {
+        "id": "2020-07-29-L3-52.387",
+        "degrees": 1.112213605695468
+      },
+      {
+        "id": "2020-07-29-L3-55.000",
+        "degrees": 0.5894606289787284
+      },
+      {
+        "id": "2020-07-29-L3-60.000",
+        "degrees": 1.9666887160401536
+      },
+      {
+        "id": "2020-07-29-L3-64.367",
+        "degrees": 0.3440431933619832
+      },
+      {
+        "id": "2020-07-29-L3-68.000",
+        "degrees": 1.1320492473802723
+      },
+      {
+        "id": "2020-07-30-L2-18.000",
+        "degrees": 3.1974142887198034
+      },
+      {
+        "id": "2020-07-30-L2-45.000",
+        "degrees": 1.9684036532202054
+      },
+      {
+        "id": "2020-07-30-L2-47.522",
+        "degrees": 1.1939837851715827
+      },
+      {
+        "id": "2020-07-30-L2-50.000",
+        "degrees": 0.6620266773846051
+      },
+      {
+        "id": "2020-07-30-L2-84.000",
+        "degrees": 1.8358958154088736
+      },
+      {
+        "id": "2020-07-30-L2-94.000",
+        "degrees": 2.1772779598247918
+      },
+      {
+        "id": "2020-07-30-L2-112.000",
+        "degrees": 1.150523935767239
+      }
+    ],
+    "wetDataByteIdenticalToBeforeCommit": true,
+    "wetComparisonCommit": "e1f149b",
+    "imageCount": 65,
+    "registrations": [
+      {
+        "raceId": "fuji_aim_01",
+        "beforeAndAfterVerified": true,
+        "offsetMeters": [
+          -1.638,
+          1.75
+        ]
+      },
+      {
+        "raceId": "fuji_aim_2020_07_30",
+        "beforeAndAfterVerified": true,
+        "offsetMeters": [
+          -0.432,
+          -2.612
+        ]
+      }
+    ],
+    "commonAssetSha256": {
+      "public/data/tracks/fuji/track.json": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+      "public/data/tracks/fuji/cg_study/geometry.json": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e",
+      "public/data/vehicles/mazda2-dj.json": "6d7ee8c5cea5314edfcabe1e950250ab66897b38f85021141966470bf6cbb64d"
+    },
+    "videoOverlayTimesVisuallyRead": true,
+    "maxOverlayTimerDifferenceSeconds": 0.023
+  },
+  "sourceAuditSha256": "c0c2a108722c05cc0245f226c3099892f8c4ccafe77886f823aea43f13e0f066"
+}

@@ -1,0 +1,71 @@
+{
+  "errors": [],
+  "captures": [
+    {
+      "id": "k16",
+      "version": "before",
+      "image": "k16-before-top.png",
+      "station": 2134,
+      "center": [
+        249.71,
+        122.511,
+        -17.96648880428604
+      ]
+    },
+    {
+      "id": "k19",
+      "version": "before",
+      "image": "k19-before-top.png",
+      "station": 2718,
+      "center": [
+        58.291,
+        624.528,
+        -33.726514285714416
+      ]
+    },
+    {
+      "id": "k21",
+      "version": "before",
+      "image": "k21-before-top.png",
+      "station": 3348,
+      "center": [
+        -316.195,
+        579.487,
+        -15.741788571428629
+      ]
+    },
+    {
+      "id": "k16",
+      "version": "after",
+      "image": "k16-after-top.png",
+      "station": 2134,
+      "center": [
+        249.71,
+        122.511,
+        -17.96648880428604
+      ]
+    },
+    {
+      "id": "k19",
+      "version": "after",
+      "image": "k19-after-top.png",
+      "station": 2718,
+      "center": [
+        58.291,
+        624.528,
+        -33.726514285714416
+      ]
+    },
+    {
+      "id": "k21",
+      "version": "after",
+      "image": "k21-after-top.png",
+      "station": 3348,
+      "center": [
+        -316.195,
+        579.487,
+        -15.741788571428629
+      ]
+    }
+  ]
+}

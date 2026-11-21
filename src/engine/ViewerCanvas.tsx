@@ -14,6 +14,7 @@ interface ViewerCanvasProps {
 }
 
 const KEY_CAMERA_MAP: Record<string, CameraMode> = {
+  "0": "onboard",
   "1": "chase",
   "2": "cockpit",
   "3": "top",
@@ -110,7 +111,7 @@ export function ViewerCanvas({
         return;
       }
       const cameraMode = KEY_CAMERA_MAP[e.key];
-      if (cameraMode) {
+      if (cameraMode && (cameraMode !== "onboard" || (track.trackId === "fuji" && track.visualProfile === "cg"))) {
         useReplayStore.getState().setCameraMode(cameraMode);
         return;
       }

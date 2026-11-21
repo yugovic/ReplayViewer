@@ -1,0 +1,166 @@
+{
+  "status": "passed",
+  "maxPixelError": 1.850687635408088e-11,
+  "totalProjectedPoints": 1508,
+  "checks": [
+    {
+      "id": "2020-07-29-L3-47.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 1.3530286046122962e-11
+    },
+    {
+      "id": "2020-07-29-L3-47.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 4.333541836000658e-12
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 7.219337984841568e-12
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 8.576577534549054e-12
+    },
+    {
+      "id": "2020-07-29-L3-55.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 7.176692680371448e-12
+    },
+    {
+      "id": "2020-07-29-L3-55.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 3.355688055113533e-12
+    },
+    {
+      "id": "2020-07-29-L3-60.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 3.2811998811807397e-12
+    },
+    {
+      "id": "2020-07-29-L3-60.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 7.1396782314457515e-12
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 1.883568248306448e-12
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 1.3221441974579884e-12
+    },
+    {
+      "id": "2020-07-29-L3-68.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 3.762416041211716e-12
+    },
+    {
+      "id": "2020-07-29-L3-68.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 5.8647975310810296e-12
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 1.319551131796007e-11
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 1.850687635408088e-11
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 4.570154315443183e-12
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 3.30474946480277e-12
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 3.7018117280160675e-12
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 2.157056083093525e-12
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 3.895433500277799e-12
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 2.072496162564674e-12
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 1.0692003815667233e-11
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 1.4328601221859575e-11
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 6.59383658785373e-12
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 6.8815761325920705e-12
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "mode": "cockpit",
+      "points": 58,
+      "maxPixelError": 8.549408933462621e-12
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "mode": "onboard",
+      "points": 58,
+      "maxPixelError": 3.659674485520525e-12
+    }
+  ],
+  "posePositionTelemetryIdenticalAcrossModes": true,
+  "priorCapturePosePositionMatched": true,
+  "source": "Actual Three.js camera projection in Chrome versus independent SciPy quaternion/matrix projection."
+}

@@ -1,0 +1,376 @@
+{
+  "purpose": "NON-ADOPTED per-scene diagnostic only: demonstrates confounded explanations for residual mismatch. These are not camera/GPS corrections and not held-out scores after local fitting. Frozen global camera retained.",
+  "parameters": "lateral positive camera/car right metres; forward positive metres along car heading; yaw/pitch/roll camera angle additions in degrees; k1 radial distortion coefficient. No physical truth implied.",
+  "results": [
+    {
+      "id": "2020-07-30-L2-45.000",
+      "hypotheses": [
+        {
+          "parameters": {},
+          "medianPx": 33.30696555909758,
+          "p95Px": 50.24278938205948,
+          "perBoundary": {
+            "paintR": {
+              "median": 33.30696555909758,
+              "p95": 50.24278938205948
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 9.57680319824651
+          },
+          "medianPx": 17.69092454491657,
+          "p95Px": 22.333576849958337,
+          "perBoundary": {
+            "paintR": {
+              "median": 17.69092454491657,
+              "p95": 22.333576849958337
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "lateral": 2.3680679739186963
+          },
+          "medianPx": 7.09051660334065,
+          "p95Px": 17.72700535833029,
+          "perBoundary": {
+            "paintR": {
+              "median": 7.09051660334065,
+              "p95": 17.72700535833029
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "forward": -14.999999999952932
+          },
+          "medianPx": 13.768767912336473,
+          "p95Px": 21.145841582024637,
+          "perBoundary": {
+            "paintR": {
+              "median": 13.768767912336473,
+              "p95": 21.145841582024637
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "pitch": -2.7652363915656224
+          },
+          "medianPx": 20.741469126144537,
+          "p95Px": 28.108042393506757,
+          "perBoundary": {
+            "paintR": {
+              "median": 20.741469126144537,
+              "p95": 28.108042393506757
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "roll": 1.555079045654058
+          },
+          "medianPx": 33.74163777965483,
+          "p95Px": 48.0042635542133,
+          "perBoundary": {
+            "paintR": {
+              "median": 33.74163777965483,
+              "p95": 48.0042635542133
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "k1": -0.39999999999999997
+          },
+          "medianPx": 17.287662531538448,
+          "p95Px": 33.9170531976537,
+          "perBoundary": {
+            "paintR": {
+              "median": 17.287662531538448,
+              "p95": 33.9170531976537
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": -4.607220888398559,
+            "lateral": 3.261374451691057
+          },
+          "medianPx": 3.5779303901273174,
+          "p95Px": 7.753546422908811,
+          "perBoundary": {
+            "paintR": {
+              "median": 3.5779303901273174,
+              "p95": 7.753546422908811
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 5.956419411381742,
+            "pitch": -2.1791707708499697
+          },
+          "medianPx": 5.777817787180195,
+          "p95Px": 12.799455252083316,
+          "perBoundary": {
+            "paintR": {
+              "median": 5.777817787180195,
+              "p95": 12.799455252083316
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": -3.085666769619422,
+            "lateral": 2.8488226892144115,
+            "pitch": -1.0597389368761594
+          },
+          "medianPx": 2.6598984838809145,
+          "p95Px": 4.499924778692391,
+          "perBoundary": {
+            "paintR": {
+              "median": 2.6598984838809145,
+              "p95": 4.499924778692391
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": -8.438831908730537,
+            "lateral": 2.6978208647434725,
+            "forward": -13.06344625988965
+          },
+          "medianPx": 2.62199907264964,
+          "p95Px": 4.385100972309396,
+          "perBoundary": {
+            "paintR": {
+              "median": 2.62199907264964,
+              "p95": 4.385100972309396
+            }
+          },
+          "inSampleFitOnly": true
+        }
+      ]
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "hypotheses": [
+        {
+          "parameters": {},
+          "medianPx": 54.490746065642455,
+          "p95Px": 87.85173965711249,
+          "perBoundary": {
+            "paintL": {
+              "median": 61.60746547786426,
+              "p95": 88.6230277408934
+            },
+            "paintR": {
+              "median": 19.56473922882655,
+              "p95": 26.02248196368712
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 11.999999999999998
+          },
+          "medianPx": 25.119612375593295,
+          "p95Px": 36.14810376846808,
+          "perBoundary": {
+            "paintL": {
+              "median": 18.642910933985924,
+              "p95": 35.57016064834292
+            },
+            "paintR": {
+              "median": 29.599111071624947,
+              "p95": 35.41780980703092
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "lateral": 1.9642285505990729
+          },
+          "medianPx": 23.83348846699409,
+          "p95Px": 54.07138756754373,
+          "perBoundary": {
+            "paintL": {
+              "median": 31.43233372980656,
+              "p95": 54.5961503437504
+            },
+            "paintR": {
+              "median": 23.83348846699409,
+              "p95": 33.80025147564115
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "forward": 10.394022458027312
+          },
+          "medianPx": 19.09829320751395,
+          "p95Px": 52.539717417926255,
+          "perBoundary": {
+            "paintL": {
+              "median": 16.941596983749776,
+              "p95": 53.57453577258242
+            },
+            "paintR": {
+              "median": 19.20245076323737,
+              "p95": 25.609731058103367
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "pitch": -0.08527971665403325
+          },
+          "medianPx": 53.72408855531734,
+          "p95Px": 87.88081536835155,
+          "perBoundary": {
+            "paintL": {
+              "median": 60.85101702359552,
+              "p95": 88.27127048180046
+            },
+            "paintR": {
+              "median": 20.32934064587398,
+              "p95": 26.777647621441783
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "roll": -7.999999999999999
+          },
+          "medianPx": 16.557858514210547,
+          "p95Px": 65.32684785126129,
+          "perBoundary": {
+            "paintL": {
+              "median": 30.540110259571332,
+              "p95": 69.5818401547988
+            },
+            "paintR": {
+              "median": 9.272457788103557,
+              "p95": 29.616528213609012
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "k1": 0.20548587472324328
+          },
+          "medianPx": 64.70127173946888,
+          "p95Px": 87.28323477301967,
+          "perBoundary": {
+            "paintL": {
+              "median": 73.20190141782814,
+              "p95": 88.95130639041693
+            },
+            "paintR": {
+              "median": 7.445392672066479,
+              "p95": 10.915922778417658
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 11.999999999999998,
+            "lateral": 0.0698781546511609
+          },
+          "medianPx": 25.261231772457364,
+          "p95Px": 36.30891839255683,
+          "perBoundary": {
+            "paintL": {
+              "median": 16.32182059984866,
+              "p95": 35.42566422036951
+            },
+            "paintR": {
+              "median": 29.785709723845894,
+              "p95": 35.690179002252805
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 11.999999999999433,
+            "pitch": 1.9899570855325015
+          },
+          "medianPx": 11.769729391770618,
+          "p95Px": 51.915441921753406,
+          "perBoundary": {
+            "paintL": {
+              "median": 23.48585845364009,
+              "p95": 53.23175952786725
+            },
+            "paintR": {
+              "median": 11.769729391770618,
+              "p95": 17.813227692223915
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 11.999999999999998,
+            "lateral": -0.04923356825252639,
+            "pitch": 2.095998048941495
+          },
+          "medianPx": 12.630300305838674,
+          "p95Px": 52.97060575338446,
+          "perBoundary": {
+            "paintL": {
+              "median": 25.39040468289329,
+              "p95": 54.28292072481219
+            },
+            "paintR": {
+              "median": 10.675542358485309,
+              "p95": 16.672349085023594
+            }
+          },
+          "inSampleFitOnly": true
+        },
+        {
+          "parameters": {
+            "yaw": 10.181263224682768,
+            "lateral": -1.4960529031968797,
+            "forward": 10.605141863063986
+          },
+          "medianPx": 20.08315787649367,
+          "p95Px": 33.47003585595092,
+          "perBoundary": {
+            "paintL": {
+              "median": 3.3209090893462125,
+              "p95": 35.34829589471892
+            },
+            "paintR": {
+              "median": 24.24168973961348,
+              "p95": 27.792025802286318
+            }
+          },
+          "inSampleFitOnly": true
+        }
+      ]
+    }
+  ]
+}

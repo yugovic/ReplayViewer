@@ -1,0 +1,933 @@
+{
+  "scope": "Independent fixed-parameter roll ablation verification and model provenance audit. No production data or camera changes, no fitting. Post-hoc exploratory diagnosis, not new acceptance.",
+  "inputsSha256": {
+    "artifacts\\video-cg-alignment-2026-10-03\\camera-profile.json": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+    "artifacts\\video-cg-alignment-2026-10-03\\roll-ablation.json": "903cba0b459c028cbe167dc522a2c903a9f04885305d53e2f99805fd77a86440",
+    "public\\data\\tracks\\fuji\\track.json": "f3976a8ee1df4ac969eddb9369ddbecdb33caac2e919876df400e85da5aa32c3",
+    "public\\data\\tracks\\fuji\\terrain_meta.json": "3e8add2f4b6af278b26f27023b0307e354f04539b694f10da238748fc0f47849",
+    "public\\data\\tracks\\fuji\\cg_study\\geometry.json": "9cb0ecd38550b0f08e8dbe37fee39995ed835fdd879c6b876fcff6533b58ce8e"
+  },
+  "bankMethod": {
+    "source": "VIRTUAL SHIZUOKA 2019 LP Ground, CC BY 4.0 Shizuoka Prefecture, public/data/tracks/fuji/terrain_meta.json",
+    "algorithm": "pipeline/bake_road_camber.py samples 1 m DTM at centerline +/- width/2; default 20 m circular smoothing; cross-slope clipped to 0.08. It is not a road-surface planar fit or suspension model. Runtime sampleTrackRoll derives atan((altLeft-altRight)/13).",
+    "probeHalfWidthMeters": 6.5,
+    "warning": "Current modeled pavement edges come from a later orthophoto trace. Probes outside them indicate a bank-estimation assumption that requires checking, not proof of true asphalt or bank error. Terrain sampling source is permitted; no Google imagery used.",
+    "centerlineSamplesExcludingClosure": 651,
+    "samplesWithAtLeastOneProbeOutsideRawPavementOver10cm": 535,
+    "maxOutsideProbeSumMeters": 6.61
+  },
+  "scenes": [
+    {
+      "id": "2020-07-29-L3-47.000",
+      "stationMeters": 1820.2246214066267,
+      "quaternionLocalForwardRollDeg": 2.5440689272347257,
+      "bakedBankFromTrackDeg": 2.545762536018092,
+      "cameraIdealWorldHorizonImageSlopeDeg": -0.8196697404061322,
+      "rawRoadLeftOffsetMeters": -11.766738642198803,
+      "rawRoadRightOffsetMeters": 4.966896239740997,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.533103760259003
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "stationMeters": 2002.0615276899318,
+      "quaternionLocalForwardRollDeg": 1.542353312848448,
+      "bakedBankFromTrackDeg": 1.5567062537745984,
+      "cameraIdealWorldHorizonImageSlopeDeg": 0.2852844935611248,
+      "rawRoadLeftOffsetMeters": -10.17,
+      "rawRoadRightOffsetMeters": 4.58,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.92
+    },
+    {
+      "id": "2020-07-29-L3-55.000",
+      "stationMeters": 2088.882836428457,
+      "quaternionLocalForwardRollDeg": -2.6265416987504744,
+      "bakedBankFromTrackDeg": -2.627109751008097,
+      "cameraIdealWorldHorizonImageSlopeDeg": 4.603061934155159,
+      "rawRoadLeftOffsetMeters": -10.23,
+      "rawRoadRightOffsetMeters": 4.57,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.9299999999999997
+    },
+    {
+      "id": "2020-07-29-L3-60.000",
+      "stationMeters": 2214.869867344822,
+      "quaternionLocalForwardRollDeg": -4.0883927532022275,
+      "bakedBankFromTrackDeg": -4.088372388430998,
+      "cameraIdealWorldHorizonImageSlopeDeg": 6.158902555457008,
+      "rawRoadLeftOffsetMeters": -8.987917245173131,
+      "rawRoadRightOffsetMeters": 8.9078490205521,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "stationMeters": 2345.9983253688815,
+      "quaternionLocalForwardRollDeg": -1.6857666242095894,
+      "bakedBankFromTrackDeg": -1.6885028753894957,
+      "cameraIdealWorldHorizonImageSlopeDeg": 3.6151414564120326,
+      "rawRoadLeftOffsetMeters": -8.62,
+      "rawRoadRightOffsetMeters": 6.079996650737763,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0.42000334926223726
+    },
+    {
+      "id": "2020-07-29-L3-68.000",
+      "stationMeters": 2480.1764951203136,
+      "quaternionLocalForwardRollDeg": 0.8743617967326727,
+      "bakedBankFromTrackDeg": 0.8696765032503246,
+      "cameraIdealWorldHorizonImageSlopeDeg": 0.8982550097470825,
+      "rawRoadLeftOffsetMeters": -11.376117941443763,
+      "rawRoadRightOffsetMeters": 3.3809991659093384,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 3.1190008340906616
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "stationMeters": 935.5354145901933,
+      "quaternionLocalForwardRollDeg": 1.192922788942756,
+      "bakedBankFromTrackDeg": 1.1925626528661333,
+      "cameraIdealWorldHorizonImageSlopeDeg": 0.48461265574777157,
+      "rawRoadLeftOffsetMeters": -8.36508761212956,
+      "rawRoadRightOffsetMeters": 5.281041957372932,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.2189580426270679
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "stationMeters": 1916.2423326068936,
+      "quaternionLocalForwardRollDeg": 2.5747379886338226,
+      "bakedBankFromTrackDeg": 2.5821947239314467,
+      "cameraIdealWorldHorizonImageSlopeDeg": -0.7807137198223247,
+      "rawRoadLeftOffsetMeters": -13.03721468700698,
+      "rawRoadRightOffsetMeters": 4.220361986924084,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 2.2796380130759157
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "stationMeters": 2006.947193792811,
+      "quaternionLocalForwardRollDeg": 1.3496528311679783,
+      "bakedBankFromTrackDeg": 1.3559474799637359,
+      "cameraIdealWorldHorizonImageSlopeDeg": 0.48305753884403235,
+      "rawRoadLeftOffsetMeters": -10.235267348972535,
+      "rawRoadRightOffsetMeters": 4.552534697945069,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.9474653020549306
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "stationMeters": 2085.353184235972,
+      "quaternionLocalForwardRollDeg": -2.450006617600683,
+      "bakedBankFromTrackDeg": -2.448728628079436,
+      "cameraIdealWorldHorizonImageSlopeDeg": 4.41890881486942,
+      "rawRoadLeftOffsetMeters": -10.23,
+      "rawRoadRightOffsetMeters": 4.57,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.9299999999999997
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "stationMeters": 3146.99361354746,
+      "quaternionLocalForwardRollDeg": 1.328765398140661,
+      "bakedBankFromTrackDeg": 1.3346523297366901,
+      "cameraIdealWorldHorizonImageSlopeDeg": 0.5374839900026128,
+      "rawRoadLeftOffsetMeters": -7.6004470516778015,
+      "rawRoadRightOffsetMeters": 7.94315327486096,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "stationMeters": 3432.9161911951055,
+      "quaternionLocalForwardRollDeg": -2.985320806881306,
+      "bakedBankFromTrackDeg": -2.98269723653397,
+      "cameraIdealWorldHorizonImageSlopeDeg": 4.981143352726893,
+      "rawRoadLeftOffsetMeters": -8.838340940878311,
+      "rawRoadRightOffsetMeters": 5.93,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0.5700000000000003
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "stationMeters": 3911.2705345881964,
+      "quaternionLocalForwardRollDeg": 2.690175427223044,
+      "bakedBankFromTrackDeg": 2.705086368250732,
+      "cameraIdealWorldHorizonImageSlopeDeg": -0.988185504268105,
+      "rawRoadLeftOffsetMeters": -4.904589308236073,
+      "rawRoadRightOffsetMeters": 10.199951760940321,
+      "bankProbeLeftOutsideRawPavementMeters": 1.5954106917639272,
+      "bankProbeRightOutsideRawPavementMeters": 0
+    },
+    {
+      "id": "2020-07-30-L2-44.000",
+      "stationMeters": 1879.0073300522286,
+      "quaternionLocalForwardRollDeg": 2.891841976985327,
+      "bakedBankFromTrackDeg": 2.894409474350023,
+      "cameraIdealWorldHorizonImageSlopeDeg": -1.1379816259749977,
+      "rawRoadLeftOffsetMeters": -13.478530876657372,
+      "rawRoadRightOffsetMeters": 5.040794758537601,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.4592052414623993
+    },
+    {
+      "id": "2020-07-30-L2-44.500",
+      "stationMeters": 1897.5919727594653,
+      "quaternionLocalForwardRollDeg": 2.779172293857476,
+      "bakedBankFromTrackDeg": 2.780341494364682,
+      "cameraIdealWorldHorizonImageSlopeDeg": -1.0057710817316932,
+      "rawRoadLeftOffsetMeters": -13.09,
+      "rawRoadRightOffsetMeters": 4.7315284358485545,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 1.7684715641514455
+    },
+    {
+      "id": "2020-07-30-L2-45.500",
+      "stationMeters": 1934.482287706358,
+      "quaternionLocalForwardRollDeg": 2.1827036348732762,
+      "bakedBankFromTrackDeg": 2.1776690573528334,
+      "cameraIdealWorldHorizonImageSlopeDeg": -0.3663423256517371,
+      "rawRoadLeftOffsetMeters": -12.928921039269387,
+      "rawRoadRightOffsetMeters": 4.089318821285557,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 2.4106811787144427
+    },
+    {
+      "id": "2020-07-30-L2-46.000",
+      "stationMeters": 1952.544509158524,
+      "quaternionLocalForwardRollDeg": 2.0870981972441176,
+      "bakedBankFromTrackDeg": 2.0811134306626657,
+      "cameraIdealWorldHorizonImageSlopeDeg": -0.2646921527159058,
+      "rawRoadLeftOffsetMeters": -11.603878534636149,
+      "rawRoadRightOffsetMeters": 3.4020623955374107,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 3.0979376044625893
+    },
+    {
+      "id": "2020-07-30-L2-93.000",
+      "stationMeters": 3398.1639897194636,
+      "quaternionLocalForwardRollDeg": -2.2064218338100487,
+      "bakedBankFromTrackDeg": -2.2050910883527948,
+      "cameraIdealWorldHorizonImageSlopeDeg": 4.166196350116739,
+      "rawRoadLeftOffsetMeters": -8.032087054190654,
+      "rawRoadRightOffsetMeters": 6.811144555148964,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0
+    },
+    {
+      "id": "2020-07-30-L2-93.500",
+      "stationMeters": 3414.482856159789,
+      "quaternionLocalForwardRollDeg": -2.657719334114097,
+      "bakedBankFromTrackDeg": -2.649041707108328,
+      "cameraIdealWorldHorizonImageSlopeDeg": 4.640167239771146,
+      "rawRoadLeftOffsetMeters": -8.469142807989462,
+      "rawRoadRightOffsetMeters": 6.173965712319578,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0.32603428768042164
+    },
+    {
+      "id": "2020-07-30-L2-94.500",
+      "stationMeters": 3451.0642227095254,
+      "quaternionLocalForwardRollDeg": -3.330978959061992,
+      "bakedBankFromTrackDeg": -3.3374188486204903,
+      "cameraIdealWorldHorizonImageSlopeDeg": 5.338456499803362,
+      "rawRoadLeftOffsetMeters": -8.711174200780881,
+      "rawRoadRightOffsetMeters": 6.065183572123865,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0.43481642787613506
+    },
+    {
+      "id": "2020-07-30-L2-95.000",
+      "stationMeters": 3468.903418460078,
+      "quaternionLocalForwardRollDeg": -3.6667617548306337,
+      "bakedBankFromTrackDeg": -3.6692511017007727,
+      "cameraIdealWorldHorizonImageSlopeDeg": 5.683280302161196,
+      "rawRoadLeftOffsetMeters": -7.267726523193778,
+      "rawRoadRightOffsetMeters": 7.587466639886066,
+      "bankProbeLeftOutsideRawPavementMeters": 0,
+      "bankProbeRightOutsideRawPavementMeters": 0
+    }
+  ],
+  "ablation": [
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-29-L3-60.000",
+      "fullRoll": {
+        "medianPx": 9.557212671096101,
+        "p95Px": 22.34379696368761,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 14.998061585591092,
+            "p95Px": 23.487074874365014,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 5.990764552016593,
+            "p95Px": 9.921331210442897,
+            "points": 4
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 21.46584277681212,
+        "p95Px": 34.71609251264739,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 26.75837552978645,
+            "p95Px": 36.06513366359203,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 12.600883214139468,
+            "p95Px": 13.929949587858935,
+            "points": 4
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 1.0658141036401503e-14,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-29-L3-64.367",
+      "fullRoll": {
+        "medianPx": 9.286123108506501,
+        "p95Px": 15.981224310013278,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 9.286123108506501,
+            "p95Px": 15.981224310013278,
+            "points": 5
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 10.116555633114112,
+        "p95Px": 11.751339369014248,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 10.116555633114112,
+            "p95Px": 11.751339369014248,
+            "points": 5
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 8.881784197001252e-15,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-18.000",
+      "fullRoll": {
+        "medianPx": 11.213829444135396,
+        "p95Px": 45.510989697885044,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 22.71651751901253,
+            "p95Px": 47.68304626537217,
+            "points": 7
+          },
+          "paintR": {
+            "medianPx": 9.70050425234981,
+            "p95Px": 11.024045972240327,
+            "points": 4
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 11.325945503372283,
+        "p95Px": 43.456070905366786,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 23.265358249183848,
+            "p95Px": 45.42662609362432,
+            "points": 7
+          },
+          "paintR": {
+            "medianPx": 4.331204607814426,
+            "p95Px": 5.216850679150178,
+            "points": 4
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 0.0,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-45.000",
+      "fullRoll": {
+        "medianPx": 33.30696555909758,
+        "p95Px": 50.24278938205948,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 33.30696555909758,
+            "p95Px": 50.24278938205948,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 30.983067390247307,
+        "p95Px": 48.1538943525094,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 30.983067390247307,
+            "p95Px": 48.1538943525094,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": -2.1316282072803006e-14,
+      "improved": true
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-50.000",
+      "fullRoll": {
+        "medianPx": 8.980527764427569,
+        "p95Px": 12.433356433036952,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 8.980527764427569,
+            "p95Px": 12.433356433036952,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 11.130355882771571,
+        "p95Px": 13.68895339161816,
+        "perBoundary": {
+          "paintR": {
+            "medianPx": 11.130355882771571,
+            "p95Px": 13.68895339161816,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 0.0,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-84.000",
+      "fullRoll": {
+        "medianPx": 7.633311577763672,
+        "p95Px": 20.62953711388539,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 8.683882952712738,
+            "p95Px": 22.292868916249123,
+            "points": 7
+          },
+          "paintR": {
+            "medianPx": 1.5182974479436857,
+            "p95Px": 2.6051834210474385,
+            "points": 4
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 8.737786383457566,
+        "p95Px": 19.51610814038579,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 9.120967017417726,
+            "p95Px": 21.049816177923887,
+            "points": 7
+          },
+          "paintR": {
+            "medianPx": 4.089808890545378,
+            "p95Px": 6.392794044325309,
+            "points": 4
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 0.0,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-94.000",
+      "fullRoll": {
+        "medianPx": 54.490746065642455,
+        "p95Px": 87.85173965711249,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 61.60746547786426,
+            "p95Px": 88.6230277408934,
+            "points": 8
+          },
+          "paintR": {
+            "medianPx": 19.56473922882655,
+            "p95Px": 26.02248196368712,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 22.083963189808717,
+        "p95Px": 77.20961130622858,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 43.14596433755854,
+            "p95Px": 81.46739193713344,
+            "points": 8
+          },
+          "paintR": {
+            "medianPx": 3.653778531010001,
+            "p95Px": 10.241741330049868,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": -3.552713678800501e-15,
+      "improved": true
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-112.000",
+      "fullRoll": {
+        "medianPx": 3.8923517294531997,
+        "p95Px": 22.714725633295366,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 11.624710782542174,
+            "p95Px": 24.859935406835667,
+            "points": 7
+          },
+          "paintR": {
+            "medianPx": 0.8933294889860353,
+            "p95Px": 3.468450638498767,
+            "points": 6
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 5.216396516495657,
+        "p95Px": 25.56129123420856,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 13.311533290663402,
+            "p95Px": 27.855268157320697,
+            "points": 7
+          },
+          "paintR": {
+            "medianPx": 4.721939336770804,
+            "p95Px": 6.743309022646331,
+            "points": 6
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": -2.398081733190338e-14,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-29-L3-52.387",
+      "fullRoll": {
+        "medianPx": 2.32105513563435,
+        "p95Px": 9.597211025070727,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 2.2820046520536774,
+            "p95Px": 7.873228499914307,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 4.12039008963938,
+            "p95Px": 9.22219814394385,
+            "points": 6
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 3.3170735918301055,
+        "p95Px": 10.431534311159094,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 3.1403314509673486,
+            "p95Px": 8.756711203415946,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 4.9897821839825784,
+            "p95Px": 9.88558622966603,
+            "points": 6
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 0.0,
+      "improved": false
+    },
+    {
+      "cohort": "originalHeldout",
+      "id": "2020-07-30-L2-47.522",
+      "fullRoll": {
+        "medianPx": 11.324806100220984,
+        "p95Px": 19.234663623192983,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 18.862221218241636,
+            "p95Px": 19.326926835861894,
+            "points": 4
+          },
+          "paintR": {
+            "medianPx": 7.598130653567825,
+            "p95Px": 10.711803300901778,
+            "points": 5
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 12.245029290018149,
+        "p95Px": 22.82902461663313,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 21.962303041046468,
+            "p95Px": 23.136625336434573,
+            "points": 4
+          },
+          "paintR": {
+            "medianPx": 10.238468545559547,
+            "p95Px": 11.867585961308261,
+            "points": 5
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 4.618527782440651e-14,
+      "improved": false
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-44.000",
+      "fullRoll": {
+        "medianPx": 15.134502238514028,
+        "p95Px": 76.2754726512898,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 10.852728764443768,
+            "p95Px": 12.528256283178523,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 74.37471248237135,
+            "p95Px": 76.54351154822564,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 12.832174099390986,
+        "p95Px": 73.68426244609125,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 5.001919699173536,
+            "p95Px": 8.089271212867548,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 71.95916515598647,
+            "p95Px": 73.9766141778834,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": -1.4210854715202004e-14,
+      "improved": true
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-44.500",
+      "fullRoll": {
+        "medianPx": 9.922182373655055,
+        "p95Px": 81.43019527016799,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 6.770863423479322,
+            "p95Px": 9.781919380983172,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 64.00953653804567,
+            "p95Px": 81.46255499780189,
+            "points": 6
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 6.29096275716398,
+        "p95Px": 79.08659559775558,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 4.953802536370261,
+            "p95Px": 6.03264469088042,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 61.833413076340335,
+            "p95Px": 79.13720415216817,
+            "points": 6
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 2.398081733190338e-14,
+      "improved": true
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-45.500",
+      "fullRoll": {
+        "medianPx": 5.625135992985058,
+        "p95Px": 20.54351432346986,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 1.6401129094486946,
+            "p95Px": 5.166956804236386,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 9.947766621008597,
+            "p95Px": 21.21795414022624,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 6.747676213328107,
+        "p95Px": 20.334598607232735,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 3.6552589437242258,
+            "p95Px": 7.61392351979777,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 12.131485476608287,
+            "p95Px": 21.47107401809359,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": -1.4210854715202004e-14,
+      "improved": false
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-46.000",
+      "fullRoll": {
+        "medianPx": 7.367787720917509,
+        "p95Px": 22.761500799298982,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 3.0095331512749866,
+            "p95Px": 5.8326715364123025,
+            "points": 4
+          },
+          "paintR": {
+            "medianPx": 15.856037235628694,
+            "p95Px": 23.20148012625623,
+            "points": 6
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 7.509323091335293,
+        "p95Px": 23.2715398663013,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 4.328052081918591,
+            "p95Px": 7.363278037556914,
+            "points": 4
+          },
+          "paintR": {
+            "medianPx": 16.486604056961276,
+            "p95Px": 23.70491260704115,
+            "points": 6
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 6.750155989720952e-14,
+      "improved": false
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-93.000",
+      "fullRoll": {
+        "medianPx": 26.377289333670184,
+        "p95Px": 56.472117728910476,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 51.730936026909134,
+            "p95Px": 59.058838962048945,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 21.719753531780064,
+            "p95Px": 26.389097507223113,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 8.347294533117331,
+        "p95Px": 56.052695115123065,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 54.030975186633775,
+            "p95Px": 57.41661648745544,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 6.0632922577482224,
+            "p95Px": 8.5183114045725,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 0.0,
+      "improved": true
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-93.500",
+      "fullRoll": {
+        "medianPx": 25.379700025865358,
+        "p95Px": 70.17771185709043,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 63.58818880557111,
+            "p95Px": 70.20993763685033,
+            "points": 4
+          },
+          "paintR": {
+            "medianPx": 21.199014960231697,
+            "p95Px": 25.44230783599215,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 7.766467456541367,
+        "p95Px": 66.00164158621772,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 51.56727908501014,
+            "p95Px": 70.89667576589612,
+            "points": 4
+          },
+          "paintR": {
+            "medianPx": 4.552143281537096,
+            "p95Px": 10.53303774592079,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 0.0,
+      "improved": true
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-94.500",
+      "fullRoll": {
+        "medianPx": 29.518715214230376,
+        "p95Px": 65.97965743552788,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 58.57545927297805,
+            "p95Px": 67.53204523209297,
+            "points": 8
+          },
+          "paintR": {
+            "medianPx": 15.650495079360045,
+            "p95Px": 22.88900572471284,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 21.768132841729877,
+        "p95Px": 60.11736214036062,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 43.19875774056324,
+            "p95Px": 60.35101424064915,
+            "points": 8
+          },
+          "paintR": {
+            "medianPx": 4.905158431180012,
+            "p95Px": 17.683743737412,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": -3.552713678800501e-15,
+      "improved": true
+    },
+    {
+      "cohort": "diagnosticSequence",
+      "id": "2020-07-30-L2-95.000",
+      "fullRoll": {
+        "medianPx": 20.817873992997683,
+        "p95Px": 93.95428244536006,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 88.16062910809468,
+            "p95Px": 94.45114087400295,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 13.388598623129177,
+            "p95Px": 21.039882410264195,
+            "points": 7
+          }
+        }
+      },
+      "worldUpRefitted": {
+        "medianPx": 20.87452606970492,
+        "p95Px": 92.54787003771554,
+        "perBoundary": {
+          "paintL": {
+            "medianPx": 72.29866484897572,
+            "p95Px": 97.53701285903047,
+            "points": 5
+          },
+          "paintR": {
+            "medianPx": 8.412431580668123,
+            "p95Px": 22.033562351206527,
+            "points": 7
+          }
+        }
+      },
+      "differenceFromRootAblationMedianPx": 2.4868995751603507e-14,
+      "improved": false
+    }
+  ],
+  "summary": {
+    "originalHeldout": {
+      "sceneCount": 10,
+      "improvedScenes": 2,
+      "fullMeanSceneMedianPx": 15.20069291559778,
+      "neutralMeanSceneMedianPx": 13.662201615792759,
+      "fullMedianSceneMedianPx": 9.421667889801302,
+      "neutralMedianSceneMedianPx": 11.228150693071928
+    },
+    "diagnosticSequence": {
+      "sceneCount": 8,
+      "improvedScenes": 5,
+      "fullMeanSceneMedianPx": 17.517898361604406,
+      "neutralMeanSceneMedianPx": 11.517069632788981,
+      "fullMedianSceneMedianPx": 17.976188115755853,
+      "neutralMedianSceneMedianPx": 8.05688099482935
+    }
+  },
+  "maximumRootMetricDifferencePx": 6.750155989720952e-14,
+  "limits": [
+    "Camera position is also de-rolled because mount up offset follows the ablated frame, matching the tested hypothesis.",
+    "Refitted camera and roll policy are selected after original heldouts; those scenes cannot establish unbiased new acceptance.",
+    "Sequence frames are correlated and selected from known problem corners.",
+    "Neither a bank derived from coarse DTM nor an image horizon establishes physical chassis roll; suspension roll, body yaw, lens, camera mount and road geometry remain confounded."
+  ]
+}

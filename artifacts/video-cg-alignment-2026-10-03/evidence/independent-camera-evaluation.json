@@ -1,0 +1,163 @@
+{
+  "scope": "Independent evaluation with frozen source-only holdout picks, separately implemented projection and segment distance. No shared source/data edits. Results concern pixel boundaries, not absolute GPS truth.",
+  "annotationsSha256": "cf62adb4d893a7a185d3dfd73ab1f4c2c24275fb201f6295f3fe82240e8a3f2d",
+  "profileSha256": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+  "summary": {
+    "checksAllPassed": true,
+    "sceneCount": 10,
+    "pointCount": 98,
+    "medianSceneErrorBeforePx": 133.87580877346008,
+    "medianSceneErrorAfterPx": 9.421667889801302,
+    "allScenesImproved": true,
+    "meanSceneImprovementPx": 118.89533685792264
+  },
+  "rows": [
+    {
+      "id": "2020-07-29-L3-60.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 131.05050900068687,
+      "afterMedianPx": 9.557212671096101,
+      "beforeP95Px": 138.1595769952164,
+      "afterP95Px": 22.34379696368761,
+      "points": 9
+    },
+    {
+      "id": "2020-07-29-L3-64.367",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 144.1456340458752,
+      "afterMedianPx": 9.286123108506501,
+      "beforeP95Px": 150.10353836155682,
+      "afterP95Px": 15.981224310013278,
+      "points": 5
+    },
+    {
+      "id": "2020-07-30-L2-18.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 129.348950064811,
+      "afterMedianPx": 11.213829444135396,
+      "beforeP95Px": 157.76067860131172,
+      "afterP95Px": 45.510989697885044,
+      "points": 11
+    },
+    {
+      "id": "2020-07-30-L2-45.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 136.70110854623329,
+      "afterMedianPx": 33.30696555909758,
+      "beforeP95Px": 150.6200050201564,
+      "afterP95Px": 50.24278938205948,
+      "points": 7
+    },
+    {
+      "id": "2020-07-30-L2-50.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 121.29732632000965,
+      "afterMedianPx": 8.980527764427569,
+      "beforeP95Px": 141.73975533611693,
+      "afterP95Px": 12.433356433036952,
+      "points": 7
+    },
+    {
+      "id": "2020-07-30-L2-84.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 127.05785620974069,
+      "afterMedianPx": 7.633311577763672,
+      "beforeP95Px": 144.3831569345182,
+      "afterP95Px": 20.62953711388539,
+      "points": 11
+    },
+    {
+      "id": "2020-07-30-L2-94.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 130.34464473454548,
+      "afterMedianPx": 54.490746065642455,
+      "beforeP95Px": 152.86516774816187,
+      "afterP95Px": 87.85173965711249,
+      "points": 15
+    },
+    {
+      "id": "2020-07-30-L2-112.000",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 143.24528820714866,
+      "afterMedianPx": 3.8923517294531997,
+      "beforeP95Px": 150.94944594983954,
+      "afterP95Px": 22.714725633295366,
+      "points": 13
+    },
+    {
+      "id": "2020-07-29-L3-52.387",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 137.3230048428462,
+      "afterMedianPx": 2.32105513563435,
+      "beforeP95Px": 147.82034815601781,
+      "afterP95Px": 9.597211025070727,
+      "points": 11
+    },
+    {
+      "id": "2020-07-30-L2-47.522",
+      "checks": {
+        "frameShaMatches": true,
+        "exactManifestPts": true,
+        "exactInternalTime": true,
+        "notTrain": true
+      },
+      "beforeMedianPx": 140.44597576330725,
+      "afterMedianPx": 11.324806100220984,
+      "beforeP95Px": 148.23788821533216,
+      "afterP95Px": 19.234663623192983,
+      "points": 9
+    }
+  ],
+  "limitations": [
+    "10 scene medians include correlated corners; scene count is not independent ground-truth count.",
+    "4 pixel picking uncertainty is a sensitivity allowance, not a calibrated confidence interval.",
+    "Effective pinhole camera absorbs unknown radial distortion, assumed mount height and residual GPS/course errors.",
+    "Point to polyline residual ignores along-line correspondence and can understate misalignment in local tangent direction.",
+    "No motion-lag or per-frame translation optimization was performed."
+  ]
+}

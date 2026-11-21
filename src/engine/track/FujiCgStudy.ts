@@ -75,10 +75,112 @@ function roadPoint(track:TrackData,row:CgRoadRow,side:number,offset=0):Point {
   return [row[1]+row[3]*side,sampleTrackSurface(track,row[0],side)+offset,row[2]+row[4]*side];
 }
 
+type ClippedRoadEdges = { left?: XZ; right?: XZ };
+
+/** The accepted kerb replaces the old traced kerb, but not the asphalt below
+ * its white strip/blocks. Remove only asphalt protruding beyond its OUTER
+ * edge. Shared station vertices also join the adjacent unzoned segment.
+ * This is same-source layer consistency, not a new surveyed road boundary. */
+function clipRoadEdges(data:FujiCgGeometry,zones:readonly KerbZone[]) {
+  const clipped = new Map<CgRoadRow,ClippedRoadEdges>();
+  for(const zone of zones) zone.station.forEach((station,j)=>{
+    const row=data.road[Math.round(station/.5)];
+    if(offsetFromEdge(row,zone.side,zone.outer[j])>=0)return;
+    const edges=clipped.get(row)??{};
+    edges[zone.side]=zone.outer[j];
+    clipped.set(row,edges);
+  });
+  return clipped;
+}
+
+interface RoadClipPatch { start:number; end:number; side:"left"|"right" }
+
+function roadPatchPoints(data:FujiCgGeometry,clipped:Map<CgRoadRow,ClippedRoadEdges>,patch:RoadClipPatch):XZ[] {
+  const points:XZ[]=[],fraction=patch.side==="left"?.25:.75;
+  for(let i=patch.start;i<=patch.end;i++) {
+    const row=data.road[i],l=roadEdgeAt(row,"left"),r=roadEdgeAt(row,"right");
+    points.push([l[0]+(r[0]-l[0])*fraction,l[1]+(r[1]-l[1])*fraction]);
+  }
+  for(let i=patch.end;i>=patch.start;i--)points.push(clipped.get(data.road[i])?.[patch.side]??roadEdgeAt(data.road[i],patch.side));
+  return points;
+}
+
+function simplePolygon(points:XZ[]):boolean {
+  const cross=(a:XZ,b:XZ,c:XZ)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+  const on=(a:XZ,b:XZ,p:XZ)=>Math.abs(cross(a,b,p))<1e-9&&p[0]>=Math.min(a[0],b[0])-1e-9&&p[0]<=Math.max(a[0],b[0])+1e-9&&p[1]>=Math.min(a[1],b[1])-1e-9&&p[1]<=Math.max(a[1],b[1])+1e-9;
+  for(let i=0;i<points.length;i++)for(let j=i+2;j<points.length;j++) {
+    if(i===0&&j===points.length-1)continue;
+    const a=points[i],b=points[(i+1)%points.length],c=points[j],d=points[(j+1)%points.length];
+    const u=cross(a,b,c),v=cross(a,b,d),w=cross(c,d,a),x=cross(c,d,b);
+    if((u*v< -1e-18&&w*x< -1e-18)||on(a,b,c)||on(a,b,d)||on(c,d,a)||on(c,d,b))return false;
+  }
+  return true;
+}
+
+function roadClipPatches(data:FujiCgGeometry,clipped:Map<CgRoadRow,ClippedRoadEdges>):RoadClipPatch[] {
+  const result:RoadClipPatch[]=[];
+  for(const side of ["left","right"] as const) {
+    let start=-1;
+    for(let i=0;i<=data.road.length;i++) {
+      if(i<data.road.length&&clipped.get(data.road[i])?.[side]) {
+        if(start<0)start=i;
+      } else if(start>=0) {
+        const patch={start:Math.max(0,start-1),end:Math.min(data.road.length-1,i),side};
+        // Some traced endpoints lie ahead of the next nominal road station.
+        // Rejoin a later unchanged boundary vertex instead of folding back.
+        let attempts=0;
+        while(!simplePolygon(roadPatchPoints(data,clipped,patch))) {
+          if(patch.end>=data.road.length-1||attempts++>=20)throw new Error("Kerb outer edge cannot form a simple asphalt patch");
+          patch.end++;
+        }
+        result.push(patch);
+        start=-1;
+      }
+    }
+  }
+  return result;
+}
+
+/** Exact traced points can move longitudinally by more than the 0.5 m road
+ * grid. Joining them with independent station quads would make bow-ties at
+ * two delivered kerb ends. Triangulate the whole narrow outer strip instead;
+ * all inner camber vertices and the traced outer boundary are preserved. */
+function appendRoadClipPatch(out:Batch,track:TrackData,data:FujiCgGeometry,clipped:Map<CgRoadRow,ClippedRoadEdges>,patch:RoadClipPatch) {
+  const points:Point[]=[];
+  const fraction=patch.side==="left"?.25:.75;
+  for(let i=patch.start;i<=patch.end;i++) {
+    const row=data.road[i];
+    points.push(roadPoint(track,row,row[5]+(row[6]-row[5])*fraction));
+  }
+  for(let i=patch.end;i>=patch.start;i--) {
+    const row=data.road[i],p=clipped.get(row)?.[patch.side]??roadEdgeAt(row,patch.side);
+    points.push([p[0],sampleTrackSurface(track,row[0],lateralAt(row,p[0],p[1])),p[1]]);
+  }
+  const faces=THREE.ShapeUtils.triangulateShape(points.map(p=>new THREE.Vector2(p[0],p[2])),[]);
+  const base=out.positions.length/3;
+  for(const p of points){out.positions.push(...p);out.uvs.push(p[0]/.7,p[2]/.7);}
+  for(const face of faces) {
+    const [ia,ic,id]=face,[a,c,d]=face.map(i=>points[i]);
+    const up=(c[2]-a[2])*(d[0]-a[0])-(c[0]-a[0])*(d[2]-a[2]);
+    if(Math.abs(up)<1e-9)continue;
+    out.indices.push(...(up>0?[base+ia,base+ic,base+id]:[base+ia,base+id,base+ic]));
+  }
+}
+
+/** The ordinary marking on a neighbouring segment must share the clipped
+ * endpoint, otherwise it floats outside the asphalt. Kerb-zone paint itself
+ * is unchanged. Its inward offset stays 0.16 m along the original normal. */
+function clippedMarkingPoint(track:TrackData,row:CgRoadRow,col:5|6,inward:number,edges:ClippedRoadEdges|undefined):Point {
+  const side=col===5?"left":"right",edge=edges?.[side];
+  if(!edge)return roadPoint(track,row,row[col]-(col===5?-1:1)*inward,.012);
+  const n=outwardAt(row,side),x=edge[0]-n[0]*inward,z=edge[1]-n[1]*inward;
+  return [x,sampleTrackSurface(track,row[0],lateralAt(row,x,z))+.012,z];
+}
+
 /** One kerb zone: white strip (paint->block) at paint height, raised blocks
  * (block->outer) with the CG bevel profile, and asphalt where the traced paint
  * starts outside the geometry.json road edge (no terrain sliver). */
-function appendKerbZone(track:TrackData,data:FujiCgGeometry,zone:KerbZone,out:{road:Batch;paint:Batch;red:Batch;white:Batch}) {
+function appendKerbZone(track:TrackData,data:FujiCgGeometry,zone:KerbZone,out:{road:Batch;paint:Batch;red:Batch;white:Batch},clipped:Map<CgRoadRow,ClippedRoadEdges>) {
   const rows=zone.station.map(st=>data.road[Math.round(st/.5)]);
   const at=(j:number,p:XZ,h:number):Point => [p[0],sampleTrackSurface(track,zone.station[j],lateralAt(rows[j],p[0],p[1]))+h,p[1]];
   const band=(j:number,t:number):XZ => { const b=zone.block[j],o=zone.outer[j]; return [b[0]+(o[0]-b[0])*t,b[1]+(o[1]-b[1])*t]; };
@@ -96,7 +198,7 @@ function appendKerbZone(track:TrackData,data:FujiCgGeometry,zone:KerbZone,out:{r
     wall(target,at(j,zone.outer[j],data.curbHeightMeters),at(j,zone.outer[j],-.09),at(k,zone.outer[k],data.curbHeightMeters),at(k,zone.outer[k],-.09),o);
     const gapA=offsetFromEdge(rows[j],zone.side,zone.paint[j]),gapB=offsetFromEdge(rows[k],zone.side,zone.paint[k]);
     if(Math.max(gapA,gapB)>.01) {
-      const ea=roadEdgeAt(rows[j],zone.side),eb=roadEdgeAt(rows[k],zone.side);
+      const ea=clipped.get(rows[j])?.[zone.side]??roadEdgeAt(rows[j],zone.side),eb=clipped.get(rows[k])?.[zone.side]??roadEdgeAt(rows[k],zone.side);
       const pa=gapA>0?zone.paint[j]:ea,pb=gapB>0?zone.paint[k]:eb;
       tri(out.road,at(j,ea,0),at(j,pa,0),at(k,eb,0));
       tri(out.road,at(j,pa,0),at(k,pb,0),at(k,eb,0));
@@ -105,11 +207,14 @@ function appendKerbZone(track:TrackData,data:FujiCgGeometry,zone:KerbZone,out:{r
 }
 
 /** `zones` (kerb_zones.json, already validated) replace the CG kerb with the
- * same index and the road-edge marking on their side; road surface rows are
- * used unchanged. Output stays one batch per material. */
+ * same index and the road-edge marking on their side. Asphalt is trimmed
+ * only where it protrudes beyond a zone outer edge. Source data stay intact;
+ * output stays one batch per material. */
 export function buildCgRoadGeometry(track:TrackData,data:FujiCgGeometry,zones:readonly KerbZone[]=[]) {
   const road=batch(), paint=batch(), red=batch(), white=batch(), green=batch();
   const replaced=new Set(zones.flatMap(z=>z.replaces===null?[]:[z.replaces]));
+  const clipped=clipRoadEdges(data,zones);
+  const roadPatches=roadClipPatches(data,clipped);
   // The zone's white strip IS the track-limit line there; drawing the 0.16 m
   // edge marking as well would z-fight with it at the same height.
   const marked=(i:number,col:5|6)=>zones.some(z=>(z.side==="left"?5:6)===col&&data.road[i][0]>=z.station[0]-1e-6&&data.road[i+1][0]<=z.station[z.station.length-1]+1e-6);
@@ -118,18 +223,19 @@ export function buildCgRoadGeometry(track:TrackData,data:FujiCgGeometry,zones:re
     // Interior vertices preserve the existing camber profile across a wide
     // asymmetric ribbon instead of spanning its full width with one plane.
     for(let j=0;j<4;j++) {
+      if((j===0||j===3)&&roadPatches.some(p=>p.side===(j===0?"left":"right")&&i>=p.start&&i<p.end))continue;
       const sa=a[5]+(a[6]-a[5])*j/4,sb=a[5]+(a[6]-a[5])*(j+1)/4;
       const ta=b[5]+(b[6]-b[5])*j/4,tb=b[5]+(b[6]-b[5])*(j+1)/4;
       quad(road,roadPoint(track,a,sa),roadPoint(track,a,sb),roadPoint(track,b,ta),roadPoint(track,b,tb));
     }
     for(const col of [5,6] as const) {
       if(zones.length&&marked(i,col))continue;
-      const sign=col===5?-1:1;
-      // Marking lies inside the measured boundary; it does not push curbs.
-      quad(paint,roadPoint(track,a,a[col],.012),roadPoint(track,a,a[col]-sign*.16,.012),
-        roadPoint(track,b,b[col],.012),roadPoint(track,b,b[col]-sign*.16,.012));
+      // Marking lies inside the visible boundary; it does not push curbs.
+      quad(paint,clippedMarkingPoint(track,a,col,0,clipped.get(a)),clippedMarkingPoint(track,a,col,.16,clipped.get(a)),
+        clippedMarkingPoint(track,b,col,0,clipped.get(b)),clippedMarkingPoint(track,b,col,.16,clipped.get(b)));
     }
   }
+  for(const patch of roadPatches)appendRoadClipPatch(road,track,data,clipped,patch);
   for(const curb of data.curbs.filter((_,index)=>!replaced.has(index))) for(let i=0;i<curb.rows.length-1;i++) {
     const a=curb.rows[i],b=curb.rows[i+1], target=a[7]?red:white;
     const point=(r:CgCurbRow,t:number,h:number):Point => [r[1]+(r[3]-r[1])*t,
@@ -141,12 +247,33 @@ export function buildCgRoadGeometry(track:TrackData,data:FujiCgGeometry,zones:re
       quad(target,point(a,t,h),point(a,u,k),point(b,t,h),point(b,u,k));
     }
   }
-  for(const zone of zones) appendKerbZone(track,data,zone,{road,paint,red,white});
+  for(const zone of zones) appendKerbZone(track,data,zone,{road,paint,red,white},clipped);
   for(const [d,l,r] of data.green) {
     const index=Math.round(d/.5),a=data.road[index],b=data.road[index+1];
     if(a&&b) quad(green,roadPoint(track,a,l,.004),roadPoint(track,a,r,.004),roadPoint(track,b,l,.004),roadPoint(track,b,r,.004));
   }
   return { road,paint,red,white,green };
+}
+
+/** Restore the existing licensed landcover beneath the original outer strips.
+ * The old road-cutout mask still removes these pixels after asphalt trimming.
+ * This bed uses the existing ground height and atlas UVs without that mask;
+ * retained asphalt/kerbs occlude it, exposing only the repaired ground gaps. */
+export function buildCgRoadUnderlayGeometry(track:TrackData,data:FujiCgGeometry,zones:readonly KerbZone[],heightAt:(x:number,z:number)=>number,bbox:Bbox):Batch {
+  const out=batch(),patches=roadClipPatches(data,clipRoadEdges(data,zones));
+  const point=(row:CgRoadRow,t:number):Point=>{
+    const p=roadPoint(track,row,row[5]+(row[6]-row[5])*t);
+    return [p[0],heightAt(p[0],p[2]),p[2]];
+  };
+  for(const patch of patches)for(let i=patch.start;i<patch.end;i++) {
+    const a=data.road[i],b=data.road[i+1],l=patch.side==="left"?0:.75,r=patch.side==="left"?.25:1;
+    quad(out,point(a,l),point(a,r),point(b,l),point(b,r));
+  }
+  for(let i=0;i<out.positions.length/3;i++) {
+    const ll=localToLatLng(out.positions[i*3],out.positions[i*3+2],track.origin),uv=latLngToTerrainUv(ll.lat,ll.lng,bbox);
+    out.uvs[i*2]=uv.u;out.uvs[i*2+1]=uv.v;
+  }
+  return out;
 }
 
 /** Separate scene path: no satellite corridor, original image tiles or legacy
@@ -196,14 +323,17 @@ export function buildFujiCgTrack(track:TrackData,loader:THREE.TextureLoader):Tra
       mesh(b.red,material(0xb73c37),"cg-curbs-red"),mesh(b.white,material(0xe7e5d8),"cg-curbs-white"),
       mesh(b.green,material(0x438365),"cg-green-runoff"));
     const edits = new Map<number, CurbAdjustment>();
+    let rebuildGroundRepair:((geometry:FujiCgGeometry,zones:readonly KerbZone[])=>void)|undefined;
     const rebuild = () => {
       const adjusted = adjustCgGeometry(data, [...edits.values()]);
-      const updated = buildCgRoadGeometry(track, adjusted, adjustKerbZones(zoneSet.zones, data, [...edits.values()]));
+      const adjustedZones = adjustKerbZones(zoneSet.zones, data, [...edits.values()]);
+      const updated = buildCgRoadGeometry(track, adjusted, adjustedZones);
       for (const [key, name] of [["road", "cg-road"], ["paint", "cg-edge-paint"], ["red", "cg-curbs-red"], ["white", "cg-curbs-white"], ["green", "cg-green-runoff"]] as const) {
         const existing = group.getObjectByName(name) as THREE.Mesh;
         const replacement = mesh(updated[key], existing.material as THREE.Material, name);
         existing.geometry.dispose(); existing.geometry = replacement.geometry;
       }
+      rebuildGroundRepair?.(adjusted,adjustedZones);
       group.userData.adjustments = [...edits.values()];
     };
     unregisterEditor = registerCgEditor({
@@ -239,6 +369,14 @@ export function buildFujiCgTrack(track:TrackData,loader:THREE.TextureLoader):Tra
     ground.computeVertexNormals();
     const terrainMesh=new THREE.Mesh(ground,new THREE.MeshStandardMaterial({map:atlas,alphaMap:cutout,alphaTest:.5,roughness:1}));
     terrainMesh.name="cg-terrain"; terrainMesh.receiveShadow=true; group.add(terrainMesh);
+    const repairMaterial=new THREE.MeshStandardMaterial({map:atlas,roughness:1});
+    const groundRepair=mesh(buildCgRoadUnderlayGeometry(track,data,zoneSet.zones,heightAt,meta.bbox),repairMaterial,"cg-road-cutout-repair");
+    groundRepair.userData.source="Existing landcover atlas and ground height, without the obsolete road-cutout mask inside repaired outer strips";
+    group.add(groundRepair);
+    rebuildGroundRepair=(geometry,zones)=>{
+      const replacement=mesh(buildCgRoadUnderlayGeometry(track,geometry,zones,heightAt!,meta.bbox),repairMaterial,"cg-road-cutout-repair");
+      groundRepair.geometry.dispose();groundRepair.geometry=replacement.geometry;
+    };
     if(featureData) {
       // Restore existing approximate canopy only in source-reviewed woodland.
       // These remain aggregate LiDAR/grid representations, not surveyed stems.
