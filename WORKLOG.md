@@ -31,14 +31,15 @@
   - a70a1b3: WORKLOG（10/02〜10/22の9エントリ）、BACKLOG（GPS-REG-20〜30、DATA-01）、docs/README.md（3行）
   - 51abd5c: 車両プロファイル `public/data/vehicles/mazda2-dj.json` も `-text` に追加
   - 8b2740c: `artifacts/hash-portability-2026-11-21/after-fix.json` を 51abd5c の結果に更新
-  - このエントリと BACKLOG の DATA-02・DATA-03 を追加するコミット
+  - 5296d01: このエントリと BACKLOG の DATA-02・DATA-03（GitHubからの実取得の結果は、その次のコミットで追記）
 - 検証（8b2740c を改行変換あり・なしの2通りに書き出して実行）:
   - ハッシュ照合: 修正前の origin/master は失敗20件・10件、修正後は両方0件（`artifacts/hash-portability-2026-11-21/before-origin-master.json`・`after-fix.json`）。
   - pytest: 8ファイル・78件合格（両方）。ディレクトリ指定では `scripts/quality/apex_kpi/similarity_test.py`（ローカルの作業ファイルが要る分析スクリプト）の収集で止まるため、`test_*.py` を指定して実行した。
   - `verify-fuji-gps-handoff.py` 合格（両方）、tsc エラーなし（両方）、vitest 54ファイル・462件合格（両方）、本番ビルド成功（改行変換なし側）。
   - 実ブラウザ: 改行変換なし側のビルドを `vite preview`（127.0.0.1:5202）で配信。7/29・7/30とも HUD は「位置合わせ ON」（「補正値が古い」「未検証」の表示なし）、コンソールエラーなし。
   - 途中の失敗: 改行変換なしの書き出しで `test_kerb_registration.py` の入力照合（車両プロファイルのハッシュ）が失敗 → 51abd5c で解消。
-  - 実行していないもの: GitHubから実際に clone しての確認（`git archive` での書き出しで代替）。PRにCIは設定されていない（チェック0件）。
+  - GitHubからの実取得（プッシュ後に追加）: ブランチの 5296d01 を、改行変換あり・なしの2通りで部分クローン（照合対象の37ファイルのみ取得）し、`verify-fuji-gps-handoff.py` が両方合格。
+  - 実行していないもの: GitHubから全ファイルを取得してのビルド・テスト（`git archive` での書き出しで代替）。PRにCIは設定されていない（チェック0件）。
 - 未解決/残り:
   - PR https://github.com/yugovic/ReplayViewer/pull/1 は未マージ。master への反映はマージ後。
   - 別件の未コミット変更は作業ツリーに残したまま。
