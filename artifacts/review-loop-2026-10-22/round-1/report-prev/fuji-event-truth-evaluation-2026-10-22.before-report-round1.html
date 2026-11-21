@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ja">
+<title>動画・Gを正解にした3DCG検証</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap">
+<style>
+/* Layout: one reading column; conclusion tiles first, then how the truth events were fixed, the video time offset, event strips of the 3DCG discrepancy, kerb yes/no agreement and the correction trials. (Base tokens shared with the 10-09 gap report.) Original note: the page opens with two tolerance rulers (sideways / along the track) where each use case's allowed error sits against today's gap band on a log metre scale, then the breakdown, the video check, and the next steps. */
+:root {
+  --bg: #f1f3f2; --surface: #fbfcfb; --ink: #14181b; --ink2: #3f474d; --muted: #6b747b;
+  --line: #d3d8db; --line2: #e4e8ea; --grid: #e2e6e8; --accent: #b8352a; --kerb-white: #ffffff;
+  --now: #2a78d6; --now-soft: rgba(42, 120, 214, .18); --now-worst: rgba(42, 120, 214, .07);
+  --ok-zone: rgba(29, 122, 68, .08);
+  --good: #1d7a44; --good-bg: #e2f1e7; --warn: #8f5e00; --warn-bg: #f8eed6; --bad: #a8261d; --bad-bg: #f8e2df;
+  --neutral: #59606a; --neutral-bg: #e9ebed;
+  --f-display: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --f-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --f-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --labw: 220px; --dlabw: 150px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101315; --surface: #171b1e; --ink: #eceff1; --ink2: #b8c0c6; --muted: #8a939a;
+  --line: #2c3237; --line2: #22282c; --grid: #252b30; --accent: #e3685c; --kerb-white: #e9ecef;
+  --now: #4a92ea; --now-soft: rgba(74, 146, 234, .28); --now-worst: rgba(74, 146, 234, .11);
+  --ok-zone: rgba(87, 194, 134, .10);
+  --good: #57c286; --good-bg: #15301f; --warn: #e3a94f; --warn-bg: #33270f; --bad: #f0857c; --bad-bg: #3a1a17;
+  --neutral: #a6aeb6; --neutral-bg: #24292e; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #101315; --surface: #171b1e; --ink: #eceff1; --ink2: #b8c0c6; --muted: #8a939a;
+  --line: #2c3237; --line2: #22282c; --grid: #252b30; --accent: #e3685c; --kerb-white: #e9ecef;
+  --now: #4a92ea; --now-soft: rgba(74, 146, 234, .28); --now-worst: rgba(74, 146, 234, .11);
+  --ok-zone: rgba(87, 194, 134, .10);
+  --good: #57c286; --good-bg: #15301f; --warn: #e3a94f; --warn-bg: #33270f; --bad: #f0857c; --bad-bg: #3a1a17;
+  --neutral: #a6aeb6; --neutral-bg: #24292e; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.75; margin: 0; }
+.wrap { max-width: 940px; margin: 0 auto; padding-inline: 18px; padding-block: 28px 64px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.35; margin: 0; }
+h1 { font-size: clamp(26px, 4.6vw, 38px); }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; font-family: var(--f-body); font-weight: 700; }
+p { margin: 0; max-width: 68ch; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.kerbrule { height: 6px; border-radius: 1px; margin-block: 14px 18px; max-width: 220px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 22px, var(--kerb-white) 22px 44px); box-shadow: inset 0 0 0 1px var(--line); }
+.lede { font-size: 17px; color: var(--ink2); margin-top: 10px; }
+.meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px 18px; color: var(--muted); font-size: 13px; }
+section { margin-top: 44px; display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; min-width: 0; }
+.note { color: var(--muted); font-size: 13px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line2); }
+th { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+td.num, th.num { text-align: right; white-space: nowrap; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.s-meets { color: var(--good); background: var(--good-bg); }
+.s-borderline { color: var(--warn); background: var(--warn-bg); }
+.s-no { color: var(--bad); background: var(--bad-bg); }
+.s-unknown { color: var(--neutral); background: var(--neutral-bg); }
+.g { font-size: 11.5px; font-family: var(--f-mono); padding: 1px 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink2); white-space: nowrap; }
+ul.tight, ol.tight { margin: 0; padding-left: 1.25em; display: grid; gap: 6px; max-width: 72ch; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+.grid2 > * { min-width: 0; }
+.big { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.big > div { min-width: 0; border-left: 3px solid var(--now); padding: 2px 0 2px 12px; }
+.big .k { font-size: 12.5px; color: var(--muted); }
+.big .v { font-family: var(--f-mono); font-size: 22px; line-height: 1.3; }
+.big .s { font-size: 12.5px; color: var(--ink2); }
+
+/* tolerance ruler */
+.ruler { display: grid; gap: 4px; }
+.rrow { display: grid; grid-template-columns: minmax(0, var(--labw)) minmax(0, 1fr); gap: 4px 12px; align-items: center; }
+.rlabel { font-size: 13.5px; line-height: 1.45; display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: center; }
+.rlabel .req { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.track { position: relative; height: 26px; border-radius: 3px; background: transparent; }
+.track .okz { position: absolute; top: 4px; bottom: 4px; left: 0; background: var(--ok-zone); border-radius: 3px 0 0 3px; }
+.track .thr { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--ink2); }
+.track .thrband { position: absolute; top: 6px; bottom: 6px; border-left: 2px solid var(--ink2); border-right: 2px solid var(--ink2); background: repeating-linear-gradient(90deg, transparent 0 3px, var(--line) 3px 4px); }
+.nowcol { position: absolute; top: 0; bottom: 0; pointer-events: none; }
+.nowcol.typ { background: var(--now-soft); }
+.nowcol.worst { background: var(--now-worst); border-right: 1px dashed var(--now); }
+.rarea { position: relative; }
+.axis { position: relative; height: 22px; margin-left: calc(var(--labw) + 12px); font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+.axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; top: 2px; }
+.axis span::before { content: ""; position: absolute; left: 50%; top: -4px; height: 4px; border-left: 1px solid var(--line); }
+.gridline { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--grid); pointer-events: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink2); align-items: center; }
+.legend i { display: inline-block; width: 16px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 5px; }
+@media (max-width: 620px) {
+  .rrow { grid-template-columns: minmax(0, 1fr); }
+  .axis { margin-left: 0; }
+}
+
+/* budget bars */
+.brow { display: grid; gap: 3px; padding-block: 7px; border-bottom: 1px solid var(--line2); }
+.brow:last-child { border-bottom: 0; }
+.bhead { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; justify-content: space-between; }
+.bname { font-size: 14px; font-weight: 500; }
+.bval { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink2); }
+.bstrip { position: relative; height: 14px; }
+.bstrip .worst { position: absolute; top: 3px; bottom: 3px; background: var(--now-worst); border: 1px solid var(--now); border-left: 0; border-radius: 0 3px 3px 0; }
+.bstrip .typ { position: absolute; top: 0; bottom: 0; background: var(--now); border-radius: 3px; min-width: 3px; }
+.bstrip .typ.unknown { background: repeating-linear-gradient(45deg, var(--now) 0 4px, transparent 4px 8px); border: 1px solid var(--now); }
+.bnote { font-size: 12.5px; color: var(--muted); }
+
+/* video scene dots */
+.dotchart { position: relative; }
+.drow { display: grid; grid-template-columns: minmax(0, var(--dlabw)) minmax(0, 1fr); gap: 10px; align-items: center; padding-block: 3px; }
+.dlabel { font-family: var(--f-mono); font-size: 12px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dtrack { position: relative; height: 22px; }
+.dtrack .floor { position: absolute; top: 2px; bottom: 2px; background: var(--neutral-bg); }
+.dtrack .zero { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--muted); }
+.dot { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--now); border: 2px solid var(--surface); }
+.dot.train { background: var(--surface); border: 2px solid var(--now); }
+.dot.weak { background: var(--muted); }
+.dot.clip::after { content: "◂"; position: absolute; left: 12px; top: -5px; font-size: 11px; color: var(--muted); }
+.daxis { position: relative; height: 20px; margin-left: calc(var(--dlabw) + 10px); font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+.daxis span { position: absolute; transform: translateX(-50%); top: 2px; }
+@media (max-width: 520px) { :root { --dlabw: 108px; } }
+
+.when { display: grid; gap: 10px; }
+.sol { display: grid; grid-template-columns: 2.2em minmax(0, 1fr); gap: 2px 10px; padding-block: 10px; border-bottom: 1px solid var(--line2); }
+.sol:last-child { border-bottom: 0; }
+.sol .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 1px; }
+.sol .t { font-weight: 700; font-size: 14.5px; }
+.sol .d { grid-column: 2; font-size: 13.5px; color: var(--ink2); }
+.sol .m { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--muted); }
+.sol .m b { color: var(--ink2); font-weight: 500; }
+details summary { cursor: pointer; font-size: 13px; color: var(--ink2); }
+details[open] summary { margin-bottom: 8px; }
+summary:focus-visible { outline: 2px solid var(--now); outline-offset: 2px; }
+.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; max-width: 290px; z-index: 10; }
+footer { margin-top: 48px; font-size: 12.5px; color: var(--muted); display: grid; gap: 6px; }
+@media (max-width: 560px) { body { font-size: 14.5px; } th, td { padding: 7px 7px; } }
+</style>
+<style>
+/* additions for the event report: event strips (one row per event type × day), per-lap offset bars, 2×2 agreement tables */
+.strip { display: grid; grid-template-columns: minmax(0, var(--labw)) minmax(0, 1fr); gap: 4px 12px; align-items: center; padding-block: 6px; border-bottom: 1px solid var(--line2); }
+.strip:last-of-type { border-bottom: 0; }
+.slabel { font-size: 13.5px; line-height: 1.45; display: grid; gap: 1px; }
+.slabel .st { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.strack { position: relative; height: 34px; }
+.strack .band { position: absolute; top: 9px; bottom: 9px; background: var(--now-soft); border-radius: 3px; }
+.strack .zero { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--muted); }
+.strack .med { position: absolute; top: 4px; bottom: 4px; width: 3px; margin-left: -1.5px; background: var(--ink); border-radius: 1px; }
+.strack .ev { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--now); opacity: .75; }
+.strack .ev.out { background: var(--bad); opacity: .9; }
+.saxis { position: relative; height: 22px; margin-left: calc(var(--labw) + 12px); font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+.saxis span { position: absolute; transform: translateX(-50%); top: 2px; white-space: nowrap; }
+.lbars { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; align-items: end; height: 150px; padding-top: 8px; }
+.lbar { display: grid; justify-items: center; align-content: end; gap: 3px; height: 100%; min-width: 0; }
+.lbar .b { width: 70%; max-width: 34px; background: var(--now); border-radius: 3px 3px 0 0; }
+.lbar .b.est { background: repeating-linear-gradient(45deg, var(--now) 0 4px, transparent 4px 8px); border: 1px solid var(--now); border-bottom: 0; }
+.lbar .v { font-family: var(--f-mono); font-size: 11px; color: var(--ink2); }
+.lbar .x { font-family: var(--f-mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+.cm { border-collapse: collapse; font-size: 13.5px; width: auto; }
+.cm th, .cm td { border: 1px solid var(--line); padding: 6px 12px; text-align: center; }
+.cm td.ok { background: var(--good-bg); color: var(--good); font-weight: 700; }
+.cm td.ng { background: var(--bad-bg); color: var(--bad); font-weight: 700; }
+.cmwrap { display: flex; flex-wrap: wrap; gap: 18px; }
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.flow > div { min-width: 0; border-top: 3px solid var(--accent); padding-top: 8px; }
+.flow h3 { margin-bottom: 4px; }
+.flow p { font-size: 13.5px; color: var(--ink2); }
+@media (max-width: 620px) { .strip { grid-template-columns: minmax(0, 1fr); } .saxis { margin-left: 0; } .lbars { gap: 3px; } .lbar .x { font-size: 10px; } }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">ReplayViewer · Fuji Speedway · 2020-07-29 wet / 07-30 dry · 2026-10-22</div>
+  <h1>動画・Gを正解にした3DCG検証</h1>
+  <div class="kerbrule" aria-hidden="true"></div>
+  <p class="lede">車載動画とGで分かる3つの瞬間（縁石に乗った瞬間、クリッピングポイント、ステアの切り始め）を正解として、3DCGのずれを測りました。<b>3DCGの時刻はロガーと0.03秒以内で合っていました。</b>動画と並べたときに見えていた前後のずれの主因は、3DCGではなく<b>動画側の時刻合わせ（約0.21秒遅れ）</b>でした。それを直すと、3DCGのずれは前後に偏りがなく1回ごとに典型1 m前後、横は典型0.3〜0.45 mです。</p>
+  <div class="meta"><span>対象: 7/29 4周・7/30 6周の内側縁石14か所（140通過）</span><span>独立した再計算で主要な結論を確認済み</span></div>
+</header>
+
+<section aria-labelledby="h-key">
+  <h2 id="h-key">結論</h2>
+  <div class="card big">
+    <div><div class="k">動画の時刻合わせのずれ</div><div class="v">0.21 秒</div><div class="s">動画のLAP表示で合わせた時刻が、映像の中身より0.21秒遅れていた（7/30、周ごと0.14〜0.27秒）</div></div>
+    <div><div class="k">3DCGの時刻</div><div class="v">±0.03 秒</div><div class="s">切り始め・最低速度・ヨーレートの山で、ロガー（ジャイロ）と一致。3DCGをずらす必要はない</div></div>
+    <div><div class="k">前後のずれ</div><div class="v">偏り ≤1 m</div><div class="s">クリッピング・切り始めで典型1.0〜1.4 m、90%値3〜4 m。決まった方向への偏りはない</div></div>
+    <div><div class="k">横のずれ</div><div class="v">0.3〜0.45 m</div><div class="s">縁石に乗った瞬間のタイヤと縁石の距離（典型）。方向は左右まちまち</div></div>
+  </div>
+  <div class="card">
+    <ul class="tight">
+      <li>これまでの動画との比較資料では、3DCGが映像より約0.2秒前の瞬間を描いていました。100 km/hなら約6 m手前に見えていたことになります。周ごとの補正値を入れれば、これは消せます。</li>
+      <li>3DCGの車全体を前後や横に一律でずらす補正は、1周ずつ外して確かめても改善しませんでした。残っているずれは、場所ごと・1回ごとにばらつくGPSとコース線の誤差です。</li>
+      <li>縁石1か所（コカ・コーラ、k1）だけ、7/30の全周で3DCGの接触が約0.15秒遅く、短く出ます。この縁石の線か、この場所のGPSを個別に確認する必要があります。</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-truth">
+  <h2 id="h-truth">正解の決め方</h2>
+  <div class="card flow">
+    <div><h3>縁石に乗った瞬間</h3><p>ロガーの上下G（50 Hz）とロール方向の振動が急に増えた時刻。動画の音声（48 kHz）の縁石の音と、映像の揺れで確かめた。</p></div>
+    <div><h3>クリッピングポイント</h3><p>動画で内側の縁石の先端が画面の決まった高さを通る時刻。最低速度・横Gの山・ヨーレートの山とも照合した。</p></div>
+    <div><h3>ステアの切り始め</h3><p>ジャイロのヨーレートが立ち上がる時刻（ステア角の切り始めも記録）。3DCGで描かれた車の向きが変わり始める時刻と比べた。</p></div>
+    <div><h3>動画とロガーの時計合わせ</h3><p>映像の回転（画面の流れ）とジャイロ、縁石の音と振動を突き合わせて、周ごとの時刻差を求めた。</p></div>
+  </div>
+  <p class="note">3DCGの値は、公開版のビューアと同じ計算（GPSの補正・補間・車の向き・タイヤ位置）を作り直して出しました。別の担当が独自に実装し直しても、縁石での距離は2 mm以内、時刻は1 ms以内で一致しました。</p>
+</section>
+
+<section aria-labelledby="h-time">
+  <h2 id="h-time">動画の時刻合わせ</h2>
+  <p>動画のLAPタイマー表示を読んで合わせた時刻に、何秒足せば映像の中身とロガーが合うかを、周ごとに示します。斜線の7/29は雨とワイパーで映像の回転が取りにくく、推定値です（0.17〜0.30秒の幅）。</p>
+  <div class="card">
+    <div class="lbars" id="lbars"></div>
+    <p class="note" style="margin-top:8px">7/30は、独立した再計算でも 0.206／0.247／0.212／0.229／0.148／0.265 秒と一致しました。</p>
+  </div>
+  <div class="card">
+    <h3>縁石の振動（ロガー）と縁石の音（動画）の時刻差</h3>
+    <div id="strip-audio"></div>
+    <div class="saxis" id="axis-audio"></div>
+    <p class="note" style="margin-top:6px">同じ判定基準（立ち上がりの50%）で比べた24件。補正なしでは振動が音より0.21秒遅く出ます。周ごとの補正を入れると中央値−0.004秒、典型0.05秒まで揃います（1周抜きでも同じ）。</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-gap">
+  <h2 id="h-gap">正解の瞬間での3DCGのずれ</h2>
+  <p>点が1回ごとの値、黒い縦線が中央値、青い帯が10〜90%の範囲です。前後の＋は「3DCGが正解より先にいる」、横の＋は「3DCGでは、まだ縁石に乗っていない／縁石から遠い」です。</p>
+  <div class="card">
+    <h3>前後方向（m）</h3>
+    <div id="strip-along"></div>
+    <div class="saxis" id="axis-along"></div>
+  </div>
+  <div class="card">
+    <h3>横方向（m）</h3>
+    <div id="strip-lat"></div>
+    <div class="saxis" id="axis-lat"></div>
+  </div>
+  <div class="card scroll">
+    <table id="gap-table"><thead><tr><th>正解の瞬間</th><th>日</th><th class="num">件数</th><th class="num">中央値</th><th class="num">典型（|値|の中央値）</th><th class="num">90%値</th></tr></thead><tbody></tbody></table>
+    <p class="note" style="margin-top:8px">縁石接触の前後のずれが大きいのは、縁石へ浅い角度で近づくためです。横の0.3 mの差が、前後では数mの差になります。縁石接触の「乗った瞬間」の定義（しきい値の立ち上がり／50%の立ち上がり）で、前後の偏りは約0.1秒（約2 m）、横の中央値は+0.23 m→+0.04 mに変わります。クリッピングポイントの値は、カメラの尺度（焦点距離×高さ）を仕様の画角84°相当（f 711 px、高さ1.25 m）として求めたもので、カメラが未校正のぶん不確かさがあります。</p>
+    <p class="note" style="margin-top:6px">縁石接触の前後のずれ（7/30）は、3DCGのタイヤが縁石の線を越えた20件だけで求めています。主な接触27件のうち残りの7件は、3DCGでは線に届かず（最も近づいたところで0.02〜2.0 m、中央値0.20 m）、前後のずれを出せません。この7件も、横のずれ（27件）と下の「乗ったかどうか」の表には含まれています。</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-yn">
+  <h2 id="h-yn">縁石に乗ったかどうかの一致</h2>
+  <div class="card">
+    <div class="cmwrap" id="cms"></div>
+    <ul class="tight" style="margin-top:12px">
+      <li>本当は乗ったのに3DCGでは乗らない（見落とし）: 3DCGのタイヤは縁石の手前、中央値0.26 mで止まっています。</li>
+      <li>本当は乗っていないのに3DCGでは乗る: 縁石への食い込みは中央値0.34 mです。軽く触れただけで振動が出なかった場合も、ここに数えられます。</li>
+      <li>1か所だけ一貫したずれ: コカ・コーラ（k1）は7/30の全周で、3DCGの接触が約0.15秒遅く始まり、乗っている時間も短く描かれます。</li>
+    </ul>
+    <p class="note" style="margin-top:8px">7/30の不一致21件のうち9件は、3DCGのタイヤが縁石の線から0.25 m以内（0.30 m以内なら12件）の僅差で、横の典型誤差（0.3〜0.45 m）の範囲です。この0.25 mを許容して数えると一致は86%（7/29は93%）です。ただし一致した通過にも線際のものがあり、線から0.25 mより離れた通過（60件）だけで数えると一致は80%です。</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-fix">
+  <h2 id="h-fix">補正を試した結果</h2>
+  <p>どの補正も、1周を外して残りの周で値を決め、外した周で効くかを確かめました。</p>
+  <div class="card scroll">
+    <table>
+      <thead><tr><th>補正</th><th>値</th><th>外した周での効果</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td>動画の時刻合わせに周ごとの時刻差を足す</td><td class="mono">7/30 0.14〜0.27秒、7/29 0.17〜0.23秒（推定）</td><td>振動と音の時刻差 典型0.21秒→0.05秒。クリッピング時刻の周ごとの癖も消える</td><td><span class="chip s-meets">● 採用を推奨</span></td></tr>
+        <tr><td>動画比較用のカメラの尺度を仕様の画角に合わせる</td><td class="mono">f 711 px・高さ1.25 m</td><td>クリッピング・縁石の端・接触の時刻が7/30で±0.03秒以内に揃う（1周抜きの検証ではない）</td><td><span class="chip s-meets">● 採用を推奨</span></td></tr>
+        <tr><td>3DCGの時刻をずらす</td><td class="mono">—</td><td>3DCGの向きはジャイロと0.00〜0.05秒で一致しており、ずらすと崩れる</td><td><span class="chip s-no">✕ 不要</span></td></tr>
+        <tr><td>3DCGの車を一律で前後にずらす</td><td class="mono">前へ約0.6 m</td><td>縁石接触の前後ずれ 典型3.3 m→3.9 m（悪化）</td><td><span class="chip s-no">✕ 効かない</span></td></tr>
+        <tr><td>3DCGの車を一律で縁石側へ寄せる</td><td class="mono">0.18〜0.31 m</td><td>中央値は0に近づくが、典型0.43→0.54 m（悪化）。乗った/乗らないの一致 75%→70%</td><td><span class="chip s-no">✕ 効かない</span></td></tr>
+        <tr><td>縁石ごとの補正（前後・横）</td><td class="mono">縁石ごと</td><td>前後 典型3.3→2.9 m だが外れ値が増える。クリッピングでは悪化</td><td><span class="chip s-borderline">▲ k1だけ個別確認</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="h-mean">
+  <h2 id="h-mean">これで何が言えるか</h2>
+  <div class="card">
+    <ul class="tight">
+      <li><b>3DCGは「いつ」については正しい。</b>切り始め・最低速度・縁石に乗る瞬間の時刻は、ロガーと数十ミリ秒で合っています。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。</li>
+      <li><b>「どこ」については、1回ごとに前後1 m前後・横0.3〜0.45 mの誤差がある。</b>方向の偏りがないので、一律の補正では消せません。10/09の見積もり（横 約0.5 m、前後 1〜3 m）を、正解の瞬間で裏付けた形です。</li>
+      <li><b>縁石に乗ったかどうかの判定は、3DCGでは75%（7/30）しか合わない。</b>ただし食い違い21件のうち9件は縁石の線から0.25 m以内の僅差で、この許容で数えると86%です。それでも、縁石に乗ったかどうかは、3DCGの位置よりロガーの振動で判定する方が確実です。</li>
+      <li><b>周どうしの比較は信頼できる。</b>同じ縁石での「縁石までの距離」の周ごとの違いは、動画と3DCGで相関0.89（7/30）・0.96（7/29）でした。周によるラインの違いは、3DCGで正しく再現されています。</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-next">
+  <h2 id="h-next">次の一手</h2>
+  <div class="card">
+    <ol class="tight">
+      <li>動画と3DCGの比較資料・比較機能に、周ごとの時刻差（約0.21秒）を入れる。今のデータですぐできて、効果がはっきりしています。</li>
+      <li>コカ・コーラ（k1）の縁石線と、その場所のGPSを個別に確認する。</li>
+      <li>レンズを校正する（同じカメラでチェッカーボード）。クリッピングポイントの絶対値と、動画から測る横位置の尺度が決まります。今回の映像の回転からも、焦点距離はおよそ540〜790 pxと出ており、10/03の推定値472 pxより大きいです。</li>
+      <li>横の0.3〜0.45 mを詰めるには、前回の判定資料と同じく、動画による横位置の計測（校正のあと）か、次の走行日の高精度GNSSが必要です。</li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="h-lim">
+  <h2 id="h-lim">限界</h2>
+  <div class="card">
+    <ul class="tight">
+      <li>7/29は雨で材料が少なく（主な縁石接触2件、クリッピング14件）、動画の時刻差も推定です（0.17〜0.30秒）。統計の多くは7/30によるものです。</li>
+      <li>「縁石に乗った瞬間」は、タイヤが縁石区分データのブロック線（2019年の航空写真から作成）を越えた時に振動が始まる、と仮定しています。2020年の縁石と同じかは確かめていません。</li>
+      <li>クリッピングポイントの絶対値は、カメラの尺度と路面の勾配・車の前後の傾きに左右されます（いくつかの縁石で0.1〜0.3秒）。周どうしの差はこの影響を受けません。</li>
+      <li>ロガーのジャイロのヨーレートは、振幅がGPSから求めた向きの変化や横G÷速度より約14〜18%小さく出ています（全10周で同じ。原因は未確認）。時刻の比較は振幅によらず、振幅を合わせて計算し直しても切り始めの時刻差は変わりませんでした。</li>
+      <li>動画の場面を人が目で一つずつ確かめたのは一部だけです。</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-basis">
+  <h2 id="h-basis">根拠</h2>
+  <div class="card">
+    <ul class="tight">
+      <li>対象: 公開済みコミット 7ebf89b のビューアの計算。作業ツリーの未コミット変更（推定カメラ・縁石端の路面修正）は使っていません。</li>
+      <li>数値と計算スクリプト: artifacts/kerb-event-truth-2026-10-22/（T1 ロガーのイベント、T2 動画と音声、T3 動画での縁石、T4 3DCGの再現、join 突き合わせ、verify 独立の再計算）。</li>
+      <li>車載動画・音声・XRKはローカル参照のみで扱い、このページに映像や音は含めていません。</li>
+      <li>独立の再計算での訂正: 縁石接触の前後の偏りは「乗った瞬間」の定義で約2 m変わる。k1のずれの大きさは当初の見積もりより小さい（約0.15秒）。7/29の動画時刻差は0.17〜0.30秒の幅で確定しない。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div>コースの縁石線: VIRTUAL SHIZUOKA 2019 LP オルソ 20 cm（静岡県、CC BY 4.0）から作成。</div>
+  <div>関連: docs/fuji-position-gap-status-2026-10-09.html、docs/fuji-improvement-evaluation-2026-10-02.html。</div>
+</footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D = {"audio": [{"s": "7/29", "lap": 3, "kerb": "k7", "before": 0.198, "after": -0.02}, {"s": "7/30", "lap": 1, "kerb": "k1", "before": 0.252, "after": 0.05}, {"s": "7/30", "lap": 1, "kerb": "k15", "before": 0.291, "after": 0.089}, {"s": "7/30", "lap": 1, "kerb": "k3", "before": 0.308, "after": 0.106}, {"s": "7/30", "lap": 1, "kerb": "k21", "before": 0.093, "after": -0.109}, {"s": "7/30", "lap": 2, "kerb": "k13", "before": 0.21, "after": -0.031}, {"s": "7/30", "lap": 2, "kerb": "k1", "before": 0.207, "after": -0.034}, {"s": "7/30", "lap": 2, "kerb": "k15", "before": 0.313, "after": 0.072}, {"s": "7/30", "lap": 2, "kerb": "kDunlopR", "before": 0.323, "after": 0.082}, {"s": "7/30", "lap": 2, "kerb": "k7", "before": 0.287, "after": 0.046}, {"s": "7/30", "lap": 3, "kerb": "k1", "before": 0.16, "after": -0.045}, {"s": "7/30", "lap": 4, "kerb": "k13", "before": 0.23, "after": 0.013}, {"s": "7/30", "lap": 4, "kerb": "k1", "before": 0.177, "after": -0.04}, {"s": "7/30", "lap": 4, "kerb": "k15", "before": 0.06, "after": -0.157}, {"s": "7/30", "lap": 4, "kerb": "k7", "before": 0.157, "after": -0.06}, {"s": "7/30", "lap": 5, "kerb": "k1", "before": 0.109, "after": -0.026}, {"s": "7/30", "lap": 5, "kerb": "k7", "before": 0.158, "after": 0.023}, {"s": "7/30", "lap": 5, "kerb": "k10", "before": 0.19, "after": 0.055}, {"s": "7/30", "lap": 6, "kerb": "k1", "before": 0.222, "after": -0.052}, {"s": "7/30", "lap": 6, "kerb": "k3", "before": 0.323, "after": 0.049}, {"s": "7/30", "lap": 6, "kerb": "kDunlopR", "before": 0.078, "after": -0.196}, {"s": "7/30", "lap": 6, "kerb": "k10", "before": 0.307, "after": 0.033}, {"s": "7/30", "lap": 3, "kerb": "k11", "before": -0.064, "after": -0.269}, {"s": "7/30", "lap": 6, "kerb": "k2", "before": 0.302, "after": 0.028}], "contacts": [{"s": "7/29", "lap": 3, "kerb": "k7", "name": "ダンロップ左", "prim": true, "gap": 0.098, "dS": -2.0, "cg": true, "conf": "high"}, {"s": "7/29", "lap": 4, "kerb": "k13", "name": "1コーナー", "prim": false, "gap": 6.215, "dS": null, "cg": false, "conf": "low"}, {"s": "7/29", "lap": 4, "kerb": "k7", "name": "ダンロップ左", "prim": false, "gap": 1.167, "dS": null, "cg": false, "conf": "low"}, {"s": "7/29", "lap": 4, "kerb": "k24", "name": "最終コーナー", "prim": true, "gap": 1.191, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 1, "kerb": "k13", "name": "1コーナー", "prim": true, "gap": -0.14, "dS": 2.99, "cg": true, "conf": "medium"}, {"s": "7/30", "lap": 1, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": 1.092, "dS": -2.97, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 1, "kerb": "k15", "name": "1500m", "prim": true, "gap": 0.175, "dS": -1.87, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 1, "kerb": "k3", "name": "ヘアピン", "prim": true, "gap": -0.665, "dS": 3.98, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 1, "kerb": "kDunlopR", "name": "ダンロップ右", "prim": true, "gap": 0.532, "dS": null, "cg": false, "conf": "medium"}, {"s": "7/30", "lap": 1, "kerb": "k21", "name": "3250m", "prim": true, "gap": -0.43, "dS": 9.2, "cg": true, "conf": "medium"}, {"s": "7/30", "lap": 2, "kerb": "k13", "name": "1コーナー", "prim": true, "gap": -0.596, "dS": 3.57, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 2, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": 3.084, "dS": -9.24, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 2, "kerb": "k15", "name": "1500m", "prim": false, "gap": null, "dS": -27.52, "cg": true, "conf": "medium"}, {"s": "7/30", "lap": 2, "kerb": "k15", "name": "1500m", "prim": false, "gap": -0.392, "dS": 4.41, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 2, "kerb": "kDunlopR", "name": "ダンロップ右", "prim": true, "gap": -0.312, "dS": 1.96, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 2, "kerb": "k7", "name": "ダンロップ左", "prim": true, "gap": 0.084, "dS": -0.63, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 2, "kerb": "k21", "name": "3250m", "prim": true, "gap": 1.982, "dS": null, "cg": false, "conf": "medium"}, {"s": "7/30", "lap": 2, "kerb": "k10", "name": "3540m", "prim": false, "gap": null, "dS": -21.12, "cg": true, "conf": "medium"}, {"s": "7/30", "lap": 2, "kerb": "k10", "name": "3540m", "prim": true, "gap": 0.3, "dS": -2.75, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 2, "kerb": "k23", "name": "3600m", "prim": false, "gap": null, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 3, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": 3.884, "dS": -11.02, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 3, "kerb": "k3", "name": "ヘアピン", "prim": true, "gap": -0.121, "dS": 1.28, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 3, "kerb": "k24", "name": "最終コーナー", "prim": true, "gap": 1.472, "dS": -6.86, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 4, "kerb": "k13", "name": "1コーナー", "prim": true, "gap": 0.113, "dS": -0.55, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 4, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": 2.713, "dS": -7.67, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 4, "kerb": "k15", "name": "1500m", "prim": false, "gap": 4.834, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 4, "kerb": "k19", "name": "2650m", "prim": false, "gap": null, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 4, "kerb": "k7", "name": "ダンロップ左", "prim": true, "gap": 0.32, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 4, "kerb": "k20", "name": "3090m", "prim": false, "gap": -0.78, "dS": 7.65, "cg": true, "conf": "low"}, {"s": "7/30", "lap": 5, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": 2.289, "dS": -6.92, "cg": true, "conf": "medium"}, {"s": "7/30", "lap": 5, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": 0.715, "dS": 13.88, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 5, "kerb": "k7", "name": "ダンロップ左", "prim": true, "gap": 0.118, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 5, "kerb": "k10", "name": "3540m", "prim": true, "gap": 0.596, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 6, "kerb": "k1", "name": "コカ・コーラ", "prim": true, "gap": -0.668, "dS": 3.91, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 6, "kerb": "k3", "name": "ヘアピン", "prim": true, "gap": 0.053, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 6, "kerb": "kDunlopR", "name": "ダンロップ右", "prim": true, "gap": 0.226, "dS": null, "cg": false, "conf": "high"}, {"s": "7/30", "lap": 6, "kerb": "k10", "name": "3540m", "prim": true, "gap": -0.278, "dS": 2.33, "cg": true, "conf": "high"}, {"s": "7/30", "lap": 6, "kerb": "k24", "name": "最終コーナー", "prim": true, "gap": 0.303, "dS": -3.04, "cg": true, "conf": "high"}], "clip": [{"s": "7/29", "lap": 1, "kerb": "k1", "name": "コカ・コーラ", "dS": -1.56, "dt": 0.058, "dLat": 0.24, "dSnom": 2.21, "dSoverlay": -2.56}, {"s": "7/29", "lap": 1, "kerb": "k20", "name": "3090m", "dS": 1.11, "dt": -0.055, "dLat": -0.82, "dSnom": 7.6, "dSoverlay": 4.02}, {"s": "7/29", "lap": 1, "kerb": "k24", "name": "最終コーナー", "dS": 1.44, "dt": -0.072, "dLat": -1.04, "dSnom": 4.16, "dSoverlay": 0.62}, {"s": "7/29", "lap": 2, "kerb": "k1", "name": "コカ・コーラ", "dS": -0.91, "dt": 0.032, "dLat": 0.46, "dSnom": 2.72, "dSoverlay": -3.97}, {"s": "7/29", "lap": 2, "kerb": "k19", "name": "2650m", "dS": -2.77, "dt": 0.069, "dLat": -0.61, "dSnom": 13.17, "dSoverlay": 3.78}, {"s": "7/29", "lap": 2, "kerb": "k21", "name": "3250m", "dS": 1.77, "dt": -0.082, "dLat": 0.46, "dSnom": 7.43, "dSoverlay": 2.39}, {"s": "7/29", "lap": 2, "kerb": "k9", "name": "3350m", "dS": 0.85, "dt": -0.034, "dLat": -0.31, "dSnom": 7.42, "dSoverlay": 1.57}, {"s": "7/29", "lap": 3, "kerb": "k3", "name": "ヘアピン", "dS": 2.4, "dt": -0.12, "dLat": 0.51, "dSnom": 5.41, "dSoverlay": 1.04}, {"s": "7/29", "lap": 3, "kerb": "k19", "name": "2650m", "dS": -1.33, "dt": 0.03, "dLat": -0.16, "dSnom": 7.9, "dSoverlay": -1.77}, {"s": "7/29", "lap": 3, "kerb": "k21", "name": "3250m", "dS": 1.3, "dt": -0.059, "dLat": 0.6, "dSnom": 4.79, "dSoverlay": -0.02}, {"s": "7/29", "lap": 3, "kerb": "k24", "name": "最終コーナー", "dS": -0.04, "dt": 0.002, "dLat": -0.46, "dSnom": 2.88, "dSoverlay": -1.57}, {"s": "7/29", "lap": 4, "kerb": "k1", "name": "コカ・コーラ", "dS": -5.15, "dt": 0.201, "dLat": 0.62, "dSnom": -1.41, "dSoverlay": -5.79}, {"s": "7/29", "lap": 4, "kerb": "k19", "name": "2650m", "dS": -0.21, "dt": 0.005, "dLat": -0.63, "dSnom": 3.03, "dSoverlay": -4.26}, {"s": "7/29", "lap": 4, "kerb": "k21", "name": "3250m", "dS": 13.68, "dt": -0.659, "dLat": 0.19, "dSnom": 17.38, "dSoverlay": 13.83}, {"s": "7/30", "lap": 1, "kerb": "k1", "name": "コカ・コーラ", "dS": 0.45, "dt": -0.013, "dLat": -0.09, "dSnom": 4.24, "dSoverlay": -2.78}, {"s": "7/30", "lap": 1, "kerb": "k3", "name": "ヘアピン", "dS": 0.1, "dt": -0.004, "dLat": -1.11, "dSnom": 0.73, "dSoverlay": -4.18}, {"s": "7/30", "lap": 1, "kerb": "k18", "name": "2420m", "dS": 0.31, "dt": -0.008, "dLat": 0.1, "dSnom": 2.26, "dSoverlay": -5.49}, {"s": "7/30", "lap": 1, "kerb": "k7", "name": "ダンロップ左", "dS": -4.11, "dt": 0.207, "dLat": -1.07, "dSnom": -2.9, "dSoverlay": -6.9}, {"s": "7/30", "lap": 1, "kerb": "k20", "name": "3090m", "dS": 2.27, "dt": -0.131, "dLat": 0.84, "dSnom": 7.69, "dSoverlay": 4.18}, {"s": "7/30", "lap": 1, "kerb": "k9", "name": "3350m", "dS": -7.2, "dt": 0.272, "dLat": 0.65, "dSnom": 0.32, "dSoverlay": -5.03}, {"s": "7/30", "lap": 1, "kerb": "k24", "name": "最終コーナー", "dS": 1.02, "dt": -0.043, "dLat": -1.32, "dSnom": 4.96, "dSoverlay": 0.17}, {"s": "7/30", "lap": 2, "kerb": "k1", "name": "コカ・コーラ", "dS": 0.14, "dt": -0.004, "dLat": 0.41, "dSnom": 3.86, "dSoverlay": -4.52}, {"s": "7/30", "lap": 2, "kerb": "k15", "name": "1500m", "dS": 7.79, "dt": -0.218, "dLat": -0.12, "dSnom": 13.3, "dSoverlay": 4.68}, {"s": "7/30", "lap": 2, "kerb": "k9", "name": "3350m", "dS": -1.93, "dt": 0.07, "dLat": -0.68, "dSnom": 4.73, "dSoverlay": -1.93}, {"s": "7/30", "lap": 2, "kerb": "k24", "name": "最終コーナー", "dS": -1.12, "dt": 0.051, "dLat": -0.83, "dSnom": 0.93, "dSoverlay": -4.38}, {"s": "7/30", "lap": 3, "kerb": "k1", "name": "コカ・コーラ", "dS": -0.09, "dt": 0.003, "dLat": 0.46, "dSnom": 3.72, "dSoverlay": -2.64}, {"s": "7/30", "lap": 3, "kerb": "k15", "name": "1500m", "dS": 1.2, "dt": -0.035, "dLat": -0.78, "dSnom": 5.29, "dSoverlay": -1.75}, {"s": "7/30", "lap": 3, "kerb": "k7", "name": "ダンロップ左", "dS": -4.09, "dt": 0.222, "dLat": -2.04, "dSnom": -2.8, "dSoverlay": -6.58}, {"s": "7/30", "lap": 3, "kerb": "k20", "name": "3090m", "dS": 0.38, "dt": -0.018, "dLat": 0.98, "dSnom": 6.09, "dSoverlay": 1.8}, {"s": "7/30", "lap": 3, "kerb": "k21", "name": "3250m", "dS": -1.09, "dt": 0.045, "dLat": -0.5, "dSnom": 4.13, "dSoverlay": -0.82}, {"s": "7/30", "lap": 3, "kerb": "k9", "name": "3350m", "dS": -1.87, "dt": 0.066, "dLat": 0.03, "dSnom": 5.91, "dSoverlay": 0.11}, {"s": "7/30", "lap": 3, "kerb": "k23", "name": "3600m", "dS": 0.63, "dt": -0.026, "dLat": 0.3, "dSnom": 5.98, "dSoverlay": 1.02}, {"s": "7/30", "lap": 3, "kerb": "k24", "name": "最終コーナー", "dS": 0.47, "dt": -0.02, "dLat": -1.12, "dSnom": 1.87, "dSoverlay": -2.98}, {"s": "7/30", "lap": 4, "kerb": "k1", "name": "コカ・コーラ", "dS": 0.58, "dt": -0.017, "dLat": 0.31, "dSnom": 4.26, "dSoverlay": -3.08}, {"s": "7/30", "lap": 4, "kerb": "k3", "name": "ヘアピン", "dS": 0.89, "dt": -0.038, "dLat": 0.7, "dSnom": 1.42, "dSoverlay": -3.64}, {"s": "7/30", "lap": 4, "kerb": "k18", "name": "2420m", "dS": -1.05, "dt": 0.027, "dLat": -0.34, "dSnom": 2.77, "dSoverlay": -5.69}, {"s": "7/30", "lap": 4, "kerb": "k7", "name": "ダンロップ左", "dS": -0.08, "dt": 0.004, "dLat": -0.52, "dSnom": 1.38, "dSoverlay": -2.83}, {"s": "7/30", "lap": 4, "kerb": "k9", "name": "3350m", "dS": -2.14, "dt": 0.079, "dLat": -0.7, "dSnom": 5.37, "dSoverlay": -0.52}, {"s": "7/30", "lap": 4, "kerb": "k24", "name": "最終コーナー", "dS": 2.8, "dt": -0.123, "dLat": -1.07, "dSnom": 5.62, "dSoverlay": 0.68}, {"s": "7/30", "lap": 5, "kerb": "k1", "name": "コカ・コーラ", "dS": -0.58, "dt": 0.017, "dLat": 0.27, "dSnom": 3.07, "dSoverlay": -1.53}, {"s": "7/30", "lap": 5, "kerb": "k15", "name": "1500m", "dS": -1.15, "dt": 0.032, "dLat": 0.08, "dSnom": 3.04, "dSoverlay": -1.79}, {"s": "7/30", "lap": 5, "kerb": "k3", "name": "ヘアピン", "dS": -1.85, "dt": 0.079, "dLat": -0.01, "dSnom": -0.3, "dSoverlay": -3.46}, {"s": "7/30", "lap": 5, "kerb": "k19", "name": "2650m", "dS": -7.62, "dt": 0.17, "dLat": -0.14, "dSnom": 3.36, "dSoverlay": -2.69}, {"s": "7/30", "lap": 5, "kerb": "k7", "name": "ダンロップ左", "dS": 0.0, "dt": -0.0, "dLat": -0.59, "dSnom": 1.78, "dSoverlay": -0.89}, {"s": "7/30", "lap": 5, "kerb": "k20", "name": "3090m", "dS": 3.6, "dt": -0.169, "dLat": -0.54, "dSnom": 9.15, "dSoverlay": 6.27}, {"s": "7/30", "lap": 5, "kerb": "k21", "name": "3250m", "dS": 1.83, "dt": -0.073, "dLat": 0.37, "dSnom": 5.76, "dSoverlay": 2.38}, {"s": "7/30", "lap": 5, "kerb": "k9", "name": "3350m", "dS": 0.99, "dt": -0.035, "dLat": -0.87, "dSnom": 8.57, "dSoverlay": 4.76}, {"s": "7/30", "lap": 5, "kerb": "k24", "name": "最終コーナー", "dS": 2.0, "dt": -0.088, "dLat": -0.84, "dSnom": 4.44, "dSoverlay": 1.36}, {"s": "7/30", "lap": 6, "kerb": "k1", "name": "コカ・コーラ", "dS": 1.07, "dt": -0.032, "dLat": 0.05, "dSnom": 4.7, "dSoverlay": -4.5}, {"s": "7/30", "lap": 6, "kerb": "k3", "name": "ヘアピン", "dS": -0.91, "dt": 0.04, "dLat": -0.57, "dSnom": 0.48, "dSoverlay": -5.77}, {"s": "7/30", "lap": 6, "kerb": "k18", "name": "2420m", "dS": 0.43, "dt": -0.011, "dLat": -0.37, "dSnom": 4.2, "dSoverlay": -6.46}, {"s": "7/30", "lap": 6, "kerb": "k7", "name": "ダンロップ左", "dS": -1.65, "dt": 0.087, "dLat": -0.92, "dSnom": -0.66, "dSoverlay": -5.85}, {"s": "7/30", "lap": 6, "kerb": "k20", "name": "3090m", "dS": 1.37, "dt": -0.063, "dLat": -0.13, "dSnom": 6.06, "dSoverlay": 0.09}, {"s": "7/30", "lap": 6, "kerb": "k21", "name": "3250m", "dS": 3.15, "dt": -0.123, "dLat": 0.38, "dSnom": 4.63, "dSoverlay": -2.38}, {"s": "7/30", "lap": 6, "kerb": "k24", "name": "最終コーナー", "dS": 2.99, "dt": -0.125, "dLat": -0.77, "dSnom": 6.08, "dSoverlay": -0.48}], "turn": [{"s": "7/29", "lap": 1, "kerb": "k13", "name": "1コーナー", "dS": -0.84, "dt": 0.044}, {"s": "7/29", "lap": 1, "kerb": "k1", "name": "コカ・コーラ", "dS": -2.84, "dt": 0.097}, {"s": "7/29", "lap": 1, "kerb": "k15", "name": "1500m", "dS": -1.41, "dt": 0.044}, {"s": "7/29", "lap": 1, "kerb": "k3", "name": "ヘアピン", "dS": 0.55, "dt": -0.025}, {"s": "7/29", "lap": 1, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 0.23, "dt": -0.014}, {"s": "7/29", "lap": 1, "kerb": "k7", "name": "ダンロップ左", "dS": 1.18, "dt": -0.063}, {"s": "7/29", "lap": 1, "kerb": "k20", "name": "3090m", "dS": 0.68, "dt": -0.031}, {"s": "7/29", "lap": 1, "kerb": "k21", "name": "3250m", "dS": -0.69, "dt": 0.029}, {"s": "7/29", "lap": 1, "kerb": "k9", "name": "3350m", "dS": -0.01, "dt": 0.0}, {"s": "7/29", "lap": 1, "kerb": "k10", "name": "3540m", "dS": -0.9, "dt": 0.042}, {"s": "7/29", "lap": 2, "kerb": "k13", "name": "1コーナー", "dS": -3.19, "dt": 0.153}, {"s": "7/29", "lap": 2, "kerb": "k1", "name": "コカ・コーラ", "dS": -0.3, "dt": 0.01}, {"s": "7/29", "lap": 2, "kerb": "k15", "name": "1500m", "dS": -1.67, "dt": 0.051}, {"s": "7/29", "lap": 2, "kerb": "k3", "name": "ヘアピン", "dS": 0.82, "dt": -0.038}, {"s": "7/29", "lap": 2, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 0.12, "dt": -0.008}, {"s": "7/29", "lap": 2, "kerb": "k7", "name": "ダンロップ左", "dS": 1.66, "dt": -0.107}, {"s": "7/29", "lap": 2, "kerb": "k20", "name": "3090m", "dS": 0.39, "dt": -0.019}, {"s": "7/29", "lap": 2, "kerb": "k21", "name": "3250m", "dS": -3.44, "dt": 0.138}, {"s": "7/29", "lap": 2, "kerb": "k9", "name": "3350m", "dS": -1.26, "dt": 0.046}, {"s": "7/29", "lap": 2, "kerb": "k10", "name": "3540m", "dS": -3.95, "dt": 0.185}, {"s": "7/29", "lap": 3, "kerb": "k13", "name": "1コーナー", "dS": -2.29, "dt": 0.11}, {"s": "7/29", "lap": 3, "kerb": "k1", "name": "コカ・コーラ", "dS": -1.85, "dt": 0.068}, {"s": "7/29", "lap": 3, "kerb": "k3", "name": "ヘアピン", "dS": -3.06, "dt": 0.133}, {"s": "7/29", "lap": 3, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": -0.87, "dt": 0.048}, {"s": "7/29", "lap": 3, "kerb": "k7", "name": "ダンロップ左", "dS": 0.39, "dt": -0.024}, {"s": "7/29", "lap": 3, "kerb": "k20", "name": "3090m", "dS": -0.5, "dt": 0.026}, {"s": "7/29", "lap": 3, "kerb": "k21", "name": "3250m", "dS": -7.47, "dt": 0.283}, {"s": "7/29", "lap": 3, "kerb": "k9", "name": "3350m", "dS": -1.51, "dt": 0.054}, {"s": "7/29", "lap": 3, "kerb": "k10", "name": "3540m", "dS": -2.35, "dt": 0.108}, {"s": "7/29", "lap": 3, "kerb": "k24", "name": "最終コーナー", "dS": 2.81, "dt": -0.13}, {"s": "7/29", "lap": 4, "kerb": "k13", "name": "1コーナー", "dS": -0.31, "dt": 0.017}, {"s": "7/29", "lap": 4, "kerb": "k1", "name": "コカ・コーラ", "dS": -2.48, "dt": 0.092}, {"s": "7/29", "lap": 4, "kerb": "k3", "name": "ヘアピン", "dS": -3.21, "dt": 0.131}, {"s": "7/29", "lap": 4, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 1.25, "dt": -0.081}, {"s": "7/29", "lap": 4, "kerb": "k7", "name": "ダンロップ左", "dS": 4.24, "dt": -0.338}, {"s": "7/29", "lap": 4, "kerb": "k20", "name": "3090m", "dS": 0.02, "dt": -0.001}, {"s": "7/29", "lap": 4, "kerb": "k9", "name": "3350m", "dS": -0.48, "dt": 0.017}, {"s": "7/29", "lap": 4, "kerb": "k10", "name": "3540m", "dS": 1.19, "dt": -0.058}, {"s": "7/30", "lap": 1, "kerb": "k13", "name": "1コーナー", "dS": 0.74, "dt": -0.033}, {"s": "7/30", "lap": 1, "kerb": "k1", "name": "コカ・コーラ", "dS": -2.77, "dt": 0.077}, {"s": "7/30", "lap": 1, "kerb": "k15", "name": "1500m", "dS": 0.21, "dt": -0.006}, {"s": "7/30", "lap": 1, "kerb": "k3", "name": "ヘアピン", "dS": -1.63, "dt": 0.065}, {"s": "7/30", "lap": 1, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": -0.06, "dt": 0.003}, {"s": "7/30", "lap": 1, "kerb": "k7", "name": "ダンロップ左", "dS": 0.22, "dt": -0.011}, {"s": "7/30", "lap": 1, "kerb": "k20", "name": "3090m", "dS": 0.69, "dt": -0.037}, {"s": "7/30", "lap": 1, "kerb": "k21", "name": "3250m", "dS": -4.51, "dt": 0.166}, {"s": "7/30", "lap": 1, "kerb": "k9", "name": "3350m", "dS": -1.68, "dt": 0.058}, {"s": "7/30", "lap": 1, "kerb": "k10", "name": "3540m", "dS": 3.0, "dt": -0.152}, {"s": "7/30", "lap": 1, "kerb": "k23", "name": "3600m", "dS": -0.17, "dt": 0.006}, {"s": "7/30", "lap": 1, "kerb": "k24", "name": "最終コーナー", "dS": -0.3, "dt": 0.012}, {"s": "7/30", "lap": 2, "kerb": "k13", "name": "1コーナー", "dS": 0.41, "dt": -0.018}, {"s": "7/30", "lap": 2, "kerb": "k1", "name": "コカ・コーラ", "dS": -2.04, "dt": 0.056}, {"s": "7/30", "lap": 2, "kerb": "k15", "name": "1500m", "dS": -3.08, "dt": 0.081}, {"s": "7/30", "lap": 2, "kerb": "k3", "name": "ヘアピン", "dS": -0.22, "dt": 0.01}, {"s": "7/30", "lap": 2, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 0.96, "dt": -0.057}, {"s": "7/30", "lap": 2, "kerb": "k7", "name": "ダンロップ左", "dS": 0.61, "dt": -0.031}, {"s": "7/30", "lap": 2, "kerb": "k20", "name": "3090m", "dS": 0.34, "dt": -0.015}, {"s": "7/30", "lap": 2, "kerb": "k21", "name": "3250m", "dS": -3.23, "dt": 0.113}, {"s": "7/30", "lap": 2, "kerb": "k9", "name": "3350m", "dS": -1.04, "dt": 0.035}, {"s": "7/30", "lap": 2, "kerb": "k10", "name": "3540m", "dS": -0.72, "dt": 0.03}, {"s": "7/30", "lap": 2, "kerb": "k23", "name": "3600m", "dS": 3.52, "dt": -0.116}, {"s": "7/30", "lap": 2, "kerb": "k24", "name": "最終コーナー", "dS": -1.18, "dt": 0.046}, {"s": "7/30", "lap": 3, "kerb": "k13", "name": "1コーナー", "dS": 1.02, "dt": -0.046}, {"s": "7/30", "lap": 3, "kerb": "k1", "name": "コカ・コーラ", "dS": -1.41, "dt": 0.042}, {"s": "7/30", "lap": 3, "kerb": "k15", "name": "1500m", "dS": -2.92, "dt": 0.079}, {"s": "7/30", "lap": 3, "kerb": "k3", "name": "ヘアピン", "dS": -1.67, "dt": 0.069}, {"s": "7/30", "lap": 3, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 0.71, "dt": -0.043}, {"s": "7/30", "lap": 3, "kerb": "k7", "name": "ダンロップ左", "dS": 1.29, "dt": -0.074}, {"s": "7/30", "lap": 3, "kerb": "k20", "name": "3090m", "dS": -0.02, "dt": 0.001}, {"s": "7/30", "lap": 3, "kerb": "k21", "name": "3250m", "dS": -4.61, "dt": 0.164}, {"s": "7/30", "lap": 3, "kerb": "k9", "name": "3350m", "dS": -0.11, "dt": 0.004}, {"s": "7/30", "lap": 3, "kerb": "k10", "name": "3540m", "dS": 0.15, "dt": -0.006}, {"s": "7/30", "lap": 3, "kerb": "k24", "name": "最終コーナー", "dS": -0.61, "dt": 0.024}, {"s": "7/30", "lap": 4, "kerb": "k13", "name": "1コーナー", "dS": 0.65, "dt": -0.03}, {"s": "7/30", "lap": 4, "kerb": "k1", "name": "コカ・コーラ", "dS": 2.68, "dt": -0.075}, {"s": "7/30", "lap": 4, "kerb": "k15", "name": "1500m", "dS": -2.23, "dt": 0.059}, {"s": "7/30", "lap": 4, "kerb": "k3", "name": "ヘアピン", "dS": -3.12, "dt": 0.123}, {"s": "7/30", "lap": 4, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 1.13, "dt": -0.062}, {"s": "7/30", "lap": 4, "kerb": "k7", "name": "ダンロップ左", "dS": 0.42, "dt": -0.022}, {"s": "7/30", "lap": 4, "kerb": "k20", "name": "3090m", "dS": 0.47, "dt": -0.02}, {"s": "7/30", "lap": 4, "kerb": "k21", "name": "3250m", "dS": -3.18, "dt": 0.11}, {"s": "7/30", "lap": 4, "kerb": "k9", "name": "3350m", "dS": -1.21, "dt": 0.041}, {"s": "7/30", "lap": 4, "kerb": "k10", "name": "3540m", "dS": -0.05, "dt": 0.002}, {"s": "7/30", "lap": 4, "kerb": "k24", "name": "最終コーナー", "dS": -1.99, "dt": 0.075}, {"s": "7/30", "lap": 5, "kerb": "k13", "name": "1コーナー", "dS": -0.45, "dt": 0.02}, {"s": "7/30", "lap": 5, "kerb": "k1", "name": "コカ・コーラ", "dS": -3.58, "dt": 0.097}, {"s": "7/30", "lap": 5, "kerb": "k15", "name": "1500m", "dS": -2.29, "dt": 0.06}, {"s": "7/30", "lap": 5, "kerb": "k3", "name": "ヘアピン", "dS": -2.15, "dt": 0.085}, {"s": "7/30", "lap": 5, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 0.78, "dt": -0.043}, {"s": "7/30", "lap": 5, "kerb": "k7", "name": "ダンロップ左", "dS": 0.68, "dt": -0.037}, {"s": "7/30", "lap": 5, "kerb": "k20", "name": "3090m", "dS": 0.74, "dt": -0.032}, {"s": "7/30", "lap": 5, "kerb": "k21", "name": "3250m", "dS": -2.4, "dt": 0.085}, {"s": "7/30", "lap": 5, "kerb": "k9", "name": "3350m", "dS": -0.58, "dt": 0.019}, {"s": "7/30", "lap": 5, "kerb": "k10", "name": "3540m", "dS": 6.02, "dt": -0.234}, {"s": "7/30", "lap": 6, "kerb": "k13", "name": "1コーナー", "dS": -0.23, "dt": 0.01}, {"s": "7/30", "lap": 6, "kerb": "k1", "name": "コカ・コーラ", "dS": -1.9, "dt": 0.053}, {"s": "7/30", "lap": 6, "kerb": "k15", "name": "1500m", "dS": -2.17, "dt": 0.056}, {"s": "7/30", "lap": 6, "kerb": "k3", "name": "ヘアピン", "dS": 3.4, "dt": -0.137}, {"s": "7/30", "lap": 6, "kerb": "kDunlopR", "name": "ダンロップ右", "dS": 0.76, "dt": -0.041}, {"s": "7/30", "lap": 6, "kerb": "k7", "name": "ダンロップ左", "dS": 1.06, "dt": -0.055}, {"s": "7/30", "lap": 6, "kerb": "k20", "name": "3090m", "dS": 0.79, "dt": -0.034}, {"s": "7/30", "lap": 6, "kerb": "k21", "name": "3250m", "dS": -4.69, "dt": 0.164}, {"s": "7/30", "lap": 6, "kerb": "k9", "name": "3350m", "dS": -0.22, "dt": 0.007}, {"s": "7/30", "lap": 6, "kerb": "k10", "name": "3540m", "dS": 0.34, "dt": -0.013}], "passes": [{"s": "7/29", "k": "k13", "n": "1コーナー", "c": "FP"}, {"s": "7/29", "k": "k1", "n": "コカ・コーラ", "c": "TN"}, {"s": "7/29", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/29", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/29", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/29", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/29", "k": "kDunlopR", "n": "ダンロップ右", "c": "FP"}, {"s": "7/29", "k": "k7", "n": "ダンロップ左", "c": "TN"}, {"s": "7/29", "k": "k20", "n": "3090m", "c": "FP"}, {"s": "7/29", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/29", "k": "k9", "n": "3350m", "c": "TN"}, {"s": "7/29", "k": "k10", "n": "3540m", "c": "TN"}, {"s": "7/29", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/29", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/29", "k": "k13", "n": "1コーナー", "c": "TN"}, {"s": "7/29", "k": "k1", "n": "コカ・コーラ", "c": "TN"}, {"s": "7/29", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/29", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/29", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/29", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/29", "k": "kDunlopR", "n": "ダンロップ右", "c": "TN"}, {"s": "7/29", "k": "k7", "n": "ダンロップ左", "c": "TN"}, {"s": "7/29", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/29", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/29", "k": "k9", "n": "3350m", "c": "TN"}, {"s": "7/29", "k": "k10", "n": "3540m", "c": "TN"}, {"s": "7/29", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/29", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/29", "k": "k13", "n": "1コーナー", "c": "TN"}, {"s": "7/29", "k": "k1", "n": "コカ・コーラ", "c": "TN"}, {"s": "7/29", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/29", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/29", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/29", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/29", "k": "kDunlopR", "n": "ダンロップ右", "c": "TN"}, {"s": "7/29", "k": "k7", "n": "ダンロップ左", "c": "TP"}, {"s": "7/29", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/29", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/29", "k": "k9", "n": "3350m", "c": "TN"}, {"s": "7/29", "k": "k10", "n": "3540m", "c": "FP"}, {"s": "7/29", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/29", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/29", "k": "k13", "n": "1コーナー", "c": "TN"}, {"s": "7/29", "k": "k1", "n": "コカ・コーラ", "c": "TN"}, {"s": "7/29", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/29", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/29", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/29", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/29", "k": "kDunlopR", "n": "ダンロップ右", "c": "TN"}, {"s": "7/29", "k": "k7", "n": "ダンロップ左", "c": "TN"}, {"s": "7/29", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/29", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/29", "k": "k9", "n": "3350m", "c": "TN"}, {"s": "7/29", "k": "k10", "n": "3540m", "c": "TN"}, {"s": "7/29", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/29", "k": "k24", "n": "最終コーナー", "c": "FN"}, {"s": "7/30", "k": "k13", "n": "1コーナー", "c": "TP"}, {"s": "7/30", "k": "k1", "n": "コカ・コーラ", "c": "TP"}, {"s": "7/30", "k": "k15", "n": "1500m", "c": "TP"}, {"s": "7/30", "k": "k3", "n": "ヘアピン", "c": "TP"}, {"s": "7/30", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/30", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/30", "k": "kDunlopR", "n": "ダンロップ右", "c": "FN"}, {"s": "7/30", "k": "k7", "n": "ダンロップ左", "c": "TN"}, {"s": "7/30", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/30", "k": "k21", "n": "3250m", "c": "TP"}, {"s": "7/30", "k": "k9", "n": "3350m", "c": "TN"}, {"s": "7/30", "k": "k10", "n": "3540m", "c": "TN"}, {"s": "7/30", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/30", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/30", "k": "k13", "n": "1コーナー", "c": "TP"}, {"s": "7/30", "k": "k1", "n": "コカ・コーラ", "c": "TP"}, {"s": "7/30", "k": "k15", "n": "1500m", "c": "TP"}, {"s": "7/30", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/30", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/30", "k": "k19", "n": "2650m", "c": "FP"}, {"s": "7/30", "k": "kDunlopR", "n": "ダンロップ右", "c": "TP"}, {"s": "7/30", "k": "k7", "n": "ダンロップ左", "c": "TP"}, {"s": "7/30", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/30", "k": "k21", "n": "3250m", "c": "FN"}, {"s": "7/30", "k": "k9", "n": "3350m", "c": "FP"}, {"s": "7/30", "k": "k10", "n": "3540m", "c": "TP"}, {"s": "7/30", "k": "k23", "n": "3600m", "c": "FN"}, {"s": "7/30", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/30", "k": "k13", "n": "1コーナー", "c": "FP"}, {"s": "7/30", "k": "k1", "n": "コカ・コーラ", "c": "TP"}, {"s": "7/30", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/30", "k": "k3", "n": "ヘアピン", "c": "TP"}, {"s": "7/30", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/30", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/30", "k": "kDunlopR", "n": "ダンロップ右", "c": "TN"}, {"s": "7/30", "k": "k7", "n": "ダンロップ左", "c": "FP"}, {"s": "7/30", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/30", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/30", "k": "k9", "n": "3350m", "c": "TN"}, {"s": "7/30", "k": "k10", "n": "3540m", "c": "TN"}, {"s": "7/30", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/30", "k": "k24", "n": "最終コーナー", "c": "TP"}, {"s": "7/30", "k": "k13", "n": "1コーナー", "c": "TP"}, {"s": "7/30", "k": "k1", "n": "コカ・コーラ", "c": "TP"}, {"s": "7/30", "k": "k15", "n": "1500m", "c": "FN"}, {"s": "7/30", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/30", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/30", "k": "k19", "n": "2650m", "c": "FN"}, {"s": "7/30", "k": "kDunlopR", "n": "ダンロップ右", "c": "FP"}, {"s": "7/30", "k": "k7", "n": "ダンロップ左", "c": "FN"}, {"s": "7/30", "k": "k20", "n": "3090m", "c": "FP"}, {"s": "7/30", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/30", "k": "k9", "n": "3350m", "c": "FP"}, {"s": "7/30", "k": "k10", "n": "3540m", "c": "TN"}, {"s": "7/30", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/30", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/30", "k": "k13", "n": "1コーナー", "c": "TN"}, {"s": "7/30", "k": "k1", "n": "コカ・コーラ", "c": "TP"}, {"s": "7/30", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/30", "k": "k3", "n": "ヘアピン", "c": "TN"}, {"s": "7/30", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/30", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/30", "k": "kDunlopR", "n": "ダンロップ右", "c": "TN"}, {"s": "7/30", "k": "k7", "n": "ダンロップ左", "c": "FN"}, {"s": "7/30", "k": "k20", "n": "3090m", "c": "TN"}, {"s": "7/30", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/30", "k": "k9", "n": "3350m", "c": "FP"}, {"s": "7/30", "k": "k10", "n": "3540m", "c": "FN"}, {"s": "7/30", "k": "k23", "n": "3600m", "c": "TN"}, {"s": "7/30", "k": "k24", "n": "最終コーナー", "c": "TN"}, {"s": "7/30", "k": "k13", "n": "1コーナー", "c": "TN"}, {"s": "7/30", "k": "k1", "n": "コカ・コーラ", "c": "TP"}, {"s": "7/30", "k": "k15", "n": "1500m", "c": "TN"}, {"s": "7/30", "k": "k3", "n": "ヘアピン", "c": "FN"}, {"s": "7/30", "k": "k18", "n": "2420m", "c": "TN"}, {"s": "7/30", "k": "k19", "n": "2650m", "c": "TN"}, {"s": "7/30", "k": "kDunlopR", "n": "ダンロップ右", "c": "FN"}, {"s": "7/30", "k": "k7", "n": "ダンロップ左", "c": "TN"}, {"s": "7/30", "k": "k20", "n": "3090m", "c": "FP"}, {"s": "7/30", "k": "k21", "n": "3250m", "c": "TN"}, {"s": "7/30", "k": "k9", "n": "3350m", "c": "FP"}, {"s": "7/30", "k": "k10", "n": "3540m", "c": "TP"}, {"s": "7/30", "k": "k23", "n": "3600m", "c": "FP"}, {"s": "7/30", "k": "k24", "n": "最終コーナー", "c": "TP"}], "names": {"k13": "1コーナー", "k1": "コカ・コーラ", "k15": "1500m", "k3": "ヘアピン", "k18": "2420m", "k19": "2650m", "kDunlopR": "ダンロップ右", "k7": "ダンロップ左", "k20": "3090m", "k21": "3250m", "k9": "3350m", "k10": "3540m", "k23": "3600m", "k24": "最終コーナー"}};
+const tip = document.getElementById('tip');
+function bindTip(el, html) {
+  el.addEventListener('mousemove', e => { tip.innerHTML = html; tip.hidden = false; tip.style.left = Math.min(e.clientX + 14, innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+  el.addEventListener('mouseleave', () => { tip.hidden = true; });
+}
+const q = (a, p) => { const s = [...a].sort((x, y) => x - y); const i = (s.length - 1) * p, lo = Math.floor(i), hi = Math.ceil(i); return s[lo] + (s[hi] - s[lo]) * (i - lo); };
+const f2 = v => (v > 0 ? '+' : '') + v.toFixed(2);
+
+// per-lap offsets
+const LAPS = [['7/29 L1', .177, 1], ['7/29 L2', .234, 1], ['7/29 L3', .218, 1], ['7/29 L4', .171, 1], ['7/30 L1', .202, 0], ['7/30 L2', .241, 0], ['7/30 L3', .205, 0], ['7/30 L4', .217, 0], ['7/30 L5', .135, 0], ['7/30 L6', .274, 0]];
+document.getElementById('lbars').innerHTML = LAPS.map(l => `<div class="lbar" title="${l[0]} ${l[1].toFixed(3)} 秒${l[2] ? '（推定）' : ''}"><span class="v">${l[1].toFixed(2)}</span><div class="b${l[2] ? ' est' : ''}" style="height:${l[1] / 0.3 * 110}px"></div><span class="x">${l[0]}</span></div>`).join('');
+
+function strips(boxId, axisId, rows, lo, hi, ticks, unit) {
+  const x = v => (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * 100;
+  const box = document.getElementById(boxId);
+  box.innerHTML = rows.map((r, ri) => {
+    const v = r.vals.map(e => e.v);
+    if (!v.length) return '';
+    const med = q(v, .5), p10 = q(v, .1), p90 = q(v, .9);
+    const dots = r.vals.map((e, i) => { const y = 8 + ((i * 7919) % 19); return `<div class="ev${(e.v < lo || e.v > hi) ? ' out' : ''}" data-r="${ri}" data-i="${i}" style="left:${x(e.v)}%;top:${y}px"></div>`; }).join('');
+    return `<div class="strip"><div class="slabel"><span>${r.name}</span><span class="st">n=${v.length}・中央値 ${f2(med)} ${unit}・10〜90% ${f2(p10)}〜${f2(p90)}</span></div><div class="strack"><div class="band" style="left:${x(p10)}%;width:${x(p90) - x(p10)}%"></div><div class="zero" style="left:${x(0)}%"></div>${dots}<div class="med" style="left:${x(med)}%"></div></div></div>`;
+  }).join('');
+  box.querySelectorAll('.ev').forEach(el => { const r = rows[+el.dataset.r], e = r.vals[+el.dataset.i]; bindTip(el, `<b>${r.name}</b><br>${e.label}<br>${f2(e.v)} ${unit}${(e.v < lo || e.v > hi) ? '（軸の外）' : ''}`); el.style.cursor = 'default'; el.parentElement.style.pointerEvents = 'auto'; });
+  document.getElementById(axisId).innerHTML = ticks.map(t => `<span style="left:${x(t)}%">${t > 0 ? '+' : ''}${t}</span>`).join('') + `<span style="left:100%;transform:translateX(-100%);top:15px">${unit}</span>`;
+}
+const lab = e => `${e.s} L${e.lap} ${e.name || D.names[e.kerb] || e.kerb}`;
+
+strips('strip-audio', 'axis-audio', [
+  { name: '補正なし（LAP表示で合わせただけ）', vals: D.audio.map(e => ({ v: e.before, label: `${e.s} L${e.lap} ${D.names[e.kerb] || e.kerb}` })) },
+  { name: '周ごとの時刻差を補正', vals: D.audio.map(e => ({ v: e.after, label: `${e.s} L${e.lap} ${D.names[e.kerb] || e.kerb}` })) },
+], -0.2, 0.4, [-0.2, 0, 0.2, 0.4], '秒');
+
+const prim = D.contacts.filter(c => c.prim);
+const ALONG = [
+  { name: 'クリッピングポイント 7/30', vals: D.clip.filter(c => c.s === '7/30').map(c => ({ v: c.dS, label: lab(c) })) },
+  { name: 'クリッピングポイント 7/29', vals: D.clip.filter(c => c.s === '7/29').map(c => ({ v: c.dS, label: lab(c) })) },
+  { name: 'ステアの切り始め 7/30', vals: D.turn.filter(c => c.s === '7/30').map(c => ({ v: c.dS, label: lab(c) })) },
+  { name: 'ステアの切り始め 7/29', vals: D.turn.filter(c => c.s === '7/29').map(c => ({ v: c.dS, label: lab(c) })) },
+  { name: '縁石に乗った瞬間 7/30', vals: prim.filter(c => c.s === '7/30' && c.dS !== null).map(c => ({ v: c.dS, label: lab(c) })) },
+];
+strips('strip-along', 'axis-along', ALONG, -10, 10, [-10, -5, 0, 5, 10], 'm');
+const LAT = [
+  { name: '縁石に乗った瞬間のタイヤと縁石の距離 7/30', vals: prim.filter(c => c.s === '7/30' && c.gap !== null).map(c => ({ v: c.gap, label: lab(c) })) },
+  { name: '同（k1 コカ・コーラを除く）', vals: prim.filter(c => c.s === '7/30' && c.gap !== null && c.kerb !== 'k1').map(c => ({ v: c.gap, label: lab(c) })) },
+  { name: 'クリッピングポイントでの縁石までの距離 7/30', vals: D.clip.filter(c => c.s === '7/30').map(c => ({ v: c.dLat, label: lab(c) })) },
+  { name: 'クリッピングポイントでの縁石までの距離 7/29', vals: D.clip.filter(c => c.s === '7/29').map(c => ({ v: c.dLat, label: lab(c) })) },
+];
+strips('strip-lat', 'axis-lat', LAT, -2, 4, [-2, -1, 0, 1, 2, 3, 4], 'm');
+
+const rowsT = [];
+[['前後', ALONG], ['横', LAT]].forEach(([kind, set]) => set.forEach(r => {
+  const v = r.vals.map(e => e.v); if (!v.length) return;
+  const a = v.map(Math.abs);
+  rowsT.push(`<tr><td>${kind}: ${r.name.replace(/ 7\/(29|30)$/, '')}</td><td>${(r.name.match(/7\/(29|30)/) || ['7/30'])[0]}</td><td class="num">${v.length}</td><td class="num">${f2(q(v, .5))} m</td><td class="num">${q(a, .5).toFixed(2)} m</td><td class="num">${q(a, .9).toFixed(2)} m</td></tr>`);
+}));
+document.querySelector('#gap-table tbody').innerHTML = rowsT.join('');
+
+function cm(day) {
+  const p = D.passes.filter(x => x.s === day), c = k => p.filter(x => x.c === k).length;
+  const TP = c('TP'), FN = c('FN'), FP = c('FP'), TN = c('TN'), n = TP + FN + FP + TN;
+  return `<div><h3>${day}（${n}通過）</h3><table class="cm"><thead><tr><th></th><th>3DCGで乗る</th><th>3DCGで乗らない</th></tr></thead><tbody><tr><th>本当に乗った</th><td class="ok">${TP}</td><td class="ng">${FN}</td></tr><tr><th>本当は乗っていない</th><td class="ng">${FP}</td><td class="ok">${TN}</td></tr></tbody></table><p class="note" style="margin-top:6px">一致 ${Math.round((TP + TN) / n * 100)}%</p></div>`;
+}
+document.getElementById('cms').innerHTML = cm('7/30') + cm('7/29');
+</script>
+
+</html>

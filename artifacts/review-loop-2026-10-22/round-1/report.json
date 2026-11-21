@@ -1,0 +1,77 @@
+{
+ "kind": "review-loop-change-log",
+ "round": 1,
+ "area": "report",
+ "date": "2026-10-22",
+ "owner": "implementer (Opus) for report B docs/fuji-event-truth-evaluation-2026-10-22.html",
+ "scope": "Edited docs/fuji-event-truth-evaluation-2026-10-22.html (untracked) and, for R1-01, the k1 note in artifacts/event-comparison-2026-10-22/scripts/build_page.py (gitignored), then rebuilt docs/fuji-event-comparison-2026-10-22.html (gitignored). No tracked file changed. Nothing was published or downloaded: headless checks answered the Google Fonts request locally with an empty body. Dev servers were not touched.",
+ "backupsBeforeChanges": [
+  "artifacts/review-loop-2026-10-22/round-1/report-prev/fuji-event-truth-evaluation-2026-10-22.before-report-round1.html",
+  "artifacts/review-loop-2026-10-22/round-1/report-prev/build_page.before-report-round1.py",
+  "artifacts/review-loop-2026-10-22/round-1/report-prev/fuji-event-comparison.before-report-round1.html"
+ ],
+ "carriedOverFromAnalysis": "The analysis implementer had already added the R1-04, R1-09 and R1-10 sentences to B (86 % tolerance agreement, 80 % for clear passes, 14-18 % gyro amplitude, 20 of 27 contacts). All 7 are still present after my edits (checked by grep and in report-check-B.mjs). event_table.json is byte-identical, so the embedded data block needed no regeneration. report-build-D.py re-checked every existing D value against event_table.json: 55 clip, 104 turn-in, 38 contacts and 140 pass classes, with 0 mismatches. A JSON round-trip of the existing data is identical, so only the new key D.cam was added.",
+ "timeline": [
+  "22:18 Read WORKLOG top, B in full, review.json, comparison-page.json (comparison implementer finished at 22:14 and had not touched the k1 note), summary.json blocks, event_table k1 / turn-in records, verify/v_summary.json, v_kerb_compare.json, T3 vp_height.json / yaw_focal.json / analyze.py, T4 cgpose.py.",
+  "Wrote report-k1-check.py: k1 per lap under both onset rules. It reproduces the verifier's cgCrossMinusOwnOnset50 medians exactly (all -0.063 n 19, excl_k1 -0.145 n 13).",
+  "Wrote report-build-D.py: checks D against event_table and adds D.cam (clipping median dS/dt for f*h 590/889/1066/1218, both days, from summary.cameraSensitivityClippingPoint). The values are also recomputed from event_table cameraVariants.",
+  "Edited the text of B (see findings) and added the camera-scale card with a data-driven table rendered from D.cam.",
+  "Edited the k1 entry of NOTE_MAP in build_page.py. Rebuilt the comparison page with the same command as the comparison implementer (pipeline/.venv-sr python -I build_page.py) and ran its qa_page.mjs: passed.",
+  "Wrote and ran report-check-numbers.py (32 checks, 0 failures) and report-check-B.mjs (Playwright, file://, light and dark, 390 and 1100 px): allOk. On a first run the camera table needed 235 px of inner scroll at 390 px, so I made it compact and set width:auto. The re-run gives 0 inner and 0 page overflow. Looked at the screenshots in report-shots/."
+ ],
+ "findings": [
+  {
+   "id": "R1-01",
+   "status": "fixed",
+   "whatChanged": "B: three sentences replaced. Conclusion bullet 3 now says k1's 3DCG contact starts 0.2-0.3 s later than at the other kerbs and lasts less time (5 of 6 laps on 7/30 are 0.09-0.36 s late; L6 is 0.12 s early). The kerb yes/no bullet gives the same per-lap facts, the six-lap median (about 0.2 s), what changes under the 50 % rise rule (k1 per lap -0.06..+0.10 s, but there the other kerbs show the 3DCG crossing 0.15 s early, so k1 is still about 0.2 s later than the rest) and the durations (3DCG 0.23-0.42 s, truth 0.6-2.0 s). The 根拠 bullet 'k1のずれの大きさは当初の見積もりより小さい（約0.15秒）' is replaced by the definition dependence. Comparison page: the NOTE_MAP k1 text in build_page.py now carries the per-lap wording and the durations, and the page was rebuilt (7 k1 contact cards).",
+   "partialRejection": "I did not use the reviewer's clause '立ち上がり50%の定義では約0.15秒'. It is not reproducible. With the verifier's own 50 % onset (v_kerb_compare.json: cgCross - own50 = ownFirstCrossMinusT1 - ownImuMinusT1), k1 per lap is L1 -0.063, L2 +0.071, L3 +0.078, L4 +0.022, L5 +0.104, L6 +0.023 s (median 0.047 s). The same subtraction reproduces the verifier's all / excl_k1 medians exactly. 0.148 s is the median of own50MinusT1 at k1, which is the gap between the two onset rules, not a 3DCG lag. Under both rules k1 is 0.19-0.27 s later than the other kerbs, and that is what the page now says.",
+   "acceptance": {
+    "grep全周で": "B: only '…乗っている時間も全周で短い' remains (true for all 6 laps: cgShorterEveryLap true). Comparison page: 7 occurrences, all the same duration sentence. '約0.15秒' occurs 0 times in both files.",
+    "perLapRange": "event_table block.dtFirst k1 (first burst per lap): L1 0.085, L2 0.266, L3 0.355, L4 0.227, L5 0.204, L6 -0.116; the page states 0.09-0.36 s late on L1-L5 and 0.12 s early on L6 (report-k1-check.json; report-check-numbers.py R1-01 checks pass)",
+    "comparisonQa": "qa_page.mjs status passed, failures [], images 531/531, console errors 0. The diff of the rebuilt page against the backup shows only the 7 k1 notes and the build timestamp in the footer."
+   },
+   "filesChanged": [
+    "docs/fuji-event-truth-evaluation-2026-10-22.html",
+    "artifacts/event-comparison-2026-10-22/scripts/build_page.py",
+    "docs/fuji-event-comparison-2026-10-22.html",
+    "artifacts/event-comparison-2026-10-22/page-qa.json",
+    "artifacts/event-comparison-2026-10-22/qa/desktop.png",
+    "artifacts/event-comparison-2026-10-22/qa/phone.png"
+   ]
+  },
+  {
+   "id": "R1-02",
+   "status": "fixed",
+   "whatChanged": "B, gap section: new card 'クリッピングポイントの前後のずれは、カメラの尺度で動く' with a table rendered from D.cam (f*h 590 / 889 / 1066 / 1218 with camera labels; 7/30 along-track -3.3 / +0.3 / +2.1 / +4.2 m, 7/30 time +0.12 / -0.01 / -0.07 / -0.12 s, 7/29 along-track -3.6 / +0.4 / +3.3 / +5.1 m). The note under it says the page uses f*h 889, which matches the spec FOV 84 deg, a camera height of 1.26 m from the road width (f 711, IQR 1.14-1.31 m) and a focal length of about 540-800 px from the rotation. It also says this scale was chosen partly because the clipping times then agree, so the clipping points are not independent proof. The no-bias conclusion rests on the camera-free turn-in (7/30 -0.2 m, 7/29 -0.6 m) and kerb contacts (7/30 -0.6 m). The old last sentence of the gap note now points to the card. Correction table: the camera row's justification was replaced; it now says the ±0.03 s agreement of clipping and kerb ends with the camera-free contacts is a consistency check, not independent proof. The verdict chip changed from '● 採用を推奨' to '▲ レンズ校正までの暫定値'. Tile subtitle '前後のずれ' now names the camera-free families and says the clipping bias moves -3..+4 m with the camera scale.",
+   "correctionToReviewer": "The reviewer's camera height 1.22 m (IQR 1.09-1.27) is the f 472 block of vp_height.json. For the page's f 711 the same file gives 1.262 m (IQR 1.136-1.313), and that is the value I wrote. The focal range from rotation is about 540-800 px: min 537 (verify impliedFocalPx_0730 gyroOnVideo), max 796 (yaw_focal right-hand corners, fCorrected). 次の一手 said 540-790 and now says 540-800 in all three places.",
+   "acceptance": "B contains the four sensitivity values -3.3 / +0.3 / +2.1 / +4.2 m. They are rendered from D.cam and equal summary.cameraSensitivityClippingPoint.fuji_aim_2020_07_30; recomputing them from event_table cameraVariants gives the same values. B names the camera-free families as the basis. The correction row no longer gives the ±0.03 s agreement as the reason to adopt the scale. report-check-numbers.py R1-02: 9 checks pass. The kerb-end times at f711_h1.25 (redOn -0.024, redOff -0.016) and the clip dt (-0.008) are within ±0.03 s, the same as the contact median (+0.03).",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html"]
+  },
+  {
+   "id": "R1-03",
+   "status": "fixed",
+   "whatChanged": "B 限界: new bullet. It says the ±0.03 s is measured at the 50 % point of the yaw-rate rise. Because the 3DCG heading comes from a ±0.6 s GPS chord, the visible turn-in (10 % point) matches the gyro in the median (7/30 +0.01 s, 7/29 -0.08 s), but 1 in 10 is off by 0.36 s or more (7/29: 0.76 s), and every large deviation is the 3DCG turning early. Against the steering onset the 3DCG turn-in is a median 0.14 s later (7/29: 0.24 s), but in 8 of 40 cases on 7/30 (2 of 26 on 7/29) the nose starts turning before the steering (up to 0.9 s; the gyro does this in 2 cases per day). これで何が言えるか bullet 1 gained one clause pointing to it. 正解の決め方 'ステアの切り始め' now states the 50 % rule and that the 10 % point and the steering onset were recorded.",
+   "partialRejection": "I did not use the reviewer's clause 'ステアの切り始めより早く動くことはない（0.13〜0.24秒後）'. It is false per event: cgT10MinusSteerOnset < 0 in 8 of 40 cases (7/30, min -0.866 s) and 2 of 26 (7/29, min -0.66 s). 0.13-0.24 s are only the medians (0.135 / 0.243). The page states the medians and the counts.",
+   "acceptance": "B states the 10 % medians (+0.01 / -0.08 s) and p90 values (0.36 / 0.76 s) for both days: summary.alongTrack.turnInVisibleT10 (n 40 / 26). report-check-numbers.py R1-03: 5 checks pass, including the sign of every |dt| >= p90 event and the counts from event_table.",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html"]
+  },
+  {
+   "id": "R1-08",
+   "status": "fixed",
+   "whatChanged": "(a) FN / FP bullets now use the 7/30 values with n: 0.24 m (10) and 0.29 m (11); they were the pooled 0.26 / 0.34. (b) The tile now reads '90%値3.3〜4.4 m'. (c) The correction table now reads '7/29 採用値0.17〜0.23秒（推定。妥当な幅0.17〜0.30秒）'. (d) The lateral tile adds 'クリッピングでの横は典型0.5 m前後で、カメラの尺度に左右される' (D.clip |dLat| median 0.54 m on 7/30 and 0.485 m on 7/29; 7/30 median -0.34 m at f*h 889 vs +0.02 m at 1218). (e) The correlation sentence now gives n: 0.89 (7/30, 39) and 0.96 (7/29, 11). (f) 正解の決め方 now defines the clipping point as T3 does: the frame where the inner kerb edge on row 276 (a fixed forward distance) comes nearest the image centre.",
+   "acceptance": "report-check-numbers.py R1-08a-f: 8 checks pass. Each number equals summary.json or event_table for the day it is shown under; the T3 docstring 'kerb edge's extreme position toward the image centre at row y' matches.",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html"]
+  }
+ ],
+ "verification": {
+  "numbers": "report-check-numbers.py -> report-check-numbers.json: 32 checks, 0 failures. Also checked: no personal absolute path and no img/video/audio/data:image in B.",
+  "dataBlock": "report-build-D.py -> report-build-D.json: ok, 0 mismatches, roundTripIdentical true, D.cam added",
+  "render": "report-check-B.mjs -> report-check-B.json: allOk true. Light and dark, 390 and 1100 px: 0 console/page errors, page overflow 0 px, camera table inner overflow 0 px, 4 camera rows, 2 agreement tables, 9 gap rows, 11 strips, 10 lap bars. All 28 required sentences are present, the 10 replaced phrases are absent, and the body background is set in both themes. External request (Google Fonts CSS) answered locally.",
+  "visual": "Screenshots in report-shots/ (cam-card, limits, sec-h-key / h-yn / h-fix / h-mean) checked by eye: no clipping or overlap, and the table is readable at 390 px.",
+  "comparisonPage": "build_page.py rebuild: 106 cards, all builder asserts passed. qa_page.mjs: passed."
+ },
+ "unresolved": [
+  "The k1 '約0.15秒' figure in the 12:44 WORKLOG entry and in the verifier's correction cannot be reproduced from the stored outputs; the page now uses reproducible per-lap values. The orchestrator may want to update the WORKLOG wording.",
+  "The camera scale stays provisional until the lens is calibrated (already in 次の一手)."
+ ]
+}

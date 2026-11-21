@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ja">
+<title>富士リプレイ位置ずれの現状</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap">
+<style>
+/* Layout: one reading column; the page opens with two tolerance rulers (sideways / along the track) where each use case's allowed error sits against today's gap band on a log metre scale, then the breakdown, the video check, and the next steps. */
+:root {
+  --bg: #f1f3f2; --surface: #fbfcfb; --ink: #14181b; --ink2: #3f474d; --muted: #6b747b;
+  --line: #d3d8db; --line2: #e4e8ea; --grid: #e2e6e8; --accent: #b8352a; --kerb-white: #ffffff;
+  --now: #2a78d6; --now-soft: rgba(42, 120, 214, .18); --now-worst: rgba(42, 120, 214, .07);
+  --ok-zone: rgba(29, 122, 68, .08);
+  --good: #1d7a44; --good-bg: #e2f1e7; --warn: #8f5e00; --warn-bg: #f8eed6; --bad: #a8261d; --bad-bg: #f8e2df;
+  --neutral: #59606a; --neutral-bg: #e9ebed;
+  --f-display: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --f-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --f-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --labw: 220px; --dlabw: 150px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101315; --surface: #171b1e; --ink: #eceff1; --ink2: #b8c0c6; --muted: #8a939a;
+  --line: #2c3237; --line2: #22282c; --grid: #252b30; --accent: #e3685c; --kerb-white: #e9ecef;
+  --now: #4a92ea; --now-soft: rgba(74, 146, 234, .28); --now-worst: rgba(74, 146, 234, .11);
+  --ok-zone: rgba(87, 194, 134, .10);
+  --good: #57c286; --good-bg: #15301f; --warn: #e3a94f; --warn-bg: #33270f; --bad: #f0857c; --bad-bg: #3a1a17;
+  --neutral: #a6aeb6; --neutral-bg: #24292e; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #101315; --surface: #171b1e; --ink: #eceff1; --ink2: #b8c0c6; --muted: #8a939a;
+  --line: #2c3237; --line2: #22282c; --grid: #252b30; --accent: #e3685c; --kerb-white: #e9ecef;
+  --now: #4a92ea; --now-soft: rgba(74, 146, 234, .28); --now-worst: rgba(74, 146, 234, .11);
+  --ok-zone: rgba(87, 194, 134, .10);
+  --good: #57c286; --good-bg: #15301f; --warn: #e3a94f; --warn-bg: #33270f; --bad: #f0857c; --bad-bg: #3a1a17;
+  --neutral: #a6aeb6; --neutral-bg: #24292e; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.75; margin: 0; }
+.wrap { max-width: 940px; margin: 0 auto; padding-inline: 18px; padding-block: 28px 64px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.35; margin: 0; }
+h1 { font-size: clamp(26px, 4.6vw, 38px); }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; font-family: var(--f-body); font-weight: 700; }
+p { margin: 0; max-width: 68ch; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.kerbrule { height: 6px; border-radius: 1px; margin-block: 14px 18px; max-width: 220px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 22px, var(--kerb-white) 22px 44px); box-shadow: inset 0 0 0 1px var(--line); }
+.lede { font-size: 17px; color: var(--ink2); margin-top: 10px; }
+.meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px 18px; color: var(--muted); font-size: 13px; }
+section { margin-top: 44px; display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; min-width: 0; }
+.note { color: var(--muted); font-size: 13px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line2); }
+th { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+td.num, th.num { text-align: right; white-space: nowrap; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.s-meets { color: var(--good); background: var(--good-bg); }
+.s-borderline { color: var(--warn); background: var(--warn-bg); }
+.s-no { color: var(--bad); background: var(--bad-bg); }
+.s-unknown { color: var(--neutral); background: var(--neutral-bg); }
+.g { font-size: 11.5px; font-family: var(--f-mono); padding: 1px 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink2); white-space: nowrap; }
+ul.tight, ol.tight { margin: 0; padding-left: 1.25em; display: grid; gap: 6px; max-width: 72ch; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+.grid2 > * { min-width: 0; }
+.big { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.big > div { min-width: 0; border-left: 3px solid var(--now); padding: 2px 0 2px 12px; }
+.big .k { font-size: 12.5px; color: var(--muted); }
+.big .v { font-family: var(--f-mono); font-size: 22px; line-height: 1.3; }
+.big .s { font-size: 12.5px; color: var(--ink2); }
+
+/* tolerance ruler */
+.ruler { display: grid; gap: 4px; }
+.rrow { display: grid; grid-template-columns: minmax(0, var(--labw)) minmax(0, 1fr); gap: 4px 12px; align-items: center; }
+.rlabel { font-size: 13.5px; line-height: 1.45; display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: center; }
+.rlabel .req { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.track { position: relative; height: 26px; border-radius: 3px; background: transparent; }
+.track .okz { position: absolute; top: 4px; bottom: 4px; left: 0; background: var(--ok-zone); border-radius: 3px 0 0 3px; }
+.track .thr { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--ink2); }
+.track .thrband { position: absolute; top: 6px; bottom: 6px; border-left: 2px solid var(--ink2); border-right: 2px solid var(--ink2); background: repeating-linear-gradient(90deg, transparent 0 3px, var(--line) 3px 4px); }
+.nowcol { position: absolute; top: 0; bottom: 0; pointer-events: none; }
+.nowcol.typ { background: var(--now-soft); }
+.nowcol.worst { background: var(--now-worst); border-right: 1px dashed var(--now); }
+.rarea { position: relative; }
+.axis { position: relative; height: 22px; margin-left: calc(var(--labw) + 12px); font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+.axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; top: 2px; }
+.axis span::before { content: ""; position: absolute; left: 50%; top: -4px; height: 4px; border-left: 1px solid var(--line); }
+.gridline { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--grid); pointer-events: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink2); align-items: center; }
+.legend i { display: inline-block; width: 16px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 5px; }
+@media (max-width: 620px) {
+  .rrow { grid-template-columns: minmax(0, 1fr); }
+  .axis { margin-left: 0; }
+}
+
+/* budget bars */
+.brow { display: grid; gap: 3px; padding-block: 7px; border-bottom: 1px solid var(--line2); }
+.brow:last-child { border-bottom: 0; }
+.bhead { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; justify-content: space-between; }
+.bname { font-size: 14px; font-weight: 500; }
+.bval { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink2); }
+.bstrip { position: relative; height: 14px; }
+.bstrip .worst { position: absolute; top: 3px; bottom: 3px; background: var(--now-worst); border: 1px solid var(--now); border-left: 0; border-radius: 0 3px 3px 0; }
+.bstrip .typ { position: absolute; top: 0; bottom: 0; background: var(--now); border-radius: 3px; min-width: 3px; }
+.bstrip .typ.unknown { background: repeating-linear-gradient(45deg, var(--now) 0 4px, transparent 4px 8px); border: 1px solid var(--now); }
+.bnote { font-size: 12.5px; color: var(--muted); }
+
+/* video scene dots */
+.dotchart { position: relative; }
+.drow { display: grid; grid-template-columns: minmax(0, var(--dlabw)) minmax(0, 1fr); gap: 10px; align-items: center; padding-block: 3px; }
+.dlabel { font-family: var(--f-mono); font-size: 12px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dtrack { position: relative; height: 22px; }
+.dtrack .floor { position: absolute; top: 2px; bottom: 2px; background: var(--neutral-bg); }
+.dtrack .zero { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--muted); }
+.dot { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--now); border: 2px solid var(--surface); }
+.dot.train { background: var(--surface); border: 2px solid var(--now); }
+.dot.weak { background: var(--muted); }
+.dot.clip::after { content: "◂"; position: absolute; left: 12px; top: -5px; font-size: 11px; color: var(--muted); }
+.daxis { position: relative; height: 20px; margin-left: calc(var(--dlabw) + 10px); font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+.daxis span { position: absolute; transform: translateX(-50%); top: 2px; }
+@media (max-width: 520px) { :root { --dlabw: 108px; } }
+
+.when { display: grid; gap: 10px; }
+.sol { display: grid; grid-template-columns: 2.2em minmax(0, 1fr); gap: 2px 10px; padding-block: 10px; border-bottom: 1px solid var(--line2); }
+.sol:last-child { border-bottom: 0; }
+.sol .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 1px; }
+.sol .t { font-weight: 700; font-size: 14.5px; }
+.sol .d { grid-column: 2; font-size: 13.5px; color: var(--ink2); }
+.sol .m { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--muted); }
+.sol .m b { color: var(--ink2); font-weight: 500; }
+details summary { cursor: pointer; font-size: 13px; color: var(--ink2); }
+details[open] summary { margin-bottom: 8px; }
+summary:focus-visible { outline: 2px solid var(--now); outline-offset: 2px; }
+.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; max-width: 290px; z-index: 10; }
+footer { margin-top: 48px; font-size: 12.5px; color: var(--muted); display: grid; gap: 6px; }
+@media (max-width: 560px) { body { font-size: 14.5px; } th, td { padding: 7px 7px; } }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">ReplayViewer · Fuji Speedway · 2020-07-29 wet / 07-30 dry · 2026-10-09</div>
+  <h1>富士リプレイ位置ずれの現状</h1>
+  <div class="kerbrule" aria-hidden="true"></div>
+  <p class="lede">今のずれは、<b>横方向でおよそ0.5 m（0.3〜0.7 m）</b>、前後方向でおよそ1〜3 mです。横の最悪は7/30 L2の3250〜3900 m付近で1.5〜2 mあります。この精度で足りるのは「コーナーのどのあたりを走ったか」の確認と、1 m以上違うライン同士の比較までです。縁石までの距離（KPI）やトラックリミットの判定には0.2〜0.3 m以下が必要で、今のデータでは届きません。</p>
+  <div class="meta"><span>横の値は内部整合からの推定で、測量した真値ではありません</span><span>評価: Web調査3本＋計測3本＋検証役（再計算）＋統合</span></div>
+</header>
+
+<section aria-labelledby="h-now">
+  <h2 id="h-now">今のずれ</h2>
+  <div class="card big">
+    <div><div class="k">横（典型）</div><div class="v">≈0.5 m</div><div class="s">幅 0.3〜0.7 m。GPSの補正後に残る、ゆっくり変わる偏りが主</div></div>
+    <div><div class="k">横（最悪）</div><div class="v">1.5〜2 m</div><div class="s">7/30 L2 3250〜3900 m。縁石21で強い接触なのにGPSは1.66 m外</div></div>
+    <div><div class="k">前後（裏付けのある分）</div><div class="v">±0.5〜1 m</div><div class="s">100 km/hで換算。動画タイマー読み取り・フレーム丸めなど</div></div>
+    <div><div class="k">前後（未解明の分）</div><div class="v">0〜6.5 m</div><div class="s">映像とロガーの間に0〜0.24秒の遅れの疑い（100 km/h換算）</div></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-ruler">
+  <h2 id="h-ruler">使い方ごとの判定</h2>
+  <p>横軸は誤差（m、対数目盛）です。各行の太線がその使い方で許せる誤差の上限、薄い緑がその内側です。青い帯が今のずれで、濃い帯が典型、薄い帯が最悪までの範囲です。帯が緑の内側に収まっていれば足ります。必要精度は目安としての提案です。日をまたぐ比較は2日分の誤差が重なるため、帯より大きめに見てください。</p>
+  <div class="legend"><span><i style="background:var(--now-soft)"></i>今のずれ（典型）</span><span><i style="background:var(--now-worst);border:1px dashed var(--now)"></i>今のずれ（最悪まで）</span><span><i style="background:var(--ok-zone)"></i>許せる範囲</span><span><i style="background:var(--ink2);width:3px"></i>許容の上限</span></div>
+  <div class="card">
+    <h3>横方向（コースの左右）</h3>
+    <div class="ruler" id="ruler-lat"></div>
+  </div>
+  <div class="card">
+    <h3>前後方向（コースに沿って）</h3>
+    <div class="ruler" id="ruler-along"></div>
+  </div>
+  <div class="card scroll">
+    <table id="usecase-table">
+      <thead><tr><th>使い方</th><th>必要な精度（提案）</th><th>今</th><th>判定</th><th>理由</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="h-budget">
+  <h2 id="h-budget">ずれの内訳</h2>
+  <p>原因ごとの大きさです（対数目盛）。濃い棒が典型、枠だけの棒が最悪までの範囲です。斜線の棒は正体が分かっていない分です。各行の右に、根拠の確かさ（計測／導出／推定／不明）を付けています。</p>
+  <div class="grid2">
+    <div class="card"><h3>横方向</h3><div id="budget-lat"></div><div class="axis" id="axis-budget-lat" style="margin-left:0"></div></div>
+    <div class="card"><h3>前後方向</h3><div id="budget-along"></div><div class="axis" id="axis-budget-along" style="margin-left:0"></div></div>
+  </div>
+  <div class="card">
+    <h3>すでに直したもの（10/02の改善）</h3>
+    <ul class="tight">
+      <li>7/30のペダル・ステア・Gの時刻ずれ 0.5秒（約25〜36 m）→ ±0.03秒以内</li>
+      <li>ラップ時計の扱いによる先行 最大5.02 m → 0</li>
+      <li>再生中の車の向きの遅れ p95 3.9° → 0.075°</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-video">
+  <h2 id="h-video">動画から見た横ずれ</h2>
+  <p>10/03にCodexが車載カメラを推定しました（3フレームで当てはめ、未コミット）。同じ動画と重ねたときの線のずれは、別の10場面で中央値134 px → 9.4 pxに減りました。ここではそのカメラで、各場面の「車が描いた位置より左右どちらに何mいれば線が合うか」を求めています。</p>
+  <div class="card">
+    <div class="legend"><span><i style="background:var(--now);border-radius:50%;width:10px;height:10px"></i>評価用の場面（A/B: 信頼できる）</span><span><i style="background:var(--muted);border-radius:50%;width:10px;height:10px"></i>評価用の場面（C: 左右の線が食い違う）</span><span><i style="background:var(--surface);border:2px solid var(--now);border-radius:50%;width:10px;height:10px"></i>カメラの当てはめに使った場面</span><span><i style="background:var(--neutral-bg)"></i>手法の限界 ±1.5 m</span></div>
+    <div class="dotchart" id="dots"></div>
+    <div class="daxis" id="dots-axis"></div>
+    <p class="note" style="margin-top:8px">＋は「実際の車は描いた位置より右」。値はカメラ当てはめに使った3場面のGPSを基準にした相対値です。その3場面自体が+1.23／−0.11／−1.69 mずれて見えるので、1場面あたり±1.5 mより細かい差は判定できません。7/30 L2 18秒は最適解がなく除外しています。</p>
+    <details><summary>場面ごとの値</summary><div class="scroll" id="dots-table"></div></details>
+  </div>
+  <div class="card">
+    <h3>この結果から言えること</h3>
+    <ul class="tight">
+      <li>動画は「0.5 m級のずれがあるか」を確かめる道具として、まだ使えません。カメラの焦点距離が決まらないことが主な理由です（推定472 px。仕様の画角67°／84°なら967／711 pxになり、食い違う）。</li>
+      <li>両側の線が見える5場面の共通成分は 0.0／0.3／0.6／0.7／1.6 m で、中央値は約0.6 mです。内部整合からの推定（約0.5 m）と矛盾はしません。</li>
+      <li>7/30 L2 93〜95秒（3400〜3470 m）は動画でも「右に1.4〜2.4 m」と出ます。縁石21・23の接触ラベルとの矛盾と同じ向きで、この区間のGPSが局所的にずれている見方を支えます（ただし評価C）。</li>
+      <li>100R出口（1880〜1950 m）で動画の横ずれが73 mの間に5.3 m振れるのは、GPSではありません。CGの内側の白線に16°の折れ返し（1855〜1890 m）があるためです。</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-new">
+  <h2 id="h-new">今回わかったこと</h2>
+  <div class="card">
+    <ol class="tight">
+      <li><b>2020年のログに生のGNSS観測値はありません。</b>.xrk／.rrk／.gpk／.drk／.bakはすべて、受信機が計算済みの位置（NAV-SOL形式）でした。基準局のデータを使って後から精度を上げる方法（PPK）は使えません。受信状態は、補正付き測位100%（7/30）、受信機自身の精度見積もり中央値0.85〜0.91 m、衛星数中央値13でした。</li>
+      <li><b>GPS速度は位置より0.09秒遅れて記録されています</b>（7/29 0.0898秒、7/30 0.0919秒）。車の位置には影響しません。速度表示と、GPS速度の落ち始めで判定するブレーキ点（180 km/hで約4.5 m）に影響します。</li>
+      <li><b>GPSとIMUを組み合わせて平滑化しても改善しませんでした。</b>縁石ラベルとの矛盾は4件のまま、AUCは0.874 → 0.871です。IMUを重く見ると矛盾が17件に増えました。残っているずれはゆっくり変わる偏りで、IMUでは見えません。短い周期の揺れは0.12〜0.17 m（RMS）と、もともと小さいです。</li>
+      <li><b>映像とロガーの間に約0.2秒の遅れの疑いがあります。</b>映像の向きの変化に対し、GPSの進路変化（0.185／0.235秒）もIMUのヨーレートも遅れています。リプレイを0.2秒進めると評価用10場面は改善しましたが、連続8場面では悪化し、決着していません。前後方向で最も大きい未解明の要因です。</li>
+      <li><b>CGのコース線に局所的な不良があります。</b>100R内側の白線（1855〜1890 m）に16°の折れ返しがあります。縁石端で路面がはみ出していた3か所（0.90／1.07／1.54 m）は、Codexが作業ツリーで0に直しています（未コミット）。</li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="h-next">
+  <h2 id="h-next">次の解決策</h2>
+  <p>今のデータだけでGPSの横ずれを詰める方法は、ほぼ試し終わりました。横の絶対値を0.1〜0.3 mに詰められるのは、カメラの実測と校正をしたうえでの動画計測か、次の走行日の高精度GNSSだけです。</p>
+  <div class="grid2" id="solutions"></div>
+</section>
+
+<section aria-labelledby="h-ask">
+  <h2 id="h-ask">決めていただきたいこと</h2>
+  <div class="card">
+    <ol class="tight">
+      <li>どの使い方を一番重視しますか。動画と並べた見た目なら「境界」、縁石距離KPIやトラックリミットなら「足りない」が今の答えです。許容の線は0.2 mから1 mまで変わります。</li>
+      <li>車両#102に触れられますか。2020年7月当時のカメラとGPSアンテナの取付が今も同じなら、位置と角度を測るだけで（1〜2時間）動画計測の尺度が決まります。</li>
+      <li>当時のカメラの機種とレンズの画角（67°か84°か）は分かりますか。同じカメラがあれば、チェッカーボードで校正できます。</li>
+      <li>次に走る予定はありますか。そのとき、追加のGNSS受信機とアンテナを載せられますか（予算の目安: 受信機一式で数万円〜約12万円）。</li>
+      <li>GPS速度の0.09秒補正と100R内側線の修正（配信データの変更）を進めてよいですか。Codexの推定カメラと縁石端の路面修正（作業ツリーにあって未コミット）を採用しますか。</li>
+      <li>7/30 L2の3250〜3900 mを、ビューアとKPIで「信頼の低い区間」として表示してよいですか。</li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="h-basis">
+  <h2 id="h-basis">前提と根拠</h2>
+  <div class="card">
+    <ul class="tight">
+      <li>対象: 公開済みのコミット 7ebf89b の状態です。Codexの推定カメラ（未コミット）を使った数字は、そう明記しています。既定のコックピットカメラは車載カメラと画角が違うため、動画とそのまま比べると134 pxずれます。</li>
+      <li>横の典型値は、半周ずつ当てはめ直したときの差（中央値0.40〜0.44 m）、縁石接触を使った候補補正との差（中央値0.45 m）、縁石ラベルとの矛盾（7/30の58件中4件）から導いた値です。真値は測量していません。</li>
+      <li>計測3本の数字は検証役が独立に再計算しました。食い違ったものは訂正済みです。例: 動画の横ずれ「典型1.69 m」は左右の線の食い違いを含んでいたため、共通成分約0.6 mに改めました。車体ロールが画像のずれの主因という主張は裏付けがないため外しました。</li>
+      <li>コースは2019年のVIRTUAL SHIZUOKA航空写真（静岡県、CC BY 4.0）から作っています。航空写真自体の位置合わせ誤差（推定0.2〜0.3 m）は計測していません。</li>
+      <li>車載動画とXRKはローカル参照のみで扱い、このページに映像の画像は含めていません。</li>
+      <li>証拠: artifacts/position-gap-2026-10-09/（I1〜I3、R1〜R3、verify）、artifacts/video-cg-alignment-2026-10-03/、artifacts/improvement-eval-2026-10-02/。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div>コース由来の数値の基準: VIRTUAL SHIZUOKA 2019 LP オルソ 20 cm（静岡県、CC BY 4.0）。</div>
+  <div>関連: docs/fuji-improvement-evaluation-2026-10-02.html、docs/fuji-apex-kerb-kpi-2026-10-02.md、docs/fuji-video-cg-alignment-review-2026-10-03.md。</div>
+</footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const LOG = (min, max) => v => (Math.log10(Math.max(min, Math.min(max, v))) - Math.log10(min)) / (Math.log10(max) - Math.log10(min)) * 100;
+const tip = document.getElementById('tip');
+function bindTip(el, html) {
+  el.addEventListener('mousemove', e => { tip.innerHTML = html; tip.hidden = false; tip.style.left = Math.min(e.clientX + 14, innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+  el.addEventListener('mouseleave', () => { tip.hidden = true; });
+}
+const STATUS = { meets: ['s-meets', '● 足りる'], borderline: ['s-borderline', '▲ 境界'], no: ['s-no', '✕ 足りない'], unknown: ['s-unknown', '？ 不明'] };
+function chip(s) { const [c, t] = STATUS[s]; return `<span class="chip ${c}">${t}</span>`; }
+
+const RULERS = {
+  lat: { min: 0.05, max: 3, ticks: [0.05, 0.1, 0.2, 0.3, 0.5, 1, 2, 3], now: { typ: [0.3, 0.7], worst: 2.0 },
+    rows: [
+      { name: 'トラックリミット判定（4輪が白線を越えたか）', req: [0.1, 0.2], s: 'no' },
+      { name: '動画とCGの画像を重ねて検証', req: [0.1, 0.1], s: 'no' },
+      { name: '縁石までの距離（クリッピングKPI）', req: [0.2, 0.3], s: 'no' },
+      { name: '日をまたぐ比較（7/29と7/30）', req: [0.3, 0.5], s: 'no' },
+      { name: '同じ日のラップ間でライン比較', req: [0.3, 0.5], s: 'borderline' },
+      { name: '動画と並べて見る（見た目）', req: [1, 1], s: 'borderline' },
+      { name: 'コーナーのおおよその走行位置', req: [1, 1], s: 'meets' },
+    ] },
+  along: { min: 0.1, max: 15, ticks: [0.1, 0.2, 0.5, 1, 2, 5, 10, 15], now: { typ: [1, 3], worst: 6.5 },
+    rows: [
+      { name: 'ブレーキ点の比較（同じ日・ブレーキ圧で）', req: [2, 2], s: 'borderline' },
+      { name: '動画と並べて見る（見た目）', req: [3, 5], s: 'borderline' },
+      { name: 'コーナーのおおよその走行位置', req: [5, 5], s: 'meets' },
+    ] },
+};
+function fmt(v) { return (v < 1 ? v.toFixed(v < 0.1 ? 2 : 1) : String(v)).replace(/^0\./, '0.'); }
+function drawRuler(id, R) {
+  const x = LOG(R.min, R.max), box = document.getElementById(id);
+  const area = document.createElement('div'); area.className = 'rarea'; box.appendChild(area);
+  R.rows.forEach(r => {
+    const row = document.createElement('div'); row.className = 'rrow';
+    const reqTxt = r.req[0] === r.req[1] ? `≤${fmt(r.req[0])} m` : `≤${fmt(r.req[0])}〜${fmt(r.req[1])} m`;
+    row.innerHTML = `<div class="rlabel"><span>${r.name}</span><span class="req">${reqTxt}</span>${chip(r.s)}</div><div class="track"></div>`;
+    const tr = row.querySelector('.track');
+    R.ticks.forEach(t => { const g = document.createElement('div'); g.className = 'gridline'; g.style.left = x(t) + '%'; tr.appendChild(g); });
+    const okz = document.createElement('div'); okz.className = 'okz'; okz.style.width = x(r.req[1]) + '%'; tr.appendChild(okz);
+    const w = document.createElement('div'); w.className = 'nowcol worst'; w.style.left = x(R.now.typ[1]) + '%'; w.style.width = (x(R.now.worst) - x(R.now.typ[1])) + '%'; tr.appendChild(w);
+    const t = document.createElement('div'); t.className = 'nowcol typ'; t.style.left = x(R.now.typ[0]) + '%'; t.style.width = (x(R.now.typ[1]) - x(R.now.typ[0])) + '%'; tr.appendChild(t);
+    if (r.req[0] === r.req[1]) { const th = document.createElement('div'); th.className = 'thr'; th.style.left = x(r.req[0]) + '%'; tr.appendChild(th); }
+    else { const th = document.createElement('div'); th.className = 'thrband'; th.style.left = x(r.req[0]) + '%'; th.style.width = (x(r.req[1]) - x(r.req[0])) + '%'; tr.appendChild(th); }
+    bindTip(tr, `<b>${r.name}</b><br>許容 ${reqTxt}<br>今: 典型 ${R.now.typ[0]}〜${R.now.typ[1]} m、最悪 ${R.now.worst} m`);
+    area.appendChild(row);
+  });
+  const ax = document.createElement('div'); ax.className = 'axis';
+  ax.innerHTML = R.ticks.map(t => `<span style="left:${x(t)}%">${fmt(t)}</span>`).join('') + `<span style="left:100%;transform:translateX(-100%);top:16px">m</span>`;
+  box.appendChild(ax);
+}
+drawRuler('ruler-lat', RULERS.lat);
+drawRuler('ruler-along', RULERS.along);
+
+const USE = [
+  ['コーナーのおおよその走行位置', '横 ±1 m、前後 ±5 m', '横 ≈0.5 m（最悪1.5〜2 m）、前後 ≈1〜3 m', 'meets', '7/30 L2の3250〜3900 mだけは注意付きで見る。'],
+  ['動画と並べて見る（見た目）', '横 ±1 m、前後 ±3〜5 m', '位置は多くの場所で範囲内。既定カメラは画角違いで134 px、推定カメラ（未コミット）で中央値9.4 px・最悪54.5 px', 'borderline', '見た目の差の大半はカメラの違い。映像とロガーの約0.2秒の遅れも未解明。'],
+  ['同じ日のラップ間でライン比較', '1 m以上の差を見分ける: ±0.5 m／0.3 m程度の差: ±0.3 m', '周ごとの補正の差 0.30〜0.58 m、10秒より長い周期の差 0.28〜0.79 m、短い揺れ ≤0.2 m', 'borderline', '1 m以上のライン差は信頼できる。0.3〜0.5 mの差は誤差と区別できない。'],
+  ['ブレーキ点の比較（同じ日）', '前後 ±2 m', 'ブレーキ信号の時刻残差 7/30 −0.004秒（約0.2 m）、7/29 周ごと±0.044秒（最大2.3 m）。GPS前後 0.5〜0.8 m', 'borderline', 'ブレーキ圧で比べれば概ね足りる。GPS速度で判定すると0.09秒の遅れが乗る。'],
+  ['HUD・ペダル・ブレーキ灯の同期', '±0.05秒', '7/30 −0.031〜+0.024秒、7/29 周ごと±0.044秒。GPS速度表示だけ0.09秒遅れ', 'borderline', 'ペダルとブレーキ灯は足りる。速度表示は補正が必要（車の位置は影響なし）。'],
+  ['日をまたぐ比較（7/29と7/30）', '横 ±0.3〜0.5 m、前後 ±1〜2 m', '各日に別々の横誤差（約±0.7 m、これは下限）。7/29は強い接触ラベルが1件だけ', 'no', '1.5 mを超える差なら見えるが、細かい比較には使えない。'],
+  ['縁石までの距離（クリッピングKPI）', '絶対横位置 ≤0.2〜0.3 m', '約±0.7 m（下限）。7/30の58ラベル中4件が矛盾', 'no', '必要な精度の2〜3倍。縁石に乗ったかどうかはIMUの接触ラベルで直接判定する方が確実。'],
+  ['動画とCGの画像を重ねて検証', '数px、近い縁で横0.1 m級', '中央値9.4 px・最悪54.5 px。動画から読む横ずれの限界は1場面±1.5 m', 'no', 'カメラが未校正。3.9 pxでも横1.2 m相当の場面がある。'],
+  ['トラックリミット判定', 'タイヤ位置で ≤0.1〜0.2 m', '横の絶対値 約±0.7 m。コースの白線自体も0.2〜0.3 mの誤差の見込み', 'no', '今のデータでは届かない。高精度GNSSとコース基準点の測量が必要。'],
+];
+document.querySelector('#usecase-table tbody').innerHTML = USE.map(u => `<tr><td>${u[0]}</td><td>${u[1]}</td><td>${u[2]}</td><td>${chip(u[3])}</td><td>${u[4]}</td></tr>`).join('');
+
+const BUDGET = {
+  lat: { min: 0.03, max: 3, ticks: [0.03, 0.1, 0.3, 1, 3], rows: [
+    { n: 'GPSのゆっくり変わる偏り（補正後の残り）', typ: [0.4, 0.7], worst: 2.0, g: '導出', v: '0.4〜0.7 m／最悪1.5〜2 m', note: '7/30 L2 3250〜3900 mが最悪。IMUでは観測できない' },
+    { n: 'コース基準（2019年航空写真の位置合わせ）', typ: [0.2, 0.3], g: '推定', v: '0.2〜0.3 m', note: '縁石線と航空写真の一致はp95 0.128 m（計測）' },
+    { n: 'GPSアンテナの左右位置（未測定）', typ: [0.03, 0.3], g: '推定', v: '≤0.2〜0.3 m', note: '左右に0.5 mずれていた場合、補正が0.19〜0.29 m動く' },
+    { n: 'GPSの細かい揺れ（10秒未満）', typ: [0.12, 0.17], worst: 0.55, g: '計測', v: '0.12〜0.17 m RMS／最大0.55 m', note: '平滑化で取れるのは最大0.1〜0.15 m' },
+    { n: '描画の移動平均（コーナー内側へ寄る）', typ: [0.04, 0.05], worst: 0.135, g: '導出', v: '≈0.05 m／最大0.135 m', note: '見た目だけ。縁石ラベルの成績は変わらない' },
+    { n: '車の向きの遅れ（30 m先の見え方）', typ: [0.03, 0.04], g: '計測', v: '0.04 m', note: '10/02の改善後（p95 0.075°）' },
+  ] },
+  along: { min: 0.1, max: 15, ticks: [0.1, 0.3, 1, 3, 10], rows: [
+    { n: '映像とロガーの間の未解明の遅れ（0〜0.24秒）', typ: [0.1, 6.5], worst: 13, g: '不明', unknown: true, v: '0〜6.5 m（100 km/h）／最高速なら約13 m', note: 'すべて時刻ずれと仮定した場合。証明されていない' },
+    { n: 'GPS速度の0.09秒遅れ（速度表示のみ）', typ: [2.5, 2.5], worst: 5.5, g: '計測', v: '0.09秒 ≈ 2.5 m（100 km/h）', note: '今回発見。車の位置は影響なし' },
+    { n: '動画タイマー読み取り（動画とラップ時刻の対応）', typ: [0.8, 0.8], worst: 4.9, g: '計測', v: '±0.03秒 ≈ ±0.8 m／7/30 L5は4.9 m', note: '7/30 L5だけ+0.09秒ずれている' },
+    { n: 'ロガー各信号の時刻（HUD・ペダル）', typ: [0.1, 0.7], worst: 2.3, g: '計測', v: '0.1〜0.7 m／最大2.3 m', note: '車の位置ではなく表示のずれ' },
+    { n: 'フレーム丸め・デコードのずれ（比較資料）', typ: [0.15, 0.46], worst: 1.8, g: '計測', v: '0.15〜0.46 m／最大1.8 m', note: 'フレームの実時刻でCGを描けば消せる' },
+    { n: 'GPS前後（補正後の残り）', typ: [0.5, 0.8], worst: 1.7, g: '導出', v: '0.5〜0.8 m／最大1.7 m', note: '前後の真値と照合していない' },
+    { n: 'GPSアンテナの前後位置（未測定）', typ: [0.1, 1], g: '推定', v: '最大約1 m', note: '補正では拘束されない' },
+  ] },
+};
+function drawBudget(id, axisId, B) {
+  const x = LOG(B.min, B.max), box = document.getElementById(id);
+  box.innerHTML = B.rows.map((r, i) => {
+    const wl = r.worst ? `<div class="worst" style="left:${x(r.typ[1])}%;width:${x(r.worst) - x(r.typ[1])}%"></div>` : '';
+    const grid = B.ticks.map(t => `<div class="gridline" style="left:${x(t)}%"></div>`).join('');
+    return `<div class="brow" data-i="${i}"><div class="bhead"><span class="bname">${r.n}</span><span class="g">${r.g}</span></div><div class="bstrip">${grid}${wl}<div class="typ${r.unknown ? ' unknown' : ''}" style="left:${x(r.typ[0])}%;width:${Math.max(0.8, x(r.typ[1]) - x(r.typ[0]))}%"></div></div><div class="bhead"><span class="bval">${r.v}</span></div><div class="bnote">${r.note}</div></div>`;
+  }).join('');
+  box.querySelectorAll('.brow').forEach(el => { const r = B.rows[+el.dataset.i]; bindTip(el.querySelector('.bstrip'), `<b>${r.n}</b><br>${r.v}<br>根拠: ${r.g}`); });
+  document.getElementById(axisId).innerHTML = B.ticks.map(t => `<span style="left:${x(t)}%">${fmt(t)}</span>`).join('') + `<span style="left:100%;transform:translateX(-100%);top:16px">m</span>`;
+}
+drawBudget('budget-lat', 'axis-budget-lat', BUDGET.lat);
+drawBudget('budget-along', 'axis-budget-along', BUDGET.along);
+
+const SCENES = [
+  ['7/29 L3 47.0秒', 1820, 1.23, 'C', 'train', '左右の線が2.7 m食い違う'],
+  ['7/29 L3 55.0秒', 2089, -0.11, 'B', 'train', '片側の線のみ'],
+  ['7/29 L3 68.0秒', 2480, -1.69, 'A', 'train', ''],
+  ['7/29 L3 52.4秒', 2002, 0.02, 'A', 'held', ''],
+  ['7/29 L3 60.0秒', 2215, -1.83, 'C', 'held', '左右の線が3.5 m食い違う'],
+  ['7/29 L3 64.4秒', 2346, -2.05, 'C', 'held', '片側のみ、幅が広い'],
+  ['7/30 L2 45.0秒', 1916, 2.37, 'B', 'held', '内側の線のみ。CG線の不良（100R）の疑い'],
+  ['7/30 L2 47.5秒', 2007, 1.65, 'A', 'held', '両側の線で一致'],
+  ['7/30 L2 50.0秒', 2085, 0.16, 'B', 'held', '片側の線のみ'],
+  ['7/30 L2 84.0秒', 3147, -1.18, 'C', 'held', '左右の線が1.2 m食い違う'],
+  ['7/30 L2 94.0秒', 3433, 1.96, 'C', 'held', 'カメラ姿勢が合わず換算不可に近い'],
+  ['7/30 L2 112.0秒', 3911, -1.23, 'C', 'held', '画素差3.9 pxでも横1.2 m相当'],
+];
+(function drawDots() {
+  const lo = -3, hi = 3, x = v => (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * 100;
+  const box = document.getElementById('dots');
+  box.innerHTML = SCENES.map((s, i) => {
+    const cls = s[4] === 'train' ? 'dot train' : (s[3] === 'C' ? 'dot weak' : 'dot');
+    return `<div class="drow"><div class="dlabel">${s[0]}</div><div class="dtrack"><div class="floor" style="left:${x(-1.5)}%;width:${x(1.5) - x(-1.5)}%"></div><div class="zero" style="left:${x(0)}%"></div><div class="${cls}" data-i="${i}" style="left:${x(s[2])}%"></div></div></div>`;
+  }).join('');
+  box.querySelectorAll('.dot').forEach(d => { const s = SCENES[+d.dataset.i]; bindTip(d.parentElement, `<b>${s[0]}</b>（${s[1]} m）<br>横ずれ ${s[2] > 0 ? '+' : ''}${s[2].toFixed(2)} m、評価${s[3]}${s[4] === 'train' ? '（当てはめに使用）' : ''}${s[5] ? '<br>' + s[5] : ''}`); });
+  document.getElementById('dots-axis').innerHTML = [-3, -2, -1, 0, 1, 2, 3].map(t => `<span style="left:${x(t)}%">${t > 0 ? '+' : ''}${t}</span>`).join('') + `<span style="left:100%;transform:translateX(-100%);top:15px">m</span>`;
+  document.getElementById('dots-table').innerHTML = '<table><thead><tr><th>場面</th><th class="num">位置</th><th class="num">横ずれ</th><th>評価</th><th>用途</th><th>メモ</th></tr></thead><tbody>' +
+    SCENES.map(s => `<tr><td>${s[0]}</td><td class="num">${s[1]} m</td><td class="num">${s[2] > 0 ? '+' : ''}${s[2].toFixed(2)} m</td><td>${s[3]}</td><td>${s[4] === 'train' ? '当てはめ' : '評価'}</td><td>${s[5]}</td></tr>`).join('') + '</tbody></table>';
+})();
+
+const SOLS = [
+  { when: '今すぐ（今のデータで）', items: [
+    ['目印の通過時刻で、映像とロガーの遅れを確定する', '縁石の始まりと終わり、距離看板、コントロールラインを通過するフレームを読み、0〜0.24秒の遅れを計測値にする。', '前後の最大要因（100 km/hで0〜6.5 m）', '2〜3日'],
+    ['GPS速度の0.09秒遅れを補正する', 'GPS速度とGPS由来の派生信号を0.09秒ずらす。配信データの変更なので承認が必要。', '速度表示とGPS速度でのブレーキ点判定（約2.5 m相当）', '数時間'],
+    ['CGコース線の局所不良を直す', '100R内側線の折れ返しを直し、他の線も曲率で点検する。Codexの縁石端の路面修正の採否も決める。', '動画比較での見かけの横ずれ（最大5 m級の振れ）', '半日〜1日'],
+    ['信頼の低い区間を表示する', '7/30 L2 3250〜3900 mと、KPIの±0.7 mを画面に出す。補正はしない（IMUで置き換える試験では悪化した）。', '誤読の防止', '数時間'],
+    ['比較資料をフレームの実時刻で描く', 'デコードされたフレームの実時刻（PTS）でCGを描く。', '比較資料の前後0.15〜1 m', '数時間'],
+  ] },
+  { when: '車とカメラに触れられれば（今のデータに効く）', items: [
+    ['カメラとGPSアンテナの取付位置を実測する', 'レンズの高さ・左右・前後・俯角とアンテナ位置をメジャーと傾斜計で測る。', '動画計測の尺度の不確かさ ±20% → ±1〜2%。アンテナ前後の最大約1 m', '1〜2時間'],
+    ['同じカメラでレンズを校正する', '1280×720モードでチェッカーボードを撮り、焦点距離と歪みを求める。', '焦点距離の食い違いを解消。近い縁で横3〜7 cm以下（理論値）', '半日'],
+    ['動画から1フレームごとに横位置を測る', '近い側の白線・縁石を探して横位置を出し、縁石ラベルで検証してからGPSの補正に取り込む。上の2つが前提。', '横の絶対値。理論値は近い縁で5〜10 cm（未検証）', '5〜10日'],
+  ] },
+  { when: '次の走行日', items: [
+    ['生の観測値を記録できる高精度GNSSを追加で載せる', 'ZED-F9P級やEmlid Reach M2。補正はQZSSのCLAS（無料）、NTRIP、または後処理。', '水平12 cm以下（CLAS、95%）、Fixなら1〜3 cm。0.1〜0.3 mに届く唯一の方法', '組み込み1〜2日／数万円〜約12万円'],
+    ['時刻を物理的に結ぶ', 'GNSSの1秒パルスをロガーの空き入力へ入れ、パルスで光るLEDをカメラに写す。', '動画とGNSSをミリ秒単位で揃える（提案段階）', '数千円'],
+    ['コース基準点を測る', '縁石端と白線の角を高精度GNSSで測る。', '航空写真の位置合わせ誤差（推定0.2〜0.3 m）を計測値にする', '1日＋コース歩行の許可'],
+  ] },
+  { when: '見送り', items: [
+    ['GPSとIMUの融合・ファクターグラフ（今のデータで）', '試作で改善なし（矛盾4→4件、AUC 0.874→0.871）。上限も0.1〜0.15 m。', '—', '—'],
+    ['AiM GPS09cへの交換だけ', 'MXL2には対応するが精度は0.5 m（CEP、50%値）。生の観測値も出ない。', '—', '—'],
+  ] },
+];
+let n = 0;
+document.getElementById('solutions').innerHTML = SOLS.map(g => `<div class="card"><h3>${g.when}</h3><div class="when">${g.items.map(it => { n++; return `<div class="sol"><span class="n">${String(n).padStart(2, '0')}</span><span class="t">${it[0]}</span><span class="d">${it[1]}</span><span class="m"><span>効く所: <b>${it[2]}</b></span><span>手間: <b>${it[3]}</b></span></span></div>`; }).join('')}</div></div>`).join('');
+</script>
+
+</html>

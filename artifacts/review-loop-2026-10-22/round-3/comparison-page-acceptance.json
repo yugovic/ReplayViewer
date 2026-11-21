@@ -1,0 +1,97 @@
+{
+ "kind": "review-loop-acceptance",
+ "round": 3,
+ "area": "comparison-page",
+ "passed": true,
+ "failures": [],
+ "checks": {
+  "grepZeroHits": {
+   "ok": true,
+   "detail": {
+    "scripts/build_schematics.py": {
+     "0.15秒": 0,
+     "全周で": 0
+    },
+    "scripts/build_events.py": {
+     "0.15秒": 0,
+     "全周で": 0
+    },
+    "events.json": {
+     "0.15秒": 0,
+     "全周で": 0
+    },
+    "schematic/schematics.json": {
+     "0.15秒": 0,
+     "全周で": 0
+    },
+    "docs/fuji-event-comparison-2026-10-22.html": {
+     "約0.15秒": 0,
+     "全周で3DCG": 0
+    }
+   }
+  },
+  "sevenK1PngsChangedOthersIdentical": {
+   "ok": true,
+   "detail": {
+    "total": 107,
+    "changed": [
+     "contact-0730-L1-k1_top.png",
+     "contact-0730-L2-k1_top.png",
+     "contact-0730-L3-k1_top.png",
+     "contact-0730-L4-k1_top.png",
+     "contact-0730-L5-k1-1_top.png",
+     "contact-0730-L5-k1-2_top.png",
+     "contact-0730-L6-k1_top.png"
+    ],
+    "unchangedBytes": 100
+   }
+  },
+  "k1PngMtimeAfterFix": {
+   "ok": true,
+   "detail": null
+  },
+  "schematicsManifest": {
+   "ok": true,
+   "detail": {
+    "n": 106,
+    "failures": [],
+    "note": "注: k1は3DCGのブロック線の先端形状で乗った瞬間の距離が大きく出る（7/30は6周中5周で0.09〜0.36秒遅れ、L6は0.12秒早い。個別確認待ち）"
+   }
+  },
+  "eventsNotesJa": {
+   "ok": true,
+   "detail": null
+  },
+  "provenanceChain": {
+   "ok": true,
+   "detail": {
+    "previousSha256": "f8bc079d38cc75ec28fee2a3cea0814286b20468a8a4027e1ed9873f98d055d0",
+    "newSha256": "a56b0149e35623acddc7c42fea5fe45edc5b9db7c284a200bc29a5ffae7c9204",
+    "change": "notesJa of the 7 events contact-0730-L1-k1, -L2-k1, -L3-k1, -L4-k1, -L5-k1-1, -L5-k1-2, -L6-k1 replaced in place (string replacement; every other field and byte unchanged, asserted by a field-by-field comparison) with build_events.py K1_NOTE_JA: 5 of 6 laps late by 0.09-0.36 s, L6 0.12 s early, L5 counted at its first vibration (0.41 s early at the second). Numbers = discrepancy.dtFirstBlock.",
+    "patchScript": "artifacts/review-loop-2026-10-22/round-3/comparison-page-patch-events.py",
+    "builderDryRun": "scripts/build_events.py (with the new K1_NOTE_JA and its data assertions) run into tmp/round3-impl/dryrun/out: output equals the patched events.json except \"generated\".",
+    "framesManifest": "frames/manifest.json still records previousSha256: the frames depend only on the timing block, which did not change, so they were NOT re-extracted. build_page.py asserts this chain."
+   }
+  },
+  "summary0729Sentence": {
+   "ok": true,
+   "detail": {
+    "fromVerifyJson": {
+     "fixed": "4",
+     "raw": "5",
+     "usable": "9"
+    }
+   }
+  },
+  "qaPage": {
+   "ok": true,
+   "detail": {
+    "generated": "2026-10-22T14:24:16.713Z",
+    "status": "passed",
+    "images": "531/531",
+    "guides": 110,
+    "consoleErrors": 0
+   }
+  }
+ }
+}

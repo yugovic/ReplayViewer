@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" font-family="sans-serif" font-size="11">
+<rect width="980" height="420" fill="#ffffff"/>
+<line x1="60" x2="960" y1="354.5" y2="354.5" stroke="#e6e6e6"/>
+<text x="54" y="358.5" text-anchor="end" fill="#444">-5</text>
+<line x1="60" x2="960" y1="323.6" y2="323.6" stroke="#e6e6e6"/>
+<text x="54" y="327.6" text-anchor="end" fill="#444">-4</text>
+<line x1="60" x2="960" y1="292.7" y2="292.7" stroke="#e6e6e6"/>
+<text x="54" y="296.7" text-anchor="end" fill="#444">-3</text>
+<line x1="60" x2="960" y1="261.8" y2="261.8" stroke="#e6e6e6"/>
+<text x="54" y="265.8" text-anchor="end" fill="#444">-2</text>
+<line x1="60" x2="960" y1="230.9" y2="230.9" stroke="#e6e6e6"/>
+<text x="54" y="234.9" text-anchor="end" fill="#444">-1</text>
+<line x1="60" x2="960" y1="200.0" y2="200.0" stroke="#888"/>
+<text x="54" y="204.0" text-anchor="end" fill="#444">+0</text>
+<line x1="60" x2="960" y1="169.1" y2="169.1" stroke="#e6e6e6"/>
+<text x="54" y="173.1" text-anchor="end" fill="#444">+1</text>
+<line x1="60" x2="960" y1="138.2" y2="138.2" stroke="#e6e6e6"/>
+<text x="54" y="142.2" text-anchor="end" fill="#444">+2</text>
+<line x1="60" x2="960" y1="107.3" y2="107.3" stroke="#e6e6e6"/>
+<text x="54" y="111.3" text-anchor="end" fill="#444">+3</text>
+<line x1="60" x2="960" y1="76.4" y2="76.4" stroke="#e6e6e6"/>
+<text x="54" y="80.4" text-anchor="end" fill="#444">+4</text>
+<line x1="60" x2="960" y1="45.5" y2="45.5" stroke="#e6e6e6"/>
+<text x="54" y="49.5" text-anchor="end" fill="#444">+5</text>
+<line x1="116.2" x2="116.2" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="116.2" y="386" text-anchor="middle" fill="#444">1000</text>
+<line x1="256.9" x2="256.9" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="256.9" y="386" text-anchor="middle" fill="#444">1500</text>
+<line x1="397.5" x2="397.5" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="397.5" y="386" text-anchor="middle" fill="#444">2000</text>
+<line x1="538.1" x2="538.1" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="538.1" y="386" text-anchor="middle" fill="#444">2500</text>
+<line x1="678.8" x2="678.8" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="678.8" y="386" text-anchor="middle" fill="#444">3000</text>
+<line x1="819.4" x2="819.4" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="819.4" y="386" text-anchor="middle" fill="#444">3500</text>
+<line x1="960.0" x2="960.0" y1="30" y2="370" stroke="#f0f0f0"/>
+<text x="960.0" y="386" text-anchor="middle" fill="#444">4000</text>
+<text x="490.0" y="408" text-anchor="middle" fill="#222">CG station (m)</text>
+<text x="16" y="210.0" transform="rotate(-90 16 210.0)" text-anchor="middle" fill="#222">dy fixed-yaw (m, + = car actually further right)</text>
+<text x="60" y="18" fill="#222">I3: video-implied lateral offset per scene (relative to the 3 wet training frames; bars = point-bootstrap 95%)</text>
+<line x1="346.9" x2="346.9" y1="99.9" y2="190.4" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<rect x="342.9" y="158.0" width="8" height="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="422.5" x2="422.5" y1="187.3" y2="207.4" stroke="#3a6fb0" stroke-width="2" opacity="0.7"/>
+<rect x="418.5" y="199.4" width="8" height="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="532.6" x2="532.6" y1="237.4" y2="259.0" stroke="#1b7f5b" stroke-width="2" opacity="0.7"/>
+<rect x="528.6" y="248.2" width="8" height="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="457.9" x2="457.9" y1="220.4" y2="277.9" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M457.9,251.1 L463.4,256.6 L457.9,262.1 L452.4,256.6 Z" fill="#c98a1a"/>
+<line x1="494.8" x2="494.8" y1="241.4" y2="272.9" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M494.8,257.9 L500.3,263.4 L494.8,268.9 L489.3,263.4 Z" fill="#c98a1a"/>
+<line x1="98.1" x2="98.1" y1="337.9" y2="354.5" stroke="#b03a3a" stroke-width="2" opacity="0.7"/>
+<circle cx="98.1" cy="354.5" r="4.5" fill="#b03a3a"/>
+<line x1="373.9" x2="373.9" y1="123.7" y2="151.2" stroke="#3a6fb0" stroke-width="2" opacity="0.7"/>
+<circle cx="373.9" cy="126.7" r="4.5" fill="#3a6fb0"/>
+<line x1="421.5" x2="421.5" y1="185.2" y2="198.8" stroke="#3a6fb0" stroke-width="2" opacity="0.7"/>
+<circle cx="421.5" cy="195.1" r="4.5" fill="#3a6fb0"/>
+<line x1="720.1" x2="720.1" y1="232.8" y2="240.8" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<circle cx="720.1" cy="236.5" r="4.5" fill="#c98a1a"/>
+<line x1="800.5" x2="800.5" y1="65.5" y2="158.0" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<circle cx="800.5" cy="139.4" r="4.5" fill="#c98a1a"/>
+<line x1="935.1" x2="935.1" y1="231.5" y2="241.7" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<circle cx="935.1" cy="238.0" r="4.5" fill="#c98a1a"/>
+<line x1="398.1" x2="398.1" y1="187.0" y2="206.2" stroke="#1b7f5b" stroke-width="2" opacity="0.7"/>
+<path d="M398.1,193.9 L403.6,199.4 L398.1,204.9 L392.6,199.4 Z" fill="#1b7f5b"/>
+<line x1="399.4" x2="399.4" y1="134.8" y2="155.2" stroke="#1b7f5b" stroke-width="2" opacity="0.7"/>
+<circle cx="399.4" cy="149.0" r="4.5" fill="#1b7f5b"/>
+<line x1="363.5" x2="363.5" y1="71.4" y2="74.8" stroke="#1b7f5b" stroke-width="2" opacity="0.7"/>
+<path d="M363.5,67.0 L368.5,76.0 L358.5,76.0 Z" fill="#1b7f5b"/>
+<line x1="368.7" x2="368.7" y1="113.1" y2="139.7" stroke="#1b7f5b" stroke-width="2" opacity="0.7"/>
+<path d="M368.7,110.6 L373.7,119.6 L363.7,119.6 Z" fill="#1b7f5b"/>
+<line x1="379.1" x2="379.1" y1="186.7" y2="241.4" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M379.1,206.4 L384.1,215.4 L374.1,215.4 Z" fill="#c98a1a"/>
+<line x1="384.1" x2="384.1" y1="223.2" y2="238.3" stroke="#1b7f5b" stroke-width="2" opacity="0.7"/>
+<path d="M384.1,229.9 L389.1,238.9 L379.1,238.9 Z" fill="#1b7f5b"/>
+<line x1="790.7" x2="790.7" y1="125.8" y2="173.1" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M790.7,152.7 L795.7,161.7 L785.7,161.7 Z" fill="#c98a1a"/>
+<line x1="795.3" x2="795.3" y1="106.3" y2="163.5" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M795.3,144.3 L800.3,153.3 L790.3,153.3 Z" fill="#c98a1a"/>
+<line x1="805.6" x2="805.6" y1="45.5" y2="169.1" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M805.6,119.9 L810.6,128.9 L800.6,128.9 Z" fill="#c98a1a"/>
+<line x1="810.6" x2="810.6" y1="91.8" y2="140.0" stroke="#c98a1a" stroke-width="2" opacity="0.7"/>
+<path d="M810.6,123.9 L815.6,132.9 L805.6,132.9 Z" fill="#c98a1a"/>
+<circle cx="630" cy="44" r="4" fill="#666"/>
+<text x="640" y="48" fill="#333">held-out 7/30 L2</text>
+<path d="M630,54 L635,59 L630,64 L625,59 Z" fill="#666"/>
+<text x="640" y="63" fill="#333">held-out 7/29 L3</text>
+<path d="M630,69 L635,78 L625,78 Z" fill="#666"/>
+<text x="640" y="78" fill="#333">diagnostic sequence 7/30 L2</text>
+<rect x="626" y="85" width="8" height="8" fill="none" stroke="#555"/>
+<text x="640" y="93" fill="#333">training 7/29 L3 (in-sample)</text>
+<rect x="810" y="38" width="10" height="10" fill="#1b7f5b"/><text x="825" y="47" fill="#333">grade A</text>
+<rect x="810" y="53" width="10" height="10" fill="#3a6fb0"/><text x="825" y="62" fill="#333">grade B</text>
+<rect x="810" y="68" width="10" height="10" fill="#c98a1a"/><text x="825" y="77" fill="#333">grade C</text>
+<rect x="810" y="83" width="10" height="10" fill="#b03a3a"/><text x="825" y="92" fill="#333">grade D</text>
+</svg>

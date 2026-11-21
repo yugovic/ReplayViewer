@@ -1,0 +1,349 @@
+{
+ "note": "pAcc/sAcc are receiver self-estimates (u-blox NAV-SOL), not measured errors.",
+ "fuji_aim_01": {
+  "001": {
+   "match_start_index": 1803,
+   "n": 1446,
+   "max_latlon_mismatch_m": 0.5227,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.92,
+    "p95": 1.05,
+    "max": 1.08,
+    "min": 0.75
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.19,
+    "max": 0.27,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 13.0,
+    "p95": 15.0,
+    "max": 15.0,
+    "min": 11.0
+   },
+   "pDOP": {
+    "median": 1.57,
+    "p95": 1.71,
+    "max": 1.91,
+    "min": 1.56
+   }
+  },
+  "002": {
+   "match_start_index": 3249,
+   "n": 1446,
+   "max_latlon_mismatch_m": 0.571,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.84,
+    "p95": 1.02,
+    "max": 1.07,
+    "min": 0.72
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.2,
+    "max": 0.34,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 13.0,
+    "p95": 15.0,
+    "max": 15.0,
+    "min": 11.0
+   },
+   "pDOP": {
+    "median": 1.56,
+    "p95": 1.68,
+    "max": 1.89,
+    "min": 1.55
+   }
+  },
+  "003": {
+   "match_start_index": 4695,
+   "n": 1414,
+   "max_latlon_mismatch_m": 0.5991,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.88,
+    "p95": 1.063,
+    "max": 1.1,
+    "min": 0.77
+   },
+   "sAcc_mps": {
+    "median": 0.16,
+    "p95": 0.19,
+    "max": 0.32,
+    "min": 0.11
+   },
+   "numSV": {
+    "median": 13.0,
+    "p95": 14.0,
+    "max": 15.0,
+    "min": 11.0
+   },
+   "pDOP": {
+    "median": 1.67,
+    "p95": 1.71,
+    "max": 1.83,
+    "min": 1.54
+   }
+  },
+  "004": {
+   "match_start_index": 6109,
+   "n": 1647,
+   "max_latlon_mismatch_m": 0.5647,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.83,
+    "p95": 1.04,
+    "max": 1.11,
+    "min": 0.73
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.19,
+    "max": 0.46,
+    "min": 0.11
+   },
+   "numSV": {
+    "median": 12.0,
+    "p95": 13.0,
+    "max": 14.0,
+    "min": 10.0
+   },
+   "pDOP": {
+    "median": 1.66,
+    "p95": 1.7,
+    "max": 2.13,
+    "min": 1.66
+   }
+  }
+ },
+ "fuji_aim_2020_07_30": {
+  "001": {
+   "match_start_index": 1614,
+   "n": 1336,
+   "max_latlon_mismatch_m": 1.2833,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.83,
+    "p95": 0.89,
+    "max": 0.92,
+    "min": 0.68
+   },
+   "sAcc_mps": {
+    "median": 0.14,
+    "p95": 0.18,
+    "max": 0.29,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 14.0,
+    "p95": 15.0,
+    "max": 15.0,
+    "min": 11.0
+   },
+   "pDOP": {
+    "median": 1.59,
+    "p95": 1.73,
+    "max": 2.23,
+    "min": 1.58
+   }
+  },
+  "002": {
+   "match_start_index": 2950,
+   "n": 1318,
+   "max_latlon_mismatch_m": 1.3088,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.83,
+    "p95": 0.97,
+    "max": 0.99,
+    "min": 0.74
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.19,
+    "max": 0.3,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 14.0,
+    "p95": 15.0,
+    "max": 15.0,
+    "min": 12.0
+   },
+   "pDOP": {
+    "median": 1.58,
+    "p95": 1.68,
+    "max": 2.03,
+    "min": 1.57
+   },
+   "window_3250_3900m": {
+    "n": 238,
+    "pAcc_m": {
+     "median": 0.86,
+     "p95": 0.9,
+     "max": 0.91,
+     "min": 0.74
+    },
+    "numSV": {
+     "median": 14.0,
+     "p95": 14.0,
+     "max": 14.0,
+     "min": 12.0
+    },
+    "pDOP": {
+     "median": 1.57,
+     "p95": 1.57,
+     "max": 1.69,
+     "min": 1.57
+    }
+   },
+   "outside_window": {
+    "n": 1080,
+    "pAcc_m": {
+     "median": 0.82,
+     "p95": 0.97,
+     "max": 0.99,
+     "min": 0.74
+    },
+    "numSV": {
+     "median": 14.0,
+     "p95": 15.0,
+     "max": 15.0,
+     "min": 12.0
+    },
+    "pDOP": {
+     "median": 1.58,
+     "p95": 1.68,
+     "max": 2.03,
+     "min": 1.57
+    }
+   }
+  },
+  "003": {
+   "match_start_index": 4268,
+   "n": 1318,
+   "max_latlon_mismatch_m": 1.3432,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.85,
+    "p95": 0.98,
+    "max": 1.03,
+    "min": 0.73
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.18,
+    "max": 0.41,
+    "min": 0.11
+   },
+   "numSV": {
+    "median": 14.0,
+    "p95": 15.0,
+    "max": 15.0,
+    "min": 12.0
+   },
+   "pDOP": {
+    "median": 1.56,
+    "p95": 1.68,
+    "max": 1.82,
+    "min": 1.55
+   }
+  },
+  "004": {
+   "match_start_index": 5586,
+   "n": 1308,
+   "max_latlon_mismatch_m": 1.3589,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.81,
+    "p95": 0.98,
+    "max": 1.03,
+    "min": 0.69
+   },
+   "sAcc_mps": {
+    "median": 0.14,
+    "p95": 0.18,
+    "max": 0.24,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 13.0,
+    "p95": 15.0,
+    "max": 15.0,
+    "min": 11.0
+   },
+   "pDOP": {
+    "median": 1.55,
+    "p95": 1.78,
+    "max": 1.91,
+    "min": 1.54
+   }
+  },
+  "005": {
+   "match_start_index": 6894,
+   "n": 1308,
+   "max_latlon_mismatch_m": 1.3697,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.84,
+    "p95": 0.92,
+    "max": 0.94,
+    "min": 0.74
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.186,
+    "max": 0.29,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 13.0,
+    "p95": 14.0,
+    "max": 15.0,
+    "min": 10.0
+   },
+   "pDOP": {
+    "median": 1.66,
+    "p95": 1.78,
+    "max": 2.02,
+    "min": 1.53
+   }
+  },
+  "006": {
+   "match_start_index": 8202,
+   "n": 1405,
+   "max_latlon_mismatch_m": 1.3416,
+   "diffSoln_fraction": 1.0,
+   "pAcc_m": {
+    "median": 0.87,
+    "p95": 0.96,
+    "max": 1.0,
+    "min": 0.76
+   },
+   "sAcc_mps": {
+    "median": 0.15,
+    "p95": 0.18,
+    "max": 0.27,
+    "min": 0.1
+   },
+   "numSV": {
+    "median": 13.0,
+    "p95": 13.0,
+    "max": 14.0,
+    "min": 9.0
+   },
+   "pDOP": {
+    "median": 1.66,
+    "p95": 1.78,
+    "max": 2.23,
+    "min": 1.66
+   }
+  }
+ }
+}

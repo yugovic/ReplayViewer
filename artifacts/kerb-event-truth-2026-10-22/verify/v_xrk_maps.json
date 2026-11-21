@@ -1,0 +1,116 @@
+{
+ "fuji_aim_01": {
+  "1": {
+   "tc0Ms": 180700.0,
+   "rmsKmh": 0.0002878718095958074,
+   "xrkLapStartMs": 180693.0,
+   "tc0MinusXrkLapStartS": 0.007,
+   "metaDelta": 0.007,
+   "metaLapStartTimecodeMs": null,
+   "shiftSeconds": 0.0,
+   "n": 1446,
+   "lapDurationS": 144.5
+  },
+  "2": {
+   "tc0Ms": 325300.0,
+   "rmsKmh": 0.00028636460986222945,
+   "xrkLapStartMs": 325249.0,
+   "tc0MinusXrkLapStartS": 0.051,
+   "metaDelta": 0.051,
+   "metaLapStartTimecodeMs": null,
+   "shiftSeconds": 0.0,
+   "n": 1446,
+   "lapDurationS": 144.5
+  },
+  "3": {
+   "tc0Ms": 469900.0,
+   "rmsKmh": 0.00029134788004477405,
+   "xrkLapStartMs": 469884.0,
+   "tc0MinusXrkLapStartS": 0.016,
+   "metaDelta": 0.016,
+   "metaLapStartTimecodeMs": null,
+   "shiftSeconds": 0.0,
+   "n": 1414,
+   "lapDurationS": 141.3
+  },
+  "4": {
+   "tc0Ms": 611300.0,
+   "rmsKmh": 0.00028935474941579073,
+   "xrkLapStartMs": 611269.0,
+   "tc0MinusXrkLapStartS": 0.031,
+   "metaDelta": 0.031,
+   "metaLapStartTimecodeMs": null,
+   "shiftSeconds": 0.0,
+   "n": 1647,
+   "lapDurationS": 164.6
+  }
+ },
+ "fuji_aim_2020_07_30": {
+  "1": {
+   "tc0Ms": 162200.0,
+   "rmsKmh": 0.00029020639403812666,
+   "xrkLapStartMs": 162143.0,
+   "tc0MinusXrkLapStartS": 0.057,
+   "metaDelta": 0.057,
+   "metaLapStartTimecodeMs": 162200,
+   "shiftSeconds": 0.497,
+   "n": 1336,
+   "lapDurationS": 133.5
+  },
+  "2": {
+   "tc0Ms": 295800.0,
+   "rmsKmh": 0.0002909428103504593,
+   "xrkLapStartMs": 295778.0,
+   "tc0MinusXrkLapStartS": 0.022,
+   "metaDelta": 0.022,
+   "metaLapStartTimecodeMs": 295800,
+   "shiftSeconds": 0.523,
+   "n": 1318,
+   "lapDurationS": 131.7
+  },
+  "3": {
+   "tc0Ms": 427600.0,
+   "rmsKmh": 0.00028892925702409526,
+   "xrkLapStartMs": 427520.0,
+   "tc0MinusXrkLapStartS": 0.08,
+   "metaDelta": 0.08,
+   "metaLapStartTimecodeMs": 427600,
+   "shiftSeconds": 0.523,
+   "n": 1318,
+   "lapDurationS": 131.7
+  },
+  "4": {
+   "tc0Ms": 559400.0,
+   "rmsKmh": 0.0002912676104515507,
+   "xrkLapStartMs": 559303.0,
+   "tc0MinusXrkLapStartS": 0.097,
+   "metaDelta": 0.097,
+   "metaLapStartTimecodeMs": 559400,
+   "shiftSeconds": 0.555,
+   "n": 1308,
+   "lapDurationS": 130.7
+  },
+  "5": {
+   "tc0Ms": 690200.0,
+   "rmsKmh": 0.00028379860255302406,
+   "xrkLapStartMs": 690163.0,
+   "tc0MinusXrkLapStartS": 0.037,
+   "metaDelta": 0.037,
+   "metaLapStartTimecodeMs": 690200,
+   "shiftSeconds": 0.565,
+   "n": 1308,
+   "lapDurationS": 130.7
+  },
+  "6": {
+   "tc0Ms": 821000.0,
+   "rmsKmh": 0.0002908780243419233,
+   "xrkLapStartMs": 820985.0,
+   "tc0MinusXrkLapStartS": 0.015,
+   "metaDelta": 0.015,
+   "metaLapStartTimecodeMs": 821000,
+   "shiftSeconds": 0.583,
+   "n": 1405,
+   "lapDurationS": 140.4
+  }
+ }
+}

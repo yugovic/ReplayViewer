@@ -1,0 +1,128 @@
+{
+ "kind": "report-B k1 sentence check (round 1, R1-01)",
+ "k1PrimaryContacts0730": [
+  {
+   "lap": 1,
+   "onset": 32.748,
+   "dtFirst": 0.085,
+   "gapAtOnset": 1.092,
+   "cgOnSeconds": 0.418,
+   "truthOnSeconds": 2.038
+  },
+  {
+   "lap": 2,
+   "onset": 32.137,
+   "dtFirst": 0.266,
+   "gapAtOnset": 3.084,
+   "cgOnSeconds": 0.227,
+   "truthOnSeconds": 1.192
+  },
+  {
+   "lap": 3,
+   "onset": 32.668,
+   "dtFirst": 0.355,
+   "gapAtOnset": 3.884,
+   "cgOnSeconds": 0.23,
+   "truthOnSeconds": 1.208
+  },
+  {
+   "lap": 4,
+   "onset": 32.963,
+   "dtFirst": 0.227,
+   "gapAtOnset": 2.713,
+   "cgOnSeconds": 0.303,
+   "truthOnSeconds": 1.226
+  },
+  {
+   "lap": 5,
+   "onset": 33.061,
+   "dtFirst": 0.204,
+   "gapAtOnset": 2.289,
+   "cgOnSeconds": 0.226,
+   "truthOnSeconds": 0.585
+  },
+  {
+   "lap": 5,
+   "onset": 33.67,
+   "dtFirst": -0.405,
+   "gapAtOnset": 0.715,
+   "cgOnSeconds": 0.226,
+   "truthOnSeconds": 0.128
+  },
+  {
+   "lap": 6,
+   "onset": 33.101,
+   "dtFirst": -0.116,
+   "gapAtOnset": -0.668,
+   "cgOnSeconds": 0.39,
+   "truthOnSeconds": 0.647
+  }
+ ],
+ "thresholdOnset": {
+  "perLapFirstBurstDtFirst": {
+   "1": 0.085,
+   "2": 0.266,
+   "3": 0.355,
+   "4": 0.227,
+   "5": 0.204,
+   "6": -0.116
+  },
+  "lateLaps": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "lateRange": [
+   0.085,
+   0.355
+  ],
+  "earlyLaps": [
+   6
+  ],
+  "earlyValues": [
+   -0.116
+  ],
+  "medianSixLaps": 0.215,
+  "medianAllSevenOnsets": 0.204,
+  "otherKerbsMedian": -0.058,
+  "otherKerbsN": 13
+ },
+ "durations": {
+  "cgOnSecondsRange": [
+   0.226,
+   0.418
+  ],
+  "truthOnSecondsFirstBurstRange": [
+   0.585,
+   2.038
+  ],
+  "cgShorterEveryLap": true
+ },
+ "verifierOnset50": {
+  "reproducedAllMedian": -0.063,
+  "reproducedAllN": 19,
+  "verifierAllMedian": -0.063,
+  "verifierAllN": 19,
+  "reproducedExclK1Median": -0.145,
+  "reproducedExclK1N": 13,
+  "verifierExclK1Median": -0.145,
+  "verifierExclK1N": 13,
+  "k1PerLapFirstBurst": {
+   "1": -0.063,
+   "2": 0.071,
+   "3": 0.078,
+   "4": 0.022,
+   "5": 0.104,
+   "6": 0.023
+  },
+  "k1MedianSixLaps": 0.047,
+  "k1Own50MinusT1Median": 0.148,
+  "note": "The reviewer text \"立ち上がり50%の定義では約0.15秒\" is not reproduced: with the verifier's own 50 % onset the k1 3DCG crossing is -0.06..+0.10 s from the onset (median of six laps above). 0.148 s is the median of own50MinusT1 (difference between the two onset rules at k1), not a 3DCG lag. Relative to the other kerbs k1 stays about 0.2 s later under both rules."
+ },
+ "relativeToOtherKerbs": {
+  "threshold": 0.273,
+  "onset50": 0.192
+ }
+}

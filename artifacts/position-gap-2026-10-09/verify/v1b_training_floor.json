@@ -1,0 +1,44 @@
+{
+ "trainingFrames": [
+  {
+   "scene": "2020-07-29-L3-47.000",
+   "station": 1820.2246214066267,
+   "baselineMedianPx": 11.176780940385234,
+   "dySoftL1": 1.23,
+   "perSide": {
+    "paintL": 0.85,
+    "paintR": 3.57
+   },
+   "points": {
+    "paintL": 5,
+    "paintR": 6
+   }
+  },
+  {
+   "scene": "2020-07-29-L3-55.000",
+   "station": 2088.882836428457,
+   "baselineMedianPx": 11.33751381973169,
+   "dySoftL1": -0.11,
+   "perSide": {
+    "paintR": -0.11
+   },
+   "points": {
+    "paintR": 6
+   }
+  },
+  {
+   "scene": "2020-07-29-L3-68.000",
+   "station": 2480.1764951203136,
+   "baselineMedianPx": 8.047540978405957,
+   "dySoftL1": -1.69,
+   "perSide": {
+    "paintL": -1.25,
+    "paintR": -2.08
+   },
+   "points": {
+    "paintL": 7,
+    "paintR": 6
+   }
+  }
+ ]
+}

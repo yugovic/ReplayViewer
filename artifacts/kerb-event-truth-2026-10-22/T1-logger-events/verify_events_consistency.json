@@ -1,0 +1,69 @@
+{
+ "tool": "artifacts/kerb-event-truth-2026-10-22/T1-logger-events/verify_events_consistency.py",
+ "checks": [
+  {
+   "check": "record coverage",
+   "n": 140,
+   "expected": 140,
+   "unique": true,
+   "violations": 0
+  },
+  {
+   "check": "published detector reproduction",
+   "detail": {
+    "fuji_aim_01": {
+     "publishedEvents": 3,
+     "reproduced": 3
+    },
+    "fuji_aim_2020_07_30": {
+     "publishedEvents": 41,
+     "reproduced": 41
+    }
+   },
+   "violations": 0
+  },
+  {
+   "check": "published inside-pass events matched once",
+   "n": 35,
+   "violations": 0,
+   "examples": []
+  },
+  {
+   "check": "contact onset <= peak + 0.02 and onset <= offset",
+   "n": 38,
+   "violations": 0,
+   "examples": []
+  },
+  {
+   "check": "steer rampOnset <= onset + 0.1",
+   "n": 104,
+   "violations": 0,
+   "examples": []
+  },
+  {
+   "check": "steer onset <= ratePeak + 0.05 <= max + 0.1",
+   "n": 138,
+   "violations": 0,
+   "examples": []
+  },
+  {
+   "check": "brake onset <= steer onset + 0.5",
+   "n": 91,
+   "violations": 0,
+   "examples": []
+  },
+  {
+   "check": "lap clock / logger ms conversions",
+   "n": 140,
+   "violations": 0,
+   "examples": []
+  },
+  {
+   "check": "tc0 re-derived per lap",
+   "n": 10,
+   "violations": 0,
+   "examples": []
+  }
+ ],
+ "totalViolations": 0
+}

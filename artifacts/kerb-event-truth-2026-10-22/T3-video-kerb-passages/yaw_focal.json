@@ -1,0 +1,113 @@
+{
+ "kind": "t3-focal-from-rotation",
+ "definition": "T3 camera self-calibration C: focal length from image rotation vs GPS course rate (independent of h).\n\nIn a steady corner the far scenery above the horizon (window x 900-1072, y 128-190, right of the mirror: sky line, trees, stands) shifts\nhorizontally between frames by about f * dpsi / cos(pitch) (horizon points; rotation about the car vertical axis).\nPer frame pair the horizontal shift is measured by phase correlation (OpenCV) of gradient images; the heading change\ndpsi comes from the registered GPS course (replay spline) over the same frame interval. f = median(shift * cos p / dpsi)\nover frames with |course rate| > 0.25 rad/s. Forward translation adds outward flow (parallax) in this window, which is\nright of the focus of expansion: it biases f LOW in right-hand corners and HIGH in left-hand corners, so both are used.\nFrames are decoded in memory only. Output: yaw_focal.json next to this file.\n",
+ "window": {
+  "rows": [
+   128,
+   190
+  ],
+  "cols": [
+   900,
+   1072
+  ]
+ },
+ "summary": {
+  "1st corner (right)": {
+   "frames": 619,
+   "fEffMedian": 811.87546790446,
+   "fEffIQR": [
+    739.8577737181897,
+    883.5920379199449
+   ],
+   "fCorrected": 795.9582255012676,
+   "cosPitch": 0.9803944779311087,
+   "perLap": {
+    "1": 848.4725563658495,
+    "2": 806.4903375555024,
+    "3": 812.999915811291,
+    "4": 816.2242521559808,
+    "5": 801.9876375004557,
+    "6": 768.204527036118
+   }
+  },
+  "3250m (right)": {
+   "frames": 571,
+   "fEffMedian": 760.7280124972712,
+   "fEffIQR": [
+    680.1532672368412,
+    827.8723617776056
+   ],
+   "fCorrected": 743.8092487557163,
+   "cosPitch": 0.9777597729232884,
+   "perLap": {
+    "1": 743.0983427125328,
+    "2": 769.8829757547729,
+    "3": 791.0891101354758,
+    "4": 779.356289201114,
+    "5": 770.3212569047951,
+    "6": 749.5698363135049
+   }
+  },
+  "Coca-Cola (left)": {
+   "frames": 321,
+   "fEffMedian": 1188.4164161905098,
+   "fEffIQR": [
+    1066.9646150962956,
+    1303.912439244655
+   ],
+   "fCorrected": 1177.370026247349,
+   "cosPitch": 0.9907049500556628,
+   "perLap": {
+    "1": 1249.002918316934,
+    "2": 1177.800114689754,
+    "3": 1141.569831110111,
+    "4": 1249.9357604741645,
+    "5": 1213.4138955350122,
+    "6": 1143.9878757726742
+   }
+  },
+  "Final corner (right)": {
+   "frames": 476,
+   "fEffMedian": 769.054307781998,
+   "fEffIQR": [
+    705.4790828207431,
+    834.2355271617977
+   ],
+   "fCorrected": 752.3067738380278,
+   "cosPitch": 0.978223210279816,
+   "perLap": {
+    "1": 755.3628158237051,
+    "2": 761.762233431888,
+    "3": 750.6817584760329,
+    "4": 779.0808857484005,
+    "5": 787.3575482429809,
+    "6": 793.3480658009593
+   }
+  },
+  "Hairpin (left)": {
+   "frames": 476,
+   "fEffMedian": 1026.4955740685452,
+   "fEffIQR": [
+    933.7297910052379,
+    1113.357523118086
+   ],
+   "fCorrected": 1013.7668974993456,
+   "cosPitch": 0.9875998719422149,
+   "perLap": {
+    "1": 1056.9488978594022,
+    "2": 1044.1769756665567,
+    "3": 995.2799949566706,
+    "4": 1033.3158561194384,
+    "5": 1036.2342955350673,
+    "6": 1031.5708633396384
+   }
+  },
+  "combined": {
+   "leftMean": 1095.5684618733474,
+   "rightMean": 764.0247493650039,
+   "fEstimate": 929.7966056191756,
+   "note": "parallax biases left-hand corners high and right-hand corners low in this window; the mean of the two is the estimate, half their difference a rough uncertainty",
+   "halfDifference": 165.77185625417172
+  }
+ }
+}

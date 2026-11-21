@@ -24,3 +24,13 @@ tracktools-kit/textures_cc0/*.jpg
 Temp/
 # camfit work dir (may hold onboard-video-derived frames)
 artifacts/apex-kerb-kpi-2026-10-02/work/
+# Local-only user-provided onboard imagery; no public redistribution licence.
+/artifacts/onboard-comparison-2026-10-03/
+/docs/fuji-onboard-comparison-2026-10-03.html
+/artifacts/video-cg-alignment-2026-10-03/
+/docs/fuji-video-cg-correction-2026-10-03.html
+# Local-only event comparison with onboard video frames (no public redistribution licence).
+/artifacts/event-comparison-2026-10-22/
+/docs/fuji-event-comparison-2026-10-22.html
+# Copies of the local-only event comparison page kept by the 10/22 review loop.
+/artifacts/review-loop-2026-10-22/**/fuji-event-comparison.*.html

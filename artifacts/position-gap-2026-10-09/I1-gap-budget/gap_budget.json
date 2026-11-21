@@ -1,0 +1,1409 @@
+{
+ "generatedBy": "artifacts/position-gap-2026-10-09/I1-gap-budget/budget.py",
+ "codeDataStates": {
+  "committed": "origin/master 7ebf89b (= local HEAD): shipped GPS registration, 7/30 channel re-timing, t+delta lap clock, look-ahead pose smoothing, kerb zones; default cockpit camera only; road mesh overshoot at k16/k19/k21 present.",
+  "workingTree": "uncommitted on top of 7ebf89b: Codex estimated onboard camera (src/engine/cameras/OnboardCamera.ts, onboardCameraMath.ts, ReplayScene/Hud/replayStore edits) and road-mesh repair at kerb ends (src/engine/track/FujiCgStudy.ts). Public data (laps, registration) unchanged vs 7ebf89b."
+ },
+ "speeds": {
+  "fuji_aim_01": {
+   "session": "2020-07-29 wet",
+   "samples10Hz": 5953,
+   "timeWeightedKmh": {
+    "p10": 65.8976,
+    "p50": 105.059,
+    "p90": 164.9032,
+    "max": 191.099
+   },
+   "perLapMaxKmh": {
+    "median": 188.7195,
+    "min": 178.187,
+    "max": 191.099
+   },
+   "cornerMinimaKmh": {
+    "n": 28,
+    "min": 38.044,
+    "median": 69.2195,
+    "max": 98.532
+   },
+   "shareOfTime60to100Kmh": 0.36704182764992443
+  },
+  "fuji_aim_2020_07_30": {
+   "session": "2020-07-30 dry",
+   "samples10Hz": 7993,
+   "timeWeightedKmh": {
+    "p10": 76.95519999999999,
+    "p50": 122.225,
+    "p90": 172.8616,
+    "max": 195.689
+   },
+   "perLapMaxKmh": {
+    "median": 189.834,
+    "min": 186.293,
+    "max": 195.689
+   },
+   "cornerMinimaKmh": {
+    "n": 41,
+    "min": 47.064,
+    "median": 78.37,
+    "max": 123.879
+   },
+   "shareOfTime60to100Kmh": 0.29300638058301015
+  }
+ },
+ "alongTrackMetresPerTimingTerm": {
+  "frameQuantisationHalf_1over60": {
+   "60kmh": 0.278,
+   "80kmh": 0.37,
+   "100kmh": 0.463,
+   "fuji_aim_01_medianSpeed": 0.486,
+   "fuji_aim_01_topSpeed": 0.885,
+   "fuji_aim_2020_07_30_medianSpeed": 0.566,
+   "fuji_aim_2020_07_30_topSpeed": 0.906,
+   "seconds": 0.016666666666666666
+  },
+  "frameQuantisationFull_1over30": {
+   "60kmh": 0.556,
+   "80kmh": 0.741,
+   "100kmh": 0.926,
+   "fuji_aim_01_medianSpeed": 0.973,
+   "fuji_aim_01_topSpeed": 1.769,
+   "fuji_aim_2020_07_30_medianSpeed": 1.132,
+   "fuji_aim_2020_07_30_topSpeed": 1.812,
+   "seconds": 0.03333333333333333
+  },
+  "videoLapMapping_typical": {
+   "60kmh": 0.5,
+   "80kmh": 0.667,
+   "100kmh": 0.833,
+   "fuji_aim_01_medianSpeed": 0.875,
+   "fuji_aim_01_topSpeed": 1.592,
+   "fuji_aim_2020_07_30_medianSpeed": 1.019,
+   "fuji_aim_2020_07_30_topSpeed": 1.631,
+   "seconds": 0.03
+  },
+  "videoLapMapping_worst_0730L5": {
+   "60kmh": 1.5,
+   "80kmh": 2.0,
+   "100kmh": 2.5,
+   "fuji_aim_01_medianSpeed": 2.626,
+   "fuji_aim_01_topSpeed": 4.777,
+   "fuji_aim_2020_07_30_medianSpeed": 3.056,
+   "fuji_aim_2020_07_30_topSpeed": 4.892,
+   "seconds": 0.09
+  },
+  "decodedFrameOffset_0730scenes": {
+   "60kmh": 0.478,
+   "80kmh": 0.638,
+   "100kmh": 0.797,
+   "fuji_aim_01_medianSpeed": 0.838,
+   "fuji_aim_01_topSpeed": 1.523,
+   "fuji_aim_2020_07_30_medianSpeed": 0.974,
+   "fuji_aim_2020_07_30_topSpeed": 1.56,
+   "seconds": 0.0287
+  },
+  "channelResidual_0729_maxClockPair": {
+   "60kmh": 0.733,
+   "80kmh": 0.978,
+   "100kmh": 1.222,
+   "fuji_aim_01_medianSpeed": 1.284,
+   "fuji_aim_01_topSpeed": 2.336,
+   "fuji_aim_2020_07_30_medianSpeed": 1.494,
+   "fuji_aim_2020_07_30_topSpeed": 2.392,
+   "seconds": 0.044
+  },
+  "channelResidual_0730_accel": {
+   "60kmh": 0.4,
+   "80kmh": 0.533,
+   "100kmh": 0.667,
+   "fuji_aim_01_medianSpeed": 0.7,
+   "fuji_aim_01_topSpeed": 1.274,
+   "fuji_aim_2020_07_30_medianSpeed": 0.815,
+   "fuji_aim_2020_07_30_topSpeed": 1.305,
+   "seconds": 0.024
+  },
+  "channelResidual_0730_turn": {
+   "60kmh": 0.517,
+   "80kmh": 0.689,
+   "100kmh": 0.861,
+   "fuji_aim_01_medianSpeed": 0.905,
+   "fuji_aim_01_topSpeed": 1.646,
+   "fuji_aim_2020_07_30_medianSpeed": 1.052,
+   "fuji_aim_2020_07_30_topSpeed": 1.685,
+   "seconds": 0.031
+  },
+  "channelResidual_0730_brake": {
+   "60kmh": 0.067,
+   "80kmh": 0.089,
+   "100kmh": 0.111,
+   "fuji_aim_01_medianSpeed": 0.117,
+   "fuji_aim_01_topSpeed": 0.212,
+   "fuji_aim_2020_07_30_medianSpeed": 0.136,
+   "fuji_aim_2020_07_30_topSpeed": 0.217,
+   "seconds": 0.004
+  },
+  "videoYawLag_0729_median": {
+   "60kmh": 3.083,
+   "80kmh": 4.111,
+   "100kmh": 5.139,
+   "fuji_aim_01_medianSpeed": 5.399,
+   "fuji_aim_01_topSpeed": 9.82,
+   "fuji_aim_2020_07_30_medianSpeed": 6.281,
+   "fuji_aim_2020_07_30_topSpeed": 10.056,
+   "seconds": 0.185
+  },
+  "videoYawLag_0730_median": {
+   "60kmh": 3.917,
+   "80kmh": 5.222,
+   "100kmh": 6.528,
+   "fuji_aim_01_medianSpeed": 6.858,
+   "fuji_aim_01_topSpeed": 12.475,
+   "fuji_aim_2020_07_30_medianSpeed": 7.979,
+   "fuji_aim_2020_07_30_topSpeed": 12.774,
+   "seconds": 0.235
+  },
+  "videoYawLag_max": {
+   "60kmh": 6.25,
+   "80kmh": 8.333,
+   "100kmh": 10.417,
+   "fuji_aim_01_medianSpeed": 10.944,
+   "fuji_aim_01_topSpeed": 19.906,
+   "fuji_aim_2020_07_30_medianSpeed": 12.732,
+   "fuji_aim_2020_07_30_topSpeed": 20.384,
+   "seconds": 0.375
+  },
+  "timeProbe_0.2s": {
+   "60kmh": 3.333,
+   "80kmh": 4.444,
+   "100kmh": 5.556,
+   "fuji_aim_01_medianSpeed": 5.837,
+   "fuji_aim_01_topSpeed": 10.617,
+   "fuji_aim_2020_07_30_medianSpeed": 6.79,
+   "fuji_aim_2020_07_30_topSpeed": 10.872,
+   "seconds": 0.2
+  }
+ },
+ "timerReads": {
+  "fuji_aim_01": {
+   "withinLapReadDeviationS": {
+    "maxAbs": 0.03866666666665941,
+    "rms": 0.017299646752973328
+   },
+   "perLapMeanReadMinusPredictedS": {
+    "1": -0.9413333333333304,
+    "2": -1.0139999999999987,
+    "3": -1.008999999999995,
+    "4": -0.9786666666666685
+   },
+   "perLapCorrectionSeconds": {
+    "1": -0.943,
+    "2": -1.013,
+    "3": -1.01,
+    "4": -0.98
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "withinLapReadDeviationS": {
+    "maxAbs": 0.03666666666666292,
+    "rms": 0.018776462807342832
+   },
+   "perLapMeanReadMinusPredictedS": {
+    "1": -0.013999999999999346,
+    "2": -0.027666666666661992,
+    "3": 0.0053333333333268245,
+    "4": 0.010000000000001563,
+    "5": 0.08900000000000337,
+    "6": -0.023666666666663023
+   },
+   "perLapCorrectionSeconds": {
+    "1": -0.01,
+    "2": -0.023,
+    "3": 0.01,
+    "4": 0.01,
+    "5": 0.09,
+    "6": -0.02
+   }
+  }
+ },
+ "comparisonManifestTiming": {
+  "rows": [
+   {
+    "id": "2020-07-29-L3-47.000",
+    "decodedMinusRequestedS": 0.006,
+    "overlayMinusRequestedS": 0.02,
+    "speedKmh": 123.9,
+    "decodedOffsetAlongM": 0.206
+   },
+   {
+    "id": "2020-07-29-L3-52.387",
+    "decodedMinusRequestedS": 0.019,
+    "overlayMinusRequestedS": 0.023,
+    "speedKmh": 125.8,
+    "decodedOffsetAlongM": 0.664
+   },
+   {
+    "id": "2020-07-29-L3-55.000",
+    "decodedMinusRequestedS": 0.006,
+    "overlayMinusRequestedS": -0.01,
+    "speedKmh": 96.9,
+    "decodedOffsetAlongM": 0.162
+   },
+   {
+    "id": "2020-07-29-L3-60.000",
+    "decodedMinusRequestedS": 0.006,
+    "overlayMinusRequestedS": -0.01,
+    "speedKmh": 91.6,
+    "decodedOffsetAlongM": 0.153
+   },
+   {
+    "id": "2020-07-29-L3-64.367",
+    "decodedMinusRequestedS": 0.0057,
+    "overlayMinusRequestedS": -0.007,
+    "speedKmh": 122.3,
+    "decodedOffsetAlongM": 0.193
+   },
+   {
+    "id": "2020-07-29-L3-68.000",
+    "decodedMinusRequestedS": 0.006,
+    "overlayMinusRequestedS": 0.01,
+    "speedKmh": 141.2,
+    "decodedOffsetAlongM": 0.235
+   },
+   {
+    "id": "2020-07-30-L2-18.000",
+    "decodedMinusRequestedS": 0.0287,
+    "overlayMinusRequestedS": 0,
+    "speedKmh": 77.7,
+    "decodedOffsetAlongM": 0.619
+   },
+   {
+    "id": "2020-07-30-L2-45.000",
+    "decodedMinusRequestedS": 0.0287,
+    "overlayMinusRequestedS": 0.01,
+    "speedKmh": 133.9,
+    "decodedOffsetAlongM": 1.066
+   },
+   {
+    "id": "2020-07-30-L2-47.522",
+    "decodedMinusRequestedS": 0.0067,
+    "overlayMinusRequestedS": -0.022,
+    "speedKmh": 130.5,
+    "decodedOffsetAlongM": 0.242
+   },
+   {
+    "id": "2020-07-30-L2-50.000",
+    "decodedMinusRequestedS": 0.0287,
+    "overlayMinusRequestedS": 0,
+    "speedKmh": 89.0,
+    "decodedOffsetAlongM": 0.708
+   },
+   {
+    "id": "2020-07-30-L2-84.000",
+    "decodedMinusRequestedS": 0.0287,
+    "overlayMinusRequestedS": 0.02,
+    "speedKmh": 90.2,
+    "decodedOffsetAlongM": 0.719
+   },
+   {
+    "id": "2020-07-30-L2-94.000",
+    "decodedMinusRequestedS": 0.0287,
+    "overlayMinusRequestedS": 0.01,
+    "speedKmh": 116.4,
+    "decodedOffsetAlongM": 0.927
+   },
+   {
+    "id": "2020-07-30-L2-112.000",
+    "decodedMinusRequestedS": 0.0287,
+    "overlayMinusRequestedS": -0.02,
+    "speedKmh": 92.6,
+    "decodedOffsetAlongM": 0.737
+   }
+  ],
+  "maxOverlayTimerDifferenceSeconds": 0.023
+ },
+ "channelTiming": {
+  "0729_clockPairs_perLapLagS": {
+   "1": {
+    "accx_along": 0.044,
+    "accy_lateral": 0.042
+   },
+   "2": {
+    "accx_along": 0.004,
+    "accy_lateral": 0.008
+   },
+   "3": {
+    "accx_along": -0.012,
+    "accy_lateral": -0.004
+   },
+   "4": {
+    "accx_along": -0.042,
+    "accy_lateral": -0.028
+   }
+  },
+  "0729_physicalPairsMedianLagS": {
+   "brake_decel": -0.131,
+   "steer_courseRate": -0.047
+  },
+  "0730_minus_0729_iter2": {
+   "accx_along": {
+    "min": 0.006,
+    "max": 0.026,
+    "sessionMedian": 0.024
+   },
+   "accy_lateral": {
+    "min": 0.008,
+    "max": 0.034,
+    "sessionMedian": 0.025
+   },
+   "brake_decel": {
+    "min": -0.009,
+    "max": 0.001,
+    "sessionMedian": -0.004
+   },
+   "steer_courseRate": {
+    "min": -0.071,
+    "max": -0.013,
+    "sessionMedian": -0.031
+   }
+  },
+  "videoOverlayPedalAfterRecordS": {
+   "0729": {
+    "throttleD": 0.1,
+    "brakeD": 0.087,
+    "imuAccyOverSpeedAfterVideoYawS": 0.215,
+    "gpsCourseRateAfterVideoYawS": 0.185
+   },
+   "0730": {
+    "throttleD": 0.098,
+    "brakeD": 0.075,
+    "imuAccyOverSpeedAfterVideoYawS": 0.285,
+    "gpsCourseRateAfterVideoYawS": 0.235
+   },
+   "0730_minus_0729": {
+    "throttleD": -0.002,
+    "brakeD": -0.012,
+    "imuAccyOverSpeedAfterVideoYawS": 0.07,
+    "gpsCourseRateAfterVideoYawS(not re-timed)": 0.05,
+    "imuMinusGpsWithinVideoFrame": 0.02
+   }
+  },
+  "videoYawVsLoggerPerLapS": {
+   "fuji_aim_01": [
+    {
+     "lap": 1,
+     "gpsCourseRateAfterVideoS": 0.17,
+     "imuAccyOverSpeedAfterVideoS": 0.23
+    },
+    {
+     "lap": 2,
+     "gpsCourseRateAfterVideoS": 0.2,
+     "imuAccyOverSpeedAfterVideoS": 0.2
+    },
+    {
+     "lap": 3,
+     "gpsCourseRateAfterVideoS": 0.375,
+     "imuAccyOverSpeedAfterVideoS": 0.335
+    },
+    {
+     "lap": 4,
+     "gpsCourseRateAfterVideoS": 0.04,
+     "imuAccyOverSpeedAfterVideoS": 0.165
+    }
+   ],
+   "fuji_aim_2020_07_30": [
+    {
+     "lap": 1,
+     "gpsCourseRateAfterVideoS": 0.165,
+     "imuAccyOverSpeedAfterVideoS": 0.205
+    },
+    {
+     "lap": 2,
+     "gpsCourseRateAfterVideoS": 0.27,
+     "imuAccyOverSpeedAfterVideoS": 0.3
+    },
+    {
+     "lap": 3,
+     "gpsCourseRateAfterVideoS": 0.325,
+     "imuAccyOverSpeedAfterVideoS": 0.3
+    },
+    {
+     "lap": 4,
+     "gpsCourseRateAfterVideoS": 0.23,
+     "imuAccyOverSpeedAfterVideoS": 0.27
+    },
+    {
+     "lap": 5,
+     "gpsCourseRateAfterVideoS": 0.2,
+     "imuAccyOverSpeedAfterVideoS": 0.235
+    },
+    {
+     "lap": 6,
+     "gpsCourseRateAfterVideoS": 0.24,
+     "imuAccyOverSpeedAfterVideoS": 0.33
+    }
+   ]
+  },
+  "videoYawVsLoggerMedianS": {
+   "fuji_aim_01": {
+    "overlayThrottleAfterRecordedS": 0.1,
+    "overlayBrakeAfterRecordedS": 0.087,
+    "gpsCourseRateAfterVideoS": 0.185,
+    "imuAccyOverSpeedAfterVideoS": 0.215
+   },
+   "fuji_aim_2020_07_30": {
+    "overlayThrottleAfterRecordedS": 0.098,
+    "overlayBrakeAfterRecordedS": 0.075,
+    "gpsCourseRateAfterVideoS": 0.235,
+    "imuAccyOverSpeedAfterVideoS": 0.285
+   }
+  }
+ },
+ "registration": {
+  "fuji_aim_01": {
+   "sessionOffsetM": [
+    -1.627,
+    1.931
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "offsetM": [
+      -1.224,
+      2.315
+     ],
+     "offsetNormM": 2.6186639723339837,
+     "offsetLateralMedianM": 1.0633267645802922,
+     "offsetAlongMedianM": 2.393060214275406,
+     "jackknifeSigmaM": [
+      0.707,
+      0.406
+     ],
+     "registeredMaxBeyondM": 0.819,
+     "registeredSecondsBeyond": 2.9,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        -0.216,
+        -0.665
+       ],
+       "normM": 0.6992002574370235,
+       "lateralMedianM": 0.591915779546377,
+       "lateralP95M": 0.6862841811215229,
+       "alongMedianM": 0.3721783280896068,
+       "alongP95M": 0.6925616433705131
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        -0.746,
+        0.395
+       ],
+       "normM": 0.8441214367613229,
+       "lateralMedianM": 0.3538729099077925,
+       "lateralP95M": 0.840770241895848,
+       "alongMedianM": 0.7663647377931724,
+       "alongP95M": 0.8382800760313525
+      }
+     ]
+    },
+    {
+     "lap": 2,
+     "offsetM": [
+      -1.677,
+      1.976
+     ],
+     "offsetNormM": 2.591699249527229,
+     "offsetLateralMedianM": 0.7539547825807722,
+     "offsetAlongMedianM": 2.479608158749705,
+     "jackknifeSigmaM": [
+      0.048,
+      0.043
+     ],
+     "registeredMaxBeyondM": 0.153,
+     "registeredSecondsBeyond": 0.1,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.407,
+        -1.006
+       ],
+       "normM": 1.0852119608629458,
+       "lateralMedianM": 0.5327284322652065,
+       "lateralP95M": 1.0688086775382486,
+       "alongMedianM": 0.9454551376789841,
+       "alongP95M": 1.080717115328303
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        -0.243,
+        -0.166
+       ],
+       "normM": 0.29428727461444865,
+       "lateralMedianM": 0.2772478632327894,
+       "lateralP95M": 0.2936825024334857,
+       "alongMedianM": 0.09868443159040827,
+       "alongP95M": 0.2908924036917256
+      }
+     ]
+    },
+    {
+     "lap": 3,
+     "offsetM": [
+      -1.638,
+      1.75
+     ],
+     "offsetNormM": 2.3969864413467175,
+     "offsetLateralMedianM": 0.7185260245359012,
+     "offsetAlongMedianM": 2.2867583046277575,
+     "jackknifeSigmaM": [
+      0.048,
+      0.12
+     ],
+     "registeredMaxBeyondM": 0.177,
+     "registeredSecondsBeyond": 0.3,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.098,
+        -0.08
+       ],
+       "normM": 0.1265069168069477,
+       "lateralMedianM": 0.04261007965798487,
+       "lateralP95M": 0.12541333260467402,
+       "alongMedianM": 0.11911497401216052,
+       "alongP95M": 0.12650629977310457
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        1.448,
+        -0.85
+       ],
+       "normM": 1.679048540096444,
+       "lateralMedianM": 0.6587867687515527,
+       "lateralP95M": 1.6724866814976171,
+       "alongMedianM": 1.5444101226968463,
+       "alongP95M": 1.6717523473763427
+      }
+     ]
+    },
+    {
+     "lap": 4,
+     "offsetM": [
+      -1.777,
+      1.735
+     ],
+     "offsetNormM": 2.483536591234363,
+     "offsetLateralMedianM": 0.6820200125775326,
+     "offsetAlongMedianM": 2.388054166564013,
+     "jackknifeSigmaM": [
+      0.062,
+      0.084
+     ],
+     "registeredMaxBeyondM": 0.136,
+     "registeredSecondsBeyond": 0.4,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.447,
+        -0.735
+       ],
+       "normM": 0.8602522885758573,
+       "lateralMedianM": 0.3216382363999941,
+       "lateralP95M": 0.8464986768004817,
+       "alongMedianM": 0.7978614195996079,
+       "alongP95M": 0.856950237057299
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        0.877,
+        -1.605
+       ],
+       "normM": 1.8289762163571182,
+       "lateralMedianM": 0.7407523515066208,
+       "lateralP95M": 1.7983356541534357,
+       "alongMedianM": 1.672255947436699,
+       "alongP95M": 1.8211358738248402
+      }
+     ]
+    }
+   ],
+   "halfSplitDeviationM": {
+    "norm": {
+     "median": 0.8521868626685901,
+     "max": 1.8289762163571182
+    },
+    "lateralMedianAlongLap": {
+     "median": 0.4433006710864995,
+     "max": 0.7407523515066208
+    },
+    "lateralP95AlongLap": {
+     "median": 0.8436344593481648,
+     "max": 1.7983356541534357
+    },
+    "alongMedianAlongLap": {
+     "median": 0.7821130786963901,
+     "max": 1.672255947436699
+    }
+   },
+   "antennaSensitivityShiftM": {
+    "right=0,forward=0": 0.0,
+    "right=0.5,forward=0": 0.292682831747952,
+    "right=-0.5,forward=0": 0.22339247973018228,
+    "right=0,forward=1": 0.01167090399240785,
+    "right=0,forward=-1": 0.019831288409984875
+   },
+   "surfaceSensitivityShiftM": 0.36627544280227126
+  },
+  "fuji_aim_2020_07_30": {
+   "sessionOffsetM": [
+    -0.221,
+    -2.68
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "offsetM": [
+      -0.084,
+      -2.783
+     ],
+     "offsetNormM": 2.784267408134499,
+     "offsetLateralMedianM": 2.1677780632397594,
+     "offsetAlongMedianM": 1.7472495346585295,
+     "jackknifeSigmaM": [
+      0.157,
+      0.191
+     ],
+     "registeredMaxBeyondM": 0.314,
+     "registeredSecondsBeyond": 1.2,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.094,
+        -0.117
+       ],
+       "normM": 0.15008331019803633,
+       "lateralMedianM": 0.044428361983404115,
+       "lateralP95M": 0.14822044006896418,
+       "alongMedianM": 0.1433566174714711,
+       "alongP95M": 0.15007036366899024
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        -0.286,
+        1.053
+       ],
+       "normM": 1.0911484775226514,
+       "lateralMedianM": 0.640180712378249,
+       "lateralP95M": 1.07607918350838,
+       "alongMedianM": 0.8836139736645503,
+       "alongP95M": 1.0877716821743078
+      }
+     ]
+    },
+    {
+     "lap": 2,
+     "offsetM": [
+      -0.432,
+      -2.612
+     ],
+     "offsetNormM": 2.647483333280873,
+     "offsetLateralMedianM": 2.1088433442813073,
+     "offsetAlongMedianM": 1.6006083894153784,
+     "jackknifeSigmaM": [
+      0.293,
+      0.296
+     ],
+     "registeredMaxBeyondM": 0.583,
+     "registeredSecondsBeyond": 1.9,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.482,
+        -0.158
+       ],
+       "normM": 0.507235645435137,
+       "lateralMedianM": 0.27026639662437246,
+       "lateralP95M": 0.5013706218804259,
+       "alongMedianM": 0.4292366179942497,
+       "alongP95M": 0.4993455125915803
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        -0.398,
+        0.422
+       ],
+       "normM": 0.5800758571083614,
+       "lateralMedianM": 0.16562974845532036,
+       "lateralP95M": 0.5730826716596291,
+       "alongMedianM": 0.5559268686727168,
+       "alongP95M": 0.5789076484414426
+      }
+     ]
+    },
+    {
+     "lap": 3,
+     "offsetM": [
+      -0.329,
+      -2.511
+     ],
+     "offsetNormM": 2.5324616482782125,
+     "offsetLateralMedianM": 2.0197280223083984,
+     "offsetAlongMedianM": 1.527761684369311,
+     "jackknifeSigmaM": [
+      0.106,
+      0.098
+     ],
+     "registeredMaxBeyondM": 0.288,
+     "registeredSecondsBeyond": 0.5,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.209,
+        0.411
+       ],
+       "normM": 0.4610878441251732,
+       "lateralMedianM": 0.41777897605672654,
+       "lateralP95M": 0.4568957732789522,
+       "alongMedianM": 0.1950964380694899,
+       "alongP95M": 0.4590844662393697
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        -0.021,
+        0.501
+       ],
+       "normM": 0.5014399266113543,
+       "lateralMedianM": 0.37346828190788683,
+       "lateralP95M": 0.4959886260339964,
+       "alongMedianM": 0.334609375873971,
+       "alongP95M": 0.49844094047697035
+      }
+     ]
+    },
+    {
+     "lap": 4,
+     "offsetM": [
+      -0.031,
+      -3.034
+     ],
+     "offsetNormM": 3.034158367653211,
+     "offsetLateralMedianM": 2.3567558119733745,
+     "offsetAlongMedianM": 1.910973321781345,
+     "jackknifeSigmaM": [
+      0.246,
+      0.377
+     ],
+     "registeredMaxBeyondM": 0.488,
+     "registeredSecondsBeyond": 1.5,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.271,
+        -0.396
+       ],
+       "normM": 0.47985101854638207,
+       "lateralMedianM": 0.15755347023056243,
+       "lateralP95M": 0.473538691075074,
+       "alongMedianM": 0.4532481672674179,
+       "alongP95M": 0.4789943501634788
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        0.631,
+        1.544
+       ],
+       "normM": 1.6679619300211859,
+       "lateralMedianM": 1.461978614630189,
+       "lateralP95M": 1.6461619901078668,
+       "alongMedianM": 0.802941790357786,
+       "alongP95M": 1.651393620088297
+      }
+     ]
+    },
+    {
+     "lap": 5,
+     "offsetM": [
+      -0.298,
+      -2.558
+     ],
+     "offsetNormM": 2.5752995942220003,
+     "offsetLateralMedianM": 2.0512129260085548,
+     "offsetAlongMedianM": 1.557140893380831,
+     "jackknifeSigmaM": [
+      0.086,
+      0.08
+     ],
+     "registeredMaxBeyondM": 0.083,
+     "registeredSecondsBeyond": 0.6,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        0.228,
+        0.958
+       ],
+       "normM": 0.9847578382526333,
+       "lateralMedianM": 0.8067048769920329,
+       "lateralP95M": 0.9679336415296382,
+       "alongMedianM": 0.5647778363959629,
+       "alongP95M": 0.9796336387956418
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        0.328,
+        1.088
+       ],
+       "normM": 1.136366138179064,
+       "lateralMedianM": 0.953635946528572,
+       "lateralP95M": 1.1164502671702965,
+       "alongMedianM": 0.6179858103712232,
+       "alongP95M": 1.127815943505162
+      }
+     ]
+    },
+    {
+     "lap": 6,
+     "offsetM": [
+      -0.316,
+      -2.446
+     ],
+     "offsetNormM": 2.46632763435842,
+     "offsetLateralMedianM": 1.9664977936829202,
+     "offsetAlongMedianM": 1.4885087932021792,
+     "jackknifeSigmaM": [
+      0.133,
+      0.126
+     ],
+     "registeredMaxBeyondM": 0.179,
+     "registeredSecondsBeyond": 0.8,
+     "halfSplit": [
+      {
+       "split": "fitFirstHalf_testSecond",
+       "vectorM": [
+        -0.144,
+        0.706
+       ],
+       "normM": 0.7205359116657547,
+       "lateralMedianM": 0.45969930128854636,
+       "lateralP95M": 0.7083653818052558,
+       "alongMedianM": 0.5548410154222762,
+       "alongP95M": 0.7168754527471519
+      },
+      {
+       "split": "fitSecondHalf_testFirst",
+       "vectorM": [
+        -0.054,
+        0.206
+       ],
+       "normM": 0.212960090157757,
+       "lateralMedianM": 0.12683306109569822,
+       "lateralP95M": 0.2093805014935453,
+       "alongMedianM": 0.17107125595229275,
+       "alongP95M": 0.21189100398814992
+      }
+     ]
+    }
+   ],
+   "halfSplitDeviationM": {
+    "norm": {
+     "median": 0.5436557512717493,
+     "max": 1.6679619300211859
+    },
+    "lateralMedianAlongLap": {
+     "median": 0.3956236289823067,
+     "max": 1.461978614630189
+    },
+    "lateralP95AlongLap": {
+     "median": 0.5372266467700275,
+     "max": 1.6461619901078668
+    },
+    "alongMedianAlongLap": {
+     "median": 0.504044591344847,
+     "max": 0.8836139736645503
+    }
+   },
+   "antennaSensitivityShiftM": {
+    "right=0,forward=0": 0.0,
+    "right=0.5,forward=0": 0.20939231122464858,
+    "right=-0.5,forward=0": 0.18743460192824585,
+    "right=0,forward=1": 0.015201315732527887,
+    "right=0,forward=-1": 0.017863930138689983
+   },
+   "surfaceSensitivityShiftM": 0.054481189414329084
+  },
+  "shippedVsKerbCandidate_0730": {
+   "laps": [
+    {
+     "lap": 1,
+     "vectorM": [
+      0.164,
+      0.287
+     ],
+     "normM": 0.3305525676802405,
+     "lateralMedianM": 0.3032215240477202,
+     "lateralP95M": 0.3289369042208924,
+     "alongMedianM": 0.13161163067435763,
+     "alongP95M": 0.3292939377796612
+    },
+    {
+     "lap": 2,
+     "vectorM": [
+      0.626,
+      0.201
+     ],
+     "normM": 0.6574777562777314,
+     "lateralMedianM": 0.548503866220408,
+     "lateralP95M": 0.6547832706887696,
+     "alongMedianM": 0.3625196659972784,
+     "alongP95M": 0.6468258433231948
+    },
+    {
+     "lap": 3,
+     "vectorM": [
+      0.388,
+      0.144
+     ],
+     "normM": 0.413859879669436,
+     "lateralMedianM": 0.35511729300423406,
+     "lateralP95M": 0.4121235278144591,
+     "alongMedianM": 0.21253636887470198,
+     "alongP95M": 0.40786493643106425
+    },
+    {
+     "lap": 4,
+     "vectorM": [
+      0.365,
+      0.413
+     ],
+     "normM": 0.5511751082913667,
+     "lateralMedianM": 0.525886055647711,
+     "lateralP95M": 0.5507395407307103,
+     "alongMedianM": 0.16503670164355871,
+     "alongP95M": 0.5449458520797594
+    },
+    {
+     "lap": 5,
+     "vectorM": [
+      0.44,
+      0.416
+     ],
+     "normM": 0.6055212630453202,
+     "lateralMedianM": 0.5825243596011886,
+     "lateralP95M": 0.6044208111317805,
+     "alongMedianM": 0.16529173573586078,
+     "alongP95M": 0.5978085436209262
+    },
+    {
+     "lap": 6,
+     "vectorM": [
+      0.411,
+      0.138
+     ],
+     "normM": 0.4335493051545581,
+     "lateralMedianM": 0.3646953056995707,
+     "lateralP95M": 0.4314794079701036,
+     "alongMedianM": 0.2344404700573192,
+     "alongP95M": 0.425841965285563
+    }
+   ],
+   "normM": {
+    "median": 0.4923622067229624,
+    "max": 0.6574777562777314
+   },
+   "lateralMedianM": {
+    "median": 0.44529068067364086,
+    "max": 0.5825243596011886
+   },
+   "lateralP95M": {
+    "median": 0.49110947435040697,
+    "max": 0.6547832706887696
+   },
+   "feasibleRegion": {
+    "centre": [
+     0.177,
+     -2.296
+    ],
+    "labels": 54,
+    "trackNearOptimal": {
+     "empty": false,
+     "points": 28,
+     "areaM2": 0.07,
+     "eastWidthM": 0.3,
+     "southWidthM": 0.3,
+     "centroid": [
+      0.111,
+      -2.975
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.37,
+     "minorWidthM": 0.27,
+     "majorAxisBearingDeg": 40.7
+    },
+    "minWorstLabelViolationM": 0.024,
+    "labelFeasible_tol0": {
+     "empty": true,
+     "points": 0
+    },
+    "trackAndLabel_tol0": {
+     "empty": true,
+     "points": 0
+    },
+    "labelFeasible_tol0.15": {
+     "empty": false,
+     "points": 71,
+     "areaM2": 0.178,
+     "eastWidthM": 0.9,
+     "southWidthM": 0.4,
+     "centroid": [
+      0.53,
+      -2.124
+     ],
+     "touchesWindow": false,
+     "majorWidthM": 0.97,
+     "minorWidthM": 0.36,
+     "majorAxisBearingDeg": 109.2
+    },
+    "trackAndLabel_tol0.15": {
+     "empty": true,
+     "points": 0
+    }
+   },
+   "uncertaintyStatement": {
+    "absolutePositionAccuracyVerified": false,
+    "antennaPositionMeasured": false,
+    "absoluteGapIntervalMeters": 0.7,
+    "absoluteGapIntervalBasis": "lower bound: label-feasible widths of 0.4-0.7 m (feasibleRegion), held-out contradictions within 0.15 m tolerance, 2019 ortho kerb lines (~0.2-0.3 m georeferencing, not verified against 2020). Compare laps at the same corner first.",
+    "validation": "artifacts/improvement-eval-2026-10-02/after/channel-timing-iter2/registration-candidate/evaluation.json"
+   },
+   "gpsAnomalies": [
+    {
+     "lap": 2,
+     "stationRange": [
+      3250.0,
+      3900.0
+     ],
+     "kind": "lap-internal lateral GPS error",
+     "evidence": [
+      "GPS lateral motion leads the steering return by about 0.3 s in this sector",
+      "strong roll-rate vibration at 3580-3600 m that L3 at the same displayed position does not show",
+      "opposite-sign kerb-label contradictions at k21 (strong but off) and k24 (silent but deep)"
+     ],
+     "source": "docs/fuji-apex-kerb-kpi-2026-10-02.md",
+     "treatment": "exclude",
+     "affectedLabels": [
+      "L2 k21 strong",
+      "L2 k9 silent",
+      "L2 k23 strong",
+      "L2 k24 silent"
+     ],
+     "displayNote": "translation not adjusted to this segment; KPI there is flagged, not corrected"
+    }
+   ]
+  },
+  "kerbLabelConsistency_0730": {
+   "definition": "strong with gMin > +0.15 m, or silent with gMin < -0.55 m",
+   "shipped": {
+    "n": 58,
+    "contradictionCount": 4,
+    "contradictions": [
+     [
+      2,
+      "k21",
+      "strong",
+      1.664
+     ],
+     [
+      2,
+      "k23",
+      "strong",
+      0.329
+     ],
+     [
+      5,
+      "k9",
+      "silent",
+      -0.918
+     ],
+     [
+      5,
+      "k10",
+      "strong",
+      0.421
+     ]
+    ],
+    "auc": 0.874,
+    "strongMedianG": -0.419,
+    "silentMedianG": 0.844
+   },
+   "raw": {
+    "n": 58,
+    "contradictionCount": 12,
+    "auc": 0.857
+   },
+   "candidateLOKO": {
+    "n": 58,
+    "contradictionCount": 3,
+    "contradictions": [
+     [
+      5,
+      "k10",
+      "strong",
+      0.156
+     ],
+     [
+      2,
+      "k21",
+      "strong",
+      1.01
+     ],
+     [
+      2,
+      "k23",
+      "strong",
+      0.935
+     ]
+    ],
+    "auc": 0.915
+   },
+   "toleranceSensitivityShipped": {
+    "tol0": {
+     "all": 6,
+     "withoutAnomaly": 4
+    },
+    "tol0.1": {
+     "all": 4,
+     "withoutAnomaly": 2
+    },
+    "tol0.15": {
+     "all": 4,
+     "withoutAnomaly": 2
+    },
+    "tol0.25": {
+     "all": 4,
+     "withoutAnomaly": 2
+    },
+    "tol0.7": {
+     "all": 1,
+     "withoutAnomaly": 0
+    }
+   },
+   "wet0729": "Only strong labels bound the offset from the kerb side; with one strong contact the hinge is one-sided (silent labels only push the tyres away from the blocks), the fit stays on the flat track-limit set and there is no held-out strong label to validate it (AUC undefined under leave-one-kerb-out). pipeline/register_gps_kerb_contact.py refuses the race (exit 3)."
+  }
+ },
+ "viewerPose": {
+  "headingErrDeg": {
+   "median": 0.011,
+   "p95": 0.075,
+   "p99": 0.136,
+   "max": 0.309
+  },
+  "headingVsDrawnPathTangentDeg": {
+   "median": 0.129,
+   "p95": 0.868,
+   "max": 5.15
+  },
+  "lateralShiftAt30mFromHeadingErrM": {
+   "median": 0.006,
+   "p95": 0.039,
+   "p99": 0.071,
+   "max": 0.162
+  },
+  "lateralShiftAt30mFromHeadingVsTangentM": {
+   "median": 0.068,
+   "p95": 0.455,
+   "max": 2.704
+  },
+  "lapClock": {
+   "afterDisplayAtFirstSampleEqualsDelta": "10/10",
+   "beforeDisplayAtFirstSample": "00:00.000 (10/10)",
+   "deltaRange_s": [
+    0.007,
+    0.097
+   ],
+   "deltaReDerivedFromIsoStrings": "10/10 equal",
+   "gridContinuity_gapPlusNextDelta_s": "0.100 for 8/8 consecutive pairs",
+   "carAheadAtFirstSample_before_m": {
+    "min": 0.33,
+    "max": 4.66
+   },
+   "carAheadOverLap_before_m": {
+    "medianOfLapMedians": 1.05,
+    "max": 5.02
+   },
+   "carAhead_after_m": 0
+  },
+  "ghostPositionAbsErrM": {
+   "median": 0.0024,
+   "p95": 0.008,
+   "maxExceptFirstSample": "<0.05"
+  }
+ },
+ "kerbVsOrtho": {
+  "pooledAfter": {
+   "paint": {
+    "n": 1990,
+    "median": -0.002,
+    "q1": -0.012,
+    "q3": 0.006,
+    "maxabs": -0.814,
+    "p95abs": 0.03,
+    "within_tol": 0.999
+   },
+   "block": {
+    "n": 880,
+    "median": 0.014,
+    "q1": -0.016,
+    "q3": 0.05,
+    "maxabs": 0.274,
+    "p95abs": 0.128,
+    "within_tol": 0.969
+   }
+  },
+  "pooledBefore": {
+   "paint": {
+    "n": 1910,
+    "median": -0.413,
+    "q1": -0.504,
+    "q3": -0.367,
+    "maxabs": -2.596,
+    "p95abs": 1.162,
+    "within_tol": 0.007
+   },
+   "block": {
+    "n": 845,
+    "median": -0.002,
+    "q1": -0.077,
+    "q3": 0.058,
+    "maxabs": -0.999,
+    "p95abs": 0.454,
+    "within_tol": 0.773
+   }
+  },
+  "notSurveyTruth": "Same VIRTUAL SHIZUOKA 2019 ortho was the source of the AFTER zones (and of the CG). Ortho georeferencing error (~0.2-0.3 m) cancels in this comparison and is not measured. 2019 imagery vs 2020 sessions not verified."
+ },
+ "roadRepair": {
+  "beforeRepairMaxOvershootM": {
+   "k16": 0.901,
+   "k19": 1.065,
+   "k21": 1.539
+  },
+  "source": "docs/fuji-video-cg-alignment-review-2026-10-03.md table; WORKLOG 2026-10-02 20:42 (0.90/1.07/1.54 m, 8.9 m2)",
+  "meshAuditKeys": [
+   "scope",
+   "beforeSha256",
+   "afterSha256",
+   "checks",
+   "pass"
+  ],
+  "finalRoadCameraEffectKeys": [
+   "scope",
+   "profileSha256",
+   "annotationsSha256",
+   "emittedSegmentFileSha256",
+   "rows",
+   "summary",
+   "limitations"
+  ]
+ },
+ "videoCgResidualMetres": {
+  "heldout10_frozen": {
+   "medianOfSceneMedianPx": 9.421667889801302,
+   "medianOfSceneMedianNaiveM": 0.34056901485404817,
+   "minimum3dDisplacementPointsAll": {
+    "n": 98,
+    "median": 0.39424708929847097,
+    "p25": 0.20064863363525826,
+    "p75": 0.8209360765555902,
+    "p95": 6.630481374044626,
+    "max": 8.449990582950873
+   },
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 58,
+   "unconditionedPoints": 40,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.168,
+    "2020-07-29-L3-64.367": 2.398,
+    "2020-07-30-L2-18.000": 4.129,
+    "2020-07-30-L2-45.000": 2.615,
+    "2020-07-30-L2-50.000": 0.371,
+    "2020-07-30-L2-84.000": 1.218,
+    "2020-07-30-L2-94.000": 1.357,
+    "2020-07-30-L2-112.000": 1.2,
+    "2020-07-29-L3-52.387": 0.305,
+    "2020-07-30-L2-47.522": 1.689
+   },
+   "conditionedMedianOfSceneMediansM": 1.6888300551813646,
+   "conditionedMaxSceneMedianM": 4.1292609528408954,
+   "conditionedPointsLateral": {
+    "n": 58,
+    "median": 1.38176178168101,
+    "p25": 0.8693757874082724,
+    "p75": 2.458342359509511,
+    "p95": 4.152767843015586,
+    "max": 4.510287893186177
+   },
+   "conditionedPointsPick4px": {
+    "n": 58,
+    "median": 0.4230271741377942,
+    "p25": 0.1874276634477392,
+    "p75": 0.6057127312772902,
+    "p95": 0.8249762736922482,
+    "max": 0.9669740893733714
+   },
+   "medianOfSceneMedianLateralM": 1.9102344546943901,
+   "sceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.168,
+    "2020-07-29-L3-64.367": 1.988,
+    "2020-07-30-L2-18.000": 3.401,
+    "2020-07-30-L2-45.000": 2.556,
+    "2020-07-30-L2-50.000": 0.371,
+    "2020-07-30-L2-84.000": 1.156,
+    "2020-07-30-L2-94.000": 29.409,
+    "2020-07-30-L2-112.000": 1.037,
+    "2020-07-29-L3-52.387": 0.305,
+    "2020-07-30-L2-47.522": 1.832
+   },
+   "lateralOverNaive": {
+    "n": 89,
+    "median": 5.043559389255735,
+    "p25": 3.2102503339168105,
+    "p75": 6.962901654926999,
+    "p95": 36.086863550148685,
+    "max": 328.4167322075237
+   }
+  },
+  "heldout10_h1.00_condMedianOfSceneMedians": 2.029074178855216,
+  "heldout10_h1.50_condMedianOfSceneMedians": 1.7020753849750778,
+  "sequence8_postselection": {
+   "conditionedSceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.445,
+    "2020-07-30-L2-44.500": 2.764,
+    "2020-07-30-L2-45.500": 0.642,
+    "2020-07-30-L2-46.000": 1.195,
+    "2020-07-30-L2-93.000": 1.066,
+    "2020-07-30-L2-93.500": 1.2,
+    "2020-07-30-L2-94.500": 2.067,
+    "2020-07-30-L2-95.000": 2.403
+   },
+   "conditionedMedianOfSceneMediansM": 1.6334613169859036,
+   "conditionedMaxSceneMedianM": 4.444781251399256,
+   "medianOfSceneMedianNaiveM": 0.6054902342635725
+  },
+  "reproductionMaxAbsDiffPx": 0.0
+ }
+}

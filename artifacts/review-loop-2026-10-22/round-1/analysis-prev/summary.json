@@ -1,0 +1,7130 @@
+{
+ "kind": "kerb-event-truth-join-summary",
+ "version": 1,
+ "generated": "2026-10-22",
+ "signConventions": {
+  "dt": "t_CG(event) - t_truth(event) [s]; negative = the 3DCG shows the event earlier",
+  "dS": "-dt * v [m]; along-track position of the 3DCG minus the real car at the same instant; positive = 3DCG ahead",
+  "dLat": "CG distance-to-kerb minus true distance-to-kerb [m]; positive = the 3DCG shows the car farther from the kerb. For a kerb contact = CG gap at the truth onset (true gap 0).",
+  "gap": "inner tyre outer edge to the kerb line (T4/apex_kpi); negative = on the kerb",
+  "L": "video offset: true lap t of a frame = overlay-mapped lap t + L (T2)"
+ },
+ "labels": {
+  "measured": "directly from logger samples, video pixels/audio (by T1-T3) or the viewer pose re-run (T4)",
+  "derived": "arithmetic combination of measured values (differences, products with speed, statistics)",
+  "estimated": "depends on an assumption stated next to it (camera scale, physical model, line semantics)"
+ },
+ "counts": {
+  "timeBaseMatchedKerbEvents": 44,
+  "kerbContacts": 38,
+  "kerbContactsPrimary": 29,
+  "passes": 140,
+  "videoTips": 58,
+  "videoTipsExclSuspect": 55,
+  "videoKerbEnds": 84,
+  "turnInRecords": 140,
+  "turnInQualityGood": 104
+ },
+ "familyDefinitions": {
+  "contactFirstBlock": "kerb contact, camera-free: CG first crossing of the block line by the nearest inner tyre minus the IMU vibration onset (T1, audio-confirmed where available); primary contacts (high/medium, not steering-away, line defined); only passes where the CG shows contact",
+  "contactFirstBlock_exclK1": "as contactFirstBlock without k1 (Coca-Cola), whose CG block line closes at ~12 m/s at the truth onset (leading-end geometry)",
+  "contactMidBlock": "midpoint of the CG block-contact run minus midpoint of the truth vibration (onset..offset); truth offsets trail the tyre leaving the kerb (decay), so this is biased negative; reference only",
+  "contactFirstPaint": "as contactFirstBlock with the paint line (road-side start of the white strip); the paint line lies road-side of the blocks, so negative by construction",
+  "videoTipNominal": "video clipping point (T3 tip, row 276) after the T2 offset, T3 nominal camera f967/h1.26 (f*h 1218); absolute value camera-dependent",
+  "videoTipSpecFovCamera": "same tips with the spec-FOV camera f711/h1.25 (f*h 889, SmartyCam 84 deg FOV spec, h from road width 1.26 m)",
+  "videoKerbEnds": "video red-block leading/trailing end crossing row 276 (T3) after the T2 offset, nominal camera; first/last block colour ambiguity up to ~1 block",
+  "turnInHeading50": "turn-in: CG drawn-heading-rate t50 minus IMU gyro t50, both cgpose.rate_onset, IMU boxcar-filtered 1.2 s to match the viewer chord heading; quality-gated",
+  "turnInVisibleT10": "visible turn-in: CG drawn-heading-rate t10 minus the UNSMOOTHED IMU gyro t10 (same rule); includes the lead caused by the +-0.6 s chord heading",
+  "yawRatePeak": "telemetry clipping marker: CG drawn yaw-rate peak minus IMU (chord-matched) yaw-rate peak; flat peaks make it noisy",
+  "minSpeed": "telemetry clipping marker: minimum of the CG position-derived speed minus the minimum of the non-driven rear wheels (T1)"
+ },
+ "timeBase": {
+  "perLap": {
+   "fuji_aim_01": {
+    "1": {
+     "adopted": 0.177,
+     "adoptedBasis": "dataTrackLoggerClockPlusCalibration",
+     "adoptedLabel": "estimated",
+     "videoYaw": null,
+     "dataTrack": 0.177,
+     "dataTrackLOLO": 0.177,
+     "kerbAudio": null,
+     "kerbShake": null,
+     "lapStartPtsOverlay": 170.636,
+     "sessionConstLOLO": 0.218
+    },
+    "2": {
+     "adopted": 0.234,
+     "adoptedBasis": "dataTrackLoggerClockPlusCalibration",
+     "adoptedLabel": "estimated",
+     "videoYaw": null,
+     "dataTrack": 0.234,
+     "dataTrackLOLO": 0.234,
+     "kerbAudio": null,
+     "kerbShake": null,
+     "lapStartPtsOverlay": 315.262,
+     "sessionConstLOLO": 0.177
+    },
+    "3": {
+     "adopted": 0.218,
+     "adoptedBasis": "dataTrackLoggerClockPlusCalibration",
+     "adoptedLabel": "estimated",
+     "videoYaw": null,
+     "dataTrack": 0.218,
+     "dataTrackLOLO": 0.218,
+     "kerbAudio": 0.198,
+     "kerbShake": 0.053,
+     "lapStartPtsOverlay": 459.894,
+     "sessionConstLOLO": 0.177
+    },
+    "4": {
+     "adopted": 0.171,
+     "adoptedBasis": "dataTrackLoggerClockPlusCalibration",
+     "adoptedLabel": "estimated",
+     "videoYaw": null,
+     "dataTrack": 0.171,
+     "dataTrackLOLO": 0.171,
+     "kerbAudio": null,
+     "kerbShake": null,
+     "lapStartPtsOverlay": 601.249,
+     "sessionConstLOLO": 0.218
+    },
+    "sessionMedianAdopted": 0.198
+   },
+   "fuji_aim_2020_07_30": {
+    "1": {
+     "adopted": 0.202,
+     "adoptedBasis": "transientVideoYawVsGyro",
+     "adoptedLabel": "measured",
+     "videoYaw": 0.202,
+     "dataTrack": 0.196,
+     "dataTrackLOLO": 0.195,
+     "kerbAudio": 0.271,
+     "kerbShake": 0.123,
+     "lapStartPtsOverlay": 151.59,
+     "sessionConstLOLO": 0.217
+    },
+    "2": {
+     "adopted": 0.241,
+     "adoptedBasis": "transientVideoYawVsGyro",
+     "adoptedLabel": "measured",
+     "videoYaw": 0.241,
+     "dataTrack": 0.252,
+     "dataTrackLOLO": 0.254,
+     "kerbAudio": 0.287,
+     "kerbShake": 0.221,
+     "lapStartPtsOverlay": 285.238,
+     "sessionConstLOLO": 0.205
+    },
+    "3": {
+     "adopted": 0.205,
+     "adoptedBasis": "transientVideoYawVsGyro",
+     "adoptedLabel": "measured",
+     "videoYaw": 0.205,
+     "dataTrack": 0.206,
+     "dataTrackLOLO": 0.206,
+     "kerbAudio": 0.048,
+     "kerbShake": 0.216,
+     "lapStartPtsOverlay": 416.947,
+     "sessionConstLOLO": 0.217
+    },
+    "4": {
+     "adopted": 0.217,
+     "adoptedBasis": "transientVideoYawVsGyro",
+     "adoptedLabel": "measured",
+     "videoYaw": 0.217,
+     "dataTrack": 0.224,
+     "dataTrackLOLO": 0.226,
+     "kerbAudio": 0.166,
+     "kerbShake": 0.134,
+     "lapStartPtsOverlay": 548.73,
+     "sessionConstLOLO": 0.205
+    },
+    "5": {
+     "adopted": 0.135,
+     "adoptedBasis": "transientVideoYawVsGyro",
+     "adoptedLabel": "measured",
+     "videoYaw": 0.135,
+     "dataTrack": 0.141,
+     "dataTrackLOLO": 0.142,
+     "kerbAudio": 0.158,
+     "kerbShake": 0.089,
+     "lapStartPtsOverlay": 679.51,
+     "sessionConstLOLO": 0.217
+    },
+    "6": {
+     "adopted": 0.274,
+     "adoptedBasis": "transientVideoYawVsGyro",
+     "adoptedLabel": "measured",
+     "videoYaw": 0.274,
+     "dataTrack": 0.256,
+     "dataTrackLOLO": 0.252,
+     "kerbAudio": 0.302,
+     "kerbShake": 0.173,
+     "lapStartPtsOverlay": 810.442,
+     "sessionConstLOLO": 0.205
+    },
+    "sessionMedianAdopted": 0.211
+   }
+  },
+  "kerbEventAgreement": {
+   "fuji_aim_01": {
+    "nMatchedEvents": 3,
+    "byOffsetVariant": {
+     "none": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 1,
+        "median": 0.198,
+        "mean": 0.198,
+        "sd": 0.0,
+        "q25": 0.198,
+        "q75": 0.198,
+        "medianAbs": 0.198,
+        "p90Abs": 0.198,
+        "maxAbs": 0.198,
+        "rms": 0.198,
+        "biasShare": 1.0
+       },
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.198,
+        "mean": 0.198,
+        "sd": 0.0,
+        "q25": 0.198,
+        "q75": 0.198,
+        "medianAbs": 0.198,
+        "p90Abs": 0.198,
+        "maxAbs": 0.198,
+        "rms": 0.198,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.413,
+        "mean": 0.413,
+        "sd": 0.0,
+        "q25": 0.413,
+        "q75": 0.413,
+        "medianAbs": 0.413,
+        "p90Abs": 0.413,
+        "maxAbs": 0.413,
+        "rms": 0.413,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.364,
+        "mean": 0.364,
+        "sd": 0.0,
+        "q25": 0.364,
+        "q75": 0.364,
+        "medianAbs": 0.364,
+        "p90Abs": 0.364,
+        "maxAbs": 0.364,
+        "rms": 0.364,
+        "biasShare": 1.0
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 1,
+        "median": 0.053,
+        "mean": 0.053,
+        "sd": 0.0,
+        "q25": 0.053,
+        "q75": 0.053,
+        "medianAbs": 0.053,
+        "p90Abs": 0.053,
+        "maxAbs": 0.053,
+        "rms": 0.053,
+        "biasShare": 1.0
+       }
+      }
+     },
+     "adopted": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 1,
+        "median": -0.02,
+        "mean": -0.02,
+        "sd": 0.0,
+        "q25": -0.02,
+        "q75": -0.02,
+        "medianAbs": 0.02,
+        "p90Abs": 0.02,
+        "maxAbs": 0.02,
+        "rms": 0.02,
+        "biasShare": 1.0
+       },
+       "audioHighMedium": {
+        "n": 1,
+        "median": -0.02,
+        "mean": -0.02,
+        "sd": 0.0,
+        "q25": -0.02,
+        "q75": -0.02,
+        "medianAbs": 0.02,
+        "p90Abs": 0.02,
+        "maxAbs": 0.02,
+        "rms": 0.02,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.195,
+        "mean": 0.195,
+        "sd": 0.0,
+        "q25": 0.195,
+        "q75": 0.195,
+        "medianAbs": 0.195,
+        "p90Abs": 0.195,
+        "maxAbs": 0.195,
+        "rms": 0.195,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.146,
+        "mean": 0.146,
+        "sd": 0.0,
+        "q25": 0.146,
+        "q75": 0.146,
+        "medianAbs": 0.146,
+        "p90Abs": 0.146,
+        "maxAbs": 0.146,
+        "rms": 0.146,
+        "biasShare": 1.0
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 1,
+        "median": -0.165,
+        "mean": -0.165,
+        "sd": 0.0,
+        "q25": -0.165,
+        "q75": -0.165,
+        "medianAbs": 0.165,
+        "p90Abs": 0.165,
+        "maxAbs": 0.165,
+        "rms": 0.165,
+        "biasShare": 1.0
+       }
+      }
+     },
+     "dataTrackLOLO": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 1,
+        "median": -0.02,
+        "mean": -0.02,
+        "sd": 0.0,
+        "q25": -0.02,
+        "q75": -0.02,
+        "medianAbs": 0.02,
+        "p90Abs": 0.02,
+        "maxAbs": 0.02,
+        "rms": 0.02,
+        "biasShare": 1.0
+       },
+       "audioHighMedium": {
+        "n": 1,
+        "median": -0.02,
+        "mean": -0.02,
+        "sd": 0.0,
+        "q25": -0.02,
+        "q75": -0.02,
+        "medianAbs": 0.02,
+        "p90Abs": 0.02,
+        "maxAbs": 0.02,
+        "rms": 0.02,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.195,
+        "mean": 0.195,
+        "sd": 0.0,
+        "q25": 0.195,
+        "q75": 0.195,
+        "medianAbs": 0.195,
+        "p90Abs": 0.195,
+        "maxAbs": 0.195,
+        "rms": 0.195,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.146,
+        "mean": 0.146,
+        "sd": 0.0,
+        "q25": 0.146,
+        "q75": 0.146,
+        "medianAbs": 0.146,
+        "p90Abs": 0.146,
+        "maxAbs": 0.146,
+        "rms": 0.146,
+        "biasShare": 1.0
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 1,
+        "median": -0.165,
+        "mean": -0.165,
+        "sd": 0.0,
+        "q25": -0.165,
+        "q75": -0.165,
+        "medianAbs": 0.165,
+        "p90Abs": 0.165,
+        "maxAbs": 0.165,
+        "rms": 0.165,
+        "biasShare": 1.0
+       }
+      }
+     },
+     "sessionConstLOLO": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 1,
+        "median": 0.021,
+        "mean": 0.021,
+        "sd": 0.0,
+        "q25": 0.021,
+        "q75": 0.021,
+        "medianAbs": 0.021,
+        "p90Abs": 0.021,
+        "maxAbs": 0.021,
+        "rms": 0.021,
+        "biasShare": 1.0
+       },
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.021,
+        "mean": 0.021,
+        "sd": 0.0,
+        "q25": 0.021,
+        "q75": 0.021,
+        "medianAbs": 0.021,
+        "p90Abs": 0.021,
+        "maxAbs": 0.021,
+        "rms": 0.021,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.236,
+        "mean": 0.236,
+        "sd": 0.0,
+        "q25": 0.236,
+        "q75": 0.236,
+        "medianAbs": 0.236,
+        "p90Abs": 0.236,
+        "maxAbs": 0.236,
+        "rms": 0.236,
+        "biasShare": 1.0
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 1,
+        "median": 0.187,
+        "mean": 0.187,
+        "sd": 0.0,
+        "q25": 0.187,
+        "q75": 0.187,
+        "medianAbs": 0.187,
+        "p90Abs": 0.187,
+        "maxAbs": 0.187,
+        "rms": 0.187,
+        "biasShare": 1.0
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 1,
+        "median": -0.124,
+        "mean": -0.124,
+        "sd": 0.0,
+        "q25": -0.124,
+        "q75": -0.124,
+        "medianAbs": 0.124,
+        "p90Abs": 0.124,
+        "maxAbs": 0.124,
+        "rms": 0.124,
+        "biasShare": 1.0
+       }
+      }
+     }
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "nMatchedEvents": 41,
+    "byOffsetVariant": {
+     "none": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 15,
+        "median": 0.23,
+        "mean": 0.236,
+        "sd": 0.068,
+        "q25": 0.183,
+        "q75": 0.299,
+        "medianAbs": 0.23,
+        "p90Abs": 0.311,
+        "maxAbs": 0.323,
+        "rms": 0.245,
+        "biasShare": 0.927
+       },
+       "audioHighMedium": {
+        "n": 23,
+        "median": 0.21,
+        "mean": 0.204,
+        "sd": 0.101,
+        "q25": 0.158,
+        "q75": 0.296,
+        "medianAbs": 0.21,
+        "p90Abs": 0.312,
+        "maxAbs": 0.323,
+        "rms": 0.227,
+        "biasShare": 0.809
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": 0.171,
+        "mean": 0.178,
+        "sd": 0.128,
+        "q25": 0.071,
+        "q75": 0.26,
+        "medianAbs": 0.171,
+        "p90Abs": 0.368,
+        "maxAbs": 0.39,
+        "rms": 0.217,
+        "biasShare": 0.67
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": 0.133,
+        "mean": 0.159,
+        "sd": 0.157,
+        "q25": 0.018,
+        "q75": 0.27,
+        "medianAbs": 0.133,
+        "p90Abs": 0.367,
+        "maxAbs": 0.425,
+        "rms": 0.221,
+        "biasShare": 0.518
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 28,
+        "median": 0.153,
+        "mean": 0.171,
+        "sd": 0.231,
+        "q25": 0.117,
+        "q75": 0.233,
+        "medianAbs": 0.168,
+        "p90Abs": 0.319,
+        "maxAbs": 1.022,
+        "rms": 0.284,
+        "biasShare": 0.361
+       }
+      }
+     },
+     "adopted": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 15,
+        "median": 0.023,
+        "mean": 0.018,
+        "sd": 0.056,
+        "q25": -0.033,
+        "q75": 0.061,
+        "medianAbs": 0.046,
+        "p90Abs": 0.086,
+        "maxAbs": 0.106,
+        "rms": 0.057,
+        "biasShare": 0.097
+       },
+       "audioHighMedium": {
+        "n": 23,
+        "median": 0.013,
+        "mean": -0.016,
+        "sd": 0.095,
+        "q25": -0.049,
+        "q75": 0.05,
+        "medianAbs": 0.05,
+        "p90Abs": 0.147,
+        "maxAbs": 0.269,
+        "rms": 0.094,
+        "biasShare": 0.03
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": -0.05,
+        "mean": -0.042,
+        "sd": 0.113,
+        "q25": -0.119,
+        "q75": 0.057,
+        "medianAbs": 0.103,
+        "p90Abs": 0.191,
+        "maxAbs": 0.212,
+        "rms": 0.119,
+        "biasShare": 0.127
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": -0.094,
+        "mean": -0.061,
+        "sd": 0.139,
+        "q25": -0.158,
+        "q75": 0.068,
+        "medianAbs": 0.108,
+        "p90Abs": 0.227,
+        "maxAbs": 0.328,
+        "rms": 0.149,
+        "biasShare": 0.169
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 28,
+        "median": -0.061,
+        "mean": -0.051,
+        "sd": 0.233,
+        "q25": -0.105,
+        "q75": 0.022,
+        "medianAbs": 0.074,
+        "p90Abs": 0.347,
+        "maxAbs": 0.781,
+        "rms": 0.234,
+        "biasShare": 0.047
+       }
+      }
+     },
+     "dataTrackLOLO": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 15,
+        "median": 0.016,
+        "mean": 0.016,
+        "sd": 0.058,
+        "q25": -0.038,
+        "q75": 0.058,
+        "medianAbs": 0.047,
+        "p90Abs": 0.085,
+        "maxAbs": 0.113,
+        "rms": 0.058,
+        "biasShare": 0.071
+       },
+       "audioHighMedium": {
+        "n": 23,
+        "median": 0.004,
+        "mean": -0.016,
+        "sd": 0.095,
+        "q25": -0.048,
+        "q75": 0.056,
+        "medianAbs": 0.055,
+        "p90Abs": 0.155,
+        "maxAbs": 0.27,
+        "rms": 0.094,
+        "biasShare": 0.027
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": -0.063,
+        "mean": -0.042,
+        "sd": 0.116,
+        "q25": -0.128,
+        "q75": 0.065,
+        "medianAbs": 0.111,
+        "p90Abs": 0.199,
+        "maxAbs": 0.213,
+        "rms": 0.121,
+        "biasShare": 0.119
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": -0.09,
+        "mean": -0.061,
+        "sd": 0.145,
+        "q25": -0.15,
+        "q75": 0.074,
+        "medianAbs": 0.116,
+        "p90Abs": 0.239,
+        "maxAbs": 0.337,
+        "rms": 0.154,
+        "biasShare": 0.155
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 28,
+        "median": -0.07,
+        "mean": -0.051,
+        "sd": 0.23,
+        "q25": -0.107,
+        "q75": 0.02,
+        "medianAbs": 0.076,
+        "p90Abs": 0.351,
+        "maxAbs": 0.768,
+        "rms": 0.232,
+        "biasShare": 0.049
+       }
+      }
+     },
+     "sessionConstLOLO": {
+      "sameRule_t2ImuOnset50_minus_audioOnset50": {
+       "audioHigh": {
+        "n": 15,
+        "median": 0.025,
+        "mean": 0.026,
+        "sd": 0.07,
+        "q25": -0.023,
+        "q75": 0.086,
+        "medianAbs": 0.059,
+        "p90Abs": 0.108,
+        "maxAbs": 0.118,
+        "rms": 0.073,
+        "biasShare": 0.126
+       },
+       "audioHighMedium": {
+        "n": 23,
+        "median": 0.005,
+        "mean": -0.006,
+        "sd": 0.103,
+        "q25": -0.058,
+        "q75": 0.086,
+        "medianAbs": 0.082,
+        "p90Abs": 0.126,
+        "maxAbs": 0.281,
+        "rms": 0.101,
+        "biasShare": 0.003
+       }
+      },
+      "t1RefinedOnset_minus_audioStart": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": -0.034,
+        "mean": -0.032,
+        "sd": 0.13,
+        "q25": -0.135,
+        "q75": 0.044,
+        "medianAbs": 0.109,
+        "p90Abs": 0.195,
+        "maxAbs": 0.224,
+        "rms": 0.131,
+        "biasShare": 0.059
+       }
+      },
+      "t1RefinedOnset_minus_audioOnset50": {
+       "audioHighMedium": {
+        "n": 23,
+        "median": -0.072,
+        "mean": -0.051,
+        "sd": 0.159,
+        "q25": -0.194,
+        "q75": 0.052,
+        "medianAbs": 0.138,
+        "p90Abs": 0.225,
+        "maxAbs": 0.316,
+        "rms": 0.163,
+        "biasShare": 0.096
+       }
+      },
+      "sameRule_t2ImuOnset50_minus_shakeOnset50": {
+       "shakeHighMedium": {
+        "n": 28,
+        "median": -0.055,
+        "mean": -0.039,
+        "sd": 0.231,
+        "q25": -0.096,
+        "q75": 0.025,
+        "medianAbs": 0.077,
+        "p90Abs": 0.322,
+        "maxAbs": 0.817,
+        "rms": 0.231,
+        "biasShare": 0.029
+       }
+      }
+     }
+    }
+   }
+  },
+  "T3perLapCommonOffset": {
+   "fuji_aim_01": {
+    "overlayOnly": {
+     "perLapMedianDeviationS": {
+      "1": -0.049,
+      "2": 0.0,
+      "3": 0.054,
+      "4": 0.06
+     },
+     "sdAcrossLaps": 0.051
+    },
+    "withAdoptedL": {
+     "perLapMedianDeviationS": {
+      "1": -0.017,
+      "2": -0.013,
+      "3": 0.034,
+      "4": 0.107
+     },
+     "sdAcrossLaps": 0.058
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "overlayOnly": {
+     "perLapMedianDeviationS": {
+      "1": -0.003,
+      "2": 0.047,
+      "3": 0.001,
+      "4": -0.004,
+      "5": -0.098,
+      "6": 0.046
+     },
+     "sdAcrossLaps": 0.053
+    },
+    "withAdoptedL": {
+     "perLapMedianDeviationS": {
+      "1": -0.001,
+      "2": 0.018,
+      "3": 0.01,
+      "4": -0.02,
+      "5": -0.021,
+      "6": 0.0
+     },
+     "sdAcrossLaps": 0.016
+    }
+   }
+  }
+ },
+ "alongTrack": {
+  "contactFirstBlock": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 1,
+     "median": 0.131,
+     "mean": 0.131,
+     "sd": 0.0,
+     "q25": 0.131,
+     "q75": 0.131,
+     "medianAbs": 0.131,
+     "p90Abs": 0.131,
+     "maxAbs": 0.131,
+     "rms": 0.131,
+     "biasShare": 1.0
+    },
+    "dS": {
+     "n": 1,
+     "median": -2.0,
+     "mean": -2.0,
+     "sd": 0.0,
+     "q25": -2.0,
+     "q75": -2.0,
+     "medianAbs": 2.0,
+     "p90Abs": 2.0,
+     "maxAbs": 2.0,
+     "rms": 2.0,
+     "biasShare": 1.0
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 20,
+     "median": 0.03,
+     "mean": 0.006,
+     "sd": 0.211,
+     "q25": -0.133,
+     "q75": 0.145,
+     "medianAbs": 0.141,
+     "p90Abs": 0.356,
+     "maxAbs": 0.405,
+     "rms": 0.206,
+     "biasShare": 0.001
+    },
+    "dS": {
+     "n": 20,
+     "median": -0.59,
+     "mean": -0.52,
+     "sd": 6.18,
+     "q25": -4.0,
+     "q75": 3.14,
+     "medianAbs": 3.3,
+     "p90Abs": 9.42,
+     "maxAbs": 13.88,
+     "rms": 6.05,
+     "biasShare": 0.007
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 21,
+     "median": 0.032,
+     "mean": 0.012,
+     "sd": 0.208,
+     "q25": -0.125,
+     "q75": 0.131,
+     "medianAbs": 0.131,
+     "p90Abs": 0.355,
+     "maxAbs": 0.405,
+     "rms": 0.203,
+     "biasShare": 0.003
+    },
+    "dS": {
+     "n": 21,
+     "median": -0.63,
+     "mean": -0.59,
+     "sd": 6.03,
+     "q25": -3.04,
+     "q75": 2.99,
+     "medianAbs": 3.04,
+     "p90Abs": 9.24,
+     "maxAbs": 13.88,
+     "rms": 5.92,
+     "biasShare": 0.01
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 21,
+    "groups": 9,
+    "overallMedian": -0.63,
+    "rmsAll": 5.918,
+    "rmsAfterRemovingOverallMedian": 5.888,
+    "sdOfGroupMedians": 3.999,
+    "rmsWithinGroup": 5.897,
+    "groupMedians": {
+     "k21": 9.2,
+     "k1": -6.92,
+     "k24": -4.95,
+     "k13": 2.99,
+     "k3": 2.63,
+     "kDunlopR": 1.96,
+     "k15": -1.87,
+     "k7": -1.315,
+     "k10": -0.21
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 21,
+    "groups": 9,
+    "overallMedian": 0.032,
+    "rmsAll": 0.203,
+    "rmsAfterRemovingOverallMedian": 0.204,
+    "sdOfGroupMedians": 0.154,
+    "rmsWithinGroup": 0.183,
+    "groupMedians": {
+     "k21": -0.367,
+     "k24": 0.21,
+     "k1": 0.204,
+     "k13": -0.155,
+     "kDunlopR": -0.125,
+     "k3": -0.11,
+     "k7": 0.082,
+     "k15": 0.055,
+     "k10": 0.01
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L3": 0.131,
+    "fuji_aim_2020_07_30/L1": -0.155,
+    "fuji_aim_2020_07_30/L2": 0.032,
+    "fuji_aim_2020_07_30/L3": 0.294,
+    "fuji_aim_2020_07_30/L4": 0.128,
+    "fuji_aim_2020_07_30/L5": -0.101,
+    "fuji_aim_2020_07_30/L6": -0.105
+   }
+  },
+  "contactFirstBlock_exclK1": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 1,
+     "median": 0.131,
+     "mean": 0.131,
+     "sd": 0.0,
+     "q25": 0.131,
+     "q75": 0.131,
+     "medianAbs": 0.131,
+     "p90Abs": 0.131,
+     "maxAbs": 0.131,
+     "rms": 0.131,
+     "biasShare": 1.0
+    },
+    "dS": {
+     "n": 1,
+     "median": -2.0,
+     "mean": -2.0,
+     "sd": 0.0,
+     "q25": -2.0,
+     "q75": -2.0,
+     "medianAbs": 2.0,
+     "p90Abs": 2.0,
+     "maxAbs": 2.0,
+     "rms": 2.0,
+     "biasShare": 1.0
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 13,
+     "median": -0.058,
+     "mean": -0.038,
+     "sd": 0.172,
+     "q25": -0.155,
+     "q75": 0.055,
+     "medianAbs": 0.125,
+     "p90Abs": 0.273,
+     "maxAbs": 0.367,
+     "rms": 0.169,
+     "biasShare": 0.051
+    },
+    "dS": {
+     "n": 13,
+     "median": 1.28,
+     "mean": 0.74,
+     "sd": 4.02,
+     "q25": -1.87,
+     "q75": 2.99,
+     "medianAbs": 2.75,
+     "p90Abs": 6.28,
+     "maxAbs": 9.2,
+     "rms": 3.93,
+     "biasShare": 0.035
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 14,
+     "median": -0.015,
+     "mean": -0.026,
+     "sd": 0.171,
+     "q25": -0.147,
+     "q75": 0.107,
+     "medianAbs": 0.126,
+     "p90Abs": 0.262,
+     "maxAbs": 0.367,
+     "rms": 0.167,
+     "biasShare": 0.025
+    },
+    "dS": {
+     "n": 14,
+     "median": 0.36,
+     "mean": 0.54,
+     "sd": 3.93,
+     "q25": -1.97,
+     "q75": 2.83,
+     "medianAbs": 2.54,
+     "p90Abs": 6.0,
+     "maxAbs": 9.2,
+     "rms": 3.83,
+     "biasShare": 0.02
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 14,
+    "groups": 8,
+    "overallMedian": 0.365,
+    "rmsAll": 3.828,
+    "rmsAfterRemovingOverallMedian": 3.793,
+    "sdOfGroupMedians": 3.24,
+    "rmsWithinGroup": 1.85,
+    "groupMedians": {
+     "k21": 9.2,
+     "k24": -4.95,
+     "k13": 2.99,
+     "k3": 2.63,
+     "kDunlopR": 1.96,
+     "k15": -1.87,
+     "k7": -1.315,
+     "k10": -0.21
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 14,
+    "groups": 8,
+    "overallMedian": -0.015,
+    "rmsAll": 0.167,
+    "rmsAfterRemovingOverallMedian": 0.165,
+    "sdOfGroupMedians": 0.147,
+    "rmsWithinGroup": 0.088,
+    "groupMedians": {
+     "k21": -0.367,
+     "k24": 0.21,
+     "k13": -0.155,
+     "kDunlopR": -0.125,
+     "k3": -0.11,
+     "k7": 0.082,
+     "k15": 0.055,
+     "k10": 0.01
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L3": 0.131,
+    "fuji_aim_2020_07_30/L1": -0.159,
+    "fuji_aim_2020_07_30/L2": -0.046,
+    "fuji_aim_2020_07_30/L3": 0.118,
+    "fuji_aim_2020_07_30/L4": 0.029,
+    "fuji_aim_2020_07_30/L6": 0.011
+   }
+  },
+  "contactMidBlock": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 1,
+     "median": -0.127,
+     "mean": -0.127,
+     "sd": 0.0,
+     "q25": -0.127,
+     "q75": -0.127,
+     "medianAbs": 0.127,
+     "p90Abs": 0.127,
+     "maxAbs": 0.127,
+     "rms": 0.127,
+     "biasShare": 1.0
+    },
+    "dS": {
+     "n": 1,
+     "median": 1.94,
+     "mean": 1.94,
+     "sd": 0.0,
+     "q25": 1.94,
+     "q75": 1.94,
+     "medianAbs": 1.94,
+     "p90Abs": 1.94,
+     "maxAbs": 1.94,
+     "rms": 1.94,
+     "biasShare": 1.0
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 19,
+     "median": -0.155,
+     "mean": -0.164,
+     "sd": 0.207,
+     "q25": -0.24,
+     "q75": -0.041,
+     "medianAbs": 0.159,
+     "p90Abs": 0.361,
+     "maxAbs": 0.725,
+     "rms": 0.26,
+     "biasShare": 0.4
+    },
+    "dS": {
+     "n": 19,
+     "median": 4.14,
+     "mean": 4.77,
+     "sd": 6.54,
+     "q25": 1.03,
+     "q75": 7.74,
+     "medianAbs": 4.21,
+     "p90Abs": 9.17,
+     "maxAbs": 25.19,
+     "rms": 7.96,
+     "biasShare": 0.36
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 20,
+     "median": -0.154,
+     "mean": -0.163,
+     "sd": 0.201,
+     "q25": -0.237,
+     "q75": -0.046,
+     "medianAbs": 0.157,
+     "p90Abs": 0.358,
+     "maxAbs": 0.725,
+     "rms": 0.255,
+     "biasShare": 0.406
+    },
+    "dS": {
+     "n": 20,
+     "median": 3.65,
+     "mean": 4.63,
+     "sd": 6.4,
+     "q25": 1.16,
+     "q75": 7.63,
+     "medianAbs": 4.17,
+     "p90Abs": 8.79,
+     "maxAbs": 25.19,
+     "rms": 7.77,
+     "biasShare": 0.355
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 20,
+    "groups": 9,
+    "overallMedian": 3.65,
+    "rmsAll": 7.767,
+    "rmsAfterRemovingOverallMedian": 6.313,
+    "sdOfGroupMedians": 3.562,
+    "rmsWithinGroup": 5.349,
+    "groupMedians": {
+     "k1": 7.94,
+     "k15": 5.21,
+     "k13": 5.15,
+     "k10": 3.26,
+     "k24": -2.57,
+     "k7": 2.55,
+     "kDunlopR": 2.43,
+     "k21": 1.28,
+     "k3": 1.23
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 20,
+    "groups": 9,
+    "overallMedian": -0.154,
+    "rmsAll": 0.255,
+    "rmsAfterRemovingOverallMedian": 0.197,
+    "sdOfGroupMedians": 0.138,
+    "rmsWithinGroup": 0.169,
+    "groupMedians": {
+     "k13": -0.271,
+     "k1": -0.235,
+     "kDunlopR": -0.155,
+     "k15": -0.154,
+     "k10": -0.147,
+     "k7": -0.143,
+     "k24": 0.111,
+     "k3": -0.051,
+     "k21": -0.051
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L3": -0.127,
+    "fuji_aim_2020_07_30/L1": -0.154,
+    "fuji_aim_2020_07_30/L2": -0.157,
+    "fuji_aim_2020_07_30/L3": -0.02,
+    "fuji_aim_2020_07_30/L4": -0.231,
+    "fuji_aim_2020_07_30/L5": -0.166,
+    "fuji_aim_2020_07_30/L6": -0.245
+   }
+  },
+  "contactFirstPaint": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 1,
+     "median": -0.376,
+     "mean": -0.376,
+     "sd": 0.0,
+     "q25": -0.376,
+     "q75": -0.376,
+     "medianAbs": 0.376,
+     "p90Abs": 0.376,
+     "maxAbs": 0.376,
+     "rms": 0.376,
+     "biasShare": 1.0
+    },
+    "dS": {
+     "n": 1,
+     "median": 5.74,
+     "mean": 5.74,
+     "sd": 0.0,
+     "q25": 5.74,
+     "q75": 5.74,
+     "medianAbs": 5.74,
+     "p90Abs": 5.74,
+     "maxAbs": 5.74,
+     "rms": 5.74,
+     "biasShare": 1.0
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 26,
+     "median": -0.087,
+     "mean": -0.092,
+     "sd": 0.204,
+     "q25": -0.21,
+     "q75": 0.047,
+     "medianAbs": 0.174,
+     "p90Abs": 0.313,
+     "maxAbs": 0.515,
+     "rms": 0.22,
+     "biasShare": 0.177
+    },
+    "dS": {
+     "n": 26,
+     "median": 2.3,
+     "mean": 1.9,
+     "sd": 5.68,
+     "q25": -1.01,
+     "q75": 5.03,
+     "medianAbs": 4.47,
+     "p90Abs": 8.13,
+     "maxAbs": 15.86,
+     "rms": 5.88,
+     "biasShare": 0.104
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 27,
+     "median": -0.09,
+     "mean": -0.103,
+     "sd": 0.207,
+     "q25": -0.218,
+     "q75": 0.046,
+     "medianAbs": 0.183,
+     "p90Abs": 0.355,
+     "maxAbs": 0.515,
+     "rms": 0.228,
+     "biasShare": 0.204
+    },
+    "dS": {
+     "n": 27,
+     "median": 2.81,
+     "mean": 2.04,
+     "sd": 5.61,
+     "q25": -0.89,
+     "q75": 5.26,
+     "medianAbs": 4.64,
+     "p90Abs": 7.99,
+     "maxAbs": 15.86,
+     "rms": 5.88,
+     "biasShare": 0.12
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 27,
+    "groups": 9,
+    "overallMedian": 2.81,
+    "rmsAll": 5.875,
+    "rmsAfterRemovingOverallMedian": 5.564,
+    "sdOfGroupMedians": 3.831,
+    "rmsWithinGroup": 5.041,
+    "groupMedians": {
+     "k21": 12.91,
+     "k3": 5.57,
+     "k13": 5.37,
+     "k1": -4.97,
+     "k7": 3.095,
+     "k15": 2.82,
+     "k24": -1.905,
+     "kDunlopR": 1.19,
+     "k10": 0.65
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 27,
+    "groups": 9,
+    "overallMedian": -0.09,
+    "rmsAll": 0.228,
+    "rmsAfterRemovingOverallMedian": 0.203,
+    "sdOfGroupMedians": 0.157,
+    "rmsWithinGroup": 0.166,
+    "groupMedians": {
+     "k21": -0.515,
+     "k13": -0.281,
+     "k3": -0.227,
+     "k7": -0.153,
+     "k1": 0.146,
+     "k15": -0.084,
+     "kDunlopR": -0.083,
+     "k24": 0.082,
+     "k10": -0.029
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L3": -0.376,
+    "fuji_aim_2020_07_30/L1": -0.155,
+    "fuji_aim_2020_07_30/L2": -0.142,
+    "fuji_aim_2020_07_30/L3": 0.199,
+    "fuji_aim_2020_07_30/L4": -0.076,
+    "fuji_aim_2020_07_30/L5": -0.059,
+    "fuji_aim_2020_07_30/L6": -0.153
+   }
+  },
+  "videoTipNominal": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 14,
+     "median": -0.212,
+     "mean": -0.242,
+     "sd": 0.21,
+     "q25": -0.32,
+     "q75": -0.106,
+     "medianAbs": 0.212,
+     "p90Abs": 0.367,
+     "maxAbs": 0.837,
+     "rms": 0.316,
+     "biasShare": 0.588
+    },
+    "dS": {
+     "n": 14,
+     "median": 5.1,
+     "mean": 6.05,
+     "sd": 4.76,
+     "q25": 2.92,
+     "q75": 7.56,
+     "medianAbs": 5.1,
+     "p90Abs": 11.59,
+     "maxAbs": 17.38,
+     "rms": 7.59,
+     "biasShare": 0.635
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 41,
+     "median": -0.122,
+     "mean": -0.14,
+     "sd": 0.13,
+     "q25": -0.209,
+     "q75": -0.071,
+     "medianAbs": 0.14,
+     "p90Abs": 0.291,
+     "maxAbs": 0.443,
+     "rms": 0.19,
+     "biasShare": 0.544
+    },
+    "dS": {
+     "n": 41,
+     "median": 4.2,
+     "mean": 3.79,
+     "sd": 3.12,
+     "q25": 1.78,
+     "q75": 5.62,
+     "medianAbs": 4.2,
+     "p90Abs": 6.09,
+     "maxAbs": 13.3,
+     "rms": 4.88,
+     "biasShare": 0.603
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 55,
+     "median": -0.141,
+     "mean": -0.166,
+     "sd": 0.159,
+     "q25": -0.247,
+     "q75": -0.073,
+     "medianAbs": 0.152,
+     "p90Abs": 0.338,
+     "maxAbs": 0.837,
+     "rms": 0.229,
+     "biasShare": 0.528
+    },
+    "dS": {
+     "n": 55,
+     "median": 4.24,
+     "mean": 4.37,
+     "sd": 3.69,
+     "q25": 2.23,
+     "q75": 5.95,
+     "medianAbs": 4.24,
+     "p90Abs": 7.82,
+     "maxAbs": 17.38,
+     "rms": 5.7,
+     "biasShare": 0.588
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 55,
+    "groups": 11,
+    "overallMedian": 4.24,
+    "rmsAll": 5.697,
+    "rmsAfterRemovingOverallMedian": 3.661,
+    "sdOfGroupMedians": 2.487,
+    "rmsWithinGroup": 2.875,
+    "groupMedians": {
+     "k20": 7.6,
+     "k23": 5.98,
+     "k9": 5.64,
+     "k19": 5.63,
+     "k15": 5.29,
+     "k21": 5.275,
+     "k24": 4.3,
+     "k1": 3.72,
+     "k18": 2.77,
+     "k3": 0.73,
+     "k7": -0.66
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 55,
+    "groups": 11,
+    "overallMedian": -0.141,
+    "rmsAll": 0.229,
+    "rmsAfterRemovingOverallMedian": 0.159,
+    "sdOfGroupMedians": 0.115,
+    "rmsWithinGroup": 0.12,
+    "groupMedians": {
+     "k20": -0.376,
+     "k23": -0.247,
+     "k21": -0.224,
+     "k9": -0.204,
+     "k24": -0.202,
+     "k15": -0.154,
+     "k19": -0.127,
+     "k1": -0.111,
+     "k18": -0.071,
+     "k7": 0.035,
+     "k3": -0.03
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": -0.208,
+    "fuji_aim_01/L2": -0.312,
+    "fuji_aim_01/L3": -0.198,
+    "fuji_aim_01/L4": -0.071,
+    "fuji_aim_2020_07_30/L1": -0.059,
+    "fuji_aim_2020_07_30/L2": -0.141,
+    "fuji_aim_2020_07_30/L3": -0.163,
+    "fuji_aim_2020_07_30/L4": -0.099,
+    "fuji_aim_2020_07_30/L5": -0.09,
+    "fuji_aim_2020_07_30/L6": -0.14
+   }
+  },
+  "videoTipSpecFovCamera": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 14,
+     "median": -0.016,
+     "mean": -0.049,
+     "sd": 0.193,
+     "q25": -0.069,
+     "q75": 0.032,
+     "medianAbs": 0.058,
+     "p90Abs": 0.177,
+     "maxAbs": 0.659,
+     "rms": 0.192,
+     "biasShare": 0.064
+    },
+    "dS": {
+     "n": 14,
+     "median": 0.4,
+     "mean": 0.76,
+     "sd": 4.23,
+     "q25": -1.23,
+     "q75": 1.41,
+     "medianAbs": 1.39,
+     "p90Abs": 4.44,
+     "maxAbs": 13.68,
+     "rms": 4.15,
+     "biasShare": 0.033
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 41,
+     "median": -0.008,
+     "mean": 0.001,
+     "sd": 0.1,
+     "q25": -0.038,
+     "q75": 0.045,
+     "medianAbs": 0.043,
+     "p90Abs": 0.17,
+     "maxAbs": 0.272,
+     "rms": 0.098,
+     "biasShare": 0.0
+    },
+    "dS": {
+     "n": 41,
+     "median": 0.31,
+     "mean": -0.05,
+     "sd": 2.69,
+     "q25": -1.12,
+     "q75": 1.07,
+     "medianAbs": 1.12,
+     "p90Abs": 4.09,
+     "maxAbs": 7.79,
+     "rms": 2.66,
+     "biasShare": 0.0
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 55,
+     "median": -0.008,
+     "mean": -0.011,
+     "sd": 0.13,
+     "q25": -0.057,
+     "q75": 0.042,
+     "medianAbs": 0.051,
+     "p90Abs": 0.189,
+     "maxAbs": 0.659,
+     "rms": 0.129,
+     "biasShare": 0.008
+    },
+    "dS": {
+     "n": 55,
+     "median": 0.31,
+     "mean": 0.15,
+     "sd": 3.13,
+     "q25": -1.14,
+     "q75": 1.25,
+     "medianAbs": 1.2,
+     "p90Abs": 4.1,
+     "maxAbs": 13.68,
+     "rms": 3.11,
+     "biasShare": 0.002
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 55,
+    "groups": 11,
+    "overallMedian": 0.31,
+    "rmsAll": 3.105,
+    "rmsAfterRemovingOverallMedian": 3.105,
+    "sdOfGroupMedians": 1.442,
+    "rmsWithinGroup": 2.587,
+    "groupMedians": {
+     "k19": -2.05,
+     "k9": -1.9,
+     "k21": 1.8,
+     "k7": -1.65,
+     "k20": 1.37,
+     "k24": 1.23,
+     "k15": 1.2,
+     "k23": 0.63,
+     "k18": 0.31,
+     "k3": 0.1,
+     "k1": -0.09
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 55,
+    "groups": 11,
+    "overallMedian": -0.008,
+    "rmsAll": 0.129,
+    "rmsAfterRemovingOverallMedian": 0.129,
+    "sdOfGroupMedians": 0.057,
+    "rmsWithinGroup": 0.108,
+    "groupMedians": {
+     "k7": 0.087,
+     "k21": -0.077,
+     "k9": 0.068,
+     "k20": -0.063,
+     "k24": -0.057,
+     "k19": 0.05,
+     "k15": -0.035,
+     "k23": -0.026,
+     "k18": -0.008,
+     "k3": -0.004,
+     "k1": 0.003
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": -0.055,
+    "fuji_aim_01/L2": -0.001,
+    "fuji_aim_01/L3": -0.028,
+    "fuji_aim_01/L4": 0.005,
+    "fuji_aim_2020_07_30/L1": -0.008,
+    "fuji_aim_2020_07_30/L2": 0.024,
+    "fuji_aim_2020_07_30/L3": -0.007,
+    "fuji_aim_2020_07_30/L4": -0.007,
+    "fuji_aim_2020_07_30/L5": 0.0,
+    "fuji_aim_2020_07_30/L6": -0.032
+   }
+  },
+  "videoKerbEnds": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 23,
+     "median": -0.177,
+     "mean": -0.217,
+     "sd": 0.24,
+     "q25": -0.246,
+     "q75": -0.084,
+     "medianAbs": 0.177,
+     "p90Abs": 0.57,
+     "maxAbs": 0.814,
+     "rms": 0.319,
+     "biasShare": 0.46
+    },
+    "dS": {
+     "n": 23,
+     "median": 5.24,
+     "mean": 5.79,
+     "sd": 5.28,
+     "q25": 3.24,
+     "q75": 6.64,
+     "medianAbs": 5.24,
+     "p90Abs": 13.42,
+     "maxAbs": 18.61,
+     "rms": 7.76,
+     "biasShare": 0.557
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 55,
+     "median": -0.164,
+     "mean": -0.193,
+     "sd": 0.147,
+     "q25": -0.246,
+     "q75": -0.123,
+     "medianAbs": 0.164,
+     "p90Abs": 0.339,
+     "maxAbs": 0.745,
+     "rms": 0.242,
+     "biasShare": 0.639
+    },
+    "dS": {
+     "n": 55,
+     "median": 5.95,
+     "mean": 5.8,
+     "sd": 3.28,
+     "q25": 4.54,
+     "q75": 7.03,
+     "medianAbs": 5.95,
+     "p90Abs": 7.79,
+     "maxAbs": 16.37,
+     "rms": 6.65,
+     "biasShare": 0.761
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 78,
+     "median": -0.164,
+     "mean": -0.2,
+     "sd": 0.178,
+     "q25": -0.258,
+     "q75": -0.106,
+     "medianAbs": 0.164,
+     "p90Abs": 0.358,
+     "maxAbs": 0.814,
+     "rms": 0.267,
+     "biasShare": 0.562
+    },
+    "dS": {
+     "n": 78,
+     "median": 5.76,
+     "mean": 5.8,
+     "sd": 3.94,
+     "q25": 4.39,
+     "q75": 7.04,
+     "medianAbs": 5.76,
+     "p90Abs": 11.13,
+     "maxAbs": 18.61,
+     "rms": 7.0,
+     "biasShare": 0.687
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 78,
+    "groups": 8,
+    "overallMedian": 5.765,
+    "rmsAll": 6.999,
+    "rmsAfterRemovingOverallMedian": 3.916,
+    "sdOfGroupMedians": 2.96,
+    "rmsWithinGroup": 3.732,
+    "groupMedians": {
+     "k15": 7.45,
+     "k21": 6.84,
+     "k20": 6.64,
+     "k19": 5.845,
+     "k23": 5.53,
+     "k18": 5.09,
+     "k9": 2.64,
+     "k7": -1.555
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 78,
+    "groups": 8,
+    "overallMedian": -0.164,
+    "rmsAll": 0.267,
+    "rmsAfterRemovingOverallMedian": 0.18,
+    "sdOfGroupMedians": 0.13,
+    "rmsWithinGroup": 0.167,
+    "groupMedians": {
+     "k20": -0.331,
+     "k21": -0.27,
+     "k15": -0.209,
+     "k23": -0.194,
+     "k18": -0.135,
+     "k19": -0.131,
+     "k7": 0.1,
+     "k9": -0.098
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": -0.29,
+    "fuji_aim_01/L2": -0.165,
+    "fuji_aim_01/L3": -0.177,
+    "fuji_aim_01/L4": -0.089,
+    "fuji_aim_2020_07_30/L1": -0.235,
+    "fuji_aim_2020_07_30/L2": -0.149,
+    "fuji_aim_2020_07_30/L3": -0.165,
+    "fuji_aim_2020_07_30/L4": -0.161,
+    "fuji_aim_2020_07_30/L5": -0.15,
+    "fuji_aim_2020_07_30/L6": -0.223
+   }
+  },
+  "turnInHeading50": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 38,
+     "median": 0.028,
+     "mean": 0.026,
+     "sd": 0.103,
+     "q25": -0.023,
+     "q75": 0.086,
+     "medianAbs": 0.05,
+     "p90Abs": 0.143,
+     "maxAbs": 0.338,
+     "rms": 0.105,
+     "biasShare": 0.062
+    },
+    "dS": {
+     "n": 38,
+     "median": -0.59,
+     "mean": -0.82,
+     "sd": 2.1,
+     "q25": -2.18,
+     "q75": 0.39,
+     "medianAbs": 1.22,
+     "p90Abs": 3.28,
+     "maxAbs": 7.47,
+     "rms": 2.23,
+     "biasShare": 0.137
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 66,
+     "median": 0.007,
+     "mean": 0.011,
+     "sd": 0.073,
+     "q25": -0.033,
+     "q75": 0.059,
+     "medianAbs": 0.043,
+     "p90Abs": 0.119,
+     "maxAbs": 0.234,
+     "rms": 0.073,
+     "biasShare": 0.022
+    },
+    "dS": {
+     "n": 66,
+     "median": -0.2,
+     "mean": -0.49,
+     "sd": 1.99,
+     "q25": -1.97,
+     "q75": 0.69,
+     "medianAbs": 1.03,
+     "p90Abs": 3.31,
+     "maxAbs": 6.02,
+     "rms": 2.04,
+     "biasShare": 0.059
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 104,
+     "median": 0.011,
+     "mean": 0.017,
+     "sd": 0.085,
+     "q25": -0.031,
+     "q75": 0.061,
+     "medianAbs": 0.046,
+     "p90Abs": 0.136,
+     "maxAbs": 0.338,
+     "rms": 0.086,
+     "biasShare": 0.037
+    },
+    "dS": {
+     "n": 104,
+     "median": -0.3,
+     "mean": -0.62,
+     "sd": 2.03,
+     "q25": -2.0,
+     "q75": 0.66,
+     "medianAbs": 1.09,
+     "p90Abs": 3.35,
+     "maxAbs": 7.47,
+     "rms": 2.11,
+     "biasShare": 0.085
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 104,
+    "groups": 12,
+    "overallMedian": -0.3,
+    "rmsAll": 2.108,
+    "rmsAfterRemovingOverallMedian": 2.041,
+    "sdOfGroupMedians": 1.488,
+    "rmsWithinGroup": 1.521,
+    "groupMedians": {
+     "k21": -3.44,
+     "k15": -2.2,
+     "k1": -1.97,
+     "k23": 1.675,
+     "k3": -1.65,
+     "k7": 0.87,
+     "k9": -0.81,
+     "kDunlopR": 0.735,
+     "k24": -0.61,
+     "k20": 0.43,
+     "k13": -0.27,
+     "k10": 0.05
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 104,
+    "groups": 12,
+    "overallMedian": 0.011,
+    "rmsAll": 0.086,
+    "rmsAfterRemovingOverallMedian": 0.085,
+    "sdOfGroupMedians": 0.057,
+    "rmsWithinGroup": 0.067,
+    "groupMedians": {
+     "k21": 0.138,
+     "k3": 0.067,
+     "k1": 0.062,
+     "k15": 0.057,
+     "k23": -0.055,
+     "k7": -0.046,
+     "kDunlopR": -0.042,
+     "k9": 0.027,
+     "k24": 0.024,
+     "k20": -0.019,
+     "k13": 0.014,
+     "k10": -0.002
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": 0.015,
+    "fuji_aim_01/L2": 0.028,
+    "fuji_aim_01/L3": 0.061,
+    "fuji_aim_01/L4": 0.008,
+    "fuji_aim_2020_07_30/L1": 0.005,
+    "fuji_aim_2020_07_30/L2": 0.02,
+    "fuji_aim_2020_07_30/L3": 0.004,
+    "fuji_aim_2020_07_30/L4": 0.002,
+    "fuji_aim_2020_07_30/L5": 0.019,
+    "fuji_aim_2020_07_30/L6": -0.003
+   }
+  },
+  "turnInVisibleT10": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 26,
+     "median": -0.079,
+     "mean": -0.19,
+     "sd": 0.358,
+     "q25": -0.217,
+     "q75": 0.021,
+     "medianAbs": 0.119,
+     "p90Abs": 0.758,
+     "maxAbs": 1.067,
+     "rms": 0.399,
+     "biasShare": 0.227
+    },
+    "dS": {
+     "n": 26,
+     "median": 1.65,
+     "mean": 4.42,
+     "sd": 8.86,
+     "q25": -0.43,
+     "q75": 5.75,
+     "medianAbs": 3.06,
+     "p90Abs": 16.88,
+     "maxAbs": 32.56,
+     "rms": 9.75,
+     "biasShare": 0.206
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 40,
+     "median": 0.01,
+     "mean": -0.11,
+     "sd": 0.3,
+     "q25": -0.166,
+     "q75": 0.048,
+     "medianAbs": 0.072,
+     "p90Abs": 0.357,
+     "maxAbs": 1.19,
+     "rms": 0.316,
+     "biasShare": 0.122
+    },
+    "dS": {
+     "n": 40,
+     "median": -0.22,
+     "mean": 2.96,
+     "sd": 8.17,
+     "q25": -1.35,
+     "q75": 4.9,
+     "medianAbs": 1.69,
+     "p90Abs": 9.82,
+     "maxAbs": 31.9,
+     "rms": 8.6,
+     "biasShare": 0.119
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 66,
+     "median": -0.038,
+     "mean": -0.142,
+     "sd": 0.324,
+     "q25": -0.185,
+     "q75": 0.044,
+     "medianAbs": 0.084,
+     "p90Abs": 0.687,
+     "maxAbs": 1.19,
+     "rms": 0.351,
+     "biasShare": 0.163
+    },
+    "dS": {
+     "n": 66,
+     "median": 0.84,
+     "mean": 3.54,
+     "sd": 8.42,
+     "q25": -1.12,
+     "q75": 5.35,
+     "medianAbs": 2.19,
+     "p90Abs": 15.8,
+     "maxAbs": 32.56,
+     "rms": 9.07,
+     "biasShare": 0.152
+    }
+   },
+   "systematicVsRandom_dS": {
+    "n": 66,
+    "groups": 12,
+    "overallMedian": 0.845,
+    "rmsAll": 9.07,
+    "rmsAfterRemovingOverallMedian": 8.775,
+    "sdOfGroupMedians": 3.139,
+    "rmsWithinGroup": 7.436,
+    "groupMedians": {
+     "k1": 7.005,
+     "kDunlopR": 5.25,
+     "k3": 3.55,
+     "k10": 3.12,
+     "k15": 3.03,
+     "k9": -2.61,
+     "k21": -2.275,
+     "k13": 2.11,
+     "k23": -1.51,
+     "k24": -1.37,
+     "k7": -0.31,
+     "k20": -0.3
+    }
+   },
+   "systematicVsRandom_dt": {
+    "n": 66,
+    "groups": 12,
+    "overallMedian": -0.038,
+    "rmsAll": 0.351,
+    "rmsAfterRemovingOverallMedian": 0.338,
+    "sdOfGroupMedians": 0.114,
+    "rmsWithinGroup": 0.295,
+    "groupMedians": {
+     "kDunlopR": -0.228,
+     "k1": -0.21,
+     "k3": -0.144,
+     "k10": -0.142,
+     "k9": 0.09,
+     "k15": -0.086,
+     "k21": 0.081,
+     "k13": -0.078,
+     "k23": 0.054,
+     "k24": 0.045,
+     "k7": 0.023,
+     "k20": 0.014
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": -0.076,
+    "fuji_aim_01/L2": -0.08,
+    "fuji_aim_01/L3": -0.051,
+    "fuji_aim_01/L4": -0.104,
+    "fuji_aim_2020_07_30/L1": 0.035,
+    "fuji_aim_2020_07_30/L2": -0.034,
+    "fuji_aim_2020_07_30/L3": -0.074,
+    "fuji_aim_2020_07_30/L4": 0.045,
+    "fuji_aim_2020_07_30/L5": -0.148,
+    "fuji_aim_2020_07_30/L6": -0.114
+   }
+  },
+  "yawRatePeak": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 38,
+     "median": -0.024,
+     "mean": -0.093,
+     "sd": 0.399,
+     "q25": -0.178,
+     "q75": 0.136,
+     "medianAbs": 0.165,
+     "p90Abs": 0.884,
+     "maxAbs": 1.083,
+     "rms": 0.404,
+     "biasShare": 0.053
+    },
+    "dS": {
+     "n": 0
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 66,
+     "median": -0.019,
+     "mean": -0.04,
+     "sd": 0.287,
+     "q25": -0.127,
+     "q75": 0.131,
+     "medianAbs": 0.13,
+     "p90Abs": 0.358,
+     "maxAbs": 1.11,
+     "rms": 0.288,
+     "biasShare": 0.019
+    },
+    "dS": {
+     "n": 0
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 104,
+     "median": -0.019,
+     "mean": -0.06,
+     "sd": 0.332,
+     "q25": -0.138,
+     "q75": 0.138,
+     "medianAbs": 0.139,
+     "p90Abs": 0.523,
+     "maxAbs": 1.11,
+     "rms": 0.335,
+     "biasShare": 0.032
+    },
+    "dS": {
+     "n": 0
+    }
+   },
+   "systematicVsRandom_dS": null,
+   "systematicVsRandom_dt": {
+    "n": 104,
+    "groups": 12,
+    "overallMedian": -0.019,
+    "rmsAll": 0.335,
+    "rmsAfterRemovingOverallMedian": 0.332,
+    "sdOfGroupMedians": 0.156,
+    "rmsWithinGroup": 0.284,
+    "groupMedians": {
+     "k1": 0.277,
+     "k15": 0.26,
+     "k21": -0.238,
+     "k24": -0.15,
+     "k7": -0.122,
+     "kDunlopR": -0.105,
+     "k20": 0.102,
+     "k10": -0.071,
+     "k9": -0.066,
+     "k13": -0.018,
+     "k3": -0.009,
+     "k23": 0.006
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": -0.043,
+    "fuji_aim_01/L2": 0.131,
+    "fuji_aim_01/L3": -0.231,
+    "fuji_aim_01/L4": 0.046,
+    "fuji_aim_2020_07_30/L1": -0.02,
+    "fuji_aim_2020_07_30/L2": -0.072,
+    "fuji_aim_2020_07_30/L3": -0.028,
+    "fuji_aim_2020_07_30/L4": 0.14,
+    "fuji_aim_2020_07_30/L5": 0.045,
+    "fuji_aim_2020_07_30/L6": -0.032
+   }
+  },
+  "minSpeed": {
+   "fuji_aim_01": {
+    "dt": {
+     "n": 28,
+     "median": 0.034,
+     "mean": 0.037,
+     "sd": 0.34,
+     "q25": -0.04,
+     "q75": 0.091,
+     "medianAbs": 0.073,
+     "p90Abs": 0.308,
+     "maxAbs": 1.238,
+     "rms": 0.336,
+     "biasShare": 0.012
+    },
+    "dS": {
+     "n": 0
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "dt": {
+     "n": 44,
+     "median": 0.022,
+     "mean": 0.109,
+     "sd": 0.302,
+     "q25": -0.015,
+     "q75": 0.077,
+     "medianAbs": 0.059,
+     "p90Abs": 0.206,
+     "maxAbs": 1.563,
+     "rms": 0.318,
+     "biasShare": 0.117
+    },
+    "dS": {
+     "n": 0
+    }
+   },
+   "pooled": {
+    "dt": {
+     "n": 72,
+     "median": 0.027,
+     "mean": 0.081,
+     "sd": 0.317,
+     "q25": -0.019,
+     "q75": 0.089,
+     "medianAbs": 0.06,
+     "p90Abs": 0.207,
+     "maxAbs": 1.563,
+     "rms": 0.325,
+     "biasShare": 0.062
+    },
+    "dS": {
+     "n": 0
+    }
+   },
+   "systematicVsRandom_dS": null,
+   "systematicVsRandom_dt": {
+    "n": 72,
+    "groups": 8,
+    "overallMedian": 0.027,
+    "rmsAll": 0.325,
+    "rmsAfterRemovingOverallMedian": 0.319,
+    "sdOfGroupMedians": 0.031,
+    "rmsWithinGroup": 0.32,
+    "groupMedians": {
+     "k21": 0.061,
+     "k24": 0.061,
+     "k1": 0.037,
+     "k20": -0.019,
+     "k10": 0.018,
+     "k3": -0.008,
+     "k13": 0.002,
+     "kDunlopR": -0.002
+    }
+   },
+   "perLapMedianDt": {
+    "fuji_aim_01/L1": 0.09,
+    "fuji_aim_01/L2": 0.031,
+    "fuji_aim_01/L3": -0.014,
+    "fuji_aim_01/L4": 0.043,
+    "fuji_aim_2020_07_30/L1": 0.006,
+    "fuji_aim_2020_07_30/L2": 0.073,
+    "fuji_aim_2020_07_30/L3": 0.036,
+    "fuji_aim_2020_07_30/L4": 0.009,
+    "fuji_aim_2020_07_30/L5": 0.059,
+    "fuji_aim_2020_07_30/L6": -0.003
+   }
+  }
+ },
+ "lateral": {
+  "fuji_aim_01": {
+   "contactBlockGapAtOnset": {
+    "n": 2,
+    "median": 0.64,
+    "mean": 0.64,
+    "sd": 0.77,
+    "q25": 0.37,
+    "q75": 0.92,
+    "medianAbs": 0.64,
+    "p90Abs": 1.08,
+    "maxAbs": 1.19,
+    "rms": 0.85,
+    "biasShare": 0.582
+   },
+   "contactPaintGapAtOnset": {
+    "n": 2,
+    "median": 0.19,
+    "mean": 0.19,
+    "sd": 0.83,
+    "q25": -0.1,
+    "q75": 0.48,
+    "medianAbs": 0.59,
+    "p90Abs": 0.74,
+    "maxAbs": 0.78,
+    "rms": 0.62,
+    "biasShare": 0.094
+   },
+   "contactBlockGapAtOnset_highOnly": {
+    "n": 2,
+    "median": 0.64,
+    "mean": 0.64,
+    "sd": 0.77,
+    "q25": 0.37,
+    "q75": 0.92,
+    "medianAbs": 0.64,
+    "p90Abs": 1.08,
+    "maxAbs": 1.19,
+    "rms": 0.85,
+    "biasShare": 0.582
+   },
+   "contactBlockGapAtOnset_rightKerbs": {
+    "n": 1,
+    "median": 1.19,
+    "mean": 1.19,
+    "sd": 0.0,
+    "q25": 1.19,
+    "q75": 1.19,
+    "medianAbs": 1.19,
+    "p90Abs": 1.19,
+    "maxAbs": 1.19,
+    "rms": 1.19,
+    "biasShare": 1.0
+   },
+   "contactBlockGapAtOnset_leftKerbs": {
+    "n": 1,
+    "median": 0.1,
+    "mean": 0.1,
+    "sd": 0.0,
+    "q25": 0.1,
+    "q75": 0.1,
+    "medianAbs": 0.1,
+    "p90Abs": 0.1,
+    "maxAbs": 0.1,
+    "rms": 0.1,
+    "biasShare": 1.0
+   },
+   "cgMinGapDuringTruthContactBlock": {
+    "n": 2,
+    "median": 0.4,
+    "mean": 0.4,
+    "sd": 0.61,
+    "q25": 0.18,
+    "q75": 0.61,
+    "medianAbs": 0.43,
+    "p90Abs": 0.75,
+    "maxAbs": 0.83,
+    "rms": 0.58,
+    "biasShare": 0.459
+   },
+   "videoTipLateralNominal": {
+    "n": 14,
+    "median": 0.67,
+    "mean": 0.46,
+    "sd": 1.01,
+    "q25": -0.39,
+    "q75": 1.11,
+    "medianAbs": 0.86,
+    "p90Abs": 1.71,
+    "maxAbs": 1.82,
+    "rms": 1.07,
+    "biasShare": 0.181
+   },
+   "videoTipLateral_rightKerbs": {
+    "n": 9,
+    "median": 0.24,
+    "mean": 0.34,
+    "sd": 1.11,
+    "q25": -0.5,
+    "q75": 1.12,
+    "medianAbs": 0.6,
+    "p90Abs": 1.8,
+    "maxAbs": 1.82,
+    "rms": 1.1,
+    "biasShare": 0.094
+   },
+   "videoTipLateral_leftKerbs": {
+    "n": 5,
+    "median": 0.93,
+    "mean": 0.67,
+    "sd": 0.85,
+    "q25": 0.73,
+    "q75": 1.08,
+    "medianAbs": 0.93,
+    "p90Abs": 1.28,
+    "maxAbs": 1.41,
+    "rms": 1.02,
+    "biasShare": 0.436
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "contactBlockGapAtOnset": {
+    "n": 27,
+    "median": 0.23,
+    "mean": 0.62,
+    "sd": 1.2,
+    "q25": -0.13,
+    "q75": 0.9,
+    "medianAbs": 0.43,
+    "p90Abs": 2.46,
+    "maxAbs": 3.88,
+    "rms": 1.33,
+    "biasShare": 0.22
+   },
+   "contactPaintGapAtOnset": {
+    "n": 27,
+    "median": -0.18,
+    "mean": 0.19,
+    "sd": 1.24,
+    "q25": -0.61,
+    "q75": 0.53,
+    "medianAbs": 0.63,
+    "p90Abs": 2.11,
+    "maxAbs": 3.55,
+    "rms": 1.23,
+    "biasShare": 0.025
+   },
+   "contactBlockGapAtOnset_highOnly": {
+    "n": 22,
+    "median": 0.2,
+    "mean": 0.57,
+    "sd": 1.21,
+    "q25": -0.08,
+    "q75": 0.69,
+    "medianAbs": 0.32,
+    "p90Abs": 2.59,
+    "maxAbs": 3.88,
+    "rms": 1.31,
+    "biasShare": 0.19
+   },
+   "contactBlockGapAtOnset_rightKerbs": {
+    "n": 11,
+    "median": 0.17,
+    "mean": 0.3,
+    "sd": 0.79,
+    "q25": -0.23,
+    "q75": 0.42,
+    "medianAbs": 0.31,
+    "p90Abs": 1.47,
+    "maxAbs": 1.98,
+    "rms": 0.81,
+    "biasShare": 0.139
+   },
+   "contactBlockGapAtOnset_leftKerbs": {
+    "n": 16,
+    "median": 0.31,
+    "mean": 0.84,
+    "sd": 1.39,
+    "q25": 0.01,
+    "q75": 1.39,
+    "medianAbs": 0.63,
+    "p90Abs": 2.9,
+    "maxAbs": 3.88,
+    "rms": 1.59,
+    "biasShare": 0.282
+   },
+   "cgMinGapDuringTruthContactBlock": {
+    "n": 27,
+    "median": -0.21,
+    "mean": -0.19,
+    "sd": 0.61,
+    "q25": -0.44,
+    "q75": 0.03,
+    "medianAbs": 0.38,
+    "p90Abs": 1.01,
+    "maxAbs": 1.99,
+    "rms": 0.63,
+    "biasShare": 0.089
+   },
+   "videoTipLateralNominal": {
+    "n": 41,
+    "median": 0.02,
+    "mean": 0.02,
+    "sd": 0.76,
+    "q25": -0.34,
+    "q75": 0.49,
+    "medianAbs": 0.46,
+    "p90Abs": 1.39,
+    "maxAbs": 1.54,
+    "rms": 0.75,
+    "biasShare": 0.001
+   },
+   "videoTipLateral_rightKerbs": {
+    "n": 21,
+    "median": -0.1,
+    "mean": 0.01,
+    "sd": 0.65,
+    "q25": -0.34,
+    "q75": 0.25,
+    "medianAbs": 0.34,
+    "p90Abs": 1.21,
+    "maxAbs": 1.39,
+    "rms": 0.64,
+    "biasShare": 0.0
+   },
+   "videoTipLateral_leftKerbs": {
+    "n": 20,
+    "median": 0.24,
+    "mean": 0.04,
+    "sd": 0.87,
+    "q25": -0.26,
+    "q75": 0.72,
+    "medianAbs": 0.6,
+    "p90Abs": 1.45,
+    "maxAbs": 1.54,
+    "rms": 0.85,
+    "biasShare": 0.002
+   }
+  },
+  "pooled": {
+   "contactBlockGapAtOnset": {
+    "n": 29,
+    "median": 0.23,
+    "mean": 0.63,
+    "sd": 1.16,
+    "q25": -0.12,
+    "q75": 1.09,
+    "medianAbs": 0.43,
+    "p90Abs": 2.37,
+    "maxAbs": 3.88,
+    "rms": 1.3,
+    "biasShare": 0.231
+   },
+   "contactPaintGapAtOnset": {
+    "n": 29,
+    "median": -0.18,
+    "mean": 0.19,
+    "sd": 1.2,
+    "q25": -0.59,
+    "q75": 0.73,
+    "medianAbs": 0.63,
+    "p90Abs": 2.02,
+    "maxAbs": 3.55,
+    "rms": 1.2,
+    "biasShare": 0.026
+   },
+   "contactBlockGapAtOnset_highOnly": {
+    "n": 24,
+    "median": 0.2,
+    "mean": 0.58,
+    "sd": 1.17,
+    "q25": 0.01,
+    "q75": 0.81,
+    "medianAbs": 0.32,
+    "p90Abs": 2.34,
+    "maxAbs": 3.88,
+    "rms": 1.28,
+    "biasShare": 0.204
+   },
+   "contactBlockGapAtOnset_rightKerbs": {
+    "n": 12,
+    "median": 0.2,
+    "mean": 0.38,
+    "sd": 0.79,
+    "q25": -0.18,
+    "q75": 0.7,
+    "medianAbs": 0.37,
+    "p90Abs": 1.44,
+    "maxAbs": 1.98,
+    "rms": 0.85,
+    "biasShare": 0.197
+   },
+   "contactBlockGapAtOnset_leftKerbs": {
+    "n": 17,
+    "median": 0.3,
+    "mean": 0.8,
+    "sd": 1.36,
+    "q25": 0.05,
+    "q75": 1.09,
+    "medianAbs": 0.6,
+    "p90Abs": 2.86,
+    "maxAbs": 3.88,
+    "rms": 1.54,
+    "biasShare": 0.269
+   },
+   "cgMinGapDuringTruthContactBlock": {
+    "n": 29,
+    "median": -0.2,
+    "mean": -0.15,
+    "sd": 0.62,
+    "q25": -0.43,
+    "q75": 0.04,
+    "medianAbs": 0.38,
+    "p90Abs": 1.0,
+    "maxAbs": 1.99,
+    "rms": 0.63,
+    "biasShare": 0.055
+   },
+   "videoTipLateralNominal": {
+    "n": 55,
+    "median": 0.17,
+    "mean": 0.13,
+    "sd": 0.84,
+    "q25": -0.36,
+    "q75": 0.72,
+    "medianAbs": 0.5,
+    "p90Abs": 1.44,
+    "maxAbs": 1.82,
+    "rms": 0.84,
+    "biasShare": 0.026
+   },
+   "videoTipLateral_rightKerbs": {
+    "n": 30,
+    "median": -0.01,
+    "mean": 0.11,
+    "sd": 0.81,
+    "q25": -0.38,
+    "q75": 0.49,
+    "medianAbs": 0.47,
+    "p90Abs": 1.4,
+    "maxAbs": 1.82,
+    "rms": 0.81,
+    "biasShare": 0.018
+   },
+   "videoTipLateral_leftKerbs": {
+    "n": 25,
+    "median": 0.28,
+    "mean": 0.17,
+    "sd": 0.89,
+    "q25": -0.19,
+    "q75": 0.81,
+    "medianAbs": 0.73,
+    "p90Abs": 1.44,
+    "maxAbs": 1.54,
+    "rms": 0.89,
+    "biasShare": 0.036
+   }
+  },
+  "systematicVsRandom_contactBlockGap": {
+   "n": 29,
+   "groups": 9,
+   "overallMedian": 0.226,
+   "rmsAll": 1.301,
+   "rmsAfterRemovingOverallMedian": 1.209,
+   "sdOfGroupMedians": 0.825,
+   "rmsWithinGroup": 0.871,
+   "groupMedians": {
+    "k1": 2.289,
+    "k24": 1.191,
+    "k21": 0.776,
+    "k10": 0.3,
+    "kDunlopR": 0.226,
+    "k15": 0.175,
+    "k13": -0.14,
+    "k3": -0.121,
+    "k7": 0.108
+   }
+  },
+  "straightLineCheckT3": {
+   "source": "vp_height.py / vp_height.json (f = 711; f-independent to < 2 %)",
+   "definition": "main straight 380-680 m: video camera-to-left-road-edge distance from the two edge-line slopes and the road width (camber-corrected), minus the replay camera position relative to the CG left road edge; per-frame differences, median per lap. Not at kerbs; a second lateral truth source.",
+   "fuji_aim_2020_07_30": {
+    "1": {
+     "frames": 12,
+     "videoMinusReplayMedian": -0.16649999999999987,
+     "videoMedian": 2.5309999999999997,
+     "replayMedian": 3.0435
+    },
+    "2": {
+     "frames": 9,
+     "videoMinusReplayMedian": 0.31800000000000006,
+     "videoMedian": 1.98,
+     "replayMedian": 1.482
+    },
+    "3": {
+     "frames": 8,
+     "videoMinusReplayMedian": -0.1449999999999998,
+     "videoMedian": 2.8635,
+     "replayMedian": 3.4015
+    },
+    "4": {
+     "frames": 8,
+     "videoMinusReplayMedian": -0.29000000000000004,
+     "videoMedian": 2.605,
+     "replayMedian": 3.1414999999999997
+    },
+    "5": {
+     "frames": 13,
+     "videoMinusReplayMedian": -0.14000000000000012,
+     "videoMedian": 2.418,
+     "replayMedian": 3.428
+    },
+    "6": {
+     "frames": 10,
+     "videoMinusReplayMedian": -0.496,
+     "videoMedian": 2.6310000000000002,
+     "replayMedian": 3.2880000000000003
+    }
+   },
+   "fuji_aim_01": "not usable (wet, 11 unstable frames)"
+  },
+  "betweenLapAtClippingPoint": {
+   "fuji_aim_01": {
+    "n": 11,
+    "videoVsCgTipDistanceDeviation": {
+     "r": 0.96,
+     "slope": 0.929,
+     "rmsDifferenceM": 0.275,
+     "sdVideoDevM": 0.945,
+     "sdCgDevM": 0.976
+    },
+    "videoTipDistanceVsCgApexGap": {
+     "r": 0.964,
+     "rmsDifferenceM": 0.261
+    },
+    "tipDtDeviation": {
+     "n": 11,
+     "median": 0.0,
+     "mean": -0.026,
+     "sd": 0.175,
+     "q25": -0.023,
+     "q75": 0.07,
+     "medianAbs": 0.034,
+     "p90Abs": 0.15,
+     "maxAbs": 0.492,
+     "rms": 0.169,
+     "biasShare": 0.023
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "n": 39,
+    "videoVsCgTipDistanceDeviation": {
+     "r": 0.886,
+     "slope": 0.709,
+     "rmsDifferenceM": 0.542,
+     "sdVideoDevM": 0.921,
+     "sdCgDevM": 1.15
+    },
+    "videoTipDistanceVsCgApexGap": {
+     "r": 0.897,
+     "rmsDifferenceM": 0.474
+    },
+    "tipDtDeviation": {
+     "n": 39,
+     "median": 0.0,
+     "mean": 0.002,
+     "sd": 0.078,
+     "q25": -0.036,
+     "q75": 0.029,
+     "medianAbs": 0.035,
+     "p90Abs": 0.123,
+     "maxAbs": 0.218,
+     "rms": 0.077,
+     "biasShare": 0.001
+    }
+   }
+  }
+ },
+ "detection": {
+  "fuji_aim_01": {
+   "block": {
+    "TP": 1,
+    "FN": 1,
+    "FP": 4,
+    "TN": 50,
+    "n": 56,
+    "agreement": 0.911,
+    "recall": 0.5,
+    "precision": 0.2
+   },
+   "paint": {
+    "TP": 1,
+    "FN": 1,
+    "FP": 9,
+    "TN": 45,
+    "n": 56,
+    "agreement": 0.821,
+    "recall": 0.5,
+    "precision": 0.1
+   },
+   "FN_blockMissDistanceM": {
+    "n": 1,
+    "median": 0.83,
+    "mean": 0.83,
+    "sd": 0.0,
+    "q25": 0.83,
+    "q75": 0.83,
+    "medianAbs": 0.83,
+    "p90Abs": 0.83,
+    "maxAbs": 0.83,
+    "rms": 0.83,
+    "biasShare": 1.0
+   },
+   "FP_blockDepthM": {
+    "n": 4,
+    "median": -0.47,
+    "mean": -0.45,
+    "sd": 0.23,
+    "q25": -0.6,
+    "q75": -0.32,
+    "medianAbs": 0.47,
+    "p90Abs": 0.67,
+    "maxAbs": 0.71,
+    "rms": 0.5,
+    "biasShare": 0.834
+   },
+   "FN_list": [
+    "0729 L4 k24 (CG min gap 0.826 m)"
+   ],
+   "FP_list": [
+    "0729 L1 k13 (CG depth -0.709 m, pub silent)",
+    "0729 L1 kDunlopR (CG depth -0.568 m, pub silent)",
+    "0729 L1 k20 (CG depth -0.37 m, pub silent)",
+    "0729 L3 k10 (CG depth -0.172 m, pub mild)"
+   ]
+  },
+  "fuji_aim_2020_07_30": {
+   "block": {
+    "TP": 20,
+    "FN": 10,
+    "FP": 11,
+    "TN": 43,
+    "n": 84,
+    "agreement": 0.75,
+    "recall": 0.667,
+    "precision": 0.645
+   },
+   "paint": {
+    "TP": 28,
+    "FN": 2,
+    "FP": 25,
+    "TN": 29,
+    "n": 84,
+    "agreement": 0.679,
+    "recall": 0.933,
+    "precision": 0.528
+   },
+   "FN_blockMissDistanceM": {
+    "n": 10,
+    "median": 0.24,
+    "mean": 0.91,
+    "sd": 1.78,
+    "q25": 0.17,
+    "q75": 0.39,
+    "medianAbs": 0.24,
+    "p90Abs": 2.08,
+    "maxAbs": 5.79,
+    "rms": 1.92,
+    "biasShare": 0.224
+   },
+   "FP_blockDepthM": {
+    "n": 11,
+    "median": -0.29,
+    "mean": -0.43,
+    "sd": 0.38,
+    "q25": -0.62,
+    "q75": -0.18,
+    "medianAbs": 0.29,
+    "p90Abs": 0.96,
+    "maxAbs": 1.17,
+    "rms": 0.56,
+    "biasShare": 0.584
+   },
+   "FN_list": [
+    "0730 L1 kDunlopR (CG min gap 0.207 m)",
+    "0730 L2 k21 (CG min gap 1.665 m)",
+    "0730 L2 k23 (CG min gap 0.317 m)",
+    "0730 L4 k15 (CG min gap 0.264 m)",
+    "0730 L4 k19 (CG min gap 5.793 m)",
+    "0730 L4 k7 (CG min gap 0.202 m)",
+    "0730 L5 k7 (CG min gap 0.016 m)",
+    "0730 L5 k10 (CG min gap 0.42 m)",
+    "0730 L6 k3 (CG min gap 0.04 m)",
+    "0730 L6 kDunlopR (CG min gap 0.155 m)"
+   ],
+   "FP_list": [
+    "0730 L2 k19 (CG depth -0.011 m, pub silent)",
+    "0730 L2 k9 (CG depth -0.2 m, pub silent)",
+    "0730 L3 k13 (CG depth -0.337 m, pub silent)",
+    "0730 L3 k7 (CG depth -0.444 m, pub silent)",
+    "0730 L4 kDunlopR (CG depth -0.163 m, pub mild)",
+    "0730 L4 k20 (CG depth -0.789 m, pub mild)",
+    "0730 L4 k9 (CG depth -0.291 m, pub silent)",
+    "0730 L5 k9 (CG depth -0.957 m, pub silent)",
+    "0730 L6 k20 (CG depth -0.278 m, pub silent)",
+    "0730 L6 k9 (CG depth -1.166 m, pub mild)",
+    "0730 L6 k23 (CG depth -0.068 m, pub mild)"
+   ]
+  },
+  "pooled": {
+   "block": {
+    "TP": 21,
+    "FN": 11,
+    "FP": 15,
+    "TN": 93,
+    "n": 140,
+    "agreement": 0.814,
+    "recall": 0.656,
+    "precision": 0.583
+   },
+   "paint": {
+    "TP": 29,
+    "FN": 3,
+    "FP": 34,
+    "TN": 74,
+    "n": 140,
+    "agreement": 0.736,
+    "recall": 0.906,
+    "precision": 0.46
+   },
+   "FN_blockMissDistanceM": {
+    "n": 11,
+    "median": 0.26,
+    "mean": 0.9,
+    "sd": 1.69,
+    "q25": 0.18,
+    "q75": 0.62,
+    "medianAbs": 0.26,
+    "p90Abs": 1.67,
+    "maxAbs": 5.79,
+    "rms": 1.85,
+    "biasShare": 0.238
+   },
+   "FP_blockDepthM": {
+    "n": 15,
+    "median": -0.34,
+    "mean": -0.43,
+    "sd": 0.34,
+    "q25": -0.64,
+    "q75": -0.19,
+    "medianAbs": 0.34,
+    "p90Abs": 0.89,
+    "maxAbs": 1.17,
+    "rms": 0.54,
+    "biasShare": 0.64
+   },
+   "FN_list": [
+    "0729 L4 k24 (CG min gap 0.826 m)",
+    "0730 L1 kDunlopR (CG min gap 0.207 m)",
+    "0730 L2 k21 (CG min gap 1.665 m)",
+    "0730 L2 k23 (CG min gap 0.317 m)",
+    "0730 L4 k15 (CG min gap 0.264 m)",
+    "0730 L4 k19 (CG min gap 5.793 m)",
+    "0730 L4 k7 (CG min gap 0.202 m)",
+    "0730 L5 k7 (CG min gap 0.016 m)",
+    "0730 L5 k10 (CG min gap 0.42 m)",
+    "0730 L6 k3 (CG min gap 0.04 m)",
+    "0730 L6 kDunlopR (CG min gap 0.155 m)"
+   ],
+   "FP_list": [
+    "0729 L1 k13 (CG depth -0.709 m, pub silent)",
+    "0729 L1 kDunlopR (CG depth -0.568 m, pub silent)",
+    "0729 L1 k20 (CG depth -0.37 m, pub silent)",
+    "0729 L3 k10 (CG depth -0.172 m, pub mild)",
+    "0730 L2 k19 (CG depth -0.011 m, pub silent)",
+    "0730 L2 k9 (CG depth -0.2 m, pub silent)",
+    "0730 L3 k13 (CG depth -0.337 m, pub silent)",
+    "0730 L3 k7 (CG depth -0.444 m, pub silent)",
+    "0730 L4 kDunlopR (CG depth -0.163 m, pub mild)",
+    "0730 L4 k20 (CG depth -0.789 m, pub mild)",
+    "0730 L4 k9 (CG depth -0.291 m, pub silent)",
+    "0730 L5 k9 (CG depth -0.957 m, pub silent)",
+    "0730 L6 k20 (CG depth -0.278 m, pub silent)",
+    "0730 L6 k9 (CG depth -1.166 m, pub mild)",
+    "0730 L6 k23 (CG depth -0.068 m, pub mild)"
+   ]
+  }
+ },
+ "cameraSensitivityClippingPoint": {
+  "fuji_aim_01": {
+   "nominal": {
+    "fTimesH": 1218,
+    "dt": {
+     "n": 14,
+     "median": -0.212,
+     "mean": -0.242,
+     "sd": 0.21,
+     "q25": -0.32,
+     "q75": -0.106,
+     "medianAbs": 0.212,
+     "p90Abs": 0.367,
+     "maxAbs": 0.837,
+     "rms": 0.316,
+     "biasShare": 0.588
+    },
+    "dS": {
+     "n": 14,
+     "median": 5.1,
+     "mean": 6.05,
+     "sd": 4.76,
+     "q25": 2.92,
+     "q75": 7.56,
+     "medianAbs": 5.1,
+     "p90Abs": 11.59,
+     "maxAbs": 17.38,
+     "rms": 7.59,
+     "biasShare": 0.635
+    }
+   },
+   "fh889": {
+    "fTimesH": 889,
+    "dt": {
+     "n": 14,
+     "median": -0.016,
+     "mean": -0.049,
+     "sd": 0.193,
+     "q25": -0.069,
+     "q75": 0.032,
+     "medianAbs": 0.058,
+     "p90Abs": 0.177,
+     "maxAbs": 0.659,
+     "rms": 0.192,
+     "biasShare": 0.064
+    },
+    "dS": {
+     "n": 14,
+     "median": 0.4,
+     "mean": 0.76,
+     "sd": 4.23,
+     "q25": -1.23,
+     "q75": 1.41,
+     "medianAbs": 1.39,
+     "p90Abs": 4.44,
+     "maxAbs": 13.68,
+     "rms": 4.15,
+     "biasShare": 0.033
+    }
+   },
+   "fh1066": {
+    "fTimesH": 1066,
+    "dt": {
+     "n": 14,
+     "median": -0.155,
+     "mean": -0.16,
+     "sd": 0.2,
+     "q25": -0.198,
+     "q75": -0.05,
+     "medianAbs": 0.155,
+     "p90Abs": 0.257,
+     "maxAbs": 0.759,
+     "rms": 0.251,
+     "biasShare": 0.408
+    },
+    "dS": {
+     "n": 14,
+     "median": 3.29,
+     "mean": 3.74,
+     "sd": 4.29,
+     "q25": 1.5,
+     "q75": 4.55,
+     "medianAbs": 3.29,
+     "p90Abs": 6.8,
+     "maxAbs": 15.76,
+     "rms": 5.57,
+     "biasShare": 0.451
+    }
+   },
+   "fh1209": {
+    "fTimesH": 1209,
+    "dt": {
+     "n": 14,
+     "median": -0.208,
+     "mean": -0.242,
+     "sd": 0.211,
+     "q25": -0.325,
+     "q75": -0.103,
+     "medianAbs": 0.208,
+     "p90Abs": 0.361,
+     "maxAbs": 0.833,
+     "rms": 0.316,
+     "biasShare": 0.585
+    },
+    "dS": {
+     "n": 14,
+     "median": 5.51,
+     "mean": 6.02,
+     "sd": 4.78,
+     "q25": 2.84,
+     "q75": 7.44,
+     "medianAbs": 5.51,
+     "p90Abs": 11.57,
+     "maxAbs": 17.29,
+     "rms": 7.58,
+     "biasShare": 0.631
+    }
+   },
+   "fh1450": {
+    "fTimesH": 1450,
+    "dt": {
+     "n": 14,
+     "median": -0.281,
+     "mean": -0.362,
+     "sd": 0.248,
+     "q25": -0.467,
+     "q75": -0.201,
+     "medianAbs": 0.281,
+     "p90Abs": 0.7,
+     "maxAbs": 0.941,
+     "rms": 0.434,
+     "biasShare": 0.697
+    },
+    "dS": {
+     "n": 14,
+     "median": 7.05,
+     "mean": 8.99,
+     "sd": 5.19,
+     "q25": 5.51,
+     "q75": 13.21,
+     "medianAbs": 7.05,
+     "p90Abs": 15.66,
+     "maxAbs": 19.54,
+     "rms": 10.29,
+     "biasShare": 0.764
+    }
+   },
+   "fh590_profileLike": {
+    "fTimesH": 590,
+    "dt": {
+     "n": 14,
+     "median": 0.116,
+     "mean": 0.108,
+     "sd": 0.124,
+     "q25": 0.067,
+     "q75": 0.178,
+     "medianAbs": 0.135,
+     "p90Abs": 0.215,
+     "maxAbs": 0.328,
+     "rms": 0.161,
+     "biasShare": 0.453
+    },
+    "dS": {
+     "n": 14,
+     "median": -3.62,
+     "mean": -3.11,
+     "sd": 3.14,
+     "q25": -4.8,
+     "q75": -1.61,
+     "medianAbs": 3.8,
+     "p90Abs": 6.31,
+     "maxAbs": 8.41,
+     "rms": 4.33,
+     "biasShare": 0.514
+    }
+   },
+   "profile20261003": {
+    "dt": {
+     "n": 14,
+     "median": 0.081,
+     "mean": 0.075,
+     "sd": 0.13,
+     "q25": 0.031,
+     "q75": 0.138,
+     "medianAbs": 0.105,
+     "p90Abs": 0.239,
+     "maxAbs": 0.306,
+     "rms": 0.146,
+     "biasShare": 0.266
+    }
+   },
+   "accxDependence": {
+    "pooledSlopeSPerG": -0.162,
+    "pooledR": -0.101,
+    "withinKerbSlopeSPerG": 2.085,
+    "withinKerbR": 0.871,
+    "interceptAtZeroAccxS": -0.229,
+    "medianAccxG": 0.109,
+    "note": "positive accx = accelerating (checked: braking samples give accx < 0). Pooled correlation mixes kerbs; the within-kerb slope is the pitch test."
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "nominal": {
+    "fTimesH": 1218,
+    "dt": {
+     "n": 41,
+     "median": -0.122,
+     "mean": -0.14,
+     "sd": 0.13,
+     "q25": -0.209,
+     "q75": -0.071,
+     "medianAbs": 0.14,
+     "p90Abs": 0.291,
+     "maxAbs": 0.443,
+     "rms": 0.19,
+     "biasShare": 0.544
+    },
+    "dS": {
+     "n": 41,
+     "median": 4.2,
+     "mean": 3.79,
+     "sd": 3.12,
+     "q25": 1.78,
+     "q75": 5.62,
+     "medianAbs": 4.2,
+     "p90Abs": 6.09,
+     "maxAbs": 13.3,
+     "rms": 4.88,
+     "biasShare": 0.603
+    }
+   },
+   "fh889": {
+    "fTimesH": 889,
+    "dt": {
+     "n": 41,
+     "median": -0.008,
+     "mean": 0.001,
+     "sd": 0.1,
+     "q25": -0.038,
+     "q75": 0.045,
+     "medianAbs": 0.043,
+     "p90Abs": 0.17,
+     "maxAbs": 0.272,
+     "rms": 0.098,
+     "biasShare": 0.0
+    },
+    "dS": {
+     "n": 41,
+     "median": 0.31,
+     "mean": -0.05,
+     "sd": 2.69,
+     "q25": -1.12,
+     "q75": 1.07,
+     "medianAbs": 1.12,
+     "p90Abs": 4.09,
+     "maxAbs": 7.79,
+     "rms": 2.66,
+     "biasShare": 0.0
+    }
+   },
+   "fh1066": {
+    "fTimesH": 1066,
+    "dt": {
+     "n": 41,
+     "median": -0.073,
+     "mean": -0.08,
+     "sd": 0.111,
+     "q25": -0.153,
+     "q75": -0.039,
+     "medianAbs": 0.091,
+     "p90Abs": 0.222,
+     "maxAbs": 0.338,
+     "rms": 0.136,
+     "biasShare": 0.348
+    },
+    "dS": {
+     "n": 41,
+     "median": 2.12,
+     "mean": 2.09,
+     "sd": 2.88,
+     "q25": 1.09,
+     "q75": 3.56,
+     "medianAbs": 2.89,
+     "p90Abs": 5.05,
+     "maxAbs": 9.97,
+     "rms": 3.53,
+     "biasShare": 0.351
+    }
+   },
+   "fh1209": {
+    "fTimesH": 1209,
+    "dt": {
+     "n": 41,
+     "median": -0.119,
+     "mean": -0.137,
+     "sd": 0.129,
+     "q25": -0.205,
+     "q75": -0.069,
+     "medianAbs": 0.137,
+     "p90Abs": 0.287,
+     "maxAbs": 0.436,
+     "rms": 0.187,
+     "biasShare": 0.537
+    },
+    "dS": {
+     "n": 41,
+     "median": 4.14,
+     "mean": 3.7,
+     "sd": 3.08,
+     "q25": 1.74,
+     "q75": 5.57,
+     "medianAbs": 4.14,
+     "p90Abs": 6.01,
+     "maxAbs": 13.12,
+     "rms": 4.8,
+     "biasShare": 0.597
+    }
+   },
+   "fh1450": {
+    "fTimesH": 1450,
+    "dt": {
+     "n": 41,
+     "median": -0.212,
+     "mean": -0.255,
+     "sd": 0.193,
+     "q25": -0.357,
+     "q75": -0.123,
+     "medianAbs": 0.212,
+     "p90Abs": 0.556,
+     "maxAbs": 0.688,
+     "rms": 0.319,
+     "biasShare": 0.642
+    },
+    "dS": {
+     "n": 41,
+     "median": 6.75,
+     "mean": 6.95,
+     "sd": 5.11,
+     "q25": 3.37,
+     "q75": 8.94,
+     "medianAbs": 6.75,
+     "p90Abs": 11.85,
+     "maxAbs": 24.16,
+     "rms": 8.59,
+     "biasShare": 0.655
+    }
+   },
+   "fh590_profileLike": {
+    "fTimesH": 590,
+    "dt": {
+     "n": 41,
+     "median": 0.117,
+     "mean": 0.168,
+     "sd": 0.235,
+     "q25": 0.068,
+     "q75": 0.182,
+     "medianAbs": 0.117,
+     "p90Abs": 0.274,
+     "maxAbs": 1.386,
+     "rms": 0.287,
+     "biasShare": 0.345
+    },
+    "dS": {
+     "n": 41,
+     "median": -3.27,
+     "mean": -4.45,
+     "sd": 6.55,
+     "q25": -4.44,
+     "q75": -1.9,
+     "medianAbs": 3.31,
+     "p90Abs": 7.17,
+     "maxAbs": 39.18,
+     "rms": 7.85,
+     "biasShare": 0.322
+    }
+   },
+   "profile20261003": {
+    "dt": {
+     "n": 41,
+     "median": 0.091,
+     "mean": 0.109,
+     "sd": 0.128,
+     "q25": 0.048,
+     "q75": 0.138,
+     "medianAbs": 0.091,
+     "p90Abs": 0.222,
+     "maxAbs": 0.676,
+     "rms": 0.167,
+     "biasShare": 0.43
+    }
+   },
+   "accxDependence": {
+    "pooledSlopeSPerG": -0.692,
+    "pooledR": -0.505,
+    "withinKerbSlopeSPerG": -0.252,
+    "withinKerbR": -0.217,
+    "interceptAtZeroAccxS": -0.047,
+    "medianAccxG": 0.158,
+    "note": "positive accx = accelerating (checked: braking samples give accx < 0). Pooled correlation mixes kerbs; the within-kerb slope is the pitch test."
+   }
+  },
+  "reconcilingCameraScale": {
+   "fuji_aim_01": {
+    "contactMedianDt": 0.131,
+    "cameraPoints": [
+     [
+      590,
+      0.116
+     ],
+     [
+      889,
+      -0.016
+     ],
+     [
+      1066,
+      -0.155
+     ],
+     [
+      1209,
+      -0.208
+     ],
+     [
+      1218,
+      -0.212
+     ],
+     [
+      1450,
+      -0.281
+     ]
+    ],
+    "fTimesHThatMatches": null,
+    "label": "derived: assumes the contact-based along-track estimate is right"
+   },
+   "fuji_aim_2020_07_30": {
+    "contactMedianDt": 0.03,
+    "cameraPoints": [
+     [
+      590,
+      0.117
+     ],
+     [
+      889,
+      -0.008
+     ],
+     [
+      1066,
+      -0.073
+     ],
+     [
+      1209,
+      -0.119
+     ],
+     [
+      1218,
+      -0.122
+     ],
+     [
+      1450,
+      -0.212
+     ]
+    ],
+    "fTimesHThatMatches": 798.0,
+    "label": "derived: assumes the contact-based along-track estimate is right"
+   }
+  }
+ },
+ "cameraSensitivityKerbEnds": {
+  "fuji_aim_01": {
+   "f472_h1.00": {
+    "fTimesH": 472,
+    "redOnDtApprox": 0.009,
+    "redOffDtApprox": 0.194
+   },
+   "f472_h1.25": {
+    "fTimesH": 590,
+    "redOnDtApprox": -0.12,
+    "redOffDtApprox": 0.151
+   },
+   "f472_h1.50": {
+    "fTimesH": 708,
+    "redOnDtApprox": -0.145,
+    "redOffDtApprox": 0.116
+   },
+   "f711_h1.00": {
+    "fTimesH": 711,
+    "redOnDtApprox": -0.003,
+    "redOffDtApprox": 0.092
+   },
+   "f711_h1.25": {
+    "fTimesH": 889,
+    "redOnDtApprox": -0.216,
+    "redOffDtApprox": 0.016
+   },
+   "f711_h1.50": {
+    "fTimesH": 1066,
+    "redOnDtApprox": -0.422,
+    "redOffDtApprox": -0.055
+   },
+   "f967_h1.00": {
+    "fTimesH": 967,
+    "redOnDtApprox": -0.106,
+    "redOffDtApprox": -0.033
+   },
+   "f967_h1.25": {
+    "fTimesH": 1209,
+    "redOnDtApprox": -0.305,
+    "redOffDtApprox": -0.147
+   },
+   "f967_h1.50": {
+    "fTimesH": 1450,
+    "redOnDtApprox": -0.314,
+    "redOffDtApprox": -0.252
+   },
+   "f967_h1.26": {
+    "fTimesH": 1218,
+    "redOnDtApprox": -0.311,
+    "redOffDtApprox": -0.151
+   },
+   "note": "session-level T3 medians shifted by the session-median offset (approximate; per-lap L not applied); dt = CG minus truth"
+  },
+  "fuji_aim_2020_07_30": {
+   "f472_h1.00": {
+    "fTimesH": 472,
+    "redOnDtApprox": 0.162,
+    "redOffDtApprox": 0.131
+   },
+   "f472_h1.25": {
+    "fTimesH": 590,
+    "redOnDtApprox": 0.115,
+    "redOffDtApprox": 0.112
+   },
+   "f472_h1.50": {
+    "fTimesH": 708,
+    "redOnDtApprox": 0.053,
+    "redOffDtApprox": 0.071
+   },
+   "f711_h1.00": {
+    "fTimesH": 711,
+    "redOnDtApprox": 0.056,
+    "redOffDtApprox": 0.049
+   },
+   "f711_h1.25": {
+    "fTimesH": 889,
+    "redOnDtApprox": -0.024,
+    "redOffDtApprox": -0.016
+   },
+   "f711_h1.50": {
+    "fTimesH": 1066,
+    "redOnDtApprox": -0.135,
+    "redOffDtApprox": -0.089
+   },
+   "f967_h1.00": {
+    "fTimesH": 967,
+    "redOnDtApprox": -0.107,
+    "redOffDtApprox": -0.075
+   },
+   "f967_h1.25": {
+    "fTimesH": 1209,
+    "redOnDtApprox": -0.212,
+    "redOffDtApprox": -0.159
+   },
+   "f967_h1.50": {
+    "fTimesH": 1450,
+    "redOnDtApprox": -0.356,
+    "redOffDtApprox": -0.263
+   },
+   "f967_h1.26": {
+    "fTimesH": 1218,
+    "redOnDtApprox": -0.215,
+    "redOffDtApprox": -0.162
+   },
+   "note": "session-level T3 medians shifted by the session-median offset (approximate; per-lap L not applied); dt = CG minus truth"
+  }
+ },
+ "perKerb": {
+  "contactFirstBlock": {
+   "0729/k7": {
+    "name": "ダンロップ左",
+    "n": 1,
+    "medianDt": 0.131,
+    "medianDS": -2.0,
+    "laps": [
+     3
+    ]
+   },
+   "0730/k13": {
+    "name": "1コーナー",
+    "n": 3,
+    "medianDt": -0.155,
+    "medianDS": 2.99,
+    "laps": [
+     1,
+     2,
+     4
+    ]
+   },
+   "0730/k1": {
+    "name": "コカ・コーラ",
+    "n": 7,
+    "medianDt": 0.204,
+    "medianDS": -6.92,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     5,
+     6
+    ]
+   },
+   "0730/k15": {
+    "name": "1500m",
+    "n": 1,
+    "medianDt": 0.055,
+    "medianDS": -1.87,
+    "laps": [
+     1
+    ]
+   },
+   "0730/k3": {
+    "name": "ヘアピン",
+    "n": 2,
+    "medianDt": -0.11,
+    "medianDS": 2.63,
+    "laps": [
+     1,
+     3
+    ]
+   },
+   "0730/kDunlopR": {
+    "name": "ダンロップ右",
+    "n": 1,
+    "medianDt": -0.125,
+    "medianDS": 1.96,
+    "laps": [
+     2
+    ]
+   },
+   "0730/k7": {
+    "name": "ダンロップ左",
+    "n": 1,
+    "medianDt": 0.032,
+    "medianDS": -0.63,
+    "laps": [
+     2
+    ]
+   },
+   "0730/k21": {
+    "name": "3250m",
+    "n": 1,
+    "medianDt": -0.367,
+    "medianDS": 9.2,
+    "laps": [
+     1
+    ]
+   },
+   "0730/k10": {
+    "name": "3540m",
+    "n": 2,
+    "medianDt": 0.01,
+    "medianDS": -0.21,
+    "laps": [
+     2,
+     6
+    ]
+   },
+   "0730/k24": {
+    "name": "最終コーナー",
+    "n": 2,
+    "medianDt": 0.21,
+    "medianDS": -4.95,
+    "laps": [
+     3,
+     6
+    ]
+   }
+  },
+  "videoTipNominal": {
+   "0729/k1": {
+    "name": "コカ・コーラ",
+    "n": 3,
+    "medianDt": -0.082,
+    "medianDS": 2.21,
+    "laps": [
+     1,
+     2,
+     4
+    ]
+   },
+   "0729/k3": {
+    "name": "ヘアピン",
+    "n": 1,
+    "medianDt": -0.27,
+    "medianDS": 5.41,
+    "laps": [
+     3
+    ]
+   },
+   "0729/k19": {
+    "name": "2650m",
+    "n": 3,
+    "medianDt": -0.178,
+    "medianDS": 7.9,
+    "laps": [
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k20": {
+    "name": "3090m",
+    "n": 1,
+    "medianDt": -0.376,
+    "medianDS": 7.6,
+    "laps": [
+     1
+    ]
+   },
+   "0729/k21": {
+    "name": "3250m",
+    "n": 3,
+    "medianDt": -0.345,
+    "medianDS": 7.43,
+    "laps": [
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k9": {
+    "name": "3350m",
+    "n": 1,
+    "medianDt": -0.297,
+    "medianDS": 7.42,
+    "laps": [
+     2
+    ]
+   },
+   "0729/k24": {
+    "name": "最終コーナー",
+    "n": 2,
+    "medianDt": -0.174,
+    "medianDS": 3.52,
+    "laps": [
+     1,
+     3
+    ]
+   },
+   "0730/k1": {
+    "name": "コカ・コーラ",
+    "n": 6,
+    "medianDt": -0.121,
+    "medianDS": 4.05,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k15": {
+    "name": "1500m",
+    "n": 3,
+    "medianDt": -0.154,
+    "medianDS": 5.29,
+    "laps": [
+     2,
+     3,
+     5
+    ]
+   },
+   "0730/k3": {
+    "name": "ヘアピン",
+    "n": 4,
+    "medianDt": -0.026,
+    "medianDS": 0.6,
+    "laps": [
+     1,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k18": {
+    "name": "2420m",
+    "n": 3,
+    "medianDt": -0.071,
+    "medianDS": 2.77,
+    "laps": [
+     1,
+     4,
+     6
+    ]
+   },
+   "0730/k19": {
+    "name": "2650m",
+    "n": 1,
+    "medianDt": -0.075,
+    "medianDS": 3.36,
+    "laps": [
+     5
+    ]
+   },
+   "0730/k7": {
+    "name": "ダンロップ左",
+    "n": 5,
+    "medianDt": 0.035,
+    "medianDS": -0.66,
+    "laps": [
+     1,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k20": {
+    "name": "3090m",
+    "n": 4,
+    "medianDt": -0.36,
+    "medianDS": 6.89,
+    "laps": [
+     1,
+     3,
+     5,
+     6
+    ]
+   },
+   "0730/k21": {
+    "name": "3250m",
+    "n": 3,
+    "medianDt": -0.181,
+    "medianDS": 4.63,
+    "laps": [
+     3,
+     5,
+     6
+    ]
+   },
+   "0730/k9": {
+    "name": "3350m",
+    "n": 5,
+    "medianDt": -0.198,
+    "medianDS": 5.37,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "0730/k23": {
+    "name": "3600m",
+    "n": 1,
+    "medianDt": -0.247,
+    "medianDS": 5.98,
+    "laps": [
+     3
+    ]
+   },
+   "0730/k24": {
+    "name": "最終コーナー",
+    "n": 6,
+    "medianDt": -0.202,
+    "medianDS": 4.7,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   }
+  },
+  "videoTipSpecFovCamera": {
+   "0729/k1": {
+    "name": "コカ・コーラ",
+    "n": 3,
+    "medianDt": 0.058,
+    "medianDS": -1.56,
+    "laps": [
+     1,
+     2,
+     4
+    ]
+   },
+   "0729/k3": {
+    "name": "ヘアピン",
+    "n": 1,
+    "medianDt": -0.12,
+    "medianDS": 2.4,
+    "laps": [
+     3
+    ]
+   },
+   "0729/k19": {
+    "name": "2650m",
+    "n": 3,
+    "medianDt": 0.03,
+    "medianDS": -1.33,
+    "laps": [
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k20": {
+    "name": "3090m",
+    "n": 1,
+    "medianDt": -0.055,
+    "medianDS": 1.11,
+    "laps": [
+     1
+    ]
+   },
+   "0729/k21": {
+    "name": "3250m",
+    "n": 3,
+    "medianDt": -0.082,
+    "medianDS": 1.77,
+    "laps": [
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k9": {
+    "name": "3350m",
+    "n": 1,
+    "medianDt": -0.034,
+    "medianDS": 0.85,
+    "laps": [
+     2
+    ]
+   },
+   "0729/k24": {
+    "name": "最終コーナー",
+    "n": 2,
+    "medianDt": -0.035,
+    "medianDS": 0.7,
+    "laps": [
+     1,
+     3
+    ]
+   },
+   "0730/k1": {
+    "name": "コカ・コーラ",
+    "n": 6,
+    "medianDt": -0.009,
+    "medianDS": 0.3,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k15": {
+    "name": "1500m",
+    "n": 3,
+    "medianDt": -0.035,
+    "medianDS": 1.2,
+    "laps": [
+     2,
+     3,
+     5
+    ]
+   },
+   "0730/k3": {
+    "name": "ヘアピン",
+    "n": 4,
+    "medianDt": 0.018,
+    "medianDS": -0.41,
+    "laps": [
+     1,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k18": {
+    "name": "2420m",
+    "n": 3,
+    "medianDt": -0.008,
+    "medianDS": 0.31,
+    "laps": [
+     1,
+     4,
+     6
+    ]
+   },
+   "0730/k19": {
+    "name": "2650m",
+    "n": 1,
+    "medianDt": 0.17,
+    "medianDS": -7.62,
+    "laps": [
+     5
+    ]
+   },
+   "0730/k7": {
+    "name": "ダンロップ左",
+    "n": 5,
+    "medianDt": 0.087,
+    "medianDS": -1.65,
+    "laps": [
+     1,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k20": {
+    "name": "3090m",
+    "n": 4,
+    "medianDt": -0.097,
+    "medianDS": 1.82,
+    "laps": [
+     1,
+     3,
+     5,
+     6
+    ]
+   },
+   "0730/k21": {
+    "name": "3250m",
+    "n": 3,
+    "medianDt": -0.073,
+    "medianDS": 1.83,
+    "laps": [
+     3,
+     5,
+     6
+    ]
+   },
+   "0730/k9": {
+    "name": "3350m",
+    "n": 5,
+    "medianDt": 0.07,
+    "medianDS": -1.93,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "0730/k23": {
+    "name": "3600m",
+    "n": 1,
+    "medianDt": -0.026,
+    "medianDS": 0.63,
+    "laps": [
+     3
+    ]
+   },
+   "0730/k24": {
+    "name": "最終コーナー",
+    "n": 6,
+    "medianDt": -0.066,
+    "medianDS": 1.51,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   }
+  },
+  "turnInHeading50": {
+   "0729/k13": {
+    "name": "1コーナー",
+    "n": 4,
+    "medianDt": 0.077,
+    "medianDS": -1.56,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k1": {
+    "name": "コカ・コーラ",
+    "n": 4,
+    "medianDt": 0.08,
+    "medianDS": -2.17,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k15": {
+    "name": "1500m",
+    "n": 2,
+    "medianDt": 0.048,
+    "medianDS": -1.54,
+    "laps": [
+     1,
+     2
+    ]
+   },
+   "0729/k3": {
+    "name": "ヘアピン",
+    "n": 4,
+    "medianDt": 0.053,
+    "medianDS": -1.25,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/kDunlopR": {
+    "name": "ダンロップ右",
+    "n": 4,
+    "medianDt": -0.011,
+    "medianDS": 0.17,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k7": {
+    "name": "ダンロップ左",
+    "n": 4,
+    "medianDt": -0.085,
+    "medianDS": 1.42,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k20": {
+    "name": "3090m",
+    "n": 4,
+    "medianDt": -0.01,
+    "medianDS": 0.21,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k21": {
+    "name": "3250m",
+    "n": 3,
+    "medianDt": 0.138,
+    "medianDS": -3.44,
+    "laps": [
+     1,
+     2,
+     3
+    ]
+   },
+   "0729/k9": {
+    "name": "3350m",
+    "n": 4,
+    "medianDt": 0.032,
+    "medianDS": -0.87,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k10": {
+    "name": "3540m",
+    "n": 4,
+    "medianDt": 0.075,
+    "medianDS": -1.62,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "0729/k24": {
+    "name": "最終コーナー",
+    "n": 1,
+    "medianDt": -0.13,
+    "medianDS": 2.81,
+    "laps": [
+     3
+    ]
+   },
+   "0730/k13": {
+    "name": "1コーナー",
+    "n": 6,
+    "medianDt": -0.024,
+    "medianDS": 0.53,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k1": {
+    "name": "コカ・コーラ",
+    "n": 6,
+    "medianDt": 0.054,
+    "medianDS": -1.97,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k15": {
+    "name": "1500m",
+    "n": 6,
+    "medianDt": 0.059,
+    "medianDS": -2.26,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k3": {
+    "name": "ヘアピン",
+    "n": 6,
+    "medianDt": 0.067,
+    "medianDS": -1.65,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/kDunlopR": {
+    "name": "ダンロップ右",
+    "n": 6,
+    "medianDt": -0.043,
+    "medianDS": 0.77,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k7": {
+    "name": "ダンロップ左",
+    "n": 6,
+    "medianDt": -0.034,
+    "medianDS": 0.65,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k20": {
+    "name": "3090m",
+    "n": 6,
+    "medianDt": -0.026,
+    "medianDS": 0.58,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k21": {
+    "name": "3250m",
+    "n": 6,
+    "medianDt": 0.139,
+    "medianDS": -3.87,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k9": {
+    "name": "3350m",
+    "n": 6,
+    "medianDt": 0.027,
+    "medianDS": -0.81,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k10": {
+    "name": "3540m",
+    "n": 6,
+    "medianDt": -0.009,
+    "medianDS": 0.24,
+    "laps": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   "0730/k23": {
+    "name": "3600m",
+    "n": 2,
+    "medianDt": -0.055,
+    "medianDS": 1.68,
+    "laps": [
+     1,
+     2
+    ]
+   },
+   "0730/k24": {
+    "name": "最終コーナー",
+    "n": 4,
+    "medianDt": 0.035,
+    "medianDS": -0.9,
+    "laps": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  "contactBlockGapAtOnset": {
+   "0729/k7": {
+    "name": "ダンロップ左",
+    "n": 1,
+    "median": 0.1
+   },
+   "0729/k24": {
+    "name": "最終コーナー",
+    "n": 1,
+    "median": 1.19
+   },
+   "0730/k13": {
+    "name": "1コーナー",
+    "n": 3,
+    "median": -0.14
+   },
+   "0730/k1": {
+    "name": "コカ・コーラ",
+    "n": 7,
+    "median": 2.29
+   },
+   "0730/k15": {
+    "name": "1500m",
+    "n": 1,
+    "median": 0.17
+   },
+   "0730/k3": {
+    "name": "ヘアピン",
+    "n": 3,
+    "median": -0.12
+   },
+   "0730/kDunlopR": {
+    "name": "ダンロップ右",
+    "n": 3,
+    "median": 0.23
+   },
+   "0730/k21": {
+    "name": "3250m",
+    "n": 2,
+    "median": 0.78
+   },
+   "0730/k7": {
+    "name": "ダンロップ左",
+    "n": 3,
+    "median": 0.12
+   },
+   "0730/k10": {
+    "name": "3540m",
+    "n": 3,
+    "median": 0.3
+   },
+   "0730/k24": {
+    "name": "最終コーナー",
+    "n": 2,
+    "median": 0.89
+   }
+  }
+ },
+ "videoTurnInCrossCheck": {
+  "fuji_aim_01": {
+   "videoMinusT2Gyro": {
+    "n": 0
+   },
+   "videoMinusT1YawOnset": {
+    "n": 0
+   },
+   "videoMinusSteerOnset": {
+    "n": 0
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "videoMinusT2Gyro": {
+    "n": 16,
+    "median": -0.083,
+    "mean": -0.078,
+    "sd": 0.075,
+    "q25": -0.131,
+    "q75": -0.012,
+    "medianAbs": 0.083,
+    "p90Abs": 0.148,
+    "maxAbs": 0.225,
+    "rms": 0.107,
+    "biasShare": 0.537
+   },
+   "videoMinusT1YawOnset": {
+    "n": 16,
+    "median": 0.276,
+    "mean": 0.323,
+    "sd": 0.43,
+    "q25": 0.137,
+    "q75": 0.532,
+    "medianAbs": 0.289,
+    "p90Abs": 0.733,
+    "maxAbs": 1.353,
+    "rms": 0.527,
+    "biasShare": 0.377
+   },
+   "videoMinusSteerOnset": {
+    "n": 16,
+    "median": 0.342,
+    "mean": 0.376,
+    "sd": 0.452,
+    "q25": 0.219,
+    "q75": 0.613,
+    "medianAbs": 0.366,
+    "p90Abs": 0.817,
+    "maxAbs": 1.387,
+    "rms": 0.578,
+    "biasShare": 0.425
+   }
+  },
+  "pooled": {
+   "videoMinusT2Gyro": {
+    "n": 16,
+    "median": -0.083,
+    "mean": -0.078,
+    "sd": 0.075,
+    "q25": -0.131,
+    "q75": -0.012,
+    "medianAbs": 0.083,
+    "p90Abs": 0.148,
+    "maxAbs": 0.225,
+    "rms": 0.107,
+    "biasShare": 0.537
+   },
+   "videoMinusT1YawOnset": {
+    "n": 16,
+    "median": 0.276,
+    "mean": 0.323,
+    "sd": 0.43,
+    "q25": 0.137,
+    "q75": 0.532,
+    "medianAbs": 0.289,
+    "p90Abs": 0.733,
+    "maxAbs": 1.353,
+    "rms": 0.527,
+    "biasShare": 0.377
+   },
+   "videoMinusSteerOnset": {
+    "n": 16,
+    "median": 0.342,
+    "mean": 0.376,
+    "sd": 0.452,
+    "q25": 0.219,
+    "q75": 0.613,
+    "medianAbs": 0.366,
+    "p90Abs": 0.817,
+    "maxAbs": 1.387,
+    "rms": 0.578,
+    "biasShare": 0.425
+   }
+  },
+  "t2Summary": {
+   "fuji_aim_01": {
+    "label": "derived",
+    "definition": "(gyro onset - video onset) - bestOffsetS of the lap; 0 = the corner's video turn-in onset agrees with the lap clock offset; > 0 = the video onset rule fires early",
+    "right": {
+     "n": 0,
+     "median": null,
+     "iqr": null
+    },
+    "left": {
+     "n": 0,
+     "median": null,
+     "iqr": null
+    }
+   },
+   "fuji_aim_2020_07_30": {
+    "label": "derived",
+    "definition": "(gyro onset - video onset) - bestOffsetS of the lap; 0 = the corner's video turn-in onset agrees with the lap clock offset; > 0 = the video onset rule fires early",
+    "right": {
+     "n": 30,
+     "median": 0.06,
+     "iqr": [
+      -0.039,
+      0.127
+     ]
+    },
+    "left": {
+     "n": 19,
+     "median": 0.082,
+     "iqr": [
+      0.009,
+      0.46
+     ]
+    }
+   }
+  }
+ },
+ "steerToYawReference": {
+  "fuji_aim_01": {
+   "imuRawT10MinusSteerOnset": {
+    "n": 26,
+    "median": 0.316,
+    "mean": 0.53,
+    "sd": 0.563,
+    "q25": 0.181,
+    "q75": 0.884,
+    "medianAbs": 0.316,
+    "p90Abs": 1.239,
+    "maxAbs": 2.201,
+    "rms": 0.766,
+    "biasShare": 0.48
+   },
+   "cgT10MinusSteerOnset": {
+    "n": 26,
+    "median": 0.243,
+    "mean": 0.34,
+    "sd": 0.476,
+    "q25": 0.123,
+    "q75": 0.546,
+    "medianAbs": 0.255,
+    "p90Abs": 0.754,
+    "maxAbs": 2.059,
+    "rms": 0.578,
+    "biasShare": 0.347
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "imuRawT10MinusSteerOnset": {
+    "n": 40,
+    "median": 0.118,
+    "mean": 0.322,
+    "sd": 0.661,
+    "q25": 0.089,
+    "q75": 0.197,
+    "medianAbs": 0.121,
+    "p90Abs": 0.738,
+    "maxAbs": 3.59,
+    "rms": 0.727,
+    "biasShare": 0.195
+   },
+   "cgT10MinusSteerOnset": {
+    "n": 40,
+    "median": 0.135,
+    "mean": 0.211,
+    "sd": 0.66,
+    "q25": 0.044,
+    "q75": 0.202,
+    "medianAbs": 0.154,
+    "p90Abs": 0.498,
+    "maxAbs": 3.649,
+    "rms": 0.686,
+    "biasShare": 0.095
+   }
+  }
+ },
+ "decompositionContacts": {
+  "fuji_aim_01": null,
+  "fuji_aim_2020_07_30": {
+   "n": 27,
+   "deltaLatM": -0.259,
+   "tauAheadS": -0.21,
+   "residualRobustSd": 0.57
+  },
+  "pooled": {
+   "n": 29,
+   "deltaLatM": -0.215,
+   "tauAheadS": -0.207,
+   "residualRobustSd": 0.487
+  }
+ },
+ "decompositionContactsPaint": {
+  "fuji_aim_01": null,
+  "fuji_aim_2020_07_30": {
+   "n": 27,
+   "deltaLatM": -0.746,
+   "tauAheadS": -0.213,
+   "residualRobustSd": 0.509
+  },
+  "pooled": {
+   "n": 29,
+   "deltaLatM": -0.685,
+   "tauAheadS": -0.208,
+   "residualRobustSd": 0.519
+  }
+ },
+ "headingTimingWholeLap": {
+  "fuji_aim_01/L1": {
+   "cgHeadingLeadsImuS": 0.0505,
+   "r": 0.9988,
+   "scaleCgOverImu": 1.211
+  },
+  "fuji_aim_01/L2": {
+   "cgHeadingLeadsImuS": 0.0477,
+   "r": 0.9973,
+   "scaleCgOverImu": 1.214
+  },
+  "fuji_aim_01/L3": {
+   "cgHeadingLeadsImuS": 0.0263,
+   "r": 0.9982,
+   "scaleCgOverImu": 1.218
+  },
+  "fuji_aim_01/L4": {
+   "cgHeadingLeadsImuS": 0.0493,
+   "r": 0.9983,
+   "scaleCgOverImu": 1.222
+  },
+  "fuji_aim_2020_07_30/L1": {
+   "cgHeadingLeadsImuS": 0.0012,
+   "r": 0.9989,
+   "scaleCgOverImu": 1.214
+  },
+  "fuji_aim_2020_07_30/L2": {
+   "cgHeadingLeadsImuS": 0.0014,
+   "r": 0.9988,
+   "scaleCgOverImu": 1.215
+  },
+  "fuji_aim_2020_07_30/L3": {
+   "cgHeadingLeadsImuS": 0.0259,
+   "r": 0.9989,
+   "scaleCgOverImu": 1.217
+  },
+  "fuji_aim_2020_07_30/L4": {
+   "cgHeadingLeadsImuS": 0.0163,
+   "r": 0.9989,
+   "scaleCgOverImu": 1.214
+  },
+  "fuji_aim_2020_07_30/L5": {
+   "cgHeadingLeadsImuS": 0.0167,
+   "r": 0.9987,
+   "scaleCgOverImu": 1.213
+  },
+  "fuji_aim_2020_07_30/L6": {
+   "cgHeadingLeadsImuS": 0.0316,
+   "r": 0.999,
+   "scaleCgOverImu": 1.214
+  }
+ },
+ "worst": {
+  "contactFirstBlock": [
+   {
+    "session": "0730",
+    "kerb": "k21",
+    "name": "3250m",
+    "n": 1,
+    "medianDS": 9.2,
+    "maxAbsDS": 9.2
+   },
+   {
+    "session": "0730",
+    "kerb": "k1",
+    "name": "コカ・コーラ",
+    "n": 7,
+    "medianDS": -6.92,
+    "maxAbsDS": 13.88
+   },
+   {
+    "session": "0730",
+    "kerb": "k24",
+    "name": "最終コーナー",
+    "n": 2,
+    "medianDS": -4.95,
+    "maxAbsDS": 6.86
+   },
+   {
+    "session": "0730",
+    "kerb": "k13",
+    "name": "1コーナー",
+    "n": 3,
+    "medianDS": 2.99,
+    "maxAbsDS": 3.57
+   },
+   {
+    "session": "0730",
+    "kerb": "k3",
+    "name": "ヘアピン",
+    "n": 2,
+    "medianDS": 2.63,
+    "maxAbsDS": 3.98
+   },
+   {
+    "session": "0729",
+    "kerb": "k7",
+    "name": "ダンロップ左",
+    "n": 1,
+    "medianDS": -2.0,
+    "maxAbsDS": 2.0
+   }
+  ],
+  "contactFirstBlock_events": [
+   {
+    "session": "0730",
+    "lap": 5,
+    "kerb": "k1",
+    "dS": 13.88,
+    "dt": -0.405
+   },
+   {
+    "session": "0730",
+    "lap": 3,
+    "kerb": "k1",
+    "dS": -11.02,
+    "dt": 0.355
+   },
+   {
+    "session": "0730",
+    "lap": 2,
+    "kerb": "k1",
+    "dS": -9.24,
+    "dt": 0.266
+   },
+   {
+    "session": "0730",
+    "lap": 1,
+    "kerb": "k21",
+    "dS": 9.2,
+    "dt": -0.367
+   },
+   {
+    "session": "0730",
+    "lap": 4,
+    "kerb": "k1",
+    "dS": -7.67,
+    "dt": 0.227
+   },
+   {
+    "session": "0730",
+    "lap": 5,
+    "kerb": "k1",
+    "dS": -6.92,
+    "dt": 0.204
+   }
+  ],
+  "videoTipNominal": [
+   {
+    "session": "0729",
+    "kerb": "k19",
+    "name": "2650m",
+    "n": 3,
+    "medianDS": 7.9,
+    "maxAbsDS": 13.17
+   },
+   {
+    "session": "0729",
+    "kerb": "k20",
+    "name": "3090m",
+    "n": 1,
+    "medianDS": 7.6,
+    "maxAbsDS": 7.6
+   },
+   {
+    "session": "0729",
+    "kerb": "k21",
+    "name": "3250m",
+    "n": 3,
+    "medianDS": 7.43,
+    "maxAbsDS": 17.38
+   },
+   {
+    "session": "0729",
+    "kerb": "k9",
+    "name": "3350m",
+    "n": 1,
+    "medianDS": 7.42,
+    "maxAbsDS": 7.42
+   },
+   {
+    "session": "0730",
+    "kerb": "k20",
+    "name": "3090m",
+    "n": 4,
+    "medianDS": 6.89,
+    "maxAbsDS": 9.15
+   },
+   {
+    "session": "0730",
+    "kerb": "k23",
+    "name": "3600m",
+    "n": 1,
+    "medianDS": 5.98,
+    "maxAbsDS": 5.98
+   }
+  ],
+  "videoTipNominal_events": [
+   {
+    "session": "0729",
+    "lap": 4,
+    "kerb": "k21",
+    "dS": 17.38,
+    "dt": -0.837
+   },
+   {
+    "session": "0730",
+    "lap": 2,
+    "kerb": "k15",
+    "dS": 13.3,
+    "dt": -0.372
+   },
+   {
+    "session": "0729",
+    "lap": 2,
+    "kerb": "k19",
+    "dS": 13.17,
+    "dt": -0.328
+   },
+   {
+    "session": "0730",
+    "lap": 5,
+    "kerb": "k20",
+    "dS": 9.15,
+    "dt": -0.429
+   },
+   {
+    "session": "0730",
+    "lap": 5,
+    "kerb": "k9",
+    "dS": 8.57,
+    "dt": -0.304
+   },
+   {
+    "session": "0729",
+    "lap": 3,
+    "kerb": "k19",
+    "dS": 7.9,
+    "dt": -0.178
+   }
+  ],
+  "turnInHeading50": [
+   {
+    "session": "0730",
+    "kerb": "k21",
+    "name": "3250m",
+    "n": 6,
+    "medianDS": -3.87,
+    "maxAbsDS": 4.69
+   },
+   {
+    "session": "0729",
+    "kerb": "k21",
+    "name": "3250m",
+    "n": 3,
+    "medianDS": -3.44,
+    "maxAbsDS": 7.47
+   },
+   {
+    "session": "0729",
+    "kerb": "k24",
+    "name": "最終コーナー",
+    "n": 1,
+    "medianDS": 2.81,
+    "maxAbsDS": 2.81
+   },
+   {
+    "session": "0730",
+    "kerb": "k15",
+    "name": "1500m",
+    "n": 6,
+    "medianDS": -2.26,
+    "maxAbsDS": 3.08
+   },
+   {
+    "session": "0729",
+    "kerb": "k1",
+    "name": "コカ・コーラ",
+    "n": 4,
+    "medianDS": -2.17,
+    "maxAbsDS": 2.84
+   },
+   {
+    "session": "0730",
+    "kerb": "k1",
+    "name": "コカ・コーラ",
+    "n": 6,
+    "medianDS": -1.97,
+    "maxAbsDS": 3.58
+   }
+  ],
+  "turnInHeading50_events": [
+   {
+    "session": "0729",
+    "lap": 3,
+    "kerb": "k21",
+    "dS": -7.47,
+    "dt": 0.283
+   },
+   {
+    "session": "0730",
+    "lap": 5,
+    "kerb": "k10",
+    "dS": 6.02,
+    "dt": -0.234
+   },
+   {
+    "session": "0730",
+    "lap": 6,
+    "kerb": "k21",
+    "dS": -4.69,
+    "dt": 0.164
+   },
+   {
+    "session": "0730",
+    "lap": 3,
+    "kerb": "k21",
+    "dS": -4.61,
+    "dt": 0.164
+   },
+   {
+    "session": "0730",
+    "lap": 1,
+    "kerb": "k21",
+    "dS": -4.51,
+    "dt": 0.166
+   },
+   {
+    "session": "0729",
+    "lap": 4,
+    "kerb": "k7",
+    "dS": 4.24,
+    "dt": -0.338
+   }
+  ],
+  "contactLateral_events": [
+   {
+    "session": "0730",
+    "lap": 3,
+    "kerb": "k1",
+    "gapBlockAtOnset": 3.884,
+    "cgShowsContact": true
+   },
+   {
+    "session": "0730",
+    "lap": 2,
+    "kerb": "k1",
+    "gapBlockAtOnset": 3.084,
+    "cgShowsContact": true
+   },
+   {
+    "session": "0730",
+    "lap": 4,
+    "kerb": "k1",
+    "gapBlockAtOnset": 2.713,
+    "cgShowsContact": true
+   },
+   {
+    "session": "0730",
+    "lap": 5,
+    "kerb": "k1",
+    "gapBlockAtOnset": 2.289,
+    "cgShowsContact": true
+   },
+   {
+    "session": "0730",
+    "lap": 2,
+    "kerb": "k21",
+    "gapBlockAtOnset": 1.982,
+    "cgShowsContact": false
+   },
+   {
+    "session": "0730",
+    "lap": 3,
+    "kerb": "k24",
+    "gapBlockAtOnset": 1.472,
+    "cgShowsContact": true
+   },
+   {
+    "session": "0729",
+    "lap": 4,
+    "kerb": "k24",
+    "gapBlockAtOnset": 1.191,
+    "cgShowsContact": false
+   },
+   {
+    "session": "0730",
+    "lap": 1,
+    "kerb": "k1",
+    "gapBlockAtOnset": 1.092,
+    "cgShowsContact": true
+   }
+  ]
+ },
+ "corrections": {
+  "C1_videoTimeOffset": {
+   "what": "true lap t of a video frame = overlay-mapped lap t + L (per lap from the SmartyCam data track + 7/30 calibration, or one session constant)",
+   "metric": "same-rule IMU accelerometer onset50 minus kerb-audio onset50 after the offset (s), audio confidence high+medium; LOLO = calibration / session constant estimated without the held-out lap",
+   "results": {
+    "none": {
+     "fuji_aim_01": {
+      "n": 1,
+      "median": 0.198,
+      "mean": 0.198,
+      "sd": 0.0,
+      "q25": 0.198,
+      "q75": 0.198,
+      "medianAbs": 0.198,
+      "p90Abs": 0.198,
+      "maxAbs": 0.198,
+      "rms": 0.198,
+      "biasShare": 1.0
+     },
+     "pooled": {
+      "n": 24,
+      "median": 0.208,
+      "mean": 0.204,
+      "sd": 0.099,
+      "q25": 0.158,
+      "q75": 0.294,
+      "medianAbs": 0.208,
+      "p90Abs": 0.311,
+      "maxAbs": 0.323,
+      "rms": 0.226,
+      "biasShare": 0.815
+     },
+     "fuji_aim_2020_07_30": {
+      "n": 23,
+      "median": 0.21,
+      "mean": 0.204,
+      "sd": 0.101,
+      "q25": 0.158,
+      "q75": 0.296,
+      "medianAbs": 0.21,
+      "p90Abs": 0.312,
+      "maxAbs": 0.323,
+      "rms": 0.227,
+      "biasShare": 0.809
+     }
+    },
+    "sessionConstLOLO": {
+     "fuji_aim_01": {
+      "n": 1,
+      "median": 0.021,
+      "mean": 0.021,
+      "sd": 0.0,
+      "q25": 0.021,
+      "q75": 0.021,
+      "medianAbs": 0.021,
+      "p90Abs": 0.021,
+      "maxAbs": 0.021,
+      "rms": 0.021,
+      "biasShare": 1.0
+     },
+     "pooled": {
+      "n": 24,
+      "median": 0.011,
+      "mean": -0.005,
+      "sd": 0.101,
+      "q25": -0.058,
+      "q75": 0.084,
+      "medianAbs": 0.078,
+      "p90Abs": 0.126,
+      "maxAbs": 0.281,
+      "rms": 0.099,
+      "biasShare": 0.002
+     },
+     "fuji_aim_2020_07_30": {
+      "n": 23,
+      "median": 0.005,
+      "mean": -0.006,
+      "sd": 0.103,
+      "q25": -0.058,
+      "q75": 0.086,
+      "medianAbs": 0.082,
+      "p90Abs": 0.126,
+      "maxAbs": 0.281,
+      "rms": 0.101,
+      "biasShare": 0.003
+     }
+    },
+    "dataTrackLOLO": {
+     "fuji_aim_01": {
+      "n": 1,
+      "median": -0.02,
+      "mean": -0.02,
+      "sd": 0.0,
+      "q25": -0.02,
+      "q75": -0.02,
+      "medianAbs": 0.02,
+      "p90Abs": 0.02,
+      "maxAbs": 0.02,
+      "rms": 0.02,
+      "biasShare": 1.0
+     },
+     "pooled": {
+      "n": 24,
+      "median": -0.008,
+      "mean": -0.016,
+      "sd": 0.093,
+      "q25": -0.048,
+      "q75": 0.056,
+      "medianAbs": 0.053,
+      "p90Abs": 0.15,
+      "maxAbs": 0.27,
+      "rms": 0.092,
+      "biasShare": 0.029
+     },
+     "fuji_aim_2020_07_30": {
+      "n": 23,
+      "median": 0.004,
+      "mean": -0.016,
+      "sd": 0.095,
+      "q25": -0.048,
+      "q75": 0.056,
+      "medianAbs": 0.055,
+      "p90Abs": 0.155,
+      "maxAbs": 0.27,
+      "rms": 0.094,
+      "biasShare": 0.027
+     }
+    },
+    "adopted": {
+     "fuji_aim_01": {
+      "n": 1,
+      "median": -0.02,
+      "mean": -0.02,
+      "sd": 0.0,
+      "q25": -0.02,
+      "q75": -0.02,
+      "medianAbs": 0.02,
+      "p90Abs": 0.02,
+      "maxAbs": 0.02,
+      "rms": 0.02,
+      "biasShare": 1.0
+     },
+     "pooled": {
+      "n": 24,
+      "median": -0.004,
+      "mean": -0.016,
+      "sd": 0.093,
+      "q25": -0.047,
+      "q75": 0.049,
+      "medianAbs": 0.05,
+      "p90Abs": 0.143,
+      "maxAbs": 0.269,
+      "rms": 0.092,
+      "biasShare": 0.032
+     },
+     "fuji_aim_2020_07_30": {
+      "n": 23,
+      "median": 0.013,
+      "mean": -0.016,
+      "sd": 0.095,
+      "q25": -0.049,
+      "q75": 0.05,
+      "medianAbs": 0.05,
+      "p90Abs": 0.147,
+      "maxAbs": 0.269,
+      "rms": 0.094,
+      "biasShare": 0.03
+     }
+    }
+   },
+   "adoptedPerLap": {
+    "fuji_aim_01/L1": 0.177,
+    "fuji_aim_01/L2": 0.234,
+    "fuji_aim_01/L3": 0.218,
+    "fuji_aim_01/L4": 0.171,
+    "fuji_aim_2020_07_30/L1": 0.202,
+    "fuji_aim_2020_07_30/L2": 0.241,
+    "fuji_aim_2020_07_30/L3": 0.205,
+    "fuji_aim_2020_07_30/L4": 0.217,
+    "fuji_aim_2020_07_30/L5": 0.135,
+    "fuji_aim_2020_07_30/L6": 0.274
+   }
+  },
+  "C2_alongTrackOffset_fromContacts": {
+   "what": "move the drawn car along its own heading by a (m; + = forward; = an antenna-to-vehicle-centre offset), a = -median(dS of the block first contact) of the training laps",
+   "onContacts": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 0
+     },
+     "after": {
+      "n": 0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 20,
+      "median": -0.59,
+      "mean": -0.521,
+      "sd": 6.181,
+      "q25": -3.995,
+      "q75": 3.135,
+      "medianAbs": 3.305,
+      "p90Abs": 9.418,
+      "maxAbs": 13.88,
+      "rms": 6.047,
+      "biasShare": 0.007
+     },
+     "after": {
+      "n": 20,
+      "median": -0.48,
+      "mean": -0.023,
+      "sd": 6.257,
+      "q25": -3.385,
+      "q75": 3.745,
+      "medianAbs": 3.87,
+      "p90Abs": 9.894,
+      "maxAbs": 14.47,
+      "rms": 6.098,
+      "biasShare": 0.0
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 20,
+      "median": -0.59,
+      "mean": -0.521,
+      "sd": 6.181,
+      "q25": -3.995,
+      "q75": 3.135,
+      "medianAbs": 3.305,
+      "p90Abs": 9.418,
+      "maxAbs": 13.88,
+      "rms": 6.047,
+      "biasShare": 0.007
+     },
+     "after": {
+      "n": 20,
+      "median": -0.48,
+      "mean": -0.023,
+      "sd": 6.257,
+      "q25": -3.385,
+      "q75": 3.745,
+      "medianAbs": 3.87,
+      "p90Abs": 9.894,
+      "maxAbs": 14.47,
+      "rms": 6.098,
+      "biasShare": 0.0
+     }
+    },
+    "paramsPerHeldOutLap": {
+     "fuji_aim_2020_07_30/L1": {
+      "aM": 0.63
+     },
+     "fuji_aim_2020_07_30/L2": {
+      "aM": 0.55
+     },
+     "fuji_aim_2020_07_30/L3": {
+      "aM": 0.55
+     },
+     "fuji_aim_2020_07_30/L4": {
+      "aM": -0.33
+     },
+     "fuji_aim_2020_07_30/L5": {
+      "aM": 0.59
+     },
+     "fuji_aim_2020_07_30/L6": {
+      "aM": 0.63
+     }
+    }
+   },
+   "onVideoTips": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 0
+     },
+     "after": {
+      "n": 0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 41,
+      "median": 4.2,
+      "mean": 3.792,
+      "sd": 3.115,
+      "q25": 1.78,
+      "q75": 5.62,
+      "medianAbs": 4.2,
+      "p90Abs": 6.09,
+      "maxAbs": 13.3,
+      "rms": 4.884,
+      "biasShare": 0.603
+     },
+     "after": {
+      "n": 41,
+      "median": 4.68,
+      "mean": 4.25,
+      "sd": 3.141,
+      "q25": 2.37,
+      "q75": 5.84,
+      "medianAbs": 4.68,
+      "p90Abs": 6.71,
+      "maxAbs": 13.85,
+      "rms": 5.262,
+      "biasShare": 0.652
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 41,
+      "median": 4.2,
+      "mean": 3.792,
+      "sd": 3.115,
+      "q25": 1.78,
+      "q75": 5.62,
+      "medianAbs": 4.2,
+      "p90Abs": 6.09,
+      "maxAbs": 13.3,
+      "rms": 4.884,
+      "biasShare": 0.603
+     },
+     "after": {
+      "n": 41,
+      "median": 4.68,
+      "mean": 4.25,
+      "sd": 3.141,
+      "q25": 2.37,
+      "q75": 5.84,
+      "medianAbs": 4.68,
+      "p90Abs": 6.71,
+      "maxAbs": 13.85,
+      "rms": 5.262,
+      "biasShare": 0.652
+     }
+    },
+    "paramsPerHeldOutLap": {
+     "fuji_aim_2020_07_30/L1": {
+      "aM": 0.63
+     },
+     "fuji_aim_2020_07_30/L2": {
+      "aM": 0.55
+     },
+     "fuji_aim_2020_07_30/L3": {
+      "aM": 0.55
+     },
+     "fuji_aim_2020_07_30/L4": {
+      "aM": -0.33
+     },
+     "fuji_aim_2020_07_30/L5": {
+      "aM": 0.59
+     },
+     "fuji_aim_2020_07_30/L6": {
+      "aM": 0.63
+     }
+    }
+   }
+  },
+  "C2b_alongTrackOffset_fromVideoTips": {
+   "what": "same correction, a = -median(dS of the video tip, nominal camera) of the training laps",
+   "onVideoTips": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 14,
+      "median": 5.1,
+      "mean": 6.049,
+      "sd": 4.763,
+      "q25": 2.917,
+      "q75": 7.557,
+      "medianAbs": 5.1,
+      "p90Abs": 11.589,
+      "maxAbs": 17.38,
+      "rms": 7.593,
+      "biasShare": 0.635
+     },
+     "after": {
+      "n": 14,
+      "median": -0.69,
+      "mean": 0.799,
+      "sd": 4.91,
+      "q25": -2.223,
+      "q75": 2.76,
+      "medianAbs": 2.645,
+      "p90Abs": 8.136,
+      "maxAbs": 11.97,
+      "rms": 4.798,
+      "biasShare": 0.028
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 41,
+      "median": 4.2,
+      "mean": 3.792,
+      "sd": 3.115,
+      "q25": 1.78,
+      "q75": 5.62,
+      "medianAbs": 4.2,
+      "p90Abs": 6.09,
+      "maxAbs": 13.3,
+      "rms": 4.884,
+      "biasShare": 0.603
+     },
+     "after": {
+      "n": 41,
+      "median": 0.01,
+      "mean": -0.383,
+      "sd": 3.116,
+      "q25": -2.44,
+      "q75": 1.42,
+      "medianAbs": 1.78,
+      "p90Abs": 4.66,
+      "maxAbs": 9.1,
+      "rms": 3.101,
+      "biasShare": 0.015
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 55,
+      "median": 4.24,
+      "mean": 4.367,
+      "sd": 3.692,
+      "q25": 2.235,
+      "q75": 5.945,
+      "medianAbs": 4.24,
+      "p90Abs": 7.816,
+      "maxAbs": 17.38,
+      "rms": 5.697,
+      "biasShare": 0.588
+     },
+     "after": {
+      "n": 55,
+      "median": -0.07,
+      "mean": -0.082,
+      "sd": 3.642,
+      "q25": -2.41,
+      "q75": 1.745,
+      "medianAbs": 2.06,
+      "p90Abs": 6.064,
+      "maxAbs": 11.97,
+      "rms": 3.61,
+      "biasShare": 0.001
+     }
+    },
+    "paramsPerHeldOutLap": {
+     "fuji_aim_01/L1": {
+      "aM": -5.41
+     },
+     "fuji_aim_01/L2": {
+      "aM": -4.47
+     },
+     "fuji_aim_01/L3": {
+      "aM": -5.79
+     },
+     "fuji_aim_01/L4": {
+      "aM": -5.41
+     },
+     "fuji_aim_2020_07_30/L1": {
+      "aM": -4.23
+     },
+     "fuji_aim_2020_07_30/L2": {
+      "aM": -4.2
+     },
+     "fuji_aim_2020_07_30/L3": {
+      "aM": -4.2
+     },
+     "fuji_aim_2020_07_30/L4": {
+      "aM": -4.2
+     },
+     "fuji_aim_2020_07_30/L5": {
+      "aM": -4.22
+     },
+     "fuji_aim_2020_07_30/L6": {
+      "aM": -4.0
+     }
+    }
+   },
+   "onContacts": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 1,
+      "median": -2.0,
+      "mean": -2.0,
+      "sd": 0.0,
+      "q25": -2.0,
+      "q75": -2.0,
+      "medianAbs": 2.0,
+      "p90Abs": 2.0,
+      "maxAbs": 2.0,
+      "rms": 2.0,
+      "biasShare": 1.0
+     },
+     "after": {
+      "n": 1,
+      "median": -5.03,
+      "mean": -5.03,
+      "sd": 0.0,
+      "q25": -5.03,
+      "q75": -5.03,
+      "medianAbs": 5.03,
+      "p90Abs": 5.03,
+      "maxAbs": 5.03,
+      "rms": 5.03,
+      "biasShare": 1.0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 20,
+      "median": -0.59,
+      "mean": -0.521,
+      "sd": 6.181,
+      "q25": -3.995,
+      "q75": 3.135,
+      "medianAbs": 3.305,
+      "p90Abs": 9.418,
+      "maxAbs": 13.88,
+      "rms": 6.047,
+      "biasShare": 0.007
+     },
+     "after": {
+      "n": 20,
+      "median": -4.79,
+      "mean": -4.701,
+      "sd": 6.185,
+      "q25": -8.165,
+      "q75": -1.088,
+      "medianAbs": 5.535,
+      "p90Abs": 12.027,
+      "maxAbs": 15.22,
+      "rms": 7.644,
+      "biasShare": 0.378
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 21,
+      "median": -0.63,
+      "mean": -0.591,
+      "sd": 6.034,
+      "q25": -3.04,
+      "q75": 2.99,
+      "medianAbs": 3.04,
+      "p90Abs": 9.24,
+      "maxAbs": 13.88,
+      "rms": 5.918,
+      "biasShare": 0.01
+     },
+     "after": {
+      "n": 21,
+      "median": -4.83,
+      "mean": -4.716,
+      "sd": 6.029,
+      "q25": -7.2,
+      "q75": -1.24,
+      "medianAbs": 5.03,
+      "p90Abs": 11.87,
+      "maxAbs": 15.22,
+      "rms": 7.541,
+      "biasShare": 0.391
+     }
+    },
+    "paramsPerHeldOutLap": {
+     "fuji_aim_01/L3": {
+      "aM": -3.03
+     },
+     "fuji_aim_01/L4": {
+      "aM": -5.1
+     },
+     "fuji_aim_2020_07_30/L1": {
+      "aM": -4.23
+     },
+     "fuji_aim_2020_07_30/L2": {
+      "aM": -4.2
+     },
+     "fuji_aim_2020_07_30/L3": {
+      "aM": -4.2
+     },
+     "fuji_aim_2020_07_30/L4": {
+      "aM": -4.2
+     },
+     "fuji_aim_2020_07_30/L5": {
+      "aM": -4.22
+     },
+     "fuji_aim_2020_07_30/L6": {
+      "aM": -4.0
+     }
+    }
+   }
+  },
+  "C3_lateral": {
+   "towardKerb": {
+    "onContactGapAtOnset": {
+     "fuji_aim_01": {
+      "before": {
+       "n": 0
+      },
+      "after": {
+       "n": 0
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "n": 27,
+       "median": 0.226,
+       "mean": 0.624,
+       "sd": 1.196,
+       "q25": -0.131,
+       "q75": 0.903,
+       "medianAbs": 0.43,
+       "p90Abs": 2.459,
+       "maxAbs": 3.884,
+       "rms": 1.329,
+       "biasShare": 0.22
+      },
+      "after": {
+       "n": 27,
+       "median": -0.057,
+       "mean": 0.379,
+       "sd": 1.219,
+       "q25": -0.381,
+       "q75": 0.666,
+       "medianAbs": 0.538,
+       "p90Abs": 2.273,
+       "maxAbs": 3.683,
+       "rms": 1.255,
+       "biasShare": 0.091
+      }
+     },
+     "pooled": {
+      "before": {
+       "n": 27,
+       "median": 0.226,
+       "mean": 0.624,
+       "sd": 1.196,
+       "q25": -0.131,
+       "q75": 0.903,
+       "medianAbs": 0.43,
+       "p90Abs": 2.459,
+       "maxAbs": 3.884,
+       "rms": 1.329,
+       "biasShare": 0.22
+      },
+      "after": {
+       "n": 27,
+       "median": -0.057,
+       "mean": 0.379,
+       "sd": 1.219,
+       "q25": -0.381,
+       "q75": 0.666,
+       "medianAbs": 0.538,
+       "p90Abs": 2.273,
+       "maxAbs": 3.683,
+       "rms": 1.255,
+       "biasShare": 0.091
+      }
+     },
+     "paramsPerHeldOutLap": {
+      "fuji_aim_2020_07_30/L1": {
+       "deltaM": 0.3,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L2": {
+       "deltaM": 0.226,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L3": {
+       "deltaM": 0.201,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L4": {
+       "deltaM": 0.201,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L5": {
+       "deltaM": 0.175,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L6": {
+       "deltaM": 0.31,
+       "eRightM": 0.0
+      }
+     }
+    },
+    "onVideoTipLateral": {
+     "fuji_aim_01": {
+      "before": {
+       "n": 0
+      },
+      "after": {
+       "n": 0
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "n": 41,
+       "median": 0.02,
+       "mean": 0.025,
+       "sd": 0.758,
+       "q25": -0.34,
+       "q75": 0.49,
+       "medianAbs": 0.46,
+       "p90Abs": 1.39,
+       "maxAbs": 1.54,
+       "rms": 0.749,
+       "biasShare": 0.001
+      },
+      "after": {
+       "n": 41,
+       "median": -0.28,
+       "mean": -0.208,
+       "sd": 0.756,
+       "q25": -0.565,
+       "q75": 0.229,
+       "medianAbs": 0.47,
+       "p90Abs": 1.411,
+       "maxAbs": 1.651,
+       "rms": 0.776,
+       "biasShare": 0.072
+      }
+     },
+     "pooled": {
+      "before": {
+       "n": 41,
+       "median": 0.02,
+       "mean": 0.025,
+       "sd": 0.758,
+       "q25": -0.34,
+       "q75": 0.49,
+       "medianAbs": 0.46,
+       "p90Abs": 1.39,
+       "maxAbs": 1.54,
+       "rms": 0.749,
+       "biasShare": 0.001
+      },
+      "after": {
+       "n": 41,
+       "median": -0.28,
+       "mean": -0.208,
+       "sd": 0.756,
+       "q25": -0.565,
+       "q75": 0.229,
+       "medianAbs": 0.47,
+       "p90Abs": 1.411,
+       "maxAbs": 1.651,
+       "rms": 0.776,
+       "biasShare": 0.072
+      }
+     },
+     "paramsPerHeldOutLap": {
+      "fuji_aim_2020_07_30/L1": {
+       "deltaM": 0.3,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L2": {
+       "deltaM": 0.226,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L3": {
+       "deltaM": 0.201,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L4": {
+       "deltaM": 0.201,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L5": {
+       "deltaM": 0.175,
+       "eRightM": 0.0
+      },
+      "fuji_aim_2020_07_30/L6": {
+       "deltaM": 0.31,
+       "eRightM": 0.0
+      }
+     }
+    },
+    "detectionLOLO": {
+     "fuji_aim_01": {
+      "before": {
+       "TP": 0,
+       "FN": 0,
+       "FP": 0,
+       "TN": 0,
+       "n": 0,
+       "agreement": 0.0,
+       "recall": null,
+       "precision": null
+      },
+      "after": {
+       "TP": 0,
+       "FN": 0,
+       "FP": 0,
+       "TN": 0,
+       "n": 0,
+       "agreement": 0.0,
+       "recall": null,
+       "precision": null
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "TP": 20,
+       "FN": 10,
+       "FP": 11,
+       "TN": 43,
+       "n": 84,
+       "agreement": 0.75,
+       "recall": 0.667,
+       "precision": 0.645
+      },
+      "after": {
+       "TP": 24,
+       "FN": 6,
+       "FP": 19,
+       "TN": 35,
+       "n": 84,
+       "agreement": 0.702,
+       "recall": 0.8,
+       "precision": 0.558
+      }
+     }
+    }
+   },
+   "driverRight": {
+    "onContactGapAtOnset": {
+     "fuji_aim_01": {
+      "before": {
+       "n": 0
+      },
+      "after": {
+       "n": 0
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "n": 27,
+       "median": 0.226,
+       "mean": 0.624,
+       "sd": 1.196,
+       "q25": -0.131,
+       "q75": 0.903,
+       "medianAbs": 0.43,
+       "p90Abs": 2.459,
+       "maxAbs": 3.884,
+       "rms": 1.329,
+       "biasShare": 0.22
+      },
+      "after": {
+       "n": 27,
+       "median": 0.24,
+       "mean": 0.613,
+       "sd": 1.205,
+       "q25": -0.196,
+       "q75": 0.878,
+       "medianAbs": 0.536,
+       "p90Abs": 2.452,
+       "maxAbs": 3.801,
+       "rms": 1.332,
+       "biasShare": 0.212
+      }
+     },
+     "pooled": {
+      "before": {
+       "n": 27,
+       "median": 0.226,
+       "mean": 0.624,
+       "sd": 1.196,
+       "q25": -0.131,
+       "q75": 0.903,
+       "medianAbs": 0.43,
+       "p90Abs": 2.459,
+       "maxAbs": 3.884,
+       "rms": 1.329,
+       "biasShare": 0.22
+      },
+      "after": {
+       "n": 27,
+       "median": 0.24,
+       "mean": 0.613,
+       "sd": 1.205,
+       "q25": -0.196,
+       "q75": 0.878,
+       "medianAbs": 0.536,
+       "p90Abs": 2.452,
+       "maxAbs": 3.801,
+       "rms": 1.332,
+       "biasShare": 0.212
+      }
+     },
+     "paramsPerHeldOutLap": {
+      "fuji_aim_2020_07_30/L1": {
+       "deltaM": 0.0,
+       "eRightM": -0.042
+      },
+      "fuji_aim_2020_07_30/L2": {
+       "deltaM": 0.0,
+       "eRightM": -0.06
+      },
+      "fuji_aim_2020_07_30/L3": {
+       "deltaM": 0.0,
+       "eRightM": -0.083
+      },
+      "fuji_aim_2020_07_30/L4": {
+       "deltaM": 0.0,
+       "eRightM": -0.004
+      },
+      "fuji_aim_2020_07_30/L5": {
+       "deltaM": 0.0,
+       "eRightM": -0.009
+      },
+      "fuji_aim_2020_07_30/L6": {
+       "deltaM": 0.0,
+       "eRightM": -0.241
+      }
+     }
+    },
+    "onVideoTipLateral": {
+     "fuji_aim_01": {
+      "before": {
+       "n": 0
+      },
+      "after": {
+       "n": 0
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "n": 41,
+       "median": 0.02,
+       "mean": 0.025,
+       "sd": 0.758,
+       "q25": -0.34,
+       "q75": 0.49,
+       "medianAbs": 0.46,
+       "p90Abs": 1.39,
+       "maxAbs": 1.54,
+       "rms": 0.749,
+       "biasShare": 0.001
+      },
+      "after": {
+       "n": 41,
+       "median": 0.049,
+       "mean": 0.034,
+       "sd": 0.769,
+       "q25": -0.28,
+       "q75": 0.532,
+       "medianAbs": 0.381,
+       "p90Abs": 1.454,
+       "maxAbs": 1.631,
+       "rms": 0.76,
+       "biasShare": 0.002
+      }
+     },
+     "pooled": {
+      "before": {
+       "n": 41,
+       "median": 0.02,
+       "mean": 0.025,
+       "sd": 0.758,
+       "q25": -0.34,
+       "q75": 0.49,
+       "medianAbs": 0.46,
+       "p90Abs": 1.39,
+       "maxAbs": 1.54,
+       "rms": 0.749,
+       "biasShare": 0.001
+      },
+      "after": {
+       "n": 41,
+       "median": 0.049,
+       "mean": 0.034,
+       "sd": 0.769,
+       "q25": -0.28,
+       "q75": 0.532,
+       "medianAbs": 0.381,
+       "p90Abs": 1.454,
+       "maxAbs": 1.631,
+       "rms": 0.76,
+       "biasShare": 0.002
+      }
+     },
+     "paramsPerHeldOutLap": {
+      "fuji_aim_2020_07_30/L1": {
+       "deltaM": 0.0,
+       "eRightM": -0.042
+      },
+      "fuji_aim_2020_07_30/L2": {
+       "deltaM": 0.0,
+       "eRightM": -0.06
+      },
+      "fuji_aim_2020_07_30/L3": {
+       "deltaM": 0.0,
+       "eRightM": -0.083
+      },
+      "fuji_aim_2020_07_30/L4": {
+       "deltaM": 0.0,
+       "eRightM": -0.004
+      },
+      "fuji_aim_2020_07_30/L5": {
+       "deltaM": 0.0,
+       "eRightM": -0.009
+      },
+      "fuji_aim_2020_07_30/L6": {
+       "deltaM": 0.0,
+       "eRightM": -0.241
+      }
+     }
+    }
+   },
+   "both": {
+    "onContactGapAtOnset": {
+     "fuji_aim_01": {
+      "before": {
+       "n": 0
+      },
+      "after": {
+       "n": 0
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "n": 27,
+       "median": 0.226,
+       "mean": 0.624,
+       "sd": 1.196,
+       "q25": -0.131,
+       "q75": 0.903,
+       "medianAbs": 0.43,
+       "p90Abs": 2.459,
+       "maxAbs": 3.884,
+       "rms": 1.329,
+       "biasShare": 0.22
+      },
+      "after": {
+       "n": 27,
+       "median": -0.02,
+       "mean": 0.355,
+       "sd": 1.227,
+       "q25": -0.472,
+       "q75": 0.653,
+       "medianAbs": 0.523,
+       "p90Abs": 2.26,
+       "maxAbs": 3.574,
+       "rms": 1.255,
+       "biasShare": 0.08
+      }
+     },
+     "pooled": {
+      "before": {
+       "n": 27,
+       "median": 0.226,
+       "mean": 0.624,
+       "sd": 1.196,
+       "q25": -0.131,
+       "q75": 0.903,
+       "medianAbs": 0.43,
+       "p90Abs": 2.459,
+       "maxAbs": 3.884,
+       "rms": 1.329,
+       "biasShare": 0.22
+      },
+      "after": {
+       "n": 27,
+       "median": -0.02,
+       "mean": 0.355,
+       "sd": 1.227,
+       "q25": -0.472,
+       "q75": 0.653,
+       "medianAbs": 0.523,
+       "p90Abs": 2.26,
+       "maxAbs": 3.574,
+       "rms": 1.255,
+       "biasShare": 0.08
+      }
+     },
+     "paramsPerHeldOutLap": {
+      "fuji_aim_2020_07_30/L1": {
+       "deltaM": 0.268,
+       "eRightM": -0.042
+      },
+      "fuji_aim_2020_07_30/L2": {
+       "deltaM": 0.26,
+       "eRightM": -0.06
+      },
+      "fuji_aim_2020_07_30/L3": {
+       "deltaM": 0.227,
+       "eRightM": -0.083
+      },
+      "fuji_aim_2020_07_30/L4": {
+       "deltaM": 0.205,
+       "eRightM": -0.004
+      },
+      "fuji_aim_2020_07_30/L5": {
+       "deltaM": 0.183,
+       "eRightM": -0.009
+      },
+      "fuji_aim_2020_07_30/L6": {
+       "deltaM": 0.354,
+       "eRightM": -0.241
+      }
+     }
+    },
+    "onVideoTipLateral": {
+     "fuji_aim_01": {
+      "before": {
+       "n": 0
+      },
+      "after": {
+       "n": 0
+      }
+     },
+     "fuji_aim_2020_07_30": {
+      "before": {
+       "n": 41,
+       "median": 0.02,
+       "mean": 0.025,
+       "sd": 0.758,
+       "q25": -0.34,
+       "q75": 0.49,
+       "medianAbs": 0.46,
+       "p90Abs": 1.39,
+       "maxAbs": 1.54,
+       "rms": 0.749,
+       "biasShare": 0.001
+      },
+      "after": {
+       "n": 41,
+       "median": -0.213,
+       "mean": -0.212,
+       "sd": 0.766,
+       "q25": -0.564,
+       "q75": 0.264,
+       "medianAbs": 0.5,
+       "p90Abs": 1.354,
+       "maxAbs": 1.74,
+       "rms": 0.786,
+       "biasShare": 0.073
+      }
+     },
+     "pooled": {
+      "before": {
+       "n": 41,
+       "median": 0.02,
+       "mean": 0.025,
+       "sd": 0.758,
+       "q25": -0.34,
+       "q75": 0.49,
+       "medianAbs": 0.46,
+       "p90Abs": 1.39,
+       "maxAbs": 1.54,
+       "rms": 0.749,
+       "biasShare": 0.001
+      },
+      "after": {
+       "n": 41,
+       "median": -0.213,
+       "mean": -0.212,
+       "sd": 0.766,
+       "q25": -0.564,
+       "q75": 0.264,
+       "medianAbs": 0.5,
+       "p90Abs": 1.354,
+       "maxAbs": 1.74,
+       "rms": 0.786,
+       "biasShare": 0.073
+      }
+     },
+     "paramsPerHeldOutLap": {
+      "fuji_aim_2020_07_30/L1": {
+       "deltaM": 0.268,
+       "eRightM": -0.042
+      },
+      "fuji_aim_2020_07_30/L2": {
+       "deltaM": 0.26,
+       "eRightM": -0.06
+      },
+      "fuji_aim_2020_07_30/L3": {
+       "deltaM": 0.227,
+       "eRightM": -0.083
+      },
+      "fuji_aim_2020_07_30/L4": {
+       "deltaM": 0.205,
+       "eRightM": -0.004
+      },
+      "fuji_aim_2020_07_30/L5": {
+       "deltaM": 0.183,
+       "eRightM": -0.009
+      },
+      "fuji_aim_2020_07_30/L6": {
+       "deltaM": 0.354,
+       "eRightM": -0.241
+      }
+     }
+    }
+   }
+  },
+  "C4_jointLateralAlong_fromContacts": {
+   "what": "robust fit over contacts of gapAtOnset = deltaLat - closingRate * tau (deltaLat: CG farther from kerb, tau: CG ahead in time)",
+   "fitAll": {
+    "fuji_aim_01": null,
+    "fuji_aim_2020_07_30": {
+     "n": 27,
+     "deltaLatM": -0.259,
+     "tauAheadS": -0.21,
+     "residualRobustSd": 0.57
+    },
+    "pooled": {
+     "n": 29,
+     "deltaLatM": -0.215,
+     "tauAheadS": -0.207,
+     "residualRobustSd": 0.487
+    }
+   },
+   "fitAllPaint": {
+    "fuji_aim_01": null,
+    "fuji_aim_2020_07_30": {
+     "n": 27,
+     "deltaLatM": -0.746,
+     "tauAheadS": -0.213,
+     "residualRobustSd": 0.509
+    },
+    "pooled": {
+     "n": 29,
+     "deltaLatM": -0.685,
+     "tauAheadS": -0.208,
+     "residualRobustSd": 0.519
+    }
+   },
+   "lolo": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 0
+     },
+     "after": {
+      "n": 0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 27,
+      "median": 0.226,
+      "mean": 0.624,
+      "sd": 1.196,
+      "q25": -0.131,
+      "q75": 0.903,
+      "medianAbs": 0.43,
+      "p90Abs": 2.459,
+      "maxAbs": 3.884,
+      "rms": 1.329,
+      "biasShare": 0.22
+     },
+     "after": {
+      "n": 27,
+      "median": -0.124,
+      "mean": 0.121,
+      "sd": 0.944,
+      "q25": -0.397,
+      "q75": 0.389,
+      "medianAbs": 0.413,
+      "p90Abs": 1.73,
+      "maxAbs": 2.528,
+      "rms": 0.934,
+      "biasShare": 0.017
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 27,
+      "median": 0.226,
+      "mean": 0.624,
+      "sd": 1.196,
+      "q25": -0.131,
+      "q75": 0.903,
+      "medianAbs": 0.43,
+      "p90Abs": 2.459,
+      "maxAbs": 3.884,
+      "rms": 1.329,
+      "biasShare": 0.22
+     },
+     "after": {
+      "n": 27,
+      "median": -0.124,
+      "mean": 0.121,
+      "sd": 0.944,
+      "q25": -0.397,
+      "q75": 0.389,
+      "medianAbs": 0.413,
+      "p90Abs": 1.73,
+      "maxAbs": 2.528,
+      "rms": 0.934,
+      "biasShare": 0.017
+     }
+    },
+    "paramsPerHeldOutLap": {
+     "fuji_aim_2020_07_30/L1": {
+      "deltaM": -0.25,
+      "tauS": -0.23
+     },
+     "fuji_aim_2020_07_30/L2": {
+      "deltaM": -0.225,
+      "tauS": -0.197
+     },
+     "fuji_aim_2020_07_30/L3": {
+      "deltaM": -0.222,
+      "tauS": -0.177
+     },
+     "fuji_aim_2020_07_30/L4": {
+      "deltaM": -0.245,
+      "tauS": -0.196
+     },
+     "fuji_aim_2020_07_30/L5": {
+      "deltaM": -0.44,
+      "tauS": -0.248
+     },
+     "fuji_aim_2020_07_30/L6": {
+      "deltaM": -0.204,
+      "tauS": -0.206
+     }
+    }
+   },
+   "fitExclK1": {
+    "fuji_aim_01": null,
+    "fuji_aim_2020_07_30": {
+     "n": 20,
+     "deltaLatM": -0.091,
+     "tauAheadS": -0.097,
+     "residualRobustSd": 0.361
+    },
+    "pooled": {
+     "n": 22,
+     "deltaLatM": -0.052,
+     "tauAheadS": -0.094,
+     "residualRobustSd": 0.352
+    }
+   },
+   "loloExclK1": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 0
+     },
+     "after": {
+      "n": 0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 20,
+      "median": 0.115,
+      "mean": 0.187,
+      "sd": 0.634,
+      "q25": -0.175,
+      "q75": 0.307,
+      "medianAbs": 0.301,
+      "p90Abs": 0.746,
+      "maxAbs": 1.982,
+      "rms": 0.645,
+      "biasShare": 0.084
+     },
+     "after": {
+      "n": 20,
+      "median": -0.087,
+      "mean": 0.084,
+      "sd": 0.744,
+      "q25": -0.228,
+      "q75": 0.22,
+      "medianAbs": 0.233,
+      "p90Abs": 0.928,
+      "maxAbs": 2.532,
+      "rms": 0.73,
+      "biasShare": 0.013
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 20,
+      "median": 0.115,
+      "mean": 0.187,
+      "sd": 0.634,
+      "q25": -0.175,
+      "q75": 0.307,
+      "medianAbs": 0.301,
+      "p90Abs": 0.746,
+      "maxAbs": 1.982,
+      "rms": 0.645,
+      "biasShare": 0.084
+     },
+     "after": {
+      "n": 20,
+      "median": -0.087,
+      "mean": 0.084,
+      "sd": 0.744,
+      "q25": -0.228,
+      "q75": 0.22,
+      "medianAbs": 0.233,
+      "p90Abs": 0.928,
+      "maxAbs": 2.532,
+      "rms": 0.73,
+      "biasShare": 0.013
+     }
+    },
+    "paramsPerHeldOutLap": {
+     "fuji_aim_2020_07_30/L1": {
+      "deltaM": 0.044,
+      "tauS": -0.053
+     },
+     "fuji_aim_2020_07_30/L2": {
+      "deltaM": -0.239,
+      "tauS": -0.191
+     },
+     "fuji_aim_2020_07_30/L3": {
+      "deltaM": 0.013,
+      "tauS": -0.034
+     },
+     "fuji_aim_2020_07_30/L4": {
+      "deltaM": -0.148,
+      "tauS": -0.123
+     },
+     "fuji_aim_2020_07_30/L5": {
+      "deltaM": -0.118,
+      "tauS": -0.091
+     },
+     "fuji_aim_2020_07_30/L6": {
+      "deltaM": -0.122,
+      "tauS": -0.111
+     }
+    }
+   },
+   "caveat": "tau is driven by the events with large closing rates (k1: ~12 m/s, i.e. the CG block line meets the path at ~20 deg near its leading end); a negative tau (CG behind) contradicts the heading timing (CG heading leads the gyro by 0.00-0.05 s) and the median first-contact timing, so it is read as kerb-line geometry, not as a pose offset"
+  },
+  "C6_perKerbAlongTrack": {
+   "what": "per-kerb along-track shift of the kerb line (or a local along-track error), = median dS of the block first contact at that kerb on the OTHER laps (>= 2), else 0",
+   "onContacts": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 1,
+      "median": -2.0,
+      "mean": -2.0,
+      "sd": 0.0,
+      "q25": -2.0,
+      "q75": -2.0,
+      "medianAbs": 2.0,
+      "p90Abs": 2.0,
+      "maxAbs": 2.0,
+      "rms": 2.0,
+      "biasShare": 1.0
+     },
+     "after": {
+      "n": 1,
+      "median": -2.0,
+      "mean": -2.0,
+      "sd": 0.0,
+      "q25": -2.0,
+      "q75": -2.0,
+      "medianAbs": 2.0,
+      "p90Abs": 2.0,
+      "maxAbs": 2.0,
+      "rms": 2.0,
+      "biasShare": 1.0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 20,
+      "median": -0.59,
+      "mean": -0.521,
+      "sd": 6.181,
+      "q25": -3.995,
+      "q75": 3.135,
+      "medianAbs": 3.305,
+      "p90Abs": 9.418,
+      "maxAbs": 13.88,
+      "rms": 6.047,
+      "biasShare": 0.007
+     },
+     "after": {
+      "n": 20,
+      "median": 1.015,
+      "mean": 1.417,
+      "sd": 6.623,
+      "q25": -2.822,
+      "q75": 2.757,
+      "medianAbs": 2.895,
+      "p90Abs": 9.401,
+      "maxAbs": 21.55,
+      "rms": 6.609,
+      "biasShare": 0.046
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 21,
+      "median": -0.63,
+      "mean": -0.591,
+      "sd": 6.034,
+      "q25": -3.04,
+      "q75": 2.99,
+      "medianAbs": 3.04,
+      "p90Abs": 9.24,
+      "maxAbs": 13.88,
+      "rms": 5.918,
+      "biasShare": 0.01
+     },
+     "after": {
+      "n": 21,
+      "median": 0.75,
+      "mean": 1.254,
+      "sd": 6.498,
+      "q25": -2.75,
+      "q75": 2.35,
+      "medianAbs": 2.75,
+      "p90Abs": 9.2,
+      "maxAbs": 21.55,
+      "rms": 6.464,
+      "biasShare": 0.038
+     }
+    },
+    "correctionPerHeldOutEvent": {
+     "fuji_aim_01/L3/k7": 0.0,
+     "fuji_aim_2020_07_30/L1/k13": 1.51,
+     "fuji_aim_2020_07_30/L1/k1": -7.295,
+     "fuji_aim_2020_07_30/L1/k15": 0.0,
+     "fuji_aim_2020_07_30/L1/k3": 0.0,
+     "fuji_aim_2020_07_30/L1/k21": 0.0,
+     "fuji_aim_2020_07_30/L2/k13": 1.22,
+     "fuji_aim_2020_07_30/L2/k1": -4.945,
+     "fuji_aim_2020_07_30/L2/kDunlopR": 0.0,
+     "fuji_aim_2020_07_30/L2/k7": 0.0,
+     "fuji_aim_2020_07_30/L2/k10": 0.0,
+     "fuji_aim_2020_07_30/L3/k1": -4.945,
+     "fuji_aim_2020_07_30/L3/k3": 0.0,
+     "fuji_aim_2020_07_30/L3/k24": 0.0,
+     "fuji_aim_2020_07_30/L4/k13": 3.28,
+     "fuji_aim_2020_07_30/L4/k1": -4.945,
+     "fuji_aim_2020_07_30/L5/k1": -7.67,
+     "fuji_aim_2020_07_30/L6/k1": -7.295,
+     "fuji_aim_2020_07_30/L6/k10": 0.0,
+     "fuji_aim_2020_07_30/L6/k24": 0.0
+    }
+   },
+   "onVideoTipsSpecFov": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 14,
+      "median": 0.405,
+      "mean": 0.756,
+      "sd": 4.234,
+      "q25": -1.225,
+      "q75": 1.405,
+      "medianAbs": 1.385,
+      "p90Abs": 4.436,
+      "maxAbs": 13.68,
+      "rms": 4.149,
+      "biasShare": 0.033
+     },
+     "after": {
+      "n": 14,
+      "median": 0.98,
+      "mean": 0.411,
+      "sd": 4.47,
+      "q25": -1.51,
+      "q75": 1.748,
+      "medianAbs": 1.92,
+      "p90Abs": 6.214,
+      "maxAbs": 12.145,
+      "rms": 4.327,
+      "biasShare": 0.009
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 41,
+      "median": 0.31,
+      "mean": -0.05,
+      "sd": 2.689,
+      "q25": -1.12,
+      "q75": 1.07,
+      "medianAbs": 1.12,
+      "p90Abs": 4.09,
+      "maxAbs": 7.79,
+      "rms": 2.656,
+      "biasShare": 0.0
+     },
+     "after": {
+      "n": 41,
+      "median": 0.165,
+      "mean": -0.257,
+      "sd": 2.711,
+      "q25": -1.53,
+      "q75": 0.98,
+      "medianAbs": 1.42,
+      "p90Abs": 3.58,
+      "maxAbs": 7.765,
+      "rms": 2.69,
+      "biasShare": 0.009
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 55,
+      "median": 0.31,
+      "mean": 0.155,
+      "sd": 3.13,
+      "q25": -1.135,
+      "q75": 1.25,
+      "medianAbs": 1.2,
+      "p90Abs": 4.102,
+      "maxAbs": 13.68,
+      "rms": 3.105,
+      "biasShare": 0.002
+     },
+     "after": {
+      "n": 55,
+      "median": 0.31,
+      "mean": -0.087,
+      "sd": 3.216,
+      "q25": -1.71,
+      "q75": 1.455,
+      "medianAbs": 1.53,
+      "p90Abs": 5.507,
+      "maxAbs": 12.145,
+      "rms": 3.188,
+      "biasShare": 0.001
+     }
+    },
+    "correctionPerHeldOutEvent": {
+     "fuji_aim_01/L1/k1": -3.03,
+     "fuji_aim_01/L1/k20": 0.0,
+     "fuji_aim_01/L1/k24": 0.0,
+     "fuji_aim_01/L2/k1": -3.355,
+     "fuji_aim_01/L2/k19": -0.77,
+     "fuji_aim_01/L2/k21": 7.49,
+     "fuji_aim_01/L2/k9": 0.0,
+     "fuji_aim_01/L3/k3": 0.0,
+     "fuji_aim_01/L3/k19": -1.49,
+     "fuji_aim_01/L3/k21": 7.725,
+     "fuji_aim_01/L3/k24": 0.0,
+     "fuji_aim_01/L4/k1": -1.235,
+     "fuji_aim_01/L4/k19": -2.05,
+     "fuji_aim_01/L4/k21": 1.535,
+     "fuji_aim_2020_07_30/L1/k1": 0.14,
+     "fuji_aim_2020_07_30/L1/k3": -0.91,
+     "fuji_aim_2020_07_30/L1/k18": -0.31,
+     "fuji_aim_2020_07_30/L1/k7": -0.865,
+     "fuji_aim_2020_07_30/L1/k20": 1.37,
+     "fuji_aim_2020_07_30/L1/k9": -1.9,
+     "fuji_aim_2020_07_30/L1/k24": 2.0,
+     "fuji_aim_2020_07_30/L2/k1": 0.45,
+     "fuji_aim_2020_07_30/L2/k15": 0.025,
+     "fuji_aim_2020_07_30/L2/k9": -2.005,
+     "fuji_aim_2020_07_30/L2/k24": 2.0,
+     "fuji_aim_2020_07_30/L3/k1": 0.45,
+     "fuji_aim_2020_07_30/L3/k15": 3.32,
+     "fuji_aim_2020_07_30/L3/k7": -0.865,
+     "fuji_aim_2020_07_30/L3/k20": 2.27,
+     "fuji_aim_2020_07_30/L3/k21": 2.49,
+     "fuji_aim_2020_07_30/L3/k9": -2.035,
+     "fuji_aim_2020_07_30/L3/k23": 0.0,
+     "fuji_aim_2020_07_30/L3/k24": 2.0,
+     "fuji_aim_2020_07_30/L4/k1": 0.14,
+     "fuji_aim_2020_07_30/L4/k3": -0.91,
+     "fuji_aim_2020_07_30/L4/k18": 0.37,
+     "fuji_aim_2020_07_30/L4/k7": -2.87,
+     "fuji_aim_2020_07_30/L4/k9": -1.9,
+     "fuji_aim_2020_07_30/L4/k24": 1.02,
+     "fuji_aim_2020_07_30/L5/k1": 0.45,
+     "fuji_aim_2020_07_30/L5/k15": 4.495,
+     "fuji_aim_2020_07_30/L5/k3": 0.1,
+     "fuji_aim_2020_07_30/L5/k19": 0.0,
+     "fuji_aim_2020_07_30/L5/k7": -2.87,
+     "fuji_aim_2020_07_30/L5/k20": 1.37,
+     "fuji_aim_2020_07_30/L5/k21": 1.03,
+     "fuji_aim_2020_07_30/L5/k9": -2.035,
+     "fuji_aim_2020_07_30/L5/k24": 1.02,
+     "fuji_aim_2020_07_30/L6/k1": 0.14,
+     "fuji_aim_2020_07_30/L6/k3": 0.1,
+     "fuji_aim_2020_07_30/L6/k18": -0.37,
+     "fuji_aim_2020_07_30/L6/k7": -2.085,
+     "fuji_aim_2020_07_30/L6/k20": 2.27,
+     "fuji_aim_2020_07_30/L6/k21": 0.37,
+     "fuji_aim_2020_07_30/L6/k24": 1.02
+    }
+   },
+   "onVideoTipsNominal": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 14,
+      "median": 5.1,
+      "mean": 6.049,
+      "sd": 4.763,
+      "q25": 2.917,
+      "q75": 7.557,
+      "medianAbs": 5.1,
+      "p90Abs": 11.589,
+      "maxAbs": 17.38,
+      "rms": 7.593,
+      "biasShare": 0.635
+     },
+     "after": {
+      "n": 14,
+      "median": 2.6,
+      "mean": 1.962,
+      "sd": 5.888,
+      "q25": -2.791,
+      "q75": 6.918,
+      "medianAbs": 4.785,
+      "p90Abs": 7.678,
+      "maxAbs": 11.27,
+      "rms": 6.004,
+      "biasShare": 0.107
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 41,
+      "median": 4.2,
+      "mean": 3.792,
+      "sd": 3.115,
+      "q25": 1.78,
+      "q75": 5.62,
+      "medianAbs": 4.2,
+      "p90Abs": 6.09,
+      "maxAbs": 13.3,
+      "rms": 4.884,
+      "biasShare": 0.603
+     },
+     "after": {
+      "n": 41,
+      "median": 0.05,
+      "mean": 0.107,
+      "sd": 2.839,
+      "q25": -1.17,
+      "q75": 1.38,
+      "medianAbs": 1.225,
+      "p90Abs": 4.03,
+      "maxAbs": 9.135,
+      "rms": 2.806,
+      "biasShare": 0.001
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 55,
+      "median": 4.24,
+      "mean": 4.367,
+      "sd": 3.692,
+      "q25": 2.235,
+      "q75": 5.945,
+      "medianAbs": 4.24,
+      "p90Abs": 7.816,
+      "maxAbs": 17.38,
+      "rms": 5.697,
+      "biasShare": 0.588
+     },
+     "after": {
+      "n": 55,
+      "median": 0.25,
+      "mean": 0.579,
+      "sd": 3.871,
+      "q25": -1.198,
+      "q75": 2.6,
+      "medianAbs": 1.64,
+      "p90Abs": 7.471,
+      "maxAbs": 11.27,
+      "rms": 3.879,
+      "biasShare": 0.022
+     }
+    },
+    "correctionPerHeldOutEvent": {
+     "fuji_aim_01/L1/k1": 0.655,
+     "fuji_aim_01/L1/k20": 0.0,
+     "fuji_aim_01/L1/k24": 0.0,
+     "fuji_aim_01/L2/k1": 0.4,
+     "fuji_aim_01/L2/k19": 5.465,
+     "fuji_aim_01/L2/k21": 11.085,
+     "fuji_aim_01/L2/k9": 0.0,
+     "fuji_aim_01/L3/k3": 0.0,
+     "fuji_aim_01/L3/k19": 8.1,
+     "fuji_aim_01/L3/k21": 12.405,
+     "fuji_aim_01/L3/k24": 0.0,
+     "fuji_aim_01/L4/k1": 2.465,
+     "fuji_aim_01/L4/k19": 10.535,
+     "fuji_aim_01/L4/k21": 6.11,
+     "fuji_aim_2020_07_30/L1/k1": 3.86,
+     "fuji_aim_2020_07_30/L1/k3": 0.48,
+     "fuji_aim_2020_07_30/L1/k18": 3.485,
+     "fuji_aim_2020_07_30/L1/k7": 0.36,
+     "fuji_aim_2020_07_30/L1/k20": 6.09,
+     "fuji_aim_2020_07_30/L1/k9": 5.64,
+     "fuji_aim_2020_07_30/L1/k24": 4.44,
+     "fuji_aim_2020_07_30/L2/k1": 4.24,
+     "fuji_aim_2020_07_30/L2/k15": 4.165,
+     "fuji_aim_2020_07_30/L2/k9": 5.64,
+     "fuji_aim_2020_07_30/L2/k24": 4.96,
+     "fuji_aim_2020_07_30/L3/k1": 4.24,
+     "fuji_aim_2020_07_30/L3/k15": 8.17,
+     "fuji_aim_2020_07_30/L3/k7": 0.36,
+     "fuji_aim_2020_07_30/L3/k20": 7.69,
+     "fuji_aim_2020_07_30/L3/k21": 5.195,
+     "fuji_aim_2020_07_30/L3/k9": 5.05,
+     "fuji_aim_2020_07_30/L3/k23": 0.0,
+     "fuji_aim_2020_07_30/L3/k24": 4.96,
+     "fuji_aim_2020_07_30/L4/k1": 3.86,
+     "fuji_aim_2020_07_30/L4/k3": 0.48,
+     "fuji_aim_2020_07_30/L4/k18": 3.23,
+     "fuji_aim_2020_07_30/L4/k7": -1.73,
+     "fuji_aim_2020_07_30/L4/k9": 5.32,
+     "fuji_aim_2020_07_30/L4/k24": 4.44,
+     "fuji_aim_2020_07_30/L5/k1": 4.24,
+     "fuji_aim_2020_07_30/L5/k15": 9.295,
+     "fuji_aim_2020_07_30/L5/k3": 0.73,
+     "fuji_aim_2020_07_30/L5/k19": 0.0,
+     "fuji_aim_2020_07_30/L5/k7": -1.73,
+     "fuji_aim_2020_07_30/L5/k20": 6.09,
+     "fuji_aim_2020_07_30/L5/k21": 4.38,
+     "fuji_aim_2020_07_30/L5/k9": 5.05,
+     "fuji_aim_2020_07_30/L5/k24": 4.96,
+     "fuji_aim_2020_07_30/L6/k1": 3.86,
+     "fuji_aim_2020_07_30/L6/k3": 0.73,
+     "fuji_aim_2020_07_30/L6/k18": 2.515,
+     "fuji_aim_2020_07_30/L6/k7": -0.71,
+     "fuji_aim_2020_07_30/L6/k20": 7.69,
+     "fuji_aim_2020_07_30/L6/k21": 4.945,
+     "fuji_aim_2020_07_30/L6/k24": 4.44
+    }
+   }
+  },
+  "C7_perKerbLateral": {
+   "what": "per-kerb lateral shift of the block line, = median CG gap at the truth onset at that kerb on the OTHER laps (>= 2), else 0",
+   "onContactGapAtOnset": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 2,
+      "median": 0.645,
+      "mean": 0.645,
+      "sd": 0.773,
+      "q25": 0.371,
+      "q75": 0.918,
+      "medianAbs": 0.645,
+      "p90Abs": 1.082,
+      "maxAbs": 1.191,
+      "rms": 0.845,
+      "biasShare": 0.582
+     },
+     "after": {
+      "n": 2,
+      "median": 0.645,
+      "mean": 0.645,
+      "sd": 0.773,
+      "q25": 0.371,
+      "q75": 0.918,
+      "medianAbs": 0.645,
+      "p90Abs": 1.082,
+      "maxAbs": 1.191,
+      "rms": 0.845,
+      "biasShare": 0.582
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 27,
+      "median": 0.226,
+      "mean": 0.624,
+      "sd": 1.196,
+      "q25": -0.131,
+      "q75": 0.903,
+      "medianAbs": 0.43,
+      "p90Abs": 2.459,
+      "maxAbs": 3.884,
+      "rms": 1.329,
+      "biasShare": 0.22
+     },
+     "after": {
+      "n": 27,
+      "median": 0.141,
+      "mean": 0.041,
+      "sd": 1.133,
+      "q25": -0.506,
+      "q75": 0.528,
+      "medianAbs": 0.575,
+      "p90Abs": 1.988,
+      "maxAbs": 3.169,
+      "rms": 1.112,
+      "biasShare": 0.001
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 29,
+      "median": 0.226,
+      "mean": 0.625,
+      "sd": 1.161,
+      "q25": -0.121,
+      "q75": 1.092,
+      "medianAbs": 0.43,
+      "p90Abs": 2.374,
+      "maxAbs": 3.884,
+      "rms": 1.301,
+      "biasShare": 0.231
+     },
+     "after": {
+      "n": 29,
+      "median": 0.141,
+      "mean": 0.083,
+      "sd": 1.112,
+      "q25": -0.43,
+      "q75": 0.575,
+      "medianAbs": 0.575,
+      "p90Abs": 1.985,
+      "maxAbs": 3.169,
+      "rms": 1.096,
+      "biasShare": 0.006
+     }
+    },
+    "correctionPerHeldOutEvent": {
+     "fuji_aim_01/L3/k7": 0.0,
+     "fuji_aim_01/L4/k24": 0.0,
+     "fuji_aim_2020_07_30/L1/k13": -0.241,
+     "fuji_aim_2020_07_30/L1/k1": 2.501,
+     "fuji_aim_2020_07_30/L1/k15": 0.0,
+     "fuji_aim_2020_07_30/L1/k3": -0.034,
+     "fuji_aim_2020_07_30/L1/kDunlopR": -0.043,
+     "fuji_aim_2020_07_30/L1/k21": 0.0,
+     "fuji_aim_2020_07_30/L2/k13": -0.014,
+     "fuji_aim_2020_07_30/L2/k1": 1.691,
+     "fuji_aim_2020_07_30/L2/kDunlopR": 0.379,
+     "fuji_aim_2020_07_30/L2/k7": 0.219,
+     "fuji_aim_2020_07_30/L2/k21": 0.0,
+     "fuji_aim_2020_07_30/L2/k10": 0.159,
+     "fuji_aim_2020_07_30/L3/k1": 1.691,
+     "fuji_aim_2020_07_30/L3/k3": -0.306,
+     "fuji_aim_2020_07_30/L3/k24": 0.0,
+     "fuji_aim_2020_07_30/L4/k13": -0.368,
+     "fuji_aim_2020_07_30/L4/k1": 1.691,
+     "fuji_aim_2020_07_30/L4/k7": 0.101,
+     "fuji_aim_2020_07_30/L5/k1": 2.713,
+     "fuji_aim_2020_07_30/L5/k7": 0.202,
+     "fuji_aim_2020_07_30/L5/k10": 0.011,
+     "fuji_aim_2020_07_30/L6/k1": 2.501,
+     "fuji_aim_2020_07_30/L6/k3": -0.393,
+     "fuji_aim_2020_07_30/L6/kDunlopR": 0.11,
+     "fuji_aim_2020_07_30/L6/k10": 0.448,
+     "fuji_aim_2020_07_30/L6/k24": 0.0
+    }
+   },
+   "onVideoTipLateral": {
+    "fuji_aim_01": {
+     "before": {
+      "n": 14,
+      "median": 0.665,
+      "mean": 0.457,
+      "sd": 1.008,
+      "q25": -0.385,
+      "q75": 1.11,
+      "medianAbs": 0.86,
+      "p90Abs": 1.707,
+      "maxAbs": 1.82,
+      "rms": 1.073,
+      "biasShare": 0.181
+     },
+     "after": {
+      "n": 14,
+      "median": 0.133,
+      "mean": -0.002,
+      "sd": 0.703,
+      "q25": -0.266,
+      "q75": 0.353,
+      "medianAbs": 0.345,
+      "p90Abs": 1.224,
+      "maxAbs": 1.49,
+      "rms": 0.678,
+      "biasShare": 0.0
+     }
+    },
+    "fuji_aim_2020_07_30": {
+     "before": {
+      "n": 41,
+      "median": 0.02,
+      "mean": 0.025,
+      "sd": 0.758,
+      "q25": -0.34,
+      "q75": 0.49,
+      "medianAbs": 0.46,
+      "p90Abs": 1.39,
+      "maxAbs": 1.54,
+      "rms": 0.749,
+      "biasShare": 0.001
+     },
+     "after": {
+      "n": 41,
+      "median": -0.01,
+      "mean": -0.027,
+      "sd": 0.673,
+      "q25": -0.49,
+      "q75": 0.375,
+      "medianAbs": 0.46,
+      "p90Abs": 1.245,
+      "maxAbs": 1.445,
+      "rms": 0.666,
+      "biasShare": 0.002
+     }
+    },
+    "pooled": {
+     "before": {
+      "n": 55,
+      "median": 0.17,
+      "mean": 0.135,
+      "sd": 0.841,
+      "q25": -0.365,
+      "q75": 0.725,
+      "medianAbs": 0.5,
+      "p90Abs": 1.438,
+      "maxAbs": 1.82,
+      "rms": 0.844,
+      "biasShare": 0.026
+     },
+     "after": {
+      "n": 55,
+      "median": 0.01,
+      "mean": -0.02,
+      "sd": 0.675,
+      "q25": -0.475,
+      "q75": 0.375,
+      "medianAbs": 0.46,
+      "p90Abs": 1.272,
+      "maxAbs": 1.49,
+      "rms": 0.669,
+      "biasShare": 0.001
+     }
+    },
+    "correctionPerHeldOutEvent": {
+     "fuji_aim_01/L1/k1": 1.005,
+     "fuji_aim_01/L1/k20": 0.0,
+     "fuji_aim_01/L1/k24": 0.0,
+     "fuji_aim_01/L2/k1": 0.905,
+     "fuji_aim_01/L2/k19": -0.27,
+     "fuji_aim_01/L2/k21": 1.46,
+     "fuji_aim_01/L2/k9": 0.0,
+     "fuji_aim_01/L3/k3": 0.0,
+     "fuji_aim_01/L3/k19": -0.505,
+     "fuji_aim_01/L3/k21": 1.47,
+     "fuji_aim_01/L3/k24": 0.0,
+     "fuji_aim_01/L4/k1": 0.83,
+     "fuji_aim_01/L4/k19": -0.275,
+     "fuji_aim_01/L4/k21": 1.81,
+     "fuji_aim_2020_07_30/L1/k1": 0.73,
+     "fuji_aim_2020_07_30/L1/k3": 0.82,
+     "fuji_aim_2020_07_30/L1/k18": -0.12,
+     "fuji_aim_2020_07_30/L1/k7": 0.13,
+     "fuji_aim_2020_07_30/L1/k20": -0.53,
+     "fuji_aim_2020_07_30/L1/k9": -1.435,
+     "fuji_aim_2020_07_30/L1/k24": 0.17,
+     "fuji_aim_2020_07_30/L2/k1": 0.72,
+     "fuji_aim_2020_07_30/L2/k15": -0.8,
+     "fuji_aim_2020_07_30/L2/k9": -0.82,
+     "fuji_aim_2020_07_30/L2/k24": -0.12,
+     "fuji_aim_2020_07_30/L3/k1": 0.72,
+     "fuji_aim_2020_07_30/L3/k15": -0.365,
+     "fuji_aim_2020_07_30/L3/k7": 0.13,
+     "fuji_aim_2020_07_30/L3/k20": -0.53,
+     "fuji_aim_2020_07_30/L3/k21": 1.38,
+     "fuji_aim_2020_07_30/L3/k9": -1.435,
+     "fuji_aim_2020_07_30/L3/k23": 0.0,
+     "fuji_aim_2020_07_30/L3/k24": 0.17,
+     "fuji_aim_2020_07_30/L4/k1": 0.72,
+     "fuji_aim_2020_07_30/L4/k3": 0.22,
+     "fuji_aim_2020_07_30/L4/k18": 0.195,
+     "fuji_aim_2020_07_30/L4/k7": -0.095,
+     "fuji_aim_2020_07_30/L4/k9": -0.805,
+     "fuji_aim_2020_07_30/L4/k24": 0.17,
+     "fuji_aim_2020_07_30/L5/k1": 0.73,
+     "fuji_aim_2020_07_30/L5/k15": -0.775,
+     "fuji_aim_2020_07_30/L5/k3": 0.22,
+     "fuji_aim_2020_07_30/L5/k19": 0.0,
+     "fuji_aim_2020_07_30/L5/k7": -0.095,
+     "fuji_aim_2020_07_30/L5/k20": 0.02,
+     "fuji_aim_2020_07_30/L5/k21": 1.025,
+     "fuji_aim_2020_07_30/L5/k9": -0.805,
+     "fuji_aim_2020_07_30/L5/k24": -0.12,
+     "fuji_aim_2020_07_30/L6/k1": 0.73,
+     "fuji_aim_2020_07_30/L6/k3": 0.82,
+     "fuji_aim_2020_07_30/L6/k18": 0.175,
+     "fuji_aim_2020_07_30/L6/k7": 0.055,
+     "fuji_aim_2020_07_30/L6/k20": 0.02,
+     "fuji_aim_2020_07_30/L6/k21": 1.015,
+     "fuji_aim_2020_07_30/L6/k24": -0.12
+    }
+   }
+  },
+  "C5_poseTimeShift": {
+   "what": "shift the drawn pose in time (t -> t + tau). Rejected as a correction if the drawn heading already matches the IMU yaw: a pose time shift moves the heading too.",
+   "headingTimingWholeLap": {
+    "fuji_aim_01/L1": {
+     "cgHeadingLeadsImuS": 0.0505,
+     "r": 0.9988,
+     "scaleCgOverImu": 1.211
+    },
+    "fuji_aim_01/L2": {
+     "cgHeadingLeadsImuS": 0.0477,
+     "r": 0.9973,
+     "scaleCgOverImu": 1.214
+    },
+    "fuji_aim_01/L3": {
+     "cgHeadingLeadsImuS": 0.0263,
+     "r": 0.9982,
+     "scaleCgOverImu": 1.218
+    },
+    "fuji_aim_01/L4": {
+     "cgHeadingLeadsImuS": 0.0493,
+     "r": 0.9983,
+     "scaleCgOverImu": 1.222
+    },
+    "fuji_aim_2020_07_30/L1": {
+     "cgHeadingLeadsImuS": 0.0012,
+     "r": 0.9989,
+     "scaleCgOverImu": 1.214
+    },
+    "fuji_aim_2020_07_30/L2": {
+     "cgHeadingLeadsImuS": 0.0014,
+     "r": 0.9988,
+     "scaleCgOverImu": 1.215
+    },
+    "fuji_aim_2020_07_30/L3": {
+     "cgHeadingLeadsImuS": 0.0259,
+     "r": 0.9989,
+     "scaleCgOverImu": 1.217
+    },
+    "fuji_aim_2020_07_30/L4": {
+     "cgHeadingLeadsImuS": 0.0163,
+     "r": 0.9989,
+     "scaleCgOverImu": 1.214
+    },
+    "fuji_aim_2020_07_30/L5": {
+     "cgHeadingLeadsImuS": 0.0167,
+     "r": 0.9987,
+     "scaleCgOverImu": 1.213
+    },
+    "fuji_aim_2020_07_30/L6": {
+     "cgHeadingLeadsImuS": 0.0316,
+     "r": 0.999,
+     "scaleCgOverImu": 1.214
+    }
+   }
+  }
+ }
+}

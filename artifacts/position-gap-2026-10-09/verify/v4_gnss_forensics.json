@@ -1,0 +1,218 @@
+{
+ "FUJI_WET_XRK": {
+  ".xrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.xrk",
+   "size": 3283910,
+   "ubxFramesChecksumValid": {},
+   "gps": {
+    "payloadLengthHistogram": {
+     "56": 7922
+    },
+    "decoded": 7922,
+    "weeks": [
+     2116
+    ],
+    "gpsFixValues": {
+     "3": 7922
+    },
+    "diffSolnFractionAll": 0.8239081040141378,
+    "diffSolnFractionAfterFirstUncorrectedRun": 0.9995405819295559,
+    "firstDiffSolnEpochIndex": 1392,
+    "lastNonDiffSolnEpochSecondsFromStart": 141.3,
+    "sessionSeconds": 792.1,
+    "pAccMedianM": 0.91,
+    "pAccP95M": 1.38,
+    "numSVMedian": 13.0,
+    "numSVRange": [
+     6,
+     15
+    ],
+    "pDopMedian": 1.65,
+    "iTOWStepMsHistogram": {
+     "100": 7921
+    }
+   },
+   "tagTokens": {
+    "GPS": 7922,
+    "CHS": 48,
+    "CDE": 48,
+    "CAL": 7,
+    "LAP": 6,
+    "RCR": 2,
+    "VEH": 2,
+    "CMP": 2,
+    "VTY": 2,
+    "iSLV": 2,
+    "CNF": 1,
+    "GRP": 1,
+    "NDV": 1,
+    "SRC": 1,
+    "ENF": 1,
+    "MAN": 1,
+    "MOD": 1,
+    "TRK": 1,
+    "TMD": 1,
+    "TMT": 1,
+    "+LM": 1,
+    "VPVp": 1,
+    "NTE": 1
+   }
+  },
+  ".rrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.rrk",
+   "size": 507072,
+   "ubxFramesChecksumValid": {},
+   "tiling": {
+    "headerBytes": 64,
+    "recordSize": 64,
+    "strideRecords": 7922,
+    "strideRecordsWithTag": 7922,
+    "trailingBytes": 0,
+    "tagOccurrences": 7923
+   }
+  },
+  ".gpk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.gpk",
+   "size": 2281632,
+   "ubxFramesChecksumValid": {},
+   "tiling": {
+    "headerBytes": 96,
+    "recordSize": 144,
+    "strideRecords": 15844,
+    "strideRecordsWithTag": 15844,
+    "trailingBytes": 0,
+    "tagOccurrences": 15845
+   }
+  },
+  ".drk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.drk",
+   "size": 1498366,
+   "ubxFramesChecksumValid": {},
+   "gpsOrRawStrings": [
+    "GPS_Altitude",
+    "GPS_Gyro",
+    "GPS_Heading",
+    "GPS_LatAcc",
+    "GPS_LonAcc",
+    "GPS_Nsat",
+    "GPS_PosAccuracy",
+    "GPS_Slope",
+    "GPS_SpdAccuracy",
+    "GPS_Speed"
+   ]
+  },
+  ".bak": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.bak",
+   "size": 1498366,
+   "ubxFramesChecksumValid": {}
+  }
+ },
+ "FUJI_DRY_XRK": {
+  ".xrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.xrk",
+   "size": 4040243,
+   "ubxFramesChecksumValid": {},
+   "gps": {
+    "payloadLengthHistogram": {
+     "56": 9741
+    },
+    "decoded": 9741,
+    "weeks": [
+     2116
+    ],
+    "gpsFixValues": {
+     "3": 9741
+    },
+    "diffSolnFractionAll": 1.0,
+    "diffSolnFractionAfterFirstUncorrectedRun": 1.0,
+    "firstDiffSolnEpochIndex": 0,
+    "lastNonDiffSolnEpochSecondsFromStart": null,
+    "sessionSeconds": 974.0,
+    "pAccMedianM": 0.85,
+    "pAccP95M": 1.96,
+    "numSVMedian": 13.0,
+    "numSVRange": [
+     7,
+     15
+    ],
+    "pDopMedian": 1.6,
+    "iTOWStepMsHistogram": {
+     "100": 9740
+    }
+   },
+   "tagTokens": {
+    "GPS": 9741,
+    "CHS": 48,
+    "CDE": 48,
+    "LAP": 8,
+    "CAL": 7,
+    "RCR": 2,
+    "VEH": 2,
+    "CMP": 2,
+    "VTY": 2,
+    "iSLV": 2,
+    "CNF": 1,
+    "GRP": 1,
+    "NDV": 1,
+    "SRC": 1,
+    "ENF": 1,
+    "MAN": 1,
+    "MOD": 1,
+    "TRK": 1,
+    "TMD": 1,
+    "TMT": 1,
+    "+LM": 1,
+    "NTE": 1
+   }
+  },
+  ".rrk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.rrk",
+   "size": 623488,
+   "ubxFramesChecksumValid": {},
+   "tiling": {
+    "headerBytes": 64,
+    "recordSize": 64,
+    "strideRecords": 9741,
+    "strideRecordsWithTag": 9741,
+    "trailingBytes": 0,
+    "tagOccurrences": 9742
+   }
+  },
+  ".gpk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.gpk",
+   "size": 2805504,
+   "ubxFramesChecksumValid": {},
+   "tiling": {
+    "headerBytes": 96,
+    "recordSize": 144,
+    "strideRecords": 19482,
+    "strideRecordsWithTag": 19482,
+    "trailingBytes": 0,
+    "tagOccurrences": 19483
+   }
+  },
+  ".drk": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.drk",
+   "size": 1827634,
+   "ubxFramesChecksumValid": {},
+   "gpsOrRawStrings": [
+    "GPS_Altitude",
+    "GPS_Gyro",
+    "GPS_Heading",
+    "GPS_LatAcc",
+    "GPS_LonAcc",
+    "GPS_Nsat",
+    "GPS_PosAccuracy",
+    "GPS_Slope",
+    "GPS_SpdAccuracy",
+    "GPS_Speed",
+    "tCr6raw"
+   ]
+  },
+  ".bak": {
+   "name": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.bak",
+   "size": 1827634,
+   "ubxFramesChecksumValid": {}
+  }
+ }
+}

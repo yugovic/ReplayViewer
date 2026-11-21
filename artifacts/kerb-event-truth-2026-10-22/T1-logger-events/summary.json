@@ -1,0 +1,4384 @@
+{
+ "kind": "T1 logger-event summary",
+ "source": "events.json",
+ "sessions": {
+  "fuji_aim_01": {
+   "records": 56,
+   "markerCoverage": {
+    "steerOnset": 55,
+    "steerRatePeak": 55,
+    "yawOnset": 56,
+    "brakeOnset": 37,
+    "minSpeed": 56,
+    "latGPeak": 56,
+    "yawRatePeak": 56,
+    "steerMax": 56,
+    "steerRampOnset": 40,
+    "kerbContactOnset": 4,
+    "kerbContactPeak": 4
+   },
+   "passesWithKerbContactByBestConfidence": {
+    "none": 52,
+    "high": 2,
+    "low": 2
+   },
+   "flagCounts": {
+    "noKerbContact": 52,
+    "linkedOppositeCorner": 31,
+    "lapOutlierVsSessionMedian>1s": 17,
+    "linkedSameCorner": 12,
+    "minSpeedAtWindowEdge": 9,
+    "brakeRunShared": 7,
+    "minSpeedFlat>1s": 6,
+    "steerPeakAtWindowEdge": 5,
+    "steerYawOnsetGap>0.5s": 5,
+    "sharesSteerOnsetWith": 3,
+    "sharesYawOnsetWith": 3,
+    "weakSteer": 2,
+    "kerbContactLowConfidenceOnly": 2,
+    "noSteerOnset": 1,
+    "latGPeakAtWindowEdge": 1
+   },
+   "timingSpreadAll": {
+    "brakeOnset->steerOnset": {
+     "dtS": {
+      "n": 37,
+      "median": 1.623,
+      "q25": 1.015,
+      "q75": 4.277,
+      "p5": -0.279,
+      "p95": 7.14,
+      "min": -0.445,
+      "max": 8.011,
+      "mean": 2.742,
+      "sd": 2.424
+     },
+     "dStationMDerived": {
+      "n": 37,
+      "median": 61.6,
+      "q25": 27.5,
+      "q75": 137.7,
+      "p5": -4.44,
+      "p95": 189.5,
+      "min": -12.2,
+      "max": 235.9,
+      "mean": 79.97,
+      "sd": 66.893
+     }
+    },
+    "steerRampOnset->steerOnset": {
+     "dtS": {
+      "n": 40,
+      "median": 0.099,
+      "q25": 0.065,
+      "q75": 0.335,
+      "p5": -0.066,
+      "p95": 1.069,
+      "min": -0.085,
+      "max": 1.848,
+      "mean": 0.268,
+      "sd": 0.393
+     },
+     "dStationMDerived": {
+      "n": 40,
+      "median": 2.7,
+      "q25": 1.7,
+      "q75": 7.275,
+      "p5": -1.61,
+      "p95": 29.125,
+      "min": -2.1,
+      "max": 43.2,
+      "mean": 7.08,
+      "sd": 10.473
+     }
+    },
+    "steerOnset->yawOnset": {
+     "dtS": {
+      "n": 55,
+      "median": 0.169,
+      "q25": 0.132,
+      "q75": 0.229,
+      "p5": -0.184,
+      "p95": 0.588,
+      "min": -0.511,
+      "max": 1.188,
+      "mean": 0.199,
+      "sd": 0.247
+     },
+     "dStationMDerived": {
+      "n": 55,
+      "median": 4.6,
+      "q25": 3.3,
+      "q75": 6.0,
+      "p5": -5.2,
+      "p95": 17.65,
+      "min": -13.3,
+      "max": 36.4,
+      "mean": 5.385,
+      "sd": 7.132
+     }
+    },
+    "steerOnset->steerRatePeak": {
+     "dtS": {
+      "n": 55,
+      "median": 0.853,
+      "q25": 0.174,
+      "q75": 1.614,
+      "p5": 0.014,
+      "p95": 2.817,
+      "min": 0.0,
+      "max": 5.55,
+      "mean": 1.086,
+      "sd": 1.102
+     },
+     "dStationMDerived": {
+      "n": 55,
+      "median": 21.2,
+      "q25": 4.9,
+      "q75": 35.45,
+      "p5": 0.34,
+      "p95": 67.02,
+      "min": 0.0,
+      "max": 149.3,
+      "mean": 27.28,
+      "sd": 28.423
+     }
+    },
+    "steerOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 4,
+      "median": 3.605,
+      "q25": 2.959,
+      "q75": 4.017,
+      "p5": 2.166,
+      "p95": 4.249,
+      "min": 1.968,
+      "max": 4.307,
+      "mean": 3.371,
+      "sd": 1.025
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": 67.85,
+      "q25": 53.375,
+      "q75": 80.425,
+      "p5": 38.675,
+      "p95": 90.565,
+      "min": 35.0,
+      "max": 93.1,
+      "mean": 65.95,
+      "sd": 24.777
+     }
+    },
+    "yawOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 4,
+      "median": 3.24,
+      "q25": 2.498,
+      "q75": 4.018,
+      "p5": 1.94,
+      "p95": 4.658,
+      "min": 1.801,
+      "max": 4.818,
+      "mean": 3.275,
+      "sd": 1.301
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": 57.95,
+      "q25": 50.9,
+      "q75": 70.625,
+      "p5": 35.78,
+      "p95": 99.245,
+      "min": 32.0,
+      "max": 106.4,
+      "mean": 63.575,
+      "sd": 31.066
+     }
+    },
+    "kerbContactOnset->kerbContactPeak": {
+     "dtS": {
+      "n": 4,
+      "median": 0.267,
+      "q25": 0.248,
+      "q75": 0.273,
+      "p5": 0.213,
+      "p95": 0.275,
+      "min": 0.204,
+      "max": 0.275,
+      "mean": 0.253,
+      "sd": 0.033
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": 5.4,
+      "q25": 4.375,
+      "q75": 6.225,
+      "p5": 3.355,
+      "p95": 6.765,
+      "min": 3.1,
+      "max": 6.9,
+      "mean": 5.2,
+      "sd": 1.643
+     }
+    },
+    "kerbContactOnset->minSpeed": {
+     "dtS": {
+      "n": 4,
+      "median": 0.095,
+      "q25": -0.762,
+      "q75": 0.374,
+      "p5": -2.543,
+      "p95": 0.769,
+      "min": -2.988,
+      "max": 0.868,
+      "mean": -0.483,
+      "sd": 1.712
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": 2.65,
+      "q25": -12.175,
+      "q75": 8.725,
+      "p5": -40.195,
+      "p95": 15.745,
+      "min": -47.2,
+      "max": 17.5,
+      "mean": -6.1,
+      "sd": 28.397
+     }
+    },
+    "kerbContactOnset->latGPeak": {
+     "dtS": {
+      "n": 4,
+      "median": -0.381,
+      "q25": -0.594,
+      "q75": -0.017,
+      "p5": -0.881,
+      "p95": 0.633,
+      "min": -0.953,
+      "max": 0.796,
+      "mean": -0.23,
+      "sd": 0.739
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": -7.45,
+      "q25": -11.6,
+      "q75": 0.65,
+      "p5": -14.72,
+      "p95": 13.25,
+      "min": -15.5,
+      "max": 16.4,
+      "mean": -3.5,
+      "sd": 13.994
+     }
+    },
+    "kerbContactOnset->yawRatePeak": {
+     "dtS": {
+      "n": 4,
+      "median": -0.469,
+      "q25": -0.951,
+      "q75": 0.143,
+      "p5": -1.135,
+      "p95": 0.634,
+      "min": -1.181,
+      "max": 0.757,
+      "mean": -0.34,
+      "sd": 0.871
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": -7.7,
+      "q25": -17.475,
+      "q75": 2.775,
+      "p5": -25.095,
+      "p95": 12.075,
+      "min": -27.0,
+      "max": 14.4,
+      "mean": -7.0,
+      "sd": 17.758
+     }
+    },
+    "kerbContactOnset->steerMax": {
+     "dtS": {
+      "n": 4,
+      "median": 0.099,
+      "q25": -0.312,
+      "q75": 0.407,
+      "p5": -0.938,
+      "p95": 0.786,
+      "min": -1.094,
+      "max": 0.881,
+      "mean": -0.004,
+      "sd": 0.824
+     },
+     "dStationMDerived": {
+      "n": 4,
+      "median": 2.7,
+      "q25": -5.15,
+      "q75": 9.25,
+      "p5": -14.87,
+      "p95": 15.85,
+      "min": -17.3,
+      "max": 17.5,
+      "mean": 1.4,
+      "sd": 14.619
+     }
+    },
+    "minSpeed->latGPeak": {
+     "dtS": {
+      "n": 56,
+      "median": 0.249,
+      "q25": -0.271,
+      "q75": 1.496,
+      "p5": -1.434,
+      "p95": 3.602,
+      "min": -2.241,
+      "max": 3.708,
+      "mean": 0.673,
+      "sd": 1.492
+     },
+     "dStationMDerived": {
+      "n": 56,
+      "median": 4.35,
+      "q25": -5.375,
+      "q75": 48.45,
+      "p5": -27.1,
+      "p95": 102.35,
+      "min": -77.3,
+      "max": 126.9,
+      "mean": 21.225,
+      "sd": 43.009
+     }
+    },
+    "latGPeak->yawRatePeak": {
+     "dtS": {
+      "n": 56,
+      "median": -0.029,
+      "q25": -0.177,
+      "q75": 0.082,
+      "p5": -0.714,
+      "p95": 1.036,
+      "min": -0.982,
+      "max": 2.41,
+      "mean": 0.018,
+      "sd": 0.577
+     },
+     "dStationMDerived": {
+      "n": 56,
+      "median": -0.9,
+      "q25": -4.675,
+      "q75": 1.275,
+      "p5": -19.325,
+      "p95": 24.775,
+      "min": -28.4,
+      "max": 65.3,
+      "mean": 0.207,
+      "sd": 15.655
+     }
+    },
+    "yawRatePeak->steerMax": {
+     "dtS": {
+      "n": 56,
+      "median": -0.131,
+      "q25": -0.326,
+      "q75": 0.189,
+      "p5": -1.778,
+      "p95": 1.256,
+      "min": -2.468,
+      "max": 2.022,
+      "mean": -0.124,
+      "sd": 0.856
+     },
+     "dStationMDerived": {
+      "n": 56,
+      "median": -2.85,
+      "q25": -8.45,
+      "q75": 3.325,
+      "p5": -54.8,
+      "p95": 32.525,
+      "min": -67.7,
+      "max": 39.0,
+      "mean": -5.009,
+      "sd": 23.471
+     }
+    },
+    "minSpeed->steerMax": {
+     "dtS": {
+      "n": 56,
+      "median": 0.318,
+      "q25": -0.138,
+      "q75": 1.462,
+      "p5": -1.042,
+      "p95": 2.294,
+      "min": -2.415,
+      "max": 3.524,
+      "mean": 0.566,
+      "sd": 1.128
+     },
+     "dStationMDerived": {
+      "n": 56,
+      "median": 6.05,
+      "q25": -2.6,
+      "q75": 38.475,
+      "p5": -21.4,
+      "p95": 66.85,
+      "min": -91.8,
+      "max": 120.7,
+      "mean": 16.423,
+      "sd": 33.289
+     }
+    }
+   },
+   "timingSpreadClean": {
+    "brakeOnset->steerOnset": {
+     "dtS": {
+      "n": 20,
+      "median": 1.509,
+      "q25": 1.103,
+      "q75": 3.062,
+      "p5": -0.362,
+      "p95": 6.089,
+      "min": -0.445,
+      "max": 6.275,
+      "mean": 2.076,
+      "sd": 1.813
+     },
+     "dStationMDerived": {
+      "n": 20,
+      "median": 40.7,
+      "q25": 36.625,
+      "q75": 95.9,
+      "p5": -5.36,
+      "p95": 148.57,
+      "min": -12.2,
+      "max": 168.9,
+      "mean": 64.435,
+      "sd": 51.025
+     }
+    },
+    "steerRampOnset->steerOnset": {
+     "dtS": {
+      "n": 28,
+      "median": 0.095,
+      "q25": 0.053,
+      "q75": 0.242,
+      "p5": -0.071,
+      "p95": 0.45,
+      "min": -0.085,
+      "max": 0.909,
+      "mean": 0.163,
+      "sd": 0.209
+     },
+     "dStationMDerived": {
+      "n": 28,
+      "median": 2.3,
+      "q25": 1.625,
+      "q75": 4.575,
+      "p5": -1.73,
+      "p95": 15.54,
+      "min": -2.1,
+      "max": 28.7,
+      "mean": 4.393,
+      "sd": 6.427
+     }
+    },
+    "steerOnset->yawOnset": {
+     "dtS": {
+      "n": 35,
+      "median": 0.169,
+      "q25": 0.13,
+      "q75": 0.199,
+      "p5": -0.09,
+      "p95": 0.401,
+      "min": -0.473,
+      "max": 0.473,
+      "mean": 0.17,
+      "sd": 0.169
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 4.3,
+      "q25": 3.3,
+      "q75": 5.55,
+      "p5": -3.03,
+      "p95": 11.05,
+      "min": -10.8,
+      "max": 13.0,
+      "mean": 4.434,
+      "sd": 4.515
+     }
+    },
+    "steerOnset->steerRatePeak": {
+     "dtS": {
+      "n": 35,
+      "median": 0.669,
+      "q25": 0.174,
+      "q75": 1.306,
+      "p5": 0.026,
+      "p95": 2.748,
+      "min": 0.002,
+      "max": 3.274,
+      "mean": 0.975,
+      "sd": 0.927
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 18.8,
+      "q25": 5.35,
+      "q75": 31.75,
+      "p5": 0.64,
+      "p95": 64.43,
+      "min": 0.0,
+      "max": 95.9,
+      "mean": 23.871,
+      "sd": 22.702
+     }
+    },
+    "steerOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 0
+     },
+     "dStationMDerived": {
+      "n": 0
+     }
+    },
+    "yawOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 0
+     },
+     "dStationMDerived": {
+      "n": 0
+     }
+    },
+    "kerbContactOnset->kerbContactPeak": {
+     "dtS": {
+      "n": 2,
+      "median": 0.269,
+      "q25": 0.265,
+      "q75": 0.272,
+      "p5": 0.263,
+      "p95": 0.274,
+      "min": 0.262,
+      "max": 0.275,
+      "mean": 0.269,
+      "sd": 0.009
+     },
+     "dStationMDerived": {
+      "n": 2,
+      "median": 6.45,
+      "q25": 6.225,
+      "q75": 6.675,
+      "p5": 6.045,
+      "p95": 6.855,
+      "min": 6.0,
+      "max": 6.9,
+      "mean": 6.45,
+      "sd": 0.636
+     }
+    },
+    "kerbContactOnset->minSpeed": {
+     "dtS": {
+      "n": 2,
+      "median": 0.539,
+      "q25": 0.374,
+      "q75": 0.703,
+      "p5": 0.242,
+      "p95": 0.835,
+      "min": 0.209,
+      "max": 0.868,
+      "mean": 0.539,
+      "sd": 0.466
+     },
+     "dStationMDerived": {
+      "n": 2,
+      "median": 11.65,
+      "q25": 8.725,
+      "q75": 14.575,
+      "p5": 6.385,
+      "p95": 16.915,
+      "min": 5.8,
+      "max": 17.5,
+      "mean": 11.65,
+      "sd": 8.273
+     }
+    },
+    "kerbContactOnset->latGPeak": {
+     "dtS": {
+      "n": 2,
+      "median": 0.161,
+      "q25": -0.157,
+      "q75": 0.479,
+      "p5": -0.411,
+      "p95": 0.733,
+      "min": -0.474,
+      "max": 0.796,
+      "mean": 0.161,
+      "sd": 0.898
+     },
+     "dStationMDerived": {
+      "n": 2,
+      "median": 3.05,
+      "q25": -3.625,
+      "q75": 9.725,
+      "p5": -8.965,
+      "p95": 15.065,
+      "min": -10.3,
+      "max": 16.4,
+      "mean": 3.05,
+      "sd": 18.88
+     }
+    },
+    "kerbContactOnset->yawRatePeak": {
+     "dtS": {
+      "n": 2,
+      "median": -0.212,
+      "q25": -0.696,
+      "q75": 0.273,
+      "p5": -1.084,
+      "p95": 0.66,
+      "min": -1.181,
+      "max": 0.757,
+      "mean": -0.212,
+      "sd": 1.37
+     },
+     "dStationMDerived": {
+      "n": 2,
+      "median": -6.3,
+      "q25": -16.65,
+      "q75": 4.05,
+      "p5": -24.93,
+      "p95": 12.33,
+      "min": -27.0,
+      "max": 14.4,
+      "mean": -6.3,
+      "sd": 29.274
+     }
+    },
+    "kerbContactOnset->steerMax": {
+     "dtS": {
+      "n": 2,
+      "median": 0.565,
+      "q25": 0.407,
+      "q75": 0.723,
+      "p5": 0.281,
+      "p95": 0.849,
+      "min": 0.249,
+      "max": 0.881,
+      "mean": 0.565,
+      "sd": 0.447
+     },
+     "dStationMDerived": {
+      "n": 2,
+      "median": 12.0,
+      "q25": 9.25,
+      "q75": 14.75,
+      "p5": 7.05,
+      "p95": 16.95,
+      "min": 6.5,
+      "max": 17.5,
+      "mean": 12.0,
+      "sd": 7.778
+     }
+    },
+    "minSpeed->latGPeak": {
+     "dtS": {
+      "n": 41,
+      "median": -0.08,
+      "q25": -0.327,
+      "q75": 0.655,
+      "p5": -1.329,
+      "p95": 1.984,
+      "min": -2.241,
+      "max": 3.183,
+      "mean": 0.138,
+      "sd": 1.036
+     },
+     "dStationMDerived": {
+      "n": 41,
+      "median": -1.2,
+      "q25": -8.1,
+      "q75": 16.2,
+      "p5": -25.2,
+      "p95": 49.5,
+      "min": -57.5,
+      "max": 101.6,
+      "mean": 5.941,
+      "sd": 27.813
+     }
+    },
+    "latGPeak->yawRatePeak": {
+     "dtS": {
+      "n": 55,
+      "median": -0.026,
+      "q25": -0.17,
+      "q75": 0.087,
+      "p5": -0.715,
+      "p95": 1.048,
+      "min": -0.982,
+      "max": 2.41,
+      "mean": 0.027,
+      "sd": 0.578
+     },
+     "dStationMDerived": {
+      "n": 55,
+      "median": -0.6,
+      "q25": -4.45,
+      "q75": 1.35,
+      "p5": -19.43,
+      "p95": 24.93,
+      "min": -28.4,
+      "max": 65.3,
+      "mean": 0.484,
+      "sd": 15.661
+     }
+    },
+    "yawRatePeak->steerMax": {
+     "dtS": {
+      "n": 49,
+      "median": -0.103,
+      "q25": -0.222,
+      "q75": 0.429,
+      "p5": -1.812,
+      "p95": 1.264,
+      "min": -2.468,
+      "max": 2.022,
+      "mean": -0.051,
+      "sd": 0.874
+     },
+     "dStationMDerived": {
+      "n": 49,
+      "median": -2.1,
+      "q25": -6.2,
+      "q75": 6.7,
+      "p5": -55.78,
+      "p95": 32.98,
+      "min": -67.7,
+      "max": 39.0,
+      "mean": -2.955,
+      "sd": 23.844
+     }
+    },
+    "minSpeed->steerMax": {
+     "dtS": {
+      "n": 38,
+      "median": 0.092,
+      "q25": -0.187,
+      "q75": 0.376,
+      "p5": -1.03,
+      "p95": 1.501,
+      "min": -1.746,
+      "max": 1.894,
+      "mean": 0.15,
+      "sd": 0.703
+     },
+     "dStationMDerived": {
+      "n": 38,
+      "median": 1.85,
+      "q25": -3.725,
+      "q75": 8.95,
+      "p5": -20.56,
+      "p95": 37.16,
+      "min": -32.7,
+      "max": 41.4,
+      "mean": 3.868,
+      "sd": 16.093
+     }
+    }
+   },
+   "clipMarkerSpreadAll": {
+    "definition": "max - min of {minSpeed, latGPeak, yawRatePeak, steerMax} per record",
+    "dtS": {
+     "n": 56,
+     "median": 1.257,
+     "q25": 0.547,
+     "q75": 2.0,
+     "p5": 0.161,
+     "p95": 3.602,
+     "min": 0.124,
+     "max": 3.708,
+     "mean": 1.458,
+     "sd": 1.118
+    },
+    "dStationMDerived": {
+     "n": 56,
+     "median": 32.2,
+     "q25": 10.625,
+     "q75": 57.65,
+     "p5": 3.075,
+     "p95": 103.725,
+     "min": 1.5,
+     "max": 126.9,
+     "mean": 40.309,
+     "sd": 35.395
+    }
+   },
+   "clipMarkerSpreadClean": {
+    "definition": "max - min of {minSpeed, latGPeak, yawRatePeak, steerMax} per record",
+    "dtS": {
+     "n": 38,
+     "median": 0.662,
+     "q25": 0.407,
+     "q75": 1.272,
+     "p5": 0.151,
+     "p95": 2.036,
+     "min": 0.124,
+     "max": 2.353,
+     "mean": 0.886,
+     "sd": 0.644
+    },
+    "dStationMDerived": {
+     "n": 38,
+     "median": 12.75,
+     "q25": 8.25,
+     "q75": 32.45,
+     "p5": 2.85,
+     "p95": 50.61,
+     "min": 1.5,
+     "max": 59.9,
+     "mean": 20.374,
+     "sd": 16.725
+    }
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "records": 84,
+   "markerCoverage": {
+    "kerbContactOnset": 31,
+    "kerbContactPeak": 31,
+    "steerOnset": 83,
+    "steerRatePeak": 83,
+    "yawOnset": 84,
+    "brakeOnset": 54,
+    "minSpeed": 84,
+    "latGPeak": 84,
+    "yawRatePeak": 84,
+    "steerMax": 84,
+    "steerRampOnset": 64
+   },
+   "passesWithKerbContactByBestConfidence": {
+    "medium": 4,
+    "high": 26,
+    "none": 53,
+    "low": 1
+   },
+   "flagCounts": {
+    "noKerbContact": 53,
+    "linkedOppositeCorner": 51,
+    "lapOutlierVsSessionMedian>1s": 27,
+    "brakeRunShared": 20,
+    "minSpeedAtWindowEdge": 17,
+    "linkedSameCorner": 13,
+    "sharesYawOnsetWith": 10,
+    "sharesSteerOnsetWith": 9,
+    "steerPeakAtWindowEdge": 7,
+    "minSpeedFlat>1s": 3,
+    "latGPeakAtWindowEdge": 2,
+    "steerYawOnsetGap>0.5s": 1,
+    "kerbContactLowConfidenceOnly": 1,
+    "noSteerOnset": 1,
+    "weakSteer": 1
+   },
+   "timingSpreadAll": {
+    "brakeOnset->steerOnset": {
+     "dtS": {
+      "n": 54,
+      "median": 2.889,
+      "q25": 0.84,
+      "q75": 6.535,
+      "p5": 0.458,
+      "p95": 7.671,
+      "min": 0.392,
+      "max": 7.815,
+      "mean": 3.739,
+      "sd": 2.752
+     },
+     "dStationMDerived": {
+      "n": 54,
+      "median": 112.6,
+      "q25": 32.375,
+      "q75": 179.575,
+      "p5": 15.385,
+      "p95": 220.61,
+      "min": 12.6,
+      "max": 232.9,
+      "mean": 113.05,
+      "sd": 74.403
+     }
+    },
+    "steerRampOnset->steerOnset": {
+     "dtS": {
+      "n": 64,
+      "median": 0.142,
+      "q25": 0.075,
+      "q75": 0.284,
+      "p5": 0.018,
+      "p95": 0.865,
+      "min": -0.014,
+      "max": 1.903,
+      "mean": 0.269,
+      "sd": 0.362
+     },
+     "dStationMDerived": {
+      "n": 64,
+      "median": 4.65,
+      "q25": 2.0,
+      "q75": 8.85,
+      "p5": 0.46,
+      "p95": 30.36,
+      "min": -0.3,
+      "max": 48.1,
+      "mean": 7.97,
+      "sd": 10.094
+     }
+    },
+    "steerOnset->yawOnset": {
+     "dtS": {
+      "n": 83,
+      "median": 0.082,
+      "q25": 0.026,
+      "q75": 0.115,
+      "p5": -0.259,
+      "p95": 0.35,
+      "min": -0.456,
+      "max": 0.898,
+      "mean": 0.069,
+      "sd": 0.188
+     },
+     "dStationMDerived": {
+      "n": 83,
+      "median": 1.9,
+      "q25": 0.85,
+      "q75": 3.05,
+      "p5": -10.48,
+      "p95": 9.75,
+      "min": -14.1,
+      "max": 34.1,
+      "mean": 1.688,
+      "sd": 6.256
+     }
+    },
+    "steerOnset->steerRatePeak": {
+     "dtS": {
+      "n": 83,
+      "median": 0.578,
+      "q25": 0.08,
+      "q75": 1.368,
+      "p5": 0.007,
+      "p95": 2.303,
+      "min": -0.024,
+      "max": 4.557,
+      "mean": 0.868,
+      "sd": 0.941
+     },
+     "dStationMDerived": {
+      "n": 83,
+      "median": 18.6,
+      "q25": 2.4,
+      "q75": 35.15,
+      "p5": 0.1,
+      "p95": 55.99,
+      "min": -0.6,
+      "max": 132.9,
+      "mean": 23.888,
+      "sd": 25.682
+     }
+    },
+    "steerOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 31,
+      "median": 2.239,
+      "q25": 1.902,
+      "q75": 2.658,
+      "p5": -2.09,
+      "p95": 6.688,
+      "min": -3.048,
+      "max": 7.023,
+      "mean": 2.282,
+      "sd": 2.417
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 62.1,
+      "q25": 41.5,
+      "q75": 75.6,
+      "p5": -71.8,
+      "p95": 191.3,
+      "min": -77.9,
+      "max": 269.8,
+      "mean": 62.168,
+      "sd": 76.252
+     }
+    },
+    "yawOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 31,
+      "median": 2.19,
+      "q25": 1.799,
+      "q75": 2.635,
+      "p5": -2.145,
+      "p95": 6.698,
+      "min": -3.099,
+      "max": 6.957,
+      "mean": 2.192,
+      "sd": 2.415
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 58.6,
+      "q25": 36.15,
+      "q75": 79.2,
+      "p5": -73.1,
+      "p95": 188.5,
+      "min": -80.6,
+      "max": 273.4,
+      "mean": 59.845,
+      "sd": 76.697
+     }
+    },
+    "kerbContactOnset->kerbContactPeak": {
+     "dtS": {
+      "n": 31,
+      "median": 0.255,
+      "q25": 0.143,
+      "q75": 0.473,
+      "p5": 0.086,
+      "p95": 0.704,
+      "min": 0.026,
+      "max": 1.121,
+      "mean": 0.333,
+      "sd": 0.236
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 8.3,
+      "q25": 5.75,
+      "q75": 17.35,
+      "p5": 2.0,
+      "p95": 22.6,
+      "min": 0.6,
+      "max": 25.5,
+      "mean": 11.103,
+      "sd": 7.372
+     }
+    },
+    "kerbContactOnset->minSpeed": {
+     "dtS": {
+      "n": 31,
+      "median": -0.512,
+      "q25": -0.859,
+      "q75": 0.196,
+      "p5": -1.447,
+      "p95": 2.087,
+      "min": -1.954,
+      "max": 4.187,
+      "mean": -0.1,
+      "sd": 1.288
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": -12.6,
+      "q25": -24.25,
+      "q75": 5.4,
+      "p5": -33.75,
+      "p95": 70.4,
+      "min": -46.8,
+      "max": 151.8,
+      "mean": 0.613,
+      "sd": 41.028
+     }
+    },
+    "kerbContactOnset->latGPeak": {
+     "dtS": {
+      "n": 31,
+      "median": 0.29,
+      "q25": -0.383,
+      "q75": 1.103,
+      "p5": -1.846,
+      "p95": 4.153,
+      "min": -2.325,
+      "max": 5.712,
+      "mean": 0.551,
+      "sd": 1.811
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 13.2,
+      "q25": -12.65,
+      "q75": 38.75,
+      "p5": -46.65,
+      "p95": 147.7,
+      "min": -55.1,
+      "max": 165.0,
+      "mean": 20.655,
+      "sd": 55.56
+     }
+    },
+    "kerbContactOnset->yawRatePeak": {
+     "dtS": {
+      "n": 31,
+      "median": 0.05,
+      "q25": -0.266,
+      "q75": 0.863,
+      "p5": -0.877,
+      "p95": 3.606,
+      "min": -1.062,
+      "max": 5.49,
+      "mean": 0.608,
+      "sd": 1.54
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 1.5,
+      "q25": -7.05,
+      "q75": 33.45,
+      "p5": -23.05,
+      "p95": 132.2,
+      "min": -25.8,
+      "max": 147.2,
+      "mean": 20.623,
+      "sd": 48.446
+     }
+    },
+    "kerbContactOnset->steerMax": {
+     "dtS": {
+      "n": 31,
+      "median": 0.082,
+      "q25": -0.524,
+      "q75": 0.686,
+      "p5": -1.157,
+      "p95": 2.796,
+      "min": -1.634,
+      "max": 4.367,
+      "mean": 0.33,
+      "sd": 1.335
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 1.2,
+      "q25": -14.0,
+      "q75": 25.15,
+      "p5": -30.4,
+      "p95": 100.65,
+      "min": -40.3,
+      "max": 112.3,
+      "mean": 12.984,
+      "sd": 40.128
+     }
+    },
+    "minSpeed->latGPeak": {
+     "dtS": {
+      "n": 84,
+      "median": 0.134,
+      "q25": -0.626,
+      "q75": 1.924,
+      "p5": -2.074,
+      "p95": 3.382,
+      "min": -2.974,
+      "max": 3.867,
+      "mean": 0.552,
+      "sd": 1.705
+     },
+     "dStationMDerived": {
+      "n": 84,
+      "median": 3.0,
+      "q25": -13.575,
+      "q75": 58.15,
+      "p5": -60.175,
+      "p95": 105.07,
+      "min": -123.7,
+      "max": 133.8,
+      "mean": 17.512,
+      "sd": 54.704
+     }
+    },
+    "latGPeak->yawRatePeak": {
+     "dtS": {
+      "n": 84,
+      "median": -0.019,
+      "q25": -0.206,
+      "q75": 0.151,
+      "p5": -0.724,
+      "p95": 1.348,
+      "min": -1.402,
+      "max": 2.209,
+      "mean": 0.053,
+      "sd": 0.611
+     },
+     "dStationMDerived": {
+      "n": 84,
+      "median": -0.35,
+      "q25": -7.25,
+      "q75": 4.275,
+      "p5": -24.72,
+      "p95": 30.77,
+      "min": -43.6,
+      "max": 53.8,
+      "mean": -0.051,
+      "sd": 17.64
+     }
+    },
+    "yawRatePeak->steerMax": {
+     "dtS": {
+      "n": 84,
+      "median": -0.167,
+      "q25": -0.574,
+      "q75": -0.052,
+      "p5": -1.43,
+      "p95": 0.727,
+      "min": -1.827,
+      "max": 0.856,
+      "mean": -0.266,
+      "sd": 0.588
+     },
+     "dStationMDerived": {
+      "n": 84,
+      "median": -5.3,
+      "q25": -14.45,
+      "q75": -1.075,
+      "p5": -46.41,
+      "p95": 16.735,
+      "min": -56.2,
+      "max": 35.4,
+      "mean": -8.613,
+      "sd": 18.744
+     }
+    },
+    "minSpeed->steerMax": {
+     "dtS": {
+      "n": 84,
+      "median": 0.332,
+      "q25": -0.197,
+      "q75": 1.525,
+      "p5": -2.382,
+      "p95": 2.415,
+      "min": -4.192,
+      "max": 2.792,
+      "mean": 0.339,
+      "sd": 1.444
+     },
+     "dStationMDerived": {
+      "n": 84,
+      "median": 8.0,
+      "q25": -3.95,
+      "q75": 39.35,
+      "p5": -76.57,
+      "p95": 69.56,
+      "min": -171.6,
+      "max": 96.3,
+      "mean": 8.848,
+      "sd": 48.272
+     }
+    }
+   },
+   "timingSpreadClean": {
+    "brakeOnset->steerOnset": {
+     "dtS": {
+      "n": 23,
+      "median": 2.705,
+      "q25": 1.254,
+      "q75": 2.932,
+      "p5": 0.533,
+      "p95": 7.439,
+      "min": 0.449,
+      "max": 7.815,
+      "mean": 2.614,
+      "sd": 1.987
+     },
+     "dStationMDerived": {
+      "n": 23,
+      "median": 101.3,
+      "q25": 42.15,
+      "q75": 115.55,
+      "p5": 22.13,
+      "p95": 191.89,
+      "min": 19.1,
+      "max": 200.9,
+      "mean": 88.822,
+      "sd": 52.232
+     }
+    },
+    "steerRampOnset->steerOnset": {
+     "dtS": {
+      "n": 42,
+      "median": 0.15,
+      "q25": 0.071,
+      "q75": 0.274,
+      "p5": 0.023,
+      "p95": 1.206,
+      "min": 0.015,
+      "max": 1.903,
+      "mean": 0.281,
+      "sd": 0.414
+     },
+     "dStationMDerived": {
+      "n": 42,
+      "median": 4.2,
+      "q25": 2.0,
+      "q75": 8.175,
+      "p5": 1.0,
+      "p95": 32.595,
+      "min": 0.3,
+      "max": 48.1,
+      "mean": 7.926,
+      "sd": 10.983
+     }
+    },
+    "steerOnset->yawOnset": {
+     "dtS": {
+      "n": 52,
+      "median": 0.09,
+      "q25": 0.05,
+      "q75": 0.114,
+      "p5": -0.086,
+      "p95": 0.266,
+      "min": -0.454,
+      "max": 0.372,
+      "mean": 0.084,
+      "sd": 0.125
+     },
+     "dStationMDerived": {
+      "n": 52,
+      "median": 2.1,
+      "q25": 1.45,
+      "q75": 3.175,
+      "p5": -2.765,
+      "p95": 7.445,
+      "min": -14.1,
+      "max": 11.2,
+      "mean": 2.102,
+      "sd": 3.855
+     }
+    },
+    "steerOnset->steerRatePeak": {
+     "dtS": {
+      "n": 52,
+      "median": 0.645,
+      "q25": 0.047,
+      "q75": 1.435,
+      "p5": 0.001,
+      "p95": 2.142,
+      "min": -0.024,
+      "max": 2.383,
+      "mean": 0.818,
+      "sd": 0.794
+     },
+     "dStationMDerived": {
+      "n": 52,
+      "median": 19.15,
+      "q25": 0.85,
+      "q75": 42.475,
+      "p5": 0.01,
+      "p95": 54.175,
+      "min": -0.6,
+      "max": 68.2,
+      "mean": 21.61,
+      "sd": 20.432
+     }
+    },
+    "steerOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 20,
+      "median": 2.225,
+      "q25": 1.877,
+      "q75": 2.569,
+      "p5": -2.24,
+      "p95": 3.349,
+      "min": -3.048,
+      "max": 3.68,
+      "mean": 1.678,
+      "sd": 1.831
+     },
+     "dStationMDerived": {
+      "n": 20,
+      "median": 57.6,
+      "q25": 39.75,
+      "q75": 68.6,
+      "p5": -74.385,
+      "p95": 93.51,
+      "min": -77.9,
+      "max": 105.1,
+      "mean": 40.995,
+      "sd": 52.562
+     }
+    },
+    "yawOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 20,
+      "median": 2.192,
+      "q25": 1.827,
+      "q75": 2.422,
+      "p5": -2.311,
+      "p95": 3.256,
+      "min": -3.099,
+      "max": 3.613,
+      "mean": 1.626,
+      "sd": 1.829
+     },
+     "dStationMDerived": {
+      "n": 20,
+      "median": 58.45,
+      "q25": 36.425,
+      "q75": 70.05,
+      "p5": -75.755,
+      "p95": 91.14,
+      "min": -80.6,
+      "max": 103.3,
+      "mean": 40.125,
+      "sd": 53.378
+     }
+    },
+    "kerbContactOnset->kerbContactPeak": {
+     "dtS": {
+      "n": 30,
+      "median": 0.26,
+      "q25": 0.151,
+      "q75": 0.477,
+      "p5": 0.083,
+      "p95": 0.707,
+      "min": 0.026,
+      "max": 1.121,
+      "mean": 0.34,
+      "sd": 0.237
+     },
+     "dStationMDerived": {
+      "n": 30,
+      "median": 8.3,
+      "q25": 6.325,
+      "q75": 17.625,
+      "p5": 1.9,
+      "p95": 22.63,
+      "min": 0.6,
+      "max": 25.5,
+      "mean": 11.373,
+      "sd": 7.341
+     }
+    },
+    "kerbContactOnset->minSpeed": {
+     "dtS": {
+      "n": 27,
+      "median": -0.625,
+      "q25": -0.867,
+      "q75": 0.015,
+      "p5": -1.48,
+      "p95": 1.568,
+      "min": -1.954,
+      "max": 4.187,
+      "mean": -0.284,
+      "sd": 1.204
+     },
+     "dStationMDerived": {
+      "n": 27,
+      "median": -20.3,
+      "q25": -25.1,
+      "q75": 0.85,
+      "p5": -34.13,
+      "p95": 58.57,
+      "min": -46.8,
+      "max": 151.8,
+      "mean": -4.596,
+      "sd": 39.519
+     }
+    },
+    "kerbContactOnset->latGPeak": {
+     "dtS": {
+      "n": 29,
+      "median": 0.223,
+      "q25": -0.386,
+      "q75": 0.97,
+      "p5": -1.917,
+      "p95": 3.495,
+      "min": -2.325,
+      "max": 5.712,
+      "mean": 0.354,
+      "sd": 1.676
+     },
+     "dStationMDerived": {
+      "n": 29,
+      "median": 9.6,
+      "q25": -14.5,
+      "q75": 33.4,
+      "p5": -47.02,
+      "p95": 127.06,
+      "min": -55.1,
+      "max": 154.3,
+      "mean": 14.314,
+      "sd": 49.657
+     }
+    },
+    "kerbContactOnset->yawRatePeak": {
+     "dtS": {
+      "n": 30,
+      "median": 0.027,
+      "q25": -0.277,
+      "q75": 0.795,
+      "p5": -0.883,
+      "p95": 3.629,
+      "min": -1.062,
+      "max": 5.49,
+      "mean": 0.551,
+      "sd": 1.533
+     },
+     "dStationMDerived": {
+      "n": 30,
+      "median": 0.85,
+      "q25": -7.375,
+      "q75": 31.25,
+      "p5": -23.245,
+      "p95": 133.13,
+      "min": -25.8,
+      "max": 147.2,
+      "mean": 19.36,
+      "sd": 48.753
+     }
+    },
+    "kerbContactOnset->steerMax": {
+     "dtS": {
+      "n": 27,
+      "median": -0.064,
+      "q25": -0.566,
+      "q75": 0.444,
+      "p5": -1.196,
+      "p95": 0.815,
+      "min": -1.634,
+      "max": 2.655,
+      "mean": -0.058,
+      "sd": 0.854
+     },
+     "dStationMDerived": {
+      "n": 27,
+      "median": -2.9,
+      "q25": -15.7,
+      "q75": 15.75,
+      "p5": -31.04,
+      "p95": 33.93,
+      "min": -40.3,
+      "max": 94.9,
+      "mean": 1.73,
+      "sd": 27.561
+     }
+    },
+    "minSpeed->latGPeak": {
+     "dtS": {
+      "n": 64,
+      "median": -0.151,
+      "q25": -0.799,
+      "q75": 0.708,
+      "p5": -2.126,
+      "p95": 2.324,
+      "min": -2.974,
+      "max": 3.006,
+      "mean": -0.057,
+      "sd": 1.306
+     },
+     "dStationMDerived": {
+      "n": 64,
+      "median": -4.25,
+      "q25": -20.775,
+      "q75": 16.6,
+      "p5": -62.405,
+      "p95": 60.78,
+      "min": -123.7,
+      "max": 107.2,
+      "mean": -1.923,
+      "sd": 42.017
+     }
+    },
+    "latGPeak->yawRatePeak": {
+     "dtS": {
+      "n": 82,
+      "median": -0.011,
+      "q25": -0.175,
+      "q75": 0.161,
+      "p5": -0.732,
+      "p95": 1.373,
+      "min": -1.402,
+      "max": 2.209,
+      "mean": 0.068,
+      "sd": 0.611
+     },
+     "dStationMDerived": {
+      "n": 82,
+      "median": -0.3,
+      "q25": -6.625,
+      "q75": 4.425,
+      "p5": -24.84,
+      "p95": 30.79,
+      "min": -43.6,
+      "max": 53.8,
+      "mean": 0.488,
+      "sd": 17.505
+     }
+    },
+    "yawRatePeak->steerMax": {
+     "dtS": {
+      "n": 76,
+      "median": -0.153,
+      "q25": -0.336,
+      "q75": -0.026,
+      "p5": -1.141,
+      "p95": 0.755,
+      "min": -1.827,
+      "max": 0.856,
+      "mean": -0.19,
+      "sd": 0.554
+     },
+     "dStationMDerived": {
+      "n": 76,
+      "median": -4.15,
+      "q25": -10.025,
+      "q75": -0.6,
+      "p5": -39.05,
+      "p95": 18.6,
+      "min": -54.7,
+      "max": 35.4,
+      "mean": -5.72,
+      "sd": 16.667
+     }
+    },
+    "minSpeed->steerMax": {
+     "dtS": {
+      "n": 63,
+      "median": 0.208,
+      "q25": -0.222,
+      "q75": 0.534,
+      "p5": -2.542,
+      "p95": 1.739,
+      "min": -4.192,
+      "max": 2.792,
+      "mean": -0.04,
+      "sd": 1.268
+     },
+     "dStationMDerived": {
+      "n": 63,
+      "median": 5.9,
+      "q25": -5.15,
+      "q75": 15.85,
+      "p5": -87.7,
+      "p95": 48.19,
+      "min": -171.6,
+      "max": 69.8,
+      "mean": -3.211,
+      "sd": 42.992
+     }
+    }
+   },
+   "clipMarkerSpreadAll": {
+    "definition": "max - min of {minSpeed, latGPeak, yawRatePeak, steerMax} per record",
+    "dtS": {
+     "n": 84,
+     "median": 1.419,
+     "q25": 0.766,
+     "q75": 2.475,
+     "p5": 0.385,
+     "p95": 3.497,
+     "min": 0.137,
+     "max": 4.192,
+     "mean": 1.641,
+     "sd": 1.052
+    },
+    "dStationMDerived": {
+     "n": 84,
+     "median": 39.95,
+     "q25": 19.125,
+     "q75": 75.775,
+     "p5": 7.645,
+     "p95": 111.38,
+     "min": 4.4,
+     "max": 171.6,
+     "mean": 50.633,
+     "sd": 37.937
+    }
+   },
+   "clipMarkerSpreadClean": {
+    "definition": "max - min of {minSpeed, latGPeak, yawRatePeak, steerMax} per record",
+    "dtS": {
+     "n": 63,
+     "median": 0.936,
+     "q25": 0.639,
+     "q75": 1.726,
+     "p5": 0.325,
+     "p95": 2.864,
+     "min": 0.137,
+     "max": 4.192,
+     "mean": 1.266,
+     "sd": 0.865
+    },
+    "dStationMDerived": {
+     "n": 63,
+     "median": 30.6,
+     "q25": 14.65,
+     "q75": 47.65,
+     "p5": 7.06,
+     "p95": 103.56,
+     "min": 4.4,
+     "max": 171.6,
+     "mean": 37.775,
+     "sd": 32.657
+    }
+   }
+  },
+  "pooled": {
+   "records": 140,
+   "markerCoverage": {
+    "steerOnset": 138,
+    "steerRatePeak": 138,
+    "yawOnset": 140,
+    "brakeOnset": 91,
+    "minSpeed": 140,
+    "latGPeak": 140,
+    "yawRatePeak": 140,
+    "steerMax": 140,
+    "steerRampOnset": 104,
+    "kerbContactOnset": 35,
+    "kerbContactPeak": 35
+   },
+   "passesWithKerbContactByBestConfidence": {
+    "none": 105,
+    "high": 28,
+    "low": 3,
+    "medium": 4
+   },
+   "flagCounts": {
+    "noKerbContact": 105,
+    "linkedOppositeCorner": 82,
+    "lapOutlierVsSessionMedian>1s": 44,
+    "brakeRunShared": 27,
+    "minSpeedAtWindowEdge": 26,
+    "linkedSameCorner": 25,
+    "sharesYawOnsetWith": 13,
+    "steerPeakAtWindowEdge": 12,
+    "sharesSteerOnsetWith": 12,
+    "minSpeedFlat>1s": 9,
+    "steerYawOnsetGap>0.5s": 6,
+    "weakSteer": 3,
+    "latGPeakAtWindowEdge": 3,
+    "kerbContactLowConfidenceOnly": 3,
+    "noSteerOnset": 2
+   },
+   "timingSpreadAll": {
+    "brakeOnset->steerOnset": {
+     "dtS": {
+      "n": 91,
+      "median": 2.82,
+      "q25": 0.884,
+      "q75": 6.152,
+      "p5": 0.408,
+      "p95": 7.645,
+      "min": -0.445,
+      "max": 8.011,
+      "mean": 3.334,
+      "sd": 2.655
+     },
+     "dStationMDerived": {
+      "n": 91,
+      "median": 101.3,
+      "q25": 30.15,
+      "q75": 168.65,
+      "p5": 12.4,
+      "p95": 219.2,
+      "min": -12.2,
+      "max": 235.9,
+      "mean": 99.6,
+      "sd": 72.916
+     }
+    },
+    "steerRampOnset->steerOnset": {
+     "dtS": {
+      "n": 104,
+      "median": 0.133,
+      "q25": 0.067,
+      "q75": 0.316,
+      "p5": 0.004,
+      "p95": 1.05,
+      "min": -0.085,
+      "max": 1.903,
+      "mean": 0.268,
+      "sd": 0.373
+     },
+     "dStationMDerived": {
+      "n": 104,
+      "median": 3.9,
+      "q25": 1.9,
+      "q75": 8.35,
+      "p5": 0.1,
+      "p95": 29.525,
+      "min": -2.1,
+      "max": 48.1,
+      "mean": 7.628,
+      "sd": 10.2
+     }
+    },
+    "steerOnset->yawOnset": {
+     "dtS": {
+      "n": 138,
+      "median": 0.109,
+      "q25": 0.052,
+      "q75": 0.191,
+      "p5": -0.244,
+      "p95": 0.405,
+      "min": -0.511,
+      "max": 1.188,
+      "mean": 0.121,
+      "sd": 0.222
+     },
+     "dStationMDerived": {
+      "n": 138,
+      "median": 2.8,
+      "q25": 1.6,
+      "q75": 5.075,
+      "p5": -8.83,
+      "p95": 11.44,
+      "min": -14.1,
+      "max": 36.4,
+      "mean": 3.162,
+      "sd": 6.839
+     }
+    },
+    "steerOnset->steerRatePeak": {
+     "dtS": {
+      "n": 138,
+      "median": 0.662,
+      "q25": 0.139,
+      "q75": 1.447,
+      "p5": 0.007,
+      "p95": 2.629,
+      "min": -0.024,
+      "max": 5.55,
+      "mean": 0.955,
+      "sd": 1.01
+     },
+     "dStationMDerived": {
+      "n": 138,
+      "median": 20.15,
+      "q25": 4.525,
+      "q75": 35.525,
+      "p5": 0.1,
+      "p95": 66.585,
+      "min": -0.6,
+      "max": 149.3,
+      "mean": 25.24,
+      "sd": 26.758
+     }
+    },
+    "steerOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 35,
+      "median": 2.247,
+      "q25": 1.925,
+      "q75": 3.31,
+      "p5": -2.048,
+      "p95": 6.675,
+      "min": -3.048,
+      "max": 7.023,
+      "mean": 2.407,
+      "sd": 2.317
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 62.1,
+      "q25": 41.5,
+      "q75": 77.7,
+      "p5": -70.84,
+      "p95": 190.42,
+      "min": -77.9,
+      "max": 269.8,
+      "mean": 62.6,
+      "sd": 72.013
+     }
+    },
+    "yawOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 35,
+      "median": 2.194,
+      "q25": 1.806,
+      "q75": 3.002,
+      "p5": -2.095,
+      "p95": 6.675,
+      "min": -3.099,
+      "max": 6.957,
+      "mean": 2.316,
+      "sd": 2.328
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 58.6,
+      "q25": 36.15,
+      "q75": 79.2,
+      "p5": -72.14,
+      "p95": 187.54,
+      "min": -80.6,
+      "max": 273.4,
+      "mean": 60.271,
+      "sd": 72.643
+     }
+    },
+    "kerbContactOnset->kerbContactPeak": {
+     "dtS": {
+      "n": 35,
+      "median": 0.262,
+      "q25": 0.156,
+      "q75": 0.445,
+      "p5": 0.096,
+      "p95": 0.693,
+      "min": 0.026,
+      "max": 1.121,
+      "mean": 0.324,
+      "sd": 0.224
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 8.1,
+      "q25": 5.2,
+      "q75": 16.4,
+      "p5": 2.4,
+      "p95": 22.48,
+      "min": 0.6,
+      "max": 25.5,
+      "mean": 10.429,
+      "sd": 7.199
+     }
+    },
+    "kerbContactOnset->minSpeed": {
+     "dtS": {
+      "n": 35,
+      "median": -0.349,
+      "q25": -0.859,
+      "q75": 0.272,
+      "p5": -1.656,
+      "p95": 2.079,
+      "min": -2.988,
+      "max": 4.187,
+      "mean": -0.144,
+      "sd": 1.318
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": -9.9,
+      "q25": -24.25,
+      "q75": 7.35,
+      "p5": -38.33,
+      "p95": 68.8,
+      "min": -47.2,
+      "max": 151.8,
+      "mean": -0.154,
+      "sd": 39.511
+     }
+    },
+    "kerbContactOnset->latGPeak": {
+     "dtS": {
+      "n": 35,
+      "median": 0.223,
+      "q25": -0.43,
+      "q75": 1.029,
+      "p5": -1.703,
+      "p95": 4.03,
+      "min": -2.325,
+      "max": 5.712,
+      "mean": 0.462,
+      "sd": 1.733
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 9.6,
+      "q25": -12.65,
+      "q75": 36.0,
+      "p5": -45.91,
+      "p95": 145.06,
+      "min": -55.1,
+      "max": 165.0,
+      "mean": 17.894,
+      "sd": 52.932
+     }
+    },
+    "kerbContactOnset->yawRatePeak": {
+     "dtS": {
+      "n": 35,
+      "median": 0.004,
+      "q25": -0.301,
+      "q75": 0.795,
+      "p5": -0.972,
+      "p95": 3.513,
+      "min": -1.181,
+      "max": 5.49,
+      "mean": 0.499,
+      "sd": 1.501
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 0.2,
+      "q25": -9.6,
+      "q75": 30.3,
+      "p5": -25.24,
+      "p95": 128.48,
+      "min": -27.0,
+      "max": 147.2,
+      "mean": 17.466,
+      "sd": 46.671
+     }
+    },
+    "kerbContactOnset->steerMax": {
+     "dtS": {
+      "n": 35,
+      "median": 0.082,
+      "q25": -0.524,
+      "q75": 0.686,
+      "p5": -1.142,
+      "p95": 2.739,
+      "min": -1.634,
+      "max": 4.367,
+      "mean": 0.292,
+      "sd": 1.282
+     },
+     "dStationMDerived": {
+      "n": 35,
+      "median": 1.2,
+      "q25": -14.0,
+      "q75": 22.65,
+      "p5": -29.76,
+      "p95": 98.35,
+      "min": -40.3,
+      "max": 112.3,
+      "mean": 11.66,
+      "sd": 38.127
+     }
+    },
+    "minSpeed->latGPeak": {
+     "dtS": {
+      "n": 140,
+      "median": 0.213,
+      "q25": -0.372,
+      "q75": 1.839,
+      "p5": -1.808,
+      "p95": 3.486,
+      "min": -2.974,
+      "max": 3.867,
+      "mean": 0.6,
+      "sd": 1.618
+     },
+     "dStationMDerived": {
+      "n": 140,
+      "median": 3.65,
+      "q25": -9.425,
+      "q75": 51.75,
+      "p5": -53.985,
+      "p95": 102.945,
+      "min": -123.7,
+      "max": 133.8,
+      "mean": 18.997,
+      "sd": 50.221
+     }
+    },
+    "latGPeak->yawRatePeak": {
+     "dtS": {
+      "n": 140,
+      "median": -0.026,
+      "q25": -0.181,
+      "q75": 0.102,
+      "p5": -0.734,
+      "p95": 1.234,
+      "min": -1.402,
+      "max": 2.41,
+      "mean": 0.039,
+      "sd": 0.596
+     },
+     "dStationMDerived": {
+      "n": 140,
+      "median": -0.6,
+      "q25": -6.475,
+      "q75": 2.7,
+      "p5": -23.51,
+      "p95": 30.61,
+      "min": -43.6,
+      "max": 65.3,
+      "mean": 0.052,
+      "sd": 16.816
+     }
+    },
+    "yawRatePeak->steerMax": {
+     "dtS": {
+      "n": 140,
+      "median": -0.149,
+      "q25": -0.401,
+      "q75": 0.048,
+      "p5": -1.658,
+      "p95": 0.853,
+      "min": -2.468,
+      "max": 2.022,
+      "mean": -0.209,
+      "sd": 0.708
+     },
+     "dStationMDerived": {
+      "n": 140,
+      "median": -4.2,
+      "q25": -11.225,
+      "q75": 0.6,
+      "p5": -50.52,
+      "p95": 30.75,
+      "min": -67.7,
+      "max": 39.0,
+      "mean": -7.171,
+      "sd": 20.758
+     }
+    },
+    "minSpeed->steerMax": {
+     "dtS": {
+      "n": 140,
+      "median": 0.327,
+      "q25": -0.167,
+      "q75": 1.467,
+      "p5": -1.827,
+      "p95": 2.395,
+      "min": -4.192,
+      "max": 3.524,
+      "mean": 0.43,
+      "sd": 1.327
+     },
+     "dStationMDerived": {
+      "n": 140,
+      "median": 7.15,
+      "q25": -3.7,
+      "q75": 38.775,
+      "p5": -57.63,
+      "p95": 69.42,
+      "min": -171.6,
+      "max": 120.7,
+      "mean": 11.878,
+      "sd": 42.939
+     }
+    }
+   },
+   "timingSpreadClean": {
+    "brakeOnset->steerOnset": {
+     "dtS": {
+      "n": 43,
+      "median": 2.02,
+      "q25": 1.174,
+      "q75": 2.996,
+      "p5": 0.455,
+      "p95": 6.255,
+      "min": -0.445,
+      "max": 7.815,
+      "mean": 2.364,
+      "sd": 1.905
+     },
+     "dStationMDerived": {
+      "n": 43,
+      "median": 78.6,
+      "q25": 37.1,
+      "q75": 109.35,
+      "p5": 19.11,
+      "p95": 167.23,
+      "min": -12.2,
+      "max": 200.9,
+      "mean": 77.479,
+      "sd": 52.52
+     }
+    },
+    "steerRampOnset->steerOnset": {
+     "dtS": {
+      "n": 70,
+      "median": 0.122,
+      "q25": 0.065,
+      "q75": 0.274,
+      "p5": -0.014,
+      "p95": 0.827,
+      "min": -0.085,
+      "max": 1.903,
+      "mean": 0.234,
+      "sd": 0.35
+     },
+     "dStationMDerived": {
+      "n": 70,
+      "median": 2.95,
+      "q25": 1.725,
+      "q75": 7.4,
+      "p5": -0.12,
+      "p95": 24.425,
+      "min": -2.1,
+      "max": 48.1,
+      "mean": 6.513,
+      "sd": 9.533
+     }
+    },
+    "steerOnset->yawOnset": {
+     "dtS": {
+      "n": 87,
+      "median": 0.11,
+      "q25": 0.077,
+      "q75": 0.175,
+      "p5": -0.099,
+      "p95": 0.373,
+      "min": -0.473,
+      "max": 0.473,
+      "mean": 0.118,
+      "sd": 0.15
+     },
+     "dStationMDerived": {
+      "n": 87,
+      "median": 3.0,
+      "q25": 1.75,
+      "q75": 4.7,
+      "p5": -3.72,
+      "p95": 9.9,
+      "min": -14.1,
+      "max": 13.0,
+      "mean": 3.04,
+      "sd": 4.265
+     }
+    },
+    "steerOnset->steerRatePeak": {
+     "dtS": {
+      "n": 87,
+      "median": 0.669,
+      "q25": 0.07,
+      "q75": 1.404,
+      "p5": 0.006,
+      "p95": 2.39,
+      "min": -0.024,
+      "max": 3.274,
+      "mean": 0.881,
+      "sd": 0.848
+     },
+     "dStationMDerived": {
+      "n": 87,
+      "median": 18.8,
+      "q25": 1.85,
+      "q75": 34.3,
+      "p5": 0.13,
+      "p95": 58.9,
+      "min": -0.6,
+      "max": 95.9,
+      "mean": 22.52,
+      "sd": 21.274
+     }
+    },
+    "steerOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 20,
+      "median": 2.225,
+      "q25": 1.877,
+      "q75": 2.569,
+      "p5": -2.24,
+      "p95": 3.349,
+      "min": -3.048,
+      "max": 3.68,
+      "mean": 1.678,
+      "sd": 1.831
+     },
+     "dStationMDerived": {
+      "n": 20,
+      "median": 57.6,
+      "q25": 39.75,
+      "q75": 68.6,
+      "p5": -74.385,
+      "p95": 93.51,
+      "min": -77.9,
+      "max": 105.1,
+      "mean": 40.995,
+      "sd": 52.562
+     }
+    },
+    "yawOnset->kerbContactOnset": {
+     "dtS": {
+      "n": 20,
+      "median": 2.192,
+      "q25": 1.827,
+      "q75": 2.422,
+      "p5": -2.311,
+      "p95": 3.256,
+      "min": -3.099,
+      "max": 3.613,
+      "mean": 1.626,
+      "sd": 1.829
+     },
+     "dStationMDerived": {
+      "n": 20,
+      "median": 58.45,
+      "q25": 36.425,
+      "q75": 70.05,
+      "p5": -75.755,
+      "p95": 91.14,
+      "min": -80.6,
+      "max": 103.3,
+      "mean": 40.125,
+      "sd": 53.378
+     }
+    },
+    "kerbContactOnset->kerbContactPeak": {
+     "dtS": {
+      "n": 32,
+      "median": 0.264,
+      "q25": 0.16,
+      "q75": 0.468,
+      "p5": 0.089,
+      "p95": 0.701,
+      "min": 0.026,
+      "max": 1.121,
+      "mean": 0.335,
+      "sd": 0.23
+     },
+     "dStationMDerived": {
+      "n": 32,
+      "median": 8.3,
+      "q25": 6.15,
+      "q75": 17.075,
+      "p5": 2.1,
+      "p95": 22.57,
+      "min": 0.6,
+      "max": 25.5,
+      "mean": 11.066,
+      "sd": 7.203
+     }
+    },
+    "kerbContactOnset->minSpeed": {
+     "dtS": {
+      "n": 29,
+      "median": -0.512,
+      "q25": -0.866,
+      "q75": 0.058,
+      "p5": -1.464,
+      "p95": 1.485,
+      "min": -1.954,
+      "max": 4.187,
+      "mean": -0.228,
+      "sd": 1.183
+     },
+     "dStationMDerived": {
+      "n": 29,
+      "median": -12.6,
+      "q25": -24.7,
+      "q75": 1.9,
+      "p5": -33.94,
+      "p95": 55.96,
+      "min": -46.8,
+      "max": 151.8,
+      "mean": -3.476,
+      "sd": 38.343
+     }
+    },
+    "kerbContactOnset->latGPeak": {
+     "dtS": {
+      "n": 31,
+      "median": 0.223,
+      "q25": -0.43,
+      "q75": 0.891,
+      "p5": -1.846,
+      "p95": 3.408,
+      "min": -2.325,
+      "max": 5.712,
+      "mean": 0.341,
+      "sd": 1.628
+     },
+     "dStationMDerived": {
+      "n": 31,
+      "median": 9.6,
+      "q25": -12.65,
+      "q75": 30.2,
+      "p5": -46.65,
+      "p95": 123.55,
+      "min": -55.1,
+      "max": 154.3,
+      "mean": 13.587,
+      "sd": 48.179
+     }
+    },
+    "kerbContactOnset->yawRatePeak": {
+     "dtS": {
+      "n": 32,
+      "median": 0.027,
+      "q25": -0.294,
+      "q75": 0.776,
+      "p5": -0.991,
+      "p95": 3.583,
+      "min": -1.181,
+      "max": 5.49,
+      "mean": 0.504,
+      "sd": 1.515
+     },
+     "dStationMDerived": {
+      "n": 32,
+      "median": 0.85,
+      "q25": -8.65,
+      "q75": 29.35,
+      "p5": -25.36,
+      "p95": 131.27,
+      "min": -27.0,
+      "max": 147.2,
+      "mean": 17.756,
+      "sd": 47.864
+     }
+    },
+    "kerbContactOnset->steerMax": {
+     "dtS": {
+      "n": 29,
+      "median": -0.007,
+      "q25": -0.534,
+      "q75": 0.445,
+      "p5": -1.177,
+      "p95": 0.858,
+      "min": -1.634,
+      "max": 2.655,
+      "mean": -0.015,
+      "sd": 0.843
+     },
+     "dStationMDerived": {
+      "n": 29,
+      "median": -0.2,
+      "q25": -14.6,
+      "q75": 17.5,
+      "p5": -30.72,
+      "p95": 33.84,
+      "min": -40.3,
+      "max": 94.9,
+      "mean": 2.438,
+      "sd": 26.73
+     }
+    },
+    "minSpeed->latGPeak": {
+     "dtS": {
+      "n": 105,
+      "median": -0.1,
+      "q25": -0.625,
+      "q75": 0.662,
+      "p5": -2.057,
+      "p95": 2.025,
+      "min": -2.974,
+      "max": 3.183,
+      "mean": 0.019,
+      "sd": 1.206
+     },
+     "dStationMDerived": {
+      "n": 105,
+      "median": -3.0,
+      "q25": -13.3,
+      "q75": 16.2,
+      "p5": -56.76,
+      "p95": 60.74,
+      "min": -123.7,
+      "max": 107.2,
+      "mean": 1.148,
+      "sd": 37.173
+     }
+    },
+    "latGPeak->yawRatePeak": {
+     "dtS": {
+      "n": 137,
+      "median": -0.025,
+      "q25": -0.175,
+      "q75": 0.11,
+      "p5": -0.734,
+      "p95": 1.258,
+      "min": -1.402,
+      "max": 2.41,
+      "mean": 0.052,
+      "sd": 0.596
+     },
+     "dStationMDerived": {
+      "n": 137,
+      "median": -0.6,
+      "q25": -6.1,
+      "q75": 3.0,
+      "p5": -23.38,
+      "p95": 30.64,
+      "min": -43.6,
+      "max": 65.3,
+      "mean": 0.486,
+      "sd": 16.73
+     }
+    },
+    "yawRatePeak->steerMax": {
+     "dtS": {
+      "n": 125,
+      "median": -0.143,
+      "q25": -0.286,
+      "q75": 0.124,
+      "p5": -1.671,
+      "p95": 0.855,
+      "min": -2.468,
+      "max": 2.022,
+      "mean": -0.136,
+      "sd": 0.697
+     },
+     "dStationMDerived": {
+      "n": 125,
+      "median": -3.8,
+      "q25": -8.3,
+      "q75": 3.1,
+      "p5": -49.74,
+      "p95": 31.5,
+      "min": -67.7,
+      "max": 39.0,
+      "mean": -4.636,
+      "sd": 19.747
+     }
+    },
+    "minSpeed->steerMax": {
+     "dtS": {
+      "n": 101,
+      "median": 0.188,
+      "q25": -0.213,
+      "q75": 0.515,
+      "p5": -1.826,
+      "p95": 1.697,
+      "min": -4.192,
+      "max": 2.792,
+      "mean": 0.031,
+      "sd": 1.09
+     },
+     "dStationMDerived": {
+      "n": 101,
+      "median": 3.5,
+      "q25": -4.4,
+      "q75": 11.9,
+      "p5": -54.7,
+      "p95": 41.4,
+      "min": -171.6,
+      "max": 69.8,
+      "mean": -0.548,
+      "sd": 35.407
+     }
+    }
+   },
+   "clipMarkerSpreadAll": {
+    "definition": "max - min of {minSpeed, latGPeak, yawRatePeak, steerMax} per record",
+    "dtS": {
+     "n": 140,
+     "median": 1.351,
+     "q25": 0.654,
+     "q75": 2.353,
+     "p5": 0.2,
+     "p95": 3.575,
+     "min": 0.124,
+     "max": 4.192,
+     "mean": 1.568,
+     "sd": 1.079
+    },
+    "dStationMDerived": {
+     "n": 140,
+     "median": 38.05,
+     "q25": 13.875,
+     "q75": 64.65,
+     "p5": 4.385,
+     "p95": 110.74,
+     "min": 1.5,
+     "max": 171.6,
+     "mean": 46.504,
+     "sd": 37.16
+    }
+   },
+   "clipMarkerSpreadClean": {
+    "definition": "max - min of {minSpeed, latGPeak, yawRatePeak, steerMax} per record",
+    "dtS": {
+     "n": 101,
+     "median": 0.856,
+     "q25": 0.558,
+     "q75": 1.599,
+     "p5": 0.194,
+     "p95": 2.549,
+     "min": 0.124,
+     "max": 4.192,
+     "mean": 1.123,
+     "sd": 0.808
+    },
+    "dStationMDerived": {
+     "n": 101,
+     "median": 24.0,
+     "q25": 12.3,
+     "q75": 40.0,
+     "p5": 4.1,
+     "p95": 77.8,
+     "min": 1.5,
+     "max": 171.6,
+     "mean": 31.228,
+     "sd": 28.922
+    }
+   }
+  }
+ },
+ "publishedEventAgreement": {
+  "note": "published t0/t1 come from a 0.2 s RMS (> 1.0 deg/s), so they lead / trail the sharp onset / offset by up to ~0.1 s by construction; onsetFromDetector contacts have dOnset = 0 by definition",
+  "insidePassUnmatchedOrNoOnset": 0,
+  "dOnset(mine-pubT0)": {
+   "n": 35,
+   "median": -0.082,
+   "q25": -0.237,
+   "q75": 0.038,
+   "p5": -0.359,
+   "p95": 0.165,
+   "min": -0.57,
+   "max": 0.17,
+   "mean": -0.107,
+   "sd": 0.182
+  },
+  "dOffset(mine-pubT1)": {
+   "n": 35,
+   "median": 0.172,
+   "q25": 0.038,
+   "q75": 0.359,
+   "p5": -0.085,
+   "p95": 0.459,
+   "min": -0.22,
+   "max": 0.497,
+   "mean": 0.188,
+   "sd": 0.188
+  },
+  "dPeak(RRsharp-pubTPeak)": {
+   "n": 35,
+   "median": 0.036,
+   "q25": -0.062,
+   "q75": 0.057,
+   "p5": -0.184,
+   "p95": 0.372,
+   "min": -0.209,
+   "max": 0.732,
+   "mean": 0.052,
+   "sd": 0.182
+  },
+  "conf_high": {
+   "n": 28,
+   "median": -0.07,
+   "q25": -0.219,
+   "q75": 0.033,
+   "p5": -0.393,
+   "p95": 0.121,
+   "min": -0.57,
+   "max": 0.17,
+   "mean": -0.109,
+   "sd": 0.178
+  },
+  "conf_medium": {
+   "n": 7,
+   "median": -0.169,
+   "q25": -0.272,
+   "q75": 0.081,
+   "p5": -0.322,
+   "p95": 0.165,
+   "min": -0.325,
+   "max": 0.166,
+   "mean": -0.101,
+   "sd": 0.211
+  },
+  "other_dOnset(mine-pubT0)": {
+   "n": 9,
+   "median": -0.003,
+   "q25": -0.076,
+   "q75": -0.003,
+   "p5": -0.262,
+   "p95": 0.033,
+   "min": -0.334,
+   "max": 0.055,
+   "mean": -0.058,
+   "sd": 0.119
+  }
+ },
+ "passLabelVsDetection": {
+  "note": "published pass label | best confidence of the contacts attributed here",
+  "counts": {
+   "mild|high": 11,
+   "mild|low": 1,
+   "mild|medium": 3,
+   "mild|none": 15,
+   "silent|low": 2,
+   "silent|none": 90,
+   "strong|high": 17,
+   "strong|medium": 1
+  }
+ },
+ "minSpeedSources": {
+  "note": "times of the corner speed minimum from the three speed sources; the GPS Speed time already includes the -0.09 s Doppler-lag correction",
+  "fuji_aim_01|ecuVeh-rearWheels": {
+   "n": 56,
+   "median": -0.163,
+   "q25": -0.21,
+   "q75": -0.087,
+   "p5": -1.429,
+   "p95": 0.008,
+   "min": -2.525,
+   "max": 4.355,
+   "mean": -0.195,
+   "sd": 0.775
+  },
+  "fuji_aim_01|gpsLagCorrected-rearWheels": {
+   "n": 56,
+   "median": 0.017,
+   "q25": -0.064,
+   "q75": 0.087,
+   "p5": -1.481,
+   "p95": 1.3,
+   "min": -2.012,
+   "max": 3.937,
+   "mean": 0.037,
+   "sd": 0.915
+  },
+  "fuji_aim_01|gpsLagCorrected-rearWheels(interior,|d|<0.5s)": {
+   "n": 38,
+   "median": 0.017,
+   "q25": -0.041,
+   "q75": 0.071,
+   "p5": -0.088,
+   "p95": 0.161,
+   "min": -0.302,
+   "max": 0.197,
+   "mean": 0.018,
+   "sd": 0.092
+  },
+  "fuji_aim_01|rearWheelsFlatWidth": {
+   "n": 56,
+   "median": 0.35,
+   "q25": 0.25,
+   "q75": 0.413,
+   "p5": 0.05,
+   "p95": 2.25,
+   "min": 0.0,
+   "max": 3.3,
+   "mean": 0.545,
+   "sd": 0.698
+  },
+  "fuji_aim_2020_07_30|ecuVeh-rearWheels": {
+   "n": 84,
+   "median": -0.119,
+   "q25": -0.247,
+   "q75": -0.05,
+   "p5": -0.5,
+   "p95": 0.126,
+   "min": -4.465,
+   "max": 1.285,
+   "mean": -0.183,
+   "sd": 0.591
+  },
+  "fuji_aim_2020_07_30|gpsLagCorrected-rearWheels": {
+   "n": 84,
+   "median": 0.008,
+   "q25": -0.046,
+   "q75": 0.072,
+   "p5": -3.127,
+   "p95": 0.741,
+   "min": -5.972,
+   "max": 1.583,
+   "mean": -0.343,
+   "sd": 1.384
+  },
+  "fuji_aim_2020_07_30|gpsLagCorrected-rearWheels(interior,|d|<0.5s)": {
+   "n": 51,
+   "median": 0.013,
+   "q25": -0.028,
+   "q75": 0.057,
+   "p5": -0.077,
+   "p95": 0.124,
+   "min": -0.125,
+   "max": 0.247,
+   "mean": 0.019,
+   "sd": 0.07
+  },
+  "fuji_aim_2020_07_30|rearWheelsFlatWidth": {
+   "n": 84,
+   "median": 0.3,
+   "q25": 0.1,
+   "q75": 0.4,
+   "p5": 0.05,
+   "p95": 0.742,
+   "min": 0.0,
+   "max": 3.45,
+   "mean": 0.34,
+   "sd": 0.408
+  },
+  "pooled|ecuVeh-rearWheels": {
+   "n": 140,
+   "median": -0.155,
+   "q25": -0.219,
+   "q75": -0.05,
+   "p5": -0.696,
+   "p95": 0.076,
+   "min": -4.465,
+   "max": 4.355,
+   "mean": -0.188,
+   "sd": 0.668
+  },
+  "pooled|gpsLagCorrected-rearWheels": {
+   "n": 140,
+   "median": 0.01,
+   "q25": -0.056,
+   "q75": 0.078,
+   "p5": -2.77,
+   "p95": 0.807,
+   "min": -5.972,
+   "max": 3.937,
+   "mean": -0.191,
+   "sd": 1.229
+  },
+  "pooled|gpsLagCorrected-rearWheels(interior,|d|<0.5s)": {
+   "n": 89,
+   "median": 0.013,
+   "q25": -0.031,
+   "q75": 0.069,
+   "p5": -0.082,
+   "p95": 0.155,
+   "min": -0.302,
+   "max": 0.247,
+   "mean": 0.019,
+   "sd": 0.079
+  },
+  "pooled|rearWheelsFlatWidth": {
+   "n": 140,
+   "median": 0.35,
+   "q25": 0.188,
+   "q75": 0.4,
+   "p5": 0.05,
+   "p95": 1.177,
+   "min": 0.0,
+   "max": 3.45,
+   "mean": 0.422,
+   "sd": 0.55
+  }
+ },
+ "contactChannels": {
+  "vaMinusRrOnsetS": {
+   "n": 26,
+   "median": 0.12,
+   "q25": 0.019,
+   "q75": 0.327,
+   "p5": -0.187,
+   "p95": 0.76,
+   "min": -0.27,
+   "max": 0.891,
+   "mean": 0.186,
+   "sd": 0.29
+  },
+  "peakRatioVA": {
+   "n": 38,
+   "median": 5.65,
+   "q25": 3.9,
+   "q75": 7.575,
+   "p5": 2.07,
+   "p95": 14.98,
+   "min": 1.3,
+   "max": 16.1,
+   "mean": 6.532,
+   "sd": 3.915
+  },
+  "peakRatioRR": {
+   "n": 38,
+   "median": 14.45,
+   "q25": 10.525,
+   "q75": 22.975,
+   "p5": 4.82,
+   "p95": 37.125,
+   "min": 1.4,
+   "max": 101.7,
+   "mean": 19.163,
+   "sd": 16.747
+  },
+  "insidePassContactsByConfidence": {
+   "high": 28,
+   "low": 3,
+   "medium": 7
+  }
+ },
+ "lapToLapPerCorner": {
+  "fuji_aim_01|k13": {
+   "brakeOnset": {
+    "n": 4,
+    "relPassStartMedianS": -5.744,
+    "relPassStartSdS": 0.668,
+    "stationMedianM": 678.1,
+    "stationSdM": 17.4
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -2.089,
+    "relPassStartSdS": 0.651,
+    "stationMedianM": 822.5,
+    "stationSdM": 16.8
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.482,
+    "relPassStartSdS": 0.587,
+    "stationMedianM": 838.5,
+    "stationSdM": 13.2
+   },
+   "kerbContactOnset": {
+    "n": 1,
+    "relPassStartMedianS": 1.285,
+    "relPassStartSdS": null,
+    "stationMedianM": 896.1,
+    "stationSdM": null
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.431,
+    "relPassStartSdS": 0.361,
+    "stationMedianM": 901.0,
+    "stationSdM": 8.7
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.26,
+    "relPassStartSdS": 0.188,
+    "stationMedianM": 897.8,
+    "stationSdM": 5.2
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.345,
+    "relPassStartSdS": 0.226,
+    "stationMedianM": 899.6,
+    "stationSdM": 6.5
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.441,
+    "relPassStartSdS": 0.118,
+    "stationMedianM": 901.5,
+    "stationSdM": 4.0
+   }
+  },
+  "fuji_aim_01|k1": {
+   "brakeOnset": {
+    "n": 4,
+    "relPassStartMedianS": -2.981,
+    "relPassStartSdS": 0.467,
+    "stationMedianM": 1312.2,
+    "stationSdM": 14.8
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.242,
+    "relPassStartSdS": 0.249,
+    "stationMedianM": 1376.2,
+    "stationSdM": 7.5
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.083,
+    "relPassStartSdS": 0.272,
+    "stationMedianM": 1383.0,
+    "stationSdM": 10.4
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.502,
+    "relPassStartSdS": 0.496,
+    "stationMedianM": 1456.7,
+    "stationSdM": 15.8
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.29,
+    "relPassStartSdS": 0.266,
+    "stationMedianM": 1449.5,
+    "stationSdM": 9.9
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 0.902,
+    "relPassStartSdS": 0.38,
+    "stationMedianM": 1439.3,
+    "stationSdM": 11.1
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.646,
+    "relPassStartSdS": 0.549,
+    "stationMedianM": 1460.9,
+    "stationSdM": 18.4
+   }
+  },
+  "fuji_aim_01|k15": {
+   "brakeOnset": {
+    "n": 2,
+    "relPassStartMedianS": -5.345,
+    "relPassStartSdS": 0.363,
+    "stationMedianM": 1327.0,
+    "stationSdM": 11.3
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": 1.974,
+    "relPassStartSdS": 0.22,
+    "stationMedianM": 1553.1,
+    "stationSdM": 4.3
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": 2.125,
+    "relPassStartSdS": 0.239,
+    "stationMedianM": 1557.8,
+    "stationSdM": 4.3
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.855,
+    "relPassStartSdS": 1.405,
+    "stationMedianM": 1550.3,
+    "stationSdM": 38.8
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 4.179,
+    "relPassStartSdS": 1.126,
+    "stationMedianM": 1625.0,
+    "stationSdM": 31.8
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 3.965,
+    "relPassStartSdS": 0.564,
+    "stationMedianM": 1618.5,
+    "stationSdM": 10.2
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 3.351,
+    "relPassStartSdS": 0.629,
+    "stationMedianM": 1596.0,
+    "stationSdM": 18.1
+   }
+  },
+  "fuji_aim_01|k3": {
+   "brakeOnset": {
+    "n": 4,
+    "relPassStartMedianS": -2.235,
+    "relPassStartSdS": 0.167,
+    "stationMedianM": 2041.2,
+    "stationSdM": 3.1
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -0.892,
+    "relPassStartSdS": 0.156,
+    "stationMedianM": 2079.5,
+    "stationSdM": 3.4
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -0.685,
+    "relPassStartSdS": 0.211,
+    "stationMedianM": 2085.4,
+    "stationSdM": 4.8
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.314,
+    "relPassStartSdS": 0.454,
+    "stationMedianM": 2127.1,
+    "stationSdM": 17.1
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.57,
+    "relPassStartSdS": 0.289,
+    "stationMedianM": 2132.5,
+    "stationSdM": 9.5
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.349,
+    "relPassStartSdS": 0.419,
+    "stationMedianM": 2128.3,
+    "stationSdM": 13.7
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.578,
+    "relPassStartSdS": 0.172,
+    "stationMedianM": 2132.4,
+    "stationSdM": 7.8
+   }
+  },
+  "fuji_aim_01|k18": {
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.551,
+    "relPassStartSdS": 0.515,
+    "stationMedianM": 2366.9,
+    "stationSdM": 13.6
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.115,
+    "relPassStartSdS": 0.288,
+    "stationMedianM": 2381.3,
+    "stationSdM": 10.4
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": -1.547,
+    "relPassStartSdS": 0.928,
+    "stationMedianM": 2365.4,
+    "stationSdM": 32.6
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.091,
+    "relPassStartSdS": 0.047,
+    "stationMedianM": 2459.8,
+    "stationSdM": 3.5
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.011,
+    "relPassStartSdS": 0.37,
+    "stationMedianM": 2453.8,
+    "stationSdM": 12.9
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 0.854,
+    "relPassStartSdS": 0.407,
+    "stationMedianM": 2448.4,
+    "stationSdM": 14.2
+   }
+  },
+  "fuji_aim_01|k19": {
+   "steerOnset": {
+    "n": 3,
+    "relPassStartMedianS": -6.692,
+    "relPassStartSdS": 4.299,
+    "stationMedianM": 2375.9,
+    "stationSdM": 166.5
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -3.073,
+    "relPassStartSdS": 4.455,
+    "stationMedianM": 2519.8,
+    "stationSdM": 173.4
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": -0.396,
+    "relPassStartSdS": 2.005,
+    "stationMedianM": 2625.8,
+    "stationSdM": 78.3
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.021,
+    "relPassStartSdS": 0.486,
+    "stationMedianM": 2684.8,
+    "stationSdM": 18.0
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 0.903,
+    "relPassStartSdS": 0.498,
+    "stationMedianM": 2680.1,
+    "stationSdM": 18.7
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 0.826,
+    "relPassStartSdS": 0.509,
+    "stationMedianM": 2677.1,
+    "stationSdM": 19.5
+   }
+  },
+  "fuji_aim_01|kDunlopR": {
+   "brakeOnset": {
+    "n": 4,
+    "relPassStartMedianS": -4.519,
+    "relPassStartSdS": 0.621,
+    "stationMedianM": 2824.4,
+    "stationSdM": 11.4
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.697,
+    "relPassStartSdS": 0.402,
+    "stationMedianM": 2923.2,
+    "stationSdM": 10.3
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.401,
+    "relPassStartSdS": 0.349,
+    "stationMedianM": 2929.4,
+    "stationSdM": 6.7
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.496,
+    "relPassStartSdS": 0.425,
+    "stationMedianM": 2978.6,
+    "stationSdM": 5.6
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.078,
+    "relPassStartSdS": 0.57,
+    "stationMedianM": 2974.5,
+    "stationSdM": 7.8
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.41,
+    "relPassStartSdS": 0.404,
+    "stationMedianM": 2977.8,
+    "stationSdM": 5.2
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.56,
+    "relPassStartSdS": 0.377,
+    "stationMedianM": 2979.7,
+    "stationSdM": 6.5
+   }
+  },
+  "fuji_aim_01|k7": {
+   "brakeOnset": {
+    "n": 2,
+    "relPassStartMedianS": -0.584,
+    "relPassStartSdS": 0.305,
+    "stationMedianM": 3010.9,
+    "stationSdM": 2.7
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -0.778,
+    "relPassStartSdS": 0.268,
+    "stationMedianM": 3006.7,
+    "stationSdM": 2.4
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -0.613,
+    "relPassStartSdS": 0.266,
+    "stationMedianM": 3009.3,
+    "stationSdM": 2.6
+   },
+   "kerbContactOnset": {
+    "n": 2,
+    "relPassStartMedianS": 2.051,
+    "relPassStartSdS": 1.006,
+    "stationMedianM": 3053.5,
+    "stationSdM": 14.1
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 0.533,
+    "relPassStartSdS": 1.146,
+    "stationMedianM": 3029.9,
+    "stationSdM": 21.4
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.462,
+    "relPassStartSdS": 0.895,
+    "stationMedianM": 3044.7,
+    "stationSdM": 16.4
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.488,
+    "relPassStartSdS": 0.972,
+    "stationMedianM": 3045.0,
+    "stationSdM": 17.0
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.304,
+    "relPassStartSdS": 0.958,
+    "stationMedianM": 3041.8,
+    "stationSdM": 17.5
+   }
+  },
+  "fuji_aim_01|k20": {
+   "brakeOnset": {
+    "n": 2,
+    "relPassStartMedianS": -4.375,
+    "relPassStartSdS": 0.602,
+    "stationMedianM": 3010.9,
+    "stationSdM": 2.7
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": 0.373,
+    "relPassStartSdS": 0.234,
+    "stationMedianM": 3090.3,
+    "stationSdM": 5.4
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": 0.604,
+    "relPassStartSdS": 0.239,
+    "stationMedianM": 3094.9,
+    "stationSdM": 5.9
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.047,
+    "relPassStartSdS": 0.985,
+    "stationMedianM": 3106.4,
+    "stationSdM": 18.6
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 2.002,
+    "relPassStartSdS": 0.68,
+    "stationMedianM": 3128.9,
+    "stationSdM": 12.9
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 1.889,
+    "relPassStartSdS": 0.359,
+    "stationMedianM": 3122.9,
+    "stationSdM": 9.1
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.753,
+    "relPassStartSdS": 0.736,
+    "stationMedianM": 3122.8,
+    "stationSdM": 14.6
+   }
+  },
+  "fuji_aim_01|k21": {
+   "brakeOnset": {
+    "n": 3,
+    "relPassStartMedianS": -1.368,
+    "relPassStartSdS": 0.355,
+    "stationMedianM": 3217.3,
+    "stationSdM": 6.4
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.668,
+    "relPassStartSdS": 0.744,
+    "stationMedianM": 3211.1,
+    "stationSdM": 19.6
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -1.534,
+    "relPassStartSdS": 0.599,
+    "stationMedianM": 3214.6,
+    "stationSdM": 16.0
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 0.745,
+    "relPassStartSdS": 1.077,
+    "stationMedianM": 3268.1,
+    "stationSdM": 27.7
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 0.439,
+    "relPassStartSdS": 0.812,
+    "stationMedianM": 3260.7,
+    "stationSdM": 19.7
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 0.875,
+    "relPassStartSdS": 0.78,
+    "stationMedianM": 3271.4,
+    "stationSdM": 18.7
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 1.692,
+    "relPassStartSdS": 0.322,
+    "stationMedianM": 3291.8,
+    "stationSdM": 7.3
+   }
+  },
+  "fuji_aim_01|k9": {
+   "brakeOnset": {
+    "n": 4,
+    "relPassStartMedianS": -5.422,
+    "relPassStartSdS": 0.065,
+    "stationMedianM": 3219.9,
+    "stationSdM": 4.6
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": 0.766,
+    "relPassStartSdS": 0.053,
+    "stationMedianM": 3368.3,
+    "stationSdM": 1.0
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": 0.89,
+    "relPassStartSdS": 0.053,
+    "stationMedianM": 3371.4,
+    "stationSdM": 1.1
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 2.451,
+    "relPassStartSdS": 0.307,
+    "stationMedianM": 3416.8,
+    "stationSdM": 8.2
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 3.375,
+    "relPassStartSdS": 0.319,
+    "stationMedianM": 3445.6,
+    "stationSdM": 9.6
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 4.373,
+    "relPassStartSdS": 0.935,
+    "stationMedianM": 3477.3,
+    "stationSdM": 27.3
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 2.928,
+    "relPassStartSdS": 0.332,
+    "stationMedianM": 3430.1,
+    "stationSdM": 9.5
+   }
+  },
+  "fuji_aim_01|k10": {
+   "brakeOnset": {
+    "n": 4,
+    "relPassStartMedianS": -3.3,
+    "relPassStartSdS": 0.377,
+    "stationMedianM": 3464.5,
+    "stationSdM": 11.6
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -2.052,
+    "relPassStartSdS": 0.691,
+    "stationMedianM": 3496.2,
+    "stationSdM": 18.4
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -2.087,
+    "relPassStartSdS": 0.741,
+    "stationMedianM": 3495.8,
+    "stationSdM": 18.9
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.189,
+    "relPassStartSdS": 0.533,
+    "stationMedianM": 3560.5,
+    "stationSdM": 10.2
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": -0.115,
+    "relPassStartSdS": 0.127,
+    "stationMedianM": 3536.4,
+    "stationSdM": 2.4
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": -0.151,
+    "relPassStartSdS": 0.641,
+    "stationMedianM": 3535.6,
+    "stationSdM": 12.0
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 0.384,
+    "relPassStartSdS": 0.923,
+    "stationMedianM": 3545.2,
+    "stationSdM": 18.2
+   }
+  },
+  "fuji_aim_01|k23": {
+   "brakeOnset": {
+    "n": 1,
+    "relPassStartMedianS": -5.302,
+    "relPassStartSdS": null,
+    "stationMedianM": 3472.9,
+    "stationSdM": null
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": 2.92,
+    "relPassStartSdS": 0.285,
+    "stationMedianM": 3658.5,
+    "stationSdM": 4.9
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": 3.061,
+    "relPassStartSdS": 0.29,
+    "stationMedianM": 3662.4,
+    "stationSdM": 4.9
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 1.969,
+    "relPassStartSdS": 0.269,
+    "stationMedianM": 3633.7,
+    "stationSdM": 4.4
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 5.455,
+    "relPassStartSdS": 0.21,
+    "stationMedianM": 3730.9,
+    "stationSdM": 8.8
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": 5.27,
+    "relPassStartSdS": 0.141,
+    "stationMedianM": 3726.1,
+    "stationSdM": 5.5
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 4.055,
+    "relPassStartSdS": 0.238,
+    "stationMedianM": 3688.2,
+    "stationSdM": 9.7
+   }
+  },
+  "fuji_aim_01|k24": {
+   "brakeOnset": {
+    "n": 3,
+    "relPassStartMedianS": -3.898,
+    "relPassStartSdS": 0.371,
+    "stationMedianM": 3733.5,
+    "stationSdM": 10.3
+   },
+   "steerOnset": {
+    "n": 4,
+    "relPassStartMedianS": -3.177,
+    "relPassStartSdS": 1.75,
+    "stationMedianM": 3754.4,
+    "stationSdM": 52.2
+   },
+   "yawOnset": {
+    "n": 4,
+    "relPassStartMedianS": -3.245,
+    "relPassStartSdS": 1.747,
+    "stationMedianM": 3752.6,
+    "stationSdM": 52.2
+   },
+   "kerbContactOnset": {
+    "n": 1,
+    "relPassStartMedianS": 1.162,
+    "relPassStartSdS": null,
+    "stationMedianM": 3848.0,
+    "stationSdM": null
+   },
+   "minSpeed": {
+    "n": 4,
+    "relPassStartMedianS": 0.138,
+    "relPassStartSdS": 0.745,
+    "stationMedianM": 3824.5,
+    "stationSdM": 16.6
+   },
+   "latGPeak": {
+    "n": 4,
+    "relPassStartMedianS": 0.712,
+    "relPassStartSdS": 0.775,
+    "stationMedianM": 3837.6,
+    "stationSdM": 14.2
+   },
+   "yawRatePeak": {
+    "n": 4,
+    "relPassStartMedianS": -0.098,
+    "relPassStartSdS": 0.438,
+    "stationMedianM": 3819.8,
+    "stationSdM": 7.6
+   },
+   "steerMax": {
+    "n": 4,
+    "relPassStartMedianS": 0.12,
+    "relPassStartSdS": 0.859,
+    "stationMedianM": 3824.2,
+    "stationSdM": 18.5
+   }
+  },
+  "fuji_aim_2020_07_30|k13": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -4.324,
+    "relPassStartSdS": 0.256,
+    "stationMedianM": 721.3,
+    "stationSdM": 7.8
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.517,
+    "relPassStartSdS": 0.188,
+    "stationMedianM": 838.1,
+    "stationSdM": 7.1
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.353,
+    "relPassStartSdS": 0.265,
+    "stationMedianM": 841.2,
+    "stationSdM": 8.2
+   },
+   "kerbContactOnset": {
+    "n": 3,
+    "relPassStartMedianS": 0.883,
+    "relPassStartSdS": 0.217,
+    "stationMedianM": 894.6,
+    "stationSdM": 5.0
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 0.625,
+    "relPassStartSdS": 0.484,
+    "stationMedianM": 886.4,
+    "stationSdM": 11.0
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.321,
+    "relPassStartSdS": 1.007,
+    "stationMedianM": 905.8,
+    "stationSdM": 26.1
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.875,
+    "relPassStartSdS": 0.873,
+    "stationMedianM": 894.9,
+    "stationSdM": 22.6
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 1.122,
+    "relPassStartSdS": 0.292,
+    "stationMedianM": 900.1,
+    "stationSdM": 9.1
+   }
+  },
+  "fuji_aim_2020_07_30|k1": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.692,
+    "relPassStartSdS": 0.085,
+    "stationMedianM": 1349.3,
+    "stationSdM": 2.9
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.186,
+    "relPassStartSdS": 0.059,
+    "stationMedianM": 1370.5,
+    "stationSdM": 3.1
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.227,
+    "relPassStartSdS": 0.412,
+    "stationMedianM": 1369.2,
+    "stationSdM": 15.8
+   },
+   "kerbContactOnset": {
+    "n": 6,
+    "relPassStartMedianS": 0.788,
+    "relPassStartSdS": 0.135,
+    "stationMedianM": 1440.1,
+    "stationSdM": 5.6
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 0.807,
+    "relPassStartSdS": 0.916,
+    "stationMedianM": 1441.7,
+    "stationSdM": 33.9
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.443,
+    "relPassStartSdS": 0.376,
+    "stationMedianM": 1466.2,
+    "stationSdM": 15.0
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.023,
+    "relPassStartSdS": 0.406,
+    "stationMedianM": 1448.9,
+    "stationSdM": 17.2
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 1.332,
+    "relPassStartSdS": 0.287,
+    "stationMedianM": 1464.7,
+    "stationSdM": 13.1
+   }
+  },
+  "fuji_aim_2020_07_30|k15": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -3.912,
+    "relPassStartSdS": 0.141,
+    "stationMedianM": 1349.3,
+    "stationSdM": 2.9
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": 2.084,
+    "relPassStartSdS": 0.239,
+    "stationMedianM": 1567.7,
+    "stationSdM": 7.1
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": 2.107,
+    "relPassStartSdS": 0.182,
+    "stationMedianM": 1569.5,
+    "stationSdM": 5.2
+   },
+   "kerbContactOnset": {
+    "n": 3,
+    "relPassStartMedianS": 0.09,
+    "relPassStartSdS": 0.407,
+    "stationMedianM": 1498.8,
+    "stationSdM": 13.1
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 1.588,
+    "relPassStartSdS": 1.776,
+    "stationMedianM": 1551.1,
+    "stationSdM": 66.0
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 3.974,
+    "relPassStartSdS": 0.349,
+    "stationMedianM": 1642.8,
+    "stationSdM": 16.2
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 3.945,
+    "relPassStartSdS": 0.333,
+    "stationMedianM": 1638.8,
+    "stationSdM": 12.1
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 2.876,
+    "relPassStartSdS": 0.101,
+    "stationMedianM": 1600.2,
+    "stationSdM": 2.8
+   }
+  },
+  "fuji_aim_2020_07_30|k3": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -2.086,
+    "relPassStartSdS": 0.311,
+    "stationMedianM": 2036.6,
+    "stationSdM": 7.4
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -0.758,
+    "relPassStartSdS": 0.663,
+    "stationMedianM": 2081.2,
+    "stationSdM": 18.7
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -0.607,
+    "relPassStartSdS": 0.786,
+    "stationMedianM": 2085.7,
+    "stationSdM": 22.4
+   },
+   "kerbContactOnset": {
+    "n": 3,
+    "relPassStartMedianS": 1.817,
+    "relPassStartSdS": 0.244,
+    "stationMedianM": 2146.7,
+    "stationSdM": 7.8
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 1.296,
+    "relPassStartSdS": 0.361,
+    "stationMedianM": 2129.7,
+    "stationSdM": 9.1
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.538,
+    "relPassStartSdS": 0.385,
+    "stationMedianM": 2135.9,
+    "stationSdM": 16.8
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.734,
+    "relPassStartSdS": 0.435,
+    "stationMedianM": 2142.9,
+    "stationSdM": 17.4
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 1.723,
+    "relPassStartSdS": 0.224,
+    "stationMedianM": 2145.8,
+    "stationSdM": 11.4
+   }
+  },
+  "fuji_aim_2020_07_30|k18": {
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.123,
+    "relPassStartSdS": 0.188,
+    "stationMedianM": 2378.2,
+    "stationSdM": 7.0
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.269,
+    "relPassStartSdS": 0.23,
+    "stationMedianM": 2373.3,
+    "stationSdM": 8.4
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 1.114,
+    "relPassStartSdS": 3.491,
+    "stationMedianM": 2470.2,
+    "stationSdM": 138.0
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.132,
+    "relPassStartSdS": 0.644,
+    "stationMedianM": 2464.1,
+    "stationSdM": 25.9
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.765,
+    "relPassStartSdS": 0.641,
+    "stationMedianM": 2449.2,
+    "stationSdM": 25.9
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 0.515,
+    "relPassStartSdS": 0.689,
+    "stationMedianM": 2439.4,
+    "stationSdM": 27.4
+   }
+  },
+  "fuji_aim_2020_07_30|k19": {
+   "steerOnset": {
+    "n": 5,
+    "relPassStartMedianS": -6.533,
+    "relPassStartSdS": 0.19,
+    "stationMedianM": 2379.7,
+    "stationSdM": 7.7
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -6.652,
+    "relPassStartSdS": 2.811,
+    "stationMedianM": 2374.4,
+    "stationSdM": 114.0
+   },
+   "kerbContactOnset": {
+    "n": 1,
+    "relPassStartMedianS": -0.23,
+    "relPassStartSdS": null,
+    "stationMedianM": 2632.5,
+    "stationSdM": null
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": -0.654,
+    "relPassStartSdS": 0.514,
+    "stationMedianM": 2614.1,
+    "stationSdM": 22.7
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.798,
+    "relPassStartSdS": 0.546,
+    "stationMedianM": 2678.8,
+    "stationSdM": 24.7
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.012,
+    "relPassStartSdS": 0.649,
+    "stationMedianM": 2643.1,
+    "stationSdM": 29.3
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 0.034,
+    "relPassStartSdS": 0.425,
+    "stationMedianM": 2644.1,
+    "stationSdM": 18.6
+   }
+  },
+  "fuji_aim_2020_07_30|kDunlopR": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -3.989,
+    "relPassStartSdS": 0.215,
+    "stationMedianM": 2834.6,
+    "stationSdM": 7.7
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.036,
+    "relPassStartSdS": 0.239,
+    "stationMedianM": 2938.3,
+    "stationSdM": 6.1
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -0.962,
+    "relPassStartSdS": 0.212,
+    "stationMedianM": 2940.4,
+    "stationSdM": 5.3
+   },
+   "kerbContactOnset": {
+    "n": 3,
+    "relPassStartMedianS": 1.34,
+    "relPassStartSdS": 0.042,
+    "stationMedianM": 2980.0,
+    "stationSdM": 0.6
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 1.226,
+    "relPassStartSdS": 0.394,
+    "stationMedianM": 2978.3,
+    "stationSdM": 6.8
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.014,
+    "relPassStartSdS": 0.095,
+    "stationMedianM": 2973.6,
+    "stationSdM": 0.9
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.131,
+    "relPassStartSdS": 0.242,
+    "stationMedianM": 2977.2,
+    "stationSdM": 3.4
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 1.191,
+    "relPassStartSdS": 0.348,
+    "stationMedianM": 2978.2,
+    "stationSdM": 5.6
+   }
+  },
+  "fuji_aim_2020_07_30|k7": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -7.319,
+    "relPassStartSdS": 0.295,
+    "stationMedianM": 2834.6,
+    "stationSdM": 7.7
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -0.586,
+    "relPassStartSdS": 0.145,
+    "stationMedianM": 3007.9,
+    "stationSdM": 2.2
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -0.48,
+    "relPassStartSdS": 0.14,
+    "stationMedianM": 3009.6,
+    "stationSdM": 2.2
+   },
+   "kerbContactOnset": {
+    "n": 3,
+    "relPassStartMedianS": 1.403,
+    "relPassStartSdS": 0.168,
+    "stationMedianM": 3050.1,
+    "stationSdM": 3.1
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 0.834,
+    "relPassStartSdS": 1.0,
+    "stationMedianM": 3036.1,
+    "stationSdM": 20.9
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.131,
+    "relPassStartSdS": 0.455,
+    "stationMedianM": 3044.6,
+    "stationSdM": 10.8
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.296,
+    "relPassStartSdS": 0.357,
+    "stationMedianM": 3048.8,
+    "stationSdM": 8.4
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 1.06,
+    "relPassStartSdS": 0.411,
+    "stationMedianM": 3042.5,
+    "stationSdM": 9.6
+   }
+  },
+  "fuji_aim_2020_07_30|k20": {
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": 0.727,
+    "relPassStartSdS": 0.13,
+    "stationMedianM": 3098.9,
+    "stationSdM": 3.4
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": 0.822,
+    "relPassStartSdS": 0.125,
+    "stationMedianM": 3101.2,
+    "stationSdM": 3.4
+   },
+   "kerbContactOnset": {
+    "n": 1,
+    "relPassStartMedianS": 0.781,
+    "relPassStartSdS": null,
+    "stationMedianM": 3101.0,
+    "stationSdM": null
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": -0.136,
+    "relPassStartSdS": 0.168,
+    "stationMedianM": 3080.3,
+    "stationSdM": 3.5
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 2.416,
+    "relPassStartSdS": 0.655,
+    "stationMedianM": 3138.3,
+    "stationSdM": 18.6
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 2.293,
+    "relPassStartSdS": 0.469,
+    "stationMedianM": 3134.6,
+    "stationSdM": 12.4
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 2.134,
+    "relPassStartSdS": 0.48,
+    "stationMedianM": 3131.4,
+    "stationSdM": 12.6
+   }
+  },
+  "fuji_aim_2020_07_30|k21": {
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.62,
+    "relPassStartSdS": 0.265,
+    "stationMedianM": 3205.4,
+    "stationSdM": 7.5
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -1.532,
+    "relPassStartSdS": 0.261,
+    "stationMedianM": 3207.9,
+    "stationSdM": 7.3
+   },
+   "kerbContactOnset": {
+    "n": 2,
+    "relPassStartMedianS": 1.96,
+    "relPassStartSdS": 0.105,
+    "stationMedianM": 3307.2,
+    "stationSdM": 2.9
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 0.981,
+    "relPassStartSdS": 0.42,
+    "stationMedianM": 3278.5,
+    "stationSdM": 12.5
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.743,
+    "relPassStartSdS": 0.494,
+    "stationMedianM": 3270.8,
+    "stationSdM": 15.0
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 1.116,
+    "relPassStartSdS": 0.593,
+    "stationMedianM": 3283.8,
+    "stationSdM": 17.4
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 1.051,
+    "relPassStartSdS": 0.206,
+    "stationMedianM": 3281.0,
+    "stationSdM": 6.5
+   }
+  },
+  "fuji_aim_2020_07_30|k9": {
+   "brakeOnset": {
+    "n": 1,
+    "relPassStartMedianS": -4.453,
+    "relPassStartSdS": null,
+    "stationMedianM": 3223.7,
+    "stationSdM": null
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": 0.623,
+    "relPassStartSdS": 0.18,
+    "stationMedianM": 3366.8,
+    "stationSdM": 5.7
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": 0.727,
+    "relPassStartSdS": 0.179,
+    "stationMedianM": 3369.9,
+    "stationSdM": 5.7
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 5.024,
+    "relPassStartSdS": 0.403,
+    "stationMedianM": 3507.3,
+    "stationSdM": 14.6
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 3.291,
+    "relPassStartSdS": 0.293,
+    "stationMedianM": 3456.5,
+    "stationSdM": 7.8
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 3.417,
+    "relPassStartSdS": 0.959,
+    "stationMedianM": 3461.1,
+    "stationSdM": 25.9
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 3.01,
+    "relPassStartSdS": 0.374,
+    "stationMedianM": 3447.1,
+    "stationSdM": 12.2
+   }
+  },
+  "fuji_aim_2020_07_30|k10": {
+   "brakeOnset": {
+    "n": 5,
+    "relPassStartMedianS": -2.499,
+    "relPassStartSdS": 3.826,
+    "stationMedianM": 3474.5,
+    "stationSdM": 115.5
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -2.009,
+    "relPassStartSdS": 2.036,
+    "stationMedianM": 3491.6,
+    "stationSdM": 65.4
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -2.024,
+    "relPassStartSdS": 2.055,
+    "stationMedianM": 3489.9,
+    "stationSdM": 65.6
+   },
+   "kerbContactOnset": {
+    "n": 3,
+    "relPassStartMedianS": 1.038,
+    "relPassStartSdS": 0.544,
+    "stationMedianM": 3564.4,
+    "stationSdM": 13.9
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 0.597,
+    "relPassStartSdS": 1.222,
+    "stationMedianM": 3549.1,
+    "stationSdM": 29.5
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.764,
+    "relPassStartSdS": 0.657,
+    "stationMedianM": 3552.9,
+    "stationSdM": 13.3
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.847,
+    "relPassStartSdS": 0.533,
+    "stationMedianM": 3555.2,
+    "stationSdM": 10.1
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 0.782,
+    "relPassStartSdS": 0.484,
+    "stationMedianM": 3554.8,
+    "stationSdM": 9.4
+   }
+  },
+  "fuji_aim_2020_07_30|k23": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -4.72,
+    "relPassStartSdS": 0.271,
+    "stationMedianM": 3473.8,
+    "stationSdM": 14.8
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": 2.627,
+    "relPassStartSdS": 0.101,
+    "stationMedianM": 3657.2,
+    "stationSdM": 3.2
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": 2.669,
+    "relPassStartSdS": 0.09,
+    "stationMedianM": 3658.2,
+    "stationSdM": 2.9
+   },
+   "kerbContactOnset": {
+    "n": 1,
+    "relPassStartMedianS": -0.44,
+    "relPassStartSdS": null,
+    "stationMedianM": 3580.0,
+    "stationSdM": null
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": 1.641,
+    "relPassStartSdS": 0.105,
+    "stationMedianM": 3630.2,
+    "stationSdM": 2.9
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": 5.051,
+    "relPassStartSdS": 0.226,
+    "stationMedianM": 3729.5,
+    "stationSdM": 5.9
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 4.838,
+    "relPassStartSdS": 0.549,
+    "stationMedianM": 3723.4,
+    "stationSdM": 17.5
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": 3.737,
+    "relPassStartSdS": 0.158,
+    "stationMedianM": 3689.9,
+    "stationSdM": 4.6
+   }
+  },
+  "fuji_aim_2020_07_30|k24": {
+   "brakeOnset": {
+    "n": 6,
+    "relPassStartMedianS": -8.446,
+    "relPassStartSdS": 5.685,
+    "stationMedianM": 3617.6,
+    "stationSdM": 147.9
+   },
+   "steerOnset": {
+    "n": 6,
+    "relPassStartMedianS": -4.538,
+    "relPassStartSdS": 1.953,
+    "stationMedianM": 3705.8,
+    "stationSdM": 56.9
+   },
+   "yawOnset": {
+    "n": 6,
+    "relPassStartMedianS": -4.422,
+    "relPassStartSdS": 1.958,
+    "stationMedianM": 3708.0,
+    "stationSdM": 57.4
+   },
+   "kerbContactOnset": {
+    "n": 2,
+    "relPassStartMedianS": 0.821,
+    "relPassStartSdS": 0.141,
+    "stationMedianM": 3843.0,
+    "stationSdM": 4.9
+   },
+   "minSpeed": {
+    "n": 6,
+    "relPassStartMedianS": -0.532,
+    "relPassStartSdS": 0.447,
+    "stationMedianM": 3810.6,
+    "stationSdM": 9.4
+   },
+   "latGPeak": {
+    "n": 6,
+    "relPassStartMedianS": -1.268,
+    "relPassStartSdS": 0.331,
+    "stationMedianM": 3795.2,
+    "stationSdM": 7.2
+   },
+   "yawRatePeak": {
+    "n": 6,
+    "relPassStartMedianS": 0.267,
+    "relPassStartSdS": 0.748,
+    "stationMedianM": 3827.7,
+    "stationSdM": 16.8
+   },
+   "steerMax": {
+    "n": 6,
+    "relPassStartMedianS": -0.329,
+    "relPassStartSdS": 0.267,
+    "stationMedianM": 3814.9,
+    "stationSdM": 5.7
+   }
+  }
+ },
+ "notesForDownstream": [
+  "Logger times only: every time is on the logger clock mapped to the GPS lap-t base (7/30 per-lap channel shift). The video <-> logger offset is NOT addressed here.",
+  "Kerb contacts: detection = published RR detector (reproduced 44/44) + VA clusters; onset refined on 4 Hz HP / 0.06 s RMS. Refined onset - published t0: median -0.082 s (IQR -0.237..0.038).",
+  "Onset estimator on synthetic bursts in real noise (verify_contact_onset_bias.json): about -10..-35 ms (early) at burst/baseline ratio 16-32, about +/-15 ms at 8, late by +20..+140 ms at 4 (RR mostly undetected at 4).",
+  "7/29 (wet) has only 4 inside passes with a contact (2 high, 2 VA-only low): kerb-event truth for 7/29 is thin; steering / yaw / clip markers exist for all passes.",
+  "k15 and k23 contacts happen while the car still steers the other way (track-out of k1 / k10): at that moment they act as outside kerbs (flag steeringAwayFromKerbSide...).",
+  "Merged corner sequences (shared steering / yaw onset): k19 with k18 (300R), and on some laps k10 with k9, k21 with k20, k24 with k23 (flags sharesSteerOnsetWith / sharesYawOnsetWith).",
+  "Telemetry clipping markers {minSpeed, latGPeak, yawRatePeak, steerMax} spread per pass: median 0.662 s (7/29) / 0.936 s (7/30); the clipping point is not one instant.",
+  "7/30 kerb-contact onset vs yaw-rate peak: median 0.027 s, vs steer max -0.064 s, vs min speed -0.625 s (positive = marker later than the contact onset).",
+  "Steering onset -> yaw onset: 0.169 s (7/29) vs 0.09 s (7/30). Both channels get the same shift on 7/30, so the difference is logger-internal (wet/dry response or ECU/IMU latency; not resolved).",
+  "Corner speed minimum: GPS Speed (-0.09 s) minus rear wheels = 0.017 s (7/29) / 0.013 s (7/30), interior minima: consistent with the 7/30 shift and the 0.09 s Doppler lag (derived cross-check, not a proof). ECU_VEH_SPD minimum is earlier by -0.155 s."
+ ]
+}

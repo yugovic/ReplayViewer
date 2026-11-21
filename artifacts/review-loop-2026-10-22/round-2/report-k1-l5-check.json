@@ -1,0 +1,55 @@
+{
+ "kind": "report round 2 R2-03 check: k1 7/30 L5 two bursts",
+ "burst1": {
+  "onset": 33.061,
+  "offset": 33.646,
+  "confidence": "medium",
+  "channels": [
+   "RR"
+  ],
+  "videoConfirmed": true,
+  "audioConfidence": "high",
+  "dtFirst": 0.204
+ },
+ "burst2": {
+  "onset": 33.67,
+  "offset": 33.798,
+  "confidence": "high",
+  "channels": [
+   "VA",
+   "RR"
+  ],
+  "videoConfirmed": false,
+  "audioConfidence": "low",
+  "flags": [
+   "onsetBoundedByPreviousContact"
+  ],
+  "dtFirst": -0.405
+ },
+ "secondMinusFirstOnset": 0.609,
+ "cgContact": [
+  33.265,
+  33.491
+ ],
+ "cgContactInsideFirstBurst": true,
+ "cgContactEndsBeforeSecondBurst": true,
+ "perLapFirstBurst": {
+  "1": 0.085,
+  "2": 0.266,
+  "3": 0.355,
+  "4": 0.227,
+  "5": 0.204,
+  "6": -0.116
+ },
+ "medianSixLapsFirstBurst": 0.215,
+ "perLapIfL5SecondBurst": {
+  "1": 0.085,
+  "2": 0.266,
+  "3": 0.355,
+  "4": 0.227,
+  "5": -0.405,
+  "6": -0.116
+ },
+ "lateLapsIfL5SecondBurst": 4,
+ "medianSixLapsIfL5SecondBurst": 0.156
+}

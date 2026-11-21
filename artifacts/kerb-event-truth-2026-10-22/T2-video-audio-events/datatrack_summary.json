@@ -1,0 +1,298 @@
+{
+ "kind": "measured (data track of the local SmartyCam files + XRK NAV-SOL); numbers only",
+ "recordLayout": "stream 2 is not sound. It carries one 16000-byte record every 1/6 s (8000 samples) that\nstarts with the marker 00 00 0b 15 01 00. Little-endian u32 fields relative to the marker:\n  @-2  video frame number (== 30 * PTS exactly, all records of both files)\n  @+6  logger-clock milliseconds (10 ms resolution, updates every record except ~6 s around each lap line,\n       where it updates at 1 Hz)\n  @+38 the overlay BEST lap in ms (e.g. 133630 = \"BEST 2:13.63\" on 7/30)\n  @+46 GPS iTOW milliseconds of the latest GPS epoch (100 ms steps)\n  @+94 the logger's GPS timecode of that epoch (= iTOW - C). C equals the XRK's own NAV-SOL\n       iTOW - raw timecode constant in both sessions -> @+94 is the XRK raw GPS timecode.\nlibxrk timecodes = raw timecodes - libOffset (libOffset = raw NAV-SOL tc - libxrk GPS Speed tc).\nPer lap, with t_ovl = overlay-timer lap t of the record's frame:\n  t_gpsLatest = (@+94 - libOffset - tc0) / 1000             (lap t of the newest GPS epoch held by the camera)\n  t_logger    = (@+6 - libOffset - tc0) / 1000 + shift      (logger clock mapped to the GPS base like the IMU)",
+ "signConvention": "dt_* = t_* - t_ovl (s); positive = the camera already holds logger/GPS time that is later than the overlay-timer lap time of the same frame",
+ "sessions": {
+  "fuji_aim_01": {
+   "records": 5424,
+   "recordPeriodS": 0.16666666666666666,
+   "clockRates": {
+    "gpsItowVsPtsPpm": -8.7,
+    "nGps": 5421,
+    "loggerClockVsPtsPpm": -100.8,
+    "nLogger": 5189,
+    "note": "slope of the camera-held clock vs video PTS over the whole file (records where the value changed); ppm < 0 = that clock runs slower than the video PTS"
+   },
+   "frameEquals30xAudioPts": true,
+   "xrkNavsolRecords": 7922,
+   "xrkItowMinusRawTcMs": [
+    284410827
+   ],
+   "cameraItowMinusGpsTcRawMs": [
+    284410727,
+    284410827
+   ],
+   "libxrkOffsetMs": 24558,
+   "bestLapMsValues": [
+    0,
+    16640,
+    141380,
+    144550,
+    144630,
+    164710,
+    180690
+   ],
+   "loggerMsStaleFraction": 0.0431,
+   "laps": {
+    "1": {
+     "dtGpsLatest": {
+      "median": 0.0247,
+      "p5": -0.0087,
+      "p95": 0.0913,
+      "min": -0.042,
+      "max": 0.1247,
+      "n": 867
+     },
+     "dtLoggerClock": {
+      "median": 0.2317,
+      "p5": 0.2083,
+      "p95": 0.255,
+      "min": 0.1283,
+      "max": 0.265,
+      "n": 828
+     },
+     "loggerClockDriftPpm": 0.0,
+     "rawLoggerMinusGpsTcMs": 197.0,
+     "shiftSeconds": 0.0,
+     "lapStartPts": 170.636
+    },
+    "2": {
+     "dtGpsLatest": {
+      "median": 0.0947,
+      "p5": 0.0613,
+      "p95": 0.1613,
+      "min": -0.0053,
+      "max": 0.1947,
+      "n": 867
+     },
+     "dtLoggerClock": {
+      "median": 0.2883,
+      "p5": 0.265,
+      "p95": 0.315,
+      "min": 0.1417,
+      "max": 0.335,
+      "n": 829
+     },
+     "loggerClockDriftPpm": -62.8,
+     "rawLoggerMinusGpsTcMs": 177.0,
+     "shiftSeconds": 0.0,
+     "lapStartPts": 315.262
+    },
+    "3": {
+     "dtGpsLatest": {
+      "median": 0.0917,
+      "p5": 0.0583,
+      "p95": 0.1583,
+      "min": 0.025,
+      "max": 0.1917,
+      "n": 848
+     },
+     "dtLoggerClock": {
+      "median": 0.272,
+      "p5": 0.2453,
+      "p95": 0.2953,
+      "min": 0.2253,
+      "max": 0.3053,
+      "n": 809
+     },
+     "loggerClockDriftPpm": -87.5,
+     "rawLoggerMinusGpsTcMs": 167.0,
+     "shiftSeconds": 0.0,
+     "lapStartPts": 459.894
+    },
+    "4": {
+     "dtGpsLatest": {
+      "median": 0.0617,
+      "p5": 0.0283,
+      "p95": 0.1283,
+      "min": -0.005,
+      "max": 0.1617,
+      "n": 988
+     },
+     "dtLoggerClock": {
+      "median": 0.2253,
+      "p5": 0.202,
+      "p95": 0.2487,
+      "min": 0.0587,
+      "max": 0.262,
+      "n": 950
+     },
+     "loggerClockDriftPpm": -100.0,
+     "rawLoggerMinusGpsTcMs": 147.0,
+     "shiftSeconds": 0.0,
+     "lapStartPts": 601.249
+    }
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "records": 11287,
+   "recordPeriodS": 0.16666666666666666,
+   "clockRates": {
+    "gpsItowVsPtsPpm": 19.0,
+    "nGps": 10510,
+    "loggerClockVsPtsPpm": -104.4,
+    "nLogger": 10781,
+    "note": "slope of the camera-held clock vs video PTS over the whole file (records where the value changed); ppm < 0 = that clock runs slower than the video PTS"
+   },
+   "frameEquals30xAudioPts": true,
+   "xrkNavsolRecords": 9741,
+   "xrkItowMinusRawTcMs": [
+    367936113
+   ],
+   "cameraItowMinusGpsTcRawMs": [
+    0,
+    367936113
+   ],
+   "libxrkOffsetMs": 2473920,
+   "bestLapMsValues": [
+    12870,
+    14910,
+    130820,
+    130860,
+    131740,
+    131780,
+    132380,
+    132860,
+    133630,
+    133790,
+    140460,
+    151190
+   ],
+   "loggerMsStaleFraction": 0.0447,
+   "laps": {
+    "1": {
+     "dtGpsLatest": {
+      "median": 0.0807,
+      "p5": 0.014,
+      "p95": 0.1473,
+      "min": -0.0193,
+      "max": 0.1807,
+      "n": 801
+     },
+     "dtLoggerClock": {
+      "median": 0.2507,
+      "p5": 0.2207,
+      "p95": 0.2873,
+      "min": 0.0973,
+      "max": 0.304,
+      "n": 763
+     },
+     "loggerClockDriftPpm": 120.5,
+     "rawLoggerMinusGpsTcMs": -317.0,
+     "shiftSeconds": 0.497,
+     "lapStartPts": 151.59
+    },
+    "2": {
+     "dtGpsLatest": {
+      "median": 0.127,
+      "p5": 0.0603,
+      "p95": 0.1603,
+      "min": -0.0397,
+      "max": 0.1937,
+      "n": 790
+     },
+     "dtLoggerClock": {
+      "median": 0.3063,
+      "p5": 0.2763,
+      "p95": 0.3297,
+      "min": 0.1297,
+      "max": 0.3397,
+      "n": 752
+     },
+     "loggerClockDriftPpm": -97.6,
+     "rawLoggerMinusGpsTcMs": -337.0,
+     "shiftSeconds": 0.523,
+     "lapStartPts": 285.238
+    },
+    "3": {
+     "dtGpsLatest": {
+      "median": 0.094,
+      "p5": 0.0273,
+      "p95": 0.1273,
+      "min": -0.006,
+      "max": 0.1607,
+      "n": 790
+     },
+     "dtLoggerClock": {
+      "median": 0.26,
+      "p5": 0.2333,
+      "p95": 0.2833,
+      "min": 0.1833,
+      "max": 0.2967,
+      "n": 751
+     },
+     "loggerClockDriftPpm": -166.0,
+     "rawLoggerMinusGpsTcMs": -347.0,
+     "shiftSeconds": 0.523,
+     "lapStartPts": 416.947
+    },
+    "4": {
+     "dtGpsLatest": {
+      "median": 0.094,
+      "p5": 0.0273,
+      "p95": 0.1273,
+      "min": -0.006,
+      "max": 0.1607,
+      "n": 785
+     },
+     "dtLoggerClock": {
+      "median": 0.2787,
+      "p5": 0.2497,
+      "p95": 0.2987,
+      "min": 0.0787,
+      "max": 0.3087,
+      "n": 747
+     },
+     "loggerClockDriftPpm": -80.2,
+     "rawLoggerMinusGpsTcMs": -357.0,
+     "shiftSeconds": 0.555,
+     "lapStartPts": 548.73
+    },
+    "5": {
+     "dtGpsLatest": {
+      "median": 0.014,
+      "p5": -0.0527,
+      "p95": 0.0473,
+      "min": -0.0527,
+      "max": 0.0807,
+      "n": 784
+     },
+     "dtLoggerClock": {
+      "median": 0.1953,
+      "p5": 0.1687,
+      "p95": 0.2187,
+      "min": 0.152,
+      "max": 0.232,
+      "n": 745
+     },
+     "loggerClockDriftPpm": -73.5,
+     "rawLoggerMinusGpsTcMs": -377.0,
+     "shiftSeconds": 0.565,
+     "lapStartPts": 679.51
+    },
+    "6": {
+     "dtGpsLatest": {
+      "median": 0.124,
+      "p5": 0.0573,
+      "p95": 0.1573,
+      "min": 0.024,
+      "max": 0.1907,
+      "n": 843
+     },
+     "dtLoggerClock": {
+      "median": 0.31,
+      "p5": 0.2767,
+      "p95": 0.33,
+      "min": 0.17,
+      "max": 0.3467,
+      "n": 804
+     },
+     "loggerClockDriftPpm": -168.1,
+     "rawLoggerMinusGpsTcMs": -387.0,
+     "shiftSeconds": 0.583,
+     "lapStartPts": 810.442
+    }
+   }
+  }
+ }
+}

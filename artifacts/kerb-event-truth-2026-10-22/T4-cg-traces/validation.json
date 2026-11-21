@@ -1,0 +1,7726 @@
+{
+ "version": 1,
+ "kind": "cg-pose-validation",
+ "what": "Agreement of the reproduced viewer pose (drawn yaw, Hermite position, 100 Hz) with public/data/races/*/apex_kpi.json, and checks of the reproduction itself.",
+ "labels": {
+  "replicaVsShipped": "MEASURED: build_apex_kpi.py functions re-run on the current repo inputs (50 Hz cubic spline, spline heading) minus the shipped apex_kpi.json value (rounded as shipped) - proves the shipped KPI matches the current inputs",
+  "viewerVsShipped": "MEASURED: viewer reconstruction (this T4 trace) minus shipped apex_kpi.json; differences come from the viewer Hermite vs cubic spline position, drawn (smoothed, look-ahead) chord yaw vs spline-derivative heading, 100 Hz vs 50 Hz sampling, and the shipped 2-decimal rounding",
+  "viewerTargetYawVsShipped": "MEASURED: same with the unsmoothed target yaw (sampleReplay heading) - isolates the pose smoother",
+  "viewerVsReplicaRaw": "MEASURED: viewer reconstruction minus unrounded replica"
+ },
+ "viewerSource": {
+  "originMaster": "7ebf89b4723f92b46aa9843f8e7930f1aeed572e",
+  "files": {
+   "src/replay/interpolation.ts": "identical-to-origin/master",
+   "src/replay/visualAlignment.ts": "identical-to-origin/master",
+   "src/replay/gpsRegistration.ts": "identical-to-origin/master",
+   "src/replay/lapClock.ts": "identical-to-origin/master",
+   "src/replay/types.ts": "identical-to-origin/master",
+   "src/replay/projection.ts": "identical-to-origin/master",
+   "src/replay/vehicleGeometry.ts": "identical-to-origin/master",
+   "src/engine/poseSmoothing.ts": "identical-to-origin/master"
+  }
+ },
+ "summary": {
+  "replicaVsShipped": {
+   "gBlockFront": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   },
+   "gBlockRear": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   },
+   "gPaintFront": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   },
+   "gPaintRear": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   },
+   "apexStation": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   },
+   "apexT": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   },
+   "apexLapTime": {
+    "n": 140,
+    "meanSigned": 0.0,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0,
+    "maxAbs": 0.0
+   }
+  },
+  "viewerVsShipped": {
+   "gBlockFront": {
+    "n": 140,
+    "meanSigned": -0.0048,
+    "medianAbs": 0.0069,
+    "p95Abs": 0.0326,
+    "maxAbs": 0.0499
+   },
+   "gBlockRear": {
+    "n": 140,
+    "meanSigned": 0.0047,
+    "medianAbs": 0.0052,
+    "p95Abs": 0.0333,
+    "maxAbs": 0.051
+   },
+   "gPaintFront": {
+    "n": 140,
+    "meanSigned": -0.0043,
+    "medianAbs": 0.0063,
+    "p95Abs": 0.0348,
+    "maxAbs": 0.0493
+   },
+   "gPaintRear": {
+    "n": 140,
+    "meanSigned": 0.0036,
+    "medianAbs": 0.0063,
+    "p95Abs": 0.0316,
+    "maxAbs": 0.0495
+   },
+   "apexStation": {
+    "n": 140,
+    "meanSigned": 0.0036,
+    "medianAbs": 0.0,
+    "p95Abs": 0.5,
+    "maxAbs": 2.5
+   },
+   "apexT": {
+    "n": 140,
+    "meanSigned": -0.0003,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0105,
+    "maxAbs": 0.03
+   },
+   "apexLapTime": {
+    "n": 140,
+    "meanSigned": -0.0003,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0105,
+    "maxAbs": 0.03
+   }
+  },
+  "viewerTargetYawVsShipped": {
+   "gBlockFront": {
+    "n": 140,
+    "meanSigned": -0.0046,
+    "medianAbs": 0.0067,
+    "p95Abs": 0.0305,
+    "maxAbs": 0.0473
+   },
+   "gBlockRear": {
+    "n": 140,
+    "meanSigned": 0.0045,
+    "medianAbs": 0.0054,
+    "p95Abs": 0.0312,
+    "maxAbs": 0.048
+   },
+   "gPaintFront": {
+    "n": 140,
+    "meanSigned": -0.0041,
+    "medianAbs": 0.0061,
+    "p95Abs": 0.0329,
+    "maxAbs": 0.0468
+   },
+   "gPaintRear": {
+    "n": 140,
+    "meanSigned": 0.0034,
+    "medianAbs": 0.006,
+    "p95Abs": 0.0295,
+    "maxAbs": 0.0471
+   },
+   "apexStation": {
+    "n": 140,
+    "meanSigned": 0.0071,
+    "medianAbs": 0.0,
+    "p95Abs": 0.5,
+    "maxAbs": 2.5
+   },
+   "apexT": {
+    "n": 140,
+    "meanSigned": -0.0002,
+    "medianAbs": 0.005,
+    "p95Abs": 0.01,
+    "maxAbs": 0.03
+   },
+   "apexLapTime": {
+    "n": 140,
+    "meanSigned": -0.0002,
+    "medianAbs": 0.005,
+    "p95Abs": 0.01,
+    "maxAbs": 0.03
+   }
+  },
+  "viewerVsReplicaRaw": {
+   "gBlockFront": {
+    "n": 140,
+    "meanSigned": -0.0045,
+    "medianAbs": 0.0056,
+    "p95Abs": 0.033,
+    "maxAbs": 0.0462
+   },
+   "gBlockRear": {
+    "n": 140,
+    "meanSigned": 0.0042,
+    "medianAbs": 0.0051,
+    "p95Abs": 0.0329,
+    "maxAbs": 0.0469
+   },
+   "gPaintFront": {
+    "n": 140,
+    "meanSigned": -0.0045,
+    "medianAbs": 0.0065,
+    "p95Abs": 0.0331,
+    "maxAbs": 0.0468
+   },
+   "gPaintRear": {
+    "n": 140,
+    "meanSigned": 0.0039,
+    "medianAbs": 0.0054,
+    "p95Abs": 0.0327,
+    "maxAbs": 0.0465
+   },
+   "apexStation": {
+    "n": 140,
+    "meanSigned": 0.0036,
+    "medianAbs": 0.0,
+    "p95Abs": 0.5,
+    "maxAbs": 2.5
+   },
+   "apexT": {
+    "n": 140,
+    "meanSigned": -0.0003,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0105,
+    "maxAbs": 0.03
+   },
+   "apexLapTime": {
+    "n": 140,
+    "meanSigned": -0.0003,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0105,
+    "maxAbs": 0.03
+   }
+  }
+ },
+ "viewerVsShippedPerSession": {
+  "fuji_aim_01": {
+   "gBlockFront": {
+    "n": 56,
+    "meanSigned": -0.0043,
+    "medianAbs": 0.0058,
+    "p95Abs": 0.0249,
+    "maxAbs": 0.0326
+   },
+   "gBlockRear": {
+    "n": 56,
+    "meanSigned": 0.0048,
+    "medianAbs": 0.0043,
+    "p95Abs": 0.0286,
+    "maxAbs": 0.0337
+   },
+   "gPaintFront": {
+    "n": 56,
+    "meanSigned": -0.0032,
+    "medianAbs": 0.0047,
+    "p95Abs": 0.0287,
+    "maxAbs": 0.0357
+   },
+   "gPaintRear": {
+    "n": 56,
+    "meanSigned": 0.0024,
+    "medianAbs": 0.0062,
+    "p95Abs": 0.026,
+    "maxAbs": 0.0347
+   },
+   "apexStation": {
+    "n": 56,
+    "meanSigned": 0.0268,
+    "medianAbs": 0.0,
+    "p95Abs": 0.5,
+    "maxAbs": 0.5
+   },
+   "apexT": {
+    "n": 56,
+    "meanSigned": 0.0009,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0125,
+    "maxAbs": 0.03
+   },
+   "apexLapTime": {
+    "n": 56,
+    "meanSigned": 0.0009,
+    "medianAbs": 0.0,
+    "p95Abs": 0.0125,
+    "maxAbs": 0.03
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "gBlockFront": {
+    "n": 84,
+    "meanSigned": -0.0051,
+    "medianAbs": 0.0077,
+    "p95Abs": 0.0373,
+    "maxAbs": 0.0499
+   },
+   "gBlockRear": {
+    "n": 84,
+    "meanSigned": 0.0046,
+    "medianAbs": 0.0058,
+    "p95Abs": 0.0381,
+    "maxAbs": 0.051
+   },
+   "gPaintFront": {
+    "n": 84,
+    "meanSigned": -0.0049,
+    "medianAbs": 0.0068,
+    "p95Abs": 0.0392,
+    "maxAbs": 0.0493
+   },
+   "gPaintRear": {
+    "n": 84,
+    "meanSigned": 0.0043,
+    "medianAbs": 0.0076,
+    "p95Abs": 0.0393,
+    "maxAbs": 0.0495
+   },
+   "apexStation": {
+    "n": 84,
+    "meanSigned": -0.0119,
+    "medianAbs": 0.0,
+    "p95Abs": 0.5,
+    "maxAbs": 2.5
+   },
+   "apexT": {
+    "n": 84,
+    "meanSigned": -0.0011,
+    "medianAbs": 0.01,
+    "p95Abs": 0.01,
+    "maxAbs": 0.02
+   },
+   "apexLapTime": {
+    "n": 84,
+    "meanSigned": -0.0011,
+    "medianAbs": 0.01,
+    "p95Abs": 0.01,
+    "maxAbs": 0.02
+   }
+  }
+ },
+ "worstGBlockFrontRows": [
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -0.15,
+    "replica": -0.1538,
+    "viewer": -0.1999,
+    "viewerTargetYaw": -0.1973
+   },
+   "gBlockRear": {
+    "shipped": -0.15,
+    "replica": -0.1457,
+    "viewer": -0.099,
+    "viewerTargetYaw": -0.102
+   },
+   "gPaintFront": {
+    "shipped": -0.49,
+    "replica": -0.4906,
+    "viewer": -0.5364,
+    "viewerTargetYaw": -0.5338
+   },
+   "gPaintRear": {
+    "shipped": -0.48,
+    "replica": -0.4818,
+    "viewer": -0.4353,
+    "viewerTargetYaw": -0.4382
+   },
+   "apexStation": {
+    "shipped": 3366.0,
+    "replica": 3366.0,
+    "viewer": 3365.5,
+    "viewerTargetYaw": 3365.5
+   },
+   "apexT": {
+    "shipped": 91.94,
+    "replica": 91.94,
+    "viewer": 91.93,
+    "viewerTargetYaw": 91.93
+   },
+   "apexLapTime": {
+    "shipped": 91.962,
+    "replica": 91.962,
+    "viewer": 91.952,
+    "viewerTargetYaw": 91.952
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": -0.74,
+    "replica": -0.7446,
+    "viewer": -0.7888,
+    "viewerTargetYaw": -0.7867
+   },
+   "gBlockRear": {
+    "shipped": -0.73,
+    "replica": -0.7348,
+    "viewer": -0.6967,
+    "viewerTargetYaw": -0.6988
+   },
+   "gPaintFront": {
+    "shipped": -1.2,
+    "replica": -1.1951,
+    "viewer": -1.2398,
+    "viewerTargetYaw": -1.2378
+   },
+   "gPaintRear": {
+    "shipped": -1.19,
+    "replica": -1.1857,
+    "viewer": -1.1496,
+    "viewerTargetYaw": -1.1515
+   },
+   "apexStation": {
+    "shipped": 3102.0,
+    "replica": 3102.0,
+    "viewer": 3102.0,
+    "viewerTargetYaw": 3102.0
+   },
+   "apexT": {
+    "shipped": 81.5,
+    "replica": 81.5,
+    "viewer": 81.49,
+    "viewerTargetYaw": 81.49
+   },
+   "apexLapTime": {
+    "shipped": 81.597,
+    "replica": 81.597,
+    "viewer": 81.587,
+    "viewerTargetYaw": 81.587
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 1.47,
+    "replica": 1.4676,
+    "viewer": 1.4267,
+    "viewerTargetYaw": 1.4291
+   },
+   "gBlockRear": {
+    "shipped": 1.48,
+    "replica": 1.477,
+    "viewer": 1.5239,
+    "viewerTargetYaw": 1.5215
+   },
+   "gPaintFront": {
+    "shipped": 1.05,
+    "replica": 1.0523,
+    "viewer": 1.0081,
+    "viewerTargetYaw": 1.0107
+   },
+   "gPaintRear": {
+    "shipped": 1.06,
+    "replica": 1.063,
+    "viewer": 1.1095,
+    "viewerTargetYaw": 1.1071
+   },
+   "apexStation": {
+    "shipped": 3098.0,
+    "replica": 3098.0,
+    "viewer": 3098.0,
+    "viewerTargetYaw": 3098.0
+   },
+   "apexT": {
+    "shipped": 81.46,
+    "replica": 81.46,
+    "viewer": 81.46,
+    "viewerTargetYaw": 81.46
+   },
+   "apexLapTime": {
+    "shipped": 81.497,
+    "replica": 81.497,
+    "viewer": 81.497,
+    "viewerTargetYaw": 81.497
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -0.25,
+    "replica": -0.2453,
+    "viewer": -0.291,
+    "viewerTargetYaw": -0.2886
+   },
+   "gBlockRear": {
+    "shipped": -0.24,
+    "replica": -0.237,
+    "viewer": -0.1922,
+    "viewerTargetYaw": -0.1949
+   },
+   "gPaintFront": {
+    "shipped": -0.58,
+    "replica": -0.5825,
+    "viewer": -0.6293,
+    "viewerTargetYaw": -0.6268
+   },
+   "gPaintRear": {
+    "shipped": -0.57,
+    "replica": -0.575,
+    "viewer": -0.5302,
+    "viewerTargetYaw": -0.533
+   },
+   "apexStation": {
+    "shipped": 3364.5,
+    "replica": 3364.5,
+    "viewer": 3364.5,
+    "viewerTargetYaw": 3364.5
+   },
+   "apexT": {
+    "shipped": 91.24,
+    "replica": 91.24,
+    "viewer": 91.24,
+    "viewerTargetYaw": 91.24
+   },
+   "apexLapTime": {
+    "shipped": 91.337,
+    "replica": 91.337,
+    "viewer": 91.337,
+    "viewerTargetYaw": 91.337
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -0.92,
+    "replica": -0.9181,
+    "viewer": -0.9573,
+    "viewerTargetYaw": -0.9551
+   },
+   "gBlockRear": {
+    "shipped": -0.91,
+    "replica": -0.9097,
+    "viewer": -0.8712,
+    "viewerTargetYaw": -0.8735
+   },
+   "gPaintFront": {
+    "shipped": -1.27,
+    "replica": -1.2694,
+    "viewer": -1.3094,
+    "viewerTargetYaw": -1.3071
+   },
+   "gPaintRear": {
+    "shipped": -1.26,
+    "replica": -1.2623,
+    "viewer": -1.2237,
+    "viewerTargetYaw": -1.226
+   },
+   "apexStation": {
+    "shipped": 3370.5,
+    "replica": 3370.5,
+    "viewer": 3370.5,
+    "viewerTargetYaw": 3370.5
+   },
+   "apexT": {
+    "shipped": 91.46,
+    "replica": 91.46,
+    "viewer": 91.46,
+    "viewerTargetYaw": 91.46
+   },
+   "apexLapTime": {
+    "shipped": 91.497,
+    "replica": 91.497,
+    "viewer": 91.497,
+    "viewerTargetYaw": 91.497
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 0.94,
+    "replica": 0.9377,
+    "viewer": 0.9028,
+    "viewerTargetYaw": 0.9047
+   },
+   "gBlockRear": {
+    "shipped": 0.95,
+    "replica": 0.9461,
+    "viewer": 0.9771,
+    "viewerTargetYaw": 0.9754
+   },
+   "gPaintFront": {
+    "shipped": 0.49,
+    "replica": 0.4864,
+    "viewer": 0.4522,
+    "viewerTargetYaw": 0.454
+   },
+   "gPaintRear": {
+    "shipped": 0.5,
+    "replica": 0.495,
+    "viewer": 0.5255,
+    "viewerTargetYaw": 0.5237
+   },
+   "apexStation": {
+    "shipped": 3102.0,
+    "replica": 3102.0,
+    "viewer": 3102.0,
+    "viewerTargetYaw": 3102.0
+   },
+   "apexT": {
+    "shipped": 82.34,
+    "replica": 82.34,
+    "viewer": 82.33,
+    "viewerTargetYaw": 82.33
+   },
+   "apexLapTime": {
+    "shipped": 82.42,
+    "replica": 82.42,
+    "viewer": 82.41,
+    "viewerTargetYaw": 82.41
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 0.38,
+    "replica": 0.3815,
+    "viewer": 0.3467,
+    "viewerTargetYaw": 0.3487
+   },
+   "gBlockRear": {
+    "shipped": 0.39,
+    "replica": 0.3909,
+    "viewer": 0.42,
+    "viewerTargetYaw": 0.4177
+   },
+   "gPaintFront": {
+    "shipped": -0.02,
+    "replica": -0.0151,
+    "viewer": -0.0491,
+    "viewerTargetYaw": -0.0471
+   },
+   "gPaintRear": {
+    "shipped": -0.01,
+    "replica": -0.0054,
+    "viewer": 0.0215,
+    "viewerTargetYaw": 0.0192
+   },
+   "apexStation": {
+    "shipped": 3097.0,
+    "replica": 3097.0,
+    "viewer": 3097.0,
+    "viewerTargetYaw": 3097.0
+   },
+   "apexT": {
+    "shipped": 82.24,
+    "replica": 82.24,
+    "viewer": 82.24,
+    "viewerTargetYaw": 82.24
+   },
+   "apexLapTime": {
+    "shipped": 82.297,
+    "replica": 82.297,
+    "viewer": 82.297,
+    "viewerTargetYaw": 82.297
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 0.06,
+    "replica": 0.0603,
+    "viewer": 0.0274,
+    "viewerTargetYaw": 0.0295
+   },
+   "gBlockRear": {
+    "shipped": 0.07,
+    "replica": 0.0683,
+    "viewer": 0.1037,
+    "viewerTargetYaw": 0.1016
+   },
+   "gPaintFront": {
+    "shipped": -0.29,
+    "replica": -0.2926,
+    "viewer": -0.3257,
+    "viewerTargetYaw": -0.3235
+   },
+   "gPaintRear": {
+    "shipped": -0.28,
+    "replica": -0.2831,
+    "viewer": -0.2486,
+    "viewerTargetYaw": -0.2507
+   },
+   "apexStation": {
+    "shipped": 3370.0,
+    "replica": 3370.0,
+    "viewer": 3370.0,
+    "viewerTargetYaw": 3370.0
+   },
+   "apexT": {
+    "shipped": 99.78,
+    "replica": 99.78,
+    "viewer": 99.78,
+    "viewerTargetYaw": 99.77
+   },
+   "apexLapTime": {
+    "shipped": 99.796,
+    "replica": 99.796,
+    "viewer": 99.796,
+    "viewerTargetYaw": 99.786
+   }
+  }
+ ],
+ "laps": {
+  "fuji_aim_01/L1": {
+   "samples": 14451,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -1.224,
+    2.315
+   ],
+   "deltaSeconds": 0.007,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1446,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.001,
+    "max": 0.0037,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.066,
+    "max": 0.243
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 167,
+     "maxSecondDifferenceM": 3.657
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.026
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.341,
+    "maxAbs": 2.108
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.158,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_01/L2": {
+   "samples": 14451,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -1.677,
+    1.976
+   ],
+   "deltaSeconds": 0.051,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1446,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0009,
+    "max": 0.0039,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.065,
+    "max": 0.259
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 154,
+     "maxSecondDifferenceM": 3.574
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.026
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.29,
+    "maxAbs": 1.939
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.163,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_01/L3": {
+   "samples": 14131,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -1.638,
+    1.75
+   ],
+   "deltaSeconds": 0.016,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1414,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.001,
+    "max": 0.0032,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.069,
+    "max": 0.206
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 149,
+     "maxSecondDifferenceM": 3.754
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.032
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.297,
+    "maxAbs": 2.094
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.164,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_01/L4": {
+   "samples": 16461,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -1.777,
+    1.735
+   ],
+   "deltaSeconds": 0.031,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1647,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0009,
+    "max": 0.0029,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.061,
+    "max": 0.194
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 149,
+     "maxSecondDifferenceM": 3.86
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.035
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.294,
+    "maxAbs": 2.1
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.16,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_2020_07_30/L1": {
+   "samples": 13351,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -0.084,
+    -2.783
+   ],
+   "deltaSeconds": 0.057,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1336,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0012,
+    "max": 0.0038,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.084,
+    "max": 0.253
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 164,
+     "maxSecondDifferenceM": 4.428
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.098
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.302,
+    "maxAbs": 2.74
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.156,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_2020_07_30/L2": {
+   "samples": 13171,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -0.432,
+    -2.612
+   ],
+   "deltaSeconds": 0.022,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1318,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0011,
+    "max": 0.0042,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.073,
+    "max": 0.281
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 174,
+     "maxSecondDifferenceM": 3.078
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.032
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.338,
+    "maxAbs": 1.605
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.156,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_2020_07_30/L3": {
+   "samples": 13171,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -0.329,
+    -2.511
+   ],
+   "deltaSeconds": 0.08,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1318,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0011,
+    "max": 0.0044,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.077,
+    "max": 0.288
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 167,
+     "maxSecondDifferenceM": 4.407
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.092
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.356,
+    "maxAbs": 2.751
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.16,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_2020_07_30/L4": {
+   "samples": 13071,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -0.031,
+    -3.034
+   ],
+   "deltaSeconds": 0.097,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1308,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0012,
+    "max": 0.0042,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.083,
+    "max": 0.279
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 161,
+     "maxSecondDifferenceM": 3.908
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.043
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.32,
+    "maxAbs": 2.268
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.156,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_2020_07_30/L5": {
+   "samples": 13071,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -0.298,
+    -2.558
+   ],
+   "deltaSeconds": 0.037,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1308,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0013,
+    "max": 0.0046,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.086,
+    "max": 0.306
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 169,
+     "maxSecondDifferenceM": 4.191
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.061
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.324,
+    "maxAbs": 2.419
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.155,
+    "maxAbs": 0.477
+   }
+  },
+  "fuji_aim_2020_07_30/L6": {
+   "samples": 14041,
+   "hz": 100.0,
+   "registrationOffsetMeters": [
+    -0.316,
+    -2.446
+   ],
+   "deltaSeconds": 0.015,
+   "positionAtGpsKnotsVsRegisteredLatLngM": {
+    "n": 1405,
+    "max": 1e-06
+   },
+   "drawnYaw100HzVs60fpsDeg": {
+    "p95": 0.0011,
+    "max": 0.004,
+    "maxFrontAxleLateralM": 0.0001
+   },
+   "drawnVsTargetYawDeg": {
+    "p95": 0.079,
+    "max": 0.263
+   },
+   "stationContinuousVsNearestVertexM": {
+    "maxAbs": 0.25
+   },
+   "stationDiscontinuities": {
+    "station": {
+     "count": 173,
+     "maxSecondDifferenceM": 4.309
+    },
+    "stationSmooth": {
+     "count": 0,
+     "maxSecondDifferenceM": 0.081
+    }
+   },
+   "stationSmoothVsPolylineM": {
+    "p95Abs": 0.314,
+    "maxAbs": 2.406
+   },
+   "lateralSmoothVsPolylineM": {
+    "p95Abs": 0.151,
+    "maxAbs": 0.477
+   }
+  }
+ },
+ "rows": [
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": -0.7,
+    "replica": -0.7036,
+    "viewer": -0.7091,
+    "viewerTargetYaw": -0.7098
+   },
+   "gBlockRear": {
+    "shipped": -0.7,
+    "replica": -0.6978,
+    "viewer": -0.6937,
+    "viewerTargetYaw": -0.6931
+   },
+   "gPaintFront": {
+    "shipped": -1.14,
+    "replica": -1.1368,
+    "viewer": -1.1439,
+    "viewerTargetYaw": -1.1449
+   },
+   "gPaintRear": {
+    "shipped": -1.13,
+    "replica": -1.1307,
+    "viewer": -1.1279,
+    "viewerTargetYaw": -1.1275
+   },
+   "apexStation": {
+    "shipped": 914.0,
+    "replica": 914.0,
+    "viewer": 913.5,
+    "viewerTargetYaw": 913.5
+   },
+   "apexT": {
+    "shipped": 18.98,
+    "replica": 18.98,
+    "viewer": 18.96,
+    "viewerTargetYaw": 18.96
+   },
+   "apexLapTime": {
+    "shipped": 18.987,
+    "replica": 18.987,
+    "viewer": 18.967,
+    "viewerTargetYaw": 18.967
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": 1.41,
+    "replica": 1.4121,
+    "viewer": 1.4148,
+    "viewerTargetYaw": 1.4148
+   },
+   "gBlockRear": {
+    "shipped": 1.42,
+    "replica": 1.4191,
+    "viewer": 1.4126,
+    "viewerTargetYaw": 1.4126
+   },
+   "gPaintFront": {
+    "shipped": 0.92,
+    "replica": 0.921,
+    "viewer": 0.9212,
+    "viewerTargetYaw": 0.9212
+   },
+   "gPaintRear": {
+    "shipped": 0.93,
+    "replica": 0.9285,
+    "viewer": 0.9192,
+    "viewerTargetYaw": 0.9191
+   },
+   "apexStation": {
+    "shipped": 1453.5,
+    "replica": 1453.5,
+    "viewer": 1453.5,
+    "viewerTargetYaw": 1453.5
+   },
+   "apexT": {
+    "shipped": 35.78,
+    "replica": 35.78,
+    "viewer": 35.78,
+    "viewerTargetYaw": 35.78
+   },
+   "apexLapTime": {
+    "shipped": 35.787,
+    "replica": 35.787,
+    "viewer": 35.787,
+    "viewerTargetYaw": 35.787
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 1.18,
+    "replica": 1.1765,
+    "viewer": 1.1711,
+    "viewerTargetYaw": 1.1716
+   },
+   "gBlockRear": {
+    "shipped": 1.18,
+    "replica": 1.1841,
+    "viewer": 1.193,
+    "viewerTargetYaw": 1.1924
+   },
+   "gPaintFront": {
+    "shipped": 0.73,
+    "replica": 0.7303,
+    "viewer": 0.7232,
+    "viewerTargetYaw": 0.724
+   },
+   "gPaintRear": {
+    "shipped": 0.74,
+    "replica": 0.7391,
+    "viewer": 0.7492,
+    "viewerTargetYaw": 0.7484
+   },
+   "apexStation": {
+    "shipped": 1532.5,
+    "replica": 1532.5,
+    "viewer": 1532.5,
+    "viewerTargetYaw": 1532.5
+   },
+   "apexT": {
+    "shipped": 38.56,
+    "replica": 38.56,
+    "viewer": 38.56,
+    "viewerTargetYaw": 38.56
+   },
+   "apexLapTime": {
+    "shipped": 38.567,
+    "replica": 38.567,
+    "viewer": 38.567,
+    "viewerTargetYaw": 38.567
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 2.22,
+    "replica": 2.2204,
+    "viewer": 2.2248,
+    "viewerTargetYaw": 2.2245
+   },
+   "gBlockRear": {
+    "shipped": 2.22,
+    "replica": 2.2247,
+    "viewer": 2.2213,
+    "viewerTargetYaw": 2.2217
+   },
+   "gPaintFront": {
+    "shipped": 1.72,
+    "replica": 1.7206,
+    "viewer": 1.725,
+    "viewerTargetYaw": 1.7246
+   },
+   "gPaintRear": {
+    "shipped": 1.73,
+    "replica": 1.7253,
+    "viewer": 1.7211,
+    "viewerTargetYaw": 1.7215
+   },
+   "apexStation": {
+    "shipped": 2151.0,
+    "replica": 2151.0,
+    "viewer": 2151.5,
+    "viewerTargetYaw": 2151.5
+   },
+   "apexT": {
+    "shipped": 58.54,
+    "replica": 58.54,
+    "viewer": 58.55,
+    "viewerTargetYaw": 58.55
+   },
+   "apexLapTime": {
+    "shipped": 58.547,
+    "replica": 58.547,
+    "viewer": 58.557,
+    "viewerTargetYaw": 58.557
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 7.08,
+    "replica": 7.0833,
+    "viewer": 7.0846,
+    "viewerTargetYaw": 7.0844
+   },
+   "gBlockRear": {
+    "shipped": 7.09,
+    "replica": 7.0907,
+    "viewer": 7.0866,
+    "viewerTargetYaw": 7.0867
+   },
+   "gPaintFront": {
+    "shipped": 6.69,
+    "replica": 6.6886,
+    "viewer": 6.6878,
+    "viewerTargetYaw": 6.6877
+   },
+   "gPaintRear": {
+    "shipped": 6.7,
+    "replica": 6.6964,
+    "viewer": 6.6939,
+    "viewerTargetYaw": 6.694
+   },
+   "apexStation": {
+    "shipped": 2465.5,
+    "replica": 2465.5,
+    "viewer": 2465.5,
+    "viewerTargetYaw": 2465.5
+   },
+   "apexT": {
+    "shipped": 69.76,
+    "replica": 69.76,
+    "viewer": 69.76,
+    "viewerTargetYaw": 69.76
+   },
+   "apexLapTime": {
+    "shipped": 69.767,
+    "replica": 69.767,
+    "viewer": 69.767,
+    "viewerTargetYaw": 69.767
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 6.37,
+    "replica": 6.3698,
+    "viewer": 6.365,
+    "viewerTargetYaw": 6.3652
+   },
+   "gBlockRear": {
+    "shipped": 6.38,
+    "replica": 6.3784,
+    "viewer": 6.3821,
+    "viewerTargetYaw": 6.3819
+   },
+   "gPaintFront": {
+    "shipped": 6.0,
+    "replica": 6.0035,
+    "viewer": 5.9993,
+    "viewerTargetYaw": 5.9995
+   },
+   "gPaintRear": {
+    "shipped": 6.01,
+    "replica": 6.0117,
+    "viewer": 6.0144,
+    "viewerTargetYaw": 6.0142
+   },
+   "apexStation": {
+    "shipped": 2674.0,
+    "replica": 2674.0,
+    "viewer": 2674.0,
+    "viewerTargetYaw": 2674.0
+   },
+   "apexT": {
+    "shipped": 75.42,
+    "replica": 75.42,
+    "viewer": 75.42,
+    "viewerTargetYaw": 75.42
+   },
+   "apexLapTime": {
+    "shipped": 75.427,
+    "replica": 75.427,
+    "viewer": 75.427,
+    "viewerTargetYaw": 75.427
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": -0.57,
+    "replica": -0.5724,
+    "viewer": -0.5682,
+    "viewerTargetYaw": -0.5696
+   },
+   "gBlockRear": {
+    "shipped": -0.57,
+    "replica": -0.5654,
+    "viewer": -0.5634,
+    "viewerTargetYaw": -0.5622
+   },
+   "gPaintFront": {
+    "shipped": -1.02,
+    "replica": -1.0204,
+    "viewer": -1.0189,
+    "viewerTargetYaw": -1.0201
+   },
+   "gPaintRear": {
+    "shipped": -1.01,
+    "replica": -1.0125,
+    "viewer": -1.0113,
+    "viewerTargetYaw": -1.01
+   },
+   "apexStation": {
+    "shipped": 2983.5,
+    "replica": 2983.5,
+    "viewer": 2983.5,
+    "viewerTargetYaw": 2983.5
+   },
+   "apexT": {
+    "shipped": 85.32,
+    "replica": 85.32,
+    "viewer": 85.32,
+    "viewerTargetYaw": 85.32
+   },
+   "apexLapTime": {
+    "shipped": 85.327,
+    "replica": 85.327,
+    "viewer": 85.327,
+    "viewerTargetYaw": 85.327
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 1.09,
+    "replica": 1.0855,
+    "viewer": 1.0899,
+    "viewerTargetYaw": 1.0892
+   },
+   "gBlockRear": {
+    "shipped": 1.09,
+    "replica": 1.0942,
+    "viewer": 1.0902,
+    "viewerTargetYaw": 1.0909
+   },
+   "gPaintFront": {
+    "shipped": 0.64,
+    "replica": 0.6367,
+    "viewer": 0.6407,
+    "viewerTargetYaw": 0.6401
+   },
+   "gPaintRear": {
+    "shipped": 0.65,
+    "replica": 0.6453,
+    "viewer": 0.6413,
+    "viewerTargetYaw": 0.642
+   },
+   "apexStation": {
+    "shipped": 3050.5,
+    "replica": 3050.5,
+    "viewer": 3050.5,
+    "viewerTargetYaw": 3050.5
+   },
+   "apexT": {
+    "shipped": 88.92,
+    "replica": 88.92,
+    "viewer": 88.91,
+    "viewerTargetYaw": 88.91
+   },
+   "apexLapTime": {
+    "shipped": 88.927,
+    "replica": 88.927,
+    "viewer": 88.917,
+    "viewerTargetYaw": 88.917
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": -0.34,
+    "replica": -0.3374,
+    "viewer": -0.3698,
+    "viewerTargetYaw": -0.3675
+   },
+   "gBlockRear": {
+    "shipped": -0.33,
+    "replica": -0.329,
+    "viewer": -0.2984,
+    "viewerTargetYaw": -0.3006
+   },
+   "gPaintFront": {
+    "shipped": -0.78,
+    "replica": -0.7759,
+    "viewer": -0.8077,
+    "viewerTargetYaw": -0.8051
+   },
+   "gPaintRear": {
+    "shipped": -0.77,
+    "replica": -0.7664,
+    "viewer": -0.74,
+    "viewerTargetYaw": -0.7422
+   },
+   "apexStation": {
+    "shipped": 3098.5,
+    "replica": 3098.5,
+    "viewer": 3098.0,
+    "viewerTargetYaw": 3098.0
+   },
+   "apexT": {
+    "shipped": 91.24,
+    "replica": 91.24,
+    "viewer": 91.23,
+    "viewerTargetYaw": 91.23
+   },
+   "apexLapTime": {
+    "shipped": 91.247,
+    "replica": 91.247,
+    "viewer": 91.237,
+    "viewerTargetYaw": 91.237
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 0.7,
+    "replica": 0.7032,
+    "viewer": 0.7022,
+    "viewerTargetYaw": 0.7021
+   },
+   "gBlockRear": {
+    "shipped": 0.71,
+    "replica": 0.7126,
+    "viewer": 0.7063,
+    "viewerTargetYaw": 0.7063
+   },
+   "gPaintFront": {
+    "shipped": 0.22,
+    "replica": 0.2195,
+    "viewer": 0.2215,
+    "viewerTargetYaw": 0.2215
+   },
+   "gPaintRear": {
+    "shipped": 0.23,
+    "replica": 0.228,
+    "viewer": 0.2242,
+    "viewerTargetYaw": 0.2243
+   },
+   "apexStation": {
+    "shipped": 3293.5,
+    "replica": 3293.5,
+    "viewer": 3293.5,
+    "viewerTargetYaw": 3293.5
+   },
+   "apexT": {
+    "shipped": 98.92,
+    "replica": 98.92,
+    "viewer": 98.93,
+    "viewerTargetYaw": 98.93
+   },
+   "apexLapTime": {
+    "shipped": 98.927,
+    "replica": 98.927,
+    "viewer": 98.937,
+    "viewerTargetYaw": 98.937
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 1.32,
+    "replica": 1.3208,
+    "viewer": 1.2987,
+    "viewerTargetYaw": 1.3001
+   },
+   "gBlockRear": {
+    "shipped": 1.33,
+    "replica": 1.3293,
+    "viewer": 1.3522,
+    "viewerTargetYaw": 1.3508
+   },
+   "gPaintFront": {
+    "shipped": 0.93,
+    "replica": 0.9273,
+    "viewer": 0.9052,
+    "viewerTargetYaw": 0.9066
+   },
+   "gPaintRear": {
+    "shipped": 0.94,
+    "replica": 0.9354,
+    "viewer": 0.9585,
+    "viewerTargetYaw": 0.9571
+   },
+   "apexStation": {
+    "shipped": 3376.0,
+    "replica": 3376.0,
+    "viewer": 3376.0,
+    "viewerTargetYaw": 3376.0
+   },
+   "apexT": {
+    "shipped": 102.46,
+    "replica": 102.46,
+    "viewer": 102.46,
+    "viewerTargetYaw": 102.46
+   },
+   "apexLapTime": {
+    "shipped": 102.467,
+    "replica": 102.467,
+    "viewer": 102.467,
+    "viewerTargetYaw": 102.467
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 0.58,
+    "replica": 0.5821,
+    "viewer": 0.5868,
+    "viewerTargetYaw": 0.5863
+   },
+   "gBlockRear": {
+    "shipped": 0.59,
+    "replica": 0.5937,
+    "viewer": 0.596,
+    "viewerTargetYaw": 0.5968
+   },
+   "gPaintFront": {
+    "shipped": 0.11,
+    "replica": 0.1086,
+    "viewer": 0.1133,
+    "viewerTargetYaw": 0.1128
+   },
+   "gPaintRear": {
+    "shipped": 0.12,
+    "replica": 0.1193,
+    "viewer": 0.1225,
+    "viewerTargetYaw": 0.1232
+   },
+   "apexStation": {
+    "shipped": 3572.5,
+    "replica": 3572.5,
+    "viewer": 3572.5,
+    "viewerTargetYaw": 3572.5
+   },
+   "apexT": {
+    "shipped": 110.26,
+    "replica": 110.26,
+    "viewer": 110.26,
+    "viewerTargetYaw": 110.26
+   },
+   "apexLapTime": {
+    "shipped": 110.267,
+    "replica": 110.267,
+    "viewer": 110.267,
+    "viewerTargetYaw": 110.267
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 1.0,
+    "replica": 0.9953,
+    "viewer": 0.9861,
+    "viewerTargetYaw": 0.9871
+   },
+   "gBlockRear": {
+    "shipped": 1.0,
+    "replica": 1.0038,
+    "viewer": 1.0127,
+    "viewerTargetYaw": 1.0117
+   },
+   "gPaintFront": {
+    "shipped": 0.52,
+    "replica": 0.5181,
+    "viewer": 0.509,
+    "viewerTargetYaw": 0.51
+   },
+   "gPaintRear": {
+    "shipped": 0.53,
+    "replica": 0.5263,
+    "viewer": 0.5355,
+    "viewerTargetYaw": 0.5345
+   },
+   "apexStation": {
+    "shipped": 3631.5,
+    "replica": 3631.5,
+    "viewer": 3632.0,
+    "viewerTargetYaw": 3632.0
+   },
+   "apexT": {
+    "shipped": 112.8,
+    "replica": 112.8,
+    "viewer": 112.81,
+    "viewerTargetYaw": 112.81
+   },
+   "apexLapTime": {
+    "shipped": 112.807,
+    "replica": 112.807,
+    "viewer": 112.817,
+    "viewerTargetYaw": 112.817
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 1,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 0.88,
+    "replica": 0.8839,
+    "viewer": 0.8887,
+    "viewerTargetYaw": 0.888
+   },
+   "gBlockRear": {
+    "shipped": 0.89,
+    "replica": 0.8909,
+    "viewer": 0.889,
+    "viewerTargetYaw": 0.8898
+   },
+   "gPaintFront": {
+    "shipped": 0.41,
+    "replica": 0.4124,
+    "viewer": 0.4162,
+    "viewerTargetYaw": 0.4154
+   },
+   "gPaintRear": {
+    "shipped": 0.42,
+    "replica": 0.4196,
+    "viewer": 0.4197,
+    "viewerTargetYaw": 0.4204
+   },
+   "apexStation": {
+    "shipped": 3860.5,
+    "replica": 3860.5,
+    "viewer": 3860.5,
+    "viewerTargetYaw": 3860.5
+   },
+   "apexT": {
+    "shipped": 121.96,
+    "replica": 121.96,
+    "viewer": 121.96,
+    "viewerTargetYaw": 121.96
+   },
+   "apexLapTime": {
+    "shipped": 121.967,
+    "replica": 121.967,
+    "viewer": 121.967,
+    "viewerTargetYaw": 121.967
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": 2.41,
+    "replica": 2.4145,
+    "viewer": 2.4245,
+    "viewerTargetYaw": 2.4252
+   },
+   "gBlockRear": {
+    "shipped": 2.42,
+    "replica": 2.4222,
+    "viewer": 2.4155,
+    "viewerTargetYaw": 2.4151
+   },
+   "gPaintFront": {
+    "shipped": 1.93,
+    "replica": 1.929,
+    "viewer": 1.9393,
+    "viewerTargetYaw": 1.94
+   },
+   "gPaintRear": {
+    "shipped": 1.94,
+    "replica": 1.9368,
+    "viewer": 1.9307,
+    "viewerTargetYaw": 1.9304
+   },
+   "apexStation": {
+    "shipped": 900.0,
+    "replica": 900.0,
+    "viewer": 900.0,
+    "viewerTargetYaw": 900.0
+   },
+   "apexT": {
+    "shipped": 18.26,
+    "replica": 18.26,
+    "viewer": 18.25,
+    "viewerTargetYaw": 18.25
+   },
+   "apexLapTime": {
+    "shipped": 18.311,
+    "replica": 18.311,
+    "viewer": 18.301,
+    "viewerTargetYaw": 18.301
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": 1.44,
+    "replica": 1.4357,
+    "viewer": 1.4353,
+    "viewerTargetYaw": 1.4355
+   },
+   "gBlockRear": {
+    "shipped": 1.44,
+    "replica": 1.4433,
+    "viewer": 1.4413,
+    "viewerTargetYaw": 1.4411
+   },
+   "gPaintFront": {
+    "shipped": 0.94,
+    "replica": 0.9402,
+    "viewer": 0.9398,
+    "viewerTargetYaw": 0.94
+   },
+   "gPaintRear": {
+    "shipped": 0.95,
+    "replica": 0.9494,
+    "viewer": 0.9452,
+    "viewerTargetYaw": 0.945
+   },
+   "apexStation": {
+    "shipped": 1453.0,
+    "replica": 1453.0,
+    "viewer": 1453.0,
+    "viewerTargetYaw": 1453.0
+   },
+   "apexT": {
+    "shipped": 35.96,
+    "replica": 35.96,
+    "viewer": 35.96,
+    "viewerTargetYaw": 35.96
+   },
+   "apexLapTime": {
+    "shipped": 36.011,
+    "replica": 36.011,
+    "viewer": 36.011,
+    "viewerTargetYaw": 36.011
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 0.62,
+    "replica": 0.6202,
+    "viewer": 0.6145,
+    "viewerTargetYaw": 0.6154
+   },
+   "gBlockRear": {
+    "shipped": 0.63,
+    "replica": 0.6281,
+    "viewer": 0.6368,
+    "viewerTargetYaw": 0.636
+   },
+   "gPaintFront": {
+    "shipped": 0.18,
+    "replica": 0.1846,
+    "viewer": 0.1797,
+    "viewerTargetYaw": 0.1804
+   },
+   "gPaintRear": {
+    "shipped": 0.19,
+    "replica": 0.1938,
+    "viewer": 0.201,
+    "viewerTargetYaw": 0.2002
+   },
+   "apexStation": {
+    "shipped": 1528.0,
+    "replica": 1528.0,
+    "viewer": 1528.0,
+    "viewerTargetYaw": 1528.0
+   },
+   "apexT": {
+    "shipped": 38.58,
+    "replica": 38.58,
+    "viewer": 38.59,
+    "viewerTargetYaw": 38.59
+   },
+   "apexLapTime": {
+    "shipped": 38.631,
+    "replica": 38.631,
+    "viewer": 38.641,
+    "viewerTargetYaw": 38.641
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 2.4,
+    "replica": 2.4024,
+    "viewer": 2.408,
+    "viewerTargetYaw": 2.4075
+   },
+   "gBlockRear": {
+    "shipped": 2.41,
+    "replica": 2.4112,
+    "viewer": 2.4097,
+    "viewerTargetYaw": 2.4103
+   },
+   "gPaintFront": {
+    "shipped": 1.91,
+    "replica": 1.9132,
+    "viewer": 1.9178,
+    "viewerTargetYaw": 1.9172
+   },
+   "gPaintRear": {
+    "shipped": 1.92,
+    "replica": 1.924,
+    "viewer": 1.9211,
+    "viewerTargetYaw": 1.9218
+   },
+   "apexStation": {
+    "shipped": 2147.5,
+    "replica": 2147.5,
+    "viewer": 2147.5,
+    "viewerTargetYaw": 2147.5
+   },
+   "apexT": {
+    "shipped": 57.96,
+    "replica": 57.96,
+    "viewer": 57.96,
+    "viewerTargetYaw": 57.96
+   },
+   "apexLapTime": {
+    "shipped": 58.011,
+    "replica": 58.011,
+    "viewer": 58.011,
+    "viewerTargetYaw": 58.011
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 1.39,
+    "replica": 1.3914,
+    "viewer": 1.3858,
+    "viewerTargetYaw": 1.386
+   },
+   "gBlockRear": {
+    "shipped": 1.4,
+    "replica": 1.3992,
+    "viewer": 1.4023,
+    "viewerTargetYaw": 1.4022
+   },
+   "gPaintFront": {
+    "shipped": 1.0,
+    "replica": 0.9998,
+    "viewer": 0.9945,
+    "viewerTargetYaw": 0.9947
+   },
+   "gPaintRear": {
+    "shipped": 1.01,
+    "replica": 1.0095,
+    "viewer": 1.0141,
+    "viewerTargetYaw": 1.0139
+   },
+   "apexStation": {
+    "shipped": 2450.5,
+    "replica": 2450.5,
+    "viewer": 2450.5,
+    "viewerTargetYaw": 2450.5
+   },
+   "apexT": {
+    "shipped": 67.94,
+    "replica": 67.94,
+    "viewer": 67.94,
+    "viewerTargetYaw": 67.94
+   },
+   "apexLapTime": {
+    "shipped": 67.991,
+    "replica": 67.991,
+    "viewer": 67.991,
+    "viewerTargetYaw": 67.991
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 4.13,
+    "replica": 4.1283,
+    "viewer": 4.1247,
+    "viewerTargetYaw": 4.125
+   },
+   "gBlockRear": {
+    "shipped": 4.14,
+    "replica": 4.1359,
+    "viewer": 4.1391,
+    "viewerTargetYaw": 4.1387
+   },
+   "gPaintFront": {
+    "shipped": 3.75,
+    "replica": 3.753,
+    "viewer": 3.749,
+    "viewerTargetYaw": 3.7493
+   },
+   "gPaintRear": {
+    "shipped": 3.76,
+    "replica": 3.7601,
+    "viewer": 3.7664,
+    "viewerTargetYaw": 3.766
+   },
+   "apexStation": {
+    "shipped": 2666.0,
+    "replica": 2666.0,
+    "viewer": 2666.5,
+    "viewerTargetYaw": 2666.5
+   },
+   "apexT": {
+    "shipped": 73.54,
+    "replica": 73.54,
+    "viewer": 73.55,
+    "viewerTargetYaw": 73.55
+   },
+   "apexLapTime": {
+    "shipped": 73.591,
+    "replica": 73.591,
+    "viewer": 73.601,
+    "viewerTargetYaw": 73.601
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 0.37,
+    "replica": 0.3663,
+    "viewer": 0.3557,
+    "viewerTargetYaw": 0.3553
+   },
+   "gBlockRear": {
+    "shipped": 0.37,
+    "replica": 0.3749,
+    "viewer": 0.386,
+    "viewerTargetYaw": 0.3861
+   },
+   "gPaintFront": {
+    "shipped": -0.15,
+    "replica": -0.1536,
+    "viewer": -0.1642,
+    "viewerTargetYaw": -0.1646
+   },
+   "gPaintRear": {
+    "shipped": -0.14,
+    "replica": -0.145,
+    "viewer": -0.1332,
+    "viewerTargetYaw": -0.1332
+   },
+   "apexStation": {
+    "shipped": 2986.0,
+    "replica": 2986.0,
+    "viewer": 2986.0,
+    "viewerTargetYaw": 2986.0
+   },
+   "apexT": {
+    "shipped": 84.96,
+    "replica": 84.96,
+    "viewer": 84.96,
+    "viewerTargetYaw": 84.96
+   },
+   "apexLapTime": {
+    "shipped": 85.011,
+    "replica": 85.011,
+    "viewer": 85.011,
+    "viewerTargetYaw": 85.011
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 0.47,
+    "replica": 0.4669,
+    "viewer": 0.4559,
+    "viewerTargetYaw": 0.4561
+   },
+   "gBlockRear": {
+    "shipped": 0.48,
+    "replica": 0.476,
+    "viewer": 0.4832,
+    "viewerTargetYaw": 0.4828
+   },
+   "gPaintFront": {
+    "shipped": 0.0,
+    "replica": 0.0009,
+    "viewer": -0.0094,
+    "viewerTargetYaw": -0.0093
+   },
+   "gPaintRear": {
+    "shipped": 0.01,
+    "replica": 0.011,
+    "viewer": 0.0165,
+    "viewerTargetYaw": 0.0161
+   },
+   "apexStation": {
+    "shipped": 3053.5,
+    "replica": 3053.5,
+    "viewer": 3053.5,
+    "viewerTargetYaw": 3053.5
+   },
+   "apexT": {
+    "shipped": 89.04,
+    "replica": 89.04,
+    "viewer": 89.04,
+    "viewerTargetYaw": 89.04
+   },
+   "apexLapTime": {
+    "shipped": 89.091,
+    "replica": 89.091,
+    "viewer": 89.091,
+    "viewerTargetYaw": 89.091
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 0.14,
+    "replica": 0.1439,
+    "viewer": 0.1167,
+    "viewerTargetYaw": 0.1185
+   },
+   "gBlockRear": {
+    "shipped": 0.15,
+    "replica": 0.1524,
+    "viewer": 0.1819,
+    "viewerTargetYaw": 0.1801
+   },
+   "gPaintFront": {
+    "shipped": -0.29,
+    "replica": -0.293,
+    "viewer": -0.3218,
+    "viewerTargetYaw": -0.3198
+   },
+   "gPaintRear": {
+    "shipped": -0.28,
+    "replica": -0.2836,
+    "viewer": -0.2554,
+    "viewerTargetYaw": -0.2574
+   },
+   "apexStation": {
+    "shipped": 3098.5,
+    "replica": 3098.5,
+    "viewer": 3098.5,
+    "viewerTargetYaw": 3098.5
+   },
+   "apexT": {
+    "shipped": 91.32,
+    "replica": 91.32,
+    "viewer": 91.33,
+    "viewerTargetYaw": 91.33
+   },
+   "apexLapTime": {
+    "shipped": 91.371,
+    "replica": 91.371,
+    "viewer": 91.381,
+    "viewerTargetYaw": 91.381
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 1.89,
+    "replica": 1.8866,
+    "viewer": 1.894,
+    "viewerTargetYaw": 1.8937
+   },
+   "gBlockRear": {
+    "shipped": 1.89,
+    "replica": 1.8939,
+    "viewer": 1.8871,
+    "viewerTargetYaw": 1.8876
+   },
+   "gPaintFront": {
+    "shipped": 1.42,
+    "replica": 1.4165,
+    "viewer": 1.4233,
+    "viewerTargetYaw": 1.4229
+   },
+   "gPaintRear": {
+    "shipped": 1.42,
+    "replica": 1.4238,
+    "viewer": 1.417,
+    "viewerTargetYaw": 1.4175
+   },
+   "apexStation": {
+    "shipped": 3304.5,
+    "replica": 3304.5,
+    "viewer": 3304.5,
+    "viewerTargetYaw": 3304.5
+   },
+   "apexT": {
+    "shipped": 99.78,
+    "replica": 99.78,
+    "viewer": 99.79,
+    "viewerTargetYaw": 99.79
+   },
+   "apexLapTime": {
+    "shipped": 99.831,
+    "replica": 99.831,
+    "viewer": 99.841,
+    "viewerTargetYaw": 99.841
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 0.65,
+    "replica": 0.6496,
+    "viewer": 0.6176,
+    "viewerTargetYaw": 0.6195
+   },
+   "gBlockRear": {
+    "shipped": 0.66,
+    "replica": 0.6578,
+    "viewer": 0.6876,
+    "viewerTargetYaw": 0.6856
+   },
+   "gPaintFront": {
+    "shipped": 0.3,
+    "replica": 0.2971,
+    "viewer": 0.2652,
+    "viewerTargetYaw": 0.2671
+   },
+   "gPaintRear": {
+    "shipped": 0.3,
+    "replica": 0.3048,
+    "viewer": 0.3347,
+    "viewerTargetYaw": 0.3326
+   },
+   "apexStation": {
+    "shipped": 3370.0,
+    "replica": 3370.0,
+    "viewer": 3370.0,
+    "viewerTargetYaw": 3370.0
+   },
+   "apexT": {
+    "shipped": 102.54,
+    "replica": 102.54,
+    "viewer": 102.54,
+    "viewerTargetYaw": 102.54
+   },
+   "apexLapTime": {
+    "shipped": 102.591,
+    "replica": 102.591,
+    "viewer": 102.591,
+    "viewerTargetYaw": 102.591
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 0.48,
+    "replica": 0.4751,
+    "viewer": 0.4752,
+    "viewerTargetYaw": 0.4749
+   },
+   "gBlockRear": {
+    "shipped": 0.48,
+    "replica": 0.4837,
+    "viewer": 0.4787,
+    "viewerTargetYaw": 0.4789
+   },
+   "gPaintFront": {
+    "shipped": 0.0,
+    "replica": 0.0008,
+    "viewer": 0.0009,
+    "viewerTargetYaw": 0.0006
+   },
+   "gPaintRear": {
+    "shipped": 0.01,
+    "replica": 0.0094,
+    "viewer": 0.0043,
+    "viewerTargetYaw": 0.0045
+   },
+   "apexStation": {
+    "shipped": 3572.0,
+    "replica": 3572.0,
+    "viewer": 3572.0,
+    "viewerTargetYaw": 3572.0
+   },
+   "apexT": {
+    "shipped": 110.46,
+    "replica": 110.46,
+    "viewer": 110.46,
+    "viewerTargetYaw": 110.46
+   },
+   "apexLapTime": {
+    "shipped": 110.511,
+    "replica": 110.511,
+    "viewer": 110.511,
+    "viewerTargetYaw": 110.511
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 2.63,
+    "replica": 2.6278,
+    "viewer": 2.6213,
+    "viewerTargetYaw": 2.622
+   },
+   "gBlockRear": {
+    "shipped": 2.64,
+    "replica": 2.6356,
+    "viewer": 2.6442,
+    "viewerTargetYaw": 2.6435
+   },
+   "gPaintFront": {
+    "shipped": 2.15,
+    "replica": 2.147,
+    "viewer": 2.1404,
+    "viewerTargetYaw": 2.1412
+   },
+   "gPaintRear": {
+    "shipped": 2.15,
+    "replica": 2.1541,
+    "viewer": 2.1627,
+    "viewerTargetYaw": 2.1619
+   },
+   "apexStation": {
+    "shipped": 3631.5,
+    "replica": 3631.5,
+    "viewer": 3631.5,
+    "viewerTargetYaw": 3631.5
+   },
+   "apexT": {
+    "shipped": 113.16,
+    "replica": 113.16,
+    "viewer": 113.16,
+    "viewerTargetYaw": 113.16
+   },
+   "apexLapTime": {
+    "shipped": 113.211,
+    "replica": 113.211,
+    "viewer": 113.211,
+    "viewerTargetYaw": 113.211
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 2,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 3.12,
+    "replica": 3.1206,
+    "viewer": 3.1365,
+    "viewerTargetYaw": 3.1357
+   },
+   "gBlockRear": {
+    "shipped": 3.13,
+    "replica": 3.1264,
+    "viewer": 3.118,
+    "viewerTargetYaw": 3.1187
+   },
+   "gPaintFront": {
+    "shipped": 2.67,
+    "replica": 2.6741,
+    "viewer": 2.6906,
+    "viewerTargetYaw": 2.6896
+   },
+   "gPaintRear": {
+    "shipped": 2.68,
+    "replica": 2.6811,
+    "viewer": 2.6655,
+    "viewerTargetYaw": 2.6663
+   },
+   "apexStation": {
+    "shipped": 3867.5,
+    "replica": 3867.5,
+    "viewer": 3867.5,
+    "viewerTargetYaw": 3867.5
+   },
+   "apexT": {
+    "shipped": 122.74,
+    "replica": 122.74,
+    "viewer": 122.74,
+    "viewerTargetYaw": 122.74
+   },
+   "apexLapTime": {
+    "shipped": 122.791,
+    "replica": 122.791,
+    "viewer": 122.791,
+    "viewerTargetYaw": 122.791
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": 1.62,
+    "replica": 1.6245,
+    "viewer": 1.6208,
+    "viewerTargetYaw": 1.6215
+   },
+   "gBlockRear": {
+    "shipped": 1.63,
+    "replica": 1.6324,
+    "viewer": 1.6252,
+    "viewerTargetYaw": 1.6251
+   },
+   "gPaintFront": {
+    "shipped": 1.14,
+    "replica": 1.1383,
+    "viewer": 1.1356,
+    "viewerTargetYaw": 1.1362
+   },
+   "gPaintRear": {
+    "shipped": 1.14,
+    "replica": 1.1449,
+    "viewer": 1.1377,
+    "viewerTargetYaw": 1.1376
+   },
+   "apexStation": {
+    "shipped": 900.0,
+    "replica": 900.0,
+    "viewer": 900.0,
+    "viewerTargetYaw": 900.0
+   },
+   "apexT": {
+    "shipped": 17.62,
+    "replica": 17.62,
+    "viewer": 17.62,
+    "viewerTargetYaw": 17.62
+   },
+   "apexLapTime": {
+    "shipped": 17.636,
+    "replica": 17.636,
+    "viewer": 17.636,
+    "viewerTargetYaw": 17.636
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": 3.14,
+    "replica": 3.1381,
+    "viewer": 3.1418,
+    "viewerTargetYaw": 3.1417
+   },
+   "gBlockRear": {
+    "shipped": 3.15,
+    "replica": 3.1452,
+    "viewer": 3.1403,
+    "viewerTargetYaw": 3.1406
+   },
+   "gPaintFront": {
+    "shipped": 2.65,
+    "replica": 2.6493,
+    "viewer": 2.6541,
+    "viewerTargetYaw": 2.654
+   },
+   "gPaintRear": {
+    "shipped": 2.66,
+    "replica": 2.6561,
+    "viewer": 2.6521,
+    "viewerTargetYaw": 2.6523
+   },
+   "apexStation": {
+    "shipped": 1453.5,
+    "replica": 1453.5,
+    "viewer": 1454.0,
+    "viewerTargetYaw": 1454.0
+   },
+   "apexT": {
+    "shipped": 35.78,
+    "replica": 35.78,
+    "viewer": 35.79,
+    "viewerTargetYaw": 35.79
+   },
+   "apexLapTime": {
+    "shipped": 35.796,
+    "replica": 35.796,
+    "viewer": 35.806,
+    "viewerTargetYaw": 35.806
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 3.68,
+    "replica": 3.6837,
+    "viewer": 3.6696,
+    "viewerTargetYaw": 3.6705
+   },
+   "gBlockRear": {
+    "shipped": 3.69,
+    "replica": 3.6916,
+    "viewer": 3.7052,
+    "viewerTargetYaw": 3.7043
+   },
+   "gPaintFront": {
+    "shipped": 3.2,
+    "replica": 3.2041,
+    "viewer": 3.1891,
+    "viewerTargetYaw": 3.1901
+   },
+   "gPaintRear": {
+    "shipped": 3.21,
+    "replica": 3.2111,
+    "viewer": 3.225,
+    "viewerTargetYaw": 3.2239
+   },
+   "apexStation": {
+    "shipped": 1521.0,
+    "replica": 1521.0,
+    "viewer": 1521.0,
+    "viewerTargetYaw": 1521.0
+   },
+   "apexT": {
+    "shipped": 38.26,
+    "replica": 38.26,
+    "viewer": 38.26,
+    "viewerTargetYaw": 38.26
+   },
+   "apexLapTime": {
+    "shipped": 38.276,
+    "replica": 38.276,
+    "viewer": 38.276,
+    "viewerTargetYaw": 38.276
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 1.93,
+    "replica": 1.9255,
+    "viewer": 1.9281,
+    "viewerTargetYaw": 1.9272
+   },
+   "gBlockRear": {
+    "shipped": 1.93,
+    "replica": 1.9331,
+    "viewer": 1.9316,
+    "viewerTargetYaw": 1.9321
+   },
+   "gPaintFront": {
+    "shipped": 1.43,
+    "replica": 1.4339,
+    "viewer": 1.4378,
+    "viewerTargetYaw": 1.4369
+   },
+   "gPaintRear": {
+    "shipped": 1.44,
+    "replica": 1.4412,
+    "viewer": 1.4398,
+    "viewerTargetYaw": 1.4404
+   },
+   "apexStation": {
+    "shipped": 2152.0,
+    "replica": 2152.0,
+    "viewer": 2152.5,
+    "viewerTargetYaw": 2152.5
+   },
+   "apexT": {
+    "shipped": 57.7,
+    "replica": 57.7,
+    "viewer": 57.71,
+    "viewerTargetYaw": 57.71
+   },
+   "apexLapTime": {
+    "shipped": 57.716,
+    "replica": 57.716,
+    "viewer": 57.726,
+    "viewerTargetYaw": 57.726
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 3.21,
+    "replica": 3.213,
+    "viewer": 3.2119,
+    "viewerTargetYaw": 3.2119
+   },
+   "gBlockRear": {
+    "shipped": 3.22,
+    "replica": 3.2202,
+    "viewer": 3.2196,
+    "viewerTargetYaw": 3.2196
+   },
+   "gPaintFront": {
+    "shipped": 2.85,
+    "replica": 2.8531,
+    "viewer": 2.8514,
+    "viewerTargetYaw": 2.8514
+   },
+   "gPaintRear": {
+    "shipped": 2.86,
+    "replica": 2.8599,
+    "viewer": 2.8587,
+    "viewerTargetYaw": 2.8587
+   },
+   "apexStation": {
+    "shipped": 2451.5,
+    "replica": 2451.5,
+    "viewer": 2452.0,
+    "viewerTargetYaw": 2452.0
+   },
+   "apexT": {
+    "shipped": 67.24,
+    "replica": 67.24,
+    "viewer": 67.25,
+    "viewerTargetYaw": 67.25
+   },
+   "apexLapTime": {
+    "shipped": 67.256,
+    "replica": 67.256,
+    "viewer": 67.266,
+    "viewerTargetYaw": 67.266
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 1.18,
+    "replica": 1.1764,
+    "viewer": 1.1771,
+    "viewerTargetYaw": 1.1771
+   },
+   "gBlockRear": {
+    "shipped": 1.18,
+    "replica": 1.1842,
+    "viewer": 1.1831,
+    "viewerTargetYaw": 1.1831
+   },
+   "gPaintFront": {
+    "shipped": 0.85,
+    "replica": 0.8516,
+    "viewer": 0.8519,
+    "viewerTargetYaw": 0.8519
+   },
+   "gPaintRear": {
+    "shipped": 0.86,
+    "replica": 0.8595,
+    "viewer": 0.8562,
+    "viewerTargetYaw": 0.8562
+   },
+   "apexStation": {
+    "shipped": 2680.5,
+    "replica": 2680.5,
+    "viewer": 2680.5,
+    "viewerTargetYaw": 2680.5
+   },
+   "apexT": {
+    "shipped": 72.74,
+    "replica": 72.74,
+    "viewer": 72.74,
+    "viewerTargetYaw": 72.74
+   },
+   "apexLapTime": {
+    "shipped": 72.756,
+    "replica": 72.756,
+    "viewer": 72.756,
+    "viewerTargetYaw": 72.756
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 2.96,
+    "replica": 2.9583,
+    "viewer": 2.9586,
+    "viewerTargetYaw": 2.9589
+   },
+   "gBlockRear": {
+    "shipped": 2.96,
+    "replica": 2.963,
+    "viewer": 2.9585,
+    "viewerTargetYaw": 2.9594
+   },
+   "gPaintFront": {
+    "shipped": 2.56,
+    "replica": 2.5555,
+    "viewer": 2.5559,
+    "viewerTargetYaw": 2.5562
+   },
+   "gPaintRear": {
+    "shipped": 2.56,
+    "replica": 2.5602,
+    "viewer": 2.5559,
+    "viewerTargetYaw": 2.5568
+   },
+   "apexStation": {
+    "shipped": 2979.5,
+    "replica": 2979.5,
+    "viewer": 2979.5,
+    "viewerTargetYaw": 2979.5
+   },
+   "apexT": {
+    "shipped": 81.34,
+    "replica": 81.34,
+    "viewer": 81.33,
+    "viewerTargetYaw": 81.33
+   },
+   "apexLapTime": {
+    "shipped": 81.356,
+    "replica": 81.356,
+    "viewer": 81.346,
+    "viewerTargetYaw": 81.346
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": -0.03,
+    "replica": -0.029,
+    "viewer": -0.0336,
+    "viewerTargetYaw": -0.0332
+   },
+   "gBlockRear": {
+    "shipped": -0.02,
+    "replica": -0.0247,
+    "viewer": -0.0131,
+    "viewerTargetYaw": -0.0134
+   },
+   "gPaintFront": {
+    "shipped": -0.48,
+    "replica": -0.4776,
+    "viewer": -0.4807,
+    "viewerTargetYaw": -0.4803
+   },
+   "gPaintRear": {
+    "shipped": -0.47,
+    "replica": -0.4718,
+    "viewer": -0.4621,
+    "viewerTargetYaw": -0.4625
+   },
+   "apexStation": {
+    "shipped": 3049.5,
+    "replica": 3049.5,
+    "viewer": 3049.5,
+    "viewerTargetYaw": 3049.5
+   },
+   "apexT": {
+    "shipped": 85.58,
+    "replica": 85.58,
+    "viewer": 85.58,
+    "viewerTargetYaw": 85.58
+   },
+   "apexLapTime": {
+    "shipped": 85.596,
+    "replica": 85.596,
+    "viewer": 85.596,
+    "viewerTargetYaw": 85.596
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 5.04,
+    "replica": 5.0369,
+    "viewer": 5.0169,
+    "viewerTargetYaw": 5.0179
+   },
+   "gBlockRear": {
+    "shipped": 5.04,
+    "replica": 5.0442,
+    "viewer": 5.0622,
+    "viewerTargetYaw": 5.0611
+   },
+   "gPaintFront": {
+    "shipped": 4.55,
+    "replica": 4.548,
+    "viewer": 4.5309,
+    "viewerTargetYaw": 4.5317
+   },
+   "gPaintRear": {
+    "shipped": 4.56,
+    "replica": 4.5562,
+    "viewer": 4.5684,
+    "viewerTargetYaw": 4.5676
+   },
+   "apexStation": {
+    "shipped": 3102.0,
+    "replica": 3102.0,
+    "viewer": 3102.0,
+    "viewerTargetYaw": 3102.0
+   },
+   "apexT": {
+    "shipped": 88.56,
+    "replica": 88.56,
+    "viewer": 88.57,
+    "viewerTargetYaw": 88.57
+   },
+   "apexLapTime": {
+    "shipped": 88.576,
+    "replica": 88.576,
+    "viewer": 88.586,
+    "viewerTargetYaw": 88.586
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 1.94,
+    "replica": 1.943,
+    "viewer": 1.9446,
+    "viewerTargetYaw": 1.9443
+   },
+   "gBlockRear": {
+    "shipped": 1.95,
+    "replica": 1.9506,
+    "viewer": 1.9463,
+    "viewerTargetYaw": 1.9467
+   },
+   "gPaintFront": {
+    "shipped": 1.47,
+    "replica": 1.4701,
+    "viewer": 1.4721,
+    "viewerTargetYaw": 1.4717
+   },
+   "gPaintRear": {
+    "shipped": 1.48,
+    "replica": 1.4778,
+    "viewer": 1.4729,
+    "viewerTargetYaw": 1.4733
+   },
+   "apexStation": {
+    "shipped": 3305.0,
+    "replica": 3305.0,
+    "viewer": 3304.5,
+    "viewerTargetYaw": 3305.0
+   },
+   "apexT": {
+    "shipped": 97.08,
+    "replica": 97.08,
+    "viewer": 97.07,
+    "viewerTargetYaw": 97.08
+   },
+   "apexLapTime": {
+    "shipped": 97.096,
+    "replica": 97.096,
+    "viewer": 97.086,
+    "viewerTargetYaw": 97.096
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 0.06,
+    "replica": 0.0603,
+    "viewer": 0.0274,
+    "viewerTargetYaw": 0.0295
+   },
+   "gBlockRear": {
+    "shipped": 0.07,
+    "replica": 0.0683,
+    "viewer": 0.1037,
+    "viewerTargetYaw": 0.1016
+   },
+   "gPaintFront": {
+    "shipped": -0.29,
+    "replica": -0.2926,
+    "viewer": -0.3257,
+    "viewerTargetYaw": -0.3235
+   },
+   "gPaintRear": {
+    "shipped": -0.28,
+    "replica": -0.2831,
+    "viewer": -0.2486,
+    "viewerTargetYaw": -0.2507
+   },
+   "apexStation": {
+    "shipped": 3370.0,
+    "replica": 3370.0,
+    "viewer": 3370.0,
+    "viewerTargetYaw": 3370.0
+   },
+   "apexT": {
+    "shipped": 99.78,
+    "replica": 99.78,
+    "viewer": 99.78,
+    "viewerTargetYaw": 99.77
+   },
+   "apexLapTime": {
+    "shipped": 99.796,
+    "replica": 99.796,
+    "viewer": 99.796,
+    "viewerTargetYaw": 99.786
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": -0.17,
+    "replica": -0.1729,
+    "viewer": -0.1607,
+    "viewerTargetYaw": -0.1615
+   },
+   "gBlockRear": {
+    "shipped": -0.17,
+    "replica": -0.1654,
+    "viewer": -0.1719,
+    "viewerTargetYaw": -0.1712
+   },
+   "gPaintFront": {
+    "shipped": -0.65,
+    "replica": -0.6464,
+    "viewer": -0.6342,
+    "viewerTargetYaw": -0.635
+   },
+   "gPaintRear": {
+    "shipped": -0.64,
+    "replica": -0.6384,
+    "viewer": -0.6455,
+    "viewerTargetYaw": -0.6448
+   },
+   "apexStation": {
+    "shipped": 3572.0,
+    "replica": 3572.0,
+    "viewer": 3572.0,
+    "viewerTargetYaw": 3572.0
+   },
+   "apexT": {
+    "shipped": 107.62,
+    "replica": 107.62,
+    "viewer": 107.62,
+    "viewerTargetYaw": 107.62
+   },
+   "apexLapTime": {
+    "shipped": 107.636,
+    "replica": 107.636,
+    "viewer": 107.636,
+    "viewerTargetYaw": 107.636
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 0.92,
+    "replica": 0.9212,
+    "viewer": 0.9114,
+    "viewerTargetYaw": 0.9122
+   },
+   "gBlockRear": {
+    "shipped": 0.93,
+    "replica": 0.9293,
+    "viewer": 0.9409,
+    "viewerTargetYaw": 0.9402
+   },
+   "gPaintFront": {
+    "shipped": 0.45,
+    "replica": 0.4509,
+    "viewer": 0.4419,
+    "viewerTargetYaw": 0.4427
+   },
+   "gPaintRear": {
+    "shipped": 0.46,
+    "replica": 0.4584,
+    "viewer": 0.4678,
+    "viewerTargetYaw": 0.467
+   },
+   "apexStation": {
+    "shipped": 3637.0,
+    "replica": 3637.0,
+    "viewer": 3637.0,
+    "viewerTargetYaw": 3637.0
+   },
+   "apexT": {
+    "shipped": 110.38,
+    "replica": 110.38,
+    "viewer": 110.38,
+    "viewerTargetYaw": 110.38
+   },
+   "apexLapTime": {
+    "shipped": 110.396,
+    "replica": 110.396,
+    "viewer": 110.396,
+    "viewerTargetYaw": 110.396
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 3,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 1.07,
+    "replica": 1.0749,
+    "viewer": 1.0769,
+    "viewerTargetYaw": 1.0763
+   },
+   "gBlockRear": {
+    "shipped": 1.08,
+    "replica": 1.0819,
+    "viewer": 1.0808,
+    "viewerTargetYaw": 1.0812
+   },
+   "gPaintFront": {
+    "shipped": 0.67,
+    "replica": 0.6689,
+    "viewer": 0.6702,
+    "viewerTargetYaw": 0.6695
+   },
+   "gPaintRear": {
+    "shipped": 0.68,
+    "replica": 0.675,
+    "viewer": 0.6739,
+    "viewerTargetYaw": 0.6743
+   },
+   "apexStation": {
+    "shipped": 3868.0,
+    "replica": 3868.0,
+    "viewer": 3868.0,
+    "viewerTargetYaw": 3868.0
+   },
+   "apexT": {
+    "shipped": 119.74,
+    "replica": 119.74,
+    "viewer": 119.74,
+    "viewerTargetYaw": 119.74
+   },
+   "apexLapTime": {
+    "shipped": 119.756,
+    "replica": 119.756,
+    "viewer": 119.756,
+    "viewerTargetYaw": 119.756
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": 5.75,
+    "replica": 5.7516,
+    "viewer": 5.7513,
+    "viewerTargetYaw": 5.7506
+   },
+   "gBlockRear": {
+    "shipped": 5.76,
+    "replica": 5.7583,
+    "viewer": 5.76,
+    "viewerTargetYaw": 5.7606
+   },
+   "gPaintFront": {
+    "shipped": 5.31,
+    "replica": 5.3117,
+    "viewer": 5.3105,
+    "viewerTargetYaw": 5.3099
+   },
+   "gPaintRear": {
+    "shipped": 5.32,
+    "replica": 5.3162,
+    "viewer": 5.3223,
+    "viewerTargetYaw": 5.323
+   },
+   "apexStation": {
+    "shipped": 913.5,
+    "replica": 913.5,
+    "viewer": 914.0,
+    "viewerTargetYaw": 914.0
+   },
+   "apexT": {
+    "shipped": 18.18,
+    "replica": 18.18,
+    "viewer": 18.21,
+    "viewerTargetYaw": 18.21
+   },
+   "apexLapTime": {
+    "shipped": 18.211,
+    "replica": 18.211,
+    "viewer": 18.241,
+    "viewerTargetYaw": 18.241
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": 3.17,
+    "replica": 3.1675,
+    "viewer": 3.1641,
+    "viewerTargetYaw": 3.1642
+   },
+   "gBlockRear": {
+    "shipped": 3.17,
+    "replica": 3.1747,
+    "viewer": 3.1762,
+    "viewerTargetYaw": 3.1761
+   },
+   "gPaintFront": {
+    "shipped": 2.67,
+    "replica": 2.6716,
+    "viewer": 2.6688,
+    "viewerTargetYaw": 2.6689
+   },
+   "gPaintRear": {
+    "shipped": 2.68,
+    "replica": 2.6796,
+    "viewer": 2.6805,
+    "viewerTargetYaw": 2.6805
+   },
+   "apexStation": {
+    "shipped": 1453.0,
+    "replica": 1453.0,
+    "viewer": 1453.0,
+    "viewerTargetYaw": 1453.0
+   },
+   "apexT": {
+    "shipped": 35.24,
+    "replica": 35.24,
+    "viewer": 35.23,
+    "viewerTargetYaw": 35.23
+   },
+   "apexLapTime": {
+    "shipped": 35.271,
+    "replica": 35.271,
+    "viewer": 35.261,
+    "viewerTargetYaw": 35.261
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 0.83,
+    "replica": 0.8252,
+    "viewer": 0.811,
+    "viewerTargetYaw": 0.8119
+   },
+   "gBlockRear": {
+    "shipped": 0.83,
+    "replica": 0.8328,
+    "viewer": 0.8483,
+    "viewerTargetYaw": 0.8473
+   },
+   "gPaintFront": {
+    "shipped": 0.34,
+    "replica": 0.3382,
+    "viewer": 0.324,
+    "viewerTargetYaw": 0.325
+   },
+   "gPaintRear": {
+    "shipped": 0.35,
+    "replica": 0.3459,
+    "viewer": 0.3609,
+    "viewerTargetYaw": 0.3598
+   },
+   "apexStation": {
+    "shipped": 1520.0,
+    "replica": 1520.0,
+    "viewer": 1520.0,
+    "viewerTargetYaw": 1520.0
+   },
+   "apexT": {
+    "shipped": 37.84,
+    "replica": 37.84,
+    "viewer": 37.84,
+    "viewerTargetYaw": 37.84
+   },
+   "apexLapTime": {
+    "shipped": 37.871,
+    "replica": 37.871,
+    "viewer": 37.871,
+    "viewerTargetYaw": 37.871
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 1.39,
+    "replica": 1.3908,
+    "viewer": 1.3984,
+    "viewerTargetYaw": 1.3983
+   },
+   "gBlockRear": {
+    "shipped": 1.4,
+    "replica": 1.3994,
+    "viewer": 1.3915,
+    "viewerTargetYaw": 1.3919
+   },
+   "gPaintFront": {
+    "shipped": 0.91,
+    "replica": 0.9134,
+    "viewer": 0.9199,
+    "viewerTargetYaw": 0.9196
+   },
+   "gPaintRear": {
+    "shipped": 0.92,
+    "replica": 0.9222,
+    "viewer": 0.9115,
+    "viewerTargetYaw": 0.9118
+   },
+   "apexStation": {
+    "shipped": 2146.5,
+    "replica": 2146.5,
+    "viewer": 2146.5,
+    "viewerTargetYaw": 2146.5
+   },
+   "apexT": {
+    "shipped": 60.06,
+    "replica": 60.06,
+    "viewer": 60.06,
+    "viewerTargetYaw": 60.06
+   },
+   "apexLapTime": {
+    "shipped": 60.091,
+    "replica": 60.091,
+    "viewer": 60.091,
+    "viewerTargetYaw": 60.091
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 1.55,
+    "replica": 1.5451,
+    "viewer": 1.5438,
+    "viewerTargetYaw": 1.5438
+   },
+   "gBlockRear": {
+    "shipped": 1.55,
+    "replica": 1.554,
+    "viewer": 1.5539,
+    "viewerTargetYaw": 1.554
+   },
+   "gPaintFront": {
+    "shipped": 1.14,
+    "replica": 1.1409,
+    "viewer": 1.1379,
+    "viewerTargetYaw": 1.1378
+   },
+   "gPaintRear": {
+    "shipped": 1.15,
+    "replica": 1.1469,
+    "viewer": 1.1482,
+    "viewerTargetYaw": 1.1483
+   },
+   "apexStation": {
+    "shipped": 2458.0,
+    "replica": 2458.0,
+    "viewer": 2458.0,
+    "viewerTargetYaw": 2458.0
+   },
+   "apexT": {
+    "shipped": 70.7,
+    "replica": 70.7,
+    "viewer": 70.7,
+    "viewerTargetYaw": 70.7
+   },
+   "apexLapTime": {
+    "shipped": 70.731,
+    "replica": 70.731,
+    "viewer": 70.731,
+    "viewerTargetYaw": 70.731
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 1.03,
+    "replica": 1.0326,
+    "viewer": 1.0295,
+    "viewerTargetYaw": 1.0295
+   },
+   "gBlockRear": {
+    "shipped": 1.04,
+    "replica": 1.0401,
+    "viewer": 1.0395,
+    "viewerTargetYaw": 1.0395
+   },
+   "gPaintFront": {
+    "shipped": 0.71,
+    "replica": 0.714,
+    "viewer": 0.7114,
+    "viewerTargetYaw": 0.7115
+   },
+   "gPaintRear": {
+    "shipped": 0.72,
+    "replica": 0.7217,
+    "viewer": 0.7222,
+    "viewerTargetYaw": 0.7222
+   },
+   "apexStation": {
+    "shipped": 2678.5,
+    "replica": 2678.5,
+    "viewer": 2679.0,
+    "viewerTargetYaw": 2679.0
+   },
+   "apexT": {
+    "shipped": 76.16,
+    "replica": 76.16,
+    "viewer": 76.17,
+    "viewerTargetYaw": 76.17
+   },
+   "apexLapTime": {
+    "shipped": 76.191,
+    "replica": 76.191,
+    "viewer": 76.201,
+    "viewerTargetYaw": 76.201
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 6.06,
+    "replica": 6.0588,
+    "viewer": 6.0612,
+    "viewerTargetYaw": 6.0628
+   },
+   "gBlockRear": {
+    "shipped": 6.07,
+    "replica": 6.0668,
+    "viewer": 6.0659,
+    "viewerTargetYaw": 6.0637
+   },
+   "gPaintFront": {
+    "shipped": 5.66,
+    "replica": 5.6594,
+    "viewer": 5.6616,
+    "viewerTargetYaw": 5.6631
+   },
+   "gPaintRear": {
+    "shipped": 5.67,
+    "replica": 5.6675,
+    "viewer": 5.6663,
+    "viewerTargetYaw": 5.6641
+   },
+   "apexStation": {
+    "shipped": 2971.0,
+    "replica": 2971.0,
+    "viewer": 2970.5,
+    "viewerTargetYaw": 2970.5
+   },
+   "apexT": {
+    "shipped": 83.86,
+    "replica": 83.86,
+    "viewer": 83.85,
+    "viewerTargetYaw": 83.85
+   },
+   "apexLapTime": {
+    "shipped": 83.891,
+    "replica": 83.891,
+    "viewer": 83.881,
+    "viewerTargetYaw": 83.881
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 0.68,
+    "replica": 0.677,
+    "viewer": 0.6752,
+    "viewerTargetYaw": 0.6745
+   },
+   "gBlockRear": {
+    "shipped": 0.68,
+    "replica": 0.6837,
+    "viewer": 0.6813,
+    "viewerTargetYaw": 0.6823
+   },
+   "gPaintFront": {
+    "shipped": 0.22,
+    "replica": 0.2207,
+    "viewer": 0.2215,
+    "viewerTargetYaw": 0.2206
+   },
+   "gPaintRear": {
+    "shipped": 0.23,
+    "replica": 0.2284,
+    "viewer": 0.2209,
+    "viewerTargetYaw": 0.2219
+   },
+   "apexStation": {
+    "shipped": 3050.5,
+    "replica": 3050.5,
+    "viewer": 3051.0,
+    "viewerTargetYaw": 3051.0
+   },
+   "apexT": {
+    "shipped": 90.36,
+    "replica": 90.36,
+    "viewer": 90.39,
+    "viewerTargetYaw": 90.39
+   },
+   "apexLapTime": {
+    "shipped": 90.391,
+    "replica": 90.391,
+    "viewer": 90.421,
+    "viewerTargetYaw": 90.421
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 1.73,
+    "replica": 1.7315,
+    "viewer": 1.7178,
+    "viewerTargetYaw": 1.7187
+   },
+   "gBlockRear": {
+    "shipped": 1.74,
+    "replica": 1.7383,
+    "viewer": 1.7504,
+    "viewerTargetYaw": 1.7498
+   },
+   "gPaintFront": {
+    "shipped": 1.14,
+    "replica": 1.1437,
+    "viewer": 1.1346,
+    "viewerTargetYaw": 1.1351
+   },
+   "gPaintRear": {
+    "shipped": 1.15,
+    "replica": 1.1506,
+    "viewer": 1.1563,
+    "viewerTargetYaw": 1.1559
+   },
+   "apexStation": {
+    "shipped": 3103.0,
+    "replica": 3103.0,
+    "viewer": 3103.0,
+    "viewerTargetYaw": 3103.0
+   },
+   "apexT": {
+    "shipped": 93.5,
+    "replica": 93.5,
+    "viewer": 93.49,
+    "viewerTargetYaw": 93.49
+   },
+   "apexLapTime": {
+    "shipped": 93.531,
+    "replica": 93.531,
+    "viewer": 93.521,
+    "viewerTargetYaw": 93.521
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 1.31,
+    "replica": 1.3101,
+    "viewer": 1.3061,
+    "viewerTargetYaw": 1.3066
+   },
+   "gBlockRear": {
+    "shipped": 1.32,
+    "replica": 1.3157,
+    "viewer": 1.3129,
+    "viewerTargetYaw": 1.3125
+   },
+   "gPaintFront": {
+    "shipped": 0.84,
+    "replica": 0.8426,
+    "viewer": 0.848,
+    "viewerTargetYaw": 0.8481
+   },
+   "gPaintRear": {
+    "shipped": 0.85,
+    "replica": 0.8495,
+    "viewer": 0.8391,
+    "viewerTargetYaw": 0.8392
+   },
+   "apexStation": {
+    "shipped": 3293.5,
+    "replica": 3293.5,
+    "viewer": 3293.5,
+    "viewerTargetYaw": 3293.5
+   },
+   "apexT": {
+    "shipped": 101.92,
+    "replica": 101.92,
+    "viewer": 101.91,
+    "viewerTargetYaw": 101.91
+   },
+   "apexLapTime": {
+    "shipped": 101.951,
+    "replica": 101.951,
+    "viewer": 101.941,
+    "viewerTargetYaw": 101.941
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 0.95,
+    "replica": 0.9524,
+    "viewer": 0.9352,
+    "viewerTargetYaw": 0.9362
+   },
+   "gBlockRear": {
+    "shipped": 0.96,
+    "replica": 0.9604,
+    "viewer": 0.9776,
+    "viewerTargetYaw": 0.9766
+   },
+   "gPaintFront": {
+    "shipped": 0.57,
+    "replica": 0.5664,
+    "viewer": 0.5488,
+    "viewerTargetYaw": 0.5499
+   },
+   "gPaintRear": {
+    "shipped": 0.57,
+    "replica": 0.5741,
+    "viewer": 0.5915,
+    "viewerTargetYaw": 0.5902
+   },
+   "apexStation": {
+    "shipped": 3381.5,
+    "replica": 3381.5,
+    "viewer": 3381.5,
+    "viewerTargetYaw": 3381.5
+   },
+   "apexT": {
+    "shipped": 105.74,
+    "replica": 105.74,
+    "viewer": 105.74,
+    "viewerTargetYaw": 105.74
+   },
+   "apexLapTime": {
+    "shipped": 105.771,
+    "replica": 105.771,
+    "viewer": 105.771,
+    "viewerTargetYaw": 105.771
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 0.25,
+    "replica": 0.2456,
+    "viewer": 0.2532,
+    "viewerTargetYaw": 0.2529
+   },
+   "gBlockRear": {
+    "shipped": 0.25,
+    "replica": 0.2524,
+    "viewer": 0.2481,
+    "viewerTargetYaw": 0.2486
+   },
+   "gPaintFront": {
+    "shipped": -0.23,
+    "replica": -0.2282,
+    "viewer": -0.2209,
+    "viewerTargetYaw": -0.2213
+   },
+   "gPaintRear": {
+    "shipped": -0.22,
+    "replica": -0.2213,
+    "viewer": -0.2257,
+    "viewerTargetYaw": -0.2251
+   },
+   "apexStation": {
+    "shipped": 3572.0,
+    "replica": 3572.0,
+    "viewer": 3571.5,
+    "viewerTargetYaw": 3571.5
+   },
+   "apexT": {
+    "shipped": 113.62,
+    "replica": 113.62,
+    "viewer": 113.61,
+    "viewerTargetYaw": 113.61
+   },
+   "apexLapTime": {
+    "shipped": 113.651,
+    "replica": 113.651,
+    "viewer": 113.641,
+    "viewerTargetYaw": 113.641
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 1.93,
+    "replica": 1.927,
+    "viewer": 1.923,
+    "viewerTargetYaw": 1.9234
+   },
+   "gBlockRear": {
+    "shipped": 1.93,
+    "replica": 1.9337,
+    "viewer": 1.9369,
+    "viewerTargetYaw": 1.9364
+   },
+   "gPaintFront": {
+    "shipped": 1.49,
+    "replica": 1.4928,
+    "viewer": 1.4878,
+    "viewerTargetYaw": 1.4881
+   },
+   "gPaintRear": {
+    "shipped": 1.5,
+    "replica": 1.5002,
+    "viewer": 1.5028,
+    "viewerTargetYaw": 1.5024
+   },
+   "apexStation": {
+    "shipped": 3640.5,
+    "replica": 3640.5,
+    "viewer": 3640.0,
+    "viewerTargetYaw": 3640.0
+   },
+   "apexT": {
+    "shipped": 116.9,
+    "replica": 116.9,
+    "viewer": 116.89,
+    "viewerTargetYaw": 116.89
+   },
+   "apexLapTime": {
+    "shipped": 116.931,
+    "replica": 116.931,
+    "viewer": 116.921,
+    "viewerTargetYaw": 116.921
+   }
+  },
+  {
+   "race": "fuji_aim_01",
+   "lap": 4,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 0.82,
+    "replica": 0.8186,
+    "viewer": 0.8256,
+    "viewerTargetYaw": 0.8254
+   },
+   "gBlockRear": {
+    "shipped": 0.83,
+    "replica": 0.8268,
+    "viewer": 0.826,
+    "viewerTargetYaw": 0.8262
+   },
+   "gPaintFront": {
+    "shipped": 0.38,
+    "replica": 0.38,
+    "viewer": 0.3869,
+    "viewerTargetYaw": 0.3867
+   },
+   "gPaintRear": {
+    "shipped": 0.39,
+    "replica": 0.3871,
+    "viewer": 0.386,
+    "viewerTargetYaw": 0.3862
+   },
+   "apexStation": {
+    "shipped": 3857.5,
+    "replica": 3857.5,
+    "viewer": 3857.5,
+    "viewerTargetYaw": 3857.5
+   },
+   "apexT": {
+    "shipped": 125.74,
+    "replica": 125.74,
+    "viewer": 125.74,
+    "viewerTargetYaw": 125.74
+   },
+   "apexLapTime": {
+    "shipped": 125.771,
+    "replica": 125.771,
+    "viewer": 125.771,
+    "viewerTargetYaw": 125.771
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": -0.13,
+    "replica": -0.1325,
+    "viewer": -0.1436,
+    "viewerTargetYaw": -0.1434
+   },
+   "gBlockRear": {
+    "shipped": -0.12,
+    "replica": -0.1239,
+    "viewer": -0.1203,
+    "viewerTargetYaw": -0.1206
+   },
+   "gPaintFront": {
+    "shipped": -0.62,
+    "replica": -0.6215,
+    "viewer": -0.6325,
+    "viewerTargetYaw": -0.6323
+   },
+   "gPaintRear": {
+    "shipped": -0.61,
+    "replica": -0.6128,
+    "viewer": -0.6091,
+    "viewerTargetYaw": -0.6094
+   },
+   "apexStation": {
+    "shipped": 901.5,
+    "replica": 901.5,
+    "viewer": 901.5,
+    "viewerTargetYaw": 901.5
+   },
+   "apexT": {
+    "shipped": 16.92,
+    "replica": 16.92,
+    "viewer": 16.92,
+    "viewerTargetYaw": 16.92
+   },
+   "apexLapTime": {
+    "shipped": 16.977,
+    "replica": 16.977,
+    "viewer": 16.977,
+    "viewerTargetYaw": 16.977
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": -0.98,
+    "replica": -0.9794,
+    "viewer": -0.9839,
+    "viewerTargetYaw": -0.9836
+   },
+   "gBlockRear": {
+    "shipped": -0.97,
+    "replica": -0.9698,
+    "viewer": -0.966,
+    "viewerTargetYaw": -0.9663
+   },
+   "gPaintFront": {
+    "shipped": -1.47,
+    "replica": -1.4745,
+    "viewer": -1.479,
+    "viewerTargetYaw": -1.4787
+   },
+   "gPaintRear": {
+    "shipped": -1.46,
+    "replica": -1.4627,
+    "viewer": -1.4625,
+    "viewerTargetYaw": -1.4627
+   },
+   "apexStation": {
+    "shipped": 1453.0,
+    "replica": 1453.0,
+    "viewer": 1453.0,
+    "viewerTargetYaw": 1453.0
+   },
+   "apexT": {
+    "shipped": 32.98,
+    "replica": 32.98,
+    "viewer": 32.98,
+    "viewerTargetYaw": 32.98
+   },
+   "apexLapTime": {
+    "shipped": 33.037,
+    "replica": 33.037,
+    "viewer": 33.037,
+    "viewerTargetYaw": 33.037
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": -0.42,
+    "replica": -0.4189,
+    "viewer": -0.4309,
+    "viewerTargetYaw": -0.4294
+   },
+   "gBlockRear": {
+    "shipped": -0.41,
+    "replica": -0.4111,
+    "viewer": -0.4,
+    "viewerTargetYaw": -0.4015
+   },
+   "gPaintFront": {
+    "shipped": -0.86,
+    "replica": -0.8646,
+    "viewer": -0.8763,
+    "viewerTargetYaw": -0.8748
+   },
+   "gPaintRear": {
+    "shipped": -0.86,
+    "replica": -0.8567,
+    "viewer": -0.8457,
+    "viewerTargetYaw": -0.8477
+   },
+   "apexStation": {
+    "shipped": 1532.5,
+    "replica": 1532.5,
+    "viewer": 1532.5,
+    "viewerTargetYaw": 1532.5
+   },
+   "apexT": {
+    "shipped": 35.28,
+    "replica": 35.28,
+    "viewer": 35.28,
+    "viewerTargetYaw": 35.28
+   },
+   "apexLapTime": {
+    "shipped": 35.337,
+    "replica": 35.337,
+    "viewer": 35.337,
+    "viewerTargetYaw": 35.337
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": -0.81,
+    "replica": -0.8069,
+    "viewer": -0.8107,
+    "viewerTargetYaw": -0.8103
+   },
+   "gBlockRear": {
+    "shipped": -0.8,
+    "replica": -0.801,
+    "viewer": -0.797,
+    "viewerTargetYaw": -0.7975
+   },
+   "gPaintFront": {
+    "shipped": -1.29,
+    "replica": -1.291,
+    "viewer": -1.2943,
+    "viewerTargetYaw": -1.2938
+   },
+   "gPaintRear": {
+    "shipped": -1.28,
+    "replica": -1.2829,
+    "viewer": -1.2802,
+    "viewerTargetYaw": -1.2807
+   },
+   "apexStation": {
+    "shipped": 2140.0,
+    "replica": 2140.0,
+    "viewer": 2140.0,
+    "viewerTargetYaw": 2140.0
+   },
+   "apexT": {
+    "shipped": 52.72,
+    "replica": 52.72,
+    "viewer": 52.71,
+    "viewerTargetYaw": 52.71
+   },
+   "apexLapTime": {
+    "shipped": 52.777,
+    "replica": 52.777,
+    "viewer": 52.767,
+    "viewerTargetYaw": 52.767
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 4.29,
+    "replica": 4.2871,
+    "viewer": 4.2838,
+    "viewerTargetYaw": 4.2838
+   },
+   "gBlockRear": {
+    "shipped": 4.3,
+    "replica": 4.2959,
+    "viewer": 4.296,
+    "viewerTargetYaw": 4.2961
+   },
+   "gPaintFront": {
+    "shipped": 3.93,
+    "replica": 3.9264,
+    "viewer": 3.9231,
+    "viewerTargetYaw": 3.9231
+   },
+   "gPaintRear": {
+    "shipped": 3.94,
+    "replica": 3.9358,
+    "viewer": 3.9352,
+    "viewerTargetYaw": 3.9352
+   },
+   "apexStation": {
+    "shipped": 2451.5,
+    "replica": 2451.5,
+    "viewer": 2451.5,
+    "viewerTargetYaw": 2451.5
+   },
+   "apexT": {
+    "shipped": 62.38,
+    "replica": 62.38,
+    "viewer": 62.38,
+    "viewerTargetYaw": 62.38
+   },
+   "apexLapTime": {
+    "shipped": 62.437,
+    "replica": 62.437,
+    "viewer": 62.437,
+    "viewerTargetYaw": 62.437
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 4.41,
+    "replica": 4.4061,
+    "viewer": 4.4047,
+    "viewerTargetYaw": 4.4046
+   },
+   "gBlockRear": {
+    "shipped": 4.41,
+    "replica": 4.414,
+    "viewer": 4.4136,
+    "viewerTargetYaw": 4.4137
+   },
+   "gPaintFront": {
+    "shipped": 4.06,
+    "replica": 4.0624,
+    "viewer": 4.0614,
+    "viewerTargetYaw": 4.0613
+   },
+   "gPaintRear": {
+    "shipped": 4.07,
+    "replica": 4.0703,
+    "viewer": 4.0697,
+    "viewerTargetYaw": 4.0698
+   },
+   "apexStation": {
+    "shipped": 2685.0,
+    "replica": 2685.0,
+    "viewer": 2684.5,
+    "viewerTargetYaw": 2684.5
+   },
+   "apexT": {
+    "shipped": 67.94,
+    "replica": 67.94,
+    "viewer": 67.93,
+    "viewerTargetYaw": 67.93
+   },
+   "apexLapTime": {
+    "shipped": 67.997,
+    "replica": 67.997,
+    "viewer": 67.987,
+    "viewerTargetYaw": 67.987
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 0.21,
+    "replica": 0.2084,
+    "viewer": 0.232,
+    "viewerTargetYaw": 0.2307
+   },
+   "gBlockRear": {
+    "shipped": 0.21,
+    "replica": 0.212,
+    "viewer": 0.2068,
+    "viewerTargetYaw": 0.2088
+   },
+   "gPaintFront": {
+    "shipped": -0.26,
+    "replica": -0.2559,
+    "viewer": -0.2367,
+    "viewerTargetYaw": -0.2384
+   },
+   "gPaintRear": {
+    "shipped": -0.25,
+    "replica": -0.2506,
+    "viewer": -0.2519,
+    "viewerTargetYaw": -0.2502
+   },
+   "apexStation": {
+    "shipped": 2984.0,
+    "replica": 2984.0,
+    "viewer": 2984.0,
+    "viewerTargetYaw": 2984.0
+   },
+   "apexT": {
+    "shipped": 76.44,
+    "replica": 76.44,
+    "viewer": 76.45,
+    "viewerTargetYaw": 76.45
+   },
+   "apexLapTime": {
+    "shipped": 76.497,
+    "replica": 76.497,
+    "viewer": 76.507,
+    "viewerTargetYaw": 76.507
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 0.1,
+    "replica": 0.0953,
+    "viewer": 0.0927,
+    "viewerTargetYaw": 0.0927
+   },
+   "gBlockRear": {
+    "shipped": 0.11,
+    "replica": 0.1054,
+    "viewer": 0.1025,
+    "viewerTargetYaw": 0.1027
+   },
+   "gPaintFront": {
+    "shipped": -0.38,
+    "replica": -0.3778,
+    "viewer": -0.3804,
+    "viewerTargetYaw": -0.3803
+   },
+   "gPaintRear": {
+    "shipped": -0.37,
+    "replica": -0.3684,
+    "viewer": -0.3684,
+    "viewerTargetYaw": -0.3683
+   },
+   "apexStation": {
+    "shipped": 3048.0,
+    "replica": 3048.0,
+    "viewer": 3048.0,
+    "viewerTargetYaw": 3048.0
+   },
+   "apexT": {
+    "shipped": 79.58,
+    "replica": 79.58,
+    "viewer": 79.58,
+    "viewerTargetYaw": 79.58
+   },
+   "apexLapTime": {
+    "shipped": 79.637,
+    "replica": 79.637,
+    "viewer": 79.637,
+    "viewerTargetYaw": 79.637
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 0.38,
+    "replica": 0.3815,
+    "viewer": 0.3467,
+    "viewerTargetYaw": 0.3487
+   },
+   "gBlockRear": {
+    "shipped": 0.39,
+    "replica": 0.3909,
+    "viewer": 0.42,
+    "viewerTargetYaw": 0.4177
+   },
+   "gPaintFront": {
+    "shipped": -0.02,
+    "replica": -0.0151,
+    "viewer": -0.0491,
+    "viewerTargetYaw": -0.0471
+   },
+   "gPaintRear": {
+    "shipped": -0.01,
+    "replica": -0.0054,
+    "viewer": 0.0215,
+    "viewerTargetYaw": 0.0192
+   },
+   "apexStation": {
+    "shipped": 3097.0,
+    "replica": 3097.0,
+    "viewer": 3097.0,
+    "viewerTargetYaw": 3097.0
+   },
+   "apexT": {
+    "shipped": 82.24,
+    "replica": 82.24,
+    "viewer": 82.24,
+    "viewerTargetYaw": 82.24
+   },
+   "apexLapTime": {
+    "shipped": 82.297,
+    "replica": 82.297,
+    "viewer": 82.297,
+    "viewerTargetYaw": 82.297
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": -0.43,
+    "replica": -0.4339,
+    "viewer": -0.4324,
+    "viewerTargetYaw": -0.4328
+   },
+   "gBlockRear": {
+    "shipped": -0.43,
+    "replica": -0.4267,
+    "viewer": -0.4293,
+    "viewerTargetYaw": -0.429
+   },
+   "gPaintFront": {
+    "shipped": -0.91,
+    "replica": -0.9097,
+    "viewer": -0.9081,
+    "viewerTargetYaw": -0.9086
+   },
+   "gPaintRear": {
+    "shipped": -0.9,
+    "replica": -0.9022,
+    "viewer": -0.9049,
+    "viewerTargetYaw": -0.9045
+   },
+   "apexStation": {
+    "shipped": 3306.0,
+    "replica": 3306.0,
+    "viewer": 3306.0,
+    "viewerTargetYaw": 3306.0
+   },
+   "apexT": {
+    "shipped": 90.7,
+    "replica": 90.7,
+    "viewer": 90.69,
+    "viewerTargetYaw": 90.7
+   },
+   "apexLapTime": {
+    "shipped": 90.757,
+    "replica": 90.757,
+    "viewer": 90.747,
+    "viewerTargetYaw": 90.757
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 4.0,
+    "replica": 3.9952,
+    "viewer": 3.9817,
+    "viewerTargetYaw": 3.9832
+   },
+   "gBlockRear": {
+    "shipped": 4.0,
+    "replica": 4.0028,
+    "viewer": 4.0167,
+    "viewerTargetYaw": 4.0154
+   },
+   "gPaintFront": {
+    "shipped": 3.61,
+    "replica": 3.609,
+    "viewer": 3.595,
+    "viewerTargetYaw": 3.5963
+   },
+   "gPaintRear": {
+    "shipped": 3.62,
+    "replica": 3.6157,
+    "viewer": 3.6308,
+    "viewerTargetYaw": 3.6296
+   },
+   "apexStation": {
+    "shipped": 3378.0,
+    "replica": 3378.0,
+    "viewer": 3378.0,
+    "viewerTargetYaw": 3378.0
+   },
+   "apexT": {
+    "shipped": 93.38,
+    "replica": 93.38,
+    "viewer": 93.38,
+    "viewerTargetYaw": 93.38
+   },
+   "apexLapTime": {
+    "shipped": 93.437,
+    "replica": 93.437,
+    "viewer": 93.437,
+    "viewerTargetYaw": 93.437
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 4.34,
+    "replica": 4.336,
+    "viewer": 4.3431,
+    "viewerTargetYaw": 4.3426
+   },
+   "gBlockRear": {
+    "shipped": 4.34,
+    "replica": 4.3445,
+    "viewer": 4.3393,
+    "viewerTargetYaw": 4.3401
+   },
+   "gPaintFront": {
+    "shipped": 3.87,
+    "replica": 3.8692,
+    "viewer": 3.876,
+    "viewerTargetYaw": 3.8757
+   },
+   "gPaintRear": {
+    "shipped": 3.88,
+    "replica": 3.8762,
+    "viewer": 3.872,
+    "viewerTargetYaw": 3.8727
+   },
+   "apexStation": {
+    "shipped": 3573.5,
+    "replica": 3573.5,
+    "viewer": 3573.5,
+    "viewerTargetYaw": 3573.5
+   },
+   "apexT": {
+    "shipped": 101.16,
+    "replica": 101.16,
+    "viewer": 101.16,
+    "viewerTargetYaw": 101.16
+   },
+   "apexLapTime": {
+    "shipped": 101.217,
+    "replica": 101.217,
+    "viewer": 101.217,
+    "viewerTargetYaw": 101.217
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 1.33,
+    "replica": 1.3263,
+    "viewer": 1.3295,
+    "viewerTargetYaw": 1.3302
+   },
+   "gBlockRear": {
+    "shipped": 1.33,
+    "replica": 1.3341,
+    "viewer": 1.3269,
+    "viewerTargetYaw": 1.3264
+   },
+   "gPaintFront": {
+    "shipped": 0.87,
+    "replica": 0.8721,
+    "viewer": 0.8781,
+    "viewerTargetYaw": 0.8787
+   },
+   "gPaintRear": {
+    "shipped": 0.88,
+    "replica": 0.8787,
+    "viewer": 0.8706,
+    "viewerTargetYaw": 0.8701
+   },
+   "apexStation": {
+    "shipped": 3626.0,
+    "replica": 3626.0,
+    "viewer": 3625.5,
+    "viewerTargetYaw": 3625.5
+   },
+   "apexT": {
+    "shipped": 103.42,
+    "replica": 103.42,
+    "viewer": 103.41,
+    "viewerTargetYaw": 103.41
+   },
+   "apexLapTime": {
+    "shipped": 103.477,
+    "replica": 103.477,
+    "viewer": 103.467,
+    "viewerTargetYaw": 103.467
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 1,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 0.69,
+    "replica": 0.6891,
+    "viewer": 0.703,
+    "viewerTargetYaw": 0.7023
+   },
+   "gBlockRear": {
+    "shipped": 0.7,
+    "replica": 0.6959,
+    "viewer": 0.6855,
+    "viewerTargetYaw": 0.6862
+   },
+   "gPaintFront": {
+    "shipped": 0.21,
+    "replica": 0.2111,
+    "viewer": 0.2249,
+    "viewerTargetYaw": 0.2242
+   },
+   "gPaintRear": {
+    "shipped": 0.22,
+    "replica": 0.2185,
+    "viewer": 0.2079,
+    "viewerTargetYaw": 0.2086
+   },
+   "apexStation": {
+    "shipped": 3862.0,
+    "replica": 3862.0,
+    "viewer": 3862.0,
+    "viewerTargetYaw": 3862.0
+   },
+   "apexT": {
+    "shipped": 112.48,
+    "replica": 112.48,
+    "viewer": 112.48,
+    "viewerTargetYaw": 112.48
+   },
+   "apexLapTime": {
+    "shipped": 112.537,
+    "replica": 112.537,
+    "viewer": 112.537,
+    "viewerTargetYaw": 112.537
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": -1.04,
+    "replica": -1.0375,
+    "viewer": -1.0454,
+    "viewerTargetYaw": -1.0453
+   },
+   "gBlockRear": {
+    "shipped": -1.03,
+    "replica": -1.0303,
+    "viewer": -1.0215,
+    "viewerTargetYaw": -1.0217
+   },
+   "gPaintFront": {
+    "shipped": -1.53,
+    "replica": -1.5263,
+    "viewer": -1.5342,
+    "viewerTargetYaw": -1.5341
+   },
+   "gPaintRear": {
+    "shipped": -1.52,
+    "replica": -1.5192,
+    "viewer": -1.5104,
+    "viewerTargetYaw": -1.5106
+   },
+   "apexStation": {
+    "shipped": 901.5,
+    "replica": 901.5,
+    "viewer": 901.5,
+    "viewerTargetYaw": 901.5
+   },
+   "apexT": {
+    "shipped": 16.6,
+    "replica": 16.6,
+    "viewer": 16.59,
+    "viewerTargetYaw": 16.59
+   },
+   "apexLapTime": {
+    "shipped": 16.622,
+    "replica": 16.622,
+    "viewer": 16.612,
+    "viewerTargetYaw": 16.612
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": -0.26,
+    "replica": -0.2572,
+    "viewer": -0.2575,
+    "viewerTargetYaw": -0.2573
+   },
+   "gBlockRear": {
+    "shipped": -0.25,
+    "replica": -0.2507,
+    "viewer": -0.2533,
+    "viewerTargetYaw": -0.2535
+   },
+   "gPaintFront": {
+    "shipped": -0.75,
+    "replica": -0.7476,
+    "viewer": -0.7519,
+    "viewerTargetYaw": -0.7517
+   },
+   "gPaintRear": {
+    "shipped": -0.75,
+    "replica": -0.7463,
+    "viewer": -0.7473,
+    "viewerTargetYaw": -0.7474
+   },
+   "apexStation": {
+    "shipped": 1453.5,
+    "replica": 1453.5,
+    "viewer": 1453.0,
+    "viewerTargetYaw": 1453.0
+   },
+   "apexT": {
+    "shipped": 32.48,
+    "replica": 32.48,
+    "viewer": 32.47,
+    "viewerTargetYaw": 32.47
+   },
+   "apexLapTime": {
+    "shipped": 32.502,
+    "replica": 32.502,
+    "viewer": 32.492,
+    "viewerTargetYaw": 32.492
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": -1.11,
+    "replica": -1.1095,
+    "viewer": -1.1163,
+    "viewerTargetYaw": -1.1157
+   },
+   "gBlockRear": {
+    "shipped": -1.1,
+    "replica": -1.1036,
+    "viewer": -1.0987,
+    "viewerTargetYaw": -1.0996
+   },
+   "gPaintFront": {
+    "shipped": -1.63,
+    "replica": -1.6255,
+    "viewer": -1.6359,
+    "viewerTargetYaw": -1.6352
+   },
+   "gPaintRear": {
+    "shipped": -1.62,
+    "replica": -1.6193,
+    "viewer": -1.6106,
+    "viewerTargetYaw": -1.6112
+   },
+   "apexStation": {
+    "shipped": 1551.0,
+    "replica": 1551.0,
+    "viewer": 1551.0,
+    "viewerTargetYaw": 1551.0
+   },
+   "apexT": {
+    "shipped": 35.22,
+    "replica": 35.22,
+    "viewer": 35.23,
+    "viewerTargetYaw": 35.23
+   },
+   "apexLapTime": {
+    "shipped": 35.242,
+    "replica": 35.242,
+    "viewer": 35.252,
+    "viewerTargetYaw": 35.252
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 4.68,
+    "replica": 4.6784,
+    "viewer": 4.6655,
+    "viewerTargetYaw": 4.6662
+   },
+   "gBlockRear": {
+    "shipped": 4.69,
+    "replica": 4.6873,
+    "viewer": 4.7024,
+    "viewerTargetYaw": 4.702
+   },
+   "gPaintFront": {
+    "shipped": 4.2,
+    "replica": 4.196,
+    "viewer": 4.1822,
+    "viewerTargetYaw": 4.1829
+   },
+   "gPaintRear": {
+    "shipped": 4.2,
+    "replica": 4.204,
+    "viewer": 4.219,
+    "viewerTargetYaw": 4.2187
+   },
+   "apexStation": {
+    "shipped": 2140.0,
+    "replica": 2140.0,
+    "viewer": 2140.0,
+    "viewerTargetYaw": 2140.0
+   },
+   "apexT": {
+    "shipped": 52.34,
+    "replica": 52.34,
+    "viewer": 52.34,
+    "viewerTargetYaw": 52.34
+   },
+   "apexLapTime": {
+    "shipped": 52.362,
+    "replica": 52.362,
+    "viewer": 52.362,
+    "viewerTargetYaw": 52.362
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 0.84,
+    "replica": 0.8442,
+    "viewer": 0.8405,
+    "viewerTargetYaw": 0.8406
+   },
+   "gBlockRear": {
+    "shipped": 0.85,
+    "replica": 0.8503,
+    "viewer": 0.8519,
+    "viewerTargetYaw": 0.8518
+   },
+   "gPaintFront": {
+    "shipped": 0.48,
+    "replica": 0.4833,
+    "viewer": 0.4803,
+    "viewerTargetYaw": 0.4805
+   },
+   "gPaintRear": {
+    "shipped": 0.49,
+    "replica": 0.4909,
+    "viewer": 0.4925,
+    "viewerTargetYaw": 0.4923
+   },
+   "apexStation": {
+    "shipped": 2451.5,
+    "replica": 2451.5,
+    "viewer": 2452.0,
+    "viewerTargetYaw": 2452.0
+   },
+   "apexT": {
+    "shipped": 62.34,
+    "replica": 62.34,
+    "viewer": 62.35,
+    "viewerTargetYaw": 62.35
+   },
+   "apexLapTime": {
+    "shipped": 62.362,
+    "replica": 62.362,
+    "viewer": 62.372,
+    "viewerTargetYaw": 62.372
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": -0.01,
+    "replica": -0.012,
+    "viewer": -0.0107,
+    "viewerTargetYaw": -0.0108
+   },
+   "gBlockRear": {
+    "shipped": -0.0,
+    "replica": -0.0042,
+    "viewer": -0.005,
+    "viewerTargetYaw": -0.0049
+   },
+   "gPaintFront": {
+    "shipped": -0.36,
+    "replica": -0.3556,
+    "viewer": -0.3532,
+    "viewerTargetYaw": -0.3533
+   },
+   "gPaintRear": {
+    "shipped": -0.35,
+    "replica": -0.348,
+    "viewer": -0.3497,
+    "viewerTargetYaw": -0.3496
+   },
+   "apexStation": {
+    "shipped": 2694.0,
+    "replica": 2694.0,
+    "viewer": 2694.0,
+    "viewerTargetYaw": 2694.0
+   },
+   "apexT": {
+    "shipped": 68.02,
+    "replica": 68.02,
+    "viewer": 68.02,
+    "viewerTargetYaw": 68.02
+   },
+   "apexLapTime": {
+    "shipped": 68.042,
+    "replica": 68.042,
+    "viewer": 68.042,
+    "viewerTargetYaw": 68.042
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": -0.34,
+    "replica": -0.3358,
+    "viewer": -0.3266,
+    "viewerTargetYaw": -0.3272
+   },
+   "gBlockRear": {
+    "shipped": -0.33,
+    "replica": -0.3348,
+    "viewer": -0.3356,
+    "viewerTargetYaw": -0.3349
+   },
+   "gPaintFront": {
+    "shipped": -0.79,
+    "replica": -0.7917,
+    "viewer": -0.7816,
+    "viewerTargetYaw": -0.7821
+   },
+   "gPaintRear": {
+    "shipped": -0.79,
+    "replica": -0.7877,
+    "viewer": -0.7856,
+    "viewerTargetYaw": -0.7845
+   },
+   "apexStation": {
+    "shipped": 2984.0,
+    "replica": 2984.0,
+    "viewer": 2983.5,
+    "viewerTargetYaw": 2983.5
+   },
+   "apexT": {
+    "shipped": 76.5,
+    "replica": 76.5,
+    "viewer": 76.49,
+    "viewerTargetYaw": 76.49
+   },
+   "apexLapTime": {
+    "shipped": 76.522,
+    "replica": 76.522,
+    "viewer": 76.512,
+    "viewerTargetYaw": 76.512
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": -0.38,
+    "replica": -0.38,
+    "viewer": -0.3717,
+    "viewerTargetYaw": -0.3729
+   },
+   "gBlockRear": {
+    "shipped": -0.37,
+    "replica": -0.3746,
+    "viewer": -0.3836,
+    "viewerTargetYaw": -0.3825
+   },
+   "gPaintFront": {
+    "shipped": -0.85,
+    "replica": -0.8499,
+    "viewer": -0.8417,
+    "viewerTargetYaw": -0.8428
+   },
+   "gPaintRear": {
+    "shipped": -0.85,
+    "replica": -0.8451,
+    "viewer": -0.8536,
+    "viewerTargetYaw": -0.8525
+   },
+   "apexStation": {
+    "shipped": 3054.5,
+    "replica": 3054.5,
+    "viewer": 3054.5,
+    "viewerTargetYaw": 3054.0
+   },
+   "apexT": {
+    "shipped": 79.92,
+    "replica": 79.92,
+    "viewer": 79.92,
+    "viewerTargetYaw": 79.91
+   },
+   "apexLapTime": {
+    "shipped": 79.942,
+    "replica": 79.942,
+    "viewer": 79.942,
+    "viewerTargetYaw": 79.932
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 0.39,
+    "replica": 0.3905,
+    "viewer": 0.3629,
+    "viewerTargetYaw": 0.3649
+   },
+   "gBlockRear": {
+    "shipped": 0.4,
+    "replica": 0.399,
+    "viewer": 0.4396,
+    "viewerTargetYaw": 0.4372
+   },
+   "gPaintFront": {
+    "shipped": -0.02,
+    "replica": -0.019,
+    "viewer": -0.0509,
+    "viewerTargetYaw": -0.0482
+   },
+   "gPaintRear": {
+    "shipped": -0.01,
+    "replica": -0.0099,
+    "viewer": 0.0341,
+    "viewerTargetYaw": 0.0313
+   },
+   "apexStation": {
+    "shipped": 3097.5,
+    "replica": 3097.5,
+    "viewer": 3098.0,
+    "viewerTargetYaw": 3098.0
+   },
+   "apexT": {
+    "shipped": 81.94,
+    "replica": 81.94,
+    "viewer": 81.96,
+    "viewerTargetYaw": 81.95
+   },
+   "apexLapTime": {
+    "shipped": 81.962,
+    "replica": 81.962,
+    "viewer": 81.982,
+    "viewerTargetYaw": 81.972
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 1.66,
+    "replica": 1.664,
+    "viewer": 1.6648,
+    "viewerTargetYaw": 1.6646
+   },
+   "gBlockRear": {
+    "shipped": 1.67,
+    "replica": 1.6712,
+    "viewer": 1.6671,
+    "viewerTargetYaw": 1.6675
+   },
+   "gPaintFront": {
+    "shipped": 1.22,
+    "replica": 1.2155,
+    "viewer": 1.2202,
+    "viewerTargetYaw": 1.2198
+   },
+   "gPaintRear": {
+    "shipped": 1.22,
+    "replica": 1.2229,
+    "viewer": 1.2193,
+    "viewerTargetYaw": 1.2197
+   },
+   "apexStation": {
+    "shipped": 3293.5,
+    "replica": 3293.5,
+    "viewer": 3293.5,
+    "viewerTargetYaw": 3293.5
+   },
+   "apexT": {
+    "shipped": 89.24,
+    "replica": 89.24,
+    "viewer": 89.23,
+    "viewerTargetYaw": 89.23
+   },
+   "apexLapTime": {
+    "shipped": 89.262,
+    "replica": 89.262,
+    "viewer": 89.252,
+    "viewerTargetYaw": 89.252
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -0.15,
+    "replica": -0.1538,
+    "viewer": -0.1999,
+    "viewerTargetYaw": -0.1973
+   },
+   "gBlockRear": {
+    "shipped": -0.15,
+    "replica": -0.1457,
+    "viewer": -0.099,
+    "viewerTargetYaw": -0.102
+   },
+   "gPaintFront": {
+    "shipped": -0.49,
+    "replica": -0.4906,
+    "viewer": -0.5364,
+    "viewerTargetYaw": -0.5338
+   },
+   "gPaintRear": {
+    "shipped": -0.48,
+    "replica": -0.4818,
+    "viewer": -0.4353,
+    "viewerTargetYaw": -0.4382
+   },
+   "apexStation": {
+    "shipped": 3366.0,
+    "replica": 3366.0,
+    "viewer": 3365.5,
+    "viewerTargetYaw": 3365.5
+   },
+   "apexT": {
+    "shipped": 91.94,
+    "replica": 91.94,
+    "viewer": 91.93,
+    "viewerTargetYaw": 91.93
+   },
+   "apexLapTime": {
+    "shipped": 91.962,
+    "replica": 91.962,
+    "viewer": 91.952,
+    "viewerTargetYaw": 91.952
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": -0.08,
+    "replica": -0.0804,
+    "viewer": -0.0816,
+    "viewerTargetYaw": -0.0817
+   },
+   "gBlockRear": {
+    "shipped": -0.07,
+    "replica": -0.0739,
+    "viewer": -0.0715,
+    "viewerTargetYaw": -0.071
+   },
+   "gPaintFront": {
+    "shipped": -0.59,
+    "replica": -0.5863,
+    "viewer": -0.5875,
+    "viewerTargetYaw": -0.5877
+   },
+   "gPaintRear": {
+    "shipped": -0.58,
+    "replica": -0.5803,
+    "viewer": -0.5769,
+    "viewerTargetYaw": -0.5765
+   },
+   "apexStation": {
+    "shipped": 3567.0,
+    "replica": 3567.0,
+    "viewer": 3567.0,
+    "viewerTargetYaw": 3567.0
+   },
+   "apexT": {
+    "shipped": 98.92,
+    "replica": 98.92,
+    "viewer": 98.91,
+    "viewerTargetYaw": 98.91
+   },
+   "apexLapTime": {
+    "shipped": 98.942,
+    "replica": 98.942,
+    "viewer": 98.932,
+    "viewerTargetYaw": 98.932
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 0.33,
+    "replica": 0.3291,
+    "viewer": 0.317,
+    "viewerTargetYaw": 0.318
+   },
+   "gBlockRear": {
+    "shipped": 0.34,
+    "replica": 0.3369,
+    "viewer": 0.3511,
+    "viewerTargetYaw": 0.3501
+   },
+   "gPaintFront": {
+    "shipped": -0.15,
+    "replica": -0.1543,
+    "viewer": -0.1659,
+    "viewerTargetYaw": -0.1648
+   },
+   "gPaintRear": {
+    "shipped": -0.15,
+    "replica": -0.1463,
+    "viewer": -0.1324,
+    "viewerTargetYaw": -0.1334
+   },
+   "apexStation": {
+    "shipped": 3630.5,
+    "replica": 3630.5,
+    "viewer": 3630.5,
+    "viewerTargetYaw": 3630.5
+   },
+   "apexT": {
+    "shipped": 101.46,
+    "replica": 101.46,
+    "viewer": 101.46,
+    "viewerTargetYaw": 101.46
+   },
+   "apexLapTime": {
+    "shipped": 101.482,
+    "replica": 101.482,
+    "viewer": 101.482,
+    "viewerTargetYaw": 101.482
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 2,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 0.13,
+    "replica": 0.1295,
+    "viewer": 0.14,
+    "viewerTargetYaw": 0.139
+   },
+   "gBlockRear": {
+    "shipped": 0.14,
+    "replica": 0.1364,
+    "viewer": 0.1209,
+    "viewerTargetYaw": 0.1219
+   },
+   "gPaintFront": {
+    "shipped": -0.29,
+    "replica": -0.2891,
+    "viewer": -0.2798,
+    "viewerTargetYaw": -0.2809
+   },
+   "gPaintRear": {
+    "shipped": -0.28,
+    "replica": -0.2826,
+    "viewer": -0.296,
+    "viewerTargetYaw": -0.2949
+   },
+   "apexStation": {
+    "shipped": 3867.5,
+    "replica": 3867.5,
+    "viewer": 3867.5,
+    "viewerTargetYaw": 3867.5
+   },
+   "apexT": {
+    "shipped": 110.36,
+    "replica": 110.36,
+    "viewer": 110.35,
+    "viewerTargetYaw": 110.35
+   },
+   "apexLapTime": {
+    "shipped": 110.382,
+    "replica": 110.382,
+    "viewer": 110.372,
+    "viewerTargetYaw": 110.372
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": -0.33,
+    "replica": -0.3301,
+    "viewer": -0.3369,
+    "viewerTargetYaw": -0.3371
+   },
+   "gBlockRear": {
+    "shipped": -0.32,
+    "replica": -0.3234,
+    "viewer": -0.3153,
+    "viewerTargetYaw": -0.3153
+   },
+   "gPaintFront": {
+    "shipped": -0.82,
+    "replica": -0.8163,
+    "viewer": -0.8235,
+    "viewerTargetYaw": -0.8236
+   },
+   "gPaintRear": {
+    "shipped": -0.81,
+    "replica": -0.81,
+    "viewer": -0.8025,
+    "viewerTargetYaw": -0.8024
+   },
+   "apexStation": {
+    "shipped": 904.5,
+    "replica": 904.5,
+    "viewer": 904.5,
+    "viewerTargetYaw": 904.5
+   },
+   "apexT": {
+    "shipped": 16.88,
+    "replica": 16.88,
+    "viewer": 16.88,
+    "viewerTargetYaw": 16.88
+   },
+   "apexLapTime": {
+    "shipped": 16.96,
+    "replica": 16.96,
+    "viewer": 16.96,
+    "viewerTargetYaw": 16.96
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": -0.13,
+    "replica": -0.1294,
+    "viewer": -0.1209,
+    "viewerTargetYaw": -0.1214
+   },
+   "gBlockRear": {
+    "shipped": -0.12,
+    "replica": -0.1224,
+    "viewer": -0.1332,
+    "viewerTargetYaw": -0.1328
+   },
+   "gPaintFront": {
+    "shipped": -0.61,
+    "replica": -0.6079,
+    "viewer": -0.6035,
+    "viewerTargetYaw": -0.604
+   },
+   "gPaintRear": {
+    "shipped": -0.6,
+    "replica": -0.6006,
+    "viewer": -0.615,
+    "viewerTargetYaw": -0.6145
+   },
+   "apexStation": {
+    "shipped": 1454.0,
+    "replica": 1454.0,
+    "viewer": 1454.0,
+    "viewerTargetYaw": 1454.0
+   },
+   "apexT": {
+    "shipped": 33.08,
+    "replica": 33.08,
+    "viewer": 33.08,
+    "viewerTargetYaw": 33.08
+   },
+   "apexLapTime": {
+    "shipped": 33.16,
+    "replica": 33.16,
+    "viewer": 33.16,
+    "viewerTargetYaw": 33.16
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 1.37,
+    "replica": 1.3715,
+    "viewer": 1.362,
+    "viewerTargetYaw": 1.3626
+   },
+   "gBlockRear": {
+    "shipped": 1.38,
+    "replica": 1.3787,
+    "viewer": 1.39,
+    "viewerTargetYaw": 1.3891
+   },
+   "gPaintFront": {
+    "shipped": 0.93,
+    "replica": 0.9297,
+    "viewer": 0.9179,
+    "viewerTargetYaw": 0.9187
+   },
+   "gPaintRear": {
+    "shipped": 0.94,
+    "replica": 0.9376,
+    "viewer": 0.9505,
+    "viewerTargetYaw": 0.9496
+   },
+   "apexStation": {
+    "shipped": 1537.5,
+    "replica": 1537.5,
+    "viewer": 1538.0,
+    "viewerTargetYaw": 1538.0
+   },
+   "apexT": {
+    "shipped": 35.54,
+    "replica": 35.54,
+    "viewer": 35.55,
+    "viewerTargetYaw": 35.55
+   },
+   "apexLapTime": {
+    "shipped": 35.62,
+    "replica": 35.62,
+    "viewer": 35.63,
+    "viewerTargetYaw": 35.63
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": -0.21,
+    "replica": -0.2055,
+    "viewer": -0.2017,
+    "viewerTargetYaw": -0.2028
+   },
+   "gBlockRear": {
+    "shipped": -0.2,
+    "replica": -0.1977,
+    "viewer": -0.2008,
+    "viewerTargetYaw": -0.1997
+   },
+   "gPaintFront": {
+    "shipped": -0.7,
+    "replica": -0.7023,
+    "viewer": -0.6982,
+    "viewerTargetYaw": -0.6991
+   },
+   "gPaintRear": {
+    "shipped": -0.7,
+    "replica": -0.6955,
+    "viewer": -0.6986,
+    "viewerTargetYaw": -0.6974
+   },
+   "apexStation": {
+    "shipped": 2151.5,
+    "replica": 2151.5,
+    "viewer": 2151.5,
+    "viewerTargetYaw": 2151.5
+   },
+   "apexT": {
+    "shipped": 52.8,
+    "replica": 52.8,
+    "viewer": 52.8,
+    "viewerTargetYaw": 52.8
+   },
+   "apexLapTime": {
+    "shipped": 52.88,
+    "replica": 52.88,
+    "viewer": 52.88,
+    "viewerTargetYaw": 52.88
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 1.29,
+    "replica": 1.2908,
+    "viewer": 1.2892,
+    "viewerTargetYaw": 1.2893
+   },
+   "gBlockRear": {
+    "shipped": 1.3,
+    "replica": 1.2999,
+    "viewer": 1.3002,
+    "viewerTargetYaw": 1.3002
+   },
+   "gPaintFront": {
+    "shipped": 0.93,
+    "replica": 0.9326,
+    "viewer": 0.9307,
+    "viewerTargetYaw": 0.9308
+   },
+   "gPaintRear": {
+    "shipped": 0.94,
+    "replica": 0.9395,
+    "viewer": 0.9414,
+    "viewerTargetYaw": 0.9414
+   },
+   "apexStation": {
+    "shipped": 2451.0,
+    "replica": 2451.0,
+    "viewer": 2451.0,
+    "viewerTargetYaw": 2451.0
+   },
+   "apexT": {
+    "shipped": 62.0,
+    "replica": 62.0,
+    "viewer": 62.0,
+    "viewerTargetYaw": 62.0
+   },
+   "apexLapTime": {
+    "shipped": 62.08,
+    "replica": 62.08,
+    "viewer": 62.08,
+    "viewerTargetYaw": 62.08
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 1.1,
+    "replica": 1.1009,
+    "viewer": 1.0998,
+    "viewerTargetYaw": 1.0997
+   },
+   "gBlockRear": {
+    "shipped": 1.11,
+    "replica": 1.1087,
+    "viewer": 1.1089,
+    "viewerTargetYaw": 1.1089
+   },
+   "gPaintFront": {
+    "shipped": 0.76,
+    "replica": 0.762,
+    "viewer": 0.7601,
+    "viewerTargetYaw": 0.7601
+   },
+   "gPaintRear": {
+    "shipped": 0.77,
+    "replica": 0.7681,
+    "viewer": 0.7671,
+    "viewerTargetYaw": 0.7671
+   },
+   "apexStation": {
+    "shipped": 2680.5,
+    "replica": 2680.5,
+    "viewer": 2680.5,
+    "viewerTargetYaw": 2680.5
+   },
+   "apexT": {
+    "shipped": 67.42,
+    "replica": 67.42,
+    "viewer": 67.42,
+    "viewerTargetYaw": 67.42
+   },
+   "apexLapTime": {
+    "shipped": 67.5,
+    "replica": 67.5,
+    "viewer": 67.5,
+    "viewerTargetYaw": 67.5
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 0.28,
+    "replica": 0.2767,
+    "viewer": 0.2828,
+    "viewerTargetYaw": 0.2817
+   },
+   "gBlockRear": {
+    "shipped": 0.28,
+    "replica": 0.2807,
+    "viewer": 0.2505,
+    "viewerTargetYaw": 0.2529
+   },
+   "gPaintFront": {
+    "shipped": -0.24,
+    "replica": -0.2433,
+    "viewer": -0.2366,
+    "viewerTargetYaw": -0.2378
+   },
+   "gPaintRear": {
+    "shipped": -0.24,
+    "replica": -0.2392,
+    "viewer": -0.2697,
+    "viewerTargetYaw": -0.2672
+   },
+   "apexStation": {
+    "shipped": 2986.5,
+    "replica": 2986.5,
+    "viewer": 2986.5,
+    "viewerTargetYaw": 2986.5
+   },
+   "apexT": {
+    "shipped": 76.54,
+    "replica": 76.54,
+    "viewer": 76.53,
+    "viewerTargetYaw": 76.53
+   },
+   "apexLapTime": {
+    "shipped": 76.62,
+    "replica": 76.62,
+    "viewer": 76.61,
+    "viewerTargetYaw": 76.61
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": -0.45,
+    "replica": -0.4451,
+    "viewer": -0.4436,
+    "viewerTargetYaw": -0.4444
+   },
+   "gBlockRear": {
+    "shipped": -0.44,
+    "replica": -0.4394,
+    "viewer": -0.4443,
+    "viewerTargetYaw": -0.4436
+   },
+   "gPaintFront": {
+    "shipped": -0.92,
+    "replica": -0.9164,
+    "viewer": -0.9147,
+    "viewerTargetYaw": -0.9154
+   },
+   "gPaintRear": {
+    "shipped": -0.91,
+    "replica": -0.9107,
+    "viewer": -0.9156,
+    "viewerTargetYaw": -0.9149
+   },
+   "apexStation": {
+    "shipped": 3054.5,
+    "replica": 3054.5,
+    "viewer": 3054.5,
+    "viewerTargetYaw": 3054.5
+   },
+   "apexT": {
+    "shipped": 80.12,
+    "replica": 80.12,
+    "viewer": 80.11,
+    "viewerTargetYaw": 80.11
+   },
+   "apexLapTime": {
+    "shipped": 80.2,
+    "replica": 80.2,
+    "viewer": 80.19,
+    "viewerTargetYaw": 80.19
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 0.94,
+    "replica": 0.9377,
+    "viewer": 0.9028,
+    "viewerTargetYaw": 0.9047
+   },
+   "gBlockRear": {
+    "shipped": 0.95,
+    "replica": 0.9461,
+    "viewer": 0.9771,
+    "viewerTargetYaw": 0.9754
+   },
+   "gPaintFront": {
+    "shipped": 0.49,
+    "replica": 0.4864,
+    "viewer": 0.4522,
+    "viewerTargetYaw": 0.454
+   },
+   "gPaintRear": {
+    "shipped": 0.5,
+    "replica": 0.495,
+    "viewer": 0.5255,
+    "viewerTargetYaw": 0.5237
+   },
+   "apexStation": {
+    "shipped": 3102.0,
+    "replica": 3102.0,
+    "viewer": 3102.0,
+    "viewerTargetYaw": 3102.0
+   },
+   "apexT": {
+    "shipped": 82.34,
+    "replica": 82.34,
+    "viewer": 82.33,
+    "viewerTargetYaw": 82.33
+   },
+   "apexLapTime": {
+    "shipped": 82.42,
+    "replica": 82.42,
+    "viewer": 82.41,
+    "viewerTargetYaw": 82.41
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 0.61,
+    "replica": 0.6051,
+    "viewer": 0.6138,
+    "viewerTargetYaw": 0.6133
+   },
+   "gBlockRear": {
+    "shipped": 0.61,
+    "replica": 0.6111,
+    "viewer": 0.6038,
+    "viewerTargetYaw": 0.6043
+   },
+   "gPaintFront": {
+    "shipped": 0.13,
+    "replica": 0.13,
+    "viewer": 0.1395,
+    "viewerTargetYaw": 0.139
+   },
+   "gPaintRear": {
+    "shipped": 0.14,
+    "replica": 0.1368,
+    "viewer": 0.1297,
+    "viewerTargetYaw": 0.1302
+   },
+   "apexStation": {
+    "shipped": 3305.5,
+    "replica": 3305.5,
+    "viewer": 3305.5,
+    "viewerTargetYaw": 3305.5
+   },
+   "apexT": {
+    "shipped": 89.94,
+    "replica": 89.94,
+    "viewer": 89.93,
+    "viewerTargetYaw": 89.93
+   },
+   "apexLapTime": {
+    "shipped": 90.02,
+    "replica": 90.02,
+    "viewer": 90.01,
+    "viewerTargetYaw": 90.01
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": 0.65,
+    "replica": 0.6462,
+    "viewer": 0.6375,
+    "viewerTargetYaw": 0.6379
+   },
+   "gBlockRear": {
+    "shipped": 0.65,
+    "replica": 0.6542,
+    "viewer": 0.6614,
+    "viewerTargetYaw": 0.6609
+   },
+   "gPaintFront": {
+    "shipped": 0.27,
+    "replica": 0.2676,
+    "viewer": 0.2587,
+    "viewerTargetYaw": 0.2592
+   },
+   "gPaintRear": {
+    "shipped": 0.28,
+    "replica": 0.2753,
+    "viewer": 0.2825,
+    "viewerTargetYaw": 0.2821
+   },
+   "apexStation": {
+    "shipped": 3416.5,
+    "replica": 3416.5,
+    "viewer": 3416.5,
+    "viewerTargetYaw": 3416.5
+   },
+   "apexT": {
+    "shipped": 93.76,
+    "replica": 93.76,
+    "viewer": 93.76,
+    "viewerTargetYaw": 93.76
+   },
+   "apexLapTime": {
+    "shipped": 93.84,
+    "replica": 93.84,
+    "viewer": 93.84,
+    "viewerTargetYaw": 93.84
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 0.73,
+    "replica": 0.7298,
+    "viewer": 0.7382,
+    "viewerTargetYaw": 0.7377
+   },
+   "gBlockRear": {
+    "shipped": 0.74,
+    "replica": 0.738,
+    "viewer": 0.7329,
+    "viewerTargetYaw": 0.7336
+   },
+   "gPaintFront": {
+    "shipped": 0.26,
+    "replica": 0.2552,
+    "viewer": 0.2642,
+    "viewerTargetYaw": 0.2637
+   },
+   "gPaintRear": {
+    "shipped": 0.26,
+    "replica": 0.2637,
+    "viewer": 0.2589,
+    "viewerTargetYaw": 0.2596
+   },
+   "apexStation": {
+    "shipped": 3572.0,
+    "replica": 3572.0,
+    "viewer": 3572.0,
+    "viewerTargetYaw": 3572.0
+   },
+   "apexT": {
+    "shipped": 99.46,
+    "replica": 99.46,
+    "viewer": 99.47,
+    "viewerTargetYaw": 99.47
+   },
+   "apexLapTime": {
+    "shipped": 99.54,
+    "replica": 99.54,
+    "viewer": 99.55,
+    "viewerTargetYaw": 99.55
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 1.64,
+    "replica": 1.6369,
+    "viewer": 1.6198,
+    "viewerTargetYaw": 1.621
+   },
+   "gBlockRear": {
+    "shipped": 1.64,
+    "replica": 1.6448,
+    "viewer": 1.6622,
+    "viewerTargetYaw": 1.661
+   },
+   "gPaintFront": {
+    "shipped": 1.15,
+    "replica": 1.1531,
+    "viewer": 1.136,
+    "viewerTargetYaw": 1.1372
+   },
+   "gPaintRear": {
+    "shipped": 1.16,
+    "replica": 1.161,
+    "viewer": 1.1784,
+    "viewerTargetYaw": 1.1772
+   },
+   "apexStation": {
+    "shipped": 3629.0,
+    "replica": 3629.0,
+    "viewer": 3629.0,
+    "viewerTargetYaw": 3629.0
+   },
+   "apexT": {
+    "shipped": 101.76,
+    "replica": 101.76,
+    "viewer": 101.77,
+    "viewerTargetYaw": 101.77
+   },
+   "apexLapTime": {
+    "shipped": 101.84,
+    "replica": 101.84,
+    "viewer": 101.85,
+    "viewerTargetYaw": 101.85
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 3,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": -0.62,
+    "replica": -0.6239,
+    "viewer": -0.6223,
+    "viewerTargetYaw": -0.6227
+   },
+   "gBlockRear": {
+    "shipped": -0.62,
+    "replica": -0.6164,
+    "viewer": -0.6147,
+    "viewerTargetYaw": -0.6143
+   },
+   "gPaintFront": {
+    "shipped": -1.06,
+    "replica": -1.0609,
+    "viewer": -1.0608,
+    "viewerTargetYaw": -1.0613
+   },
+   "gPaintRear": {
+    "shipped": -1.05,
+    "replica": -1.0531,
+    "viewer": -1.0493,
+    "viewerTargetYaw": -1.0487
+   },
+   "apexStation": {
+    "shipped": 3858.5,
+    "replica": 3858.5,
+    "viewer": 3858.5,
+    "viewerTargetYaw": 3858.5
+   },
+   "apexT": {
+    "shipped": 110.24,
+    "replica": 110.24,
+    "viewer": 110.24,
+    "viewerTargetYaw": 110.24
+   },
+   "apexLapTime": {
+    "shipped": 110.32,
+    "replica": 110.32,
+    "viewer": 110.32,
+    "viewerTargetYaw": 110.32
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": -1.06,
+    "replica": -1.0623,
+    "viewer": -1.0705,
+    "viewerTargetYaw": -1.0705
+   },
+   "gBlockRear": {
+    "shipped": -1.06,
+    "replica": -1.0559,
+    "viewer": -1.0456,
+    "viewerTargetYaw": -1.0457
+   },
+   "gPaintFront": {
+    "shipped": -1.55,
+    "replica": -1.5475,
+    "viewer": -1.5553,
+    "viewerTargetYaw": -1.5554
+   },
+   "gPaintRear": {
+    "shipped": -1.54,
+    "replica": -1.5401,
+    "viewer": -1.531,
+    "viewerTargetYaw": -1.5312
+   },
+   "apexStation": {
+    "shipped": 904.5,
+    "replica": 904.5,
+    "viewer": 904.5,
+    "viewerTargetYaw": 904.5
+   },
+   "apexT": {
+    "shipped": 17.24,
+    "replica": 17.24,
+    "viewer": 17.25,
+    "viewerTargetYaw": 17.25
+   },
+   "apexLapTime": {
+    "shipped": 17.337,
+    "replica": 17.337,
+    "viewer": 17.347,
+    "viewerTargetYaw": 17.347
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": -0.45,
+    "replica": -0.4516,
+    "viewer": -0.453,
+    "viewerTargetYaw": -0.4529
+   },
+   "gBlockRear": {
+    "shipped": -0.45,
+    "replica": -0.447,
+    "viewer": -0.4485,
+    "viewerTargetYaw": -0.4486
+   },
+   "gPaintFront": {
+    "shipped": -0.95,
+    "replica": -0.9466,
+    "viewer": -0.946,
+    "viewerTargetYaw": -0.9459
+   },
+   "gPaintRear": {
+    "shipped": -0.94,
+    "replica": -0.941,
+    "viewer": -0.9425,
+    "viewerTargetYaw": -0.9426
+   },
+   "apexStation": {
+    "shipped": 1453.0,
+    "replica": 1453.0,
+    "viewer": 1453.0,
+    "viewerTargetYaw": 1453.0
+   },
+   "apexT": {
+    "shipped": 33.28,
+    "replica": 33.28,
+    "viewer": 33.29,
+    "viewerTargetYaw": 33.29
+   },
+   "apexLapTime": {
+    "shipped": 33.377,
+    "replica": 33.377,
+    "viewer": 33.387,
+    "viewerTargetYaw": 33.387
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 0.28,
+    "replica": 0.2817,
+    "viewer": 0.2636,
+    "viewerTargetYaw": 0.2647
+   },
+   "gBlockRear": {
+    "shipped": 0.29,
+    "replica": 0.2888,
+    "viewer": 0.3049,
+    "viewerTargetYaw": 0.3037
+   },
+   "gPaintFront": {
+    "shipped": -0.16,
+    "replica": -0.1589,
+    "viewer": -0.1785,
+    "viewerTargetYaw": -0.1773
+   },
+   "gPaintRear": {
+    "shipped": -0.15,
+    "replica": -0.1521,
+    "viewer": -0.1344,
+    "viewerTargetYaw": -0.1356
+   },
+   "apexStation": {
+    "shipped": 1536.0,
+    "replica": 1536.0,
+    "viewer": 1536.5,
+    "viewerTargetYaw": 1536.5
+   },
+   "apexT": {
+    "shipped": 35.64,
+    "replica": 35.64,
+    "viewer": 35.65,
+    "viewerTargetYaw": 35.65
+   },
+   "apexLapTime": {
+    "shipped": 35.737,
+    "replica": 35.737,
+    "viewer": 35.747,
+    "viewerTargetYaw": 35.747
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 1.19,
+    "replica": 1.1861,
+    "viewer": 1.1834,
+    "viewerTargetYaw": 1.1832
+   },
+   "gBlockRear": {
+    "shipped": 1.19,
+    "replica": 1.1936,
+    "viewer": 1.1919,
+    "viewerTargetYaw": 1.1923
+   },
+   "gPaintFront": {
+    "shipped": 0.72,
+    "replica": 0.7165,
+    "viewer": 0.7154,
+    "viewerTargetYaw": 0.715
+   },
+   "gPaintRear": {
+    "shipped": 0.72,
+    "replica": 0.7239,
+    "viewer": 0.7197,
+    "viewerTargetYaw": 0.72
+   },
+   "apexStation": {
+    "shipped": 2146.5,
+    "replica": 2146.5,
+    "viewer": 2146.0,
+    "viewerTargetYaw": 2146.0
+   },
+   "apexT": {
+    "shipped": 52.58,
+    "replica": 52.58,
+    "viewer": 52.56,
+    "viewerTargetYaw": 52.57
+   },
+   "apexLapTime": {
+    "shipped": 52.677,
+    "replica": 52.677,
+    "viewer": 52.657,
+    "viewerTargetYaw": 52.667
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 0.33,
+    "replica": 0.3331,
+    "viewer": 0.3317,
+    "viewerTargetYaw": 0.332
+   },
+   "gBlockRear": {
+    "shipped": 0.34,
+    "replica": 0.3407,
+    "viewer": 0.342,
+    "viewerTargetYaw": 0.3418
+   },
+   "gPaintFront": {
+    "shipped": -0.03,
+    "replica": -0.0267,
+    "viewer": -0.0287,
+    "viewerTargetYaw": -0.0285
+   },
+   "gPaintRear": {
+    "shipped": -0.02,
+    "replica": -0.0197,
+    "viewer": -0.0184,
+    "viewerTargetYaw": -0.0185
+   },
+   "apexStation": {
+    "shipped": 2452.0,
+    "replica": 2452.0,
+    "viewer": 2452.0,
+    "viewerTargetYaw": 2452.0
+   },
+   "apexT": {
+    "shipped": 61.9,
+    "replica": 61.9,
+    "viewer": 61.9,
+    "viewerTargetYaw": 61.9
+   },
+   "apexLapTime": {
+    "shipped": 61.997,
+    "replica": 61.997,
+    "viewer": 61.997,
+    "viewerTargetYaw": 61.997
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 5.79,
+    "replica": 5.7921,
+    "viewer": 5.7929,
+    "viewerTargetYaw": 5.7928
+   },
+   "gBlockRear": {
+    "shipped": 5.8,
+    "replica": 5.7992,
+    "viewer": 5.7981,
+    "viewerTargetYaw": 5.7982
+   },
+   "gPaintFront": {
+    "shipped": 5.46,
+    "replica": 5.4638,
+    "viewer": 5.4643,
+    "viewerTargetYaw": 5.4642
+   },
+   "gPaintRear": {
+    "shipped": 5.47,
+    "replica": 5.4705,
+    "viewer": 5.4707,
+    "viewerTargetYaw": 5.4709
+   },
+   "apexStation": {
+    "shipped": 2680.0,
+    "replica": 2680.0,
+    "viewer": 2680.5,
+    "viewerTargetYaw": 2680.5
+   },
+   "apexT": {
+    "shipped": 67.26,
+    "replica": 67.26,
+    "viewer": 67.27,
+    "viewerTargetYaw": 67.27
+   },
+   "apexLapTime": {
+    "shipped": 67.357,
+    "replica": 67.357,
+    "viewer": 67.367,
+    "viewerTargetYaw": 67.367
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": -0.17,
+    "replica": -0.1719,
+    "viewer": -0.1568,
+    "viewerTargetYaw": -0.1577
+   },
+   "gBlockRear": {
+    "shipped": -0.16,
+    "replica": -0.1634,
+    "viewer": -0.163,
+    "viewerTargetYaw": -0.1619
+   },
+   "gPaintFront": {
+    "shipped": -0.61,
+    "replica": -0.6066,
+    "viewer": -0.5966,
+    "viewerTargetYaw": -0.5975
+   },
+   "gPaintRear": {
+    "shipped": -0.6,
+    "replica": -0.5993,
+    "viewer": -0.5964,
+    "viewerTargetYaw": -0.595
+   },
+   "apexStation": {
+    "shipped": 2980.5,
+    "replica": 2980.5,
+    "viewer": 2980.5,
+    "viewerTargetYaw": 2980.5
+   },
+   "apexT": {
+    "shipped": 75.88,
+    "replica": 75.88,
+    "viewer": 75.89,
+    "viewerTargetYaw": 75.89
+   },
+   "apexLapTime": {
+    "shipped": 75.977,
+    "replica": 75.977,
+    "viewer": 75.987,
+    "viewerTargetYaw": 75.987
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 0.2,
+    "replica": 0.2036,
+    "viewer": 0.2152,
+    "viewerTargetYaw": 0.2141
+   },
+   "gBlockRear": {
+    "shipped": 0.21,
+    "replica": 0.2101,
+    "viewer": 0.2016,
+    "viewerTargetYaw": 0.2029
+   },
+   "gPaintFront": {
+    "shipped": -0.27,
+    "replica": -0.2669,
+    "viewer": -0.2553,
+    "viewerTargetYaw": -0.2564
+   },
+   "gPaintRear": {
+    "shipped": -0.26,
+    "replica": -0.259,
+    "viewer": -0.2688,
+    "viewerTargetYaw": -0.2673
+   },
+   "apexStation": {
+    "shipped": 3054.5,
+    "replica": 3054.5,
+    "viewer": 3054.5,
+    "viewerTargetYaw": 3054.5
+   },
+   "apexT": {
+    "shipped": 79.36,
+    "replica": 79.36,
+    "viewer": 79.36,
+    "viewerTargetYaw": 79.36
+   },
+   "apexLapTime": {
+    "shipped": 79.457,
+    "replica": 79.457,
+    "viewer": 79.457,
+    "viewerTargetYaw": 79.457
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": -0.74,
+    "replica": -0.7446,
+    "viewer": -0.7888,
+    "viewerTargetYaw": -0.7867
+   },
+   "gBlockRear": {
+    "shipped": -0.73,
+    "replica": -0.7348,
+    "viewer": -0.6967,
+    "viewerTargetYaw": -0.6988
+   },
+   "gPaintFront": {
+    "shipped": -1.2,
+    "replica": -1.1951,
+    "viewer": -1.2398,
+    "viewerTargetYaw": -1.2378
+   },
+   "gPaintRear": {
+    "shipped": -1.19,
+    "replica": -1.1857,
+    "viewer": -1.1496,
+    "viewerTargetYaw": -1.1515
+   },
+   "apexStation": {
+    "shipped": 3102.0,
+    "replica": 3102.0,
+    "viewer": 3102.0,
+    "viewerTargetYaw": 3102.0
+   },
+   "apexT": {
+    "shipped": 81.5,
+    "replica": 81.5,
+    "viewer": 81.49,
+    "viewerTargetYaw": 81.49
+   },
+   "apexLapTime": {
+    "shipped": 81.597,
+    "replica": 81.597,
+    "viewer": 81.587,
+    "viewerTargetYaw": 81.587
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 3.66,
+    "replica": 3.6595,
+    "viewer": 3.6624,
+    "viewerTargetYaw": 3.6623
+   },
+   "gBlockRear": {
+    "shipped": 3.67,
+    "replica": 3.6689,
+    "viewer": 3.6662,
+    "viewerTargetYaw": 3.6664
+   },
+   "gPaintFront": {
+    "shipped": 3.24,
+    "replica": 3.2355,
+    "viewer": 3.2384,
+    "viewerTargetYaw": 3.2383
+   },
+   "gPaintRear": {
+    "shipped": 3.25,
+    "replica": 3.246,
+    "viewer": 3.2423,
+    "viewerTargetYaw": 3.2425
+   },
+   "apexStation": {
+    "shipped": 3293.0,
+    "replica": 3293.0,
+    "viewer": 3293.0,
+    "viewerTargetYaw": 3293.0
+   },
+   "apexT": {
+    "shipped": 88.48,
+    "replica": 88.48,
+    "viewer": 88.48,
+    "viewerTargetYaw": 88.48
+   },
+   "apexLapTime": {
+    "shipped": 88.577,
+    "replica": 88.577,
+    "viewer": 88.577,
+    "viewerTargetYaw": 88.577
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -0.25,
+    "replica": -0.2453,
+    "viewer": -0.291,
+    "viewerTargetYaw": -0.2886
+   },
+   "gBlockRear": {
+    "shipped": -0.24,
+    "replica": -0.237,
+    "viewer": -0.1922,
+    "viewerTargetYaw": -0.1949
+   },
+   "gPaintFront": {
+    "shipped": -0.58,
+    "replica": -0.5825,
+    "viewer": -0.6293,
+    "viewerTargetYaw": -0.6268
+   },
+   "gPaintRear": {
+    "shipped": -0.57,
+    "replica": -0.575,
+    "viewer": -0.5302,
+    "viewerTargetYaw": -0.533
+   },
+   "apexStation": {
+    "shipped": 3364.5,
+    "replica": 3364.5,
+    "viewer": 3364.5,
+    "viewerTargetYaw": 3364.5
+   },
+   "apexT": {
+    "shipped": 91.24,
+    "replica": 91.24,
+    "viewer": 91.24,
+    "viewerTargetYaw": 91.24
+   },
+   "apexLapTime": {
+    "shipped": 91.337,
+    "replica": 91.337,
+    "viewer": 91.337,
+    "viewerTargetYaw": 91.337
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 2.41,
+    "replica": 2.4132,
+    "viewer": 2.4196,
+    "viewerTargetYaw": 2.4191
+   },
+   "gBlockRear": {
+    "shipped": 2.42,
+    "replica": 2.4203,
+    "viewer": 2.4098,
+    "viewerTargetYaw": 2.4103
+   },
+   "gPaintFront": {
+    "shipped": 1.94,
+    "replica": 1.9387,
+    "viewer": 1.9451,
+    "viewerTargetYaw": 1.9447
+   },
+   "gPaintRear": {
+    "shipped": 1.95,
+    "replica": 1.9458,
+    "viewer": 1.9356,
+    "viewerTargetYaw": 1.9361
+   },
+   "apexStation": {
+    "shipped": 3572.0,
+    "replica": 3572.0,
+    "viewer": 3572.0,
+    "viewerTargetYaw": 3572.0
+   },
+   "apexT": {
+    "shipped": 98.56,
+    "replica": 98.56,
+    "viewer": 98.56,
+    "viewerTargetYaw": 98.56
+   },
+   "apexLapTime": {
+    "shipped": 98.657,
+    "replica": 98.657,
+    "viewer": 98.657,
+    "viewerTargetYaw": 98.657
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 0.19,
+    "replica": 0.1859,
+    "viewer": 0.1675,
+    "viewerTargetYaw": 0.1689
+   },
+   "gBlockRear": {
+    "shipped": 0.19,
+    "replica": 0.1936,
+    "viewer": 0.2118,
+    "viewerTargetYaw": 0.2104
+   },
+   "gPaintFront": {
+    "shipped": -0.27,
+    "replica": -0.2661,
+    "viewer": -0.2844,
+    "viewerTargetYaw": -0.283
+   },
+   "gPaintRear": {
+    "shipped": -0.26,
+    "replica": -0.2575,
+    "viewer": -0.2409,
+    "viewerTargetYaw": -0.2424
+   },
+   "apexStation": {
+    "shipped": 3626.0,
+    "replica": 3626.0,
+    "viewer": 3626.0,
+    "viewerTargetYaw": 3626.0
+   },
+   "apexT": {
+    "shipped": 100.76,
+    "replica": 100.76,
+    "viewer": 100.75,
+    "viewerTargetYaw": 100.75
+   },
+   "apexLapTime": {
+    "shipped": 100.857,
+    "replica": 100.857,
+    "viewer": 100.847,
+    "viewerTargetYaw": 100.847
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 4,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 0.14,
+    "replica": 0.1379,
+    "viewer": 0.133,
+    "viewerTargetYaw": 0.1326
+   },
+   "gBlockRear": {
+    "shipped": 0.14,
+    "replica": 0.1444,
+    "viewer": 0.1425,
+    "viewerTargetYaw": 0.1429
+   },
+   "gPaintFront": {
+    "shipped": -0.3,
+    "replica": -0.3042,
+    "viewer": -0.3095,
+    "viewerTargetYaw": -0.3099
+   },
+   "gPaintRear": {
+    "shipped": -0.3,
+    "replica": -0.2985,
+    "viewer": -0.3003,
+    "viewerTargetYaw": -0.3
+   },
+   "apexStation": {
+    "shipped": 3857.0,
+    "replica": 3857.0,
+    "viewer": 3855.0,
+    "viewerTargetYaw": 3855.0
+   },
+   "apexT": {
+    "shipped": 109.16,
+    "replica": 109.16,
+    "viewer": 109.15,
+    "viewerTargetYaw": 109.15
+   },
+   "apexLapTime": {
+    "shipped": 109.257,
+    "replica": 109.257,
+    "viewer": 109.247,
+    "viewerTargetYaw": 109.247
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": 0.2,
+    "replica": 0.2028,
+    "viewer": 0.2001,
+    "viewerTargetYaw": 0.2001
+   },
+   "gBlockRear": {
+    "shipped": 0.21,
+    "replica": 0.2117,
+    "viewer": 0.216,
+    "viewerTargetYaw": 0.2161
+   },
+   "gPaintFront": {
+    "shipped": -0.28,
+    "replica": -0.2843,
+    "viewer": -0.2862,
+    "viewerTargetYaw": -0.2862
+   },
+   "gPaintRear": {
+    "shipped": -0.28,
+    "replica": -0.2754,
+    "viewer": -0.2707,
+    "viewerTargetYaw": -0.2707
+   },
+   "apexStation": {
+    "shipped": 902.0,
+    "replica": 902.0,
+    "viewer": 904.5,
+    "viewerTargetYaw": 904.5
+   },
+   "apexT": {
+    "shipped": 17.28,
+    "replica": 17.28,
+    "viewer": 17.29,
+    "viewerTargetYaw": 17.29
+   },
+   "apexLapTime": {
+    "shipped": 17.317,
+    "replica": 17.317,
+    "viewer": 17.327,
+    "viewerTargetYaw": 17.327
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": -0.21,
+    "replica": -0.2057,
+    "viewer": -0.207,
+    "viewerTargetYaw": -0.207
+   },
+   "gBlockRear": {
+    "shipped": -0.2,
+    "replica": -0.1997,
+    "viewer": -0.203,
+    "viewerTargetYaw": -0.2029
+   },
+   "gPaintFront": {
+    "shipped": -0.7,
+    "replica": -0.6986,
+    "viewer": -0.6972,
+    "viewerTargetYaw": -0.6972
+   },
+   "gPaintRear": {
+    "shipped": -0.69,
+    "replica": -0.6911,
+    "viewer": -0.6943,
+    "viewerTargetYaw": -0.6942
+   },
+   "apexStation": {
+    "shipped": 1453.0,
+    "replica": 1453.0,
+    "viewer": 1453.5,
+    "viewerTargetYaw": 1453.5
+   },
+   "apexT": {
+    "shipped": 33.32,
+    "replica": 33.32,
+    "viewer": 33.33,
+    "viewerTargetYaw": 33.33
+   },
+   "apexLapTime": {
+    "shipped": 33.357,
+    "replica": 33.357,
+    "viewer": 33.367,
+    "viewerTargetYaw": 33.367
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 1.25,
+    "replica": 1.2465,
+    "viewer": 1.2328,
+    "viewerTargetYaw": 1.2338
+   },
+   "gBlockRear": {
+    "shipped": 1.25,
+    "replica": 1.254,
+    "viewer": 1.2697,
+    "viewerTargetYaw": 1.2684
+   },
+   "gPaintFront": {
+    "shipped": 0.8,
+    "replica": 0.7972,
+    "viewer": 0.7819,
+    "viewerTargetYaw": 0.783
+   },
+   "gPaintRear": {
+    "shipped": 0.8,
+    "replica": 0.8043,
+    "viewer": 0.8207,
+    "viewerTargetYaw": 0.8196
+   },
+   "apexStation": {
+    "shipped": 1533.0,
+    "replica": 1533.0,
+    "viewer": 1532.5,
+    "viewerTargetYaw": 1532.5
+   },
+   "apexT": {
+    "shipped": 35.54,
+    "replica": 35.54,
+    "viewer": 35.53,
+    "viewerTargetYaw": 35.53
+   },
+   "apexLapTime": {
+    "shipped": 35.577,
+    "replica": 35.577,
+    "viewer": 35.567,
+    "viewerTargetYaw": 35.567
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 0.34,
+    "replica": 0.3357,
+    "viewer": 0.3344,
+    "viewerTargetYaw": 0.3341
+   },
+   "gBlockRear": {
+    "shipped": 0.34,
+    "replica": 0.3429,
+    "viewer": 0.3388,
+    "viewerTargetYaw": 0.3393
+   },
+   "gPaintFront": {
+    "shipped": -0.14,
+    "replica": -0.1414,
+    "viewer": -0.1423,
+    "viewerTargetYaw": -0.1426
+   },
+   "gPaintRear": {
+    "shipped": -0.13,
+    "replica": -0.1347,
+    "viewer": -0.1401,
+    "viewerTargetYaw": -0.1395
+   },
+   "apexStation": {
+    "shipped": 2146.5,
+    "replica": 2146.5,
+    "viewer": 2146.5,
+    "viewerTargetYaw": 2146.5
+   },
+   "apexT": {
+    "shipped": 52.62,
+    "replica": 52.62,
+    "viewer": 52.62,
+    "viewerTargetYaw": 52.62
+   },
+   "apexLapTime": {
+    "shipped": 52.657,
+    "replica": 52.657,
+    "viewer": 52.657,
+    "viewerTargetYaw": 52.657
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 1.21,
+    "replica": 1.2124,
+    "viewer": 1.2112,
+    "viewerTargetYaw": 1.2113
+   },
+   "gBlockRear": {
+    "shipped": 1.22,
+    "replica": 1.2187,
+    "viewer": 1.2192,
+    "viewerTargetYaw": 1.2192
+   },
+   "gPaintFront": {
+    "shipped": 0.85,
+    "replica": 0.8531,
+    "viewer": 0.8508,
+    "viewerTargetYaw": 0.8508
+   },
+   "gPaintRear": {
+    "shipped": 0.86,
+    "replica": 0.8586,
+    "viewer": 0.8586,
+    "viewerTargetYaw": 0.8586
+   },
+   "apexStation": {
+    "shipped": 2452.5,
+    "replica": 2452.5,
+    "viewer": 2452.0,
+    "viewerTargetYaw": 2452.0
+   },
+   "apexT": {
+    "shipped": 61.96,
+    "replica": 61.96,
+    "viewer": 61.95,
+    "viewerTargetYaw": 61.95
+   },
+   "apexLapTime": {
+    "shipped": 61.997,
+    "replica": 61.997,
+    "viewer": 61.987,
+    "viewerTargetYaw": 61.987
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 1.86,
+    "replica": 1.8634,
+    "viewer": 1.8652,
+    "viewerTargetYaw": 1.8651
+   },
+   "gBlockRear": {
+    "shipped": 1.87,
+    "replica": 1.8711,
+    "viewer": 1.8687,
+    "viewerTargetYaw": 1.8689
+   },
+   "gPaintFront": {
+    "shipped": 1.52,
+    "replica": 1.525,
+    "viewer": 1.5262,
+    "viewerTargetYaw": 1.5261
+   },
+   "gPaintRear": {
+    "shipped": 1.53,
+    "replica": 1.5328,
+    "viewer": 1.528,
+    "viewerTargetYaw": 1.5282
+   },
+   "apexStation": {
+    "shipped": 2680.5,
+    "replica": 2680.5,
+    "viewer": 2680.5,
+    "viewerTargetYaw": 2680.5
+   },
+   "apexT": {
+    "shipped": 67.34,
+    "replica": 67.34,
+    "viewer": 67.34,
+    "viewerTargetYaw": 67.34
+   },
+   "apexLapTime": {
+    "shipped": 67.377,
+    "replica": 67.377,
+    "viewer": 67.377,
+    "viewerTargetYaw": 67.377
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 0.14,
+    "replica": 0.1409,
+    "viewer": 0.1599,
+    "viewerTargetYaw": 0.16
+   },
+   "gBlockRear": {
+    "shipped": 0.15,
+    "replica": 0.1496,
+    "viewer": 0.1249,
+    "viewerTargetYaw": 0.1252
+   },
+   "gPaintFront": {
+    "shipped": -0.28,
+    "replica": -0.2834,
+    "viewer": -0.2632,
+    "viewerTargetYaw": -0.2632
+   },
+   "gPaintRear": {
+    "shipped": -0.28,
+    "replica": -0.278,
+    "viewer": -0.3015,
+    "viewerTargetYaw": -0.3009
+   },
+   "apexStation": {
+    "shipped": 2980.5,
+    "replica": 2980.5,
+    "viewer": 2980.0,
+    "viewerTargetYaw": 2980.0
+   },
+   "apexT": {
+    "shipped": 75.76,
+    "replica": 75.76,
+    "viewer": 75.75,
+    "viewerTargetYaw": 75.75
+   },
+   "apexLapTime": {
+    "shipped": 75.797,
+    "replica": 75.797,
+    "viewer": 75.787,
+    "viewerTargetYaw": 75.787
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 0.02,
+    "replica": 0.0177,
+    "viewer": 0.0292,
+    "viewerTargetYaw": 0.028
+   },
+   "gBlockRear": {
+    "shipped": 0.03,
+    "replica": 0.0263,
+    "viewer": 0.0156,
+    "viewerTargetYaw": 0.0166
+   },
+   "gPaintFront": {
+    "shipped": -0.45,
+    "replica": -0.4526,
+    "viewer": -0.441,
+    "viewerTargetYaw": -0.4422
+   },
+   "gPaintRear": {
+    "shipped": -0.44,
+    "replica": -0.4444,
+    "viewer": -0.4544,
+    "viewerTargetYaw": -0.4534
+   },
+   "apexStation": {
+    "shipped": 3055.0,
+    "replica": 3055.0,
+    "viewer": 3055.0,
+    "viewerTargetYaw": 3055.0
+   },
+   "apexT": {
+    "shipped": 79.5,
+    "replica": 79.5,
+    "viewer": 79.5,
+    "viewerTargetYaw": 79.5
+   },
+   "apexLapTime": {
+    "shipped": 79.537,
+    "replica": 79.537,
+    "viewer": 79.537,
+    "viewerTargetYaw": 79.537
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": 1.47,
+    "replica": 1.4676,
+    "viewer": 1.4267,
+    "viewerTargetYaw": 1.4291
+   },
+   "gBlockRear": {
+    "shipped": 1.48,
+    "replica": 1.477,
+    "viewer": 1.5239,
+    "viewerTargetYaw": 1.5215
+   },
+   "gPaintFront": {
+    "shipped": 1.05,
+    "replica": 1.0523,
+    "viewer": 1.0081,
+    "viewerTargetYaw": 1.0107
+   },
+   "gPaintRear": {
+    "shipped": 1.06,
+    "replica": 1.063,
+    "viewer": 1.1095,
+    "viewerTargetYaw": 1.1071
+   },
+   "apexStation": {
+    "shipped": 3098.0,
+    "replica": 3098.0,
+    "viewer": 3098.0,
+    "viewerTargetYaw": 3098.0
+   },
+   "apexT": {
+    "shipped": 81.46,
+    "replica": 81.46,
+    "viewer": 81.46,
+    "viewerTargetYaw": 81.46
+   },
+   "apexLapTime": {
+    "shipped": 81.497,
+    "replica": 81.497,
+    "viewer": 81.497,
+    "viewerTargetYaw": 81.497
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 0.5,
+    "replica": 0.4972,
+    "viewer": 0.4974,
+    "viewerTargetYaw": 0.4972
+   },
+   "gBlockRear": {
+    "shipped": 0.51,
+    "replica": 0.5053,
+    "viewer": 0.5037,
+    "viewerTargetYaw": 0.504
+   },
+   "gPaintFront": {
+    "shipped": 0.01,
+    "replica": 0.0142,
+    "viewer": 0.0171,
+    "viewerTargetYaw": 0.0168
+   },
+   "gPaintRear": {
+    "shipped": 0.02,
+    "replica": 0.0213,
+    "viewer": 0.0185,
+    "viewerTargetYaw": 0.0188
+   },
+   "apexStation": {
+    "shipped": 3293.5,
+    "replica": 3293.5,
+    "viewer": 3293.5,
+    "viewerTargetYaw": 3293.5
+   },
+   "apexT": {
+    "shipped": 88.68,
+    "replica": 88.68,
+    "viewer": 88.68,
+    "viewerTargetYaw": 88.68
+   },
+   "apexLapTime": {
+    "shipped": 88.717,
+    "replica": 88.717,
+    "viewer": 88.717,
+    "viewerTargetYaw": 88.717
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -0.92,
+    "replica": -0.9181,
+    "viewer": -0.9573,
+    "viewerTargetYaw": -0.9551
+   },
+   "gBlockRear": {
+    "shipped": -0.91,
+    "replica": -0.9097,
+    "viewer": -0.8712,
+    "viewerTargetYaw": -0.8735
+   },
+   "gPaintFront": {
+    "shipped": -1.27,
+    "replica": -1.2694,
+    "viewer": -1.3094,
+    "viewerTargetYaw": -1.3071
+   },
+   "gPaintRear": {
+    "shipped": -1.26,
+    "replica": -1.2623,
+    "viewer": -1.2237,
+    "viewerTargetYaw": -1.226
+   },
+   "apexStation": {
+    "shipped": 3370.5,
+    "replica": 3370.5,
+    "viewer": 3370.5,
+    "viewerTargetYaw": 3370.5
+   },
+   "apexT": {
+    "shipped": 91.46,
+    "replica": 91.46,
+    "viewer": 91.46,
+    "viewerTargetYaw": 91.46
+   },
+   "apexLapTime": {
+    "shipped": 91.497,
+    "replica": 91.497,
+    "viewer": 91.497,
+    "viewerTargetYaw": 91.497
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": 0.42,
+    "replica": 0.421,
+    "viewer": 0.4316,
+    "viewerTargetYaw": 0.4314
+   },
+   "gBlockRear": {
+    "shipped": 0.43,
+    "replica": 0.4293,
+    "viewer": 0.4201,
+    "viewerTargetYaw": 0.4203
+   },
+   "gPaintFront": {
+    "shipped": -0.08,
+    "replica": -0.0812,
+    "viewer": -0.0703,
+    "viewerTargetYaw": -0.0704
+   },
+   "gPaintRear": {
+    "shipped": -0.07,
+    "replica": -0.0745,
+    "viewer": -0.0834,
+    "viewerTargetYaw": -0.0831
+   },
+   "apexStation": {
+    "shipped": 3567.0,
+    "replica": 3567.0,
+    "viewer": 3567.0,
+    "viewerTargetYaw": 3567.0
+   },
+   "apexT": {
+    "shipped": 98.32,
+    "replica": 98.32,
+    "viewer": 98.32,
+    "viewerTargetYaw": 98.32
+   },
+   "apexLapTime": {
+    "shipped": 98.357,
+    "replica": 98.357,
+    "viewer": 98.357,
+    "viewerTargetYaw": 98.357
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": 0.07,
+    "replica": 0.0713,
+    "viewer": 0.0519,
+    "viewerTargetYaw": 0.0534
+   },
+   "gBlockRear": {
+    "shipped": 0.08,
+    "replica": 0.0788,
+    "viewer": 0.0936,
+    "viewerTargetYaw": 0.0923
+   },
+   "gPaintFront": {
+    "shipped": -0.41,
+    "replica": -0.4122,
+    "viewer": -0.4282,
+    "viewerTargetYaw": -0.4268
+   },
+   "gPaintRear": {
+    "shipped": -0.4,
+    "replica": -0.4041,
+    "viewer": -0.3902,
+    "viewerTargetYaw": -0.3915
+   },
+   "apexStation": {
+    "shipped": 3627.0,
+    "replica": 3627.0,
+    "viewer": 3627.0,
+    "viewerTargetYaw": 3627.0
+   },
+   "apexT": {
+    "shipped": 100.68,
+    "replica": 100.68,
+    "viewer": 100.67,
+    "viewerTargetYaw": 100.67
+   },
+   "apexLapTime": {
+    "shipped": 100.717,
+    "replica": 100.717,
+    "viewer": 100.707,
+    "viewerTargetYaw": 100.707
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 5,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": 0.89,
+    "replica": 0.8908,
+    "viewer": 0.8914,
+    "viewerTargetYaw": 0.8908
+   },
+   "gBlockRear": {
+    "shipped": 0.9,
+    "replica": 0.8982,
+    "viewer": 0.8995,
+    "viewerTargetYaw": 0.9001
+   },
+   "gPaintFront": {
+    "shipped": 0.42,
+    "replica": 0.415,
+    "viewer": 0.4153,
+    "viewerTargetYaw": 0.4147
+   },
+   "gPaintRear": {
+    "shipped": 0.42,
+    "replica": 0.4226,
+    "viewer": 0.424,
+    "viewerTargetYaw": 0.4246
+   },
+   "apexStation": {
+    "shipped": 3861.0,
+    "replica": 3861.0,
+    "viewer": 3861.5,
+    "viewerTargetYaw": 3861.5
+   },
+   "apexT": {
+    "shipped": 109.38,
+    "replica": 109.38,
+    "viewer": 109.4,
+    "viewerTargetYaw": 109.4
+   },
+   "apexLapTime": {
+    "shipped": 109.417,
+    "replica": 109.417,
+    "viewer": 109.437,
+    "viewerTargetYaw": 109.437
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k13",
+   "gBlockFront": {
+    "shipped": 1.11,
+    "replica": 1.1104,
+    "viewer": 1.1093,
+    "viewerTargetYaw": 1.1084
+   },
+   "gBlockRear": {
+    "shipped": 1.12,
+    "replica": 1.1181,
+    "viewer": 1.1127,
+    "viewerTargetYaw": 1.1136
+   },
+   "gPaintFront": {
+    "shipped": 0.64,
+    "replica": 0.6365,
+    "viewer": 0.6351,
+    "viewerTargetYaw": 0.6343
+   },
+   "gPaintRear": {
+    "shipped": 0.64,
+    "replica": 0.6444,
+    "viewer": 0.6401,
+    "viewerTargetYaw": 0.641
+   },
+   "apexStation": {
+    "shipped": 909.0,
+    "replica": 909.0,
+    "viewer": 908.5,
+    "viewerTargetYaw": 908.5
+   },
+   "apexT": {
+    "shipped": 17.24,
+    "replica": 17.24,
+    "viewer": 17.22,
+    "viewerTargetYaw": 17.22
+   },
+   "apexLapTime": {
+    "shipped": 17.255,
+    "replica": 17.255,
+    "viewer": 17.235,
+    "viewerTargetYaw": 17.235
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k1",
+   "gBlockFront": {
+    "shipped": -0.67,
+    "replica": -0.6678,
+    "viewer": -0.6681,
+    "viewerTargetYaw": -0.6681
+   },
+   "gBlockRear": {
+    "shipped": -0.66,
+    "replica": -0.6605,
+    "viewer": -0.6592,
+    "viewerTargetYaw": -0.6593
+   },
+   "gPaintFront": {
+    "shipped": -1.16,
+    "replica": -1.1601,
+    "viewer": -1.1604,
+    "viewerTargetYaw": -1.1603
+   },
+   "gPaintRear": {
+    "shipped": -1.15,
+    "replica": -1.1515,
+    "viewer": -1.1503,
+    "viewerTargetYaw": -1.1503
+   },
+   "apexStation": {
+    "shipped": 1453.0,
+    "replica": 1453.0,
+    "viewer": 1453.0,
+    "viewerTargetYaw": 1453.0
+   },
+   "apexT": {
+    "shipped": 33.1,
+    "replica": 33.1,
+    "viewer": 33.1,
+    "viewerTargetYaw": 33.1
+   },
+   "apexLapTime": {
+    "shipped": 33.115,
+    "replica": 33.115,
+    "viewer": 33.115,
+    "viewerTargetYaw": 33.115
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k15",
+   "gBlockFront": {
+    "shipped": 0.31,
+    "replica": 0.3073,
+    "viewer": 0.2968,
+    "viewerTargetYaw": 0.2977
+   },
+   "gBlockRear": {
+    "shipped": 0.31,
+    "replica": 0.3142,
+    "viewer": 0.3261,
+    "viewerTargetYaw": 0.3252
+   },
+   "gPaintFront": {
+    "shipped": -0.13,
+    "replica": -0.1329,
+    "viewer": -0.1444,
+    "viewerTargetYaw": -0.1435
+   },
+   "gPaintRear": {
+    "shipped": -0.13,
+    "replica": -0.1271,
+    "viewer": -0.1152,
+    "viewerTargetYaw": -0.1161
+   },
+   "apexStation": {
+    "shipped": 1537.0,
+    "replica": 1537.0,
+    "viewer": 1537.5,
+    "viewerTargetYaw": 1537.5
+   },
+   "apexT": {
+    "shipped": 35.46,
+    "replica": 35.46,
+    "viewer": 35.47,
+    "viewerTargetYaw": 35.47
+   },
+   "apexLapTime": {
+    "shipped": 35.475,
+    "replica": 35.475,
+    "viewer": 35.485,
+    "viewerTargetYaw": 35.485
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k3",
+   "gBlockFront": {
+    "shipped": 0.04,
+    "replica": 0.0365,
+    "viewer": 0.0404,
+    "viewerTargetYaw": 0.04
+   },
+   "gBlockRear": {
+    "shipped": 0.04,
+    "replica": 0.0439,
+    "viewer": 0.0422,
+    "viewerTargetYaw": 0.0429
+   },
+   "gPaintFront": {
+    "shipped": -0.46,
+    "replica": -0.4566,
+    "viewer": -0.4532,
+    "viewerTargetYaw": -0.4537
+   },
+   "gPaintRear": {
+    "shipped": -0.45,
+    "replica": -0.4479,
+    "viewer": -0.4506,
+    "viewerTargetYaw": -0.45
+   },
+   "apexStation": {
+    "shipped": 2147.0,
+    "replica": 2147.0,
+    "viewer": 2147.0,
+    "viewerTargetYaw": 2147.5
+   },
+   "apexT": {
+    "shipped": 52.48,
+    "replica": 52.48,
+    "viewer": 52.48,
+    "viewerTargetYaw": 52.49
+   },
+   "apexLapTime": {
+    "shipped": 52.495,
+    "replica": 52.495,
+    "viewer": 52.495,
+    "viewerTargetYaw": 52.505
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k18",
+   "gBlockFront": {
+    "shipped": 0.61,
+    "replica": 0.6149,
+    "viewer": 0.6147,
+    "viewerTargetYaw": 0.6146
+   },
+   "gBlockRear": {
+    "shipped": 0.62,
+    "replica": 0.6225,
+    "viewer": 0.6213,
+    "viewerTargetYaw": 0.6214
+   },
+   "gPaintFront": {
+    "shipped": 0.25,
+    "replica": 0.2541,
+    "viewer": 0.2542,
+    "viewerTargetYaw": 0.2541
+   },
+   "gPaintRear": {
+    "shipped": 0.26,
+    "replica": 0.2634,
+    "viewer": 0.2607,
+    "viewerTargetYaw": 0.2608
+   },
+   "apexStation": {
+    "shipped": 2451.5,
+    "replica": 2451.5,
+    "viewer": 2452.0,
+    "viewerTargetYaw": 2452.0
+   },
+   "apexT": {
+    "shipped": 61.7,
+    "replica": 61.7,
+    "viewer": 61.71,
+    "viewerTargetYaw": 61.71
+   },
+   "apexLapTime": {
+    "shipped": 61.715,
+    "replica": 61.715,
+    "viewer": 61.725,
+    "viewerTargetYaw": 61.725
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k19",
+   "gBlockFront": {
+    "shipped": 6.35,
+    "replica": 6.353,
+    "viewer": 6.3531,
+    "viewerTargetYaw": 6.3531
+   },
+   "gBlockRear": {
+    "shipped": 6.36,
+    "replica": 6.3604,
+    "viewer": 6.3596,
+    "viewerTargetYaw": 6.3596
+   },
+   "gPaintFront": {
+    "shipped": 6.03,
+    "replica": 6.0276,
+    "viewer": 6.0271,
+    "viewerTargetYaw": 6.027
+   },
+   "gPaintRear": {
+    "shipped": 6.04,
+    "replica": 6.0357,
+    "viewer": 6.0319,
+    "viewerTargetYaw": 6.032
+   },
+   "apexStation": {
+    "shipped": 2679.5,
+    "replica": 2679.5,
+    "viewer": 2679.5,
+    "viewerTargetYaw": 2679.5
+   },
+   "apexT": {
+    "shipped": 67.1,
+    "replica": 67.1,
+    "viewer": 67.1,
+    "viewerTargetYaw": 67.1
+   },
+   "apexLapTime": {
+    "shipped": 67.115,
+    "replica": 67.115,
+    "viewer": 67.115,
+    "viewerTargetYaw": 67.115
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "kDunlopR",
+   "gBlockFront": {
+    "shipped": 0.16,
+    "replica": 0.1621,
+    "viewer": 0.1717,
+    "viewerTargetYaw": 0.1707
+   },
+   "gBlockRear": {
+    "shipped": 0.17,
+    "replica": 0.1674,
+    "viewer": 0.1549,
+    "viewerTargetYaw": 0.1566
+   },
+   "gPaintFront": {
+    "shipped": -0.3,
+    "replica": -0.3038,
+    "viewer": -0.2964,
+    "viewerTargetYaw": -0.2976
+   },
+   "gPaintRear": {
+    "shipped": -0.3,
+    "replica": -0.3036,
+    "viewer": -0.3125,
+    "viewerTargetYaw": -0.3108
+   },
+   "apexStation": {
+    "shipped": 2984.0,
+    "replica": 2984.0,
+    "viewer": 2984.0,
+    "viewerTargetYaw": 2984.0
+   },
+   "apexT": {
+    "shipped": 75.72,
+    "replica": 75.72,
+    "viewer": 75.72,
+    "viewerTargetYaw": 75.72
+   },
+   "apexLapTime": {
+    "shipped": 75.735,
+    "replica": 75.735,
+    "viewer": 75.735,
+    "viewerTargetYaw": 75.735
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k7",
+   "gBlockFront": {
+    "shipped": 0.25,
+    "replica": 0.2507,
+    "viewer": 0.2431,
+    "viewerTargetYaw": 0.243
+   },
+   "gBlockRear": {
+    "shipped": 0.26,
+    "replica": 0.2594,
+    "viewer": 0.2649,
+    "viewerTargetYaw": 0.2651
+   },
+   "gPaintFront": {
+    "shipped": -0.2,
+    "replica": -0.1992,
+    "viewer": -0.2065,
+    "viewerTargetYaw": -0.2067
+   },
+   "gPaintRear": {
+    "shipped": -0.19,
+    "replica": -0.1904,
+    "viewer": -0.1867,
+    "viewerTargetYaw": -0.1864
+   },
+   "apexStation": {
+    "shipped": 3051.0,
+    "replica": 3051.0,
+    "viewer": 3051.0,
+    "viewerTargetYaw": 3051.0
+   },
+   "apexT": {
+    "shipped": 79.12,
+    "replica": 79.12,
+    "viewer": 79.12,
+    "viewerTargetYaw": 79.12
+   },
+   "apexLapTime": {
+    "shipped": 79.135,
+    "replica": 79.135,
+    "viewer": 79.135,
+    "viewerTargetYaw": 79.135
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k20",
+   "gBlockFront": {
+    "shipped": -0.25,
+    "replica": -0.2488,
+    "viewer": -0.2781,
+    "viewerTargetYaw": -0.2764
+   },
+   "gBlockRear": {
+    "shipped": -0.24,
+    "replica": -0.2394,
+    "viewer": -0.2165,
+    "viewerTargetYaw": -0.2181
+   },
+   "gPaintFront": {
+    "shipped": -0.73,
+    "replica": -0.7326,
+    "viewer": -0.7558,
+    "viewerTargetYaw": -0.7541
+   },
+   "gPaintRear": {
+    "shipped": -0.72,
+    "replica": -0.7245,
+    "viewer": -0.7061,
+    "viewerTargetYaw": -0.7077
+   },
+   "apexStation": {
+    "shipped": 3102.5,
+    "replica": 3102.5,
+    "viewer": 3102.5,
+    "viewerTargetYaw": 3102.5
+   },
+   "apexT": {
+    "shipped": 81.44,
+    "replica": 81.44,
+    "viewer": 81.44,
+    "viewerTargetYaw": 81.44
+   },
+   "apexLapTime": {
+    "shipped": 81.455,
+    "replica": 81.455,
+    "viewer": 81.455,
+    "viewerTargetYaw": 81.455
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k21",
+   "gBlockFront": {
+    "shipped": 0.59,
+    "replica": 0.5935,
+    "viewer": 0.5989,
+    "viewerTargetYaw": 0.5985
+   },
+   "gBlockRear": {
+    "shipped": 0.6,
+    "replica": 0.6016,
+    "viewer": 0.5996,
+    "viewerTargetYaw": 0.6001
+   },
+   "gPaintFront": {
+    "shipped": 0.12,
+    "replica": 0.116,
+    "viewer": 0.1228,
+    "viewerTargetYaw": 0.1224
+   },
+   "gPaintRear": {
+    "shipped": 0.12,
+    "replica": 0.1231,
+    "viewer": 0.1202,
+    "viewerTargetYaw": 0.1206
+   },
+   "apexStation": {
+    "shipped": 3301.0,
+    "replica": 3301.0,
+    "viewer": 3301.0,
+    "viewerTargetYaw": 3301.0
+   },
+   "apexT": {
+    "shipped": 88.68,
+    "replica": 88.68,
+    "viewer": 88.68,
+    "viewerTargetYaw": 88.68
+   },
+   "apexLapTime": {
+    "shipped": 88.695,
+    "replica": 88.695,
+    "viewer": 88.695,
+    "viewerTargetYaw": 88.695
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k9",
+   "gBlockFront": {
+    "shipped": -1.14,
+    "replica": -1.1353,
+    "viewer": -1.166,
+    "viewerTargetYaw": -1.1637
+   },
+   "gBlockRear": {
+    "shipped": -1.13,
+    "replica": -1.1284,
+    "viewer": -1.0957,
+    "viewerTargetYaw": -1.0982
+   },
+   "gPaintFront": {
+    "shipped": -1.49,
+    "replica": -1.487,
+    "viewer": -1.5184,
+    "viewerTargetYaw": -1.5161
+   },
+   "gPaintRear": {
+    "shipped": -1.48,
+    "replica": -1.4813,
+    "viewer": -1.4488,
+    "viewerTargetYaw": -1.4512
+   },
+   "apexStation": {
+    "shipped": 3370.5,
+    "replica": 3370.5,
+    "viewer": 3370.0,
+    "viewerTargetYaw": 3370.0
+   },
+   "apexT": {
+    "shipped": 91.16,
+    "replica": 91.16,
+    "viewer": 91.15,
+    "viewerTargetYaw": 91.15
+   },
+   "apexLapTime": {
+    "shipped": 91.175,
+    "replica": 91.175,
+    "viewer": 91.165,
+    "viewerTargetYaw": 91.165
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k10",
+   "gBlockFront": {
+    "shipped": -0.42,
+    "replica": -0.4229,
+    "viewer": -0.4101,
+    "viewerTargetYaw": -0.4102
+   },
+   "gBlockRear": {
+    "shipped": -0.42,
+    "replica": -0.4157,
+    "viewer": -0.4196,
+    "viewerTargetYaw": -0.4192
+   },
+   "gPaintFront": {
+    "shipped": -0.92,
+    "replica": -0.9216,
+    "viewer": -0.9097,
+    "viewerTargetYaw": -0.9098
+   },
+   "gPaintRear": {
+    "shipped": -0.92,
+    "replica": -0.915,
+    "viewer": -0.9225,
+    "viewerTargetYaw": -0.9219
+   },
+   "apexStation": {
+    "shipped": 3567.5,
+    "replica": 3567.5,
+    "viewer": 3567.5,
+    "viewerTargetYaw": 3567.5
+   },
+   "apexT": {
+    "shipped": 98.02,
+    "replica": 98.02,
+    "viewer": 98.02,
+    "viewerTargetYaw": 98.02
+   },
+   "apexLapTime": {
+    "shipped": 98.035,
+    "replica": 98.035,
+    "viewer": 98.035,
+    "viewerTargetYaw": 98.035
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k23",
+   "gBlockFront": {
+    "shipped": -0.05,
+    "replica": -0.0539,
+    "viewer": -0.0685,
+    "viewerTargetYaw": -0.0674
+   },
+   "gBlockRear": {
+    "shipped": -0.05,
+    "replica": -0.046,
+    "viewer": -0.0307,
+    "viewerTargetYaw": -0.0318
+   },
+   "gPaintFront": {
+    "shipped": -0.53,
+    "replica": -0.5306,
+    "viewer": -0.5451,
+    "viewerTargetYaw": -0.544
+   },
+   "gPaintRear": {
+    "shipped": -0.52,
+    "replica": -0.5225,
+    "viewer": -0.5073,
+    "viewerTargetYaw": -0.5084
+   },
+   "apexStation": {
+    "shipped": 3632.0,
+    "replica": 3632.0,
+    "viewer": 3632.0,
+    "viewerTargetYaw": 3632.0
+   },
+   "apexT": {
+    "shipped": 100.56,
+    "replica": 100.56,
+    "viewer": 100.56,
+    "viewerTargetYaw": 100.56
+   },
+   "apexLapTime": {
+    "shipped": 100.575,
+    "replica": 100.575,
+    "viewer": 100.575,
+    "viewerTargetYaw": 100.575
+   }
+  },
+  {
+   "race": "fuji_aim_2020_07_30",
+   "lap": 6,
+   "kerb": "k24",
+   "gBlockFront": {
+    "shipped": -0.13,
+    "replica": -0.1331,
+    "viewer": -0.1306,
+    "viewerTargetYaw": -0.1309
+   },
+   "gBlockRear": {
+    "shipped": -0.13,
+    "replica": -0.126,
+    "viewer": -0.1277,
+    "viewerTargetYaw": -0.1274
+   },
+   "gPaintFront": {
+    "shipped": -0.58,
+    "replica": -0.5762,
+    "viewer": -0.5734,
+    "viewerTargetYaw": -0.5736
+   },
+   "gPaintRear": {
+    "shipped": -0.57,
+    "replica": -0.569,
+    "viewer": -0.5707,
+    "viewerTargetYaw": -0.5704
+   },
+   "apexStation": {
+    "shipped": 3855.0,
+    "replica": 3855.0,
+    "viewer": 3854.5,
+    "viewerTargetYaw": 3854.5
+   },
+   "apexT": {
+    "shipped": 108.84,
+    "replica": 108.84,
+    "viewer": 108.83,
+    "viewerTargetYaw": 108.83
+   },
+   "apexLapTime": {
+    "shipped": 108.855,
+    "replica": 108.855,
+    "viewer": 108.845,
+    "viewerTargetYaw": 108.845
+   }
+  }
+ ]
+}

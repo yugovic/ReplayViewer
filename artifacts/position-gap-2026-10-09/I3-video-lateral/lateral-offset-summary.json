@@ -1,0 +1,1628 @@
+{
+ "meaning": "dy + = car actually further right than drawn; relative to the 3 wet training frames' GPS (see circularity)",
+ "sameplaceCrossSessionPairs": [
+  {
+   "dry": "2020-07-30-L2-50.000",
+   "wet": "2020-07-29-L3-55.000",
+   "stationDiffM": -3.5,
+   "dyDry": 0.16,
+   "dyWet": -0.11,
+   "dryMinusWetM": 0.27,
+   "grades": "BB",
+   "meaning": "same place, same CG course: course-boundary and common camera errors cancel; the difference is the lateral GPS/registration error difference between the two laps"
+  },
+  {
+   "dry": "2020-07-30-L2-47.522",
+   "wet": "2020-07-29-L3-52.387",
+   "stationDiffM": 4.8,
+   "dyDry": 1.65,
+   "dyWet": 0.02,
+   "dryMinusWetM": 1.63,
+   "grades": "AA",
+   "meaning": "same place, same CG course: course-boundary and common camera errors cancel; the difference is the lateral GPS/registration error difference between the two laps"
+  }
+ ],
+ "grades": {
+  "A": "both boundaries, consistent, point CI <= 1 m, not yaw-sensitive",
+  "B": "one boundary (or weakly constrained second), CI <= 1 m, not yaw-sensitive",
+  "C": "left/right disagree > 1 m (or one side has no lateral optimum), yaw-sensitive or wide CI: residual not a clean lateral offset",
+  "D": "combined fit runs to the +-5 m bound: no lateral optimum, value meaningless"
+ },
+ "groupStats": {
+  "heldoutAll": {
+   "n": 10,
+   "median": -0.58,
+   "medianAbs": 1.74,
+   "min": -5.0,
+   "max": 2.37,
+   "sd": 2.122074692370653
+  },
+  "heldoutGradeAB": {
+   "n": 4,
+   "median": 0.9049999999999999,
+   "medianAbs": 0.9049999999999999,
+   "min": 0.02,
+   "max": 2.37,
+   "sd": 0.9944093724417525
+  },
+  "heldout0730": {
+   "n": 7,
+   "median": 0.16,
+   "medianAbs": 1.65,
+   "min": -5.0,
+   "max": 2.37,
+   "sd": 2.386913300067855
+  },
+  "heldout0729": {
+   "n": 3,
+   "median": -1.83,
+   "medianAbs": 1.83,
+   "min": -2.05,
+   "max": 0.02,
+   "sd": 0.9283078991129805
+  },
+  "sequenceAll": {
+   "n": 8,
+   "median": 1.9699999999999998,
+   "medianAbs": 1.9699999999999998,
+   "min": -1.13,
+   "max": 4.14,
+   "sd": 1.5923130777268646
+  },
+  "sequenceGradeAB": {
+   "n": 3,
+   "median": 2.73,
+   "medianAbs": 2.73,
+   "min": -1.13,
+   "max": 4.14,
+   "sd": 2.227619556587006
+  },
+  "trainInSample": {
+   "n": 3,
+   "median": -0.11,
+   "medianAbs": 1.23,
+   "min": -1.69,
+   "max": 1.23,
+   "sd": 1.1934264395708127
+  },
+  "allNonTrainGradeAB": {
+   "n": 7,
+   "median": 1.65,
+   "medianAbs": 1.65,
+   "min": -1.13,
+   "max": 4.14,
+   "sd": 1.6953718513310625
+  },
+  "allNonTrainNotD": {
+   "n": 17,
+   "median": 1.37,
+   "medianAbs": 1.65,
+   "min": -2.05,
+   "max": 4.14,
+   "sd": 1.7908392418951005
+  }
+ },
+ "rows": [
+  {
+   "scene": "2020-07-29-L3-47.000",
+   "group": "train",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeS": 47.0,
+   "stationM": 1820.2,
+   "lapDistM": 1675.7,
+   "speedKmh": 123.9,
+   "accyG": 0.98,
+   "carHeadingMinusRoadDeg": -8.2,
+   "linesLR": "5/6",
+   "baselineMedianPx": 11.2,
+   "dyFixedYawM": 1.23,
+   "dyFixedCi95Point": [
+    0.31,
+    3.24
+   ],
+   "dyFixedCi95Hier": null,
+   "medianPxAfterFixed": 8.5,
+   "dyFreeYawM": 0.9,
+   "dyFreeCi95": [
+    0.04,
+    2.38
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 6.8,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 0.85,
+   "dyRightOnlyM": 3.57,
+   "rightMinusLeftM": 2.72,
+   "rightMinusLeftCi95": [
+    1.29,
+    3.72
+   ],
+   "dyH1_0": 4.4,
+   "dyH1_5": 1.2,
+   "dyK1Camera": 1.2,
+   "dyImuRoll": 1.15,
+   "dyRollFree": 0.49,
+   "rollFreeDeg": 1.67,
+   "dyForwardFree": 1.09,
+   "forwardFreeM": -5.0,
+   "injectionSlope": null,
+   "dyAltReference": -0.39,
+   "drawnCentreToLeftPaintM": 6.56,
+   "drawnCentreToRightPaintM": 9.82,
+   "grade": "C",
+   "notes": [
+    "left/right disagree by +2.72 m (CI +1.29..+3.72)",
+    "wide point-bootstrap CI (2.93 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-29-L3-55.000",
+   "group": "train",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeS": 55.0,
+   "stationM": 2088.9,
+   "lapDistM": 1947.6,
+   "speedKmh": 96.9,
+   "accyG": -0.09,
+   "carHeadingMinusRoadDeg": 0.9,
+   "linesLR": "0/6",
+   "baselineMedianPx": 11.3,
+   "dyFixedYawM": -0.11,
+   "dyFixedCi95Point": [
+    -0.24,
+    0.41
+   ],
+   "dyFixedCi95Hier": null,
+   "medianPxAfterFixed": 9.4,
+   "dyFreeYawM": -0.41,
+   "dyFreeCi95": [
+    -0.5,
+    -0.05
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 6.6,
+   "yawOnlyDeg": -0.13,
+   "dyLeftOnlyM": null,
+   "dyRightOnlyM": -0.11,
+   "rightMinusLeftM": null,
+   "rightMinusLeftCi95": null,
+   "dyH1_0": -0.09,
+   "dyH1_5": -0.19,
+   "dyK1Camera": -0.14,
+   "dyImuRoll": -0.11,
+   "dyRollFree": -0.17,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": -0.22,
+   "forwardFreeM": 5.0,
+   "injectionSlope": null,
+   "dyAltReference": -1.18,
+   "drawnCentreToLeftPaintM": 13.57,
+   "drawnCentreToRightPaintM": 0.76,
+   "grade": "B",
+   "notes": [
+    "single boundary: dy and heading not separable"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-29-L3-68.000",
+   "group": "train",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeS": 68.0,
+   "stationM": 2480.2,
+   "lapDistM": 2325.9,
+   "speedKmh": 141.2,
+   "accyG": 0.64,
+   "carHeadingMinusRoadDeg": -6.1,
+   "linesLR": "7/6",
+   "baselineMedianPx": 8.0,
+   "dyFixedYawM": -1.69,
+   "dyFixedCi95Point": [
+    -1.91,
+    -1.21
+   ],
+   "dyFixedCi95Hier": null,
+   "medianPxAfterFixed": 3.2,
+   "dyFreeYawM": -1.45,
+   "dyFreeCi95": [
+    -2.0,
+    -0.71
+   ],
+   "impliedHeadingErrorDeg": -1.05,
+   "headingCi95": [
+    -2.0,
+    1.0
+   ],
+   "yawAtBound": false,
+   "medianPxAfterFree": 2.2,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -1.25,
+   "dyRightOnlyM": -2.08,
+   "rightMinusLeftM": -0.82,
+   "rightMinusLeftCi95": [
+    -2.48,
+    -0.18
+   ],
+   "dyH1_0": -0.95,
+   "dyH1_5": -1.71,
+   "dyK1Camera": -1.5,
+   "dyImuRoll": -1.61,
+   "dyRollFree": -0.97,
+   "rollFreeDeg": -1.21,
+   "dyForwardFree": -1.21,
+   "forwardFreeM": 2.43,
+   "injectionSlope": null,
+   "dyAltReference": -2.78,
+   "drawnCentreToLeftPaintM": 9.16,
+   "drawnCentreToRightPaintM": 5.09,
+   "grade": "A",
+   "notes": [],
+   "trackLimitNote": null,
+   "kerbCrossCheck": [
+    {
+     "kerb": "k18",
+     "side": "right",
+     "apexStation": 2451.5,
+     "apexMinusSceneM": -28.7,
+     "label": "mild",
+     "peakRollRms": 0.95,
+     "drawnGBlockM": 3.21,
+     "gBlockIfDyAppliedM": 4.9,
+     "verdictDrawn": "uninformative(mild/none)",
+     "verdictWithDy": "uninformative(mild/none)"
+    }
+   ]
+  },
+  {
+   "scene": "2020-07-29-L3-60.000",
+   "group": "heldout",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeS": 60.0,
+   "stationM": 2214.9,
+   "lapDistM": 2058.7,
+   "speedKmh": 91.6,
+   "accyG": -0.66,
+   "carHeadingMinusRoadDeg": 5.2,
+   "linesLR": "5/4",
+   "baselineMedianPx": 9.6,
+   "dyFixedYawM": -1.83,
+   "dyFixedCi95Point": [
+    -2.52,
+    -0.66
+   ],
+   "dyFixedCi95Hier": [
+    -2.85,
+    -0.24
+   ],
+   "medianPxAfterFixed": 9.3,
+   "dyFreeYawM": -2.22,
+   "dyFreeCi95": [
+    -2.82,
+    -1.14
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 8.1,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -2.03,
+   "dyRightOnlyM": 1.48,
+   "rightMinusLeftM": 3.51,
+   "rightMinusLeftCi95": [
+    2.19,
+    5.11
+   ],
+   "dyH1_0": -1.91,
+   "dyH1_5": -1.77,
+   "dyK1Camera": -0.07,
+   "dyImuRoll": -1.04,
+   "dyRollFree": 2.38,
+   "rollFreeDeg": -4.17,
+   "dyForwardFree": -1.47,
+   "forwardFreeM": -2.27,
+   "injectionSlope": 1.59,
+   "dyAltReference": -3.52,
+   "drawnCentreToLeftPaintM": 8.9,
+   "drawnCentreToRightPaintM": 8.57,
+   "grade": "C",
+   "notes": [
+    "left/right disagree by +3.51 m (CI +2.19..+5.11)",
+    "wide point-bootstrap CI (1.85 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-29-L3-64.367",
+   "group": "heldout",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeS": 64.367,
+   "stationM": 2346.0,
+   "lapDistM": 2191.1,
+   "speedKmh": 122.3,
+   "accyG": -0.07,
+   "carHeadingMinusRoadDeg": -1.8,
+   "linesLR": "5/0",
+   "baselineMedianPx": 9.3,
+   "dyFixedYawM": -2.05,
+   "dyFixedCi95Point": [
+    -2.36,
+    -1.34
+   ],
+   "dyFixedCi95Hier": [
+    -3.06,
+    -0.7
+   ],
+   "medianPxAfterFixed": 2.9,
+   "dyFreeYawM": -2.45,
+   "dyFreeCi95": [
+    -2.69,
+    -1.74
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 2.5,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -2.05,
+   "dyRightOnlyM": null,
+   "rightMinusLeftM": null,
+   "rightMinusLeftCi95": null,
+   "dyH1_0": -2.02,
+   "dyH1_5": -2.06,
+   "dyK1Camera": -1.54,
+   "dyImuRoll": -1.63,
+   "dyRollFree": 4.66,
+   "rollFreeDeg": -4.62,
+   "dyForwardFree": -2.04,
+   "forwardFreeM": -0.63,
+   "injectionSlope": 1.5,
+   "dyAltReference": -3.71,
+   "drawnCentreToLeftPaintM": 9.87,
+   "drawnCentreToRightPaintM": 4.55,
+   "grade": "C",
+   "notes": [
+    "single boundary: dy and heading not separable",
+    "wide point-bootstrap CI (1.02 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-18.000",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 18.0,
+   "stationM": 935.5,
+   "lapDistM": 782.6,
+   "speedKmh": 77.7,
+   "accyG": 1.18,
+   "carHeadingMinusRoadDeg": -20.4,
+   "linesLR": "7/4",
+   "baselineMedianPx": 11.2,
+   "dyFixedYawM": -5.0,
+   "dyFixedCi95Point": [
+    -5.0,
+    -4.46
+   ],
+   "dyFixedCi95Hier": [
+    -5.0,
+    -4.12
+   ],
+   "medianPxAfterFixed": 3.9,
+   "dyFreeYawM": -5.0,
+   "dyFreeCi95": [
+    -4.0,
+    -4.0
+   ],
+   "impliedHeadingErrorDeg": 1.8,
+   "headingCi95": [
+    -0.37,
+    0.98
+   ],
+   "yawAtBound": false,
+   "medianPxAfterFree": 1.7,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -5.0,
+   "dyRightOnlyM": -2.87,
+   "rightMinusLeftM": 2.13,
+   "rightMinusLeftCi95": [
+    1.73,
+    2.48
+   ],
+   "dyH1_0": -5.0,
+   "dyH1_5": -4.23,
+   "dyK1Camera": -5.0,
+   "dyImuRoll": -5.0,
+   "dyRollFree": -5.0,
+   "rollFreeDeg": 0.01,
+   "dyForwardFree": -4.51,
+   "forwardFreeM": 0.77,
+   "injectionSlope": 0.19,
+   "dyAltReference": -5.0,
+   "drawnCentreToLeftPaintM": 8.38,
+   "drawnCentreToRightPaintM": 5.37,
+   "grade": "D",
+   "notes": [
+    "combined fit runs to the +-5 m bound (no lateral optimum)",
+    "left/right disagree by +2.13 m (CI +1.73..+2.48)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": [
+    {
+     "kerb": "k13",
+     "side": "right",
+     "apexStation": 901.5,
+     "apexMinusSceneM": -34.0,
+     "label": "strong",
+     "peakRollRms": 4.47,
+     "drawnGBlockM": -1.04,
+     "gBlockIfDyAppliedM": 3.96,
+     "verdictDrawn": "consistent",
+     "verdictWithDy": "contradiction(strong-but-off)"
+    }
+   ]
+  },
+  {
+   "scene": "2020-07-30-L2-45.000",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 45.0,
+   "stationM": 1916.2,
+   "lapDistM": 1763.2,
+   "speedKmh": 133.9,
+   "accyG": 1.13,
+   "carHeadingMinusRoadDeg": -3.0,
+   "linesLR": "0/7",
+   "baselineMedianPx": 33.3,
+   "dyFixedYawM": 2.37,
+   "dyFixedCi95Point": [
+    1.58,
+    2.47
+   ],
+   "dyFixedCi95Hier": [
+    1.5,
+    2.57
+   ],
+   "medianPxAfterFixed": 7.1,
+   "dyFreeYawM": 2.74,
+   "dyFreeCi95": [
+    2.29,
+    2.81
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    -1.81
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 4.2,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": null,
+   "dyRightOnlyM": 2.37,
+   "rightMinusLeftM": null,
+   "rightMinusLeftCi95": null,
+   "dyH1_0": 2.47,
+   "dyH1_5": 2.21,
+   "dyK1Camera": 2.44,
+   "dyImuRoll": 2.37,
+   "dyRollFree": 2.36,
+   "rollFreeDeg": 4.77,
+   "dyForwardFree": 3.15,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 0.78,
+   "dyAltReference": 1.22,
+   "drawnCentreToLeftPaintM": 12.85,
+   "drawnCentreToRightPaintM": 4.08,
+   "grade": "B",
+   "notes": [
+    "single boundary: dy and heading not separable"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-50.000",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 50.0,
+   "stationM": 2085.4,
+   "lapDistM": 1933.7,
+   "speedKmh": 89.0,
+   "accyG": -0.14,
+   "carHeadingMinusRoadDeg": 0.1,
+   "linesLR": "0/7",
+   "baselineMedianPx": 9.0,
+   "dyFixedYawM": 0.16,
+   "dyFixedCi95Point": [
+    0.04,
+    0.48
+   ],
+   "dyFixedCi95Hier": [
+    -0.18,
+    0.57
+   ],
+   "medianPxAfterFixed": 6.8,
+   "dyFreeYawM": -0.12,
+   "dyFreeCi95": [
+    -0.22,
+    0.03
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 3.7,
+   "yawOnlyDeg": 1.82,
+   "dyLeftOnlyM": null,
+   "dyRightOnlyM": 0.16,
+   "rightMinusLeftM": null,
+   "rightMinusLeftCi95": null,
+   "dyH1_0": 0.28,
+   "dyH1_5": 0.03,
+   "dyK1Camera": 0.19,
+   "dyImuRoll": 0.18,
+   "dyRollFree": 0.2,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": 0.17,
+   "forwardFreeM": 2.51,
+   "injectionSlope": 0.72,
+   "dyAltReference": -0.87,
+   "drawnCentreToLeftPaintM": 12.76,
+   "drawnCentreToRightPaintM": 1.61,
+   "grade": "B",
+   "notes": [
+    "single boundary: dy and heading not separable"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-84.000",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 84.0,
+   "stationM": 3147.0,
+   "lapDistM": 2974.9,
+   "speedKmh": 90.2,
+   "accyG": 0.71,
+   "carHeadingMinusRoadDeg": -10.0,
+   "linesLR": "7/4",
+   "baselineMedianPx": 7.6,
+   "dyFixedYawM": -1.18,
+   "dyFixedCi95Point": [
+    -1.32,
+    -1.06
+   ],
+   "dyFixedCi95Hier": [
+    -1.54,
+    -0.78
+   ],
+   "medianPxAfterFixed": 2.0,
+   "dyFreeYawM": -1.26,
+   "dyFreeCi95": [
+    -1.51,
+    -0.66
+   ],
+   "impliedHeadingErrorDeg": 0.44,
+   "headingCi95": [
+    -2.0,
+    2.0
+   ],
+   "yawAtBound": false,
+   "medianPxAfterFree": 1.6,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -1.21,
+   "dyRightOnlyM": -0.01,
+   "rightMinusLeftM": 1.19,
+   "rightMinusLeftCi95": [
+    0.43,
+    1.65
+   ],
+   "dyH1_0": -1.64,
+   "dyH1_5": -0.91,
+   "dyK1Camera": -1.57,
+   "dyImuRoll": -1.18,
+   "dyRollFree": -1.25,
+   "rollFreeDeg": 0.63,
+   "dyForwardFree": -2.3,
+   "forwardFreeM": -5.0,
+   "injectionSlope": 0.82,
+   "dyAltReference": -2.18,
+   "drawnCentreToLeftPaintM": 5.08,
+   "drawnCentreToRightPaintM": 10.2,
+   "grade": "C",
+   "notes": [
+    "left/right disagree by +1.19 m (CI +0.43..+1.65)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": [
+    {
+     "kerb": "k20",
+     "side": "right",
+     "apexStation": 3097.5,
+     "apexMinusSceneM": -49.5,
+     "label": "silent",
+     "peakRollRms": 0.47,
+     "drawnGBlockM": 0.39,
+     "gBlockIfDyAppliedM": 1.57,
+     "verdictDrawn": "consistent",
+     "verdictWithDy": "consistent"
+    }
+   ]
+  },
+  {
+   "scene": "2020-07-30-L2-94.000",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 94.0,
+   "stationM": 3432.9,
+   "lapDistM": 3251.4,
+   "speedKmh": 116.4,
+   "accyG": -1.21,
+   "carHeadingMinusRoadDeg": 0.7,
+   "linesLR": "8/7",
+   "baselineMedianPx": 54.5,
+   "dyFixedYawM": 1.96,
+   "dyFixedCi95Point": [
+    1.36,
+    4.35
+   ],
+   "dyFixedCi95Hier": [
+    1.2,
+    4.28
+   ],
+   "medianPxAfterFixed": 23.8,
+   "dyFreeYawM": 1.67,
+   "dyFreeCi95": [
+    1.15,
+    4.0
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    -2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 25.0,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 2.09,
+   "dyRightOnlyM": -5.0,
+   "rightMinusLeftM": -7.09,
+   "rightMinusLeftCi95": [
+    -10.0,
+    -6.4
+   ],
+   "dyH1_0": 1.32,
+   "dyH1_5": 2.18,
+   "dyK1Camera": -5.0,
+   "dyImuRoll": 2.06,
+   "dyRollFree": 2.1,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": 1.17,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 1.09,
+   "dyAltReference": 0.61,
+   "drawnCentreToLeftPaintM": 0.96,
+   "drawnCentreToRightPaintM": 13.38,
+   "grade": "C",
+   "notes": [
+    "paintR alone has no lateral optimum (runs to the bound): far/low-leverage points misfit vertically, not laterally",
+    "left/right disagree by -7.09 m (CI -10.00..-6.40)",
+    "wide point-bootstrap CI (2.99 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-112.000",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 112.0,
+   "stationM": 3911.3,
+   "lapDistM": 3716.7,
+   "speedKmh": 92.6,
+   "accyG": 0.39,
+   "carHeadingMinusRoadDeg": -10.8,
+   "linesLR": "7/6",
+   "baselineMedianPx": 3.9,
+   "dyFixedYawM": -1.23,
+   "dyFixedCi95Point": [
+    -1.35,
+    -1.02
+   ],
+   "dyFixedCi95Hier": [
+    -1.58,
+    -0.81
+   ],
+   "medianPxAfterFixed": 2.0,
+   "dyFreeYawM": -1.55,
+   "dyFreeCi95": [
+    -1.6,
+    -1.44
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    1.38,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 0.9,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -1.24,
+   "dyRightOnlyM": -0.18,
+   "rightMinusLeftM": 1.07,
+   "rightMinusLeftCi95": [
+    0.18,
+    1.49
+   ],
+   "dyH1_0": -1.7,
+   "dyH1_5": -0.93,
+   "dyK1Camera": -1.6,
+   "dyImuRoll": -1.2,
+   "dyRollFree": -1.26,
+   "rollFreeDeg": 0.33,
+   "dyForwardFree": -2.1,
+   "forwardFreeM": -5.0,
+   "injectionSlope": 0.82,
+   "dyAltReference": -2.24,
+   "drawnCentreToLeftPaintM": 4.84,
+   "drawnCentreToRightPaintM": 9.79,
+   "grade": "C",
+   "notes": [
+    "left/right disagree by +1.07 m (CI +0.18..+1.49)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": [
+    {
+     "kerb": "k24",
+     "side": "right",
+     "apexStation": 3867.5,
+     "apexMinusSceneM": -43.8,
+     "label": "silent",
+     "peakRollRms": 0.65,
+     "drawnGBlockM": 0.13,
+     "gBlockIfDyAppliedM": 1.36,
+     "verdictDrawn": "consistent",
+     "verdictWithDy": "consistent"
+    }
+   ]
+  },
+  {
+   "scene": "2020-07-29-L3-52.387",
+   "group": "heldout",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeS": 52.387,
+   "stationM": 2002.1,
+   "lapDistM": 1860.6,
+   "speedKmh": 125.8,
+   "accyG": 0.6,
+   "carHeadingMinusRoadDeg": 1.5,
+   "linesLR": "5/6",
+   "baselineMedianPx": 2.3,
+   "dyFixedYawM": 0.02,
+   "dyFixedCi95Point": [
+    -0.2,
+    0.42
+   ],
+   "dyFixedCi95Hier": [
+    -0.83,
+    0.95
+   ],
+   "medianPxAfterFixed": 2.5,
+   "dyFreeYawM": -0.35,
+   "dyFreeCi95": [
+    -0.51,
+    0.22
+   ],
+   "impliedHeadingErrorDeg": 1.9,
+   "headingCi95": [
+    1.19,
+    2.0
+   ],
+   "yawAtBound": false,
+   "medianPxAfterFree": 1.9,
+   "yawOnlyDeg": 0.81,
+   "dyLeftOnlyM": 0.03,
+   "dyRightOnlyM": 0.02,
+   "rightMinusLeftM": -0.01,
+   "rightMinusLeftCi95": [
+    -0.8,
+    1.24
+   ],
+   "dyH1_0": 1.16,
+   "dyH1_5": -0.15,
+   "dyK1Camera": 0.45,
+   "dyImuRoll": 0.13,
+   "dyRollFree": 0.22,
+   "rollFreeDeg": -0.3,
+   "dyForwardFree": 0.04,
+   "forwardFreeM": 2.49,
+   "injectionSlope": 0.92,
+   "dyAltReference": -1.18,
+   "drawnCentreToLeftPaintM": 7.35,
+   "drawnCentreToRightPaintM": 6.96,
+   "grade": "A",
+   "notes": [],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-47.522",
+   "group": "heldout",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 47.522,
+   "stationM": 2006.9,
+   "lapDistM": 1855.0,
+   "speedKmh": 130.5,
+   "accyG": 0.78,
+   "carHeadingMinusRoadDeg": 3.0,
+   "linesLR": "4/5",
+   "baselineMedianPx": 11.3,
+   "dyFixedYawM": 1.65,
+   "dyFixedCi95Point": [
+    1.45,
+    2.11
+   ],
+   "dyFixedCi95Hier": [
+    0.9,
+    2.52
+   ],
+   "medianPxAfterFixed": 3.0,
+   "dyFreeYawM": 1.28,
+   "dyFreeCi95": [
+    1.15,
+    2.06
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    -2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 2.3,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 1.71,
+   "dyRightOnlyM": 1.51,
+   "rightMinusLeftM": -0.2,
+   "rightMinusLeftCi95": [
+    -0.81,
+    1.52
+   ],
+   "dyH1_0": 2.38,
+   "dyH1_5": 1.57,
+   "dyK1Camera": 2.23,
+   "dyImuRoll": 1.69,
+   "dyRollFree": 1.51,
+   "rollFreeDeg": 0.23,
+   "dyForwardFree": 1.59,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 1.05,
+   "dyAltReference": 0.34,
+   "drawnCentreToLeftPaintM": 5.62,
+   "drawnCentreToRightPaintM": 8.69,
+   "grade": "A",
+   "notes": [],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-44.000",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 44.0,
+   "stationM": 1879.0,
+   "lapDistM": 1725.8,
+   "speedKmh": 136.0,
+   "accyG": 1.15,
+   "carHeadingMinusRoadDeg": 12.0,
+   "linesLR": "5/7",
+   "baselineMedianPx": 15.1,
+   "dyFixedYawM": 4.14,
+   "dyFixedCi95Point": [
+    4.05,
+    4.16
+   ],
+   "dyFixedCi95Hier": [
+    3.76,
+    4.41
+   ],
+   "medianPxAfterFixed": 3.4,
+   "dyFreeYawM": 4.42,
+   "dyFreeCi95": [
+    4.0,
+    4.0
+   ],
+   "impliedHeadingErrorDeg": -1.42,
+   "headingCi95": [
+    -0.2,
+    0.84
+   ],
+   "yawAtBound": false,
+   "medianPxAfterFree": 3.5,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 3.12,
+   "dyRightOnlyM": 4.14,
+   "rightMinusLeftM": 1.03,
+   "rightMinusLeftCi95": [
+    -0.89,
+    2.39
+   ],
+   "dyH1_0": 4.13,
+   "dyH1_5": 4.07,
+   "dyK1Camera": 4.13,
+   "dyImuRoll": 4.15,
+   "dyRollFree": 4.14,
+   "rollFreeDeg": 0.04,
+   "dyForwardFree": 4.26,
+   "forwardFreeM": 2.81,
+   "injectionSlope": 0.95,
+   "dyAltReference": 2.82,
+   "drawnCentreToLeftPaintM": 11.89,
+   "drawnCentreToRightPaintM": 6.38,
+   "grade": "A",
+   "notes": [],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-44.500",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 44.5,
+   "stationM": 1897.6,
+   "lapDistM": 1744.6,
+   "speedKmh": 134.7,
+   "accyG": 1.18,
+   "carHeadingMinusRoadDeg": 2.9,
+   "linesLR": "5/6",
+   "baselineMedianPx": 9.9,
+   "dyFixedYawM": 2.73,
+   "dyFixedCi95Point": [
+    1.95,
+    2.81
+   ],
+   "dyFixedCi95Hier": [
+    2.1,
+    2.99
+   ],
+   "medianPxAfterFixed": 4.0,
+   "dyFreeYawM": 3.1,
+   "dyFreeCi95": [
+    2.71,
+    3.11
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    -1.93
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 3.6,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 2.07,
+   "dyRightOnlyM": 2.73,
+   "rightMinusLeftM": 0.66,
+   "rightMinusLeftCi95": [
+    -2.15,
+    1.81
+   ],
+   "dyH1_0": 2.75,
+   "dyH1_5": 2.68,
+   "dyK1Camera": 2.73,
+   "dyImuRoll": 2.74,
+   "dyRollFree": 2.73,
+   "rollFreeDeg": 0.21,
+   "dyForwardFree": 3.04,
+   "forwardFreeM": 3.38,
+   "injectionSlope": 0.93,
+   "dyAltReference": 1.36,
+   "drawnCentreToLeftPaintM": 12.95,
+   "drawnCentreToRightPaintM": 4.56,
+   "grade": "A",
+   "notes": [],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-45.500",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 45.5,
+   "stationM": 1934.5,
+   "lapDistM": 1781.5,
+   "speedKmh": 133.0,
+   "accyG": 1.14,
+   "carHeadingMinusRoadDeg": -2.3,
+   "linesLR": "5/7",
+   "baselineMedianPx": 5.6,
+   "dyFixedYawM": -0.37,
+   "dyFixedCi95Point": [
+    -1.34,
+    0.43
+   ],
+   "dyFixedCi95Hier": [
+    -1.75,
+    0.56
+   ],
+   "medianPxAfterFixed": 6.3,
+   "dyFreeYawM": 0.11,
+   "dyFreeCi95": [
+    -0.92,
+    0.78
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    -0.72
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 5.5,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -0.58,
+   "dyRightOnlyM": -0.25,
+   "rightMinusLeftM": 0.33,
+   "rightMinusLeftCi95": [
+    -2.13,
+    1.19
+   ],
+   "dyH1_0": 0.59,
+   "dyH1_5": -1.06,
+   "dyK1Camera": -0.22,
+   "dyImuRoll": -0.49,
+   "dyRollFree": -2.77,
+   "rollFreeDeg": 2.76,
+   "dyForwardFree": 0.38,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 1.28,
+   "dyAltReference": -2.24,
+   "drawnCentreToLeftPaintM": 11.79,
+   "drawnCentreToRightPaintM": 4.91,
+   "grade": "C",
+   "notes": [
+    "wide point-bootstrap CI (1.77 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-46.000",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 46.0,
+   "stationM": 1952.5,
+   "lapDistM": 1799.7,
+   "speedKmh": 132.1,
+   "accyG": 1.2,
+   "carHeadingMinusRoadDeg": -0.7,
+   "linesLR": "4/6",
+   "baselineMedianPx": 7.4,
+   "dyFixedYawM": -1.13,
+   "dyFixedCi95Point": [
+    -1.24,
+    -0.75
+   ],
+   "dyFixedCi95Hier": [
+    -1.79,
+    -0.5
+   ],
+   "medianPxAfterFixed": 2.4,
+   "dyFreeYawM": -1.55,
+   "dyFreeCi95": [
+    -1.65,
+    -0.95
+   ],
+   "impliedHeadingErrorDeg": 2.0,
+   "headingCi95": [
+    -1.33,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 2.6,
+   "yawOnlyDeg": -2.0,
+   "dyLeftOnlyM": -0.74,
+   "dyRightOnlyM": -1.22,
+   "rightMinusLeftM": -0.48,
+   "rightMinusLeftCi95": [
+    -0.68,
+    -0.05
+   ],
+   "dyH1_0": -0.2,
+   "dyH1_5": -1.78,
+   "dyK1Camera": -1.74,
+   "dyImuRoll": -1.22,
+   "dyRollFree": -2.64,
+   "rollFreeDeg": 2.78,
+   "dyForwardFree": -1.11,
+   "forwardFreeM": 0.09,
+   "injectionSlope": 0.59,
+   "dyAltReference": -1.97,
+   "drawnCentreToLeftPaintM": 10.36,
+   "drawnCentreToRightPaintM": 4.63,
+   "grade": "A",
+   "notes": [],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-93.000",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 93.0,
+   "stationM": 3398.2,
+   "lapDistM": 3219.6,
+   "speedKmh": 111.4,
+   "accyG": -0.93,
+   "carHeadingMinusRoadDeg": -0.7,
+   "linesLR": "5/7",
+   "baselineMedianPx": 26.4,
+   "dyFixedYawM": 1.37,
+   "dyFixedCi95Point": [
+    0.87,
+    2.4
+   ],
+   "dyFixedCi95Hier": [
+    0.72,
+    2.48
+   ],
+   "medianPxAfterFixed": 19.3,
+   "dyFreeYawM": 1.66,
+   "dyFreeCi95": [
+    0.96,
+    2.77
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    -0.57
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 18.9,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 1.5,
+   "dyRightOnlyM": -5.0,
+   "rightMinusLeftM": -6.5,
+   "rightMinusLeftCi95": [
+    -8.04,
+    -5.88
+   ],
+   "dyH1_0": 0.77,
+   "dyH1_5": 1.58,
+   "dyK1Camera": 1.02,
+   "dyImuRoll": 1.19,
+   "dyRollFree": 1.54,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": 0.93,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 1.0,
+   "dyAltReference": 0.04,
+   "drawnCentreToLeftPaintM": 1.18,
+   "drawnCentreToRightPaintM": 13.18,
+   "grade": "C",
+   "notes": [
+    "paintR alone has no lateral optimum (runs to the bound): far/low-leverage points misfit vertically, not laterally",
+    "left/right disagree by -6.50 m (CI -8.04..-5.88)",
+    "wide point-bootstrap CI (1.53 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": [
+    {
+     "kerb": "k9",
+     "side": "left",
+     "apexStation": 3366.0,
+     "apexMinusSceneM": -32.2,
+     "label": "silent",
+     "peakRollRms": 0.56,
+     "drawnGBlockM": -0.15,
+     "gBlockIfDyAppliedM": 1.22,
+     "verdictDrawn": "consistent",
+     "verdictWithDy": "consistent"
+    }
+   ]
+  },
+  {
+   "scene": "2020-07-30-L2-93.500",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 93.5,
+   "stationM": 3414.5,
+   "lapDistM": 3235.4,
+   "speedKmh": 114.2,
+   "accyG": -1.13,
+   "carHeadingMinusRoadDeg": -1.4,
+   "linesLR": "4/7",
+   "baselineMedianPx": 25.4,
+   "dyFixedYawM": 1.64,
+   "dyFixedCi95Point": [
+    1.18,
+    3.03
+   ],
+   "dyFixedCi95Hier": [
+    0.98,
+    3.08
+   ],
+   "medianPxAfterFixed": 20.6,
+   "dyFreeYawM": 1.94,
+   "dyFreeCi95": [
+    1.41,
+    3.45
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    -1.95
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 19.2,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 1.9,
+   "dyRightOnlyM": -5.0,
+   "rightMinusLeftM": -6.9,
+   "rightMinusLeftCi95": [
+    -8.36,
+    -6.2
+   ],
+   "dyH1_0": 1.18,
+   "dyH1_5": 1.84,
+   "dyK1Camera": 1.29,
+   "dyImuRoll": 1.7,
+   "dyRollFree": 1.79,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": 1.03,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 1.04,
+   "dyAltReference": 0.31,
+   "drawnCentreToLeftPaintM": 0.94,
+   "drawnCentreToRightPaintM": 13.33,
+   "grade": "C",
+   "notes": [
+    "paintR alone has no lateral optimum (runs to the bound): far/low-leverage points misfit vertically, not laterally",
+    "left/right disagree by -6.90 m (CI -8.36..-6.20)",
+    "wide point-bootstrap CI (1.86 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": [
+    {
+     "kerb": "k9",
+     "side": "left",
+     "apexStation": 3366.0,
+     "apexMinusSceneM": -48.5,
+     "label": "silent",
+     "peakRollRms": 0.56,
+     "drawnGBlockM": -0.15,
+     "gBlockIfDyAppliedM": 1.49,
+     "verdictDrawn": "consistent",
+     "verdictWithDy": "consistent"
+    }
+   ]
+  },
+  {
+   "scene": "2020-07-30-L2-94.500",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 94.5,
+   "stationM": 3451.1,
+   "lapDistM": 3267.7,
+   "speedKmh": 118.0,
+   "accyG": -1.16,
+   "carHeadingMinusRoadDeg": 1.9,
+   "linesLR": "8/7",
+   "baselineMedianPx": 29.5,
+   "dyFixedYawM": 2.43,
+   "dyFixedCi95Point": [
+    1.0,
+    5.0
+   ],
+   "dyFixedCi95Hier": [
+    0.95,
+    5.0
+   ],
+   "medianPxAfterFixed": 26.3,
+   "dyFreeYawM": 2.87,
+   "dyFreeCi95": [
+    0.83,
+    4.0
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 26.5,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 3.68,
+   "dyRightOnlyM": -5.0,
+   "rightMinusLeftM": -8.68,
+   "rightMinusLeftCi95": [
+    -10.0,
+    -6.13
+   ],
+   "dyH1_0": 2.01,
+   "dyH1_5": 2.8,
+   "dyK1Camera": -5.0,
+   "dyImuRoll": 2.61,
+   "dyRollFree": 2.74,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": 2.3,
+   "forwardFreeM": -3.61,
+   "injectionSlope": 1.23,
+   "dyAltReference": 0.98,
+   "drawnCentreToLeftPaintM": 1.43,
+   "drawnCentreToRightPaintM": 13.07,
+   "grade": "C",
+   "notes": [
+    "paintR alone has no lateral optimum (runs to the bound): far/low-leverage points misfit vertically, not laterally",
+    "left/right disagree by -8.68 m (CI -10.00..-6.13)",
+    "wide point-bootstrap CI (4.00 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  },
+  {
+   "scene": "2020-07-30-L2-95.000",
+   "group": "sequence",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeS": 95.0,
+   "stationM": 3468.9,
+   "lapDistM": 3284.2,
+   "speedKmh": 119.1,
+   "accyG": -1.01,
+   "carHeadingMinusRoadDeg": 5.1,
+   "linesLR": "5/7",
+   "baselineMedianPx": 20.8,
+   "dyFixedYawM": 2.3,
+   "dyFixedCi95Point": [
+    1.94,
+    3.5
+   ],
+   "dyFixedCi95Hier": [
+    1.68,
+    3.52
+   ],
+   "medianPxAfterFixed": 17.7,
+   "dyFreeYawM": 2.56,
+   "dyFreeCi95": [
+    2.17,
+    3.67
+   ],
+   "impliedHeadingErrorDeg": -2.0,
+   "headingCi95": [
+    -2.0,
+    -2.0
+   ],
+   "yawAtBound": true,
+   "medianPxAfterFree": 16.9,
+   "yawOnlyDeg": 2.0,
+   "dyLeftOnlyM": 2.84,
+   "dyRightOnlyM": -5.0,
+   "rightMinusLeftM": -7.84,
+   "rightMinusLeftCi95": [
+    -9.18,
+    -6.65
+   ],
+   "dyH1_0": 1.89,
+   "dyH1_5": 2.59,
+   "dyK1Camera": 2.31,
+   "dyImuRoll": 2.63,
+   "dyRollFree": 3.98,
+   "rollFreeDeg": -5.0,
+   "dyForwardFree": 0.88,
+   "forwardFreeM": 5.0,
+   "injectionSlope": 0.92,
+   "dyAltReference": 1.3,
+   "drawnCentreToLeftPaintM": 2.29,
+   "drawnCentreToRightPaintM": 12.04,
+   "grade": "C",
+   "notes": [
+    "paintR alone has no lateral optimum (runs to the bound): far/low-leverage points misfit vertically, not laterally",
+    "left/right disagree by -7.84 m (CI -9.18..-6.65)",
+    "wide point-bootstrap CI (1.56 m)"
+   ],
+   "trackLimitNote": null,
+   "kerbCrossCheck": []
+  }
+ ],
+ "cameraParityMaxAbsDiff": [
+  0.00013735393633851345,
+  5.2937115810891555e-06,
+  2.5757821219940524e-05
+ ],
+ "heldoutReproductionPx": 9.421667889801284,
+ "trainingCommonOffsetIdentifiability": {
+  "x": [
+   523.8141443790012,
+   16.90980123383412,
+   6.078654664304402,
+   1.330675480266893,
+   -1.1758041143320614
+  ],
+  "cost": 78.03608059773059,
+  "frozenCameraCost": 116.94022683968052,
+  "conditionNumber": 1481.6852361462027
+ },
+ "trainingCommonOffsetProfile": [
+  {
+   "commonTrainingDyMeters": -2,
+   "cost": 88.16610255552762,
+   "trainMedianPx": 8.150304839236812,
+   "camera": [
+    656.2014656917636,
+    13.612242117522033,
+    7.997920668182461,
+    2.3853442105471356
+   ]
+  },
+  {
+   "commonTrainingDyMeters": -1.5,
+   "cost": 78.78463495074023,
+   "trainMedianPx": 7.431613188348499,
+   "camera": [
+    624.796111595509,
+    14.24320799323522,
+    6.293744679969394,
+    2.187476942108715
+   ]
+  },
+  {
+   "commonTrainingDyMeters": -1,
+   "cost": 79.04395398911444,
+   "trainMedianPx": 8.746502305124192,
+   "camera": [
+    506.85070738684493,
+    17.442358057335166,
+    5.378176345690086,
+    1.1829074208434536
+   ]
+  },
+  {
+   "commonTrainingDyMeters": -0.5,
+   "cost": 91.75629407931292,
+   "trainMedianPx": 8.089246476252491,
+   "camera": [
+    539.2700808685948,
+    16.23072622728395,
+    2.2335348419226184,
+    1.7468280509719178
+   ]
+  },
+  {
+   "commonTrainingDyMeters": 0,
+   "cost": 116.9375899705541,
+   "trainMedianPx": 11.215426778509485,
+   "camera": [
+    471.25708187712723,
+    18.24650392839641,
+    -0.6959760472171759,
+    1.8437149629229233
+   ]
+  },
+  {
+   "commonTrainingDyMeters": 0.5,
+   "cost": 145.91871783800372,
+   "trainMedianPx": 12.448803438598684,
+   "camera": [
+    430.00000000000006,
+    19.7771153397574,
+    -3.41039457778733,
+    1.7189721420054156
+   ]
+  },
+  {
+   "commonTrainingDyMeters": 1,
+   "cost": 191.3774249412639,
+   "trainMedianPx": 12.70975750483839,
+   "camera": [
+    430.00000001622783,
+    19.5007825316648,
+    -5.274987396086983,
+    1.7186573320629237
+   ]
+  },
+  {
+   "commonTrainingDyMeters": 1.5,
+   "cost": 230.883354503742,
+   "trainMedianPx": 13.063706637410426,
+   "camera": [
+    430.00000000926815,
+    19.135530500738767,
+    -6.017646052878425,
+    1.587692792710265
+   ]
+  },
+  {
+   "commonTrainingDyMeters": 2,
+   "cost": 265.1144239773497,
+   "trainMedianPx": 11.636591778659195,
+   "camera": [
+    430.000000127986,
+    18.69807111368098,
+    -6.735806367678485,
+    1.5682003103559279
+   ]
+  }
+ ],
+ "rollGradient": {
+  "imuMeasured": 0.5589567723759398,
+  "heldoutMedianPxByK": {
+   "0.0": 9.421667856915445,
+   "0.559": 8.604624527716162,
+   "2.0": 9.409620170572488,
+   "4.0": 11.812845105037272
+  },
+  "trainOnly5ParamFit": [
+   430.133376092557,
+   20.12780850234498,
+   -1.4886109856161454,
+   -5.999999999999999,
+   9.642332380209325
+  ]
+ },
+ "alternativeReference": {
+  "meaning": "5-parameter training fit (camera + common training offset) prefers the training car -1.18 m right of drawn with camera yaw +6.08 deg; dyAltReference gives each scene under that hypothesis",
+  "costAlt": 78.03608059773059,
+  "costFrozen": 116.94022683968052,
+  "heldoutMedianOfSceneMediansPxAlt": 18.856700620691726,
+  "heldoutMeanOfSceneMediansPxAlt": 18.06299019091225
+ },
+ "lensDistortion": {
+  "camera": [
+   525.56488703033,
+   17.319876603197976,
+   0.2512632188631292,
+   2.04061067909282,
+   -0.17094975708224985
+  ],
+  "activeBounds": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "trainMedianPx": 8.743200162916077,
+  "heldoutMedianOfSceneMediansPx": 12.550964397376351
+ }
+}

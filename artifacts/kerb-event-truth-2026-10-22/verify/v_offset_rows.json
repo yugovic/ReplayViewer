@@ -1,0 +1,202 @@
+{
+ "wet_L1": {
+  "upper": {
+   "levelL": 0.2623,
+   "levelR": 0.906,
+   "transientL": 0.1914,
+   "transientR": 0.301
+  },
+  "lower": {
+   "levelL": 0.1928,
+   "levelR": 0.807,
+   "transientL": 0.2369,
+   "transientR": 0.197
+  },
+  "all": {
+   "levelL": 0.2154,
+   "levelR": 0.867,
+   "transientL": 0.222,
+   "transientR": 0.256
+  }
+ },
+ "wet_L2": {
+  "upper": {
+   "levelL": 0.3334,
+   "levelR": 0.931,
+   "transientL": 0.2925,
+   "transientR": 0.351
+  },
+  "lower": {
+   "levelL": 0.2993,
+   "levelR": 0.861,
+   "transientL": 0.3287,
+   "transientR": 0.297
+  },
+  "all": {
+   "levelL": 0.3108,
+   "levelR": 0.913,
+   "transientL": 0.3121,
+   "transientR": 0.356
+  }
+ },
+ "wet_L3": {
+  "upper": {
+   "levelL": 0.3256,
+   "levelR": 0.93,
+   "transientL": 0.2495,
+   "transientR": 0.325
+  },
+  "lower": {
+   "levelL": 0.276,
+   "levelR": 0.86,
+   "transientL": 0.2635,
+   "transientR": 0.211
+  },
+  "all": {
+   "levelL": 0.2986,
+   "levelR": 0.912,
+   "transientL": 0.2566,
+   "transientR": 0.296
+  }
+ },
+ "wet_L4": {
+  "upper": {
+   "levelL": 0.354,
+   "levelR": 0.926,
+   "transientL": 0.2733,
+   "transientR": 0.247
+  },
+  "lower": {
+   "levelL": 0.1778,
+   "levelR": 0.877,
+   "transientL": 0.1908,
+   "transientR": 0.178
+  },
+  "all": {
+   "levelL": 0.2475,
+   "levelR": 0.92,
+   "transientL": 0.2153,
+   "transientR": 0.229
+  }
+ },
+ "dry_L1": {
+  "upper": {
+   "levelL": 0.2185,
+   "levelR": 0.929,
+   "transientL": 0.2047,
+   "transientR": 0.587
+  },
+  "lower": {
+   "levelL": 0.2176,
+   "levelR": 0.87,
+   "transientL": 0.2037,
+   "transientR": 0.53
+  },
+  "all": {
+   "levelL": 0.2151,
+   "levelR": 0.909,
+   "transientL": 0.203,
+   "transientR": 0.614
+  }
+ },
+ "dry_L2": {
+  "upper": {
+   "levelL": 0.2701,
+   "levelR": 0.922,
+   "transientL": 0.2279,
+   "transientR": 0.484
+  },
+  "lower": {
+   "levelL": 0.2617,
+   "levelR": 0.862,
+   "transientL": 0.2534,
+   "transientR": 0.446
+  },
+  "all": {
+   "levelL": 0.2644,
+   "levelR": 0.899,
+   "transientL": 0.2475,
+   "transientR": 0.509
+  }
+ },
+ "dry_L3": {
+  "upper": {
+   "levelL": 0.2676,
+   "levelR": 0.927,
+   "transientL": 0.2168,
+   "transientR": 0.494
+  },
+  "lower": {
+   "levelL": 0.268,
+   "levelR": 0.882,
+   "transientL": 0.2126,
+   "transientR": 0.476
+  },
+  "all": {
+   "levelL": 0.2702,
+   "levelR": 0.914,
+   "transientL": 0.2134,
+   "transientR": 0.54
+  }
+ },
+ "dry_L4": {
+  "upper": {
+   "levelL": 0.2534,
+   "levelR": 0.905,
+   "transientL": 0.2332,
+   "transientR": 0.548
+  },
+  "lower": {
+   "levelL": 0.2273,
+   "levelR": 0.858,
+   "transientL": 0.2236,
+   "transientR": 0.49
+  },
+  "all": {
+   "levelL": 0.2343,
+   "levelR": 0.891,
+   "transientL": 0.2237,
+   "transientR": 0.565
+  }
+ },
+ "dry_L5": {
+  "upper": {
+   "levelL": 0.1796,
+   "levelR": 0.914,
+   "transientL": 0.1462,
+   "transientR": 0.539
+  },
+  "lower": {
+   "levelL": 0.1696,
+   "levelR": 0.863,
+   "transientL": 0.143,
+   "transientR": 0.479
+  },
+  "all": {
+   "levelL": 0.171,
+   "levelR": 0.903,
+   "transientL": 0.1428,
+   "transientR": 0.558
+  }
+ },
+ "dry_L6": {
+  "upper": {
+   "levelL": 0.2945,
+   "levelR": 0.927,
+   "transientL": 0.2665,
+   "transientR": 0.537
+  },
+  "lower": {
+   "levelL": 0.258,
+   "levelR": 0.876,
+   "transientL": 0.2559,
+   "transientR": 0.507
+  },
+  "all": {
+   "levelL": 0.2723,
+   "levelR": 0.915,
+   "transientL": 0.2594,
+   "transientR": 0.57
+  }
+ }
+}

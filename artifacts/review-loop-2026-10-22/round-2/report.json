@@ -1,0 +1,66 @@
+{
+ "kind": "review-loop-change-log",
+ "round": 2,
+ "area": "report",
+ "date": "2026-10-22",
+ "owner": "implementer (Opus) for report B docs/fuji-event-truth-evaluation-2026-10-22.html",
+ "scope": "Edited docs/fuji-event-truth-evaluation-2026-10-22.html (untracked). For R2-03 also the k1 entry of NOTE_MAP in artifacts/event-comparison-2026-10-22/scripts/build_page.py (gitignored), then rebuilt docs/fuji-event-comparison-2026-10-22.html (gitignored). No tracked file changed. Nothing was published or downloaded: the headless checks answered the Google Fonts requests locally with an empty body. Dev servers were not touched. The comparison-page implementer had finished (its comparison-page.json was written at 22:56; build_page.py last changed 22:51) before I edited build_page.py at about 23:01.",
+ "backupsBeforeChanges": [
+  "artifacts/review-loop-2026-10-22/round-2/report-prev/fuji-event-truth-evaluation-2026-10-22.before-report-round2.html",
+  "artifacts/review-loop-2026-10-22/round-2/report-prev/build_page.before-report-round2.py",
+  "artifacts/review-loop-2026-10-22/round-2/report-prev/fuji-event-comparison.before-report-round2.html"
+ ],
+ "carriedOverFromAnalysis": "The analysis implementer reported no headline number change this round (null). The embedded data block (const D = ...) is byte-identical to the pre-round-2 backup (checked with cmp), so no regeneration was needed.",
+ "timeline": [
+  "22:59 Read WORKLOG top, B in full, round-2 review.json (R2-02..R2-04), table-width-check.mjs, render-check.mjs and its output, round-1 report.json and report-k1-check.json. Baseline table-width-check at 390 px reproduced the finding: gap-table 418 / 352 (scroll 454), correction table 403 / 352 (scroll 439).",
+  "Backed up B, build_page.py and the comparison page to round-2/report-prev/.",
+  "R2-02: CSS for <=560 px (compact gap table, stacked correction table, compact 2x2 tables) plus a scroll hint that script switches on only when a .scroll box still overflows. Gap-table header shortened at phone width; the definition of 典型 / 90%値 moved into the note (all widths).",
+  "R2-04 and R2-03 text edits in B; L5 k1 tooltips numbered (振動1回目・確かさ中 / 振動2回目・確かさ高).",
+  "Wrote and ran report-k1-l5-check.py (recomputes the L5 facts from event_table.json) and report-check-round2.mjs (Playwright, file://, light/dark, 320/390/1100 px). The first run showed a 58 px page overflow at 320 px; report-overflow320.mjs showed the 2x2 agreement tables cause it and that the pre-round-2 page has the same 58 px overflow, so it was not introduced by these edits. Compacted the 2x2 tables at <=560 px; now 0 at 320 px too.",
+  "23:01 Edited NOTE_MAP k1 in build_page.py, rebuilt the comparison page with pipeline/.venv-sr python -I build_page.py, ran qa_page.mjs: passed.",
+  "Re-ran the reviewer's table-width-check.mjs and a copy of render-check.mjs (report-render-check-rerun.mjs, output report-render-check-rerun.json, so the reviewer's render-check.json is kept). Looked at the phone screenshots in report-shots/r2-*.png."
+ ],
+ "findings": [
+  {
+   "id": "R2-02",
+   "status": "fixed",
+   "whatChanged": "B CSS, @media (max-width: 560px): #gap-table font 12px, th/td padding 4px 6px, first column wraps (max-width 9em); the long header part '（|値|の中央値）' is in a span hidden at phone width, and the note under the table now defines 典型 and 90%値 at every width ('典型は、ずれの大きさ（＋−を除いた値）の中央値、90%値は同じ大きさの90%点です。'). The correction table got id fix-table and becomes one block per row at phone width (header hidden, cells labelled '値：' / '外した周での効果：' via data-l, verdict chip on its own line). Instead of an always-on '横にスクロールできます' line, scrollHints() adds a hint '表は横にスクロールできます →' at the top of each .scroll box and shows it only when that box's scrollWidth exceeds its clientWidth (re-checked on resize and after fonts load), so it never claims scrolling where none is needed. Extra (cheap): the 2x2 agreement tables are compacted at phone width, which removes a pre-existing 58 px page overflow at 320 px.",
+   "acceptanceCheck": "table-width-check.mjs at 390 px: gap-table tableW 316 <= parentClientW 352 (parentScroll 352, so no scrolling at all); fix-table 316 <= 352 (parentScroll 352); cam-table 316/316; 2x2 tables 311/311. Copy of render-check.mjs: B and C, light and dark, 390 and 1100 px: 0 errors, 0 page overflow, innerOverflow empty for B at 390 px (it listed TABLE/THEAD/TR before). report-check-round2.mjs: at 390 and 1100 px no .scroll box needs scrolling and no hint is shown; at 320 px the gap table (342 vs 282) and cam table (294 vs 246) still need scrolling and the hint is shown for exactly those boxes (hintShownExactlyWhenScrollNeeded true); page overflow 0 at 320/390/1100 in both themes.",
+   "evidence": "artifacts/review-loop-2026-10-22/round-2/report-check-round2.json (verdict allOk true), report-render-check-rerun.json, screenshots report-shots/r2-gap-table-{light,dark}-390.png and r2-fix-table-{light,dark}-390.png (looked at: all 6 columns visible, first column wraps over 2-4 lines; correction rows stacked with chips readable).",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html"]
+  },
+  {
+   "id": "R2-03",
+   "status": "fixed",
+   "whatChanged": "B, 縁石一致 k1 bullet: added 'L5は振動が2回あり、動画の音で確かめられた1回目（ロール方向だけの振動で、判定の確かさは中）を基準にしています。0.6秒後の2回目（上下Gとロールの両方、確かさは高、音では確かめられない）を基準にすると、3DCGは0.41秒早くなります。3DCGの接触は1回目の振動の間に収まり、2回目が始まる前に終わります。' The per-lap count sentence before it is unchanged. B, 根拠 correction: added 'k1のL5は振動が2回あり、音で確かめられた1回目（確かさ中）を基準にしている。0.6秒後の2回目（確かさ高）を基準にすると3DCGは0.41秒早く、遅れるのは6周中4周、6周の中央値は約0.16秒になる。' B, conclusion bullet 3: added '振動が2回あったL5は1回目で数えています' so the '6周中5周' count there is qualified too. B chart: the two L5 k1 dots in the along-track and lateral strips now have distinct tooltips ('7/30 L5 コカ・コーラ（振動1回目・確かさ中）' -6.92 m and '（振動2回目・確かさ高）' +13.88 m), built from D.contacts conf, so the n 20 / n 27 duplicates are explained where a reader sees them. C: NOTE_MAP k1 entry extended with 'L5は振動が2回あり（このページでは別々のカード）、周ごとの数え方は動画の音で確かめられた1回目（確かさ中）が基準です。0.6秒後の2回目（確かさ高）を基準にすると、3DCGは0.41秒早くなります。' and the page rebuilt.",
+   "partialRejection": "I did not use the reviewer's clause '3DCGの接触はこの2回の間に入ります'. The first burst runs 33.061-33.646 s and the 3DCG contact 33.265-33.491 s lies entirely inside it and ends before the second burst starts at 33.670 s; 'between the two' is only true of the two onsets and reads as if the 3DCG contact fell in a quiet gap. B says instead that the 3DCG contact sits inside the first burst and ends before the second.",
+   "acceptanceCheck": "report-check-round2.mjs text checks (light 1100 px, innerText): k1BulletMentionsTwoBursts, k1BulletMentions041, k1BulletPerLapCountUnchanged (exact old sentence still present), basisMentionsTwoBursts, conclusionMentionsL5 all true; l5TooltipsDistinct true (two different tooltip texts). C: grep finds the new clause and '0.41秒早くなります' 7 times each (the 7 k1 contact cards). A diff of the rebuilt C against its backup shows only the 7 k1 notes and the build timestamp. qa_page.mjs: status passed, failures [], images 531/531, lazy 424, console errors 0.",
+   "evidence": "report-k1-l5-check.json (recomputed from event_table.json): burst1 onset 33.061 / offset 33.646, confidence medium, channels [RR], video confirmed (audio high), dtFirst +0.204; burst2 onset 33.670, confidence high, channels [VA, RR], not video-confirmed (audio low), flag onsetBoundedByPreviousContact, dtFirst -0.405; second minus first onset 0.609 s; 3DCG contact 33.265-33.491 inside burst 1 and ends before burst 2; six-lap median 0.215 s (first burst) vs 0.156 s with the second burst, late laps 5 vs 4. VA = vertical acceleration, RR = roll rate per T1-logger-events/build_logger_events.py.",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html", "artifacts/event-comparison-2026-10-22/scripts/build_page.py", "docs/fuji-event-comparison-2026-10-22.html"]
+  },
+  {
+   "id": "R2-04",
+   "status": "fixed",
+   "whatChanged": "B, cam-table note now reads: '前後の＋は「3DCGが先にいる」、時刻の＋は「3DCGでは、縁石の先端が画面の同じ高さ（276行目）に来るのが遅い」です。遅く来るのは3DCGの車が後ろにいるためなので、前後と時刻は符号が逆になります。'",
+   "acceptanceCheck": "report-check-round2.mjs camNoteHasTimeSign true. Sign checked against event_table signConventions: dt = t_CG(event) - t_truth(event), positive = 3DCG shows the event later; dS = -dt*v, positive = 3DCG ahead. D.cam f*h 590: dt +0.117 / dS -3.27, consistent with the sentence.",
+   "evidence": "report-check-round2.json text.camNoteHasTimeSign; screenshot report-shots/r2-cam-card-light-390.png.",
+   "filesChanged": ["docs/fuji-event-truth-evaluation-2026-10-22.html"]
+  }
+ ],
+ "checksRun": [
+  "node artifacts/review-loop-2026-10-22/round-2/table-width-check.mjs (reviewer's script, before and after)",
+  "node artifacts/review-loop-2026-10-22/round-2/report-render-check-rerun.mjs (copy of the reviewer's render-check.mjs, output renamed)",
+  "node artifacts/review-loop-2026-10-22/round-2/report-check-round2.mjs -> report-check-round2.json (allOk true)",
+  "node artifacts/review-loop-2026-10-22/round-2/report-overflow320.mjs (current vs backup at 320 px)",
+  "python -I artifacts/review-loop-2026-10-22/round-2/report-k1-l5-check.py -> report-k1-l5-check.json",
+  "pipeline/.venv-sr python -I artifacts/event-comparison-2026-10-22/scripts/build_page.py; node artifacts/event-comparison-2026-10-22/scripts/qa_page.mjs (passed)",
+  "grep of B: no personal absolute paths, no media paths, no img/video/audio/data:image; only external URLs are the existing Google Fonts links",
+  "cmp of the embedded D block against the pre-round-2 backup: identical",
+  "git status: the tracked-file modifications listed are the ones present at session start; none were touched"
+ ],
+ "headlineNumbersChanged": "none",
+ "unresolved": [
+  "At 320 px the gap table and cam table still need sideways scrolling; the hint is shown there. 390 px and wider fit without scrolling.",
+  "The orchestrator still has to republish B to the existing Artifact."
+ ]
+}

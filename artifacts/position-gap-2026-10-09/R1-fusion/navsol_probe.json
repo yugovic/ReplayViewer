@@ -1,0 +1,1843 @@
+{
+ "script": "navsol_probe.py",
+ "kind": "measurement on local XRK (no video)",
+ "sessions": {
+  "fuji_aim_01": {
+   "race": "fuji_aim_01",
+   "records": 7922,
+   "rejectedHeaderCandidates": 0,
+   "libxrkGpsRecords": 7922,
+   "clock": {
+    "loggerVsGpsSlopePpm": -5.162537064506978e-08,
+    "residualStdMs": 6.743708998741585e-05,
+    "residualP99AbsMs": 9.539446409689845e-05,
+    "residualMaxAbsMs": 9.539655820844928e-05,
+    "gpsEpochStepMsCounts": {
+     "100.0": 7921
+    },
+    "loggerStepMsCounts(top)": {
+     "100.0": 7921
+    },
+    "note": "logger timecode = a + b*GPS time fitted over the session; residual = stamping jitter/drift. Absolute offset is arbitrary (logger clock epoch)."
+   },
+   "libxrkTimeOffsetMs": 24558.0,
+   "positionVelocityLag": {
+    "scan": {
+     "all": {
+      "n": 7805,
+      "bestTauS": 0.09,
+      "rmsAtTau0M": 0.0917169005759023,
+      "rmsAtBestM": 0.07593801860955128,
+      "alongBestTauS": 0.09,
+      "crossBestTauS": 0.09
+     },
+     "straight(|course rate|<3deg/s)": {
+      "n": 2902,
+      "bestTauS": 0.09,
+      "rmsAtTau0M": 0.08562762135421399,
+      "rmsAtBestM": 0.08136466234777018,
+      "alongBestTauS": 0.09,
+      "crossBestTauS": 0.09
+     },
+     "turning(|course rate|>15deg/s)": {
+      "n": 2077,
+      "bestTauS": 0.09,
+      "rmsAtTau0M": 0.0864995111141624,
+      "rmsAtBestM": 0.039371231611578635,
+      "alongBestTauS": 0.1,
+      "crossBestTauS": 0.09
+     }
+    },
+    "tauStarS": 0.09,
+    "note": "tau>0: the motion between epochs k and k+1 is best matched by the Doppler velocity reported tau LATER, i.e. the Doppler velocity stream LAGS the position stream by ~tau. navsol_yaw_lag.py (gyro cross-correlation) shows the positions are the stream aligned with the gyro (within ~+-0.05 s incl. sideslip dynamics)."
+   },
+   "raw_tau0": {
+    "tauS": 0.0,
+    "incrementResidual": {
+     "epochs": 7805,
+     "alongRmsM": 0.038386543295263593,
+     "crossRmsM": 0.08329743780627831,
+     "alongP99AbsM": 0.09999045867286799,
+     "crossP99AbsM": 0.1512653697787173,
+     "crossMaxAbsM": 1.8023778967055692
+    },
+    "discrepancyStructureFunction": {
+     "0.5": {
+      "horizRmsM": 0.41448947772440425,
+      "crossRmsM": 0.37893541402287473,
+      "crossP95AbsM": 0.46043240445201017,
+      "n": 7797
+     },
+     "1": {
+      "horizRmsM": 0.7387705256756959,
+      "crossRmsM": 0.6729894532536115,
+      "crossP95AbsM": 0.8996299598430934,
+      "n": 7792
+     },
+     "2": {
+      "horizRmsM": 1.3473335302905287,
+      "crossRmsM": 1.2147879830095627,
+      "crossP95AbsM": 1.7234784695837453,
+      "n": 7782
+     },
+     "5": {
+      "horizRmsM": 2.8480348351969025,
+      "crossRmsM": 2.376651269556334,
+      "crossP95AbsM": 3.2476753010419244,
+      "n": 7752
+     },
+     "10": {
+      "horizRmsM": 4.403056508366629,
+      "crossRmsM": 3.291078470747322,
+      "crossP95AbsM": 4.379355394059526,
+      "n": 7702
+     },
+     "20": {
+      "horizRmsM": 5.599788107309346,
+      "crossRmsM": 4.0034592036546774,
+      "crossP95AbsM": 4.835661172340502,
+      "n": 7602
+     },
+     "30": {
+      "horizRmsM": 6.233361767239174,
+      "crossRmsM": 4.269449196949474,
+      "crossP95AbsM": 4.523156172587917,
+      "n": 7502
+     },
+     "60": {
+      "horizRmsM": 6.952417910521676,
+      "crossRmsM": 3.4845377694620754,
+      "crossP95AbsM": 4.47799808137702,
+      "n": 7202
+     }
+    },
+    "perLap": [
+     {
+      "lap": 1,
+      "lapTimeS": 144.556,
+      "epochs": 1446,
+      "crossHp10sRmsM": 0.4157182575244199,
+      "crossHp10sMaxAbsM": 1.2546330946750495,
+      "crossHp4sRmsM": 0.11741155105350552,
+      "crossHp4sMaxAbsM": 0.491411199583034,
+      "topCrossExcursions": [
+       {
+        "stationM": 1545.8,
+        "crossHp10sM": 1.255
+       },
+       {
+        "stationM": 2988.2,
+        "crossHp10sM": -1.173
+       },
+       {
+        "stationM": 2075.9,
+        "crossHp10sM": -1.045
+       }
+      ],
+      "pAccM": {
+       "median": 0.92,
+       "max": 1.08
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.27
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.57,
+       "max": 1.9100000000000001
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.40060987015790117,
+        "crossHp10sMaxAbsM": 0.9152404376525578,
+        "pAccMedianM": 0.81,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.06952715324075229,
+        "crossHp10sMaxAbsM": 0.19888099359966055,
+        "pAccMedianM": 0.88,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.06025930447749282,
+        "crossHp10sMaxAbsM": 0.1642544300695538,
+        "pAccMedianM": 0.9500000000000001,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.1306330243085821,
+       "maxAbsM": 0.5972294312247199,
+       "atStationM": 2951.0,
+       "band3250_3900": {
+        "rmsM": 0.14270636805960343,
+        "maxAbsM": 0.39163502014192675
+       }
+      }
+     },
+     {
+      "lap": 2,
+      "lapTimeS": 144.635,
+      "epochs": 1446,
+      "crossHp10sRmsM": 0.4170573283069149,
+      "crossHp10sMaxAbsM": 1.2150337074426225,
+      "crossHp4sRmsM": 0.1171118002348443,
+      "crossHp4sMaxAbsM": 0.4482580363782221,
+      "topCrossExcursions": [
+       {
+        "stationM": 1539.3,
+        "crossHp10sM": 1.215
+       },
+       {
+        "stationM": 2022.6,
+        "crossHp10sM": -1.128
+       },
+       {
+        "stationM": 3081.5,
+        "crossHp10sM": 1.019
+       }
+      ],
+      "pAccM": {
+       "median": 0.84,
+       "max": 1.07
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.34
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.56,
+       "max": 1.8900000000000001
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.4256973862024613,
+        "crossHp10sMaxAbsM": 0.9941097563438392,
+        "pAccMedianM": 0.8200000000000001,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.09304570449989438,
+        "crossHp10sMaxAbsM": 0.3499011888410289,
+        "pAccMedianM": 0.9400000000000001,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.05733494274568888,
+        "crossHp10sMaxAbsM": 0.10148464862351209,
+        "pAccMedianM": 1.01,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.09616621798106371,
+       "maxAbsM": 0.47999933635923714,
+       "atStationM": 3045.0,
+       "band3250_3900": {
+        "rmsM": 0.0899432659497626,
+        "maxAbsM": 0.1875009712612115
+       }
+      }
+     },
+     {
+      "lap": 3,
+      "lapTimeS": 141.385,
+      "epochs": 1414,
+      "crossHp10sRmsM": 0.45146104237412876,
+      "crossHp10sMaxAbsM": 1.1694413250399553,
+      "crossHp4sRmsM": 0.12152047303799102,
+      "crossHp4sMaxAbsM": 0.42928040999900063,
+      "topCrossExcursions": [
+       {
+        "stationM": 2018.8,
+        "crossHp10sM": -1.169
+       },
+       {
+        "stationM": 2978.6,
+        "crossHp10sM": -1.134
+       },
+       {
+        "stationM": 3337.5,
+        "crossHp10sM": -1.115
+       }
+      ],
+      "pAccM": {
+       "median": 0.88,
+       "max": 1.1
+      },
+      "sAccMps": {
+       "median": 0.16,
+       "max": 0.32
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.67,
+       "max": 1.83
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.4669733214514024,
+        "crossHp10sMaxAbsM": 1.1149536394767439,
+        "pAccMedianM": 0.87,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.0984205130322726,
+        "crossHp10sMaxAbsM": 0.33574113496479474,
+        "pAccMedianM": 0.9,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.0857471120986194,
+        "crossHp10sMaxAbsM": 0.20486451521672178,
+        "pAccMedianM": 1.08,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.1111610499821587,
+       "maxAbsM": 0.4899666088196253,
+       "atStationM": 3044.0,
+       "band3250_3900": {
+        "rmsM": 0.10909756879496509,
+        "maxAbsM": 0.257172302439721
+       }
+      }
+     },
+     {
+      "lap": 4,
+      "lapTimeS": 164.717,
+      "epochs": 1647,
+      "crossHp10sRmsM": 0.3668500879274393,
+      "crossHp10sMaxAbsM": 0.9368483243635588,
+      "crossHp4sRmsM": 0.09989737294584301,
+      "crossHp4sMaxAbsM": 0.2913901481817128,
+      "topCrossExcursions": [
+       {
+        "stationM": 2017.1,
+        "crossHp10sM": -0.937
+       },
+       {
+        "stationM": 1521.6,
+        "crossHp10sM": 0.925
+       },
+       {
+        "stationM": 2981.4,
+        "crossHp10sM": -0.922
+       }
+      ],
+      "pAccM": {
+       "median": 0.8300000000000001,
+       "max": 1.11
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.46
+      },
+      "numSV": {
+       "min": 10,
+       "median": 12.0
+      },
+      "pDOP": {
+       "median": 1.6600000000000001,
+       "max": 2.13
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.38894901805593524,
+        "crossHp10sMaxAbsM": 0.8662209967054654,
+        "pAccMedianM": 0.77,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.130531294063775,
+        "crossHp10sMaxAbsM": 0.42737222025586363,
+        "pAccMedianM": 0.91,
+        "numSVmin": 11
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.049581773063004424,
+        "crossHp10sMaxAbsM": 0.12968518977721516,
+        "pAccMedianM": 0.98,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.1344217227333642,
+       "maxAbsM": 0.5773430324990922,
+       "atStationM": 2965.0,
+       "band3250_3900": {
+        "rmsM": 0.12423475129329367,
+        "maxAbsM": 0.3662546883812154
+       }
+      }
+     }
+    ]
+   },
+   "lagCompensated": {
+    "tauS": 0.09,
+    "incrementResidual": {
+     "epochs": 7805,
+     "alongRmsM": 0.03126921511078745,
+     "crossRmsM": 0.06920129230512866,
+     "alongP99AbsM": 0.09622923820210247,
+     "crossP99AbsM": 0.1432974879213827,
+     "crossMaxAbsM": 1.8078177194156249
+    },
+    "discrepancyStructureFunction": {
+     "0.5": {
+      "horizRmsM": 0.32828366283000365,
+      "crossRmsM": 0.30055404572654826,
+      "crossP95AbsM": 0.14169351577649947,
+      "n": 7797
+     },
+     "1": {
+      "horizRmsM": 0.5440306893932082,
+      "crossRmsM": 0.4951882107063421,
+      "crossP95AbsM": 0.2583668054343679,
+      "n": 7792
+     },
+     "2": {
+      "horizRmsM": 0.9352962639041608,
+      "crossRmsM": 0.8497859054468513,
+      "crossP95AbsM": 0.47560226206041006,
+      "n": 7782
+     },
+     "5": {
+      "horizRmsM": 1.8878029563801988,
+      "crossRmsM": 1.6946280066296693,
+      "crossP95AbsM": 1.1208309496798896,
+      "n": 7752
+     },
+     "10": {
+      "horizRmsM": 2.994591989274797,
+      "crossRmsM": 2.6298071304071287,
+      "crossP95AbsM": 1.7049929201546126,
+      "n": 7702
+     },
+     "20": {
+      "horizRmsM": 4.122414741958434,
+      "crossRmsM": 3.4645227495266964,
+      "crossP95AbsM": 1.8185072028283218,
+      "n": 7602
+     },
+     "30": {
+      "horizRmsM": 4.667077364653752,
+      "crossRmsM": 3.7187029513668657,
+      "crossP95AbsM": 1.9122396281943557,
+      "n": 7502
+     },
+     "60": {
+      "horizRmsM": 4.882483120266706,
+      "crossRmsM": 2.6588889260093937,
+      "crossP95AbsM": 2.7806694116887285,
+      "n": 7202
+     }
+    },
+    "perLap": [
+     {
+      "lap": 1,
+      "lapTimeS": 144.556,
+      "epochs": 1446,
+      "crossHp10sRmsM": 0.13792833039734334,
+      "crossHp10sMaxAbsM": 0.3672631216386276,
+      "crossHp4sRmsM": 0.04500254532739627,
+      "crossHp4sMaxAbsM": 0.1464814382048502,
+      "topCrossExcursions": [
+       {
+        "stationM": 3605.9,
+        "crossHp10sM": -0.367
+       },
+       {
+        "stationM": 1064.1,
+        "crossHp10sM": -0.335
+       },
+       {
+        "stationM": 2075.9,
+        "crossHp10sM": -0.309
+       }
+      ],
+      "pAccM": {
+       "median": 0.92,
+       "max": 1.08
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.27
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.57,
+       "max": 1.9100000000000001
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.19418725010603868,
+        "crossHp10sMaxAbsM": 0.3672631216386276,
+        "pAccMedianM": 0.81,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.05484097752221159,
+        "crossHp10sMaxAbsM": 0.1543456553654466,
+        "pAccMedianM": 0.88,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.059895031677493375,
+        "crossHp10sMaxAbsM": 0.16286273977271176,
+        "pAccMedianM": 0.9500000000000001,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.08094168219679765,
+       "maxAbsM": 0.2449640398558897,
+       "atStationM": 965.0,
+       "band3250_3900": {
+        "rmsM": 0.10139185225319737,
+        "maxAbsM": 0.20888978046288817
+       }
+      }
+     },
+     {
+      "lap": 2,
+      "lapTimeS": 144.635,
+      "epochs": 1446,
+      "crossHp10sRmsM": 0.14075361625083846,
+      "crossHp10sMaxAbsM": 0.44597387618780787,
+      "crossHp4sRmsM": 0.0502121602710937,
+      "crossHp4sMaxAbsM": 0.23061504571297395,
+      "topCrossExcursions": [
+       {
+        "stationM": 868.9,
+        "crossHp10sM": -0.446
+       },
+       {
+        "stationM": 1749.5,
+        "crossHp10sM": -0.349
+       },
+       {
+        "stationM": 3535.3,
+        "crossHp10sM": 0.348
+       }
+      ],
+      "pAccM": {
+       "median": 0.84,
+       "max": 1.07
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.34
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.56,
+       "max": 1.8900000000000001
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.17360878913376807,
+        "crossHp10sMaxAbsM": 0.34770042179125116,
+        "pAccMedianM": 0.8200000000000001,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.05646734265158474,
+        "crossHp10sMaxAbsM": 0.13362070456610006,
+        "pAccMedianM": 0.9400000000000001,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.06618234601929059,
+        "crossHp10sMaxAbsM": 0.11922201929687071,
+        "pAccMedianM": 1.01,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.07094641009024666,
+       "maxAbsM": 0.2068449244114907,
+       "atStationM": 1857.0,
+       "band3250_3900": {
+        "rmsM": 0.0749040644375449,
+        "maxAbsM": 0.18053733473388148
+       }
+      }
+     },
+     {
+      "lap": 3,
+      "lapTimeS": 141.385,
+      "epochs": 1414,
+      "crossHp10sRmsM": 0.12838205705734032,
+      "crossHp10sMaxAbsM": 0.38090667419421037,
+      "crossHp4sRmsM": 0.043135603908818876,
+      "crossHp4sMaxAbsM": 0.15036971611066843,
+      "topCrossExcursions": [
+       {
+        "stationM": 2723.6,
+        "crossHp10sM": -0.381
+       },
+       {
+        "stationM": 876.8,
+        "crossHp10sM": -0.348
+       },
+       {
+        "stationM": 3536.0,
+        "crossHp10sM": 0.299
+       }
+      ],
+      "pAccM": {
+       "median": 0.88,
+       "max": 1.1
+      },
+      "sAccMps": {
+       "median": 0.16,
+       "max": 0.32
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.67,
+       "max": 1.83
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.13102499971725992,
+        "crossHp10sMaxAbsM": 0.2985610763501309,
+        "pAccMedianM": 0.87,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.027751246470511425,
+        "crossHp10sMaxAbsM": 0.061138322659194694,
+        "pAccMedianM": 0.9,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.07747007768665548,
+        "crossHp10sMaxAbsM": 0.1479482540947647,
+        "pAccMedianM": 1.08,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.07112562568172426,
+       "maxAbsM": 0.2892581913747062,
+       "atStationM": 1864.0,
+       "band3250_3900": {
+        "rmsM": 0.08376239408055476,
+        "maxAbsM": 0.19224822421860566
+       }
+      }
+     },
+     {
+      "lap": 4,
+      "lapTimeS": 164.717,
+      "epochs": 1647,
+      "crossHp10sRmsM": 0.12405577596006205,
+      "crossHp10sMaxAbsM": 0.3751869830073751,
+      "crossHp4sRmsM": 0.044921922837293855,
+      "crossHp4sMaxAbsM": 0.1847572347528521,
+      "topCrossExcursions": [
+       {
+        "stationM": 2743.5,
+        "crossHp10sM": -0.375
+       },
+       {
+        "stationM": 1075.7,
+        "crossHp10sM": -0.359
+       },
+       {
+        "stationM": 1750.5,
+        "crossHp10sM": -0.312
+       }
+      ],
+      "pAccM": {
+       "median": 0.8300000000000001,
+       "max": 1.11
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.46
+      },
+      "numSV": {
+       "min": 10,
+       "median": 12.0
+      },
+      "pDOP": {
+       "median": 1.6600000000000001,
+       "max": 2.13
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.12569222324912316,
+        "crossHp10sMaxAbsM": 0.255799648031707,
+        "pAccMedianM": 0.77,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.042993973623611376,
+        "crossHp10sMaxAbsM": 0.09912590828030199,
+        "pAccMedianM": 0.91,
+        "numSVmin": 11
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.03910346134044569,
+        "crossHp10sMaxAbsM": 0.07976258751307451,
+        "pAccMedianM": 0.98,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.06753879687637288,
+       "maxAbsM": 0.3091283296700711,
+       "atStationM": 1846.0,
+       "band3250_3900": {
+        "rmsM": 0.06951880847562125,
+        "maxAbsM": 0.22375899769289745
+       }
+      }
+     }
+    ]
+   },
+   "diffSolnTransitions": {
+    "count": 5,
+    "offEpochs": 1395,
+    "first": [
+     {
+      "tLibS": 139.5,
+      "lap": 0,
+      "to": "on",
+      "speedMps": 27.7,
+      "incrResidualAtTransitionM": 0.067
+     },
+     {
+      "tLibS": 141.3,
+      "lap": 0,
+      "to": "off",
+      "speedMps": 24.3,
+      "incrResidualAtTransitionM": 0.022
+     },
+     {
+      "tLibS": 141.5,
+      "lap": 0,
+      "to": "on",
+      "speedMps": 24.0,
+      "incrResidualAtTransitionM": 0.055
+     },
+     {
+      "tLibS": 141.6,
+      "lap": 0,
+      "to": "off",
+      "speedMps": 23.6,
+      "incrResidualAtTransitionM": 0.022
+     },
+     {
+      "tLibS": 141.7,
+      "lap": 0,
+      "to": "on",
+      "speedMps": 23.7,
+      "incrResidualAtTransitionM": 0.054
+     }
+    ],
+    "note": "u-blox NAV-SOL flags bit1 = DiffSoln (differential corrections, e.g. SBAS, applied)."
+   },
+   "receiverQualitySession": {
+    "pAccM": {
+     "p5": 0.76,
+     "median": 0.9,
+     "p95": 1.28
+    },
+    "sAccMps": {
+     "median": 0.15,
+     "p95": 0.21
+    },
+    "numSV": {
+     "min": 7,
+     "median": 13.0
+    },
+    "fixTypes": {
+     "3": 7922
+    },
+    "flagsValues": {
+     "221": 1395,
+     "223": 6527
+    }
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "race": "fuji_aim_2020_07_30",
+   "records": 9741,
+   "rejectedHeaderCandidates": 0,
+   "libxrkGpsRecords": 9741,
+   "clock": {
+    "loggerVsGpsSlopePpm": 3.441691376337985e-08,
+    "residualStdMs": 6.743316236295072e-05,
+    "residualP99AbsMs": 9.538916856399737e-05,
+    "residualMaxAbsMs": 9.539098755340092e-05,
+    "gpsEpochStepMsCounts": {
+     "100.0": 9740
+    },
+    "loggerStepMsCounts(top)": {
+     "100.0": 9740
+    },
+    "note": "logger timecode = a + b*GPS time fitted over the session; residual = stamping jitter/drift. Absolute offset is arbitrary (logger clock epoch)."
+   },
+   "libxrkTimeOffsetMs": 2473920.0,
+   "positionVelocityLag": {
+    "scan": {
+     "all": {
+      "n": 9639,
+      "bestTauS": 0.1,
+      "rmsAtTau0M": 0.08140880446786647,
+      "rmsAtBestM": 0.04419949340533851,
+      "alongBestTauS": 0.09,
+      "crossBestTauS": 0.1
+     },
+     "straight(|course rate|<3deg/s)": {
+      "n": 3518,
+      "bestTauS": 0.09,
+      "rmsAtTau0M": 0.06067439689451637,
+      "rmsAtBestM": 0.052385148272367045,
+      "alongBestTauS": 0.1,
+      "crossBestTauS": 0.07
+     },
+     "turning(|course rate|>15deg/s)": {
+      "n": 3188,
+      "bestTauS": 0.09,
+      "rmsAtTau0M": 0.1062450648146813,
+      "rmsAtBestM": 0.03988982530012622,
+      "alongBestTauS": 0.1,
+      "crossBestTauS": 0.09
+     }
+    },
+    "tauStarS": 0.1,
+    "note": "tau>0: the motion between epochs k and k+1 is best matched by the Doppler velocity reported tau LATER, i.e. the Doppler velocity stream LAGS the position stream by ~tau. navsol_yaw_lag.py (gyro cross-correlation) shows the positions are the stream aligned with the gyro (within ~+-0.05 s incl. sideslip dynamics)."
+   },
+   "raw_tau0": {
+    "tauS": 0.0,
+    "incrementResidual": {
+     "epochs": 9639,
+     "alongRmsM": 0.03361194794787871,
+     "crossRmsM": 0.07414600731014724,
+     "alongP99AbsM": 0.11439174971598366,
+     "crossP99AbsM": 0.23587536020940797,
+     "crossMaxAbsM": 0.5101491189927821
+    },
+    "discrepancyStructureFunction": {
+     "0.5": {
+      "horizRmsM": 0.3972559815371925,
+      "crossRmsM": 0.3636820949366411,
+      "crossP95AbsM": 0.6140982124397893,
+      "n": 9635
+     },
+     "1": {
+      "horizRmsM": 0.7802062368146484,
+      "crossRmsM": 0.7113221569890378,
+      "crossP95AbsM": 1.187585957143044,
+      "n": 9630
+     },
+     "2": {
+      "horizRmsM": 1.4964194418416132,
+      "crossRmsM": 1.3311392087046237,
+      "crossP95AbsM": 2.2123084296666105,
+      "n": 9620
+     },
+     "5": {
+      "horizRmsM": 3.2107727126380086,
+      "crossRmsM": 2.5046758918544407,
+      "crossP95AbsM": 4.337554424137809,
+      "n": 9590
+     },
+     "10": {
+      "horizRmsM": 4.757889502559127,
+      "crossRmsM": 3.1102040045899506,
+      "crossP95AbsM": 5.062974007050673,
+      "n": 9540
+     },
+     "20": {
+      "horizRmsM": 6.0863442740294715,
+      "crossRmsM": 4.261221645344051,
+      "crossP95AbsM": 4.427382866265649,
+      "n": 9440
+     },
+     "30": {
+      "horizRmsM": 6.994746910006675,
+      "crossRmsM": 4.50961964631297,
+      "crossP95AbsM": 4.562795092147384,
+      "n": 9340
+     },
+     "60": {
+      "horizRmsM": 7.771858396408473,
+      "crossRmsM": 3.598617370568991,
+      "crossP95AbsM": 4.418095914164561,
+      "n": 9040
+     }
+    },
+    "perLap": [
+     {
+      "lap": 1,
+      "lapTimeS": 133.635,
+      "epochs": 1337,
+      "crossHp10sRmsM": 0.5214986263012414,
+      "crossHp10sMaxAbsM": 1.559092583636401,
+      "crossHp4sRmsM": 0.15044824693818482,
+      "crossHp4sMaxAbsM": 0.6402733427950554,
+      "topCrossExcursions": [
+       {
+        "stationM": 1533.0,
+        "crossHp10sM": 1.559
+       },
+       {
+        "stationM": 2005.8,
+        "crossHp10sM": -1.478
+       },
+       {
+        "stationM": 2975.7,
+        "crossHp10sM": -1.373
+       }
+      ],
+      "pAccM": {
+       "median": 0.8300000000000001,
+       "max": 0.92
+      },
+      "sAccMps": {
+       "median": 0.14,
+       "max": 0.29
+      },
+      "numSV": {
+       "min": 11,
+       "median": 14.0
+      },
+      "pDOP": {
+       "median": 1.59,
+       "max": 2.23
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.46688229994989117,
+        "crossHp10sMaxAbsM": 1.0611749720530284,
+        "pAccMedianM": 0.79,
+        "numSVmin": 13
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.12313086566454481,
+        "crossHp10sMaxAbsM": 0.44483242374806037,
+        "pAccMedianM": 0.71,
+        "numSVmin": 14
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.04012069502526992,
+        "crossHp10sMaxAbsM": 0.11389055083186264,
+        "pAccMedianM": 0.84,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.09107348566947483,
+       "maxAbsM": 0.3222384360152224,
+       "atStationM": 3582.0,
+       "band3250_3900": {
+        "rmsM": 0.1413660631801274,
+        "maxAbsM": 0.3222384360152224
+       }
+      }
+     },
+     {
+      "lap": 2,
+      "lapTimeS": 131.742,
+      "epochs": 1317,
+      "crossHp10sRmsM": 0.5233302608421957,
+      "crossHp10sMaxAbsM": 1.585163880377834,
+      "crossHp4sRmsM": 0.15280765407930427,
+      "crossHp4sMaxAbsM": 0.6475879748574934,
+      "topCrossExcursions": [
+       {
+        "stationM": 1555.5,
+        "crossHp10sM": 1.585
+       },
+       {
+        "stationM": 2984.1,
+        "crossHp10sM": -1.315
+       },
+       {
+        "stationM": 3318.6,
+        "crossHp10sM": -1.265
+       }
+      ],
+      "pAccM": {
+       "median": 0.8300000000000001,
+       "max": 0.99
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.3
+      },
+      "numSV": {
+       "min": 12,
+       "median": 14.0
+      },
+      "pDOP": {
+       "median": 1.58,
+       "max": 2.0300000000000002
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.5731264916160782,
+        "crossHp10sMaxAbsM": 1.2647677849709749,
+        "pAccMedianM": 0.86,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.07150154066980342,
+        "crossHp10sMaxAbsM": 0.2668818868947661,
+        "pAccMedianM": 0.93,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.09462671391560021,
+        "crossHp10sMaxAbsM": 0.17956885630745162,
+        "pAccMedianM": 0.84,
+        "numSVmin": 12
+       }
+      },
+      "knownAnomaly": {
+       "lap": 2,
+       "station": [
+        3250.0,
+        3900.0
+       ]
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.10015967266555827,
+       "maxAbsM": 0.413368613374137,
+       "atStationM": 2023.0,
+       "band3250_3900": {
+        "rmsM": 0.09882558110963956,
+        "maxAbsM": 0.27316722903369695
+       }
+      }
+     },
+     {
+      "lap": 3,
+      "lapTimeS": 131.783,
+      "epochs": 1318,
+      "crossHp10sRmsM": 0.5226007010849254,
+      "crossHp10sMaxAbsM": 1.5714326184760063,
+      "crossHp4sRmsM": 0.14222132374355947,
+      "crossHp4sMaxAbsM": 0.5993086588360793,
+      "topCrossExcursions": [
+       {
+        "stationM": 2022.1,
+        "crossHp10sM": -1.571
+       },
+       {
+        "stationM": 1552.6,
+        "crossHp10sM": 1.529
+       },
+       {
+        "stationM": 2970.2,
+        "crossHp10sM": -1.369
+       }
+      ],
+      "pAccM": {
+       "median": 0.85,
+       "max": 1.03
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.41000000000000003
+      },
+      "numSV": {
+       "min": 12,
+       "median": 14.0
+      },
+      "pDOP": {
+       "median": 1.56,
+       "max": 1.82
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.4999943235857405,
+        "crossHp10sMaxAbsM": 1.1144388107435723,
+        "pAccMedianM": 0.79,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.11219177442398547,
+        "crossHp10sMaxAbsM": 0.3928890698262084,
+        "pAccMedianM": 0.93,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.07765195429322422,
+        "crossHp10sMaxAbsM": 0.15167824925178744,
+        "pAccMedianM": 0.92,
+        "numSVmin": 12
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.09878290436969969,
+       "maxAbsM": 0.542245608893071,
+       "atStationM": 3020.0,
+       "band3250_3900": {
+        "rmsM": 0.11969035039184814,
+        "maxAbsM": 0.28776542727260324
+       }
+      }
+     },
+     {
+      "lap": 4,
+      "lapTimeS": 130.86,
+      "epochs": 1308,
+      "crossHp10sRmsM": 0.5260258457847309,
+      "crossHp10sMaxAbsM": 1.638185416689185,
+      "crossHp4sRmsM": 0.15896944599332472,
+      "crossHp4sMaxAbsM": 0.6422534820932964,
+      "topCrossExcursions": [
+       {
+        "stationM": 1548.5,
+        "crossHp10sM": 1.638
+       },
+       {
+        "stationM": 2008.0,
+        "crossHp10sM": -1.364
+       },
+       {
+        "stationM": 2978.1,
+        "crossHp10sM": -1.279
+       }
+      ],
+      "pAccM": {
+       "median": 0.81,
+       "max": 1.03
+      },
+      "sAccMps": {
+       "median": 0.14,
+       "max": 0.24
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.55,
+       "max": 1.9100000000000001
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.5267219175891098,
+        "crossHp10sMaxAbsM": 1.245674495770992,
+        "pAccMedianM": 0.775,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.08197332778055831,
+        "crossHp10sMaxAbsM": 0.33536736964690067,
+        "pAccMedianM": 0.71,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.055048721458227715,
+        "crossHp10sMaxAbsM": 0.13371750818940273,
+        "pAccMedianM": 1.01,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.11015834119753233,
+       "maxAbsM": 0.3991455078677385,
+       "atStationM": 2251.0,
+       "band3250_3900": {
+        "rmsM": 0.08827124275707036,
+        "maxAbsM": 0.18612791403465762
+       }
+      }
+     },
+     {
+      "lap": 5,
+      "lapTimeS": 130.822,
+      "epochs": 1309,
+      "crossHp10sRmsM": 0.5471147625959388,
+      "crossHp10sMaxAbsM": 1.6994685454586953,
+      "crossHp4sRmsM": 0.16010865262933655,
+      "crossHp4sMaxAbsM": 0.7544878285816419,
+      "topCrossExcursions": [
+       {
+        "stationM": 1550.6,
+        "crossHp10sM": 1.699
+       },
+       {
+        "stationM": 2016.9,
+        "crossHp10sM": -1.668
+       },
+       {
+        "stationM": 2986.5,
+        "crossHp10sM": -1.482
+       }
+      ],
+      "pAccM": {
+       "median": 0.84,
+       "max": 0.9500000000000001
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.29
+      },
+      "numSV": {
+       "min": 10,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.6600000000000001,
+       "max": 2.02
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.5529563171996258,
+        "crossHp10sMaxAbsM": 1.192094393424972,
+        "pAccMedianM": 0.76,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.1252000671817293,
+        "crossHp10sMaxAbsM": 0.4480149117948794,
+        "pAccMedianM": 0.9,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.09933930253631396,
+        "crossHp10sMaxAbsM": 0.17744090000655144,
+        "pAccMedianM": 0.89,
+        "numSVmin": 10
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.09549641541971622,
+       "maxAbsM": 0.289526646561967,
+       "atStationM": 2898.0,
+       "band3250_3900": {
+        "rmsM": 0.09411250435622084,
+        "maxAbsM": 0.2184275538179516
+       }
+      }
+     },
+     {
+      "lap": 6,
+      "lapTimeS": 140.467,
+      "epochs": 1404,
+      "crossHp10sRmsM": 0.5383370966043922,
+      "crossHp10sMaxAbsM": 1.5809778140372859,
+      "crossHp4sRmsM": 0.15631922421895397,
+      "crossHp4sMaxAbsM": 0.6066757968223442,
+      "topCrossExcursions": [
+       {
+        "stationM": 1550.4,
+        "crossHp10sM": 1.581
+       },
+       {
+        "stationM": 2018.5,
+        "crossHp10sM": -1.574
+       },
+       {
+        "stationM": 2979.2,
+        "crossHp10sM": -1.359
+       }
+      ],
+      "pAccM": {
+       "median": 0.87,
+       "max": 1.0
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.27
+      },
+      "numSV": {
+       "min": 9,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.6600000000000001,
+       "max": 2.23
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.5991956148969176,
+        "crossHp10sMaxAbsM": 1.2870725425494287,
+        "pAccMedianM": 0.87,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.2310985637872379,
+        "crossHp10sMaxAbsM": 0.5881947487968997,
+        "pAccMedianM": 0.8200000000000001,
+        "numSVmin": 11
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.06623968777642068,
+        "crossHp10sMaxAbsM": 0.1580618311260587,
+        "pAccMedianM": 0.91,
+        "numSVmin": 12
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.11368387536957066,
+       "maxAbsM": 0.5577364601774133,
+       "atStationM": 4484.0,
+       "band3250_3900": {
+        "rmsM": 0.11628198703799028,
+        "maxAbsM": 0.3338229715648635
+       }
+      }
+     }
+    ]
+   },
+   "lagCompensated": {
+    "tauS": 0.1,
+    "incrementResidual": {
+     "epochs": 9639,
+     "alongRmsM": 0.020917325743034662,
+     "crossRmsM": 0.0389366241609149,
+     "alongP99AbsM": 0.08679848042543238,
+     "crossP99AbsM": 0.1845157985171525,
+     "crossMaxAbsM": 0.5114059793479211
+    },
+    "discrepancyStructureFunction": {
+     "0.5": {
+      "horizRmsM": 0.2080934405299967,
+      "crossRmsM": 0.18582708680818305,
+      "crossP95AbsM": 0.31184660546083065,
+      "n": 9635
+     },
+     "1": {
+      "horizRmsM": 0.4043660323922276,
+      "crossRmsM": 0.3616337513129146,
+      "crossP95AbsM": 0.6206503849432436,
+      "n": 9630
+     },
+     "2": {
+      "horizRmsM": 0.7683632745400918,
+      "crossRmsM": 0.6834429610851164,
+      "crossP95AbsM": 1.285091638003382,
+      "n": 9620
+     },
+     "5": {
+      "horizRmsM": 1.6887118790885138,
+      "crossRmsM": 1.4622337794347098,
+      "crossP95AbsM": 2.464734009629685,
+      "n": 9590
+     },
+     "10": {
+      "horizRmsM": 2.745942115785472,
+      "crossRmsM": 2.3181084337002344,
+      "crossP95AbsM": 2.7553431414796914,
+      "n": 9540
+     },
+     "20": {
+      "horizRmsM": 4.243355217141569,
+      "crossRmsM": 3.746860859657606,
+      "crossP95AbsM": 1.9736555777425,
+      "n": 9440
+     },
+     "30": {
+      "horizRmsM": 5.008565820376148,
+      "crossRmsM": 4.0216784003667225,
+      "crossP95AbsM": 1.982072961213227,
+      "n": 9340
+     },
+     "60": {
+      "horizRmsM": 5.176665563581606,
+      "crossRmsM": 2.9348487924926263,
+      "crossP95AbsM": 3.168142459288236,
+      "n": 9040
+     }
+    },
+    "perLap": [
+     {
+      "lap": 1,
+      "lapTimeS": 133.635,
+      "epochs": 1337,
+      "crossHp10sRmsM": 0.15340326928983572,
+      "crossHp10sMaxAbsM": 0.4545948205343018,
+      "crossHp4sRmsM": 0.05076623946252224,
+      "crossHp4sMaxAbsM": 0.1766890175491587,
+      "topCrossExcursions": [
+       {
+        "stationM": 3314.8,
+        "crossHp10sM": 0.455
+       },
+       {
+        "stationM": 3605.2,
+        "crossHp10sM": -0.44
+       },
+       {
+        "stationM": 1378.1,
+        "crossHp10sM": 0.431
+       }
+      ],
+      "pAccM": {
+       "median": 0.8300000000000001,
+       "max": 0.92
+      },
+      "sAccMps": {
+       "median": 0.14,
+       "max": 0.29
+      },
+      "numSV": {
+       "min": 11,
+       "median": 14.0
+      },
+      "pDOP": {
+       "median": 1.59,
+       "max": 2.23
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.20380115847154748,
+        "crossHp10sMaxAbsM": 0.4545948205343018,
+        "pAccMedianM": 0.79,
+        "numSVmin": 13
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.06893695334836619,
+        "crossHp10sMaxAbsM": 0.17553178983125037,
+        "pAccMedianM": 0.71,
+        "numSVmin": 14
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.04633373420483507,
+        "crossHp10sMaxAbsM": 0.08628060032892569,
+        "pAccMedianM": 0.84,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.07109294344697863,
+       "maxAbsM": 0.22461824584021678,
+       "atStationM": 1363.0,
+       "band3250_3900": {
+        "rmsM": 0.07616712275552147,
+        "maxAbsM": 0.17780258991168998
+       }
+      }
+     },
+     {
+      "lap": 2,
+      "lapTimeS": 131.742,
+      "epochs": 1317,
+      "crossHp10sRmsM": 0.1638961889904327,
+      "crossHp10sMaxAbsM": 0.4410255615219644,
+      "crossHp4sRmsM": 0.05394739874259472,
+      "crossHp4sMaxAbsM": 0.18243255110306184,
+      "topCrossExcursions": [
+       {
+        "stationM": 2932.8,
+        "crossHp10sM": 0.441
+       },
+       {
+        "stationM": 3324.4,
+        "crossHp10sM": 0.438
+       },
+       {
+        "stationM": 1053.0,
+        "crossHp10sM": -0.43
+       }
+      ],
+      "pAccM": {
+       "median": 0.8300000000000001,
+       "max": 0.99
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.3
+      },
+      "numSV": {
+       "min": 12,
+       "median": 14.0
+      },
+      "pDOP": {
+       "median": 1.58,
+       "max": 2.0300000000000002
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.1822148380872815,
+        "crossHp10sMaxAbsM": 0.4378828509369832,
+        "pAccMedianM": 0.86,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.06697524269841074,
+        "crossHp10sMaxAbsM": 0.16498435719570367,
+        "pAccMedianM": 0.93,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.09925656826696061,
+        "crossHp10sMaxAbsM": 0.1917404226636398,
+        "pAccMedianM": 0.84,
+        "numSVmin": 12
+       }
+      },
+      "knownAnomaly": {
+       "lap": 2,
+       "station": [
+        3250.0,
+        3900.0
+       ]
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.07615765151817412,
+       "maxAbsM": 0.23325543750837455,
+       "atStationM": 3660.0,
+       "band3250_3900": {
+        "rmsM": 0.09289557135825458,
+        "maxAbsM": 0.23325543750837455
+       }
+      }
+     },
+     {
+      "lap": 3,
+      "lapTimeS": 131.783,
+      "epochs": 1318,
+      "crossHp10sRmsM": 0.15247646767611392,
+      "crossHp10sMaxAbsM": 0.5511717380826578,
+      "crossHp4sRmsM": 0.05015414821404748,
+      "crossHp4sMaxAbsM": 0.16722368676545882,
+      "topCrossExcursions": [
+       {
+        "stationM": 3349.2,
+        "crossHp10sM": 0.551
+       },
+       {
+        "stationM": 2711.2,
+        "crossHp10sM": -0.425
+       },
+       {
+        "stationM": 3604.7,
+        "crossHp10sM": -0.382
+       }
+      ],
+      "pAccM": {
+       "median": 0.85,
+       "max": 1.03
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.41000000000000003
+      },
+      "numSV": {
+       "min": 12,
+       "median": 14.0
+      },
+      "pDOP": {
+       "median": 1.56,
+       "max": 1.82
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.23365273120308305,
+        "crossHp10sMaxAbsM": 0.5511717380826578,
+        "pAccMedianM": 0.79,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.05701862985972241,
+        "crossHp10sMaxAbsM": 0.14172320726000007,
+        "pAccMedianM": 0.93,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.0789532404457888,
+        "crossHp10sMaxAbsM": 0.14189983675078077,
+        "pAccMedianM": 0.92,
+        "numSVmin": 12
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.06981343669946384,
+       "maxAbsM": 0.23450643004639352,
+       "atStationM": 3556.0,
+       "band3250_3900": {
+        "rmsM": 0.08798213788314821,
+        "maxAbsM": 0.23450643004639352
+       }
+      }
+     },
+     {
+      "lap": 4,
+      "lapTimeS": 130.86,
+      "epochs": 1308,
+      "crossHp10sRmsM": 0.16645325852593826,
+      "crossHp10sMaxAbsM": 0.5038553365641236,
+      "crossHp4sRmsM": 0.054049483293145954,
+      "crossHp4sMaxAbsM": 0.17505784363763502,
+      "topCrossExcursions": [
+       {
+        "stationM": 3349.7,
+        "crossHp10sM": 0.504
+       },
+       {
+        "stationM": 2922.7,
+        "crossHp10sM": 0.446
+       },
+       {
+        "stationM": 2704.6,
+        "crossHp10sM": -0.395
+       }
+      ],
+      "pAccM": {
+       "median": 0.81,
+       "max": 1.03
+      },
+      "sAccMps": {
+       "median": 0.14,
+       "max": 0.24
+      },
+      "numSV": {
+       "min": 11,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.55,
+       "max": 1.9100000000000001
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.22499425425607728,
+        "crossHp10sMaxAbsM": 0.5038553365641236,
+        "pAccMedianM": 0.775,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.06852662598049013,
+        "crossHp10sMaxAbsM": 0.2322058321820717,
+        "pAccMedianM": 0.71,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.05289000173426367,
+        "crossHp10sMaxAbsM": 0.10723489026042216,
+        "pAccMedianM": 1.01,
+        "numSVmin": 11
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.0731763208432332,
+       "maxAbsM": 0.22489573907676497,
+       "atStationM": 2002.0,
+       "band3250_3900": {
+        "rmsM": 0.07625034467591568,
+        "maxAbsM": 0.1874983328084529
+       }
+      }
+     },
+     {
+      "lap": 5,
+      "lapTimeS": 130.822,
+      "epochs": 1309,
+      "crossHp10sRmsM": 0.12813543699120614,
+      "crossHp10sMaxAbsM": 0.41987991109905465,
+      "crossHp4sRmsM": 0.04362838240252792,
+      "crossHp4sMaxAbsM": 0.15781522826948796,
+      "topCrossExcursions": [
+       {
+        "stationM": 3352.2,
+        "crossHp10sM": 0.42
+       },
+       {
+        "stationM": 1733.5,
+        "crossHp10sM": -0.355
+       },
+       {
+        "stationM": 3619.3,
+        "crossHp10sM": -0.305
+       }
+      ],
+      "pAccM": {
+       "median": 0.84,
+       "max": 0.9500000000000001
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.29
+      },
+      "numSV": {
+       "min": 10,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.6600000000000001,
+       "max": 2.02
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.18277881600759946,
+        "crossHp10sMaxAbsM": 0.41987991109905465,
+        "pAccMedianM": 0.76,
+        "numSVmin": 12
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.06705839926006198,
+        "crossHp10sMaxAbsM": 0.10781038877015009,
+        "pAccMedianM": 0.9,
+        "numSVmin": 12
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.09985768615024918,
+        "crossHp10sMaxAbsM": 0.16572464778918006,
+        "pAccMedianM": 0.89,
+        "numSVmin": 10
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.07608932193529706,
+       "maxAbsM": 0.23458850770435485,
+       "atStationM": 2896.0,
+       "band3250_3900": {
+        "rmsM": 0.06290972003623405,
+        "maxAbsM": 0.18155697745938043
+       }
+      }
+     },
+     {
+      "lap": 6,
+      "lapTimeS": 140.467,
+      "epochs": 1404,
+      "crossHp10sRmsM": 0.13958382878813344,
+      "crossHp10sMaxAbsM": 0.4566484597095154,
+      "crossHp4sRmsM": 0.04649464138690852,
+      "crossHp4sMaxAbsM": 0.1649013457171433,
+      "topCrossExcursions": [
+       {
+        "stationM": 3376.5,
+        "crossHp10sM": 0.457
+       },
+       {
+        "stationM": 1740.0,
+        "crossHp10sM": -0.352
+       },
+       {
+        "stationM": 3529.9,
+        "crossHp10sM": 0.34
+       }
+      ],
+      "pAccM": {
+       "median": 0.87,
+       "max": 1.0
+      },
+      "sAccMps": {
+       "median": 0.15,
+       "max": 0.27
+      },
+      "numSV": {
+       "min": 9,
+       "median": 13.0
+      },
+      "pDOP": {
+       "median": 1.6600000000000001,
+       "max": 2.23
+      },
+      "diffSolnOffEpochs": 0,
+      "bands": {
+       "3250-3900": {
+        "crossHp10sRmsM": 0.20684279736401737,
+        "crossHp10sMaxAbsM": 0.4566484597095154,
+        "pAccMedianM": 0.87,
+        "numSVmin": 11
+       },
+       "3900-4500": {
+        "crossHp10sRmsM": 0.06706577545713452,
+        "crossHp10sMaxAbsM": 0.14538058077472987,
+        "pAccMedianM": 0.8200000000000001,
+        "numSVmin": 11
+       },
+       "0-600": {
+        "crossHp10sRmsM": 0.06801096374161017,
+        "crossHp10sMaxAbsM": 0.15735319704695067,
+        "pAccMedianM": 0.91,
+        "numSVmin": 12
+       }
+      },
+      "vsOtherLapsCrossHp10s": {
+       "rmsM": 0.08644723386813499,
+       "maxAbsM": 0.3302724453914414,
+       "atStationM": 3517.0,
+       "band3250_3900": {
+        "rmsM": 0.10636429280260412,
+        "maxAbsM": 0.3302724453914414
+       }
+      }
+     }
+    ]
+   },
+   "diffSolnTransitions": {
+    "count": 0,
+    "offEpochs": 0,
+    "first": [],
+    "note": "u-blox NAV-SOL flags bit1 = DiffSoln (differential corrections, e.g. SBAS, applied)."
+   },
+   "receiverQualitySession": {
+    "pAccM": {
+     "p5": 0.75,
+     "median": 0.85,
+     "p95": 1.8900000000000001
+    },
+    "sAccMps": {
+     "median": 0.15,
+     "p95": 0.2
+    },
+    "numSV": {
+     "min": 8,
+     "median": 13.0
+    },
+    "fixTypes": {
+     "3": 9741
+    },
+    "flagsValues": {
+     "223": 9741
+    }
+   }
+  }
+ }
+}

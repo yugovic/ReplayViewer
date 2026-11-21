@@ -1,0 +1,4855 @@
+{
+ "scope": "Video-vs-CG road-facing boundary residuals of the Codex 2026-10-03 estimated onboard camera, converted to an equivalent lateral ground offset at each annotated point. This is an image-agreement quantity under one assumed camera (height 1.25 m not measured); it lumps GPS lateral error, heading/sideslip, camera intrinsics/lens distortion, course geometry and picking error. It is not a GPS truth measurement.",
+ "codeDataState": "Uncommitted working tree on top of origin/master 7ebf89b: Codex onboard camera profile + pre-repair runtime geometry (road repair at k16/k19/k21 did not change these residuals per evidence/final-road-camera-effect.json). GPS registration = shipped default gps_registration.json (not ?gps=kerb). 7/30 data = re-timed channels (committed d9a1ea9).",
+ "inputsSha256": {
+  "runtime-geometry.json": "52f31699fe6e54e54052b7429de714168da79f3fdceafa5d3658697c2b82d19f",
+  "camera-profile.json": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+  "heldout-boundary-picks.json": "cf62adb4d893a7a185d3dfd73ab1f4c2c24275fb201f6295f3fe82240e8a3f2d",
+  "sequence-annotations.json": "ae15dbdada632c49170fad5a8bd2c2a54cde4ef85ba8794d15ff0c8bf0b59299",
+  "sequence-runtime-poses.json": "6c0666b99b927bc60b9fbb61527419b3b11ce3da51c8a47864eae0a3b2543c36"
+ },
+ "reproductionOfPublishedPx": {
+  "maxAbsDiffPx": 0.0,
+  "rows": [
+   {
+    "scene": "2020-07-29-L3-60.000",
+    "publishedAfterMedianPx": 9.557212671096101,
+    "reproducedMedianPx": 9.557212671096101,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-29-L3-64.367",
+    "publishedAfterMedianPx": 9.286123108506501,
+    "reproducedMedianPx": 9.286123108506501,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-18.000",
+    "publishedAfterMedianPx": 11.213829444135396,
+    "reproducedMedianPx": 11.213829444135396,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-45.000",
+    "publishedAfterMedianPx": 33.30696555909758,
+    "reproducedMedianPx": 33.30696555909758,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-50.000",
+    "publishedAfterMedianPx": 8.980527764427569,
+    "reproducedMedianPx": 8.980527764427569,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-84.000",
+    "publishedAfterMedianPx": 7.633311577763672,
+    "reproducedMedianPx": 7.633311577763672,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-94.000",
+    "publishedAfterMedianPx": 54.490746065642455,
+    "reproducedMedianPx": 54.490746065642455,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-112.000",
+    "publishedAfterMedianPx": 3.8923517294531997,
+    "reproducedMedianPx": 3.8923517294531997,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-29-L3-52.387",
+    "publishedAfterMedianPx": 2.32105513563435,
+    "reproducedMedianPx": 2.32105513563435,
+    "absDiffPx": 0.0
+   },
+   {
+    "scene": "2020-07-30-L2-47.522",
+    "publishedAfterMedianPx": 11.324806100220984,
+    "reproducedMedianPx": 11.324806100220984,
+    "absDiffPx": 0.0
+   }
+  ]
+ },
+ "pooled": {
+  "heldout10|frozen_h1.25": {
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 58,
+   "unconditionedPoints": 40,
+   "conditionedScenesWith3plus": 9,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.168,
+    "2020-07-29-L3-64.367": 2.398,
+    "2020-07-30-L2-18.000": 4.129,
+    "2020-07-30-L2-45.000": 2.615,
+    "2020-07-30-L2-50.000": 0.371,
+    "2020-07-30-L2-84.000": 1.218,
+    "2020-07-30-L2-94.000": 1.357,
+    "2020-07-30-L2-112.000": 1.2,
+    "2020-07-29-L3-52.387": 0.305,
+    "2020-07-30-L2-47.522": 1.689
+   },
+   "conditionedScenePoints": {
+    "2020-07-29-L3-60.000": 5,
+    "2020-07-29-L3-64.367": 3,
+    "2020-07-30-L2-18.000": 5,
+    "2020-07-30-L2-45.000": 6,
+    "2020-07-30-L2-50.000": 7,
+    "2020-07-30-L2-84.000": 6,
+    "2020-07-30-L2-94.000": 1,
+    "2020-07-30-L2-112.000": 6,
+    "2020-07-29-L3-52.387": 11,
+    "2020-07-30-L2-47.522": 8
+   },
+   "conditionedMedianOfSceneMediansM": 1.6888300551813646,
+   "conditionedMaxSceneMedianM": 4.1292609528408954,
+   "conditionedPointsLateral": {
+    "n": 58,
+    "median": 1.38176178168101,
+    "p25": 0.8693757874082724,
+    "p75": 2.458342359509511,
+    "p95": 4.152767843015586,
+    "max": 4.510287893186177
+   },
+   "conditionedPointsPick4px": {
+    "n": 58,
+    "median": 0.4230271741377942,
+    "p25": 0.1874276634477392,
+    "p75": 0.6057127312772902,
+    "p95": 0.8249762736922482,
+    "max": 0.9669740893733714
+   },
+   "decompositionByScene": {
+    "2020-07-29-L3-60.000": null,
+    "2020-07-29-L3-64.367": null,
+    "2020-07-30-L2-18.000": null,
+    "2020-07-30-L2-45.000": null,
+    "2020-07-30-L2-50.000": null,
+    "2020-07-30-L2-84.000": null,
+    "2020-07-30-L2-94.000": null,
+    "2020-07-30-L2-112.000": null,
+    "2020-07-29-L3-52.387": {
+     "a": 0.5179182830931877,
+     "psi": -0.05250664988776711,
+     "c": -0.034563736061824196,
+     "psiDeg": -3.008409434940113,
+     "points": 11,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.320132622001952,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    },
+    "2020-07-30-L2-47.522": {
+     "a": 1.2015049207478392,
+     "psi": -0.1927644992718436,
+     "c": 0.3426430076791576,
+     "psiDeg": -11.04459224822927,
+     "points": 8,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.06899995089923561,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    }
+   },
+   "minimum3dDisplacementPointsAll": {
+    "n": 98,
+    "median": 0.39424708929847097,
+    "p25": 0.20064863363525826,
+    "p75": 0.8209360765555902,
+    "p95": 6.630481374044626,
+    "max": 8.449990582950873
+   },
+   "scenes": 10,
+   "medianOfSceneMedianLateralM": 1.9102344546943901,
+   "meanOfSceneMedianLateralM": 4.422320561772678,
+   "maxSceneMedianLateralM": 29.408875445077587,
+   "sceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.168,
+    "2020-07-29-L3-64.367": 1.988,
+    "2020-07-30-L2-18.000": 3.401,
+    "2020-07-30-L2-45.000": 2.556,
+    "2020-07-30-L2-50.000": 0.371,
+    "2020-07-30-L2-84.000": 1.156,
+    "2020-07-30-L2-94.000": 29.409,
+    "2020-07-30-L2-112.000": 1.037,
+    "2020-07-29-L3-52.387": 0.305,
+    "2020-07-30-L2-47.522": 1.832
+   },
+   "medianOfSceneMedianPx": 9.421667889801302,
+   "medianOfSceneMedianNaiveM": 0.34056901485404817,
+   "medianOfSceneMedianPick4pxM": 0.688804913759822,
+   "pointsAll": {
+    "n": 89,
+    "median": 1.5456107752982773,
+    "p25": 0.686789346860342,
+    "p75": 2.7945615138337603,
+    "p95": 18.87364240990296,
+    "max": 319.9217157231029
+   },
+   "pointsWithin25m": {
+    "n": 65,
+    "median": 1.3565510051537113,
+    "p25": 0.57475663645164,
+    "p75": 2.398208037871802,
+    "p95": 4.074253907101837,
+    "max": 5.152761860753214
+   },
+   "pointsBeyond25m": {
+    "n": 24,
+    "median": 2.787617911932837,
+    "p25": 1.3733886012726542,
+    "p75": 6.108491100283129,
+    "p95": 66.22515633873124,
+    "max": 319.9217157231029
+   },
+   "pick4pxWithin25m": {
+    "n": 65,
+    "median": 0.4986966949214594,
+    "p25": 0.2318573809565434,
+    "p75": 0.7484509465892402,
+    "p95": 1.4921021452121472,
+    "max": 3.087744489720109
+   },
+   "lateralOverNaive": {
+    "n": 89,
+    "median": 5.043559389255735,
+    "p25": 3.2102503339168105,
+    "p75": 6.962901654926999,
+    "p95": 36.086863550148685,
+    "max": 328.4167322075237
+   },
+   "sceneCommonModeRightM": {
+    "2020-07-29-L3-60.000": -0.133,
+    "2020-07-30-L2-18.000": 3.008,
+    "2020-07-30-L2-84.000": 0.685,
+    "2020-07-30-L2-94.000": 16.456,
+    "2020-07-30-L2-112.000": 0.558,
+    "2020-07-29-L3-52.387": -0.479,
+    "2020-07-30-L2-47.522": -1.949
+   },
+   "sceneDifferentialOutwardM": {
+    "2020-07-29-L3-60.000": -2.301,
+    "2020-07-30-L2-18.000": -0.846,
+    "2020-07-30-L2-84.000": -0.596,
+    "2020-07-30-L2-94.000": 17.813,
+    "2020-07-30-L2-112.000": -0.6,
+    "2020-07-29-L3-52.387": -0.315,
+    "2020-07-30-L2-47.522": -0.28
+   },
+   "sceneSideLateralMedianM": {
+    "2020-07-29-L3-60.000": {
+     "leftLateralMedianM": 2.168,
+     "rightLateralMedianM": 2.434
+    },
+    "2020-07-29-L3-64.367": {
+     "leftLateralMedianM": 1.988
+    },
+    "2020-07-30-L2-18.000": {
+     "leftLateralMedianM": 3.854,
+     "rightLateralMedianM": 2.315
+    },
+    "2020-07-30-L2-45.000": {
+     "rightLateralMedianM": 2.556
+    },
+    "2020-07-30-L2-50.000": {
+     "rightLateralMedianM": 0.371
+    },
+    "2020-07-30-L2-84.000": {
+     "leftLateralMedianM": 1.281,
+     "rightLateralMedianM": 0.546
+    },
+    "2020-07-30-L2-94.000": {
+     "leftLateralMedianM": 1.357,
+     "rightLateralMedianM": 34.269
+    },
+    "2020-07-30-L2-112.000": {
+     "leftLateralMedianM": 1.158,
+     "rightLateralMedianM": 0.509
+    },
+    "2020-07-29-L3-52.387": {
+     "leftLateralMedianM": 0.305,
+     "rightLateralMedianM": 0.794
+    },
+    "2020-07-30-L2-47.522": {
+     "leftLateralMedianM": 1.669,
+     "rightLateralMedianM": 2.229
+    }
+   }
+  },
+  "heldout10|h1.00": {
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 58,
+   "unconditionedPoints": 40,
+   "conditionedScenesWith3plus": 8,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.646,
+    "2020-07-29-L3-64.367": 2.657,
+    "2020-07-30-L2-18.000": 4.436,
+    "2020-07-30-L2-45.000": 2.841,
+    "2020-07-30-L2-50.000": 0.383,
+    "2020-07-30-L2-84.000": 1.848,
+    "2020-07-30-L2-94.000": 1.122,
+    "2020-07-30-L2-112.000": 1.728,
+    "2020-07-29-L3-52.387": 0.897,
+    "2020-07-30-L2-47.522": 2.21
+   },
+   "conditionedScenePoints": {
+    "2020-07-29-L3-60.000": 4,
+    "2020-07-29-L3-64.367": 2,
+    "2020-07-30-L2-18.000": 8,
+    "2020-07-30-L2-45.000": 6,
+    "2020-07-30-L2-50.000": 7,
+    "2020-07-30-L2-84.000": 8,
+    "2020-07-30-L2-94.000": 2,
+    "2020-07-30-L2-112.000": 7,
+    "2020-07-29-L3-52.387": 8,
+    "2020-07-30-L2-47.522": 6
+   },
+   "conditionedMedianOfSceneMediansM": 2.029074178855216,
+   "conditionedMaxSceneMedianM": 4.43639436414078,
+   "conditionedPointsLateral": {
+    "n": 58,
+    "median": 1.6982177188438285,
+    "p25": 1.039102777372607,
+    "p75": 2.784629477722342,
+    "p95": 4.6920786127253695,
+    "max": 5.270110937715694
+   },
+   "conditionedPointsPick4px": {
+    "n": 58,
+    "median": 0.43412648158826295,
+    "p25": 0.17853955715039355,
+    "p75": 0.6502157217278477,
+    "p95": 0.9447907766095855,
+    "max": 0.9633760564011754
+   },
+   "decompositionByScene": {
+    "2020-07-29-L3-60.000": null,
+    "2020-07-29-L3-64.367": null,
+    "2020-07-30-L2-18.000": null,
+    "2020-07-30-L2-45.000": null,
+    "2020-07-30-L2-50.000": null,
+    "2020-07-30-L2-84.000": null,
+    "2020-07-30-L2-94.000": null,
+    "2020-07-30-L2-112.000": null,
+    "2020-07-29-L3-52.387": {
+     "a": 0.4793590374104355,
+     "psi": -0.08888057351916466,
+     "c": -0.7322611882441115,
+     "psiDeg": -5.092481743350362,
+     "points": 8,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.16185399120535074,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    },
+    "2020-07-30-L2-47.522": null
+   },
+   "minimum3dDisplacementPointsAll": {
+    "n": 98,
+    "median": 0.41399658601631334,
+    "p25": 0.23067017150830627,
+    "p75": 0.6596805675430252,
+    "p95": 4.81243632162345,
+    "max": 5.9781627551978715
+   },
+   "scenes": 10,
+   "medianOfSceneMedianLateralM": 2.2099451838148143,
+   "meanOfSceneMedianLateralM": 3.059873544022232,
+   "maxSceneMedianLateralM": 11.309027609484495,
+   "sceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.444,
+    "2020-07-29-L3-64.367": 1.871,
+    "2020-07-30-L2-18.000": 4.218,
+    "2020-07-30-L2-45.000": 2.841,
+    "2020-07-30-L2-50.000": 0.383,
+    "2020-07-30-L2-84.000": 1.976,
+    "2020-07-30-L2-94.000": 11.309,
+    "2020-07-30-L2-112.000": 1.752,
+    "2020-07-29-L3-52.387": 1.292,
+    "2020-07-30-L2-47.522": 2.512
+   },
+   "medianOfSceneMedianPx": 9.594464720089997,
+   "medianOfSceneMedianNaiveM": 0.3846103013513217,
+   "medianOfSceneMedianPick4pxM": 0.7208065394942668,
+   "pointsAll": {
+    "n": 89,
+    "median": 1.9091000133343468,
+    "p25": 1.2525239725303674,
+    "p75": 3.0060192623168867,
+    "p95": 8.00250845163052,
+    "max": 522.2574018556664
+   },
+   "pointsWithin25m": {
+    "n": 69,
+    "median": 1.8950861967072008,
+    "p25": 1.2924376657227152,
+    "p75": 2.8991110309670463,
+    "p95": 4.871034251941044,
+    "max": 11.309027609484495
+   },
+   "pointsBeyond25m": {
+    "n": 20,
+    "median": 2.4166270931391454,
+    "p25": 0.5787214717298418,
+    "p75": 4.213611252305859,
+    "p95": 64.23560901010174,
+    "max": 522.2574018556664
+   },
+   "pick4pxWithin25m": {
+    "n": 69,
+    "median": 0.542735998181987,
+    "p25": 0.23888310612517405,
+    "p75": 0.9434886944519691,
+    "p95": 1.77865532028925,
+    "max": 2.812467293332057
+   },
+   "lateralOverNaive": {
+    "n": 89,
+    "median": 5.6104517516271395,
+    "p25": 3.5846213942661556,
+    "p75": 8.81036995719716,
+    "p95": 18.478210710009083,
+    "max": 693.3544980758975
+   },
+   "sceneCommonModeRightM": {
+    "2020-07-29-L3-60.000": -0.113,
+    "2020-07-30-L2-18.000": 2.564,
+    "2020-07-30-L2-84.000": -0.608,
+    "2020-07-30-L2-94.000": 7.429,
+    "2020-07-30-L2-112.000": -0.589,
+    "2020-07-29-L3-52.387": -0.819,
+    "2020-07-30-L2-47.522": -2.155
+   },
+   "sceneDifferentialOutwardM": {
+    "2020-07-29-L3-60.000": -2.557,
+    "2020-07-30-L2-18.000": -2.091,
+    "2020-07-30-L2-84.000": -2.455,
+    "2020-07-30-L2-94.000": 8.551,
+    "2020-07-30-L2-112.000": -2.236,
+    "2020-07-29-L3-52.387": -0.613,
+    "2020-07-30-L2-47.522": -0.489
+   },
+   "sceneSideLateralMedianM": {
+    "2020-07-29-L3-60.000": {
+     "leftLateralMedianM": 2.444,
+     "rightLateralMedianM": 2.67
+    },
+    "2020-07-29-L3-64.367": {
+     "leftLateralMedianM": 1.871
+    },
+    "2020-07-30-L2-18.000": {
+     "leftLateralMedianM": 4.655,
+     "rightLateralMedianM": 0.472
+    },
+    "2020-07-30-L2-45.000": {
+     "rightLateralMedianM": 2.841
+    },
+    "2020-07-30-L2-50.000": {
+     "rightLateralMedianM": 0.383
+    },
+    "2020-07-30-L2-84.000": {
+     "leftLateralMedianM": 1.847,
+     "rightLateralMedianM": 3.063
+    },
+    "2020-07-30-L2-94.000": {
+     "leftLateralMedianM": 1.122,
+     "rightLateralMedianM": 15.981
+    },
+    "2020-07-30-L2-112.000": {
+     "leftLateralMedianM": 1.647,
+     "rightLateralMedianM": 2.825
+    },
+    "2020-07-29-L3-52.387": {
+     "leftLateralMedianM": 0.477,
+     "rightLateralMedianM": 1.432
+    },
+    "2020-07-30-L2-47.522": {
+     "leftLateralMedianM": 1.665,
+     "rightLateralMedianM": 2.644
+    }
+   }
+  },
+  "heldout10|h1.50": {
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 62,
+   "unconditionedPoints": 36,
+   "conditionedScenesWith3plus": 9,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.141,
+    "2020-07-29-L3-64.367": 2.053,
+    "2020-07-30-L2-18.000": 3.35,
+    "2020-07-30-L2-45.000": 2.386,
+    "2020-07-30-L2-50.000": 0.282,
+    "2020-07-30-L2-84.000": 0.884,
+    "2020-07-30-L2-94.000": 1.606,
+    "2020-07-30-L2-112.000": 0.873,
+    "2020-07-29-L3-52.387": 0.965,
+    "2020-07-30-L2-47.522": 1.702
+   },
+   "conditionedScenePoints": {
+    "2020-07-29-L3-60.000": 6,
+    "2020-07-29-L3-64.367": 5,
+    "2020-07-30-L2-18.000": 6,
+    "2020-07-30-L2-45.000": 6,
+    "2020-07-30-L2-50.000": 7,
+    "2020-07-30-L2-84.000": 6,
+    "2020-07-30-L2-94.000": 1,
+    "2020-07-30-L2-112.000": 6,
+    "2020-07-29-L3-52.387": 11,
+    "2020-07-30-L2-47.522": 8
+   },
+   "conditionedMedianOfSceneMediansM": 1.7020753849750778,
+   "conditionedMaxSceneMedianM": 3.3496397190362606,
+   "conditionedPointsLateral": {
+    "n": 62,
+    "median": 1.5580499562884398,
+    "p25": 0.7885953459635512,
+    "p75": 2.330292959636604,
+    "p95": 3.8728554235964237,
+    "max": 5.803365829637787
+   },
+   "conditionedPointsPick4px": {
+    "n": 62,
+    "median": 0.38261603582109194,
+    "p25": 0.210044304337548,
+    "p75": 0.5840858393651033,
+    "p95": 0.9135844812903753,
+    "max": 0.9869643436061126
+   },
+   "decompositionByScene": {
+    "2020-07-29-L3-60.000": null,
+    "2020-07-29-L3-64.367": null,
+    "2020-07-30-L2-18.000": null,
+    "2020-07-30-L2-45.000": null,
+    "2020-07-30-L2-50.000": null,
+    "2020-07-30-L2-84.000": null,
+    "2020-07-30-L2-94.000": null,
+    "2020-07-30-L2-112.000": null,
+    "2020-07-29-L3-52.387": {
+     "a": 1.9308251611373455,
+     "psi": -0.1009394461741406,
+     "c": 0.7801369421318318,
+     "psiDeg": -5.783404252166201,
+     "points": 11,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.18148512957521223,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    },
+    "2020-07-30-L2-47.522": {
+     "a": -0.12000799640225854,
+     "psi": -0.08423586391728938,
+     "c": 0.47418973008504073,
+     "psiDeg": -4.826359486099019,
+     "points": 8,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.0742391350775915,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    }
+   },
+   "minimum3dDisplacementPointsAll": {
+    "n": 98,
+    "median": 0.385831678332752,
+    "p25": 0.2552431860784159,
+    "p75": 1.0134986337373293,
+    "p95": 7.755831506749576,
+    "max": 10.459184577689612
+   },
+   "scenes": 10,
+   "medianOfSceneMedianLateralM": 1.8914103369388628,
+   "meanOfSceneMedianLateralM": 10.878692389596784,
+   "maxSceneMedianLateralM": 93.21604501865524,
+   "sceneMedianLateralM": {
+    "2020-07-29-L3-60.000": 2.021,
+    "2020-07-29-L3-64.367": 2.053,
+    "2020-07-30-L2-18.000": 3.497,
+    "2020-07-30-L2-45.000": 2.336,
+    "2020-07-30-L2-50.000": 0.282,
+    "2020-07-30-L2-84.000": 1.761,
+    "2020-07-30-L2-94.000": 93.216,
+    "2020-07-30-L2-112.000": 1.025,
+    "2020-07-29-L3-52.387": 0.965,
+    "2020-07-30-L2-47.522": 1.631
+   },
+   "medianOfSceneMedianPx": 11.930886038666976,
+   "medianOfSceneMedianNaiveM": 0.36395196209053415,
+   "medianOfSceneMedianPick4pxM": 0.5782202448081526,
+   "pointsAll": {
+    "n": 90,
+    "median": 1.7671339910213,
+    "p25": 0.8398567502075811,
+    "p75": 3.23763195714891,
+    "p95": 76.64009807247247,
+    "max": 460.75144620410185
+   },
+   "pointsWithin25m": {
+    "n": 59,
+    "median": 1.2815409411252543,
+    "p25": 0.769167145147341,
+    "p75": 2.229645209392164,
+    "p95": 3.511357607373681,
+    "max": 5.152306567415592
+   },
+   "pointsBeyond25m": {
+    "n": 31,
+    "median": 3.597951538152036,
+    "p25": 2.1036865316743105,
+    "p75": 6.254208121132222,
+    "p95": 194.68287023795187,
+    "max": 460.75144620410185
+   },
+   "pick4pxWithin25m": {
+    "n": 59,
+    "median": 0.4048303498790145,
+    "p25": 0.21804595790053838,
+    "p75": 0.6375334297736844,
+    "p95": 1.0166659290572537,
+    "max": 1.418913101997576
+   },
+   "lateralOverNaive": {
+    "n": 90,
+    "median": 4.4341768501631424,
+    "p25": 2.889181783178363,
+    "p75": 5.873297394841102,
+    "p95": 65.27209896470454,
+    "max": 459.1461985113315
+   },
+   "sceneCommonModeRightM": {
+    "2020-07-29-L3-60.000": -0.052,
+    "2020-07-30-L2-18.000": 2.941,
+    "2020-07-30-L2-84.000": 2.059,
+    "2020-07-30-L2-94.000": 68.399,
+    "2020-07-30-L2-112.000": 2.115,
+    "2020-07-29-L3-52.387": -0.138,
+    "2020-07-30-L2-47.522": -1.65
+   },
+   "sceneDifferentialOutwardM": {
+    "2020-07-29-L3-60.000": -2.073,
+    "2020-07-30-L2-18.000": -0.262,
+    "2020-07-30-L2-84.000": 1.089,
+    "2020-07-30-L2-94.000": 70.005,
+    "2020-07-30-L2-112.000": 1.264,
+    "2020-07-29-L3-52.387": -0.001,
+    "2020-07-30-L2-47.522": 0.019
+   },
+   "sceneSideLateralMedianM": {
+    "2020-07-29-L3-60.000": {
+     "leftLateralMedianM": 2.021,
+     "rightLateralMedianM": 2.125
+    },
+    "2020-07-29-L3-64.367": {
+     "leftLateralMedianM": 2.053
+    },
+    "2020-07-30-L2-18.000": {
+     "leftLateralMedianM": 3.203,
+     "rightLateralMedianM": 4.167
+    },
+    "2020-07-30-L2-45.000": {
+     "rightLateralMedianM": 2.336
+    },
+    "2020-07-30-L2-50.000": {
+     "rightLateralMedianM": 0.282
+    },
+    "2020-07-30-L2-84.000": {
+     "leftLateralMedianM": 0.969,
+     "rightLateralMedianM": 3.148
+    },
+    "2020-07-30-L2-94.000": {
+     "leftLateralMedianM": 1.606,
+     "rightLateralMedianM": 138.404
+    },
+    "2020-07-30-L2-112.000": {
+     "leftLateralMedianM": 0.851,
+     "rightLateralMedianM": 3.378
+    },
+    "2020-07-29-L3-52.387": {
+     "leftLateralMedianM": 0.187,
+     "rightLateralMedianM": 1.679
+    },
+    "2020-07-30-L2-47.522": {
+     "leftLateralMedianM": 1.669,
+     "rightLateralMedianM": 1.631
+    }
+   }
+  },
+  "sequence8_postselection|frozen_h1.25": {
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 40,
+   "unconditionedPoints": 55,
+   "conditionedScenesWith3plus": 8,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.445,
+    "2020-07-30-L2-44.500": 2.764,
+    "2020-07-30-L2-45.500": 0.642,
+    "2020-07-30-L2-46.000": 1.195,
+    "2020-07-30-L2-93.000": 1.066,
+    "2020-07-30-L2-93.500": 1.2,
+    "2020-07-30-L2-94.500": 2.067,
+    "2020-07-30-L2-95.000": 2.403
+   },
+   "conditionedScenePoints": {
+    "2020-07-30-L2-44.000": 5,
+    "2020-07-30-L2-44.500": 5,
+    "2020-07-30-L2-45.500": 7,
+    "2020-07-30-L2-46.000": 9,
+    "2020-07-30-L2-93.000": 4,
+    "2020-07-30-L2-93.500": 3,
+    "2020-07-30-L2-94.500": 4,
+    "2020-07-30-L2-95.000": 3
+   },
+   "conditionedMedianOfSceneMediansM": 1.6334613169859036,
+   "conditionedMaxSceneMedianM": 4.444781251399256,
+   "conditionedPointsLateral": {
+    "n": 40,
+    "median": 1.4431417889692812,
+    "p25": 0.9391322485912826,
+    "p75": 2.8323099725977845,
+    "p95": 4.5365345422219585,
+    "max": 13.346512247300012
+   },
+   "conditionedPointsPick4px": {
+    "n": 40,
+    "median": 0.23851524516038458,
+    "p25": 0.11951955160339112,
+    "p75": 0.434521498662586,
+    "p95": 0.7624590477117048,
+    "max": 0.9672563487169805
+   },
+   "decompositionByScene": {
+    "2020-07-30-L2-44.000": null,
+    "2020-07-30-L2-44.500": null,
+    "2020-07-30-L2-45.500": null,
+    "2020-07-30-L2-46.000": {
+     "a": 2.5110717346712343,
+     "psi": -0.10509443983361329,
+     "c": 0.2770464476754742,
+     "psiDeg": -6.021467852757603,
+     "points": 9,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.12994771748908446,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    },
+    "2020-07-30-L2-93.000": null,
+    "2020-07-30-L2-93.500": null,
+    "2020-07-30-L2-94.500": null,
+    "2020-07-30-L2-95.000": null
+   },
+   "minimum3dDisplacementPointsAll": {
+    "n": 95,
+    "median": 0.6567181579902042,
+    "p25": 0.3308132376002456,
+    "p75": 1.1381075561737646,
+    "p95": 7.643341159149591,
+    "max": 12.176164909162084
+   },
+   "scenes": 8,
+   "medianOfSceneMedianLateralM": 6.9968488558486035,
+   "meanOfSceneMedianLateralM": 8.744756716012441,
+   "maxSceneMedianLateralM": 21.8775531053808,
+   "sceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.536,
+    "2020-07-30-L2-44.500": 2.957,
+    "2020-07-30-L2-45.500": 0.525,
+    "2020-07-30-L2-46.000": 1.069,
+    "2020-07-30-L2-93.000": 13.289,
+    "2020-07-30-L2-93.500": 21.878,
+    "2020-07-30-L2-94.500": 16.246,
+    "2020-07-30-L2-95.000": 9.457
+   },
+   "medianOfSceneMedianPx": 17.976188115755853,
+   "medianOfSceneMedianNaiveM": 0.6054902342635725,
+   "medianOfSceneMedianPick4pxM": 3.0908096177929467,
+   "pointsAll": {
+    "n": 77,
+    "median": 2.8382741095633515,
+    "p25": 1.1950417971696046,
+    "p75": 12.185103075713489,
+    "p95": 57.907089359618595,
+    "max": 372.47646964132315
+   },
+   "pointsWithin25m": {
+    "n": 46,
+    "median": 1.4423633089575967,
+    "p25": 0.7050691991062541,
+    "p75": 2.813627171931611,
+    "p95": 4.538399302803181,
+    "max": 13.346512247300012
+   },
+   "pointsBeyond25m": {
+    "n": 31,
+    "median": 14.42096215308134,
+    "p25": 8.735819942124568,
+    "p75": 33.378762213235845,
+    "p95": 143.92531441566464,
+    "max": 372.47646964132315
+   },
+   "pick4pxWithin25m": {
+    "n": 46,
+    "median": 0.2916101263391731,
+    "p25": 0.12505907262632088,
+    "p75": 0.7423618993057945,
+    "p95": 1.6433859663088315,
+    "max": 20.887217381891414
+   },
+   "lateralOverNaive": {
+    "n": 77,
+    "median": 7.366556732751837,
+    "p25": 3.3163641417089376,
+    "p75": 20.836636427611563,
+    "p95": 90.0928672642626,
+    "max": 362.05194209282524
+   },
+   "sceneCommonModeRightM": {
+    "2020-07-30-L2-44.000": -4.769,
+    "2020-07-30-L2-44.500": -2.91,
+    "2020-07-30-L2-45.500": 0.344,
+    "2020-07-30-L2-46.000": 0.956,
+    "2020-07-30-L2-93.000": 28.088,
+    "2020-07-30-L2-93.500": 14.745,
+    "2020-07-30-L2-94.500": 14.906,
+    "2020-07-30-L2-95.000": 4.036
+   },
+   "sceneDifferentialOutwardM": {
+    "2020-07-30-L2-44.000": 0.278,
+    "2020-07-30-L2-44.500": 0.05,
+    "2020-07-30-L2-45.500": -0.069,
+    "2020-07-30-L2-46.000": 0.304,
+    "2020-07-30-L2-93.000": 29.056,
+    "2020-07-30-L2-93.500": 15.413,
+    "2020-07-30-L2-94.500": 16.973,
+    "2020-07-30-L2-95.000": 6.439
+   },
+   "sceneSideLateralMedianM": {
+    "2020-07-30-L2-44.000": {
+     "leftLateralMedianM": 5.047,
+     "rightLateralMedianM": 4.491
+    },
+    "2020-07-30-L2-44.500": {
+     "leftLateralMedianM": 2.96,
+     "rightLateralMedianM": 2.86
+    },
+    "2020-07-30-L2-45.500": {
+     "leftLateralMedianM": 0.413,
+     "rightLateralMedianM": 0.638
+    },
+    "2020-07-30-L2-46.000": {
+     "leftLateralMedianM": 0.652,
+     "rightLateralMedianM": 1.272
+    },
+    "2020-07-30-L2-93.000": {
+     "leftLateralMedianM": 1.066,
+     "rightLateralMedianM": 57.144
+    },
+    "2020-07-30-L2-93.500": {
+     "leftLateralMedianM": 0.667,
+     "rightLateralMedianM": 30.158
+    },
+    "2020-07-30-L2-94.500": {
+     "leftLateralMedianM": 2.067,
+     "rightLateralMedianM": 31.879
+    },
+    "2020-07-30-L2-95.000": {
+     "leftLateralMedianM": 2.403,
+     "rightLateralMedianM": 10.476
+    }
+   }
+  },
+  "sequence8_postselection|h1.00": {
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 39,
+   "unconditionedPoints": 56,
+   "conditionedScenesWith3plus": 8,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.556,
+    "2020-07-30-L2-44.500": 2.856,
+    "2020-07-30-L2-45.500": 0.965,
+    "2020-07-30-L2-46.000": 0.351,
+    "2020-07-30-L2-93.000": 1.017,
+    "2020-07-30-L2-93.500": 0.853,
+    "2020-07-30-L2-94.500": 1.579,
+    "2020-07-30-L2-95.000": 2.34
+   },
+   "conditionedScenePoints": {
+    "2020-07-30-L2-44.000": 5,
+    "2020-07-30-L2-44.500": 5,
+    "2020-07-30-L2-45.500": 6,
+    "2020-07-30-L2-46.000": 7,
+    "2020-07-30-L2-93.000": 5,
+    "2020-07-30-L2-93.500": 3,
+    "2020-07-30-L2-94.500": 4,
+    "2020-07-30-L2-95.000": 4
+   },
+   "conditionedMedianOfSceneMediansM": 1.2976882335573858,
+   "conditionedMaxSceneMedianM": 4.555810330490037,
+   "conditionedPointsLateral": {
+    "n": 39,
+    "median": 1.273506511063766,
+    "p25": 0.641639833553076,
+    "p75": 2.982650943481631,
+    "p95": 5.58322104708877,
+    "max": 13.065413580416188
+   },
+   "conditionedPointsPick4px": {
+    "n": 39,
+    "median": 0.2166922242333449,
+    "p25": 0.11512216436575645,
+    "p75": 0.3632946786988156,
+    "p95": 0.7451347539902853,
+    "max": 0.9511232104111835
+   },
+   "decompositionByScene": {
+    "2020-07-30-L2-44.000": null,
+    "2020-07-30-L2-44.500": null,
+    "2020-07-30-L2-45.500": null,
+    "2020-07-30-L2-46.000": null,
+    "2020-07-30-L2-93.000": null,
+    "2020-07-30-L2-93.500": null,
+    "2020-07-30-L2-94.500": null,
+    "2020-07-30-L2-95.000": null
+   },
+   "minimum3dDisplacementPointsAll": {
+    "n": 95,
+    "median": 0.4766053495789833,
+    "p25": 0.2556449041983918,
+    "p75": 1.0228872100385287,
+    "p95": 5.665522856834397,
+    "max": 8.695242216133774
+   },
+   "scenes": 8,
+   "medianOfSceneMedianLateralM": 4.397920907119278,
+   "meanOfSceneMedianLateralM": 5.187725121240429,
+   "maxSceneMedianLateralM": 12.807250703972247,
+   "sceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.748,
+    "2020-07-30-L2-44.500": 3.277,
+    "2020-07-30-L2-45.500": 0.85,
+    "2020-07-30-L2-46.000": 0.297,
+    "2020-07-30-L2-93.000": 9.389,
+    "2020-07-30-L2-93.500": 12.807,
+    "2020-07-30-L2-94.500": 6.087,
+    "2020-07-30-L2-95.000": 4.048
+   },
+   "medianOfSceneMedianPx": 12.581887267605186,
+   "medianOfSceneMedianNaiveM": 0.586872121991403,
+   "medianOfSceneMedianPick4pxM": 2.209841962606974,
+   "pointsAll": {
+    "n": 80,
+    "median": 3.1867396207315037,
+    "p25": 1.0285119520704384,
+    "p75": 11.260975004277167,
+    "p95": 52.72931823875086,
+    "max": 272.7643532972695
+   },
+   "pointsWithin25m": {
+    "n": 52,
+    "median": 1.4729861903357888,
+    "p25": 0.5495193372868449,
+    "p75": 3.267350328733339,
+    "p95": 7.889310961756763,
+    "max": 13.065413580416188
+   },
+   "pointsBeyond25m": {
+    "n": 28,
+    "median": 14.122067400630367,
+    "p25": 8.020325943142243,
+    "p75": 32.548407022335205,
+    "p95": 125.87826762750166,
+    "max": 272.7643532972695
+   },
+   "pick4pxWithin25m": {
+    "n": 52,
+    "median": 0.3272101362514424,
+    "p25": 0.14357259876780376,
+    "p75": 1.0626258384373173,
+    "p95": 3.0842162418069656,
+    "max": 7.6110711561046696
+   },
+   "lateralOverNaive": {
+    "n": 80,
+    "median": 9.52448406427059,
+    "p25": 3.585996782682602,
+    "p75": 23.697308490865066,
+    "p95": 179.09167296163588,
+    "max": 469.97124657391123
+   },
+   "sceneCommonModeRightM": {
+    "2020-07-30-L2-44.000": -8.532,
+    "2020-07-30-L2-44.500": -5.436,
+    "2020-07-30-L2-45.500": -0.609,
+    "2020-07-30-L2-46.000": 0.25,
+    "2020-07-30-L2-93.000": 7.338,
+    "2020-07-30-L2-93.500": 6.366,
+    "2020-07-30-L2-94.500": 4.088,
+    "2020-07-30-L2-95.000": 2.862
+   },
+   "sceneDifferentialOutwardM": {
+    "2020-07-30-L2-44.000": 3.976,
+    "2020-07-30-L2-44.500": 2.453,
+    "2020-07-30-L2-45.500": -0.048,
+    "2020-07-30-L2-46.000": -0.088,
+    "2020-07-30-L2-93.000": 7.957,
+    "2020-07-30-L2-93.500": 6.583,
+    "2020-07-30-L2-94.500": 5.667,
+    "2020-07-30-L2-95.000": 5.202
+   },
+   "sceneSideLateralMedianM": {
+    "2020-07-30-L2-44.000": {
+     "leftLateralMedianM": 12.509,
+     "rightLateralMedianM": 4.556
+    },
+    "2020-07-30-L2-44.500": {
+     "leftLateralMedianM": 7.889,
+     "rightLateralMedianM": 2.983
+    },
+    "2020-07-30-L2-45.500": {
+     "leftLateralMedianM": 0.56,
+     "rightLateralMedianM": 1.274
+    },
+    "2020-07-30-L2-46.000": {
+     "leftLateralMedianM": 0.338,
+     "rightLateralMedianM": 0.291
+    },
+    "2020-07-30-L2-93.000": {
+     "leftLateralMedianM": 0.868,
+     "rightLateralMedianM": 15.295
+    },
+    "2020-07-30-L2-93.500": {
+     "leftLateralMedianM": 0.636,
+     "rightLateralMedianM": 12.949
+    },
+    "2020-07-30-L2-94.500": {
+     "leftLateralMedianM": 1.579,
+     "rightLateralMedianM": 11.878
+    },
+    "2020-07-30-L2-95.000": {
+     "leftLateralMedianM": 2.34,
+     "rightLateralMedianM": 8.064
+    }
+   }
+  },
+  "sequence8_postselection|h1.50": {
+   "conditionedRule": "pick4pxMetres <= 1.0 m and ground intersection exists",
+   "conditionedPoints": 44,
+   "unconditionedPoints": 51,
+   "conditionedScenesWith3plus": 8,
+   "conditionedSceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.283,
+    "2020-07-30-L2-44.500": 2.342,
+    "2020-07-30-L2-45.500": 1.11,
+    "2020-07-30-L2-46.000": 1.078,
+    "2020-07-30-L2-93.000": 1.087,
+    "2020-07-30-L2-93.500": 0.757,
+    "2020-07-30-L2-94.500": 2.047,
+    "2020-07-30-L2-95.000": 2.684
+   },
+   "conditionedScenePoints": {
+    "2020-07-30-L2-44.000": 6,
+    "2020-07-30-L2-44.500": 6,
+    "2020-07-30-L2-45.500": 8,
+    "2020-07-30-L2-46.000": 10,
+    "2020-07-30-L2-93.000": 5,
+    "2020-07-30-L2-93.500": 3,
+    "2020-07-30-L2-94.500": 3,
+    "2020-07-30-L2-95.000": 3
+   },
+   "conditionedMedianOfSceneMediansM": 1.5788393015948785,
+   "conditionedMaxSceneMedianM": 4.282507459355346,
+   "conditionedPointsLateral": {
+    "n": 44,
+    "median": 1.5663038386280088,
+    "p25": 0.9075174693980409,
+    "p75": 2.6924672579657916,
+    "p95": 4.3172409438029975,
+    "max": 4.365846618725791
+   },
+   "conditionedPointsPick4px": {
+    "n": 44,
+    "median": 0.2365047203392503,
+    "p25": 0.11325087834386327,
+    "p75": 0.4976216519169872,
+    "p95": 0.816538535123407,
+    "max": 0.9167052417433506
+   },
+   "decompositionByScene": {
+    "2020-07-30-L2-44.000": null,
+    "2020-07-30-L2-44.500": null,
+    "2020-07-30-L2-45.500": {
+     "a": -3.073161162103962,
+     "psi": 0.2750462930739542,
+     "c": -0.04760753373060481,
+     "psiDeg": 15.7589917638559,
+     "points": 8,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.33389619492658207,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    },
+    "2020-07-30-L2-46.000": {
+     "a": 3.8741121996242756,
+     "psi": -0.1419078944265644,
+     "c": 0.8929594809106509,
+     "psiDeg": -8.130723430230198,
+     "points": 10,
+     "sides": [
+      "left",
+      "right"
+     ],
+     "medianAbsResidualAfterFitM": 0.2407829670746986,
+     "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+    },
+    "2020-07-30-L2-93.000": null,
+    "2020-07-30-L2-93.500": null,
+    "2020-07-30-L2-94.500": null,
+    "2020-07-30-L2-95.000": null
+   },
+   "minimum3dDisplacementPointsAll": {
+    "n": 95,
+    "median": 0.8653109903865648,
+    "p25": 0.31386870394922906,
+    "p75": 1.9250667769808394,
+    "p95": 9.157095961770926,
+    "max": 13.825473961412436
+   },
+   "scenes": 8,
+   "medianOfSceneMedianLateralM": 3.2303582901924703,
+   "meanOfSceneMedianLateralM": 11.277186750410834,
+   "maxSceneMedianLateralM": 47.063610969351004,
+   "sceneMedianLateralM": {
+    "2020-07-30-L2-44.000": 4.233,
+    "2020-07-30-L2-44.500": 2.228,
+    "2020-07-30-L2-45.500": 1.013,
+    "2020-07-30-L2-46.000": 1.078,
+    "2020-07-30-L2-93.000": 1.702,
+    "2020-07-30-L2-93.500": 47.064,
+    "2020-07-30-L2-94.500": 22.998,
+    "2020-07-30-L2-95.000": 9.902
+   },
+   "medianOfSceneMedianPx": 23.992669715955344,
+   "medianOfSceneMedianNaiveM": 0.9057627914097438,
+   "medianOfSceneMedianPick4pxM": 0.8324767649270304,
+   "pointsAll": {
+    "n": 79,
+    "median": 2.6840564415595507,
+    "p25": 1.0745912066917647,
+    "p75": 10.799180957452538,
+    "p95": 85.43807435993749,
+    "max": 1474.1194943399853
+   },
+   "pointsWithin25m": {
+    "n": 48,
+    "median": 1.3988345557011934,
+    "p25": 0.8345150634095937,
+    "p75": 2.7180100348057006,
+    "p95": 4.359548471067195,
+    "max": 9.352825189911803
+   },
+   "pointsBeyond25m": {
+    "n": 31,
+    "median": 17.39689145446174,
+    "p25": 4.93235866684675,
+    "p75": 45.424437826498355,
+    "p95": 235.45200034653305,
+    "max": 1474.1194943399853
+   },
+   "pick4pxWithin25m": {
+    "n": 48,
+    "median": 0.27001666860533413,
+    "p25": 0.11786473299985822,
+    "p75": 0.6945317592245814,
+    "p95": 1.357227986278715,
+    "max": 44.156198242743756
+   },
+   "lateralOverNaive": {
+    "n": 79,
+    "median": 6.108998435017114,
+    "p25": 1.9430024990883292,
+    "p75": 21.113688346005215,
+    "p95": 71.39005327515973,
+    "max": 1276.755248440309
+   },
+   "sceneCommonModeRightM": {
+    "2020-07-30-L2-44.000": -3.239,
+    "2020-07-30-L2-44.500": -1.762,
+    "2020-07-30-L2-45.500": 0.719,
+    "2020-07-30-L2-46.000": 1.479,
+    "2020-07-30-L2-93.000": 46.939,
+    "2020-07-30-L2-93.500": 40.376,
+    "2020-07-30-L2-94.500": 14.043,
+    "2020-07-30-L2-95.000": 6.463
+   },
+   "sceneDifferentialOutwardM": {
+    "2020-07-30-L2-44.000": -1.101,
+    "2020-07-30-L2-44.500": -1.009,
+    "2020-07-30-L2-45.500": -0.245,
+    "2020-07-30-L2-46.000": 0.602,
+    "2020-07-30-L2-93.000": 48.025,
+    "2020-07-30-L2-93.500": 40.902,
+    "2020-07-30-L2-94.500": 16.091,
+    "2020-07-30-L2-95.000": 9.147
+   },
+   "sceneSideLateralMedianM": {
+    "2020-07-30-L2-44.000": {
+     "leftLateralMedianM": 2.138,
+     "rightLateralMedianM": 4.34
+    },
+    "2020-07-30-L2-44.500": {
+     "leftLateralMedianM": 0.753,
+     "rightLateralMedianM": 2.771
+    },
+    "2020-07-30-L2-45.500": {
+     "leftLateralMedianM": 0.964,
+     "rightLateralMedianM": 1.158
+    },
+    "2020-07-30-L2-46.000": {
+     "leftLateralMedianM": 0.877,
+     "rightLateralMedianM": 2.082
+    },
+    "2020-07-30-L2-93.000": {
+     "leftLateralMedianM": 1.087,
+     "rightLateralMedianM": 94.964
+    },
+    "2020-07-30-L2-93.500": {
+     "leftLateralMedianM": 0.757,
+     "rightLateralMedianM": 81.278
+    },
+    "2020-07-30-L2-94.500": {
+     "leftLateralMedianM": 2.047,
+     "rightLateralMedianM": 30.134
+    },
+    "2020-07-30-L2-95.000": {
+     "leftLateralMedianM": 2.684,
+     "rightLateralMedianM": 15.611
+    }
+   }
+  }
+ },
+ "scenes": [
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 2.1682660793239044,
+    "p25": 1.5645079980772625,
+    "p75": 2.4783871333887477,
+    "p95": 2.791559245011776,
+    "max": 2.8698522729175333
+   },
+   "decomposition": null,
+   "points": 9,
+   "residualPx": {
+    "n": 9,
+    "median": 9.557212671096101,
+    "p25": 4.601863919933424,
+    "p75": 14.998061585591092,
+    "p95": 22.34379696368761,
+    "max": 24.630352785042422
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 2.1682660793239044,
+    "p25": 1.5645079980772625,
+    "p75": 2.8698522729175333,
+    "p95": 4.3538989346370025,
+    "max": 5.152761860753214
+   },
+   "naiveMetres": {
+    "n": 9,
+    "median": 0.38063030319565533,
+    "p25": 0.22270822152599812,
+    "p75": 0.45415054009452666,
+    "p95": 0.6713470088848095,
+    "max": 0.7469032826132691
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.7484509465892402,
+    "p25": 0.47008431864817135,
+    "p75": 1.3633013661316071,
+    "p95": 1.4802203246734034,
+    "max": 1.5039839657508915
+   },
+   "cameraDepthM": {
+    "n": 9,
+    "median": 12.518531074114511,
+    "p25": 11.987168368230872,
+    "p75": 22.858664562930866,
+    "p95": 31.38026105859432,
+    "max": 34.02043251670306
+   },
+   "leftSignedRightMedianM": 2.1682660793239044,
+   "leftOutwardMedianM": -2.1682660793239044,
+   "leftLateralMedianM": 2.1682660793239044,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -2.434476968801138,
+   "rightOutwardMedianM": -2.434476968801138,
+   "rightLateralMedianM": 2.434476968801138,
+   "rightPoints": 4,
+   "commonModeRightM": -0.13310544473861685,
+   "differentialOutwardM": -2.301371524062521,
+   "scene": "2020-07-29-L3-60.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 2.398208037871802,
+    "p25": 2.1933138060980655,
+    "p75": 2.4802035181747035,
+    "p95": 2.5457999024170253,
+    "max": 2.5621989984776055
+   },
+   "decomposition": null,
+   "points": 5,
+   "residualPx": {
+    "n": 5,
+    "median": 9.286123108506501,
+    "p25": 5.729230197925127,
+    "p75": 13.507914751519438,
+    "p95": 15.981224310013278,
+    "max": 16.599551699636738
+   },
+   "lateralMetres": {
+    "n": 5,
+    "median": 1.9884195743243287,
+    "p25": 1.5523565017291856,
+    "p75": 2.398208037871802,
+    "p95": 2.5294008063564446,
+    "max": 2.5621989984776055
+   },
+   "naiveMetres": {
+    "n": 5,
+    "median": 0.28557341075143705,
+    "p25": 0.20028888500557562,
+    "p75": 0.3685732613977341,
+    "p95": 0.3980491756764572,
+    "max": 0.405418154246138
+   },
+   "pick4pxMetres": {
+    "n": 5,
+    "median": 0.7551201226399111,
+    "p25": 0.5732717830548895,
+    "p75": 1.0166437412467753,
+    "p95": 1.2633833116457354,
+    "max": 1.3250682042454753
+   },
+   "cameraDepthM": {
+    "n": 5,
+    "median": 14.525520669086218,
+    "p25": 12.887951452807503,
+    "p75": 16.512352588339578,
+    "p95": 18.51790749822125,
+    "max": 19.01929622569167
+   },
+   "leftSignedRightMedianM": 1.9884195743243287,
+   "leftOutwardMedianM": -1.9884195743243287,
+   "leftLateralMedianM": 1.9884195743243287,
+   "leftPoints": 5,
+   "scene": "2020-07-29-L3-64.367",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 4.1292609528408954,
+    "p25": 3.8542257241456053,
+    "p75": 4.2859735540055,
+    "p95": 4.465425025350042,
+    "max": 4.510287893186177
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 11.213829444135396,
+    "p25": 9.223448506706202,
+    "p75": 26.945108652851758,
+    "p95": 45.510989697885044,
+    "max": 50.94113111660287
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 3.4006836969792626,
+    "p25": 2.315110058468811,
+    "p75": 4.207617253423198,
+    "p95": 23.76581387858534,
+    "max": 43.02133986398451
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.6189453775640954,
+    "p25": 0.5382012810743065,
+    "p75": 0.8307424188155871,
+    "p95": 0.9657140006898497,
+    "max": 1.0078705000958244
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 1.0032833830979724,
+    "p25": 0.3591050516495826,
+    "p75": 1.4560860436460523,
+    "p95": 24.387948276098776,
+    "max": 46.494411203515064
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 21.66199245104148,
+    "p25": 14.829362007701814,
+    "p75": 29.573890982228576,
+    "p95": 70.48838771375013,
+    "max": 101.0078258292619
+   },
+   "leftSignedRightMedianM": 3.8542257241456053,
+   "leftOutwardMedianM": -3.8542257241456053,
+   "leftLateralMedianM": 3.8542257241456053,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": 2.162167538605379,
+   "rightOutwardMedianM": 2.162167538605379,
+   "rightLateralMedianM": 2.315110058468811,
+   "rightPoints": 4,
+   "commonModeRightM": 3.008196631375492,
+   "differentialOutwardM": -0.8460290927701131,
+   "scene": "2020-07-30-L2-18.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 2.6154834915139276,
+    "p25": 2.059414333251415,
+    "p75": 2.7646615461751884,
+    "p95": 2.800665281366346,
+    "max": 2.802699870543875
+   },
+   "decomposition": null,
+   "points": 7,
+   "residualPx": {
+    "n": 7,
+    "median": 33.30696555909758,
+    "p25": 12.825296615775263,
+    "p75": 44.07068669866429,
+    "p95": 50.24278938205948,
+    "max": 51.57861009356533
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 2.5560053398283826,
+    "p25": 2.1666764278668227,
+    "p75": 2.7347615785166166,
+    "p95": 2.8002583635308405,
+    "max": 2.802699870543875
+   },
+   "naiveMetres": {
+    "n": 7,
+    "median": 1.975518493717849,
+    "p25": 0.851377921879984,
+    "p75": 2.177452986805779,
+    "p95": 2.335523540562277,
+    "max": 2.342085539032664
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 0.16690254344846167,
+    "p25": 0.10816866005326697,
+    "p75": 0.39337578068037293,
+    "p95": 2.3138182437695023,
+    "max": 3.087744489720109
+   },
+   "cameraDepthM": {
+    "n": 7,
+    "median": 26.971377644240263,
+    "p25": 25.09531452563988,
+    "p75": 28.23445859166363,
+    "p95": 39.26486835918074,
+    "max": 43.898237703558515
+   },
+   "rightSignedRightMedianM": -2.5560053398283826,
+   "rightOutwardMedianM": -2.5560053398283826,
+   "rightLateralMedianM": 2.5560053398283826,
+   "rightPoints": 7,
+   "scene": "2020-07-30-L2-45.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 7,
+   "conditionedLateralMetres": {
+    "n": 7,
+    "median": 0.37125010609642894,
+    "p25": 0.17783144624336494,
+    "p75": 0.7117858184998928,
+    "p95": 1.2623511888611132,
+    "max": 1.4343496699441274
+   },
+   "decomposition": null,
+   "points": 7,
+   "residualPx": {
+    "n": 7,
+    "median": 8.980527764427569,
+    "p25": 5.798151939266332,
+    "p75": 10.50050744071622,
+    "p95": 12.433356433036952,
+    "max": 12.889792537978298
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 0.37125010609642894,
+    "p25": 0.17783144624336494,
+    "p75": 0.7117858184998928,
+    "p95": 1.2623511888611132,
+    "max": 1.4343496699441274
+   },
+   "naiveMetres": {
+    "n": 7,
+    "median": 0.2465881853443316,
+    "p25": 0.11727335877476783,
+    "p75": 0.667461897961525,
+    "p95": 0.9303959929741301,
+    "max": 0.9500660771436557
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 0.13536216769833584,
+    "p25": 0.1008525168157201,
+    "p75": 0.15457350708031872,
+    "p95": 0.16363002360487428,
+    "max": 0.16722272896808033
+   },
+   "cameraDepthM": {
+    "n": 7,
+    "median": 12.96936705732959,
+    "p25": 9.415753564117846,
+    "p75": 25.562926019083605,
+    "p95": 42.33365222183575,
+    "max": 46.58597985574001
+   },
+   "rightSignedRightMedianM": -0.37125010609642894,
+   "rightOutwardMedianM": -0.37125010609642894,
+   "rightLateralMedianM": 0.37125010609642894,
+   "rightPoints": 7,
+   "scene": "2020-07-30-L2-50.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 1.2184336074158528,
+    "p25": 1.153923520696909,
+    "p75": 1.3327062409335855,
+    "p95": 1.855798007458982,
+    "max": 2.024366922948417
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 7.633311577763672,
+    "p25": 2.2772690141427954,
+    "p75": 10.457365872709735,
+    "p95": 20.62953711388539,
+    "max": 24.787866619794737
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 1.1563160340693959,
+    "p25": 0.8173775117007884,
+    "p75": 1.3899718722431569,
+    "p95": 2.7009465415571086,
+    "max": 3.3775261601658
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.33216858685957695,
+    "p25": 0.09591075321703577,
+    "p75": 0.4082798486891148,
+    "p95": 0.662397506128912,
+    "max": 0.7587879653188138
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.6174622130804232,
+    "p25": 0.37248754059053346,
+    "p75": 1.4048292819730601,
+    "p95": 2.51746093539671,
+    "max": 2.881796876153414
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 17.809211209829932,
+    "p25": 14.253583822586645,
+    "p75": 22.634284554472103,
+    "p95": 43.69047659947249,
+    "max": 52.35764019224833
+   },
+   "leftSignedRightMedianM": 1.2805511807623096,
+   "leftOutwardMedianM": -1.2805511807623096,
+   "leftLateralMedianM": 1.2805511807623096,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": 0.08891975004796032,
+   "rightOutwardMedianM": 0.08891975004796032,
+   "rightLateralMedianM": 0.5461653358568204,
+   "rightPoints": 4,
+   "commonModeRightM": 0.684735465405135,
+   "differentialOutwardM": -0.5958157153571746,
+   "scene": "2020-07-30-L2-84.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 1,
+   "conditionedLateralMetres": {
+    "n": 1,
+    "median": 1.3565510051537113,
+    "p25": 1.3565510051537113,
+    "p75": 1.3565510051537113,
+    "p95": 1.3565510051537113,
+    "max": 1.3565510051537113
+   },
+   "decomposition": null,
+   "points": 15,
+   "residualPx": {
+    "n": 15,
+    "median": 54.490746065642455,
+    "p25": 20.99576920095864,
+    "p75": 61.60746547786426,
+    "p95": 87.85173965711249,
+    "max": 89.39431582467432
+   },
+   "lateralMetres": {
+    "n": 6,
+    "median": 29.408875445077587,
+    "p25": 13.907748288748241,
+    "p75": 61.30716083930477,
+    "p95": 257.52127366266063,
+    "max": 319.9217157231029
+   },
+   "naiveMetres": {
+    "n": 15,
+    "median": 0.9741334236312513,
+    "p25": 0.8115177864344969,
+    "p75": 6.929474957830299,
+    "p95": 8.152893390284763,
+    "max": 8.449990582950873
+   },
+   "pick4pxMetres": {
+    "n": 6,
+    "median": 34.938132612577036,
+    "p25": 17.24193167611994,
+    "p75": 149.3024728215164,
+    "p95": 244.00499917415857,
+    "max": 263.57489282382284
+   },
+   "cameraDepthM": {
+    "n": 15,
+    "median": 42.40471453807996,
+    "p25": 21.40801592364342,
+    "p75": 50.668470643557484,
+    "p95": 67.00152662842261,
+    "max": 70.10152952743809
+   },
+   "leftSignedRightMedianM": -1.3565510051537113,
+   "leftOutwardMedianM": 1.3565510051537113,
+   "leftLateralMedianM": 1.3565510051537113,
+   "leftPoints": 1,
+   "rightSignedRightMedianM": 34.26880091321808,
+   "rightOutwardMedianM": 34.26880091321808,
+   "rightLateralMedianM": 34.26880091321808,
+   "rightPoints": 5,
+   "commonModeRightM": 16.456124954032184,
+   "differentialOutwardM": 17.812675959185896,
+   "scene": "2020-07-30-L2-94.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 1.1997056578624394,
+    "p25": 1.0670163057833817,
+    "p75": 1.253606996224165,
+    "p95": 1.3683043383271456,
+    "max": 1.405156724461357
+   },
+   "decomposition": null,
+   "points": 13,
+   "residualPx": {
+    "n": 13,
+    "median": 3.8923517294531997,
+    "p25": 0.5388268404708846,
+    "p75": 11.624710782542174,
+    "p95": 22.714725633295366,
+    "max": 27.00514518037597
+   },
+   "lateralMetres": {
+    "n": 13,
+    "median": 1.0366134508439249,
+    "p25": 0.36329319316852804,
+    "p75": 1.257747179924511,
+    "p95": 3.0528038757472733,
+    "max": 3.528053665936766
+   },
+   "naiveMetres": {
+    "n": 13,
+    "median": 0.2488851873128517,
+    "p25": 0.04516719140780954,
+    "p75": 0.3611263559934863,
+    "p95": 0.43176434139276076,
+    "max": 0.46932476497434195
+   },
+   "pick4pxMetres": {
+    "n": 13,
+    "median": 1.4308088727984032,
+    "p25": 0.33667620722852054,
+    "p75": 2.8630336949833044,
+    "p95": 7.544999760274223,
+    "max": 7.710213145716435
+   },
+   "cameraDepthM": {
+    "n": 13,
+    "median": 19.371013147940594,
+    "p25": 14.673219218449221,
+    "p75": 27.867397824922374,
+    "p95": 46.88905900322403,
+    "max": 57.50942617998196
+   },
+   "leftSignedRightMedianM": 1.158224870601752,
+   "leftOutwardMedianM": -1.158224870601752,
+   "leftLateralMedianM": 1.158224870601752,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": -0.04170530727710514,
+   "rightOutwardMedianM": -0.04170530727710514,
+   "rightLateralMedianM": 0.5093234824252588,
+   "rightPoints": 6,
+   "commonModeRightM": 0.5582597816623234,
+   "differentialOutwardM": -0.5999650889394286,
+   "scene": "2020-07-30-L2-112.000",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 11,
+   "conditionedLateralMetres": {
+    "n": 11,
+    "median": 0.3047265561191109,
+    "p25": 0.21887097591739227,
+    "p75": 1.4523702588384602,
+    "p95": 3.6184690792238756,
+    "max": 4.397673016869691
+   },
+   "decomposition": {
+    "a": 0.5179182830931877,
+    "psi": -0.05250664988776711,
+    "c": -0.034563736061824196,
+    "psiDeg": -3.008409434940113,
+    "points": 11,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.320132622001952,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 2.32105513563435,
+    "p25": 1.7170607646640779,
+    "p75": 6.0016978528622005,
+    "p95": 9.597211025070727,
+    "max": 10.268373971231803
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 0.3047265561191109,
+    "p25": 0.21887097591739227,
+    "p75": 1.4523702588384602,
+    "p95": 3.6184690792238756,
+    "max": 4.397673016869691
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.058262801291145,
+    "p25": 0.04065533161364092,
+    "p75": 0.27694894103400125,
+    "p95": 1.317152571678727,
+    "max": 1.7120779327319804
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.6046927214703917,
+    "p25": 0.5021116936174632,
+    "p75": 0.7389442473806338,
+    "p95": 0.8887450188001453,
+    "max": 0.9669740893733714
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 12.05933093647271,
+    "p25": 10.03323803574322,
+    "p75": 19.125443024737116,
+    "p95": 87.67311208325627,
+    "max": 132.92485983473935
+   },
+   "leftSignedRightMedianM": -0.16329060285627897,
+   "leftOutwardMedianM": 0.16329060285627897,
+   "leftLateralMedianM": 0.3047265561191109,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -0.793754303298063,
+   "rightOutwardMedianM": -0.793754303298063,
+   "rightLateralMedianM": 0.793754303298063,
+   "rightPoints": 6,
+   "commonModeRightM": -0.47852245307717095,
+   "differentialOutwardM": -0.315231850220892,
+   "scene": "2020-07-29-L3-52.387",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 8,
+   "conditionedLateralMetres": {
+    "n": 8,
+    "median": 1.6888300551813646,
+    "p25": 1.4683678139469412,
+    "p75": 2.1798544787150735,
+    "p95": 3.219570607594491,
+    "max": 3.7531299392699937
+   },
+   "decomposition": {
+    "a": 1.2015049207478392,
+    "psi": -0.1927644992718436,
+    "c": 0.3426430076791576,
+    "psiDeg": -11.04459224822927,
+    "points": 8,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.06899995089923561,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 9,
+   "residualPx": {
+    "n": 9,
+    "median": 11.324806100220984,
+    "p25": 7.598130653567825,
+    "p75": 18.711210523695684,
+    "p95": 19.234663623192983,
+    "max": 19.382284763463243
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 1.8320493350644518,
+    "p25": 1.505034805629034,
+    "p75": 2.228674705911417,
+    "p95": 4.315908644064109,
+    "max": 4.691094447260187
+   },
+   "naiveMetres": {
+    "n": 9,
+    "median": 0.3489694428485194,
+    "p25": 0.27949214085241275,
+    "p75": 0.43494374662151686,
+    "p95": 1.5957228351408894,
+    "max": 1.955512159214994
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.6291588809304038,
+    "p25": 0.5321287123260392,
+    "p75": 0.8672268113135395,
+    "p95": 0.97870612582006,
+    "max": 1.00417242343409
+   },
+   "cameraDepthM": {
+    "n": 9,
+    "median": 12.934648142494098,
+    "p25": 8.669216154282573,
+    "p75": 24.872094081470447,
+    "p95": 94.09170933231647,
+    "max": 127.45612252551058
+   },
+   "leftSignedRightMedianM": -1.6685420703467428,
+   "leftOutwardMedianM": 1.6685420703467428,
+   "leftLateralMedianM": 1.6685420703467428,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": -2.228674705911417,
+   "rightOutwardMedianM": -2.228674705911417,
+   "rightLateralMedianM": 2.228674705911417,
+   "rightPoints": 5,
+   "commonModeRightM": -1.94860838812908,
+   "differentialOutwardM": -0.28006631778233715,
+   "scene": "2020-07-30-L2-47.522",
+   "set": "heldout10",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 4.444781251399256,
+    "p25": 4.2476666167825,
+    "p75": 4.536401345037586,
+    "p95": 4.538532499987554,
+    "max": 4.5390652887250456
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 15.134502238514028,
+    "p25": 10.109900935467971,
+    "p75": 74.45478668221654,
+    "p95": 76.2754726512898,
+    "max": 76.86515822454865
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 4.536401345037586,
+    "p25": 3.5389942718625482,
+    "p75": 5.673187916160114,
+    "p95": 11.184607757572792,
+    "max": 12.735414168180892
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.8800345807089311,
+    "p25": 0.5555810888719873,
+    "p75": 4.0956447398734666,
+    "p95": 4.387100354757405,
+    "max": 4.428579099853951
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 1.2021436440149615,
+    "p25": 0.11951142214325206,
+    "p75": 2.921081833539926,
+    "p95": 8.847313308104773,
+    "max": 10.9322560497207
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 26.11314554965545,
+    "p25": 21.473368441988598,
+    "p75": 27.64572771498444,
+    "p95": 34.27229904943106,
+    "max": 40.80303960188368
+   },
+   "leftSignedRightMedianM": -5.047266025759168,
+   "leftOutwardMedianM": 5.047266025759168,
+   "leftLateralMedianM": 5.047266025759168,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -4.490591298218421,
+   "rightOutwardMedianM": -4.490591298218421,
+   "rightLateralMedianM": 4.490591298218421,
+   "rightPoints": 6,
+   "commonModeRightM": -4.768928661988794,
+   "differentialOutwardM": 0.27833736377037344,
+   "scene": "2020-07-30-L2-44.000",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 2.763542906898657,
+    "p25": 1.8798153330337422,
+    "p75": 2.957222714623644,
+    "p95": 3.0370302023773896,
+    "max": 3.056982074315826
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 9.922182373655055,
+    "p25": 5.674355412240557,
+    "p75": 64.00953653804567,
+    "p95": 81.43019527016799,
+    "max": 81.4949147254358
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 2.957222714623644,
+    "p25": 1.7015417535924742,
+    "p75": 4.568068114328971,
+    "p95": 14.064282971295356,
+    "max": 19.207316747871342
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.5267386793359854,
+    "p25": 0.21262998254530707,
+    "p75": 2.6924257474748794,
+    "p95": 3.376963025070322,
+    "max": 3.3826631925965134
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 1.1486275979999465,
+    "p25": 0.11662783185499803,
+    "p75": 3.52125162153962,
+    "p95": 13.492476668715874,
+    "max": 19.578222973596617
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 20.42508618067977,
+    "p25": 18.443923763539157,
+    "p75": 23.30102065074452,
+    "p95": 32.11536785365559,
+    "max": 39.15599895449347
+   },
+   "leftSignedRightMedianM": -2.9598929422829205,
+   "leftOutwardMedianM": 2.9598929422829205,
+   "leftLateralMedianM": 2.9598929422829205,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -2.86038281076115,
+   "rightOutwardMedianM": -2.86038281076115,
+   "rightLateralMedianM": 2.86038281076115,
+   "rightPoints": 6,
+   "commonModeRightM": -2.910137876522035,
+   "differentialOutwardM": 0.049755065760885175,
+   "scene": "2020-07-30-L2-44.500",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 7,
+   "conditionedLateralMetres": {
+    "n": 7,
+    "median": 0.6416595919453943,
+    "p25": 0.5184001057272174,
+    "p75": 1.3350020315826465,
+    "p95": 2.4820489364284284,
+    "max": 2.8382741095633515
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 5.625135992985058,
+    "p25": 2.6690330714355572,
+    "p75": 10.83757052938069,
+    "p95": 20.16781505947627,
+    "max": 22.027281920333902
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 0.5252840383268476,
+    "p25": 0.3065124848120927,
+    "p75": 0.9247752960251103,
+    "p95": 2.303936349860967,
+    "max": 2.8382741095633515
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.12400958724865474,
+    "p25": 0.06332146371838249,
+    "p75": 0.3871738480892766,
+    "p95": 4.560904260310381,
+    "max": 6.507664050569946
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 0.665644047765074,
+    "p25": 0.42723140062163845,
+    "p75": 1.0092218502248058,
+    "p95": 1.5120847042401568,
+    "max": 1.700789168741843
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 12.35309122135229,
+    "p25": 11.256558204442136,
+    "p75": 18.180042419679168,
+    "p95": 163.07421162533757,
+    "max": 164.84574251606392
+   },
+   "leftSignedRightMedianM": 0.41284865455802777,
+   "leftOutwardMedianM": -0.41284865455802777,
+   "leftLateralMedianM": 0.41284865455802777,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": 0.27565638329653447,
+   "rightOutwardMedianM": 0.27565638329653447,
+   "rightLateralMedianM": 0.6377194220956672,
+   "rightPoints": 5,
+   "commonModeRightM": 0.34425251892728115,
+   "differentialOutwardM": -0.06859613563074665,
+   "scene": "2020-07-30-L2-45.500",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 9,
+   "conditionedLateralMetres": {
+    "n": 9,
+    "median": 1.1950417971696046,
+    "p25": 0.6559995067684856,
+    "p75": 1.3247822450595703,
+    "p95": 1.3993289246995502,
+    "max": 1.4035379548631077
+   },
+   "decomposition": {
+    "a": 2.5110717346712343,
+    "psi": -0.10509443983361329,
+    "c": 0.2770464476754742,
+    "psiDeg": -6.021467852757603,
+    "points": 9,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.12994771748908446,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 10,
+   "residualPx": {
+    "n": 10,
+    "median": 7.367787720917509,
+    "p25": 2.7819060815740633,
+    "p75": 16.957591601275183,
+    "p95": 22.761500799298982,
+    "max": 23.751454284952782
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 1.0689917041827661,
+    "p25": 0.6498704801027124,
+    "p75": 1.2983624254788255,
+    "p95": 1.3988027959291054,
+    "max": 1.4035379548631077
+   },
+   "naiveMetres": {
+    "n": 10,
+    "median": 0.23025312415550014,
+    "p25": 0.09775514932953788,
+    "p75": 0.34715307007591756,
+    "p95": 0.5817131134736614,
+    "max": 0.7684128989426092
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 0.49999938058783383,
+    "p25": 0.381952585514035,
+    "p75": 0.7140645117554827,
+    "p95": 1.0917228081181236,
+    "max": 1.1935590021736049
+   },
+   "cameraDepthM": {
+    "n": 10,
+    "median": 12.46789131846724,
+    "p25": 9.604426929188705,
+    "p75": 17.146791853430237,
+    "p95": 32.60581065870973,
+    "max": 42.74651552534593
+   },
+   "leftSignedRightMedianM": 0.6519134889913035,
+   "leftOutwardMedianM": -0.6519134889913035,
+   "leftLateralMedianM": 0.6519134889913035,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 1.2599120211145873,
+   "rightOutwardMedianM": 1.2599120211145873,
+   "rightLateralMedianM": 1.2719426058980805,
+   "rightPoints": 6,
+   "commonModeRightM": 0.9559127550529454,
+   "differentialOutwardM": 0.3039992660616419,
+   "scene": "2020-07-30-L2-46.000",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 4,
+   "conditionedLateralMetres": {
+    "n": 4,
+    "median": 1.0660953939740108,
+    "p25": 0.9997255569125352,
+    "p75": 1.1831735088472346,
+    "p95": 1.4228312002298105,
+    "max": 1.4827456230754548
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 26.377289333670184,
+    "p25": 20.90982870013294,
+    "p75": 49.32798870203368,
+    "p95": 56.472117728910476,
+    "max": 60.53696538098521
+   },
+   "lateralMetres": {
+    "n": 8,
+    "median": 13.289037102850758,
+    "p25": 1.0747057657059194,
+    "p75": 46.87174089041628,
+    "p95": 269.3004375784586,
+    "max": 372.47646964132315
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.9687229878270041,
+    "p25": 0.7612025210816087,
+    "p75": 1.1321893847366888,
+    "p95": 4.623050121568385,
+    "max": 5.071260811829528
+   },
+   "pick4pxMetres": {
+    "n": 8,
+    "median": 7.287455954840026,
+    "p25": 0.11510338680702181,
+    "p75": 77.70814049573674,
+    "p95": 277.1760148526826,
+    "max": 308.62199551797164
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 20.206191038698865,
+    "p25": 11.736296586407066,
+    "p75": 40.00363152407863,
+    "p95": 48.07310641527276,
+    "max": 49.51645671282419
+   },
+   "leftSignedRightMedianM": -0.9677972067786935,
+   "leftOutwardMedianM": 0.9677972067786935,
+   "leftLateralMedianM": 1.0660953939740108,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 57.143762795133455,
+   "rightOutwardMedianM": 57.143762795133455,
+   "rightLateralMedianM": 57.143762795133455,
+   "rightPoints": 4,
+   "commonModeRightM": 28.087982794177382,
+   "differentialOutwardM": 29.055780000956073,
+   "scene": "2020-07-30-L2-93.000",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 1.2003944480063793,
+    "p25": 0.6672367501280068,
+    "p75": 7.273453347653196,
+    "p95": 12.131900467370649,
+    "max": 13.346512247300012
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 25.379700025865358,
+    "p25": 19.354294492562637,
+    "p75": 52.069466049318336,
+    "p95": 70.17771185709043,
+    "max": 70.22374868531887
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 21.8775531053808,
+    "p25": 7.273453347653196,
+    "p75": 41.55985774457689,
+    "p95": 156.36431492469393,
+    "max": 200.67963130025666
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.9056066479338677,
+    "p25": 0.7750188207115605,
+    "p75": 2.939914762363092,
+    "p95": 5.152495274996978,
+    "max": 5.324003352670222
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 11.267651261894418,
+    "p25": 0.3208165006760767,
+    "p75": 50.66531638803492,
+    "p95": 128.65624214722584,
+    "max": 149.20277439280127
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 27.914774579480532,
+    "p25": 16.522330481526453,
+    "p75": 40.49311876881576,
+    "p95": 47.96789813898189,
+    "max": 48.59326276668254
+   },
+   "leftSignedRightMedianM": -0.6672367501280068,
+   "leftOutwardMedianM": 0.6672367501280068,
+   "leftLateralMedianM": 0.6672367501280068,
+   "leftPoints": 2,
+   "rightSignedRightMedianM": 30.157805440772584,
+   "rightOutwardMedianM": 30.157805440772584,
+   "rightLateralMedianM": 30.157805440772584,
+   "rightPoints": 5,
+   "commonModeRightM": 14.74528434532229,
+   "differentialOutwardM": 15.412521095450295,
+   "scene": "2020-07-30-L2-93.500",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 4,
+   "conditionedLateralMetres": {
+    "n": 4,
+    "median": 2.066528185965428,
+    "p25": 1.474166824609124,
+    "p75": 2.7486460807040682,
+    "p95": 3.4012318918870967,
+    "max": 3.5643783446828543
+   },
+   "decomposition": null,
+   "points": 15,
+   "residualPx": {
+    "n": 15,
+    "median": 29.518715214230376,
+    "p25": 17.186051760101698,
+    "p75": 58.57545927297805,
+    "p95": 65.97965743552788,
+    "max": 69.08443302865804
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 16.24626735103751,
+    "p25": 2.7486460807040682,
+    "p75": 35.809852402699256,
+    "p95": 70.62529327198692,
+    "max": 87.17099753107263
+   },
+   "naiveMetres": {
+    "n": 15,
+    "median": 0.6607919012140668,
+    "p25": 0.49214858122481814,
+    "p75": 4.173018382920439,
+    "p95": 8.067945133583727,
+    "max": 8.10046200903053
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 8.05939230431803,
+    "p25": 0.2679989695414763,
+    "p75": 64.1800756231994,
+    "p95": 305.9743381936845,
+    "max": 490.4561816202983
+   },
+   "cameraDepthM": {
+    "n": 15,
+    "median": 21.671850590065496,
+    "p25": 8.777871558379685,
+    "p75": 49.204264900067614,
+    "p95": 64.46794039319998,
+    "max": 66.94270537593462
+   },
+   "leftSignedRightMedianM": -2.066528185965428,
+   "leftOutwardMedianM": 2.066528185965428,
+   "leftLateralMedianM": 2.066528185965428,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 31.878832879519774,
+   "rightOutwardMedianM": 31.878832879519774,
+   "rightLateralMedianM": 31.878832879519774,
+   "rightPoints": 6,
+   "commonModeRightM": 14.906152346777173,
+   "differentialOutwardM": 16.9726805327426,
+   "scene": "2020-07-30-L2-94.500",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 2.4032342846882067,
+    "p25": 2.2065537226319223,
+    "p75": 2.732477864359307,
+    "p95": 2.9958727280961877,
+    "max": 3.061721444030408
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 20.817873992997683,
+    "p25": 12.231298272364551,
+    "p75": 86.61236785952984,
+    "p95": 93.95428244536006,
+    "max": 94.7350599760846
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 9.457296366659621,
+    "p25": 4.026660010949264,
+    "p75": 11.757727411619715,
+    "p95": 13.725067181998861,
+    "max": 14.42096215308134
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.5501885673130782,
+    "p25": 0.49754868159337207,
+    "p75": 0.7140585991689915,
+    "p95": 11.518789035640523,
+    "max": 12.176164909162084
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 4.979475591570932,
+    "p25": 0.9284769736675766,
+    "p75": 15.3249370624078,
+    "p95": 41.02615548565275,
+    "max": 57.50346847963937
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 17.065745007284676,
+    "p25": 9.58928362573807,
+    "p75": 31.403497169368467,
+    "p95": 60.90159582287973,
+    "max": 61.13783048570528
+   },
+   "leftSignedRightMedianM": -2.4032342846882067,
+   "leftOutwardMedianM": 2.4032342846882067,
+   "leftLateralMedianM": 2.4032342846882067,
+   "leftPoints": 3,
+   "rightSignedRightMedianM": 10.475600419338393,
+   "rightOutwardMedianM": 10.475600419338393,
+   "rightLateralMedianM": 10.475600419338393,
+   "rightPoints": 7,
+   "commonModeRightM": 4.036183067325093,
+   "differentialOutwardM": 6.4394173520133,
+   "scene": "2020-07-30-L2-95.000",
+   "set": "sequence8_postselection",
+   "camera": "frozen_h1.25"
+  },
+  {
+   "conditionedPoints": 4,
+   "conditionedLateralMetres": {
+    "n": 4,
+    "median": 2.6455477684127313,
+    "p25": 2.241272552717073,
+    "p75": 2.9674137941278094,
+    "p95": 3.2554192773488726,
+    "max": 3.327420648154139
+   },
+   "decomposition": null,
+   "points": 9,
+   "residualPx": {
+    "n": 9,
+    "median": 7.26799419197513,
+    "p25": 5.076159380171632,
+    "p75": 12.828970597888144,
+    "p95": 20.38700206594752,
+    "max": 22.73104129873582
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 2.4436840273730964,
+    "p25": 1.634038128749003,
+    "p75": 3.1662096443335113,
+    "p95": 4.224231937118827,
+    "max": 4.822106129761953
+   },
+   "naiveMetres": {
+    "n": 9,
+    "median": 0.3293400533900568,
+    "p25": 0.20180299172663743,
+    "p75": 0.42047339958163177,
+    "p95": 0.5139247650839569,
+    "max": 0.5330930897062709
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 1.163742677130143,
+    "p25": 0.60648791903405,
+    "p75": 1.6245450745409227,
+    "p95": 1.7555636033530526,
+    "max": 1.7597865802553747
+   },
+   "cameraDepthM": {
+    "n": 9,
+    "median": 13.472558017572112,
+    "p25": 12.868419380451808,
+    "p75": 22.224267889712586,
+    "p95": 30.092511790651795,
+    "max": 32.517587391038475
+   },
+   "leftSignedRightMedianM": 2.4436840273730964,
+   "leftOutwardMedianM": -2.4436840273730964,
+   "leftLateralMedianM": 2.4436840273730964,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -2.6695185958254024,
+   "rightOutwardMedianM": -2.6695185958254024,
+   "rightLateralMedianM": 2.6695185958254024,
+   "rightPoints": 4,
+   "commonModeRightM": -0.11291728422615299,
+   "differentialOutwardM": -2.556601311599249,
+   "scene": "2020-07-29-L3-60.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 2,
+   "conditionedLateralMetres": {
+    "n": 2,
+    "median": 2.6572393928056237,
+    "p25": 2.5931540559749413,
+    "p75": 2.721324729636306,
+    "p95": 2.772592999100852,
+    "max": 2.7854100664669885
+   },
+   "decomposition": null,
+   "points": 5,
+   "residualPx": {
+    "n": 5,
+    "median": 6.394714904351143,
+    "p25": 3.0098582494772956,
+    "p75": 10.859223203093801,
+    "p95": 13.443171252077738,
+    "max": 14.089158264323723
+   },
+   "lateralMetres": {
+    "n": 5,
+    "median": 1.87142745847894,
+    "p25": 1.0886291563157577,
+    "p75": 2.529068719144259,
+    "p95": 2.7341417970024424,
+    "max": 2.7854100664669885
+   },
+   "naiveMetres": {
+    "n": 5,
+    "median": 0.20171468595997477,
+    "p25": 0.10913297720810554,
+    "p75": 0.3034754961717102,
+    "p95": 0.34171510152984136,
+    "max": 0.3512750028693742
+   },
+   "pick4pxMetres": {
+    "n": 5,
+    "median": 1.0657101259849742,
+    "p25": 0.7603034651445313,
+    "p75": 1.4812766387852254,
+    "p95": 2.3835028144183728,
+    "max": 2.6090593583266597
+   },
+   "cameraDepthM": {
+    "n": 5,
+    "median": 15.365731528873683,
+    "p25": 13.61324873706514,
+    "p75": 17.662284252304325,
+    "p95": 19.857943041715757,
+    "max": 20.406857739068617
+   },
+   "leftSignedRightMedianM": 1.87142745847894,
+   "leftOutwardMedianM": -1.87142745847894,
+   "leftLateralMedianM": 1.87142745847894,
+   "leftPoints": 5,
+   "scene": "2020-07-29-L3-64.367",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 8,
+   "conditionedLateralMetres": {
+    "n": 8,
+    "median": 4.43639436414078,
+    "p25": 2.8422916634849655,
+    "p75": 4.94483131962379,
+    "p95": 5.199500306925047,
+    "max": 5.270110937715694
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 10.781184545767319,
+    "p25": 2.307806923043169,
+    "p75": 29.081813963444315,
+    "p95": 48.07259600317162,
+    "max": 53.613484148853146
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 4.2180467721447314,
+    "p25": 1.442131745058059,
+    "p75": 4.7791974780986335,
+    "p95": 5.169238608014769,
+    "max": 5.270110937715694
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.6857542789626835,
+    "p25": 0.19324677005695706,
+    "p75": 0.8977712981918577,
+    "p95": 1.0153665881009788,
+    "max": 1.0552646951483478
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.7398426139500631,
+    "p25": 0.3298137642375867,
+    "p75": 1.055984053106529,
+    "p95": 13.34556777551439,
+    "max": 24.513345324039616
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 22.491738414505082,
+    "p25": 15.30175333870223,
+    "p75": 29.819559686025222,
+    "p95": 72.9534589971264,
+    "max": 103.6991506078156
+   },
+   "leftSignedRightMedianM": 4.654741956136828,
+   "leftOutwardMedianM": -4.654741956136828,
+   "leftLateralMedianM": 4.654741956136828,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": 0.4723879262001197,
+   "rightOutwardMedianM": 0.4723879262001197,
+   "rightLateralMedianM": 0.4723879262001197,
+   "rightPoints": 4,
+   "commonModeRightM": 2.5635649411684738,
+   "differentialOutwardM": -2.091177014968354,
+   "scene": "2020-07-30-L2-18.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 2.8406993712277244,
+    "p25": 2.3145013353551245,
+    "p75": 2.9731247870997946,
+    "p95": 3.003963456523676,
+    "max": 3.0060192623168867
+   },
+   "decomposition": null,
+   "points": 7,
+   "residualPx": {
+    "n": 7,
+    "median": 30.511372100688902,
+    "p25": 12.441008768654743,
+    "p75": 43.06878858462555,
+    "p95": 51.67187317500126,
+    "max": 53.68057073679357
+   },
+   "lateralMetres": {
+    "n": 6,
+    "median": 2.8406993712277244,
+    "p25": 2.3145013353551245,
+    "p75": 2.9731247870997946,
+    "p95": 3.003963456523676,
+    "max": 3.0060192623168867
+   },
+   "naiveMetres": {
+    "n": 7,
+    "median": 1.7393799696052819,
+    "p25": 0.8423534373970136,
+    "p75": 2.094803945279518,
+    "p95": 2.2059380483552635,
+    "max": 2.2313951702265045
+   },
+   "pick4pxMetres": {
+    "n": 6,
+    "median": 0.1289169410774964,
+    "p25": 0.08821931780578407,
+    "p75": 0.2791658360994926,
+    "p95": 0.5866684431880954,
+    "max": 0.675181645277147
+   },
+   "cameraDepthM": {
+    "n": 7,
+    "median": 26.706328224885976,
+    "p25": 23.42023961082586,
+    "p75": 27.769600740345076,
+    "p95": 40.4272813347948,
+    "max": 45.85200158955899
+   },
+   "rightSignedRightMedianM": -2.8406993712277244,
+   "rightOutwardMedianM": -2.8406993712277244,
+   "rightLateralMedianM": 2.8406993712277244,
+   "rightPoints": 6,
+   "scene": "2020-07-30-L2-45.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 7,
+   "conditionedLateralMetres": {
+    "n": 7,
+    "median": 0.3831610266159119,
+    "p25": 0.2750643947125102,
+    "p75": 0.48861727344835804,
+    "p95": 0.7575035291536023,
+    "max": 0.8448365533214943
+   },
+   "decomposition": null,
+   "points": 7,
+   "residualPx": {
+    "n": 7,
+    "median": 8.70348556859608,
+    "p25": 7.146774946745894,
+    "p75": 9.280164869602897,
+    "p95": 9.868104101577734,
+    "max": 10.080767774893069
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 0.3831610266159119,
+    "p25": 0.2750643947125102,
+    "p75": 0.48861727344835804,
+    "p95": 0.7575035291536023,
+    "max": 0.8448365533214943
+   },
+   "naiveMetres": {
+    "n": 7,
+    "median": 0.226066463055138,
+    "p25": 0.17226795007968101,
+    "p75": 0.3600322458913769,
+    "p95": 0.490735147336927,
+    "max": 0.5203761587176909
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 0.14920518164443747,
+    "p25": 0.10339482281444279,
+    "p75": 0.16476068377440148,
+    "p95": 0.21738708570898263,
+    "max": 0.23888310612517405
+   },
+   "cameraDepthM": {
+    "n": 7,
+    "median": 11.984811948351187,
+    "p25": 8.664827897525273,
+    "p75": 21.585088350666396,
+    "p95": 37.62217075613902,
+    "max": 42.4042256563197
+   },
+   "rightSignedRightMedianM": -0.3831610266159119,
+   "rightOutwardMedianM": -0.3831610266159119,
+   "rightLateralMedianM": 0.3831610266159119,
+   "rightPoints": 7,
+   "scene": "2020-07-30-L2-50.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 8,
+   "conditionedLateralMetres": {
+    "n": 8,
+    "median": 1.8477293344027768,
+    "p25": 1.6580687066377315,
+    "p75": 2.7889590606775325,
+    "p95": 3.5016422971670007,
+    "max": 3.570082374308871
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 10.485443871583914,
+    "p25": 7.347299564164702,
+    "p75": 14.445197293778232,
+    "p95": 26.073354143300477,
+    "max": 30.931498026482096
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 1.976206340256532,
+    "p25": 1.754027362013547,
+    "p75": 3.063208405094397,
+    "p95": 3.8706512962461805,
+    "max": 4.17122021818349
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.4398805493125865,
+    "p25": 0.39526939792335875,
+    "p75": 0.5176230407144379,
+    "p95": 0.7026739256974639,
+    "max": 0.7783920055478833
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.650736903361705,
+    "p25": 0.37192115240542334,
+    "p75": 0.9911835831492719,
+    "p95": 1.7286878805335064,
+    "max": 1.9701010687186338
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 17.813707220700987,
+    "p25": 14.61841315184727,
+    "p75": 23.502801975260276,
+    "p95": 47.39377877947237,
+    "max": 56.57804250772415
+   },
+   "leftSignedRightMedianM": 1.846850922909653,
+   "leftOutwardMedianM": -1.846850922909653,
+   "leftLateralMedianM": 1.846850922909653,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": -3.063208405094397,
+   "rightOutwardMedianM": -3.063208405094397,
+   "rightLateralMedianM": 3.063208405094397,
+   "rightPoints": 4,
+   "commonModeRightM": -0.608178741092372,
+   "differentialOutwardM": -2.455029664002025,
+   "scene": "2020-07-30-L2-84.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 2,
+   "conditionedLateralMetres": {
+    "n": 2,
+    "median": 1.1219931094614533,
+    "p25": 1.0567276779269963,
+    "p75": 1.1872585409959104,
+    "p95": 1.239470886223476,
+    "max": 1.2525239725303674
+   },
+   "decomposition": null,
+   "points": 15,
+   "residualPx": {
+    "n": 15,
+    "median": 42.456981341380676,
+    "p25": 14.494958477549453,
+    "p75": 51.218783919858915,
+    "p95": 68.98174013958547,
+    "max": 72.89391912720922
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 11.309027609484495,
+    "p25": 5.538315383385408,
+    "p75": 28.055021981541707,
+    "p95": 377.61894095706657,
+    "max": 522.2574018556664
+   },
+   "naiveMetres": {
+    "n": 15,
+    "median": 0.8131200800102303,
+    "p25": 0.6216533780621414,
+    "p75": 4.982086550742153,
+    "p95": 5.7096480244077465,
+    "max": 5.9781627551978715
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 6.341311488370339,
+    "p25": 1.461330760011261,
+    "p75": 49.481677082140855,
+    "p95": 359.0157415469994,
+    "max": 476.0812758532023
+   },
+   "cameraDepthM": {
+    "n": 15,
+    "median": 37.39213157506775,
+    "p25": 17.6071113666605,
+    "p75": 48.839208749619175,
+    "p95": 65.30811802886669,
+    "max": 68.58916741895227
+   },
+   "leftSignedRightMedianM": -1.1219931094614533,
+   "leftOutwardMedianM": 1.1219931094614533,
+   "leftLateralMedianM": 1.1219931094614533,
+   "leftPoints": 2,
+   "rightSignedRightMedianM": 15.980845102748603,
+   "rightOutwardMedianM": 15.980845102748603,
+   "rightLateralMedianM": 15.980845102748603,
+   "rightPoints": 5,
+   "commonModeRightM": 7.429425996643575,
+   "differentialOutwardM": 8.551419106105028,
+   "scene": "2020-07-30-L2-94.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 7,
+   "conditionedLateralMetres": {
+    "n": 7,
+    "median": 1.727799912744254,
+    "p25": 1.5798217295524961,
+    "p75": 1.823696666172206,
+    "p95": 2.8739877153738074,
+    "max": 3.293516937659497
+   },
+   "decomposition": null,
+   "points": 13,
+   "residualPx": {
+    "n": 13,
+    "median": 8.691357845638136,
+    "p25": 2.5769866599991245,
+    "p75": 14.321712751757671,
+    "p95": 28.258817707155476,
+    "max": 33.31264728766839
+   },
+   "lateralMetres": {
+    "n": 13,
+    "median": 1.7523071356372113,
+    "p25": 1.5129219324558076,
+    "p75": 2.5828440122818854,
+    "p95": 3.426355919983895,
+    "max": 3.6256143934704923
+   },
+   "naiveMetres": {
+    "n": 13,
+    "median": 0.3211241420278655,
+    "p25": 0.23798347545757406,
+    "p75": 0.4593850634499998,
+    "p95": 0.5460053100980549,
+    "max": 0.5869224969894095
+   },
+   "pick4pxMetres": {
+    "n": 13,
+    "median": 0.9633760564011754,
+    "p25": 0.34445739071586123,
+    "p75": 3.4878122508008533,
+    "p95": 7.7606063143731525,
+    "max": 11.596775865698541
+   },
+   "cameraDepthM": {
+    "n": 13,
+    "median": 21.014266879775345,
+    "p25": 15.522333902408523,
+    "p75": 30.25555289623168,
+    "p95": 49.36240563091365,
+    "max": 53.987337820064845
+   },
+   "leftSignedRightMedianM": 1.6467215266491846,
+   "leftOutwardMedianM": -1.6467215266491846,
+   "leftLateralMedianM": 1.6467215266491846,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": -2.825067649143188,
+   "rightOutwardMedianM": -2.825067649143188,
+   "rightLateralMedianM": 2.825067649143188,
+   "rightPoints": 6,
+   "commonModeRightM": -0.5891730612470016,
+   "differentialOutwardM": -2.235894587896186,
+   "scene": "2020-07-30-L2-112.000",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 8,
+   "conditionedLateralMetres": {
+    "n": 8,
+    "median": 0.8971483118997174,
+    "p25": 0.42546043290351865,
+    "p75": 1.3112228550336484,
+    "p95": 1.5632655392514685,
+    "max": 1.668635524943403
+   },
+   "decomposition": {
+    "a": 0.4793590374104355,
+    "psi": -0.08888057351916466,
+    "c": -0.7322611882441115,
+    "psiDeg": -5.092481743350362,
+    "points": 8,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.16185399120535074,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 7.694061495619661,
+    "p25": 2.4788550996608567,
+    "p75": 8.892676598693624,
+    "p95": 11.065162382788783,
+    "max": 12.089892751279267
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 1.2924376657227152,
+    "p25": 0.48954645084053533,
+    "p75": 1.5824423565494772,
+    "p95": 2.5618270005577624,
+    "max": 2.6343413890070737
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.23320632838228944,
+    "p25": 0.0797177440450472,
+    "p75": 0.3313116414623144,
+    "p95": 0.5655820212318361,
+    "max": 0.6481952050250229
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.6486521768262761,
+    "p25": 0.49341123187446245,
+    "p75": 0.9206828005807599,
+    "p95": 7.692867486875504,
+    "max": 13.892067462571617
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 12.852095437344266,
+    "p25": 10.6126533473518,
+    "p75": 18.649492475134032,
+    "p95": 84.97748840701361,
+    "max": 130.81403127884587
+   },
+   "leftSignedRightMedianM": -0.20584139650856265,
+   "leftOutwardMedianM": 0.20584139650856265,
+   "leftLateralMedianM": 0.47664398745525893,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -1.4319138055609995,
+   "rightOutwardMedianM": -1.4319138055609995,
+   "rightLateralMedianM": 1.4319138055609995,
+   "rightPoints": 6,
+   "commonModeRightM": -0.818877601034781,
+   "differentialOutwardM": -0.6130362045262184,
+   "scene": "2020-07-29-L3-52.387",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 2.2104190233076553,
+    "p25": 1.5436057102481786,
+    "p75": 2.5845379955551353,
+    "p95": 2.6350009076405483,
+    "max": 2.6437329936385554
+   },
+   "decomposition": null,
+   "points": 9,
+   "residualPx": {
+    "n": 9,
+    "median": 13.88297231969818,
+    "p25": 10.004798634038734,
+    "p75": 15.701401764538202,
+    "p95": 16.665610166896197,
+    "max": 16.81580964243559
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 2.511738033280964,
+    "p25": 1.7074810010676638,
+    "p75": 2.6437329936385554,
+    "p95": 3.3569979960515917,
+    "max": 3.5943547374417406
+   },
+   "naiveMetres": {
+    "n": 9,
+    "median": 0.4457625312180917,
+    "p25": 0.29620245402349,
+    "p75": 0.49756643690270846,
+    "p95": 0.7663974821091377,
+    "max": 0.7844329080026787
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.7017704650384704,
+    "p25": 0.5348861926675692,
+    "p75": 1.0891993201205974,
+    "p95": 5.485062780522885,
+    "max": 8.393031783211697
+   },
+   "cameraDepthM": {
+    "n": 9,
+    "median": 12.912867299259322,
+    "p25": 9.189399563805328,
+    "p75": 24.22588409402923,
+    "p95": 91.6775416349924,
+    "max": 125.35009444749613
+   },
+   "leftSignedRightMedianM": -1.6654371446102347,
+   "leftOutwardMedianM": 1.6654371446102347,
+   "leftLateralMedianM": 1.6654371446102347,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": -2.6437329936385554,
+   "rightOutwardMedianM": -2.6437329936385554,
+   "rightLateralMedianM": 2.6437329936385554,
+   "rightPoints": 5,
+   "commonModeRightM": -2.154585069124395,
+   "differentialOutwardM": -0.48914792451416034,
+   "scene": "2020-07-30-L2-47.522",
+   "set": "heldout10",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 4.555810330490037,
+    "p25": 4.264584018566963,
+    "p75": 4.715012375340264,
+    "p95": 4.767443343238305,
+    "max": 4.7805510852128155
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 16.49678100506396,
+    "p25": 12.02251214341768,
+    "p75": 69.2776597934932,
+    "p95": 71.79199468251444,
+    "max": 72.0228152436725
+   },
+   "lateralMetres": {
+    "n": 12,
+    "median": 4.7477817302765395,
+    "p25": 4.133247583405554,
+    "p75": 8.930459836736098,
+    "p95": 40.58904351675143,
+    "max": 52.50456387905921
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.8524769175401924,
+    "p25": 0.5658977301017627,
+    "p75": 3.8698707033929782,
+    "p95": 3.9883727696965976,
+    "max": 4.0252772557962615
+   },
+   "pick4pxMetres": {
+    "n": 12,
+    "median": 2.4821772860842444,
+    "p25": 0.12997373966501047,
+    "p75": 11.143894647646164,
+    "p95": 84.7295162953244,
+    "max": 140.01636884221648
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 26.81935955379947,
+    "p25": 22.637771226577943,
+    "p75": 27.829124861074952,
+    "p95": 35.998567426556036,
+    "max": 43.88761182170565
+   },
+   "leftSignedRightMedianM": -12.508786376310097,
+   "leftOutwardMedianM": 12.508786376310097,
+   "leftLateralMedianM": 12.508786376310097,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -4.555810330490037,
+   "rightOutwardMedianM": -4.555810330490037,
+   "rightLateralMedianM": 4.555810330490037,
+   "rightPoints": 7,
+   "commonModeRightM": -8.532298353400067,
+   "differentialOutwardM": 3.9764880229100297,
+   "scene": "2020-07-30-L2-44.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 2.856105695052476,
+    "p25": 1.8264022636746489,
+    "p75": 3.1091961919107862,
+    "p95": 3.2430809714035127,
+    "max": 3.2765521662766943
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 13.854365553446963,
+    "p25": 10.364799866393335,
+    "p75": 59.22589541277304,
+    "p95": 78.6211615260656,
+    "max": 79.28541755799516
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 3.2765521662766943,
+    "p25": 2.7571663840086735,
+    "p75": 12.45349933309281,
+    "p95": 42.867567656879444,
+    "max": 56.999651072892334
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.7490468614698016,
+    "p25": 0.38727112045092865,
+    "p75": 2.5100107108792535,
+    "p95": 3.1577628767116748,
+    "max": 3.1718203303880106
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 1.9375066391297038,
+    "p25": 0.12748486402716652,
+    "p75": 10.634381508583651,
+    "p95": 49.49300897597803,
+    "max": 57.50193085654809
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 20.958954092887122,
+    "p25": 19.158402840914725,
+    "p75": 23.682652654512932,
+    "p95": 35.13518895447189,
+    "max": 43.93380532151895
+   },
+   "leftSignedRightMedianM": -7.8891697590288805,
+   "leftOutwardMedianM": 7.8891697590288805,
+   "leftLateralMedianM": 7.8891697590288805,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -2.982650943481631,
+   "rightOutwardMedianM": -2.982650943481631,
+   "rightLateralMedianM": 2.982650943481631,
+   "rightPoints": 6,
+   "commonModeRightM": -5.435910351255256,
+   "differentialOutwardM": 2.4532594077736247,
+   "scene": "2020-07-30-L2-44.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 0.9652653334255163,
+    "p25": 0.6339476724359807,
+    "p75": 1.4341546767162046,
+    "p95": 2.0096677849037707,
+    "max": 2.1836556914493555
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 6.0212872182113735,
+    "p25": 2.627279917879746,
+    "p75": 14.947233867739653,
+    "p95": 20.467304448407596,
+    "max": 23.56202153093608
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 0.8497104668446385,
+    "p25": 0.5766179320858333,
+    "p75": 1.4341546767162046,
+    "p95": 2.1993135148180105,
+    "max": 2.212124461210547
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.1403218336479387,
+    "p25": 0.09062771553449672,
+    "p75": 0.3596445223536101,
+    "p95": 5.310896649375709,
+    "max": 6.038810080294718
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 0.8693377752693923,
+    "p25": 0.4173191547351013,
+    "p75": 1.4845631878189658,
+    "p95": 2.7049308983955855,
+    "max": 3.3695554582234357
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 12.692427849017177,
+    "p25": 11.08532425108564,
+    "p75": 19.093719479915734,
+    "p95": 164.9901021639865,
+    "max": 166.8950570691007
+   },
+   "leftSignedRightMedianM": -0.5600720723414827,
+   "leftOutwardMedianM": 0.5600720723414827,
+   "leftLateralMedianM": 0.5600720723414827,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -0.6570241557872666,
+   "rightOutwardMedianM": -0.6570241557872666,
+   "rightLateralMedianM": 1.273506511063766,
+   "rightPoints": 5,
+   "commonModeRightM": -0.6085481140643747,
+   "differentialOutwardM": -0.04847604172289194,
+   "scene": "2020-07-30-L2-45.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 7,
+   "conditionedLateralMetres": {
+    "n": 7,
+    "median": 0.3514638693180593,
+    "p25": 0.16124827833937955,
+    "p75": 0.6667244283718154,
+    "p95": 1.1307090685749617,
+    "max": 1.2390717978941268
+   },
+   "decomposition": null,
+   "points": 10,
+   "residualPx": {
+    "n": 10,
+    "median": 2.714070190415249,
+    "p25": 1.0458124370750832,
+    "p75": 4.636937999951852,
+    "p95": 6.446610486156628,
+    "max": 7.824388933577255
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 0.29673075453456976,
+    "p25": 0.21059532239969175,
+    "p75": 0.45030331895485537,
+    "p95": 1.0765277039153793,
+    "max": 1.2390717978941268
+   },
+   "naiveMetres": {
+    "n": 10,
+    "median": 0.0517074648020625,
+    "p25": 0.023032206607540302,
+    "p75": 0.10262326268440977,
+    "p95": 0.39037834713791697,
+    "max": 0.6159379873097115
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 0.4661394122895401,
+    "p25": 0.3672341341800588,
+    "p75": 0.9418825452773523,
+    "p95": 1.5153558111452745,
+    "max": 1.6987505509948124
+   },
+   "cameraDepthM": {
+    "n": 10,
+    "median": 12.477311687621789,
+    "p25": 9.55480393331902,
+    "p75": 17.67711806793103,
+    "p95": 29.47938591576046,
+    "max": 38.346300293368834
+   },
+   "leftSignedRightMedianM": 0.33822622291517074,
+   "leftOutwardMedianM": -0.33822622291517074,
+   "leftLateralMedianM": 0.33822622291517074,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 0.16124827833937955,
+   "rightOutwardMedianM": 0.16124827833937955,
+   "rightLateralMedianM": 0.29079631993038024,
+   "rightPoints": 6,
+   "commonModeRightM": 0.24973725062727514,
+   "differentialOutwardM": -0.0884889722878956,
+   "scene": "2020-07-30-L2-46.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 1.016623945708985,
+    "p25": 0.7196555921216191,
+    "p75": 1.1058744238606826,
+    "p95": 10.673505749105084,
+    "max": 13.065413580416188
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 16.89381012804484,
+    "p25": 15.375184656090731,
+    "p75": 34.391879873629804,
+    "p95": 43.8794496847329,
+    "max": 44.588951060509174
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 9.388662822098059,
+    "p25": 1.016623945708985,
+    "p75": 15.294654190120148,
+    "p95": 178.72808553153476,
+    "max": 272.7643532972695
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.6971388944038228,
+    "p25": 0.4522489597000695,
+    "p75": 1.2010328616156822,
+    "p95": 3.472294348809736,
+    "max": 3.788559491036597
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.15449695605305913,
+    "p25": 0.11575097684815272,
+    "p75": 11.966711845749817,
+    "p95": 164.92675352575694,
+    "max": 230.64982853006742
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 20.113062514190588,
+    "p25": 11.724351342171882,
+    "p75": 38.43832542619194,
+    "p95": 47.06396377138147,
+    "max": 47.99509235873346
+   },
+   "leftSignedRightMedianM": -0.6187583621222752,
+   "leftOutwardMedianM": 0.6187583621222752,
+   "leftLateralMedianM": 0.8681397689153021,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 15.294654190120148,
+   "rightOutwardMedianM": 15.294654190120148,
+   "rightLateralMedianM": 15.294654190120148,
+   "rightPoints": 5,
+   "commonModeRightM": 7.337947913998937,
+   "differentialOutwardM": 7.956706276121212,
+   "scene": "2020-07-30-L2-93.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 0.853005566609305,
+    "p25": 0.6359013580913817,
+    "p75": 6.830128135290776,
+    "p95": 11.611826190235952,
+    "max": 12.807250703972247
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 15.58247208615117,
+    "p25": 13.495954060993217,
+    "p75": 43.34397914180602,
+    "p95": 56.60472058629327,
+    "max": 60.63475219620656
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 12.807250703972247,
+    "p25": 4.494206150384912,
+    "p75": 19.654956313015767,
+    "p95": 109.83924051407114,
+    "max": 145.61587272800563
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.8805987801396592,
+    "p25": 0.5227418730825284,
+    "p75": 2.265930675196905,
+    "p95": 4.157404978703825,
+    "max": 4.177732460719152
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 5.092475412994174,
+    "p25": 0.4061162048728082,
+    "p75": 21.447719146185396,
+    "p95": 88.02898855627728,
+    "max": 111.33130729547582
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 27.528251759841726,
+    "p25": 16.550381550971434,
+    "p75": 38.71821934962388,
+    "p95": 46.04285953356654,
+    "max": 46.11169304011998
+   },
+   "leftSignedRightMedianM": -0.21710420851792334,
+   "leftOutwardMedianM": 0.21710420851792334,
+   "leftLateralMedianM": 0.6359013580913817,
+   "leftPoints": 2,
+   "rightSignedRightMedianM": 12.949480611140585,
+   "rightOutwardMedianM": 12.949480611140585,
+   "rightLateralMedianM": 12.949480611140585,
+   "rightPoints": 5,
+   "commonModeRightM": 6.3661882013113305,
+   "differentialOutwardM": 6.583292409829254,
+   "scene": "2020-07-30-L2-93.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 4,
+   "conditionedLateralMetres": {
+    "n": 4,
+    "median": 1.578752521405787,
+    "p25": 0.9105507332309,
+    "p75": 2.365411673855359,
+    "p95": 3.084508774412848,
+    "max": 3.264283049552221
+   },
+   "decomposition": null,
+   "points": 15,
+   "residualPx": {
+    "n": 15,
+    "median": 11.30940898176341,
+    "p25": 10.164704269013408,
+    "p75": 44.7745209612917,
+    "p95": 52.356902472931424,
+    "max": 52.611783144567895
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 6.087052241958665,
+    "p25": 2.365411673855359,
+    "p75": 12.105128230956614,
+    "p95": 62.77137798796272,
+    "max": 89.2227152979945
+   },
+   "naiveMetres": {
+    "n": 15,
+    "median": 0.4766053495789833,
+    "p25": 0.3466662075328778,
+    "p75": 3.0798742463241915,
+    "p95": 5.7976316553921095,
+    "max": 5.880767812686093
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 4.273077619049435,
+    "p25": 0.30382723442247084,
+    "p75": 11.045779861092536,
+    "p95": 78.34328744203796,
+    "max": 81.49272132814934
+   },
+   "cameraDepthM": {
+    "n": 15,
+    "median": 21.50141558880001,
+    "p25": 8.853470006320409,
+    "p75": 47.44073090575522,
+    "p95": 62.17182233966774,
+    "max": 64.13647175468333
+   },
+   "leftSignedRightMedianM": -1.578752521405787,
+   "leftOutwardMedianM": 1.578752521405787,
+   "leftLateralMedianM": 1.578752521405787,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 9.754598543515755,
+   "rightOutwardMedianM": 9.754598543515755,
+   "rightLateralMedianM": 11.878232809097833,
+   "rightPoints": 6,
+   "commonModeRightM": 4.087923011054984,
+   "differentialOutwardM": 5.666675532460771,
+   "scene": "2020-07-30-L2-94.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 4,
+   "conditionedLateralMetres": {
+    "n": 4,
+    "median": 2.3397514001431885,
+    "p25": 1.8613087638621861,
+    "p75": 2.912202666084003,
+    "p95": 3.39055925168263,
+    "max": 3.510148398082287
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 8.424137816240794,
+    "p25": 6.68174456048364,
+    "p75": 65.09626371776999,
+    "p95": 74.33894856142219,
+    "max": 78.30669381706873
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 4.048060083962017,
+    "p25": 2.466884540877017,
+    "p75": 9.635265344211415,
+    "p95": 32.82922944460326,
+    "max": 41.280223666220266
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.33529557128675663,
+    "p25": 0.24820386897334398,
+    "p75": 0.5057162799249062,
+    "p95": 4.2779714633831345,
+    "max": 8.695242216133774
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 2.6201237500332155,
+    "p25": 0.33655708686134855,
+    "p75": 16.048926037281852,
+    "p95": 35.299204681350474,
+    "max": 36.75155469533854
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 14.216591392741272,
+    "p25": 4.082749358914509,
+    "p75": 24.421963225388055,
+    "p95": 46.75956887049286,
+    "max": 59.579125700565385
+   },
+   "leftSignedRightMedianM": -2.3397514001431885,
+   "leftOutwardMedianM": 2.3397514001431885,
+   "leftLateralMedianM": 2.3397514001431885,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 8.06404467118003,
+   "rightOutwardMedianM": 8.06404467118003,
+   "rightLateralMedianM": 8.06404467118003,
+   "rightPoints": 7,
+   "commonModeRightM": 2.8621466355184206,
+   "differentialOutwardM": 5.201898035661609,
+   "scene": "2020-07-30-L2-95.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.00"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 2.1406837155513374,
+    "p25": 1.6683287336136936,
+    "p75": 2.4989249511824494,
+    "p95": 4.5088761537628,
+    "max": 5.152306567415592
+   },
+   "decomposition": null,
+   "points": 9,
+   "residualPx": {
+    "n": 9,
+    "median": 11.896899922217603,
+    "p25": 5.432574992308809,
+    "p75": 17.189902686657554,
+    "p95": 24.197800341950213,
+    "max": 26.39269675378546
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 2.0214223647861473,
+    "p25": 1.2572501469034527,
+    "p75": 2.5785849128044234,
+    "p95": 4.2886400238518325,
+    "max": 5.152306567415592
+   },
+   "naiveMetres": {
+    "n": 9,
+    "median": 0.4300473578486235,
+    "p25": 0.19262465378876983,
+    "p75": 0.4956404844503697,
+    "p95": 0.8138916502145808,
+    "max": 0.9627464654569126
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.5559531982686818,
+    "p25": 0.38647418407081413,
+    "p75": 1.1266274416442343,
+    "p95": 1.3708795990589122,
+    "max": 1.418913101997576
+   },
+   "cameraDepthM": {
+    "n": 9,
+    "median": 12.188048923504263,
+    "p25": 11.680323183886193,
+    "p75": 23.11655597626716,
+    "p95": 31.807616421973684,
+    "max": 34.50658384887601
+   },
+   "leftSignedRightMedianM": 2.0214223647861473,
+   "leftOutwardMedianM": -2.0214223647861473,
+   "leftLateralMedianM": 2.0214223647861473,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -2.125195177704824,
+   "rightOutwardMedianM": -2.125195177704824,
+   "rightLateralMedianM": 2.125195177704824,
+   "rightPoints": 4,
+   "commonModeRightM": -0.051886406459338286,
+   "differentialOutwardM": -2.0733087712454856,
+   "scene": "2020-07-29-L3-60.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 2.0528312216626774,
+    "p25": 1.8072045209367975,
+    "p75": 2.3139372912068703,
+    "p95": 2.3844630849463115,
+    "max": 2.4020945333811716
+   },
+   "decomposition": null,
+   "points": 5,
+   "residualPx": {
+    "n": 5,
+    "median": 11.964872155116351,
+    "p25": 8.690111968792362,
+    "p75": 15.943202657687715,
+    "p95": 18.207429611857407,
+    "max": 18.773486350399832
+   },
+   "lateralMetres": {
+    "n": 5,
+    "median": 2.0528312216626774,
+    "p25": 1.8072045209367975,
+    "p75": 2.3139372912068703,
+    "p95": 2.3844630849463115,
+    "max": 2.4020945333811716
+   },
+   "naiveMetres": {
+    "n": 5,
+    "median": 0.364283977975241,
+    "p25": 0.3007490508660187,
+    "p75": 0.43140759473113754,
+    "p95": 0.4504517138334061,
+    "max": 0.45521274360897324
+   },
+   "pick4pxMetres": {
+    "n": 5,
+    "median": 0.589951433922054,
+    "p25": 0.4691108733206506,
+    "p75": 0.7225514920393203,
+    "p95": 0.8786848006809309,
+    "max": 0.9177181278413336
+   },
+   "cameraDepthM": {
+    "n": 5,
+    "median": 14.214906313398746,
+    "p25": 12.633515387844422,
+    "p75": 16.1581221544915,
+    "p95": 18.04051646985498,
+    "max": 18.51111504869585
+   },
+   "leftSignedRightMedianM": 2.0528312216626774,
+   "leftOutwardMedianM": -2.0528312216626774,
+   "leftLateralMedianM": 2.0528312216626774,
+   "leftPoints": 5,
+   "scene": "2020-07-29-L3-64.367",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 3.3496397190362606,
+    "p25": 2.873195548517249,
+    "p75": 3.6078903287393453,
+    "p95": 3.8188416872287547,
+    "max": 3.87678281680655
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 17.467457462549664,
+    "p25": 10.586429160604855,
+    "p75": 24.84309206170667,
+    "p95": 42.66018292895748,
+    "max": 47.90049243128668
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 3.496506419471272,
+    "p25": 2.4813408721451915,
+    "p75": 4.007724863557879,
+    "p95": 76.66191017333392,
+    "max": 149.1291449848065
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.8657869581580012,
+    "p25": 0.6728857379748114,
+    "p75": 0.9388813868890054,
+    "p95": 2.1936645591774138,
+    "max": 3.147525132440049
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.9869643436061126,
+    "p25": 0.36733388370692865,
+    "p75": 1.6723048494131727,
+    "p95": 67.73850074484781,
+    "max": 133.343372482129
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 21.51374549351271,
+    "p25": 14.687383592484942,
+    "p75": 34.1402547897276,
+    "p95": 104.11996510359982,
+    "max": 108.20962350776472
+   },
+   "leftSignedRightMedianM": 3.202773018601249,
+   "leftOutwardMedianM": -3.202773018601249,
+   "leftLateralMedianM": 3.202773018601249,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": 2.6789153485786716,
+   "rightOutwardMedianM": 2.6789153485786716,
+   "rightLateralMedianM": 4.166671136085282,
+   "rightPoints": 4,
+   "commonModeRightM": 2.9408441835899604,
+   "differentialOutwardM": -0.2619288350112887,
+   "scene": "2020-07-30-L2-18.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 2.3863838515034077,
+    "p25": 1.8539407390346345,
+    "p75": 2.547423972506891,
+    "p95": 2.588479045340719,
+    "max": 2.589897278661633
+   },
+   "decomposition": null,
+   "points": 7,
+   "residualPx": {
+    "n": 7,
+    "median": 33.981388355978275,
+    "p25": 12.762603183060627,
+    "p75": 43.54091353975292,
+    "p95": 47.784506629987106,
+    "max": 48.55890868698275
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 2.335744849113182,
+    "p25": 1.2646849298575846,
+    "p75": 2.510623599635805,
+    "p95": 2.588195398676536,
+    "max": 2.589897278661633
+   },
+   "naiveMetres": {
+    "n": 7,
+    "median": 1.911501596348049,
+    "p25": 0.8409689031760378,
+    "p75": 2.1404949858887194,
+    "p95": 2.307188403126402,
+    "max": 2.3308887746895444
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 0.1807874332882755,
+    "p25": 0.12310881910659677,
+    "p75": 0.3086237147406372,
+    "p95": 1.4543390961151523,
+    "max": 1.9153024712053464
+   },
+   "cameraDepthM": {
+    "n": 7,
+    "median": 27.878849500873145,
+    "p25": 24.67141998492375,
+    "p75": 28.669562487992682,
+    "p95": 38.77968925467251,
+    "max": 43.0997248350137
+   },
+   "rightSignedRightMedianM": -2.335744849113182,
+   "rightOutwardMedianM": -2.335744849113182,
+   "rightLateralMedianM": 2.335744849113182,
+   "rightPoints": 7,
+   "scene": "2020-07-30-L2-45.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 7,
+   "conditionedLateralMetres": {
+    "n": 7,
+    "median": 0.28165255005171375,
+    "p25": 0.12946184225459612,
+    "p75": 0.7908570049800037,
+    "p95": 1.455998704696248,
+    "max": 1.654008981663602
+   },
+   "decomposition": null,
+   "points": 7,
+   "residualPx": {
+    "n": 7,
+    "median": 7.330810191580661,
+    "p25": 4.598151466201184,
+    "p75": 12.50547689347692,
+    "p95": 15.064757970155357,
+    "max": 15.93786110840051
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 0.28165255005171375,
+    "p25": 0.12946184225459612,
+    "p75": 0.7908570049800037,
+    "p95": 1.455998704696248,
+    "max": 1.654008981663602
+   },
+   "naiveMetres": {
+    "n": 7,
+    "median": 0.21374026202360671,
+    "p25": 0.08954591492885272,
+    "p75": 0.7995928594334899,
+    "p95": 1.264499449038713,
+    "max": 1.3331169950024728
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 0.14144417706051654,
+    "p25": 0.11536461078561767,
+    "p75": 0.15230507956718617,
+    "p95": 0.1587084247047166,
+    "max": 0.16137093736191988
+   },
+   "cameraDepthM": {
+    "n": 7,
+    "median": 13.612765284133904,
+    "p25": 10.005580467380845,
+    "p75": 25.81499310933618,
+    "p95": 43.14956837396759,
+    "max": 47.77696959321712
+   },
+   "rightSignedRightMedianM": -0.28165255005171375,
+   "rightOutwardMedianM": -0.28165255005171375,
+   "rightLateralMedianM": 0.28165255005171375,
+   "rightPoints": 7,
+   "scene": "2020-07-30-L2-50.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 0.8838242167797002,
+    "p25": 0.7964174238685495,
+    "p75": 0.9868075884375753,
+    "p95": 1.5691943985874997,
+    "max": 1.7613983090915784
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 8.360589536754707,
+    "p25": 7.661715547482549,
+    "p75": 9.038077618514206,
+    "p95": 15.795369774217997,
+    "max": 19.262293560092846
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 1.7613983090915784,
+    "p25": 0.8838242167797002,
+    "p75": 2.9734279204616603,
+    "p95": 4.002163067256989,
+    "max": 4.406374596361941
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.3176006473622689,
+    "p25": 0.27766202511996796,
+    "p75": 0.39736816297695376,
+    "p95": 0.7040892108531289,
+    "max": 0.8364021039103136
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.5664890556942512,
+    "p25": 0.36026602565987187,
+    "p75": 1.9375044325563069,
+    "p95": 3.0411210947446627,
+    "max": 3.2907867258598156
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 17.86025647859605,
+    "p25": 14.17116927449728,
+    "p75": 22.355983821611197,
+    "p95": 42.05471335553878,
+    "max": 50.52215210937712
+   },
+   "leftSignedRightMedianM": 0.9694823525245113,
+   "leftOutwardMedianM": -0.9694823525245113,
+   "leftLateralMedianM": 0.9694823525245113,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": 3.1477778878719467,
+   "rightOutwardMedianM": 3.1477778878719467,
+   "rightLateralMedianM": 3.1477778878719467,
+   "rightPoints": 4,
+   "commonModeRightM": 2.058630120198229,
+   "differentialOutwardM": 1.0891477676737176,
+   "scene": "2020-07-30-L2-84.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 1,
+   "conditionedLateralMetres": {
+    "n": 1,
+    "median": 1.6057695257130709,
+    "p25": 1.6057695257130709,
+    "p75": 1.6057695257130709,
+    "p95": 1.6057695257130709,
+    "max": 1.6057695257130709
+   },
+   "decomposition": null,
+   "points": 15,
+   "residualPx": {
+    "n": 15,
+    "median": 64.3191085006335,
+    "p25": 25.779731856043966,
+    "p75": 70.99217119397392,
+    "p95": 97.30307582138802,
+    "max": 98.3284957451196
+   },
+   "lateralMetres": {
+    "n": 7,
+    "median": 93.21604501865524,
+    "p25": 50.38389269763293,
+    "p75": 194.68287023795187,
+    "p95": 384.25811919411257,
+    "max": 460.75144620410185
+   },
+   "naiveMetres": {
+    "n": 15,
+    "median": 1.1860950144281006,
+    "p25": 1.0764807329250585,
+    "p75": 8.019997892716518,
+    "p95": 9.756734170517543,
+    "max": 10.459184577689612
+   },
+   "pick4pxMetres": {
+    "n": 7,
+    "median": 127.78802941241,
+    "p25": 39.255437433257555,
+    "p75": 213.89376544412767,
+    "p95": 357.4474269175917,
+    "max": 408.8846067013933
+   },
+   "cameraDepthM": {
+    "n": 15,
+    "median": 42.29773226924405,
+    "p25": 21.52925409614049,
+    "p75": 51.085032527689876,
+    "p95": 67.07898240287189,
+    "max": 70.12011700887317
+   },
+   "leftSignedRightMedianM": -1.6057695257130709,
+   "leftOutwardMedianM": 1.6057695257130709,
+   "leftLateralMedianM": 1.6057695257130709,
+   "leftPoints": 1,
+   "rightSignedRightMedianM": 138.4040479952104,
+   "rightOutwardMedianM": 138.4040479952104,
+   "rightLateralMedianM": 138.4040479952104,
+   "rightPoints": 6,
+   "commonModeRightM": 68.39913923474866,
+   "differentialOutwardM": 70.00490876046173,
+   "scene": "2020-07-30-L2-94.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 0.8731216464447671,
+    "p25": 0.8024705936044851,
+    "p75": 0.8965010460474366,
+    "p95": 0.9933490656975199,
+    "max": 1.0254547075955394
+   },
+   "decomposition": null,
+   "points": 13,
+   "residualPx": {
+    "n": 13,
+    "median": 7.641601357693947,
+    "p25": 4.366436652730848,
+    "p75": 9.627250394032423,
+    "p95": 17.7515015948158,
+    "max": 21.264939762768787
+   },
+   "lateralMetres": {
+    "n": 13,
+    "median": 1.0254547075955394,
+    "p25": 0.8513355287101723,
+    "p75": 3.3054043529601396,
+    "p95": 4.985696383054172,
+    "max": 6.705050412626656
+   },
+   "naiveMetres": {
+    "n": 13,
+    "median": 0.3155119380985627,
+    "p25": 0.26498394453118684,
+    "p75": 0.32358883397588395,
+    "p95": 0.4063459442366701,
+    "max": 0.4607411269174048
+   },
+   "pick4pxMetres": {
+    "n": 13,
+    "median": 1.2741423815721706,
+    "p25": 0.31962891727508314,
+    "p75": 3.9554869397197185,
+    "p95": 6.927764281159348,
+    "max": 8.923467872425157
+   },
+   "cameraDepthM": {
+    "n": 13,
+    "median": 18.842949741708686,
+    "p25": 14.37392221003601,
+    "p75": 28.15040167270228,
+    "p95": 46.52002426877547,
+    "max": 59.060009655776305
+   },
+   "leftSignedRightMedianM": 0.8513355287101723,
+   "leftOutwardMedianM": -0.8513355287101723,
+   "leftLateralMedianM": 0.8513355287101723,
+   "leftPoints": 7,
+   "rightSignedRightMedianM": 3.37842444652821,
+   "rightOutwardMedianM": 3.37842444652821,
+   "rightLateralMedianM": 3.37842444652821,
+   "rightPoints": 6,
+   "commonModeRightM": 2.114879987619191,
+   "differentialOutwardM": 1.2635444589090188,
+   "scene": "2020-07-30-L2-112.000",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 11,
+   "conditionedLateralMetres": {
+    "n": 11,
+    "median": 0.9645873585413631,
+    "p25": 0.18821296153950573,
+    "p75": 1.678611359272547,
+    "p95": 4.156340665896683,
+    "max": 5.393451024300129
+   },
+   "decomposition": {
+    "a": 1.9308251611373455,
+    "psi": -0.1009394461741406,
+    "c": 0.7801369421318318,
+    "psiDeg": -5.783404252166201,
+    "points": 11,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.18148512957521223,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 4.23152993331872,
+    "p25": 2.0803789209034322,
+    "p75": 10.596754338419851,
+    "p95": 14.240391816849503,
+    "max": 16.238525187753076
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 0.9645873585413631,
+    "p25": 0.18821296153950573,
+    "p75": 1.678611359272547,
+    "p95": 4.156340665896683,
+    "max": 5.393451024300129
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.20180183503769367,
+    "p25": 0.04362427786513784,
+    "p75": 0.29664281421581984,
+    "p95": 2.0964320749193464,
+    "max": 3.0525766990873198
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.6298355284806929,
+    "p25": 0.3923570353728152,
+    "p75": 0.6886857341472865,
+    "p95": 0.8376645657832342,
+    "max": 0.9510217513391713
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 11.799337341446426,
+    "p25": 9.918207456278019,
+    "p75": 19.349021315702764,
+    "p95": 88.83131958454129,
+    "max": 134.17510379906528
+   },
+   "leftSignedRightMedianM": -0.1368747968529766,
+   "leftOutwardMedianM": 0.1368747968529766,
+   "leftLateralMedianM": 0.1870540417191179,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -0.13958473955261008,
+   "rightOutwardMedianM": -0.13958473955261008,
+   "rightLateralMedianM": 1.678611359272547,
+   "rightPoints": 6,
+   "commonModeRightM": -0.13822976820279334,
+   "differentialOutwardM": -0.0013549713498167415,
+   "scene": "2020-07-29-L3-52.387",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 8,
+   "conditionedLateralMetres": {
+    "n": 8,
+    "median": 1.7020753849750778,
+    "p25": 1.5466813173044904,
+    "p75": 2.404835065727599,
+    "p95": 5.10157002267597,
+    "max": 5.803365829637787
+   },
+   "decomposition": {
+    "a": -0.12000799640225854,
+    "psi": -0.08423586391728938,
+    "c": 0.47418973008504073,
+    "psiDeg": -4.826359486099019,
+    "points": 8,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.0742391350775915,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 9,
+   "residualPx": {
+    "n": 9,
+    "median": 13.21162584560849,
+    "p25": 6.53759028503973,
+    "p75": 21.98050597290877,
+    "p95": 23.961754730816914,
+    "max": 24.697730628190598
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 1.631281096999134,
+    "p25": 1.49031810115595,
+    "p75": 1.9403684367687895,
+    "p95": 5.001313478824283,
+    "max": 5.803365829637787
+   },
+   "naiveMetres": {
+    "n": 9,
+    "median": 0.3636199462058273,
+    "p25": 0.348131812235278,
+    "p75": 0.43568271937964775,
+    "p95": 2.462483071185714,
+    "max": 3.254983347822241
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.5466378915180683,
+    "p25": 0.43912083642578126,
+    "p75": 0.7213632429715671,
+    "p95": 0.9769887762370425,
+    "max": 1.0044479832142565
+   },
+   "cameraDepthM": {
+    "n": 9,
+    "median": 12.983338599710414,
+    "p25": 8.529966432973215,
+    "p75": 25.118933804410194,
+    "p95": 94.83988747330343,
+    "max": 128.05808519079963
+   },
+   "leftSignedRightMedianM": -1.669169364485846,
+   "leftOutwardMedianM": 1.669169364485846,
+   "leftLateralMedianM": 1.669169364485846,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": -1.631281096999134,
+   "rightOutwardMedianM": -1.631281096999134,
+   "rightLateralMedianM": 1.631281096999134,
+   "rightPoints": 5,
+   "commonModeRightM": -1.65022523074249,
+   "differentialOutwardM": 0.018944133743356018,
+   "scene": "2020-07-30-L2-47.522",
+   "set": "heldout10",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 4.282507459355346,
+    "p25": 3.188148635570535,
+    "p75": 4.34392061406035,
+    "p95": 4.361347941826794,
+    "max": 4.365846618725791
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 14.77385218691941,
+    "p25": 7.6810252033371125,
+    "p75": 75.33848216742813,
+    "p95": 77.62049739251674,
+    "max": 78.51376684405763
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 4.232888195858701,
+    "p25": 2.4890976771124835,
+    "p75": 4.3568492649277974,
+    "p95": 4.93235866684675,
+    "max": 4.964150084765242
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 1.0197009214797663,
+    "p25": 0.3587178590115338,
+    "p75": 4.149002041553001,
+    "p95": 4.537277386594752,
+    "max": 4.567967576538313
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.846033089645444,
+    "p25": 0.12248372133163832,
+    "p75": 1.6249722219957234,
+    "p95": 3.487451107086428,
+    "max": 4.009578803767047
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 25.87580664143299,
+    "p25": 21.033167581131472,
+    "p75": 27.59352321140966,
+    "p95": 33.745089286546936,
+    "max": 39.70442438090828
+   },
+   "leftSignedRightMedianM": -2.1382932387504883,
+   "leftOutwardMedianM": 2.1382932387504883,
+   "leftLateralMedianM": 2.1382932387504883,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -4.339989316990897,
+   "rightOutwardMedianM": -4.339989316990897,
+   "rightLateralMedianM": 4.339989316990897,
+   "rightPoints": 6,
+   "commonModeRightM": -3.2391412778706927,
+   "differentialOutwardM": -1.1008480391202042,
+   "scene": "2020-07-30-L2-44.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 6,
+   "conditionedLateralMetres": {
+    "n": 6,
+    "median": 2.3420001261336747,
+    "p25": 1.8213408191122848,
+    "p75": 2.7970383427743517,
+    "p95": 2.8487928821261055,
+    "max": 2.8573669146761245
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 5.807620361160446,
+    "p25": 3.230921657772182,
+    "p75": 65.2031328518243,
+    "p95": 81.15913918899611,
+    "max": 81.74289375154584
+   },
+   "lateralMetres": {
+    "n": 11,
+    "median": 2.22782838452624,
+    "p25": 1.2631839882377036,
+    "p75": 2.8402188495760865,
+    "p95": 6.37041241269141,
+    "max": 9.419956684813073
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 0.32086525413166583,
+    "p25": 0.16178875163858286,
+    "p75": 2.7027878556603753,
+    "p95": 3.38944551654634,
+    "max": 3.434868756496588
+   },
+   "pick4pxMetres": {
+    "n": 11,
+    "median": 0.8189204402086168,
+    "p25": 0.11866102827910008,
+    "p75": 1.9413123658238762,
+    "p95": 72.78111910259224,
+    "max": 142.2057639058217
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 20.257908277708694,
+    "p25": 18.05902175934367,
+    "p75": 23.1993199742396,
+    "p95": 31.149890505522364,
+    "max": 37.71309567451717
+   },
+   "leftSignedRightMedianM": -0.7529332958583902,
+   "leftOutwardMedianM": 0.7529332958583902,
+   "leftLateralMedianM": 0.7529332958583902,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": -2.7710059010726553,
+   "rightOutwardMedianM": -2.7710059010726553,
+   "rightLateralMedianM": 2.7710059010726553,
+   "rightPoints": 6,
+   "commonModeRightM": -1.7619695984655228,
+   "differentialOutwardM": -1.0090363026071325,
+   "scene": "2020-07-30-L2-44.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 8,
+   "conditionedLateralMetres": {
+    "n": 8,
+    "median": 1.110461794202509,
+    "p25": 0.8412506380112705,
+    "p75": 1.586446984101089,
+    "p95": 2.9251215421216816,
+    "max": 3.191478283432393
+   },
+   "decomposition": {
+    "a": -3.073161162103962,
+    "psi": 0.2750462930739542,
+    "c": -0.04760753373060481,
+    "psiDeg": 15.7589917638559,
+    "points": 8,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.33389619492658207,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 6.573172062949832,
+    "p25": 4.411587538073775,
+    "p75": 14.349179279444067,
+    "p95": 24.22292529332342,
+    "max": 27.006900458639926
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 1.0132874146424156,
+    "p25": 0.8540875326781348,
+    "p75": 1.2683962358223186,
+    "p95": 2.849019616032906,
+    "max": 3.191478283432393
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.1901896775640556,
+    "p25": 0.14395565493406315,
+    "p75": 0.982520030966237,
+    "p95": 3.143326217147222,
+    "max": 3.338652337060496
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 0.5403615589270184,
+    "p25": 0.3606514594827407,
+    "p75": 0.7691562676362236,
+    "p95": 1.0437835053660545,
+    "max": 1.0693007500621046
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 13.608320059108767,
+    "p25": 11.181113621642304,
+    "p75": 29.96145480751258,
+    "p95": 114.04078076304793,
+    "max": 161.0171075175394
+   },
+   "leftSignedRightMedianM": 0.9639072703093776,
+   "leftOutwardMedianM": -0.9639072703093776,
+   "leftLateralMedianM": 0.9639072703093776,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": 0.4732807411169493,
+   "rightOutwardMedianM": 0.4732807411169493,
+   "rightLateralMedianM": 1.1582560294295643,
+   "rightPoints": 5,
+   "commonModeRightM": 0.7185940057131635,
+   "differentialOutwardM": -0.24531326459621416,
+   "scene": "2020-07-30-L2-45.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 10,
+   "conditionedLateralMetres": {
+    "n": 10,
+    "median": 1.0782140012129187,
+    "p25": 0.8467689299212993,
+    "p75": 2.2018068956673527,
+    "p95": 2.56039921931958,
+    "max": 2.5720854641129836
+   },
+   "decomposition": {
+    "a": 3.8741121996242756,
+    "psi": -0.1419078944265644,
+    "c": 0.8929594809106509,
+    "psiDeg": -8.130723430230198,
+    "points": 10,
+    "sides": [
+     "left",
+     "right"
+    ],
+    "medianAbsResidualAfterFitM": 0.2407829670746986,
+    "note": "Non-identifiable diagnostic only: camera attitude (unrendered body roll/pitch), lens distortion and GPS lateral/heading all map onto a, psi and c. Not a GPS correction."
+   },
+   "points": 10,
+   "residualPx": {
+    "n": 10,
+    "median": 8.204390712917165,
+    "p25": 5.12128981216185,
+    "p75": 28.815348886237338,
+    "p95": 42.132187908375066,
+    "max": 44.89439476497075
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 1.0782140012129187,
+    "p25": 0.8467689299212993,
+    "p75": 2.2018068956673527,
+    "p95": 2.56039921931958,
+    "max": 2.5720854641129836
+   },
+   "naiveMetres": {
+    "n": 10,
+    "median": 0.4305109343005371,
+    "p25": 0.15839515146787192,
+    "p75": 0.6251430881374728,
+    "p95": 0.7838853724134057,
+    "max": 0.9097409788446044
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 0.5160289661891719,
+    "p25": 0.42802731767479574,
+    "p75": 0.5977651919853025,
+    "p95": 0.8532175498717165,
+    "max": 0.9167052417433506
+   },
+   "cameraDepthM": {
+    "n": 10,
+    "median": 12.643447757720695,
+    "p25": 9.776966917495377,
+    "p75": 16.87674379368356,
+    "p95": 35.95291484441607,
+    "max": 47.61864010969967
+   },
+   "leftSignedRightMedianM": 0.8771431996596701,
+   "leftOutwardMedianM": -0.8771431996596701,
+   "leftLateralMedianM": 0.8771431996596701,
+   "leftPoints": 4,
+   "rightSignedRightMedianM": 2.0816050564418482,
+   "rightOutwardMedianM": 2.0816050564418482,
+   "rightLateralMedianM": 2.0816050564418482,
+   "rightPoints": 6,
+   "commonModeRightM": 1.4793741280507593,
+   "differentialOutwardM": 0.602230928391089,
+   "scene": "2020-07-30-L2-46.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 5,
+   "conditionedLateralMetres": {
+    "n": 5,
+    "median": 1.0865148544080758,
+    "p25": 0.44311369627272656,
+    "p75": 1.3258275525406233,
+    "p95": 1.6269480689941966,
+    "max": 1.70222819810759
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 37.552170266148764,
+    "p25": 24.61676527570519,
+    "p75": 58.45588373597061,
+    "p95": 66.04871069705774,
+    "max": 69.65235028767388
+   },
+   "lateralMetres": {
+    "n": 9,
+    "median": 1.70222819810759,
+    "p25": 1.0865148544080758,
+    "p75": 67.04949316581695,
+    "p95": 221.0368340694577,
+    "max": 286.47542037696496
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 1.1584971273823372,
+    "p25": 0.9281515156069147,
+    "p75": 1.2577552400575804,
+    "p95": 5.366161632382039,
+    "max": 5.743097144833901
+   },
+   "pick4pxMetres": {
+    "n": 9,
+    "median": 0.13852404494148596,
+    "p25": 0.09995257266571511,
+    "p75": 69.61543337142069,
+    "p95": 414.0195163029011,
+    "max": 547.6670025237928
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 20.307973955737182,
+    "p25": 11.900016500930926,
+    "p75": 40.24254446706409,
+    "p95": 48.27009409463628,
+    "max": 50.10555719042816
+   },
+   "leftSignedRightMedianM": -1.0865148544080758,
+   "leftOutwardMedianM": 1.0865148544080758,
+   "leftLateralMedianM": 1.0865148544080758,
+   "leftPoints": 5,
+   "rightSignedRightMedianM": 94.96422388700698,
+   "rightOutwardMedianM": 94.96422388700698,
+   "rightLateralMedianM": 94.96422388700698,
+   "rightPoints": 4,
+   "commonModeRightM": 46.93885451629945,
+   "differentialOutwardM": 48.02536937070753,
+   "scene": "2020-07-30-L2-93.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 0.7567823455451246,
+    "p25": 0.6417919677008249,
+    "p75": 1.0935809123467761,
+    "p95": 1.3630197657880971,
+    "max": 1.4303794791484274
+   },
+   "decomposition": null,
+   "points": 11,
+   "residualPx": {
+    "n": 11,
+    "median": 35.61120431141779,
+    "p25": 22.44144646985206,
+    "p75": 59.2951019369858,
+    "p95": 78.09261794383926,
+    "max": 79.77767530676152
+   },
+   "lateralMetres": {
+    "n": 8,
+    "median": 47.063610969351004,
+    "p25": 1.2619801957476018,
+    "p75": 107.06562749495698,
+    "p95": 1022.7276744316252,
+    "max": 1474.1194943399853
+   },
+   "naiveMetres": {
+    "n": 11,
+    "median": 1.1557864862892746,
+    "p25": 1.0262571233821258,
+    "p75": 3.34908833856473,
+    "p95": 5.9006619710907255,
+    "max": 6.071717699465729
+   },
+   "pick4pxMetres": {
+    "n": 8,
+    "median": 32.327473868182224,
+    "p25": 0.08595310993286312,
+    "p75": 128.76141334077144,
+    "p95": 956.5338673612551,
+    "max": 1395.3796177867914
+   },
+   "cameraDepthM": {
+    "n": 11,
+    "median": 28.12470316549936,
+    "p25": 16.569440794650262,
+    "p75": 40.80288844038534,
+    "p95": 48.36809750041504,
+    "max": 48.9369639405387
+   },
+   "leftSignedRightMedianM": -0.5268015898565253,
+   "leftOutwardMedianM": 0.5268015898565253,
+   "leftLateralMedianM": 0.7567823455451246,
+   "leftPoints": 3,
+   "rightSignedRightMedianM": 81.27797655457559,
+   "rightOutwardMedianM": 81.27797655457559,
+   "rightLateralMedianM": 81.27797655457559,
+   "rightPoints": 5,
+   "commonModeRightM": 40.375587482359535,
+   "differentialOutwardM": 40.90238907221605,
+   "scene": "2020-07-30-L2-93.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 2.047216808987248,
+    "p25": 1.7072532206206037,
+    "p75": 2.382458258085881,
+    "p95": 2.650651417364787,
+    "max": 2.7176997071845137
+   },
+   "decomposition": null,
+   "points": 15,
+   "residualPx": {
+    "n": 15,
+    "median": 45.36128924487035,
+    "p25": 22.68955545336071,
+    "p75": 70.42889152605282,
+    "p95": 76.71544914908519,
+    "max": 81.6595815506441
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 22.997861914285643,
+    "p25": 4.376481077866336,
+    "p75": 33.08623773101169,
+    "p95": 39.05856231439365,
+    "max": 42.54106512894235
+   },
+   "naiveMetres": {
+    "n": 15,
+    "median": 0.9677116186571105,
+    "p25": 0.6382887593730104,
+    "p75": 9.039388142471557,
+    "p95": 9.81094917941814,
+    "max": 9.959791390370434
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 21.36610258618086,
+    "p25": 2.9370963671142336,
+    "p75": 54.740588957958764,
+    "p95": 83.6357839919184,
+    "max": 92.39978587498175
+   },
+   "cameraDepthM": {
+    "n": 15,
+    "median": 26.961612423140142,
+    "p25": 13.654363262145418,
+    "p75": 54.3781021218029,
+    "p95": 64.64508033244941,
+    "max": 67.10908707300116
+   },
+   "leftSignedRightMedianM": -2.047216808987248,
+   "leftOutwardMedianM": 2.047216808987248,
+   "leftLateralMedianM": 2.047216808987248,
+   "leftPoints": 3,
+   "rightSignedRightMedianM": 30.13385961557758,
+   "rightOutwardMedianM": 30.13385961557758,
+   "rightLateralMedianM": 30.13385961557758,
+   "rightPoints": 7,
+   "commonModeRightM": 14.043321403295167,
+   "differentialOutwardM": 16.090538212282414,
+   "scene": "2020-07-30-L2-94.500",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  },
+  {
+   "conditionedPoints": 3,
+   "conditionedLateralMetres": {
+    "n": 3,
+    "median": 2.6840564415595507,
+    "p25": 2.5057904359064365,
+    "p75": 2.970492912602138,
+    "p95": 3.1996420894362076,
+    "max": 3.2569293836447253
+   },
+   "decomposition": null,
+   "points": 12,
+   "residualPx": {
+    "n": 12,
+    "median": 33.211487244991275,
+    "p25": 16.317399751648434,
+    "p75": 106.54631419244208,
+    "p95": 109.05178453059938,
+    "max": 111.21132095995853
+   },
+   "lateralMetres": {
+    "n": 10,
+    "median": 9.901574925302171,
+    "p25": 4.328479402936974,
+    "p75": 16.015577341413845,
+    "p95": 16.961960292973583,
+    "max": 17.39689145446174
+   },
+   "naiveMetres": {
+    "n": 12,
+    "median": 0.8438139641623771,
+    "p25": 0.6890295560177804,
+    "p75": 0.9174082923905533,
+    "p95": 13.170299850115525,
+    "max": 13.825473961412436
+   },
+   "pick4pxMetres": {
+    "n": 10,
+    "median": 5.247655314663861,
+    "p25": 1.2185055982042357,
+    "p75": 9.933126475314971,
+    "p95": 14.57679126968613,
+    "max": 16.548592737859035
+   },
+   "cameraDepthM": {
+    "n": 12,
+    "median": 17.152908267124793,
+    "p25": 9.652888671166828,
+    "p75": 31.69780156783149,
+    "p95": 60.86469987658378,
+    "max": 61.08184588205534
+   },
+   "leftSignedRightMedianM": -2.6840564415595507,
+   "leftOutwardMedianM": 2.6840564415595507,
+   "leftLateralMedianM": 2.6840564415595507,
+   "leftPoints": 3,
+   "rightSignedRightMedianM": 15.610746685423745,
+   "rightOutwardMedianM": 15.610746685423745,
+   "rightLateralMedianM": 15.610746685423745,
+   "rightPoints": 7,
+   "commonModeRightM": 6.463345121932097,
+   "differentialOutwardM": 9.147401563491648,
+   "scene": "2020-07-30-L2-95.000",
+   "set": "sequence8_postselection",
+   "camera": "h1.50"
+  }
+ ],
+ "method": "I1 gap budget, component 6: Codex held-out video-vs-CG boundary residuals converted to metres.\n\nReads (all repo-relative, nothing from the original videos is opened):\n  artifacts/video-cg-alignment-2026-10-03/runtime-geometry.json   (3D road-facing paint lines + exact runtime poses)\n  artifacts/video-cg-alignment-2026-10-03/camera-profile.json     (frozen estimated onboard camera)\n  artifacts/video-cg-alignment-2026-10-03/heldout-evaluation.json (height-sensitivity camera variants)\n  artifacts/video-cg-alignment-2026-10-03/evidence/heldout-boundary-picks.json      (10 preregistered held-out scenes)\n  artifacts/video-cg-alignment-2026-10-03/evidence/sequence/sequence-annotations.json + runtime-poses.json\n                                                                   (8 post-selection diagnostic scenes, not independent)\n\nMethod (per annotated boundary point):\n  1. Re-project the CG paint line with the frozen camera exactly as evidence/independent-camera-evaluation.py does\n     and find the nearest projected segment -> pixel residual (reproduces the published per-scene medians).\n  2. Recover the 3D point Q on the CG line that corresponds to the nearest image point (perspective-correct).\n  3. Back-project the video pick pixel as a camera ray and intersect it with the local road plane through Q\n     (normal = car up axis from the runtime quaternion) -> ground point G.\n  4. Lateral metres = in-plane distance from G to the 3D CG polyline (perpendicular to the boundary), signed along the\n     boundary normal that points to the car's right (+ = video boundary lies right of the CG boundary).\n     This accounts for the line orientation in the image (a receding road edge needs a much larger lateral shift than\n     residual_px * depth / f to move by residual_px perpendicular to its own image line).\n  5. Also reported: the naive conversion residual_px * depth / f, and the metre equivalent of the 4 px picking\n     uncertainty (pick moved +-4 px along the image normal of the matched segment).\n  6. Camera-height sensitivity: the same picks are converted with the 1.0 m and 1.5 m camera fits that Codex stored\n     (heldout-evaluation.json heightSensitivity; those camera variants were fitted on the same 3 training scenes).\n\nOutputs (numbers only, no imagery) next to this script:\n  px_to_metres_points.json   per point\n  px_to_metres_summary.json  per scene + pooled distributions\nRepo root: env REPLAYVIEWER_ROOT, else three levels above this file.\n",
+ "grade": "derived (from measured pixel picks + frozen estimated camera + exact runtime poses; camera height assumed)"
+}

@@ -1,0 +1,54 @@
+{
+ "R2-01": {
+  "pitch0729": 12.8807,
+  "yaw0729": 1.6383,
+  "pitch0730": 12.8807,
+  "yaw0730": 1.6383,
+  "profilesEqual": true,
+  "manifestVanishingPointSession": "fuji_aim_2020_07_30",
+  "sessionVanishingPointSession": {
+   "fuji_aim_01": "fuji_aim_2020_07_30",
+   "fuji_aim_2020_07_30": "fuji_aim_2020_07_30"
+  },
+  "failures": 0,
+  "onboardActive": 106,
+  "captures": 106,
+  "onboardJpgs": 106,
+  "mtimeInsideRunWindow": 106,
+  "runWindow": [
+   "2026-10-22T13:47:50.889Z",
+   "2026-10-22T13:48:42.873Z"
+  ],
+  "buildAssertsCommonAim": true,
+  "page": {
+   "staleAim": 0,
+   "stale13_7": 0,
+   "staleLeft0_5": 0,
+   "statesBothDays0730": 1,
+   "commonAim": 1,
+   "captionCommonAim": 106
+  },
+  "qa": {
+   "status": "passed",
+   "failures": [],
+   "images": "531/531",
+   "clippingGuides": 110,
+   "guideSummary": {
+    "clippingCards": 55,
+    "clippingWithTwoGuides": 55,
+    "otherCardsWithGuides": 0
+   },
+   "staleAim29Text": false,
+   "commonAimText": true,
+   "onboardCaptionsCommonAim": 106,
+   "qaFileMtimeAfterPage": true
+  }
+ },
+ "R2-05": {
+  "hasCondition": true,
+  "hasCounts": true,
+  "oldPhraseGone": true,
+  "independentSupport": true
+ },
+ "allAcceptancePassed": true
+}

@@ -1,0 +1,102 @@
+{
+  "kind": "review-loop-change-log",
+  "round": 1,
+  "area": "comparison-page",
+  "date": "2026-10-22",
+  "owner": "implementer (Opus) for the local-only comparison page",
+  "scope": "artifacts/event-comparison-2026-10-22/ (gitignored) and docs/fuji-event-comparison-2026-10-22.html (gitignored). No tracked file was modified; nothing was published or downloaded. Dev server 5200 used as found (not started/stopped); 5199 not touched.",
+  "backupsBeforeChanges": [
+    "artifacts/event-comparison-2026-10-22/tmp/build_page.before-round1.py",
+    "artifacts/event-comparison-2026-10-22/tmp/qa_page.before-round1.mjs",
+    "artifacts/event-comparison-2026-10-22/tmp/adversarial_compare.before-round1.py",
+    "artifacts/event-comparison-2026-10-22/tmp/adversarial_control.before-round1.py",
+    "artifacts/event-comparison-2026-10-22/tmp/page.before-round1.html",
+    "artifacts/event-comparison-2026-10-22/tmp/verify.before-round1.json",
+    "artifacts/event-comparison-2026-10-22/cg/superseded/pitchfix-2026-10-22T2041/ (106 onboard JPEGs + manifest_onboard_pitchfix.json of the 20:41 run)"
+  ],
+  "timeline": [
+    "Read WORKLOG top entries, build_page.py, both CG manifests, capture_cg_pitchfix.mjs, T3 camera.py / common.R_cam / vp_calib.json, src/engine/cameras/onboardCameraMath.ts (+ its test), adversarial_compare.py / adversarial_control.py, verify.json, qa_page.mjs.",
+    "Found that the scene rotation convention equals T3 common.R_cam (onboardCameraMath.test.ts checks it), so the vanishing-point aim is pitch 13.7179 / yaw -0.4838 deg (7/29) and pitch 12.8807 / yaw +1.6383 deg (7/30); the reviewer's atan((u_vp-640)/711) has the opposite sign.",
+    "Wrote scripts/capture_cg_vpfix.mjs (pitch AND yaw from the vanishing point, in-page check of the rendered vanishing point, --up/--outdir/--session/--type options). Test on 2 events, then recaptured all 106 onboard images (49.7 s, 0 failures, rendered VP error max 0.0006 px).",
+    "Recaptured the 41 7/30 clipping onboard images at up 0.83 m and 1.70 m (f*h 590 / 1209) into cg/scale/up0.83, cg/scale/up1.70 (0 failures each).",
+    "Fixed adversarial_compare.py / adversarial_control.py: R_cg now read from the capture manifest (was hard-coded to the 2026-10-03 pitch 18.21 deg, which would double-rotate the recaptured images). Output default moved to verify/adversarial/round1-vpfix so the first-run files stay as history.",
+    "Wrote scripts/scale_sensitivity.py and ran it -> verify/scale_sensitivity.json. Re-ran adversarial_compare.py on all 106 recaptured images -> verify/adversarial/round1-vpfix/metrics.json.",
+    "Edited build_page.py (manifests/asserts, guide on the 3DCG onboard image, lightbox label, texts, footer), rebuilt the page, extended qa_page.mjs with guide/text checks, re-ran QA (passed).",
+    "Spot-checked the guide on clip-0730-L3-k23, clip-0730-L1-k9 (and clip-0729-L2-k9 composite) by eye; screenshots of a card and the lightbox via Playwright (file://, external requests answered locally).",
+    "Added cameraScaleSensitivity, round1Recheck and verdictSummary.check1_round1Note to verify.json."
+  ],
+  "findings": [
+    {
+      "id": "R1-05",
+      "status": "fixed",
+      "whatChanged": "build_page.py: guide(label) helper; clipping cards now draw the row-276 guide (same CSS, top 38.333 %) inside the 3DCG onboard button too, label '判定の高さ（同じ276行目）', and the onboard button carries has-guide so the lightbox shows it; the lightbox copies the slot's label. 数字の読み方 now says '3DCGの車載カメラにも同じ高さの線を引いています（下向きと左右の向きを動画の消失点に合わせたため比べられます。レンズのゆがみは校正していないので、画面の端ほど少しずれます）'. The reviewer's '左右の向きは0.6〜1.6°違う' clause was not used because R1-11a now aims yaw at the vanishing point too. The header 見方 note points readers to the line on both images.",
+      "acceptance": {
+        "clippingCardsWithTwoGuides": "55 of 55 (qa_page.mjs structure.guideSummary: clippingWithTwoGuides 55, otherCardsWithGuides 0, clippingGuides 110); 111 class=\"guide\" in the HTML = 110 in cards + 1 lightbox",
+        "stalePhraseGone": "'カメラの向きが違うため引いていません' occurs 0 times (grep and QA staleGuideText false)",
+        "qa": "qa_page.mjs status passed, failures [], images 531/531, lazy 424/424, console errors 0, lightbox guide visible on the onboard slot with label '判定の高さ（同じ276行目）' and hidden on the top view"
+      },
+      "spotCheck": {
+        "clip-0730-L3-k23 (dt -0.026 s)": "inner white kerb edge crosses the line at x about 525 (video) and 520-530 (3DCG) of 960: same spot, as expected.",
+        "clip-0730-L1-k9 (dt +0.272 s, dS -7.2 m)": "clear mismatch as expected, but in the opposite vertical direction to the reviewer's wording: the 3DCG kerb apex is ABOVE the line (the left kerb band reaches the line only out to x about 230 vs about 420 in the video). dt > 0 means the 3DCG reaches the event later, i.e. at t* its kerb is still farther ahead and therefore higher in the image.",
+        "files": "artifacts/event-comparison-2026-10-22/tmp/round1/<id>_guide_check.jpg, _guide_zoom.jpg, _guide_zoom2.jpg, clip-0730-L3-k23_card.png, lightbox_onboard.png (local only)"
+      },
+      "filesChanged": ["artifacts/event-comparison-2026-10-22/scripts/build_page.py", "artifacts/event-comparison-2026-10-22/scripts/qa_page.mjs", "docs/fuji-event-comparison-2026-10-22.html", "artifacts/event-comparison-2026-10-22/page-qa.json", "artifacts/event-comparison-2026-10-22/qa/desktop.png", "artifacts/event-comparison-2026-10-22/qa/phone.png"]
+    },
+    {
+      "id": "R1-06",
+      "status": "fixed",
+      "whatChanged": "build_page.py loads cg/manifest.json for the CHASE captures only (asserts 106 chase, cameraModeUsed chase, failures 0) and the onboard manifest of the run that produced the onboard JPEGs. Because R1-11a recaptured the onboard images, that manifest is now cg/manifest_onboard_vpfix.json (the 20:41 pitch-only images and manifest_onboard_pitchfix.json were moved to cg/superseded/pitchfix-2026-10-22T2041/). Asserts: captures 106, onboardActive 106, failures 0, page errors 0, every capture cameraModeUsed onboard with no problems, rendered vanishing point error <= 0.05 px, per-session f 711 / up 1.25 and pitch/yaw equal to the closed-form vanishing-point solution within 0.001 deg. New guard: every chase/onboard JPEG mtime must lie inside its run's time window (5 s slack), so a stale manifest fails the build. The HZ / PITCH_VP assertion block was deleted. Footer cites the onboard manifest (with capture time and script), the chase manifest ('追従カメラの分だけ使用') and verify/scale_sensitivity.json.",
+      "acceptance": {
+        "builderRuns": "pipeline/.venv-sr python -I build_page.py: wrote the page, 106 cards, all asserts passed",
+        "footer": "names cg/manifest_onboard_vpfix.json (not manifest_onboard_pitchfix.json: that run was superseded by the R1-11a recapture; deviation from the literal acceptance, same intent) and cg/manifest.json for the chase images",
+        "mtimes": "onboard n=106 22:04:08-22:04:52 (vpfix run, >= 20:40); chase n=106 19:42:23-19:45:15 (first run, generated 19:45:15)"
+      },
+      "filesChanged": ["artifacts/event-comparison-2026-10-22/scripts/build_page.py", "docs/fuji-event-comparison-2026-10-22.html", "artifacts/event-comparison-2026-10-22/cg/ (superseded/ folder)"]
+    },
+    {
+      "id": "R1-07",
+      "status": "fixed",
+      "whatChanged": "要旨 reworded: the 24/30 result is described as a consistency check under the camera scale f×h≈890 chosen so that the clipping times agree; the independent support for the direction is named (縁石の音とロガーの振動、映像の回転とジャイロの突き合わせ（評価資料）). Optional robustness test was run: the 41 7/30 clipping onboard images recaptured at up 0.83 / 1.70 m (f*h 590 / 1209) on the running 5200 server, metric of adversarial_compare.py applied unchanged (scripts/scale_sensitivity.py). The page now states 19/30 (f×h≈590) and 23/30 (f×h≈1210), all numbers read from verify/scale_sensitivity.json with asserts. 'Size of L not determined' kept, with the early-control reason. verify.json gained cameraScaleSensitivity and verdictSummary.check1_round1Note. Also fixed a latent bug found on the way: adversarial_compare.py / adversarial_control.py hard-coded the capture rotation to pitch 18.21 deg and would have double-rotated the recaptured images; they now read it from the capture manifest.",
+      "acceptance": {
+        "wording": "the page no longer contains '裏付けられました'; the 24/30 sentence is followed by the camera-scale condition and the independent evidence",
+        "optionalTest": "verify.json cameraScaleSensitivity.scales: fh590 fixedCloser 19 / rawCloser 11 (n 30); fh889 24 / 6; fh1209 23 / 7. Early control (n 28; best early/fixed/raw): 16/8/4, 13/13/2, 14/11/3",
+        "reproduction": "At f*h 889 the direct render at the video orientation reproduces the first (homography-warped) run exactly for 7/30 clipping (24 vs 6); over all 106 events only one 7/29 turn-in changed (turnIn 0729: 3 vs 1, first run 2 vs 2)"
+      },
+      "interpretation": "The reviewer's concern is confirmed for the SIZE of L and for the strength of the support, but the direction majority survives a factor-2 change of f*h (19-24 of 30); it is weakest at f*h 590. The image metric remains camera-conditional and cannot measure L.",
+      "filesChanged": ["artifacts/event-comparison-2026-10-22/scripts/build_page.py", "artifacts/event-comparison-2026-10-22/scripts/capture_cg_vpfix.mjs (new)", "artifacts/event-comparison-2026-10-22/scripts/scale_sensitivity.py (new)", "artifacts/event-comparison-2026-10-22/scripts/adversarial_compare.py", "artifacts/event-comparison-2026-10-22/scripts/adversarial_control.py", "artifacts/event-comparison-2026-10-22/cg/scale/up0.83/ and up1.70/ (41 images + manifest.json each)", "artifacts/event-comparison-2026-10-22/verify/scale_sensitivity.json (new)", "artifacts/event-comparison-2026-10-22/verify/adversarial/round1-vpfix/ (new)", "artifacts/event-comparison-2026-10-22/verify.json", "docs/fuji-event-comparison-2026-10-22.html"]
+    },
+    {
+      "id": "R1-11",
+      "status": "fixed",
+      "parts": {
+        "a": {
+          "status": "fixed (intent); literal acceptance formula rejected",
+          "whatChanged": "New scripts/capture_cg_vpfix.mjs aims pitch AND yaw at the T3 vanishing point (closed form in the scene convention) and checks in the page that sc.camera projects camera position + 1e5 m * car forward onto (u_vp, v_vp). All 106 onboard images recaptured (cg/manifest_onboard_vpfix.json). Page header/caption/settings updated: 7/29 下向き13.7°・左向き0.5°, 7/30 下向き12.9°・右向き1.6° (data-driven, asserted).",
+          "whyFormulaRejected": "The acceptance asks for yawDeg = atan((u_vp-640)/711) = +0.95 deg (7/29) / -1.26 deg (7/30). In the scene convention (onboardCameraMath.ts Rz(roll) Rx(pitch) Ry(-yaw), positive yaw looks right; identical to T3 common.R_cam and checked by onboardCameraMath.test.ts) a vanishing point LEFT of centre needs POSITIVE yaw, and roll 1.84 deg couples about 5 px. Evidence (forward-axis projection at 1280x720, pitch as captured): reviewer yaw -1.259 -> u 661.3 (target 624.4, worse than the old -0.69 at 654.1); reviewer yaw +0.948 for 7/29 -> u 633.5 (target 651.8). Solved yaw +1.6383 / -0.4838 -> u 624.4 / 651.8 exactly; T3 camera.py fsolve gives the same pitch/yaw (13.7179/-0.4838 and 12.8807/+1.6383).",
+          "acceptanceAsMet": "manifest sessions[*].profile pitch/yaw = vanishing-point solution (builder asserts within 0.001 deg); rendered vanishing point within 0.0006 px of (u_vp, v_vp) for all 106 captures (summary.maxVpErrorPx720). Measured image shift vs the pitch-only run: 7/30 about -23 px, 7/29 about -2 px at 960x540."
+        },
+        "b": {
+          "status": "fixed",
+          "whatChanged": "7/29 card note now: '7/29の時刻補正は推定値です（妥当な幅は0.17〜0.30秒）。検証役が映像の回転から求めた値はこれより0.04〜0.10秒大きく、その場合は本当の瞬間が補正後のコマより1〜3コマ（最大で約0.1秒）前になります。音で確かめた2件では逆に0.03〜0.05秒小さい値でした。' Source: kerb-event-truth verify/v_summary.json offsetL.fuji_aim_01 (ownVideoYawTransient 0.252/0.335/0.256/0.220 vs used 0.177/0.234/0.218/0.171; audio 0.182/0.173 vs 0.218). Header also states the plausible range 0.17〜0.30秒.",
+          "acceptance": "the 7/29 note states up to about 0.1 s (3 frames) and the direction (true moment earlier than the shown corrected frame)"
+        },
+        "c": {
+          "status": "fixed",
+          "whatChanged": "Kerb-contact card truth line adds '車載の映像では、縁石は車体の下やダッシュボードの陰になり、乗った瞬間そのものは写りません。比べるのは3DCGの追従カメラと上から見た図です'.",
+          "acceptance": "29 of 29 kerb-contact cards carry the sentence (qa_page.mjs structure.contactNote 29)"
+        }
+      },
+      "filesChanged": ["artifacts/event-comparison-2026-10-22/scripts/capture_cg_vpfix.mjs (new)", "artifacts/event-comparison-2026-10-22/cg/*_cg_onboard.jpg (106, recaptured)", "artifacts/event-comparison-2026-10-22/cg/manifest_onboard_vpfix.json (new)", "artifacts/event-comparison-2026-10-22/scripts/build_page.py", "docs/fuji-event-comparison-2026-10-22.html"]
+    }
+  ],
+  "verification": {
+    "build": "pipeline/.venv-sr/Scripts/python.exe -I artifacts/event-comparison-2026-10-22/scripts/build_page.py -> wrote page (701 kB, 106 cards, 424 figures), all input asserts passed",
+    "qa": "node artifacts/event-comparison-2026-10-22/scripts/qa_page.mjs -> passed, failures [], 531/531 images, 0 console errors, phone width 390 no overflow (page-qa.json 2026-10-22T13:10:37Z)",
+    "git": "page and all new files are ignored (.gitignore lines 33-34, git check-ignore -v); tracked modified files still 29, same set as the session-start snapshot",
+    "notRun": "verify_file_page.mjs (the verifier's independent file:// check) was not re-run; dark mode not eyeballed after the change; only 3 events checked by eye for the guide."
+  },
+  "notesForOrchestrator": [
+    "The WORKLOG 20:43 entry says the onboard yaw/roll/mount stayed at the 10/03 estimate and that the image check 'confirmed' the correction direction; after this round the onboard yaw is also aimed at the vanishing point and the 24/30 is described as camera-conditional (19/30 and 23/30 at f*h 590 / 1209).",
+    "Superseded onboard images are kept under artifacts/event-comparison-2026-10-22/cg/superseded/ (7.2 MB, gitignored)."
+  ]
+}

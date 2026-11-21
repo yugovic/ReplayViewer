@@ -1,0 +1,24 @@
+{
+ "FUJI_WET_XRK": {
+  "file": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1715.xrk",
+  "n": 7922,
+  "offset_unique_values": 1,
+  "drift_ppm": -3.130218989639412e-07,
+  "resid_std_ms": 7.517457798266555e-08,
+  "timecode_steps_ms": [
+   100
+  ],
+  "gnfi_messages": 0
+ },
+ "FUJI_DRY_XRK": {
+  "file": "Osaki_HMR Demio 101_Fuji_Generic testing_a_1741.xrk",
+  "n": 9741,
+  "offset_unique_values": 1,
+  "drift_ppm": -2.088042193652527e-07,
+  "resid_std_ms": 6.093183217884936e-08,
+  "timecode_steps_ms": [
+   100
+  ],
+  "gnfi_messages": 0
+ }
+}

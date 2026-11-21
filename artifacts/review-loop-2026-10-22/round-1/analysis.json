@@ -1,0 +1,71 @@
+{
+ "kind": "review-loop round 1 - implementer change log, area analysis",
+ "generated": "2026-10-22 (JST, evening)",
+ "findings": ["R1-04", "R1-09", "R1-10"],
+ "applied": [
+  {
+   "findingId": "R1-04",
+   "status": "fixed",
+   "whatChanged": [
+    "build_join.py: new detection_tolerance() -> summary.detection.<fuji_aim_01|fuji_aim_2020_07_30|pooled>.tolerance with tolerances 0.10 / 0.25 / 0.30 / 0.50 m. Per tolerance: strict TP/FN/FP/TN, FNwithinTol, FPwithinTol, disagreementsWithinTol / BeyondTol, agreementCountingNearLineAsAgreement = (TP+TN+within)/n (the reviewer's metric) and, because that metric is one-sided, the symmetric view agreementAmongClearPasses (passes with |CG gap| <= tol set aside whatever their class) + marginalAgreements, plus the list of near-line disagreements.",
+    "Report B: one note under the two agreement tables (9 of 21 within 0.25 m, 12 within 0.30 m; 86 % with 0.25 m tolerance, 7/29 93 %; but only 80 % among the 60 passes clearly away from the line) and one clause added to the conclusion bullet '縁石に乗ったかどうかの判定は…75%…しか合わない' so it no longer stands alone."
+   ],
+   "numbers": {
+    "0730": {"strict": 0.75, "tol0.10": 0.798, "tol0.25": 0.857, "tol0.30": 0.893, "tol0.50": 0.94, "clearPassesTol0.25": "48/60 = 0.80", "withinTol0.25": "9 of 21 (FN 5, FP 4)", "withinTol0.30": "12 of 21"},
+    "0729": {"strict": 0.911, "tol0.25": 0.929, "withinTol0.25": "1 of 5 (FP L3 k10 0.172 m)"},
+    "pooled": {"strict": 0.814, "tol0.25": 0.886}
+   },
+   "acceptance": "summary.json contains detection.tolerance for 7/30 and 7/29 with all three requested tolerances (plus 0.30). (TP+TN+within)/84 = (20+43+9)/84 = 0.857 recomputed by hand in analysis-check-numbers.py equals the block; B prints 86 % (and 93 % for 7/29); verify_join.py check 6 re-derives classes from the truth flag + sign of the CG gap (0 sign inconsistencies) and every tolerance value (0 mismatches).",
+   "evidence": "artifacts/kerb-event-truth-2026-10-22/join/summary.json detection.*.tolerance; join/verify_join.json 6_detectionTolerance_rederived ok; artifacts/review-loop-2026-10-22/round-1/analysis-check-numbers.json allOk; analysis-check-B.json allOk"
+  },
+  {
+   "findingId": "R1-09",
+   "status": "fixed",
+   "whatChanged": [
+    "New join/yaw_scale_check.py -> join/yaw_scale_check.json (raw logger samples via $JOIN_T1_WORK, no video): per lap, the gyro yaw rate against (A) the logger's own GPS_Yaw_Rate 1.205-1.215x, (B) IMU lateral acceleration / GPS speed 1.166-1.182x, with (C) IMU lateral acc vs GPS lateral acc 0.958-0.986x and (D) roll-rate leak slope 0.154-0.164 (r 0.90-0.93, implied mount tilt 8.9-9.4 deg, explains only 1.2-1.4 % amplitude loss). Conclusion: the gyro yaw amplitude reads ~14-18 % low; the drawn heading is consistent with GPS and the accelerometer; the remaining cause (gyro scale factor / configuration) is not identified.",
+    "(E) turn-in 50 % timing recomputed with the gyro rescaled by each lap's scale: per-event change < 0.00001 s for all 104 quality-good events (self-check: the unscaled recomputation reproduces event_table dtHeading50 to 0.0005 s = rounding); one onset flag (0730 L4 k20) changes without moving t50.",
+    "build_join.py: summary.openItems[OI-1 yawRateAmplitudeScale] with the 1.211-1.222 range (median 1.214), impact statement and the yaw_scale_check conclusion.",
+    "Report B 限界: one bullet (gyro amplitude ~14-18 % smaller than the GPS heading change and lateral G / speed, all 10 laps, cause not confirmed; timing comparison is amplitude-free and the turn-in timing did not change when recomputed with matched amplitude). The reviewer's suggested '約17%' was replaced by the measured 14-18 % range across the three references."
+   ],
+   "acceptance": "summary.json contains openItems with the 1.21 scale note; B contains the note; verify_join.py check 8 (range == headingTimingWholeLap min/max, self-check < 0.001 s) ok.",
+   "evidence": "join/summary.json openItems; join/yaw_scale_check.json summary + E_turnIn50_gyroRescaled; verify_join.json 8_openItemYawScale ok"
+  },
+  {
+   "findingId": "R1-10",
+   "status": "fixed",
+   "whatChanged": [
+    "build_join.py: summary.alongTrack.contactFirstBlock.conditionalOnCgContact (per session: primary contacts, with / without along-track value, CG never on the block line, min-gap statistics and list of the excluded contacts) and counts.kerbContactsPrimaryBySession / kerbContactsPrimaryWithAlongTrackValueBySession; familyDefinitions.contactFirstBlock points to the block.",
+    "Report B: note under the gap table: 7/30 contact along-track values come from the 20 passes where the 3DCG tyre crosses the line; the other 7 of 27 primary contacts never reach it in the 3DCG (closest 0.02-2.0 m, median 0.20 m) and have no along-track value; they are included in the lateral row (27) and in the yes/no table."
+   ],
+   "correctionToReviewer": "The reviewer's '(min gap 0.02-5.8 m)' mixes in pass-level FNs that are not primary contacts (e.g. 0730 L4 k19 5.79 m). For the 7 excluded primary contacts the CG minimum gap during the truth contact is 0.016-1.993 m (median 0.202); B states 0.02-2.0 m.",
+   "acceptance": "Note present in B with n = 20 of 27; verify_join.py check 7: event_table primary contacts with / without dSFirst (27 / 20) == summary block == alongTrack.contactFirstBlock 7/30 dS n (20).",
+   "evidence": "join/summary.json alongTrack.contactFirstBlock.conditionalOnCgContact; verify_join.json 7_contactAlongTrackConditioning ok"
+  }
+ ],
+ "reproducibility": {
+  "previousOutputs": "artifacts/review-loop-2026-10-22/round-1/analysis-prev/ (summary.json, event_table.json, build_join.py, verify_join.json as before this round)",
+  "eventTableUnchanged": "event_table.json byte-identical after the rebuild (sha256 494b9622...)",
+  "summaryDiff": "only added keys (counts.kerbContactsPrimaryBySession, counts.kerbContactsPrimaryWithAlongTrackValueBySession, alongTrack.contactFirstBlock.conditionalOnCgContact, detection.*.tolerance, openItems) and one changed text (familyDefinitions.contactFirstBlock pointer); no existing number changed",
+  "runOrder": "pipeline/.venv-sr python: build_join.py -> yaw_scale_check.py -> build_join.py -> verify_join.py (allOk true, 8 checks incl. no personal absolute paths in the folder)"
+ },
+ "filesChanged": [
+  "artifacts/kerb-event-truth-2026-10-22/join/build_join.py",
+  "artifacts/kerb-event-truth-2026-10-22/join/summary.json",
+  "artifacts/kerb-event-truth-2026-10-22/join/yaw_scale_check.py (new)",
+  "artifacts/kerb-event-truth-2026-10-22/join/yaw_scale_check.json (new)",
+  "artifacts/kerb-event-truth-2026-10-22/join/verify_join.py",
+  "artifacts/kerb-event-truth-2026-10-22/join/verify_join.json",
+  "docs/fuji-event-truth-evaluation-2026-10-22.html (4 text insertions only: gap-table note, agreement note, conclusion clause, 限界 bullet; no script or D change)",
+  "artifacts/review-loop-2026-10-22/round-1/analysis-check-numbers.py + .json, analysis-check-B.mjs + .json, analysis-prev/"
+ ],
+ "verificationRun": [
+  "verify_join.py: allOk true (checks 1-5 unchanged values, new 6-8 ok)",
+  "analysis-check-numbers.py: every number this area wrote into B recomputed from summary.json / yaw_scale_check.json and found verbatim (allOk true)",
+  "analysis-check-B.mjs (Playwright, file://, light + dark, 390 px + 1100 px): 0 console/page errors, 0 px horizontal overflow, all 7 added sentences visible, 2 agreement tables, 9 gap-table rows"
+ ],
+ "notRun": [
+  "make_charts.py not re-run (none of its inputs changed)",
+  "No re-publication of B (orchestrator's step)"
+ ],
+ "concurrencyNote": "B is shared with the report-area implementer; the edits were inserted at separate anchors and were confirmed present at the end of this step."
+}

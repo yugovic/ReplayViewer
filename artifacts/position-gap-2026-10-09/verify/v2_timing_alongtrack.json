@@ -1,0 +1,216 @@
+{
+ "speed": {
+  "fuji_aim_01": {
+   "timeWeightedMedianKmh": 105.05350000000008,
+   "p10Kmh": 65.89529999999999,
+   "topKmh": 191.099,
+   "share60to100": 0.36704182764992443
+  },
+  "fuji_aim_2020_07_30": {
+   "timeWeightedMedianKmh": 122.21599999999599,
+   "p10Kmh": 76.94910000000004,
+   "topKmh": 195.689,
+   "share60to100": 0.29300638058301015
+  }
+ },
+ "scenes": [
+  {
+   "scene": "2020-07-29-L3-47.000",
+   "speedKmh": 123.9,
+   "decodedMinusRequestedS": 0.006,
+   "decodedOffsetMetres": 0.205,
+   "speedTimesDtMetres": 0.206,
+   "overlayMinusRequestedS": 0.02,
+   "videoYawLagMetresIfAllTiming": 6.3,
+   "plusMinus30msMetres": 1.03
+  },
+  {
+   "scene": "2020-07-29-L3-52.387",
+   "speedKmh": 125.8,
+   "decodedMinusRequestedS": 0.019,
+   "decodedOffsetMetres": 0.664,
+   "speedTimesDtMetres": 0.664,
+   "overlayMinusRequestedS": 0.023,
+   "videoYawLagMetresIfAllTiming": 6.48,
+   "plusMinus30msMetres": 1.05
+  },
+  {
+   "scene": "2020-07-29-L3-55.000",
+   "speedKmh": 96.9,
+   "decodedMinusRequestedS": 0.006,
+   "decodedOffsetMetres": 0.159,
+   "speedTimesDtMetres": 0.162,
+   "overlayMinusRequestedS": -0.01,
+   "videoYawLagMetresIfAllTiming": 4.75,
+   "plusMinus30msMetres": 0.81
+  },
+  {
+   "scene": "2020-07-29-L3-60.000",
+   "speedKmh": 91.6,
+   "decodedMinusRequestedS": 0.006,
+   "decodedOffsetMetres": 0.154,
+   "speedTimesDtMetres": 0.153,
+   "overlayMinusRequestedS": -0.01,
+   "videoYawLagMetresIfAllTiming": 4.79,
+   "plusMinus30msMetres": 0.76
+  },
+  {
+   "scene": "2020-07-29-L3-64.367",
+   "speedKmh": 122.3,
+   "decodedMinusRequestedS": 0.0057,
+   "decodedOffsetMetres": 0.194,
+   "speedTimesDtMetres": 0.193,
+   "overlayMinusRequestedS": -0.007,
+   "videoYawLagMetresIfAllTiming": 6.38,
+   "plusMinus30msMetres": 1.02
+  },
+  {
+   "scene": "2020-07-29-L3-68.000",
+   "speedKmh": 141.2,
+   "decodedMinusRequestedS": 0.006,
+   "decodedOffsetMetres": 0.236,
+   "speedTimesDtMetres": 0.235,
+   "overlayMinusRequestedS": 0.01,
+   "videoYawLagMetresIfAllTiming": 7.32,
+   "plusMinus30msMetres": 1.18
+  },
+  {
+   "scene": "2020-07-30-L2-18.000",
+   "speedKmh": 77.7,
+   "decodedMinusRequestedS": 0.0287,
+   "decodedOffsetMetres": 0.624,
+   "speedTimesDtMetres": 0.619,
+   "overlayMinusRequestedS": 0,
+   "videoYawLagMetresIfAllTiming": 5.19,
+   "plusMinus30msMetres": 0.65
+  },
+  {
+   "scene": "2020-07-30-L2-45.000",
+   "speedKmh": 133.9,
+   "decodedMinusRequestedS": 0.0287,
+   "decodedOffsetMetres": 1.061,
+   "speedTimesDtMetres": 1.066,
+   "overlayMinusRequestedS": 0.01,
+   "videoYawLagMetresIfAllTiming": 8.65,
+   "plusMinus30msMetres": 1.12
+  },
+  {
+   "scene": "2020-07-30-L2-47.522",
+   "speedKmh": 130.5,
+   "decodedMinusRequestedS": 0.0067,
+   "decodedOffsetMetres": 0.242,
+   "speedTimesDtMetres": 0.242,
+   "overlayMinusRequestedS": -0.022,
+   "videoYawLagMetresIfAllTiming": 8.54,
+   "plusMinus30msMetres": 1.09
+  },
+  {
+   "scene": "2020-07-30-L2-50.000",
+   "speedKmh": 89.0,
+   "decodedMinusRequestedS": 0.0287,
+   "decodedOffsetMetres": 0.711,
+   "speedTimesDtMetres": 0.708,
+   "overlayMinusRequestedS": 0,
+   "videoYawLagMetresIfAllTiming": 5.76,
+   "plusMinus30msMetres": 0.74
+  },
+  {
+   "scene": "2020-07-30-L2-84.000",
+   "speedKmh": 90.2,
+   "decodedMinusRequestedS": 0.0287,
+   "decodedOffsetMetres": 0.719,
+   "speedTimesDtMetres": 0.719,
+   "overlayMinusRequestedS": 0.02,
+   "videoYawLagMetresIfAllTiming": 5.94,
+   "plusMinus30msMetres": 0.75
+  },
+  {
+   "scene": "2020-07-30-L2-94.000",
+   "speedKmh": 116.4,
+   "decodedMinusRequestedS": 0.0287,
+   "decodedOffsetMetres": 0.929,
+   "speedTimesDtMetres": 0.927,
+   "overlayMinusRequestedS": 0.01,
+   "videoYawLagMetresIfAllTiming": 7.65,
+   "plusMinus30msMetres": 0.97
+  },
+  {
+   "scene": "2020-07-30-L2-112.000",
+   "speedKmh": 92.6,
+   "decodedMinusRequestedS": 0.0287,
+   "decodedOffsetMetres": 0.744,
+   "speedTimesDtMetres": 0.737,
+   "overlayMinusRequestedS": -0.02,
+   "videoYawLagMetresIfAllTiming": 6.16,
+   "plusMinus30msMetres": 0.77
+  }
+ ],
+ "timer": {
+  "fuji_aim_01": {
+   "perLapMeanOffsetS": {
+    "1": -0.9413,
+    "2": -1.014,
+    "3": -1.009,
+    "4": -0.9787
+   },
+   "withinLapRmsS": 0.017299646752973328,
+   "withinLapMaxAbsS": 0.03866666666665941,
+   "storedPerLapCorrection": {
+    "1": -0.943,
+    "2": -1.013,
+    "3": -1.01,
+    "4": -0.98
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "perLapMeanOffsetS": {
+    "1": -0.014,
+    "2": -0.0277,
+    "3": 0.0053,
+    "4": 0.01,
+    "5": 0.089,
+    "6": -0.0237
+   },
+   "withinLapRmsS": 0.018776462807342832,
+   "withinLapMaxAbsS": 0.03666666666666292,
+   "storedPerLapCorrection": {
+    "1": -0.01,
+    "2": -0.023,
+    "3": 0.01,
+    "4": 0.01,
+    "5": 0.09,
+    "6": -0.02
+   }
+  }
+ },
+ "videoYawLag": {
+  "fuji_aim_01": {
+   "gpsMedian": 0.185,
+   "gpsRange": [
+    0.04,
+    0.375
+   ],
+   "imuMedian": 0.21500000000000002,
+   "storedMedians": {
+    "overlayThrottleAfterRecordedS": 0.1,
+    "overlayBrakeAfterRecordedS": 0.087,
+    "gpsCourseRateAfterVideoS": 0.185,
+    "imuAccyOverSpeedAfterVideoS": 0.215
+   }
+  },
+  "fuji_aim_2020_07_30": {
+   "gpsMedian": 0.235,
+   "gpsRange": [
+    0.165,
+    0.325
+   ],
+   "imuMedian": 0.28500000000000003,
+   "storedMedians": {
+    "overlayThrottleAfterRecordedS": 0.098,
+    "overlayBrakeAfterRecordedS": 0.075,
+    "gpsCourseRateAfterVideoS": 0.235,
+    "imuAccyOverSpeedAfterVideoS": 0.285
+   }
+  }
+ }
+}

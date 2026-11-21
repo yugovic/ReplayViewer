@@ -1,0 +1,123 @@
+{
+ "generated": "2026-10-22T14:28:15.941Z",
+ "expectFromSummary": {
+  "raw": {
+   "n": 20,
+   "median": 0.03,
+   "mean": 0.006,
+   "sd": 0.211,
+   "q25": -0.133,
+   "q75": 0.145,
+   "medianAbs": 0.141,
+   "p90Abs": 0.356,
+   "maxAbs": 0.405,
+   "rms": 0.206,
+   "biasShare": 0.001
+  },
+  "printed": {
+   "n": 20,
+   "median": "+0.03",
+   "medianAbs": "0.14",
+   "p90Abs": "0.36"
+  }
+ },
+ "results": {
+  "B-light-320": {
+   "ok": true,
+   "errors": [],
+   "pageOverflowPx": 0,
+   "bodyBg": "rgb(241, 243, 242)",
+   "bulletText": "3DCGは「いつ」については正しい。切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。ただし見た目の曲がり始めは、7/30で10件に1件ほど0.36秒以上早く描かれます（限界を参照）。",
+   "oldClauseGone": true,
+   "turnInMinSpeedClause": true,
+   "medianPresent": true,
+   "typicalPresent": true,
+   "p90Present": true,
+   "perEventNextToMedian": true,
+   "subsetStated": true,
+   "causeStated": true,
+   "oldClauseAnywhere": false
+  },
+  "B-light-390": {
+   "ok": true,
+   "errors": [],
+   "pageOverflowPx": 0,
+   "bodyBg": "rgb(241, 243, 242)",
+   "bulletText": "3DCGは「いつ」については正しい。切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。ただし見た目の曲がり始めは、7/30で10件に1件ほど0.36秒以上早く描かれます（限界を参照）。",
+   "oldClauseGone": true,
+   "turnInMinSpeedClause": true,
+   "medianPresent": true,
+   "typicalPresent": true,
+   "p90Present": true,
+   "perEventNextToMedian": true,
+   "subsetStated": true,
+   "causeStated": true,
+   "oldClauseAnywhere": false
+  },
+  "B-light-1100": {
+   "ok": true,
+   "errors": [],
+   "pageOverflowPx": 0,
+   "bodyBg": "rgb(241, 243, 242)",
+   "bulletText": "3DCGは「いつ」については正しい。切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。ただし見た目の曲がり始めは、7/30で10件に1件ほど0.36秒以上早く描かれます（限界を参照）。",
+   "oldClauseGone": true,
+   "turnInMinSpeedClause": true,
+   "medianPresent": true,
+   "typicalPresent": true,
+   "p90Present": true,
+   "perEventNextToMedian": true,
+   "subsetStated": true,
+   "causeStated": true,
+   "oldClauseAnywhere": false
+  },
+  "B-dark-320": {
+   "ok": true,
+   "errors": [],
+   "pageOverflowPx": 0,
+   "bodyBg": "rgb(16, 19, 21)",
+   "bulletText": "3DCGは「いつ」については正しい。切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。ただし見た目の曲がり始めは、7/30で10件に1件ほど0.36秒以上早く描かれます（限界を参照）。",
+   "oldClauseGone": true,
+   "turnInMinSpeedClause": true,
+   "medianPresent": true,
+   "typicalPresent": true,
+   "p90Present": true,
+   "perEventNextToMedian": true,
+   "subsetStated": true,
+   "causeStated": true,
+   "oldClauseAnywhere": false
+  },
+  "B-dark-390": {
+   "ok": true,
+   "errors": [],
+   "pageOverflowPx": 0,
+   "bodyBg": "rgb(16, 19, 21)",
+   "bulletText": "3DCGは「いつ」については正しい。切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。ただし見た目の曲がり始めは、7/30で10件に1件ほど0.36秒以上早く描かれます（限界を参照）。",
+   "oldClauseGone": true,
+   "turnInMinSpeedClause": true,
+   "medianPresent": true,
+   "typicalPresent": true,
+   "p90Present": true,
+   "perEventNextToMedian": true,
+   "subsetStated": true,
+   "causeStated": true,
+   "oldClauseAnywhere": false
+  },
+  "B-dark-1100": {
+   "ok": true,
+   "errors": [],
+   "pageOverflowPx": 0,
+   "bodyBg": "rgb(16, 19, 21)",
+   "bulletText": "3DCGは「いつ」については正しい。切り始め・最低速度の時刻は、ロガーと数十ミリ秒で合っています。縁石に乗る瞬間も中央値では+0.03秒ですが、1回ごとには典型0.14秒（90%値0.36秒）ずれます（7/30、3DCGのタイヤが縁石の線を越えた20件）。これは時計のずれではなく、浅い角度で縁石に近づくため、横の位置の誤差が時刻の差になるものです。動画と並べたときの前後のずれの大部分は、動画側の時刻合わせでした。ただし見た目の曲がり始めは、7/30で10件に1件ほど0.36秒以上早く描かれます（限界を参照）。",
+   "oldClauseGone": true,
+   "turnInMinSpeedClause": true,
+   "medianPresent": true,
+   "typicalPresent": true,
+   "p90Present": true,
+   "perEventNextToMedian": true,
+   "subsetStated": true,
+   "causeStated": true,
+   "oldClauseAnywhere": false
+  }
+ },
+ "allOk": true
+}

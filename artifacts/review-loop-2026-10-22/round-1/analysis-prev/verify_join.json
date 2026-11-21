@@ -1,0 +1,33 @@
+{
+ "1_gapAtOnset_vs_T4_storedArrays": {
+  "n": 34,
+  "maxAbsDiffM": 0.0013,
+  "medianAbsDiffM": 0.0003,
+  "note": "linear interpolation of the stored 100 Hz gaps vs cgpose recomputation at the exact instant"
+ },
+ "2_cgFirstContact_vs_T4_cg_events": {
+  "n": 25,
+  "maxAbsDiffS": 0.0
+ },
+ "3_videoTipDt_byHand": {
+  "n": 58,
+  "maxAbsDiffS": 0.001
+ },
+ "4_sameRuleResidual_vs_T2": {
+  "join": {
+   "n": 23,
+   "median": 0.013
+  },
+  "t2": {
+   "n": 23,
+   "median": 0.013
+  },
+  "agree": true
+ },
+ "5_noPersonalAbsolutePaths": {
+  "hits": [],
+  "ok": true,
+  "scope": "all .json / .py / .svg in this folder (drive-letter user/dev paths, the local media folder, the login name)"
+ },
+ "allOk": true
+}

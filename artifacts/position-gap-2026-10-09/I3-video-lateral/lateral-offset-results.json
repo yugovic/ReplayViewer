@@ -1,0 +1,5320 @@
+{
+ "track": "I3-video-lateral",
+ "createdBy": "artifacts/position-gap-2026-10-09/I3-video-lateral/lateral_offset.py",
+ "quick": false,
+ "inputs": {
+  "artifacts/video-cg-alignment-2026-10-03/runtime-geometry.json": "52f31699fe6e54e54052b7429de714168da79f3fdceafa5d3658697c2b82d19f",
+  "artifacts/video-cg-alignment-2026-10-03/camera-fit.json": "964c6d00af7621284422c51ff65718a3492945a004d6a8d2c9cb98b2fe2261e0",
+  "artifacts/video-cg-alignment-2026-10-03/camera-profile.json": "d32fd71aaa0d9a74dab28ad7eb3b2085e5eba125a46b1c287dae9a636a592db2",
+  "artifacts/video-cg-alignment-2026-10-03/train-annotations.json": "206407bcf6e6928b32c81f7f7d9f7067fcf61cb9a44846dddbdf50d187af9ce4",
+  "artifacts/video-cg-alignment-2026-10-03/runtime-capture.json": "0dd243cbe7878960cbe0cc4f5c63ec3306869826a595c165464acc1e908ad363",
+  "artifacts/video-cg-alignment-2026-10-03/evidence/heldout-boundary-picks.json": "cf62adb4d893a7a185d3dfd73ab1f4c2c24275fb201f6295f3fe82240e8a3f2d",
+  "artifacts/video-cg-alignment-2026-10-03/evidence/sequence/runtime-poses.json": "6c0666b99b927bc60b9fbb61527419b3b11ce3da51c8a47864eae0a3b2543c36",
+  "artifacts/video-cg-alignment-2026-10-03/evidence/sequence/sequence-paint-lines.json": "79ad2f2ff87e0c8f1a9522cf4cdacf6f9780aebc4065f1ffba8ba6508b71cc94",
+  "public/data/races/fuji_aim_01/osaki_hmr_demio_101_lap_003.json": "8e301c755b70ca610cf6d33b773cc24615a0c2e9748569696449e897962fcc6c",
+  "public/data/races/fuji_aim_2020_07_30/osaki_hmr_demio_101_lap_002.json": "413d0f49203ee31b5e32c0464d448d4a64eec0a3027aa4f0a6e0e1c1c7277500"
+ },
+ "conventions": {
+  "dyMeters": "+ = car (and rigidly mounted camera) actually further RIGHT than drawn, along the drawn car right axis",
+  "dyawDeg": "+ = actual heading rotated to the RIGHT (clockwise seen from above) relative to drawn heading; bounded +-2 deg",
+  "drollDeg": "+ = camera right side up (body rolled to the left, expected in a right-hand corner); diagnostic only, bounded +-5 deg",
+  "dxMeters": "+ = car actually further FORWARD than drawn; diagnostic only, bounded +-5 m",
+  "accyG": "logger lateral acceleration, + in right-hand corners (sign checked against T1/k13 and k9)",
+  "loss": "soft_l1 on point-to-projected-polyline pixel distance, f_scale 4.0 px (pick uncertainty)",
+  "pointEstimates": "continuous least_squares (multi-start) seeded by grid search; dy bounded +-5 m",
+  "bootstrapGrids": "fixed yaw dy 0.01 m; free yaw dy 0.05 m x yaw 0.1 deg (dy in +-4 m)",
+  "scope": "relative to the GPS/heading at the 3 wet training frames (camera absorbs their common error); not absolute GPS truth"
+ },
+ "cameraRefitParity": [
+  {
+   "heightMeters": 1.0,
+   "refit": [
+    487.121201228502,
+    17.08913814778277,
+    0.06338001117070932,
+    0.5339098738305562
+   ],
+   "codex": [
+    487.12106387456566,
+    17.089139703434785,
+    0.06336276060353095,
+    0.5339138948627115
+   ],
+   "maxAbsDiff": 0.00013735393633851345,
+   "activeBounds": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "heightMeters": 1.25,
+   "refit": [
+    472.3331009883064,
+    18.20854641580842,
+    -0.6934103298157929,
+    1.8433015291142956
+   ],
+   "codex": [
+    472.3330956945948,
+    18.20854664390703,
+    -0.6934100796703133,
+    1.8433014912273966
+   ],
+   "maxAbsDiff": 5.2937115810891555e-06,
+   "activeBounds": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "heightMeters": 1.5,
+   "refit": [
+    466.88725390907405,
+    19.04025504404514,
+    -0.7894702887269897,
+    3.016266080457531
+   ],
+   "codex": [
+    466.8872281512528,
+    19.040255839405425,
+    -0.7894711518199242,
+    3.016267033047589
+   ],
+   "maxAbsDiff": 2.5757821219940524e-05,
+   "activeBounds": [
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "heldoutReproduction": {
+  "medianOfSceneMediansPx": 9.421667889801284,
+  "expectedPx": 9.4199,
+  "perScene": {
+   "2020-07-29-L3-60.000": 9.557212671096098,
+   "2020-07-29-L3-64.367": 9.286123108506471,
+   "2020-07-30-L2-18.000": 11.213829444135344,
+   "2020-07-30-L2-45.000": 33.30696555909758,
+   "2020-07-30-L2-50.000": 8.98052776442753,
+   "2020-07-30-L2-84.000": 7.633311577763692,
+   "2020-07-30-L2-94.000": 54.49074606564248,
+   "2020-07-30-L2-112.000": 3.8923517294531718,
+   "2020-07-29-L3-52.387": 2.321055135634334,
+   "2020-07-30-L2-47.522": 11.324806100220995
+  }
+ },
+ "scenes": [
+  {
+   "id": "2020-07-29-L3-47.000",
+   "group": "train",
+   "raceId": "fuji_aim_01",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeSeconds": 47.0,
+   "stationMeters": 1820.2246214066267,
+   "telemetry": {
+    "speed": 123.86848,
+    "accy": 0.9847519999999996,
+    "accx": -0.01686399999999799,
+    "steer": -57.44959999999993,
+    "dist": 1675.7406,
+    "sampleTime": 46.984
+   },
+   "rightAxisEastNorth": [
+    -0.4782606438909321,
+    0.8770955695633322
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 6
+   },
+   "kerbZonesInView": [],
+   "carHeadingMinusRoadDeg": -8.222155091618749,
+   "drawnCentreToLeftPaintM": 6.557145159594402,
+   "drawnCentreToRightPaintM": 9.81874394734922,
+   "roadWidthPaintToPaintM": 16.375889106943625,
+   "runtimeTelemetryAccy": 0.9847519999999996,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 11.176780940385251,
+     "p95Px": 16.889851025998304
+    },
+    "fixedYaw": {
+     "dyMeters": 1.2260294599514614,
+     "medianPx": 8.500107114807394,
+     "p95Px": 13.761682338783068,
+     "atBound": false,
+     "dyMetersL2Loss": 1.1951245288403214,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       0.3127574946126293,
+       3.2419240900101003
+      ],
+      "sd": 0.9698330471261014,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 0.847041893589975,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 11.176780940385251,
+      "fitMedianPx": 7.6946922289124045,
+      "ci95": [
+       0.21663441550931967,
+       2.266327422432868
+      ]
+     },
+     "paintR": {
+      "dyMeters": 3.5676048663056528,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 12.529070475544849,
+      "fitMedianPx": 2.522314615619981,
+      "ci95": [
+       3.333099970911769,
+       4.351105691523249
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 0.9004560551592399,
+     "dyawDeg": 1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 6.774498123047324,
+     "p95Px": 11.989904663377438,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       0.04127472043112945,
+       2.3762261972793346
+      ],
+      "dyawCi95": [
+       2.0,
+       2.0
+      ],
+      "dySd": 0.656837500659196,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.995
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 7.958070827880479,
+     "p95Px": 13.326444708559556
+    },
+    "diagRollFree": {
+     "dyMeters": 0.4864580494474002,
+     "drollDeg": 1.674685206816674,
+     "rollAtBound": false,
+     "medianPx": 6.168739967243718,
+     "p95Px": 12.510313055706611,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -0.8421299651451328,
+       1.5666051334148754
+      ],
+      "drollCi95": [
+       0.5457317625748523,
+       3.66750020581449
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -0.4862972207116892,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": 2.483455782601742,
+     "medianPx": 3.49423969377782,
+     "p95Px": 10.265020243352135
+    },
+    "diagForwardFree": {
+     "dyMeters": 1.0884567112317656,
+     "dxMeters": -4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 4.366851594428892,
+     "p95Px": 11.326619615778895
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 2.720562972715678,
+     "ci95": [
+      1.286723687212619,
+      3.7192300211419065
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 4.397787569623837,
+     "freeYawDy": 0.8930760724081822,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 10.763990978473894,
+     "fixedYawMedianPx": 3.5568026137352833,
+     "perBoundaryDy": {
+      "paintL": 0.6696343398500157,
+      "paintR": 4.6802806342894225
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 1.1968597182853877,
+     "freeYawDy": 0.8519856875609487,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 10.93191823756398,
+     "fixedYawMedianPx": 5.341084395378459,
+     "perBoundaryDy": {
+      "paintL": 0.953531465659296,
+      "paintR": 2.5513893266247454
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-29-L3-55.000",
+   "group": "train",
+   "raceId": "fuji_aim_01",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeSeconds": 55.0,
+   "stationMeters": 2088.882836428457,
+   "telemetry": {
+    "speed": 96.92163999999995,
+    "accy": -0.08766000000000153,
+    "accx": -0.573996,
+    "steer": 24.80000000000018,
+    "dist": 1947.64668,
+    "sampleTime": 54.984
+   },
+   "rightAxisEastNorth": [
+    0.8161819035871505,
+    0.5759765409204646
+   ],
+   "linesScored": {
+    "paintR": 6
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k3",
+     "side": "left",
+     "from": 2104.5,
+     "to": 2182
+    },
+    {
+     "id": "k16",
+     "side": "right",
+     "from": 2024,
+     "to": 2134
+    }
+   ],
+   "carHeadingMinusRoadDeg": 0.9421798620267189,
+   "drawnCentreToLeftPaintM": 13.57199485877355,
+   "drawnCentreToRightPaintM": 0.7625802891069333,
+   "roadWidthPaintToPaintM": 14.334575147880484,
+   "runtimeTelemetryAccy": -0.08766000000000151,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 11.337513819731736,
+     "p95Px": 16.21940926386331
+    },
+    "fixedYaw": {
+     "dyMeters": -0.11328863259824014,
+     "medianPx": 9.365133254687509,
+     "p95Px": 16.504285946045137,
+     "atBound": false,
+     "dyMetersL2Loss": -0.08936946817270532,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -0.24225117075185598,
+       0.40704345660851166
+      ],
+      "sd": 0.17236279555189926,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintR": {
+      "dyMeters": -0.11328863259824014,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 11.337513819731736,
+      "fitMedianPx": 9.365133254687509,
+      "ci95": [
+       -0.24225117075185598,
+       0.40704345660851166
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -0.40510006590655745,
+     "dyawDeg": 1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 6.611550776025396,
+     "p95Px": 12.27808479827295,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -0.5012640214382315,
+       -0.04784472872788396
+      ],
+      "dyawCi95": [
+       2.0,
+       2.0
+      ],
+      "dySd": 0.12091537633196395,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.994
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -0.12770089878572335,
+     "atBound": false,
+     "medianPx": 11.807285428771607,
+     "p95Px": 16.10806440483733
+    },
+    "diagRollFree": {
+     "dyMeters": -0.17123068437671798,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 7.232811964526078,
+     "p95Px": 12.954150628522461,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -0.26154238852962514,
+       0.10691643698130075
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -4.999999999999999
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -0.4676083344424176,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 3.3147800487626293,
+     "p95Px": 7.142641784776851
+    },
+    "diagForwardFree": {
+     "dyMeters": -0.22101702406418258,
+     "dxMeters": 4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 8.644042922400393,
+     "p95Px": 14.892814910781794
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -0.09397535938555399,
+     "freeYawDy": -0.36375892372024066,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 6.543562208055931,
+     "fixedYawMedianPx": 5.877864556868003,
+     "perBoundaryDy": {
+      "paintR": -0.09397535938555399
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -0.1856788597235553,
+     "freeYawDy": -0.4947495726045635,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 14.000732034085292,
+     "fixedYawMedianPx": 12.143042945025906,
+     "perBoundaryDy": {
+      "paintR": -0.1856788597235553
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-29-L3-68.000",
+   "group": "train",
+   "raceId": "fuji_aim_01",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeSeconds": 68.0,
+   "stationMeters": 2480.1764951203136,
+   "telemetry": {
+    "speed": 141.20224,
+    "accy": 0.6370560000000087,
+    "accx": 0.16256800000000576,
+    "steer": -33.85119999999989,
+    "dist": 2325.9437599999997,
+    "sampleTime": 67.984
+   },
+   "rightAxisEastNorth": [
+    -0.9741213244208939,
+    0.22551033711775662
+   ],
+   "linesScored": {
+    "paintL": 7,
+    "paintR": 6
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k5",
+     "side": "left",
+     "from": 2495.5,
+     "to": 2649
+    },
+    {
+     "id": "k18",
+     "side": "right",
+     "from": 2423,
+     "to": 2502.5
+    }
+   ],
+   "carHeadingMinusRoadDeg": -6.098943404212052,
+   "drawnCentreToLeftPaintM": 9.158420495147542,
+   "drawnCentreToRightPaintM": 5.089251814860784,
+   "roadWidthPaintToPaintM": 14.247672310008326,
+   "runtimeTelemetryAccy": 0.6370560000000087,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 8.047540978405976,
+     "p95Px": 19.909682773740695
+    },
+    "fixedYaw": {
+     "dyMeters": -1.687137111916713,
+     "medianPx": 3.2114106969127625,
+     "p95Px": 9.183075282704326,
+     "atBound": false,
+     "dyMetersL2Loss": -1.558939845165779,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -1.9124025581172681,
+       -1.2102316955442667
+      ],
+      "sd": 0.18144833554413564,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -1.254111528648308,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 5.137524600722047,
+      "fitMedianPx": 6.421685774313418,
+      "ci95": [
+       -1.843875969516218,
+       0.3332862400912875
+      ]
+     },
+     "paintR": {
+      "dyMeters": -2.078017236555914,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 14.030622156323597,
+      "fitMedianPx": 0.9764503951181831,
+      "ci95": [
+       -2.464601310049424,
+       -1.8730312942075462
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -1.4530043434538251,
+     "dyawDeg": -1.0538519117559464,
+     "yawAtBound": false,
+     "medianPx": 2.2303007457782402,
+     "p95Px": 9.56781754985837,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -1.997712220489441,
+       -0.7117669025907211
+      ],
+      "dyawCi95": [
+       -2.0,
+       0.9979016867542287
+      ],
+      "dySd": 0.34488864417043236,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.249
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 5.572666167242844,
+     "p95Px": 15.453585505966347
+    },
+    "diagRollFree": {
+     "dyMeters": -0.9743049075130004,
+     "drollDeg": -1.2074058283077311,
+     "rollAtBound": false,
+     "medianPx": 2.6131223398510355,
+     "p95Px": 8.444176008234006,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -1.2403705003021415,
+       -0.6323798132488463
+      ],
+      "drollCi95": [
+       -1.7642978539166412,
+       -0.5946546220532131
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -1.0370677959700814,
+     "dyawDeg": 0.609245938484941,
+     "drollDeg": -1.3378435733654113,
+     "medianPx": 2.892498979762987,
+     "p95Px": 8.215815491380754
+    },
+    "diagForwardFree": {
+     "dyMeters": -1.2095050026277403,
+     "dxMeters": 2.425819998915989,
+     "dxAtBound": false,
+     "medianPx": 2.7002057816899265,
+     "p95Px": 9.395366114098135
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -0.823905707907606,
+     "ci95": [
+      -2.476548602741472,
+      -0.17780584116904166
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -0.9470456481682842,
+     "freeYawDy": -1.259540031665901,
+     "freeYawDyaw": 1.0123148262279111,
+     "baselineMedianPx": 6.704615687051581,
+     "fixedYawMedianPx": 3.1976202033590524,
+     "perBoundaryDy": {
+      "paintL": -1.3553231374338068,
+      "paintR": -0.808128942459873
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -1.7069144574550257,
+     "freeYawDy": -1.3851722460831823,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 9.48370912547598,
+     "fixedYawMedianPx": 7.363256631030716,
+     "perBoundaryDy": {
+      "paintL": -1.1872205931638884,
+      "paintR": -3.3057345141438064
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-29-L3-60.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_01",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeSeconds": 60.0,
+   "stationMeters": 2214.869867344822,
+   "telemetry": {
+    "speed": 91.59928000000001,
+    "accy": -0.6577559999999979,
+    "accx": 0.20641600000000054,
+    "steer": 43.99039999999993,
+    "dist": 2058.74256,
+    "sampleTime": 59.984
+   },
+   "rightAxisEastNorth": [
+    -0.8453375467617724,
+    0.5294552201623048
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 4
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k17",
+     "side": "right",
+     "from": 2197.5,
+     "to": 2344
+    }
+   ],
+   "carHeadingMinusRoadDeg": 5.2347266771452325,
+   "drawnCentreToLeftPaintM": 8.901234490745715,
+   "drawnCentreToRightPaintM": 8.565910990371178,
+   "roadWidthPaintToPaintM": 17.467145481116894,
+   "runtimeTelemetryAccy": -0.6577559999999979,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 9.557212671096098,
+     "p95Px": 22.34379696368757
+    },
+    "fixedYaw": {
+     "dyMeters": -1.8266821625334955,
+     "medianPx": 9.30321258015719,
+     "p95Px": 12.448486565585752,
+     "atBound": false,
+     "dyMetersL2Loss": -1.777849468443278,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -2.5156425305446377,
+       -0.6609877916104375
+      ],
+      "sd": 0.4893203169183638,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -2.033688381159372,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 14.998061585591104,
+      "fitMedianPx": 4.901875574807236,
+      "ci95": [
+       -2.5877561728281675,
+       -0.9631892131804937
+      ]
+     },
+     "paintR": {
+      "dyMeters": 1.4761629146333266,
+      "atBound": false,
+      "points": 4,
+      "baselineMedianPx": 5.9907645520166035,
+      "fitMedianPx": 3.6702847810359316,
+      "ci95": [
+       0.6991969063691373,
+       3.072032198347709
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -2.224348742332025,
+     "dyawDeg": 1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 8.132594744111733,
+     "p95Px": 11.1144868223112,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -2.8225337111085578,
+       -1.1437004142706124
+      ],
+      "dyawCi95": [
+       2.0,
+       2.0
+      ],
+      "dySd": 0.44442386057344,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 1.0
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 9.76985772478861,
+     "p95Px": 19.62632577459136
+    },
+    "diagRollFree": {
+     "dyMeters": 2.382288455697584,
+     "drollDeg": -4.166244148238172,
+     "rollAtBound": false,
+     "medianPx": 2.6776259373710505,
+     "p95Px": 9.89121811399775,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       1.9107440656334556,
+       3.1302659673066353
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -2.5574301613585773
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 1.79280721382811,
+     "dyawDeg": 1.9999999999999993,
+     "drollDeg": -4.226065686457741,
+     "medianPx": 2.459843879845494,
+     "p95Px": 9.65478489935534
+    },
+    "diagForwardFree": {
+     "dyMeters": -1.4749685432301365,
+     "dxMeters": -2.2712109852076736,
+     "dxAtBound": false,
+     "medianPx": 9.160151792837677,
+     "p95Px": 12.402286373380386
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 3.509851295792698,
+     "ci95": [
+      2.189890217530094,
+      5.106092742749571
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -1.908314573505282,
+     "freeYawDy": -2.351298075346567,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 7.268001872912144,
+     "fixedYawMedianPx": 9.392039331451844,
+     "perBoundaryDy": {
+      "paintL": -2.2308596127347804,
+      "paintR": 1.7160473612043012
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -1.7656664098843136,
+     "freeYawDy": -2.147181679180463,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 11.896898333435184,
+     "fixedYawMedianPx": 9.08278659623885,
+     "perBoundaryDy": {
+      "paintL": -1.9177739045687276,
+      "paintR": 1.1638530422479925
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-29-L3-64.367",
+   "group": "heldout",
+   "raceId": "fuji_aim_01",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeSeconds": 64.367,
+   "stationMeters": 2345.9983253688815,
+   "telemetry": {
+    "speed": 122.31971999999999,
+    "accy": -0.06962100000000104,
+    "accx": 0.1382939999999993,
+    "steer": 3.0,
+    "dist": 2191.1163199999996,
+    "sampleTime": 64.351
+   },
+   "rightAxisEastNorth": [
+    -0.9866470945519892,
+    -0.16019492266099464
+   ],
+   "linesScored": {
+    "paintL": 5
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k4",
+     "side": "left",
+     "from": 2339,
+     "to": 2422
+    },
+    {
+     "id": "k17",
+     "side": "right",
+     "from": 2197.5,
+     "to": 2344
+    }
+   ],
+   "carHeadingMinusRoadDeg": -1.7810152942851691,
+   "drawnCentreToLeftPaintM": 9.870106268757981,
+   "drawnCentreToRightPaintM": 4.547163916303825,
+   "roadWidthPaintToPaintM": 14.417270185061806,
+   "runtimeTelemetryAccy": -0.06962100000000104,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 9.286123108506471,
+     "p95Px": 15.981224310013253
+    },
+    "fixedYaw": {
+     "dyMeters": -2.047342970420777,
+     "medianPx": 2.93093493315791,
+     "p95Px": 5.204528592239799,
+     "atBound": false,
+     "dyMetersL2Loss": -2.0191158808169427,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -2.36296839642182,
+       -1.340512699031066
+      ],
+      "sd": 0.2775037604356122,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -2.047342970420777,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 9.286123108506471,
+      "fitMedianPx": 2.93093493315791,
+      "ci95": [
+       -2.36296839642182,
+       -1.340512699031066
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -2.4464402523440425,
+     "dyawDeg": 1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 2.4849050390093317,
+     "p95Px": 4.5825163042149635,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -2.6894736861601243,
+       -1.738510635850809
+      ],
+      "dyawCi95": [
+       2.0,
+       2.0
+      ],
+      "dySd": 0.23640673145633118,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.996
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 7.222328231432419,
+     "p95Px": 13.94010796402065
+    },
+    "diagRollFree": {
+     "dyMeters": 4.661848586450323,
+     "drollDeg": -4.6241409621494745,
+     "rollAtBound": false,
+     "medianPx": 2.279141298008334,
+     "p95Px": 4.192251711294219,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       4.087996042101141,
+       4.999999999999998
+      ],
+      "drollCi95": [
+       -4.88886600049837,
+       -3.9473058830449816
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 3.5427315188496245,
+     "dyawDeg": 1.999308395057823,
+     "drollDeg": -4.480840461506821,
+     "medianPx": 1.9917117614020248,
+     "p95Px": 3.7610049667574557
+    },
+    "diagForwardFree": {
+     "dyMeters": -2.037629834524994,
+     "dxMeters": -0.6331224646504183,
+     "dxAtBound": false,
+     "medianPx": 2.86427092553872,
+     "p95Px": 5.1491650205462784
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -2.019631682834819,
+     "freeYawDy": -2.4329202169330943,
+     "freeYawDyaw": 1.9999999999999978,
+     "baselineMedianPx": 6.394735664021624,
+     "fixedYawMedianPx": 3.6250342648818954,
+     "perBoundaryDy": {
+      "paintL": -2.019631682834819
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -2.06144521620266,
+     "freeYawDy": -2.4471039061322375,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 11.964870305076667,
+     "fixedYawMedianPx": 2.1168015677151355,
+     "perBoundaryDy": {
+      "paintL": -2.06144521620266
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-18.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 18.0,
+   "stationMeters": 935.5354145901933,
+   "telemetry": {
+    "speed": 77.70546000000002,
+    "accy": 1.1836040000000012,
+    "accx": 0.11265799999999854,
+    "steer": -71.49519999999976,
+    "dist": 782.5546,
+    "sampleTime": 17.978
+   },
+   "rightAxisEastNorth": [
+    -0.9244778329501812,
+    -0.3806712647565393
+   ],
+   "linesScored": {
+    "paintL": 7,
+    "paintR": 4
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k0",
+     "side": "left",
+     "from": 936.5,
+     "to": 1022.5
+    },
+    {
+     "id": "k13",
+     "side": "right",
+     "from": 875.5,
+     "to": 932
+    }
+   ],
+   "carHeadingMinusRoadDeg": -20.370461897778483,
+   "drawnCentreToLeftPaintM": 8.376586819771186,
+   "drawnCentreToRightPaintM": 5.3731007771313655,
+   "roadWidthPaintToPaintM": 13.74968759690255,
+   "runtimeTelemetryAccy": 1.1836040000000012,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 11.213829444135344,
+     "p95Px": 45.51098969788505
+    },
+    "fixedYaw": {
+     "dyMeters": -4.999999999999999,
+     "medianPx": 3.8666955600073583,
+     "p95Px": 8.31295487613663,
+     "atBound": true,
+     "dyMetersL2Loss": -5.0,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -5.0,
+       -4.46202870185958
+      ],
+      "sd": 0.16574035678777851,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.54975
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -4.999999999999999,
+      "atBound": true,
+      "points": 7,
+      "baselineMedianPx": 22.71651751901251,
+      "fitMedianPx": 2.628648641496142,
+      "ci95": [
+       -5.0,
+       -4.611981362734848
+      ]
+     },
+     "paintR": {
+      "dyMeters": -2.874418434298931,
+      "atBound": false,
+      "points": 4,
+      "baselineMedianPx": 9.700504252349798,
+      "fitMedianPx": 0.30394882121127587,
+      "ci95": [
+       -3.0392906250537295,
+       -2.5185701126924873
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -4.999999999999989,
+     "dyawDeg": 1.8000524812815855,
+     "yawAtBound": false,
+     "medianPx": 1.696130030509916,
+     "p95Px": 7.989804865429118,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -4.0,
+       -4.0
+      ],
+      "dyawCi95": [
+       -0.37241147695388244,
+       0.9796666541686229
+      ],
+      "dySd": 0.0,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.0
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 7.291987689520304,
+     "p95Px": 44.394408769645466
+    },
+    "diagRollFree": {
+     "dyMeters": -4.999999999999999,
+     "drollDeg": 0.00805512231671927,
+     "rollAtBound": false,
+     "medianPx": 3.888032800139136,
+     "p95Px": 8.340619070445099,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -4.999999999999999,
+       -4.659670629462457
+      ],
+      "drollCi95": [
+       -1.0152552614416905,
+       0.5315969631102081
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -4.999999999999999,
+     "dyawDeg": 1.979124314437951,
+     "drollDeg": -0.21574452707852113,
+     "medianPx": 2.07377268929773,
+     "p95Px": 7.286913998425326
+    },
+    "diagForwardFree": {
+     "dyMeters": -4.513433078550183,
+     "dxMeters": 0.7680905807358339,
+     "dxAtBound": false,
+     "medianPx": 3.989327987847599,
+     "p95Px": 7.0548603643083965
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 2.125581565701068,
+     "ci95": [
+      1.7321342698593165,
+      2.477596749339696
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -4.999999999999796,
+     "freeYawDy": -4.999999999999999,
+     "freeYawDyaw": 1.1972126556578093,
+     "baselineMedianPx": 10.781227481496703,
+     "fixedYawMedianPx": 9.009824874310908,
+     "perBoundaryDy": {
+      "paintL": -4.999999999999825,
+      "paintR": -0.5105326860938119
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -4.227494184417596,
+     "freeYawDy": -4.29578642572031,
+     "freeYawDyaw": 0.4170214219637192,
+     "baselineMedianPx": 17.467448657575854,
+     "fixedYawMedianPx": 3.2316730087058065,
+     "perBoundaryDy": {
+      "paintL": -4.196977138953682,
+      "paintR": -4.878795982658614
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-45.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 45.0,
+   "stationMeters": 1916.2423326068936,
+   "telemetry": {
+    "speed": 133.91234,
+    "accy": 1.127313999999999,
+    "accx": 0.10406800000000001,
+    "steer": -46.66000000000004,
+    "dist": 1763.1911200000002,
+    "sampleTime": 44.978
+   },
+   "rightAxisEastNorth": [
+    0.28656791799234793,
+    0.9570092011681628
+   ],
+   "linesScored": {
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k2",
+     "side": "left",
+     "from": 1955.5,
+     "to": 2058
+    }
+   ],
+   "carHeadingMinusRoadDeg": -2.9971937220672134,
+   "drawnCentreToLeftPaintM": 12.848903301832346,
+   "drawnCentreToRightPaintM": 4.081064026502138,
+   "roadWidthPaintToPaintM": 16.929967328334484,
+   "runtimeTelemetryAccy": 1.127313999999999,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 33.30696555909758,
+     "p95Px": 50.24278938205948
+    },
+    "fixedYaw": {
+     "dyMeters": 2.36806787170841,
+     "medianPx": 7.090513926780581,
+     "p95Px": 17.72700347344336,
+     "atBound": false,
+     "dyMetersL2Loss": 2.2650031760245635,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.5767182098417225,
+       2.466233264070982
+      ],
+      "sd": 0.2408765252570761,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintR": {
+      "dyMeters": 2.36806787170841,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 33.30696555909758,
+      "fitMedianPx": 7.090513926780581,
+      "ci95": [
+       1.5767182098417225,
+       2.466233264070982
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 2.739622522663526,
+     "dyawDeg": -1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 4.190465691657054,
+     "p95Px": 13.191943880519235,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       2.2867929362398716,
+       2.8142417101649873
+      ],
+      "dyawCi95": [
+       -2.0,
+       -1.8111937453469475
+      ],
+      "dySd": 0.12479770179946226,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.931
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 21.61214411812262,
+     "p95Px": 42.149270444834414
+    },
+    "diagRollFree": {
+     "dyMeters": 2.363625991693427,
+     "drollDeg": 4.7653016606425895,
+     "rollAtBound": false,
+     "medianPx": 2.734463692965896,
+     "p95Px": 8.060963236961095,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       2.1535848099682475,
+       2.444080333254843
+      ],
+      "drollCi95": [
+       2.5603995289327206,
+       4.999999999999999
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 2.785535281922831,
+     "dyawDeg": -1.9999999999999998,
+     "drollDeg": 3.3952806580216643,
+     "medianPx": 3.100978050293658,
+     "p95Px": 5.65871567593052
+    },
+    "diagForwardFree": {
+     "dyMeters": 3.1453592972640187,
+     "dxMeters": 4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 4.310439010956837,
+     "p95Px": 14.597152811082731
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 2.472273943012131,
+     "freeYawDy": 2.8189473247546633,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 30.51131497892272,
+     "fixedYawMedianPx": 8.874565028170752,
+     "perBoundaryDy": {
+      "paintR": 2.472273943012131
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 2.2083187076987185,
+     "freeYawDy": 2.6357904057693404,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 33.98138830256292,
+     "fixedYawMedianPx": 4.917608680031178,
+     "perBoundaryDy": {
+      "paintR": 2.2083187076987185
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-50.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 50.0,
+   "stationMeters": 2085.353184235972,
+   "telemetry": {
+    "speed": 88.95351999999998,
+    "accy": -0.13905599999999974,
+    "accx": -0.17943599999999893,
+    "steer": 1.8160000000000405,
+    "dist": 1933.74264,
+    "sampleTime": 49.978
+   },
+   "rightAxisEastNorth": [
+    0.807124603195513,
+    0.5888329553322893
+   ],
+   "linesScored": {
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k3",
+     "side": "left",
+     "from": 2104.5,
+     "to": 2182
+    },
+    {
+     "id": "k16",
+     "side": "right",
+     "from": 2024,
+     "to": 2134
+    }
+   ],
+   "carHeadingMinusRoadDeg": 0.06339742018405073,
+   "drawnCentreToLeftPaintM": 12.758198468084025,
+   "drawnCentreToRightPaintM": 1.6119130872339433,
+   "roadWidthPaintToPaintM": 14.370111555317969,
+   "runtimeTelemetryAccy": -0.13905599999999974,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 8.98052776442753,
+     "p95Px": 12.433356433036955
+    },
+    "fixedYaw": {
+     "dyMeters": 0.1646323562887917,
+     "medianPx": 6.846973948046198,
+     "p95Px": 10.986775463373045,
+     "atBound": false,
+     "dyMetersL2Loss": 0.17437897353243373,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       0.043920759985150264,
+       0.4841083857748736
+      ],
+      "sd": 0.1142961385591422,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintR": {
+      "dyMeters": 0.1646323562887917,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 8.98052776442753,
+      "fitMedianPx": 6.846973948046198,
+      "ci95": [
+       0.043920759985150264,
+       0.4841083857748736
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -0.12123690884793861,
+     "dyawDeg": 1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 3.677762764684797,
+     "p95Px": 7.007744699123174,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -0.2245846509252302,
+       0.025619182733268832
+      ],
+      "dyawCi95": [
+       2.0,
+       2.0
+      ],
+      "dySd": 0.06297178743489565,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.994
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 1.8221454481916788,
+     "atBound": false,
+     "medianPx": 4.070656479495504,
+     "p95Px": 8.98656219271542
+    },
+    "diagRollFree": {
+     "dyMeters": 0.20232553380235982,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 4.431524419603898,
+     "p95Px": 8.292476557625532,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       0.10242870724164356,
+       0.3597634304024841
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -4.999999999999999
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -0.10459532569804662,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 0.5868490220419608,
+     "p95Px": 2.818625931576843
+    },
+    "diagForwardFree": {
+     "dyMeters": 0.16828012708770745,
+     "dxMeters": 2.50901444663254,
+     "dxAtBound": false,
+     "medianPx": 5.908982643762708,
+     "p95Px": 10.244065549075769
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 0.27639702560626356,
+     "freeYawDy": -0.015229798176268553,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 8.703435000731227,
+     "fixedYawMedianPx": 3.770336880212403,
+     "perBoundaryDy": {
+      "paintR": 0.27639702560626356
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 0.028644981643200413,
+     "freeYawDy": -0.31011144995412754,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 7.330805894880249,
+     "fixedYawMedianPx": 7.9996719621819405,
+     "perBoundaryDy": {
+      "paintR": 0.028644981643200413
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-84.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 84.0,
+   "stationMeters": 3146.99361354746,
+   "telemetry": {
+    "speed": 90.24279999999999,
+    "accy": 0.7077339999999993,
+    "accx": 0.15817800000000273,
+    "steer": -45.93999999999993,
+    "dist": 2974.93012,
+    "sampleTime": 83.978
+   },
+   "rightAxisEastNorth": [
+    0.2863291695628662,
+    0.9578524340289458
+   ],
+   "linesScored": {
+    "paintL": 7,
+    "paintR": 4
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k8",
+     "side": "left",
+     "from": 3177.5,
+     "to": 3253.5
+    },
+    {
+     "id": "k20",
+     "side": "right",
+     "from": 3086,
+     "to": 3143
+    }
+   ],
+   "carHeadingMinusRoadDeg": -9.978941670321474,
+   "drawnCentreToLeftPaintM": 5.082242874063243,
+   "drawnCentreToRightPaintM": 10.196715338984042,
+   "roadWidthPaintToPaintM": 15.278958213047286,
+   "runtimeTelemetryAccy": 0.7077339999999993,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 7.633311577763692,
+     "p95Px": 20.62953711388542
+    },
+    "fixedYaw": {
+     "dyMeters": -1.1806245609783312,
+     "medianPx": 1.9626296593584676,
+     "p95Px": 5.433830865991563,
+     "atBound": false,
+     "dyMetersL2Loss": -1.1896210097151463,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -1.3196778601774266,
+       -1.0623833910766916
+      ],
+      "sd": 0.07178811066419105,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -1.2065974928352259,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 8.683882952712729,
+      "fitMedianPx": 1.9611382479619435,
+      "ci95": [
+       -1.3506368655609313,
+       -1.098273457774429
+      ]
+     },
+     "paintR": {
+      "dyMeters": -0.014400204521215591,
+      "atBound": false,
+      "points": 4,
+      "baselineMedianPx": 1.5182974479436773,
+      "fitMedianPx": 1.5222306040796783,
+      "ci95": [
+       -0.7156481567216859,
+       0.39601235112419375
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -1.2614330352242826,
+     "dyawDeg": 0.4441732809729949,
+     "yawAtBound": false,
+     "medianPx": 1.596991787530317,
+     "p95Px": 5.552052795764359,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -1.5055985953986846,
+       -0.6614550997415536
+      ],
+      "dyawCi95": [
+       -2.0,
+       2.0
+      ],
+      "dySd": 0.22334436105395106,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.083
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 4.217187220361691,
+     "p95Px": 16.696976246359256
+    },
+    "diagRollFree": {
+     "dyMeters": -1.250298896198846,
+     "drollDeg": 0.6291484412329117,
+     "rollAtBound": false,
+     "medianPx": 1.6792900985594386,
+     "p95Px": 3.612394243546728,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -1.3968270068525688,
+       -1.1214776906118633
+      ],
+      "drollCi95": [
+       0.2610176726088753,
+       0.8849085997403787
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -1.1360746845170773,
+     "dyawDeg": -0.724428231182553,
+     "drollDeg": 0.6928821839619383,
+     "medianPx": 1.8368656408466484,
+     "p95Px": 3.874065531452301
+    },
+    "diagForwardFree": {
+     "dyMeters": -2.299694586474026,
+     "dxMeters": -4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 1.7767018605211027,
+     "p95Px": 5.109939456373214
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 1.1921972883140104,
+     "ci95": [
+      0.42504509726429884,
+      1.6488376695714497
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -1.6432810943158838,
+     "freeYawDy": -1.8844076573252055,
+     "freeYawDyaw": 1.5421089326937858,
+     "baselineMedianPx": 10.48548288538768,
+     "fixedYawMedianPx": 4.09983887222152,
+     "perBoundaryDy": {
+      "paintL": -1.676850536472484,
+      "paintR": 2.7396209299449334
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -0.9086316623427709,
+     "freeYawDy": -0.5761855564811401,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 8.360582606294216,
+     "fixedYawMedianPx": 4.165562238481533,
+     "perBoundaryDy": {
+      "paintL": -0.8692519681263156,
+      "paintR": -2.6311092422217013
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-94.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 94.0,
+   "stationMeters": 3432.9161911951055,
+   "telemetry": {
+    "speed": 116.44657999999997,
+    "accy": -1.2059459999999924,
+    "accx": 0.06096799999999826,
+    "steer": 50.0,
+    "dist": 3251.40586,
+    "sampleTime": 93.978
+   },
+   "rightAxisEastNorth": [
+    0.8505320190191665,
+    -0.5233389680602513
+   ],
+   "linesScored": {
+    "paintL": 8,
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k9",
+     "side": "left",
+     "from": 3352,
+     "to": 3454.5
+    },
+    {
+     "id": "k22",
+     "side": "right",
+     "from": 3453.5,
+     "to": 3550
+    }
+   ],
+   "carHeadingMinusRoadDeg": 0.6834524077814403,
+   "drawnCentreToLeftPaintM": 0.9643651280453895,
+   "drawnCentreToRightPaintM": 13.380044244022262,
+   "roadWidthPaintToPaintM": 14.344409372067652,
+   "runtimeTelemetryAccy": -1.2059459999999924,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 54.49074606564248,
+     "p95Px": 87.85173965711252
+    },
+    "fixedYaw": {
+     "dyMeters": 1.964222640050491,
+     "medianPx": 23.83347287357991,
+     "p95Px": 54.071394010852764,
+     "atBound": false,
+     "dyMetersL2Loss": 2.0916218704609406,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.3640323983956475,
+       4.350799502366847
+      ],
+      "sd": 0.7533080815222899,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0095
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 2.0904313795387934,
+      "atBound": false,
+      "points": 8,
+      "baselineMedianPx": 61.60746547786424,
+      "fitMedianPx": 31.373660083489433,
+      "ci95": [
+       1.396751544415321,
+       5.0
+      ]
+     },
+     "paintR": {
+      "dyMeters": -4.9999999999999565,
+      "atBound": true,
+      "points": 7,
+      "baselineMedianPx": 19.564739228826554,
+      "fitMedianPx": 11.192551763011206,
+      "ci95": [
+       -5.0,
+       -5.0
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 1.6723151238946292,
+     "dyawDeg": 1.9999999999999996,
+     "yawAtBound": true,
+     "medianPx": 25.04661363722333,
+     "p95Px": 51.066379551645085,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       1.148774415386239,
+       4.0
+      ],
+      "dyawCi95": [
+       -2.0,
+       2.0
+      ],
+      "dySd": 0.7777467677933216,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.943
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 51.12000520284444,
+     "p95Px": 74.52848960634935
+    },
+    "diagRollFree": {
+     "dyMeters": 2.097864607456803,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 8.44322985659409,
+     "p95Px": 28.989226735352176,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       1.6886244898146703,
+       3.3261879100767273
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -4.999999999984424
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 1.7614822753280124,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 9.1105474744249,
+     "p95Px": 25.527987434690672
+    },
+    "diagForwardFree": {
+     "dyMeters": 1.1721899500952189,
+     "dxMeters": 4.999999999999938,
+     "dxAtBound": true,
+     "medianPx": 22.51990173916814,
+     "p95Px": 53.28728489740763
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -7.0904313795387495,
+     "ci95": [
+      -10.0,
+      -6.396751544415321
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 1.323401946382914,
+     "freeYawDy": 1.082086420247206,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 42.45695370273388,
+     "fixedYawMedianPx": 18.560909476276187,
+     "perBoundaryDy": {
+      "paintL": 1.7039056428025225,
+      "paintR": -4.999999999999876
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 2.1769210572820454,
+     "freeYawDy": 1.867426291943202,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 64.31910243514073,
+     "fixedYawMedianPx": 28.460204646639202,
+     "perBoundaryDy": {
+      "paintL": 2.3180712868206395,
+      "paintR": -4.999999999999959
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-112.000",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 112.0,
+   "stationMeters": 3911.2705345881964,
+   "telemetry": {
+    "speed": 92.56307999999996,
+    "accy": 0.3898679999999996,
+    "accx": 0.24165799999999854,
+    "steer": -30.0,
+    "dist": 3716.66476,
+    "sampleTime": 111.978
+   },
+   "rightAxisEastNorth": [
+    0.7476891063462072,
+    -0.6623881719288655
+   ],
+   "linesScored": {
+    "paintL": 7,
+    "paintR": 6
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k12",
+     "side": "left",
+     "from": 3896,
+     "to": 4020
+    }
+   ],
+   "carHeadingMinusRoadDeg": -10.797062207479081,
+   "drawnCentreToLeftPaintM": 4.836511676273844,
+   "drawnCentreToRightPaintM": 9.786129058690802,
+   "roadWidthPaintToPaintM": 14.622640734964646,
+   "runtimeTelemetryAccy": 0.3898679999999996,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 3.8923517294531718,
+     "p95Px": 22.71472563329537
+    },
+    "fixedYaw": {
+     "dyMeters": -1.2252929787938205,
+     "medianPx": 2.0075831332709395,
+     "p95Px": 4.4917495362183315,
+     "atBound": false,
+     "dyMetersL2Loss": -1.2380635408161038,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -1.3507034756791134,
+       -1.018389803062696
+      ],
+      "sd": 0.08700364615394542,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -1.2414764927284758,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 11.624710782542143,
+      "fitMedianPx": 2.1613073916825116,
+      "ci95": [
+       -1.3599315976126878,
+       -1.0548533986236548
+      ]
+     },
+     "paintR": {
+      "dyMeters": -0.17549741946017866,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 0.8933294889860429,
+      "fitMedianPx": 0.9843669460420739,
+      "ci95": [
+       -1.0495276696727163,
+       0.2316274295141157
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -1.5534516509854712,
+     "dyawDeg": 1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 0.9142176440131532,
+     "p95Px": 3.2120912163687048,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -1.5991457610427953,
+       -1.4407830003909083
+      ],
+      "dyawCi95": [
+       1.3825016563396308,
+       2.0
+      ],
+      "dySd": 0.06551395663952307,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.588
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 3.320381903965883,
+     "p95Px": 18.879491490230066
+    },
+    "diagRollFree": {
+     "dyMeters": -1.2584881143494209,
+     "drollDeg": 0.3250800128926521,
+     "rollAtBound": false,
+     "medianPx": 2.264819841279077,
+     "p95Px": 4.760219646743526,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -1.4073295522105225,
+       -1.0400642337091088
+      ],
+      "drollCi95": [
+       -0.05848853628172682,
+       0.607210561478919
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -1.5709902090218273,
+     "dyawDeg": 1.9999999999999327,
+     "drollDeg": 0.194413738417902,
+     "medianPx": 0.6858697027307773,
+     "p95Px": 2.7907591978527613
+    },
+    "diagForwardFree": {
+     "dyMeters": -2.095647103306542,
+     "dxMeters": -4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 2.0667390408667576,
+     "p95Px": 4.085734723008594
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 1.0659790732682972,
+     "ci95": [
+      0.18288656279337462,
+      1.4927443864065153
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -1.7013069317912901,
+     "freeYawDy": -2.003207787713145,
+     "freeYawDyaw": 1.9999999999999662,
+     "baselineMedianPx": 8.691397329505794,
+     "fixedYawMedianPx": 3.2964114488808027,
+     "perBoundaryDy": {
+      "paintL": -1.7239911956451917,
+      "paintR": 2.4626116132133364
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -0.9305443042619469,
+     "freeYawDy": -1.001217994425379,
+     "freeYawDyaw": 0.4141168161525324,
+     "baselineMedianPx": 7.641595977685267,
+     "fixedYawMedianPx": 2.5525383248470925,
+     "perBoundaryDy": {
+      "paintL": -0.9057180406215379,
+      "paintR": -2.8790229623696915
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-29-L3-52.387",
+   "group": "heldout",
+   "raceId": "fuji_aim_01",
+   "session": "2020-07-29 wet",
+   "lap": 3,
+   "lapTimeSeconds": 52.387,
+   "stationMeters": 2002.0615276899318,
+   "telemetry": {
+    "speed": 125.76472000000001,
+    "accy": 0.6021279999999991,
+    "accx": 0.11791900000000036,
+    "steer": -27.932399999999774,
+    "dist": 1860.5991600000002,
+    "sampleTime": 52.371
+   },
+   "rightAxisEastNorth": [
+    0.819229229768982,
+    0.572835929003756
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 6
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k2",
+     "side": "left",
+     "from": 1955.5,
+     "to": 2058
+    },
+    {
+     "id": "k16",
+     "side": "right",
+     "from": 2024,
+     "to": 2134
+    }
+   ],
+   "carHeadingMinusRoadDeg": 1.4878725641792185,
+   "drawnCentreToLeftPaintM": 7.353465826443422,
+   "drawnCentreToRightPaintM": 6.96447600581792,
+   "roadWidthPaintToPaintM": 14.317941832261342,
+   "runtimeTelemetryAccy": 0.6021279999999991,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 2.321055135634334,
+     "p95Px": 9.597211025070724
+    },
+    "fixedYaw": {
+     "dyMeters": 0.02360318345439399,
+     "medianPx": 2.542002432271726,
+     "p95Px": 9.506156617017325,
+     "atBound": false,
+     "dyMetersL2Loss": 0.09399574593839861,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -0.1953360195982321,
+       0.41738732562957287
+      ],
+      "sd": 0.18833148171428937,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 0.026698594997632566,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 2.282004652053699,
+      "fitMedianPx": 2.091256204217542,
+      "ci95": [
+       -0.26089909955562873,
+       0.8945680698548779
+      ]
+     },
+     "paintR": {
+      "dyMeters": 0.019200415257557425,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 4.1203900896393755,
+      "fitMedianPx": 4.176843389170886,
+      "ci95": [
+       -0.19362314162376415,
+       1.2325646989604995
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -0.3513550194265884,
+     "dyawDeg": 1.8977298916971723,
+     "yawAtBound": false,
+     "medianPx": 1.9482926638992062,
+     "p95Px": 8.31508165686644,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -0.5108611043119721,
+       0.21652949662311588
+      ],
+      "dyawCi95": [
+       1.1874680328497522,
+       2.0
+      ],
+      "dySd": 0.180453442518468,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.454
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 0.8078695294761474,
+     "atBound": false,
+     "medianPx": 3.5575371417624546,
+     "p95Px": 8.469069910849573
+    },
+    "diagRollFree": {
+     "dyMeters": 0.21597092719878236,
+     "drollDeg": -0.29793632912193474,
+     "rollAtBound": false,
+     "medianPx": 2.72610119617366,
+     "p95Px": 9.498372268935562,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -1.051940581789175,
+       1.5182526502321827
+      ],
+      "drollCi95": [
+       -1.984482031415802,
+       1.9618534578129292
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -0.5987420632779296,
+     "dyawDeg": 1.9999999987329782,
+     "drollDeg": 0.401811112940096,
+     "medianPx": 2.2464132917974164,
+     "p95Px": 8.226974097228304
+    },
+    "diagForwardFree": {
+     "dyMeters": 0.04460264256556536,
+     "dxMeters": 2.492743907188064,
+     "dxAtBound": false,
+     "medianPx": 3.2661103053490983,
+     "p95Px": 9.488518811757409
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -0.007498179740075141,
+     "ci95": [
+      -0.7955220625131253,
+      1.2449891704879612
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 1.1610317548064344,
+     "freeYawDy": 0.747977945245243,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 7.69408109267477,
+     "fixedYawMedianPx": 3.279934516808003,
+     "perBoundaryDy": {
+      "paintL": 0.011392622817623878,
+      "paintR": 1.360199333687315
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -0.14755447479525202,
+     "freeYawDy": -0.4660291842650147,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 4.231526886815354,
+     "fixedYawMedianPx": 4.644509394507718,
+     "perBoundaryDy": {
+      "paintL": 0.043823598114688875,
+      "paintR": -1.2653517669650838
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-47.522",
+   "group": "heldout",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 47.522,
+   "stationMeters": 2006.947193792811,
+   "telemetry": {
+    "speed": 130.498,
+    "accy": 0.7771,
+    "accx": 0.1163,
+    "steer": -25.6,
+    "dist": 1854.976,
+    "sampleTime": 47.5
+   },
+   "rightAxisEastNorth": [
+    0.8340951235578893,
+    0.5511188615914357
+   ],
+   "linesScored": {
+    "paintL": 4,
+    "paintR": 5
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k2",
+     "side": "left",
+     "from": 1955.5,
+     "to": 2058
+    },
+    {
+     "id": "k16",
+     "side": "right",
+     "from": 2024,
+     "to": 2134
+    }
+   ],
+   "carHeadingMinusRoadDeg": 3.01776837297371,
+   "drawnCentreToLeftPaintM": 5.620802076033797,
+   "drawnCentreToRightPaintM": 8.689083430260306,
+   "roadWidthPaintToPaintM": 14.309885506294103,
+   "runtimeTelemetryAccy": 0.7771,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 11.324806100220995,
+     "p95Px": 19.23466362319301
+    },
+    "fixedYaw": {
+     "dyMeters": 1.6495806431426459,
+     "medianPx": 3.0046068563066677,
+     "p95Px": 8.190508300353196,
+     "atBound": false,
+     "dyMetersL2Loss": 1.6759271574440502,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.4473728468747082,
+       2.113984084407051
+      ],
+      "sd": 0.16736376132779276,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 1.710954500282487,
+      "atBound": false,
+      "points": 4,
+      "baselineMedianPx": 18.862221218241643,
+      "fitMedianPx": 2.4687387926640563,
+      "ci95": [
+       1.4954767020687971,
+       2.1426013974248868
+      ]
+     },
+     "paintR": {
+      "dyMeters": 1.5099285071522601,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 7.598130653567885,
+      "fitMedianPx": 3.5299728252790485,
+      "ci95": [
+       1.1528722435094922,
+       3.207936740136929
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 1.277217605027184,
+     "dyawDeg": 1.9999999999999973,
+     "yawAtBound": true,
+     "medianPx": 2.3083546700638298,
+     "p95Px": 8.311732119477345,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       1.1535610498087694,
+       2.056920328356306
+      ],
+      "dyawCi95": [
+       -2.0,
+       2.0
+      ],
+      "dySd": 0.23611084795803286,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.635
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 9.27933438579082,
+     "p95Px": 15.26963187415423
+    },
+    "diagRollFree": {
+     "dyMeters": 1.5057132044544557,
+     "drollDeg": 0.23411750234727563,
+     "rollAtBound": false,
+     "medianPx": 3.0369527536863905,
+     "p95Px": 8.215760405959612,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       0.23234433248803077,
+       3.313352672780933
+      ],
+      "drollCi95": [
+       -1.5876043917945344,
+       2.5172991935561173
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 1.234051305792035,
+     "dyawDeg": 1.9999999950339664,
+     "drollDeg": 0.07044653443067087,
+     "medianPx": 2.2923117399699895,
+     "p95Px": 8.321100497111049
+    },
+    "diagForwardFree": {
+     "dyMeters": 1.587428427691443,
+     "dxMeters": 4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 3.017135197910196,
+     "p95Px": 7.414965457371226
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -0.20102599313022695,
+     "ci95": [
+      -0.8080380232415352,
+      1.5214761042048672
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 2.3849378696043755,
+     "freeYawDy": 1.8833063939442514,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 13.88294337501808,
+     "fixedYawMedianPx": 2.929260455214397,
+     "perBoundaryDy": {
+      "paintL": 1.6948935632669895,
+      "paintR": 2.710056320808189
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 1.5700422529803024,
+     "freeYawDy": 1.3651920704253078,
+     "freeYawDyaw": 1.2047809315384461,
+     "baselineMedianPx": 13.211627086058552,
+     "fixedYawMedianPx": 4.113163207298201,
+     "perBoundaryDy": {
+      "paintL": 1.7246203471733728,
+      "paintR": 0.13424023293722492
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-44.000",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 44.0,
+   "stationMeters": 1879.0073300522286,
+   "telemetry": {
+    "speed": 135.95962,
+    "accy": 1.1507819999999982,
+    "accx": -0.04938600000000007,
+    "steer": -50.34200000000008,
+    "dist": 1725.84336,
+    "sampleTime": 43.978
+   },
+   "rightAxisEastNorth": [
+    -0.019236979957530653,
+    0.9985429368736958
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 7
+   },
+   "kerbZonesInView": [],
+   "carHeadingMinusRoadDeg": 12.038892660083135,
+   "drawnCentreToLeftPaintM": 11.893283217615878,
+   "drawnCentreToRightPaintM": 6.382609555750372,
+   "roadWidthPaintToPaintM": 18.27589277336625,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 15.134502238514031,
+     "p95Px": 76.2754726512898
+    },
+    "fixedYaw": {
+     "dyMeters": 4.138812332381139,
+     "medianPx": 3.4226350088799244,
+     "p95Px": 10.955797645681319,
+     "atBound": false,
+     "dyMetersL2Loss": 4.124603874152648,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       4.046233264311921,
+       4.161983568260821
+      ],
+      "sd": 0.16119545670284174,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 3.1155316648711584,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 10.852728764443766,
+      "fitMedianPx": 5.882665213038119,
+      "ci95": [
+       1.746006032899348,
+       5.0
+      ]
+     },
+     "paintR": {
+      "dyMeters": 4.140729872900803,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 74.37471248237135,
+      "fitMedianPx": 2.4128080895174864,
+      "ci95": [
+       4.0454730927712745,
+       4.162255545661441
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 4.420146896202275,
+     "dyawDeg": -1.4207534760146006,
+     "yawAtBound": false,
+     "medianPx": 3.461064174496555,
+     "p95Px": 9.711018896623532,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       4.0,
+       4.0
+      ],
+      "dyawCi95": [
+       -0.1954640417932641,
+       0.8390377801838751
+      ],
+      "dySd": 0.09746263768803058,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.005
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 10.409174755850447,
+     "p95Px": 62.687523381771385
+    },
+    "diagRollFree": {
+     "dyMeters": 4.139382233239958,
+     "drollDeg": 0.036174279728185356,
+     "rollAtBound": false,
+     "medianPx": 3.2984978810362677,
+     "p95Px": 11.066679988244704,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       4.043655257520259,
+       4.171423178815761
+      ],
+      "drollCi95": [
+       -0.8887229609979324,
+       1.2216383603708534
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 4.428420273477766,
+     "dyawDeg": -1.4762059026637677,
+     "drollDeg": -0.11691329721536155,
+     "medianPx": 3.084391629781018,
+     "p95Px": 9.302258582640361
+    },
+    "diagForwardFree": {
+     "dyMeters": 4.264872438617804,
+     "dxMeters": 2.811378934055505,
+     "dxAtBound": false,
+     "medianPx": 3.758878606462197,
+     "p95Px": 10.186066353860857
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 1.0251982080296442,
+     "ci95": [
+      -0.8942387826993186,
+      2.3899365499907352
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 4.134921676238552,
+     "freeYawDy": 4.493612292368185,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 16.49675236446614,
+     "fixedYawMedianPx": 5.746212820141727,
+     "perBoundaryDy": {
+      "paintL": 4.999999999999251,
+      "paintR": 4.127138149923854
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 4.072013480646141,
+     "freeYawDy": 4.289010121208266,
+     "freeYawDyaw": -1.001687340889211,
+     "baselineMedianPx": 14.773847608823349,
+     "fixedYawMedianPx": 2.80512772545603,
+     "perBoundaryDy": {
+      "paintL": 1.2639271740675422,
+      "paintR": 4.081700009899928
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-44.500",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 44.5,
+   "stationMeters": 1897.5919727594653,
+   "telemetry": {
+    "speed": 134.71496,
+    "accy": 1.1803719999999964,
+    "accx": 0.004795999999999599,
+    "steer": -46.82799999999995,
+    "dist": 1744.59074,
+    "sampleTime": 44.478
+   },
+   "rightAxisEastNorth": [
+    0.1348663193746833,
+    0.9896792153011701
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 6
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k2",
+     "side": "left",
+     "from": 1955.5,
+     "to": 2058
+    }
+   ],
+   "carHeadingMinusRoadDeg": 2.9307184435443254,
+   "drawnCentreToLeftPaintM": 12.950054916057898,
+   "drawnCentreToRightPaintM": 4.5636842179631465,
+   "roadWidthPaintToPaintM": 17.513739134021044,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 9.922182373655057,
+     "p95Px": 81.43019527016799
+    },
+    "fixedYaw": {
+     "dyMeters": 2.728527205850151,
+     "medianPx": 4.004731876111848,
+     "p95Px": 12.499189895873263,
+     "atBound": false,
+     "dyMetersL2Loss": 2.6983168748073285,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.9502982216948346,
+       2.8059448636544366
+      ],
+      "sd": 0.2215103649490535,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 2.0738053522426703,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 6.770863423479336,
+      "fitMedianPx": 4.670153239463552,
+      "ci95": [
+       0.899897095811443,
+       4.659048762824347
+      ]
+     },
+     "paintR": {
+      "dyMeters": 2.731529208739732,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 64.00953653804567,
+      "fitMedianPx": 5.153056172552333,
+      "ci95": [
+       1.9500412270486809,
+       2.8077586595544743
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 3.098540613845039,
+     "dyawDeg": -1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 3.6079254535847385,
+     "p95Px": 7.952314511221333,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       2.7099720922828308,
+       3.1102835765007475
+      ],
+      "dyawCi95": [
+       -2.0,
+       -1.9337158805533565
+      ],
+      "dySd": 0.0885374662826675,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.957
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 7.997788059154681,
+     "p95Px": 66.04870827058247
+    },
+    "diagRollFree": {
+     "dyMeters": 2.731595930425603,
+     "drollDeg": 0.20522841079509888,
+     "rollAtBound": false,
+     "medianPx": 4.055095895594076,
+     "p95Px": 11.963781823070367,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       2.0256622921814382,
+       2.8083628362338993
+      ],
+      "drollCi95": [
+       -0.6753285870824247,
+       1.2813811150706476
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 3.1024248451852223,
+     "dyawDeg": -1.9999999999999998,
+     "drollDeg": 0.16820287874296097,
+     "medianPx": 3.7141811390077737,
+     "p95Px": 8.363513059760082
+    },
+    "diagForwardFree": {
+     "dyMeters": 3.0397084541581956,
+     "dxMeters": 3.3771198217027534,
+     "dxAtBound": false,
+     "medianPx": 4.576334628516661,
+     "p95Px": 7.568675013960162
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 0.6577238564970616,
+     "ci95": [
+      -2.1517406855830683,
+      1.8117720648312448
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 2.750063514915172,
+     "freeYawDy": 3.06808010689834,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 13.854335843537042,
+     "fixedYawMedianPx": 7.365296015088197,
+     "perBoundaryDy": {
+      "paintL": 4.999999999996287,
+      "paintR": 2.7399454204092746
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 2.6843841676509257,
+     "freeYawDy": 3.0658378419843935,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 5.807621007479259,
+     "fixedYawMedianPx": 5.691302571581413,
+     "perBoundaryDy": {
+      "paintL": 0.3694074320160329,
+      "paintR": 2.6931311465076195
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-45.500",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 45.5,
+   "stationMeters": 1934.482287706358,
+   "telemetry": {
+    "speed": 133.03002,
+    "accy": 1.1424260000000002,
+    "accx": 0.2017500000000021,
+    "steer": -40.68000000000039,
+    "dist": 1781.53022,
+    "sampleTime": 45.478
+   },
+   "rightAxisEastNorth": [
+    0.4342431184891093,
+    0.8999930995066542
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k2",
+     "side": "left",
+     "from": 1955.5,
+     "to": 2058
+    }
+   ],
+   "carHeadingMinusRoadDeg": -2.2514866336020734,
+   "drawnCentreToLeftPaintM": 11.789713497292507,
+   "drawnCentreToRightPaintM": 4.91003576339628,
+   "roadWidthPaintToPaintM": 16.699749260688787,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 5.625135992985019,
+     "p95Px": 20.543514323469864
+    },
+    "fixedYaw": {
+     "dyMeters": -0.3664143765808952,
+     "medianPx": 6.328634552709166,
+     "p95Px": 18.480640113840497,
+     "atBound": false,
+     "dyMetersL2Loss": -0.41263638068589936,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -1.3419917629536005,
+       0.4295836606016867
+      ],
+      "sd": 0.49088564494379155,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -0.577557691315611,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 1.640112909448707,
+      "fitMedianPx": 1.4620009791762523,
+      "ci95": [
+       -0.8682940991858797,
+       -0.17976632696985448
+      ]
+     },
+     "paintR": {
+      "dyMeters": -0.24791232048142925,
+      "atBound": false,
+      "points": 7,
+      "baselineMedianPx": 9.947766621008606,
+      "fitMedianPx": 10.681159878393633,
+      "ci95": [
+       -2.600922114593677,
+       0.4974751744921565
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 0.10709817985633018,
+     "dyawDeg": -1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 5.504336027274559,
+     "p95Px": 16.635021021340567,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -0.9177534141929059,
+       0.7842632762687223
+      ],
+      "dyawCi95": [
+       -2.0,
+       -0.7196428570340089
+      ],
+      "dySd": 0.4810485694007135,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.89
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 5.185881699809324,
+     "p95Px": 15.984370176145985
+    },
+    "diagRollFree": {
+     "dyMeters": -2.766701355264121,
+     "drollDeg": 2.7645560443320467,
+     "rollAtBound": false,
+     "medianPx": 3.69606918690714,
+     "p95Px": 21.756705663799774,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -2.958822923646389,
+       0.6088508198322522
+      ],
+      "drollCi95": [
+       -0.8363606343317438,
+       3.502891308580731
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -0.47863019983897426,
+     "dyawDeg": -1.9999999993174535,
+     "drollDeg": 0.8019476929109018,
+     "medianPx": 5.130700471895582,
+     "p95Px": 15.577941240437626
+    },
+    "diagForwardFree": {
+     "dyMeters": 0.38090672983654794,
+     "dxMeters": 4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 4.487757099622357,
+     "p95Px": 17.14223787691784
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": 0.3296453708341817,
+     "ci95": [
+      -2.125562335262347,
+      1.1879631780416673
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 0.5900154704878943,
+     "freeYawDy": 0.9357440670516534,
+     "freeYawDyaw": -1.6332908989553114,
+     "baselineMedianPx": 6.02128823726555,
+     "fixedYawMedianPx": 7.42381636947944,
+     "perBoundaryDy": {
+      "paintL": 0.24923389282279954,
+      "paintR": 0.6534304904457503
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -1.0575221374811665,
+     "freeYawDy": -0.6098839651390827,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 7.166824316561128,
+     "fixedYawMedianPx": 3.6442647443938565,
+     "perBoundaryDy": {
+      "paintL": -1.058697012948472,
+      "paintR": -1.056277286881686
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-46.000",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 46.0,
+   "stationMeters": 1952.544509158524,
+   "telemetry": {
+    "speed": 132.08880000000002,
+    "accy": 1.197308000000001,
+    "accx": 0.08440000000000038,
+    "steer": -42.922,
+    "dist": 1799.7362,
+    "sampleTime": 45.978
+   },
+   "rightAxisEastNorth": [
+    0.5689660821270026,
+    0.8215572996850279
+   ],
+   "linesScored": {
+    "paintL": 4,
+    "paintR": 6
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k2",
+     "side": "left",
+     "from": 1955.5,
+     "to": 2058
+    }
+   ],
+   "carHeadingMinusRoadDeg": -0.7074193826710312,
+   "drawnCentreToLeftPaintM": 10.360674655713746,
+   "drawnCentreToRightPaintM": 4.62553552362945,
+   "roadWidthPaintToPaintM": 14.986210179343196,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 7.367787720917528,
+     "p95Px": 22.761500799298933
+    },
+    "fixedYaw": {
+     "dyMeters": -1.1320075131422787,
+     "medianPx": 2.4442285351182433,
+     "p95Px": 10.074711809894072,
+     "atBound": false,
+     "dyMetersL2Loss": -1.0945266441601182,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       -1.240750373714015,
+       -0.7509508888543857
+      ],
+      "sd": 0.1270674273563759,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": -0.7439656211322816,
+      "atBound": false,
+      "points": 4,
+      "baselineMedianPx": 3.00953315127499,
+      "fitMedianPx": 0.6951393735929066,
+      "ci95": [
+       -0.888403559748987,
+       -0.5963723859850086
+      ]
+     },
+     "paintR": {
+      "dyMeters": -1.221215854899758,
+      "atBound": false,
+      "points": 6,
+      "baselineMedianPx": 15.856037235628705,
+      "fitMedianPx": 1.6512965308940335,
+      "ci95": [
+       -1.3143606969453743,
+       -0.7800404412562204
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": -1.546604945868624,
+     "dyawDeg": 1.9999999999999851,
+     "yawAtBound": true,
+     "medianPx": 2.5827087546015424,
+     "p95Px": 5.52421291203874,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       -1.6455480053763163,
+       -0.9477724836235567
+      ],
+      "dyawCi95": [
+       -1.3349874451264752,
+       2.0
+      ],
+      "dySd": 0.1629497432967515,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.842
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": -2.0,
+     "atBound": true,
+     "medianPx": 6.82689632361258,
+     "p95Px": 16.39559082692101
+    },
+    "diagRollFree": {
+     "dyMeters": -2.643439202918285,
+     "drollDeg": 2.784604001553263,
+     "rollAtBound": false,
+     "medianPx": 2.1042173138193787,
+     "p95Px": 3.781332016257746,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       -3.2155432869701963,
+       -1.7896743516072133
+      ],
+      "drollCi95": [
+       1.1351624562707974,
+       3.9248472720634338
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": -2.8143611103340365,
+     "dyawDeg": 0.4861421039874078,
+     "drollDeg": 2.8942574766935105,
+     "medianPx": 2.0114042173869517,
+     "p95Px": 3.3679523974312326
+    },
+    "diagForwardFree": {
+     "dyMeters": -1.107584184127744,
+     "dxMeters": 0.08912922511563284,
+     "dxAtBound": false,
+     "medianPx": 2.445021955584955,
+     "p95Px": 10.102420056842012
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -0.47725023376747644,
+     "ci95": [
+      -0.6822536742384403,
+      -0.054977356417797836
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": -0.19601887760971434,
+     "freeYawDy": -0.611114460836425,
+     "freeYawDyaw": 1.9999999999892044,
+     "baselineMedianPx": 2.714073523278926,
+     "fixedYawMedianPx": 1.8366381094715258,
+     "perBoundaryDy": {
+      "paintL": -0.5314492303527744,
+      "paintR": -0.17294650054959962
+     }
+    },
+    "1.5": {
+     "fixedYawDy": -1.7768764072908616,
+     "freeYawDy": -2.2032452291107814,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 8.204390525996466,
+     "fixedYawMedianPx": 7.789725179878639,
+     "perBoundaryDy": {
+      "paintL": -0.8689070027766032,
+      "paintR": -2.280836023469692
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-93.000",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 93.0,
+   "stationMeters": 3398.1639897194636,
+   "telemetry": {
+    "speed": 111.40541999999995,
+    "accy": -0.934343999999998,
+    "accx": 0.13969800000000654,
+    "steer": 44.21999999999966,
+    "dist": 3219.622,
+    "sampleTime": 92.978
+   },
+   "rightAxisEastNorth": [
+    0.6352600442136835,
+    -0.7713380930615406
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k9",
+     "side": "left",
+     "from": 3352,
+     "to": 3454.5
+    },
+    {
+     "id": "k22",
+     "side": "right",
+     "from": 3453.5,
+     "to": 3550
+    }
+   ],
+   "carHeadingMinusRoadDeg": -0.67223858299768,
+   "drawnCentreToLeftPaintM": 1.1796441636577173,
+   "drawnCentreToRightPaintM": 13.18270779133151,
+   "roadWidthPaintToPaintM": 14.362351954989226,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 26.37728933367017,
+     "p95Px": 56.47211772891047
+    },
+    "fixedYaw": {
+     "dyMeters": 1.3680128751752973,
+     "medianPx": 19.26781207926846,
+     "p95Px": 33.371582239988754,
+     "atBound": false,
+     "dyMetersL2Loss": 1.4560923389098699,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       0.8703917656495836,
+       2.402727796439049
+      ],
+      "sd": 0.4405651578181336,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 1.496000268701428,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 51.73093602690917,
+      "fitMedianPx": 14.513533463800794,
+      "ci95": [
+       0.8846636786870039,
+       3.041522420046281
+      ]
+     },
+     "paintR": {
+      "dyMeters": -4.999999999999989,
+      "atBound": true,
+      "points": 7,
+      "baselineMedianPx": 21.719753531780057,
+      "fitMedianPx": 13.92832354458966,
+      "ci95": [
+       -5.0,
+       -5.0
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 1.6558106150557999,
+     "dyawDeg": -1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 18.947808699314187,
+     "p95Px": 33.02731284800104,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       0.9597980904407146,
+       2.773103333391098
+      ],
+      "dyawCi95": [
+       -2.0,
+       -0.5660570192275006
+      ],
+      "dySd": 0.4772177265232518,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.957
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 27.952537341602554,
+     "p95Px": 47.67948923256885
+    },
+    "diagRollFree": {
+     "dyMeters": 1.5374930763200358,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 6.588997411884202,
+     "p95Px": 21.71677316424003,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       1.0971129028371005,
+       2.5946147909721287
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -4.516505031848584
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 1.15367611713794,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 7.190702202953529,
+     "p95Px": 20.066949694213655
+    },
+    "diagForwardFree": {
+     "dyMeters": 0.9292804162847166,
+     "dxMeters": 4.999999999999979,
+     "dxAtBound": true,
+     "medianPx": 18.49090424114274,
+     "p95Px": 32.83549591056703
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -6.496000268701417,
+     "ci95": [
+      -8.041522420046281,
+      -5.884663678687004
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 0.7736844877452983,
+     "freeYawDy": 1.0299647937953313,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 16.893774993229936,
+     "fixedYawMedianPx": 16.758595247786435,
+     "perBoundaryDy": {
+      "paintL": 0.8661433483004456,
+      "paintR": -4.999999999999926
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 1.575825674974248,
+     "freeYawDy": 1.8829835280414053,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 37.552162673924585,
+     "fixedYawMedianPx": 20.59724861650929,
+     "perBoundaryDy": {
+      "paintL": 1.719090799187356,
+      "paintR": -4.999999999999979
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-93.500",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 93.5,
+   "stationMeters": 3414.482856159789,
+   "telemetry": {
+    "speed": 114.23207999999995,
+    "accy": -1.1284419999999906,
+    "accx": 0.07907000000000637,
+    "steer": 47.124799999999986,
+    "dist": 3235.35162,
+    "sampleTime": 93.478
+   },
+   "rightAxisEastNorth": [
+    0.7498606381717308,
+    -0.659968919323218
+   ],
+   "linesScored": {
+    "paintL": 4,
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k9",
+     "side": "left",
+     "from": 3352,
+     "to": 3454.5
+    },
+    {
+     "id": "k22",
+     "side": "right",
+     "from": 3453.5,
+     "to": 3550
+    }
+   ],
+   "carHeadingMinusRoadDeg": -1.3527321188490842,
+   "drawnCentreToLeftPaintM": 0.9447746577674074,
+   "drawnCentreToRightPaintM": 13.328751751645456,
+   "roadWidthPaintToPaintM": 14.273526409412863,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 25.379700025865354,
+     "p95Px": 70.1777118570904
+    },
+    "fixedYaw": {
+     "dyMeters": 1.6424577406821628,
+     "medianPx": 20.60295713080466,
+     "p95Px": 34.546053116703675,
+     "atBound": false,
+     "dyMetersL2Loss": 1.8053868042385388,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.179096323198077,
+       3.0349336751629488
+      ],
+      "sd": 0.4766209261109187,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 1.8999840280654998,
+      "atBound": false,
+      "points": 4,
+      "baselineMedianPx": 63.58818880557111,
+      "fitMedianPx": 15.69424727127962,
+      "ci95": [
+       1.2009232151008906,
+       3.3578756062453596
+      ]
+     },
+     "paintR": {
+      "dyMeters": -4.999999999999971,
+      "atBound": true,
+      "points": 7,
+      "baselineMedianPx": 21.19901496023171,
+      "fitMedianPx": 12.517661829591232,
+      "ci95": [
+       -5.0,
+       -5.0
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 1.9361655974356404,
+     "dyawDeg": -1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 19.24124210751203,
+     "p95Px": 34.1334812939148,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       1.4090583450804723,
+       3.448691598936483
+      ],
+      "dyawCi95": [
+       -2.0,
+       -1.948465594012635
+      ],
+      "dySd": 0.5399845536489761,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.974
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 26.927252161876527,
+     "p95Px": 60.23387942433992
+    },
+    "diagRollFree": {
+     "dyMeters": 1.7868296824827048,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 7.514890713351709,
+     "p95Px": 22.45678120537513,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       1.387634532312136,
+       2.655736512786804
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -4.409308269933223
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 2.1631067155656694,
+     "dyawDeg": -1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 6.377830342235954,
+     "p95Px": 24.02683867839032
+    },
+    "diagForwardFree": {
+     "dyMeters": 1.0258788751494723,
+     "dxMeters": 4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 19.49546506395313,
+     "p95Px": 33.42960200622644
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -6.899984028065471,
+     "ci95": [
+      -8.35787560624536,
+      -6.20092321510089
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 1.1750540434737062,
+     "freeYawDy": 1.434692477398724,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 15.582445789869428,
+     "fixedYawMedianPx": 17.38547811381828,
+     "perBoundaryDy": {
+      "paintL": 1.2358731835385874,
+      "paintR": -4.999999999999851
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 1.840149822794144,
+     "freeYawDy": 2.156257066553883,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 35.61119714372728,
+     "fixedYawMedianPx": 23.102287727815945,
+     "perBoundaryDy": {
+      "paintL": 2.106543765455124,
+      "paintR": -4.99999999999997
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-94.500",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 94.5,
+   "stationMeters": 3451.0642227095254,
+   "telemetry": {
+    "speed": 118.01432,
+    "accy": -1.1562119999999974,
+    "accx": 0.09698599999999975,
+    "steer": 49.875200000000014,
+    "dist": 3267.7345199999995,
+    "sampleTime": 94.478
+   },
+   "rightAxisEastNorth": [
+    0.9271394197932753,
+    -0.3701877723214826
+   ],
+   "linesScored": {
+    "paintL": 8,
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k9",
+     "side": "left",
+     "from": 3352,
+     "to": 3454.5
+    },
+    {
+     "id": "k22",
+     "side": "right",
+     "from": 3453.5,
+     "to": 3550
+    }
+   ],
+   "carHeadingMinusRoadDeg": 1.9334066486963566,
+   "drawnCentreToLeftPaintM": 1.431649660163391,
+   "drawnCentreToRightPaintM": 13.071386988730971,
+   "roadWidthPaintToPaintM": 14.503036648894362,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 29.518715214230376,
+     "p95Px": 65.97965743552788
+    },
+    "fixedYaw": {
+     "dyMeters": 2.42710063074629,
+     "medianPx": 26.331548467064703,
+     "p95Px": 55.20560978251159,
+     "atBound": false,
+     "dyMetersL2Loss": 3.036708391913816,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.0031771498665043,
+       5.0
+      ],
+      "sd": 1.0885885406532418,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0345
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 3.680772380165075,
+      "atBound": false,
+      "points": 8,
+      "baselineMedianPx": 58.575459272978065,
+      "fitMedianPx": 29.117304882019518,
+      "ci95": [
+       1.1315113592092516,
+       5.0
+      ]
+     },
+     "paintR": {
+      "dyMeters": -4.99999999999988,
+      "atBound": true,
+      "points": 7,
+      "baselineMedianPx": 15.650495079360043,
+      "fitMedianPx": 6.6865318920440675,
+      "ci95": [
+       -5.0,
+       -5.0
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 2.8665908380981406,
+     "dyawDeg": -1.9999999999999998,
+     "yawAtBound": true,
+     "medianPx": 26.52599225132593,
+     "p95Px": 57.51973644078208,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       0.8294033788545612,
+       4.0
+      ],
+      "dyawCi95": [
+       -2.0,
+       2.0
+      ],
+      "dySd": 1.0104656599878927,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.912
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 25.237230503678692,
+     "p95Px": 61.54880896818337
+    },
+    "diagRollFree": {
+     "dyMeters": 2.7426597268124757,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 5.516639686824954,
+     "p95Px": 31.521977970558247,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       2.1391408762817656,
+       4.316049606306112
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -4.99999997694791
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 2.359008934190131,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 6.967842900907,
+     "p95Px": 28.44850033178597
+    },
+    "diagForwardFree": {
+     "dyMeters": 2.3042624278494026,
+     "dxMeters": -3.6132164052944304,
+     "dxAtBound": false,
+     "medianPx": 21.17128720773881,
+     "p95Px": 56.38254746313627
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -8.680772380164955,
+     "ci95": [
+      -10.0,
+      -6.131511359209251
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 2.014751176822932,
+     "freeYawDy": 1.5817445084650696,
+     "freeYawDyaw": 1.9999999999999998,
+     "baselineMedianPx": 11.309379755798185,
+     "fixedYawMedianPx": 16.636665960581322,
+     "perBoundaryDy": {
+      "paintL": 2.971205073551066,
+      "paintR": -4.999999999998087
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 2.798741174457508,
+     "freeYawDy": 3.103564367270581,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 45.36128735025263,
+     "fixedYawMedianPx": 28.42388670982544,
+     "perBoundaryDy": {
+      "paintL": 4.218419985832753,
+      "paintR": -4.999999999999931
+     }
+    }
+   }
+  },
+  {
+   "id": "2020-07-30-L2-95.000",
+   "group": "sequence",
+   "raceId": "fuji_aim_2020_07_30",
+   "session": "2020-07-30 dry",
+   "lap": 2,
+   "lapTimeSeconds": 95.0,
+   "stationMeters": 3468.903418460078,
+   "telemetry": {
+    "speed": 119.1088,
+    "accy": -1.0119900000000108,
+    "accx": -0.1008700000000033,
+    "steer": 36.904799999999916,
+    "dist": 3284.1978599999998,
+    "sampleTime": 94.978
+   },
+   "rightAxisEastNorth": [
+    0.9742188902665657,
+    -0.21636397088011083
+   ],
+   "linesScored": {
+    "paintL": 5,
+    "paintR": 7
+   },
+   "kerbZonesInView": [
+    {
+     "id": "k22",
+     "side": "right",
+     "from": 3453.5,
+     "to": 3550
+    }
+   ],
+   "carHeadingMinusRoadDeg": 5.059985099709972,
+   "drawnCentreToLeftPaintM": 2.2945585111988547,
+   "drawnCentreToRightPaintM": 12.038027421436231,
+   "roadWidthPaintToPaintM": 14.332585932635086,
+   "h1.25": {
+    "baseline": {
+     "medianPx": 20.817873992997672,
+     "p95Px": 93.95428244536009
+    },
+    "fixedYaw": {
+     "dyMeters": 2.2969442423288613,
+     "medianPx": 17.6779993146341,
+     "p95Px": 33.38863563606819,
+     "atBound": false,
+     "dyMetersL2Loss": 2.3621089935052426,
+     "pointBootstrap": {
+      "B": 4000,
+      "ci95": [
+       1.9381049441217524,
+       3.4972055769239696
+      ],
+      "sd": 0.4138078893535536,
+      "gridStepMeters": 0.01,
+      "fractionAtBound": 0.0
+     }
+    },
+    "perBoundaryFixedYaw": {
+     "paintL": {
+      "dyMeters": 2.8362478313867703,
+      "atBound": false,
+      "points": 5,
+      "baselineMedianPx": 88.16062910809468,
+      "fitMedianPx": 11.237655729433953,
+      "ci95": [
+       2.012200869038974,
+       4.179188540077739
+      ]
+     },
+     "paintR": {
+      "dyMeters": -4.999999999999255,
+      "atBound": true,
+      "points": 7,
+      "baselineMedianPx": 13.388598623129191,
+      "fitMedianPx": 3.157231315569172,
+      "ci95": [
+       -5.0,
+       -4.040581671586588
+      ]
+     }
+    },
+    "freeYaw": {
+     "dyMeters": 2.560344171693854,
+     "dyawDeg": -1.9999999999999993,
+     "yawAtBound": true,
+     "medianPx": 16.934245107095077,
+     "p95Px": 33.39523504482605,
+     "pointBootstrap": {
+      "B": 1000,
+      "dyCi95": [
+       2.16925980582403,
+       3.669379919128113
+      ],
+      "dyawCi95": [
+       -2.0,
+       -2.0
+      ],
+      "dySd": 0.41062191800988784,
+      "grid": "dy 0.05 m x yaw 0.1 deg",
+      "fractionYawAtBound": 0.997
+     }
+    },
+    "yawOnly": {
+     "dyawDeg": 2.0,
+     "atBound": true,
+     "medianPx": 22.69064536061809,
+     "p95Px": 86.51214266158514
+    },
+    "diagRollFree": {
+     "dyMeters": 3.9786724332140984,
+     "drollDeg": -4.999999999999999,
+     "rollAtBound": true,
+     "medianPx": 11.295655676497118,
+     "p95Px": 24.838176133919035,
+     "pointBootstrap": {
+      "B": 200,
+      "dyCi95": [
+       3.6609762474978904,
+       4.536204713370133
+      ],
+      "drollCi95": [
+       -4.999999999999999,
+       -2.9115025434172104
+      ]
+     }
+    },
+    "diagYawRollFree": {
+     "dyMeters": 3.5792236058551765,
+     "dyawDeg": 1.9999999999999998,
+     "drollDeg": -4.999999999999999,
+     "medianPx": 11.35168738826375,
+     "p95Px": 22.918345866879534
+    },
+    "diagForwardFree": {
+     "dyMeters": 0.879825883469251,
+     "dxMeters": 4.999999999999999,
+     "dxAtBound": true,
+     "medianPx": 12.874808326264287,
+     "p95Px": 27.599091559396125
+    },
+    "twoSidedConsistency": {
+     "dyRightMinusLeftMeters": -7.836247831386025,
+     "ci95": [
+      -9.179188540077739,
+      -6.653480721075555
+     ],
+     "meaning": "a pure lateral car offset gives 0; >0 = video road looks NARROWER on both sides than CG (both boundaries closer), <0 = wider. Non-zero also arises from unmodelled roll/scale."
+    }
+   },
+   "heightSensitivity": {
+    "1.0": {
+     "fixedYawDy": 1.887869540257049,
+     "freeYawDy": 2.145806687692305,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 8.424104958290972,
+     "fixedYawMedianPx": 12.518017109342415,
+     "perBoundaryDy": {
+      "paintL": 2.450319051420188,
+      "paintR": -2.812054677851947
+     }
+    },
+    "1.5": {
+     "fixedYawDy": 2.589092091339142,
+     "freeYawDy": 2.84123031360884,
+     "freeYawDyaw": -1.9999999999999998,
+     "baselineMedianPx": 33.21148011680697,
+     "fixedYawMedianPx": 19.48824245879143,
+     "perBoundaryDy": {
+      "paintL": 3.0696339768998273,
+      "paintR": -4.999999999999838
+     }
+    }
+   }
+  }
+ ],
+ "circularityInjection": {
+  "meaning": "Training poses shifted right by b, camera refit on the same 3 frames, scene dy re-estimated. slope ~ +1: the scene offset is measured relative to the training frames' lateral error (true_dy ~ measured_dy + slope * training_error).",
+  "runs": [
+   {
+    "commonTrainingShiftMeters": -1.0,
+    "camera": [
+     507.35880521442414,
+     17.425071792697597,
+     5.37160673161205,
+     1.1878019985807726
+    ],
+    "trainMedianPx": 8.740987179135807,
+    "fixedYawDy": {
+     "2020-07-29-L3-60.000": -3.198331400497593,
+     "2020-07-29-L3-64.367": -3.4146813998030137,
+     "2020-07-30-L2-18.000": -4.999999999999762,
+     "2020-07-30-L2-45.000": 1.3506952347248478,
+     "2020-07-30-L2-50.000": -0.7244202382438027,
+     "2020-07-30-L2-84.000": -2.0909196521154816,
+     "2020-07-30-L2-94.000": 0.7268712379681046,
+     "2020-07-30-L2-112.000": -2.1495096660523356,
+     "2020-07-29-L3-52.387": -0.8421149347516746,
+     "2020-07-30-L2-47.522": 0.6401345450589951,
+     "2020-07-30-L2-44.000": 2.985385620972032,
+     "2020-07-30-L2-44.500": 1.5189895734295924,
+     "2020-07-30-L2-45.500": -1.9614949642366601,
+     "2020-07-30-L2-46.000": -1.8018347461017374,
+     "2020-07-30-L2-93.000": 0.18892523173141376,
+     "2020-07-30-L2-93.500": 0.4768898542065793,
+     "2020-07-30-L2-94.500": 1.2019935456271003,
+     "2020-07-30-L2-95.000": 1.4353505602595749
+    }
+   },
+   {
+    "commonTrainingShiftMeters": -0.5,
+    "camera": [
+     540.3522013779425,
+     16.19742921525743,
+     2.2257270815666095,
+     1.7577454017666114
+    ],
+    "trainMedianPx": 8.048913223755212,
+    "fixedYawDy": {
+     "2020-07-29-L3-60.000": -2.8352389635880497,
+     "2020-07-29-L3-64.367": -2.8868131166946838,
+     "2020-07-30-L2-18.000": -4.864803818795458,
+     "2020-07-30-L2-45.000": 2.016054074374575,
+     "2020-07-30-L2-50.000": -0.259755246832619,
+     "2020-07-30-L2-84.000": -1.5259696453935971,
+     "2020-07-30-L2-94.000": 1.0955337870890887,
+     "2020-07-30-L2-112.000": -1.6218111480279174,
+     "2020-07-29-L3-52.387": -0.562586841659955,
+     "2020-07-30-L2-47.522": 0.9837963130544433,
+     "2020-07-30-L2-44.000": 3.6237887248165945,
+     "2020-07-30-L2-44.500": 2.2736536808119445,
+     "2020-07-30-L2-45.500": -0.9514893816890033,
+     "2020-07-30-L2-46.000": -1.2807518371920308,
+     "2020-07-30-L2-93.000": 0.6336940723990417,
+     "2020-07-30-L2-93.500": 0.897730310075617,
+     "2020-07-30-L2-94.500": 1.5735641142023586,
+     "2020-07-30-L2-95.000": 1.7070471280017159
+    }
+   },
+   {
+    "commonTrainingShiftMeters": 0.5,
+    "camera": [
+     430.00000000000006,
+     19.7771153397574,
+     -3.41039457778733,
+     1.7189721420054156
+    ],
+    "trainMedianPx": 12.448803438598684,
+    "fixedYawDy": {
+     "2020-07-29-L3-60.000": -0.9177693380829436,
+     "2020-07-29-L3-64.367": -1.2464320716524686,
+     "2020-07-30-L2-18.000": -4.987956360311733,
+     "2020-07-30-L2-45.000": 2.674862924765272,
+     "2020-07-30-L2-50.000": 0.47556459343482793,
+     "2020-07-30-L2-84.000": -0.8654208704816403,
+     "2020-07-30-L2-94.000": 2.4608162953185917,
+     "2020-07-30-L2-112.000": -0.885762729528261,
+     "2020-07-29-L3-52.387": 0.5609998985706631,
+     "2020-07-30-L2-47.522": 2.2382550169998257,
+     "2020-07-30-L2-44.000": 4.571397260552393,
+     "2020-07-30-L2-44.500": 3.1120838179163264,
+     "2020-07-30-L2-45.500": 0.16634534469097104,
+     "2020-07-30-L2-46.000": -0.8580379100611438,
+     "2020-07-30-L2-93.000": 1.7726109830445713,
+     "2020-07-30-L2-93.500": 2.1179570842300754,
+     "2020-07-30-L2-94.500": 3.1168710885408073,
+     "2020-07-30-L2-95.000": 2.844292412941777
+    }
+   },
+   {
+    "commonTrainingShiftMeters": 1.0,
+    "camera": [
+     430.00000001622783,
+     19.5007825316648,
+     -5.274987396086983,
+     1.7186573320629237
+    ],
+    "trainMedianPx": 12.70975750483839,
+    "fixedYawDy": {
+     "2020-07-29-L3-60.000": -0.19377671656593762,
+     "2020-07-29-L3-64.367": -0.4861912847686524,
+     "2020-07-30-L2-18.000": -4.462486965057128,
+     "2020-07-30-L2-45.000": 2.978795556659381,
+     "2020-07-30-L2-50.000": 0.7019235726320864,
+     "2020-07-30-L2-84.000": -0.3754830093080788,
+     "2020-07-30-L2-94.000": 2.77904256349462,
+     "2020-07-30-L2-112.000": -0.46315276751301754,
+     "2020-07-29-L3-52.387": 0.907542797744401,
+     "2020-07-30-L2-47.522": 2.6342082691934965,
+     "2020-07-30-L2-44.000": 4.892315580489462,
+     "2020-07-30-L2-44.500": 3.417478046548247,
+     "2020-07-30-L2-45.500": 0.6727252791622753,
+     "2020-07-30-L2-46.000": -0.5417462110334496,
+     "2020-07-30-L2-93.000": 2.112428934199614,
+     "2020-07-30-L2-93.500": 2.4556312720717335,
+     "2020-07-30-L2-94.500": 3.4943104542495513,
+     "2020-07-30-L2-95.000": 3.162022731407783
+    }
+   }
+  ],
+  "slopeDyPerTrainingShift": {
+   "2020-07-29-L3-60.000": 1.5853157986736832,
+   "2020-07-29-L3-64.367": 1.4994722550221882,
+   "2020-07-30-L2-18.000": 0.19037470567379874,
+   "2020-07-30-L2-45.000": 0.7830018988519525,
+   "2020-07-30-L2-50.000": 0.7176014924038452,
+   "2020-07-30-L2-84.000": 0.8182844121053525,
+   "2020-07-30-L2-94.000": 1.0939250318565064,
+   "2020-07-30-L2-112.000": 0.8217524431156588,
+   "2020-07-29-L3-52.387": 0.9245804410445537,
+   "2020-07-30-L2-47.522": 1.0485212304428768,
+   "2020-07-30-L2-44.000": 0.9522936909541311,
+   "2020-07-30-L2-44.500": 0.927081416668338,
+   "2020-07-30-L2-45.500": 1.277255042635569,
+   "2020-07-30-L2-46.000": 0.5885781994534927,
+   "2020-07-30-L2-93.000": 0.9971848631163859,
+   "2020-07-30-L2-93.500": 1.0355419219769533,
+   "2020-07-30-L2-94.500": 1.22558815831667,
+   "2020-07-30-L2-95.000": 0.9181179254472953
+  }
+ },
+ "trainingCommonOffsetIdentifiability": {
+  "x": [
+   523.8141443790012,
+   16.90980123383412,
+   6.078654664304402,
+   1.330675480266893,
+   -1.1758041143320614
+  ],
+  "cost": 78.03608059773059,
+  "frozenCameraCost": 116.94022683968052,
+  "activeBounds": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "jacobianSingularValues": [
+   26.153723888957995,
+   8.33505339121964,
+   2.6120374596176625,
+   1.5017685379744568,
+   0.017651335959169484
+  ],
+  "conditionNumber": 1481.6852361462027,
+  "parameterOrder": [
+   "f",
+   "pitchDeg",
+   "yawDeg",
+   "rollDeg",
+   "commonTrainingDyMeters"
+  ],
+  "profileOverCommonTrainingDy": [
+   {
+    "commonTrainingDyMeters": -2,
+    "camera": [
+     656.2014656917636,
+     13.612242117522033,
+     7.997920668182461,
+     2.3853442105471356
+    ],
+    "cost": 88.16610255552762,
+    "trainMedianPx": 8.150304839236812,
+    "trainP95Px": 18.362787347102575,
+    "activeBounds": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": -1.5,
+    "camera": [
+     624.796111595509,
+     14.24320799323522,
+     6.293744679969394,
+     2.187476942108715
+    ],
+    "cost": 78.78463495074023,
+    "trainMedianPx": 7.431613188348499,
+    "trainP95Px": 19.294605492897528,
+    "activeBounds": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": -1,
+    "camera": [
+     506.85070738684493,
+     17.442358057335166,
+     5.378176345690086,
+     1.1829074208434536
+    ],
+    "cost": 79.04395398911444,
+    "trainMedianPx": 8.746502305124192,
+    "trainP95Px": 17.066303089665432,
+    "activeBounds": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": -0.5,
+    "camera": [
+     539.2700808685948,
+     16.23072622728395,
+     2.2335348419226184,
+     1.7468280509719178
+    ],
+    "cost": 91.75629407931292,
+    "trainMedianPx": 8.089246476252491,
+    "trainP95Px": 18.42764594149831,
+    "activeBounds": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": 0,
+    "camera": [
+     471.25708187712723,
+     18.24650392839641,
+     -0.6959760472171759,
+     1.8437149629229233
+    ],
+    "cost": 116.9375899705541,
+    "trainMedianPx": 11.215426778509485,
+    "trainP95Px": 19.05491281303659,
+    "activeBounds": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": 0.5,
+    "camera": [
+     430.00000000000006,
+     19.7771153397574,
+     -3.41039457778733,
+     1.7189721420054156
+    ],
+    "cost": 145.91871783800372,
+    "trainMedianPx": 12.448803438598684,
+    "trainP95Px": 23.700844382369755,
+    "activeBounds": [
+     -1,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": 1,
+    "camera": [
+     430.00000001622783,
+     19.5007825316648,
+     -5.274987396086983,
+     1.7186573320629237
+    ],
+    "cost": 191.3774249412639,
+    "trainMedianPx": 12.70975750483839,
+    "trainP95Px": 28.993305283143986,
+    "activeBounds": [
+     -1,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": 1.5,
+    "camera": [
+     430.00000000926815,
+     19.135530500738767,
+     -6.017646052878425,
+     1.587692792710265
+    ],
+    "cost": 230.883354503742,
+    "trainMedianPx": 13.063706637410426,
+    "trainP95Px": 39.64357014946105,
+    "activeBounds": [
+     -1,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "commonTrainingDyMeters": 2,
+    "camera": [
+     430.000000127986,
+     18.69807111368098,
+     -6.735806367678485,
+     1.5682003103559279
+    ],
+    "cost": 265.1144239773497,
+    "trainMedianPx": 11.636591778659195,
+    "trainP95Px": 52.38057019592067,
+    "activeBounds": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "trainingRollGradientIdentifiability": {
+  "x": [
+   430.133376092557,
+   20.12780850234498,
+   -1.4886109856161454,
+   -5.999999999999999,
+   9.642332380209325
+  ],
+  "cost": 55.47564090508557,
+  "activeBounds": [
+   0,
+   0,
+   0,
+   -1,
+   0
+  ],
+  "jacobianSingularValues": [
+   8.792259534975855,
+   5.463306614244784,
+   3.4924051108636185,
+   0.5949583345510309,
+   0.04588982753143146
+  ],
+  "conditionNumber": 191.59495705129302,
+  "trainingAccyG": {
+   "2020-07-29-L3-47.000": 0.9847519999999996,
+   "2020-07-29-L3-55.000": -0.08766000000000153,
+   "2020-07-29-L3-68.000": 0.6370560000000087
+  },
+  "parameterOrder": [
+   "f",
+   "pitchDeg",
+   "yawDeg",
+   "rollDeg",
+   "rollGradientDegPerG"
+  ]
+ },
+ "rollGradientSensitivity": {
+  "imuMeasuredGradientDegPerG": 0.5589567723759398,
+  "meaning": "Body roll = k * accy added to the camera roll (k = 0, the IMU-measured value from imu-roll-gradient.json, and assumed 2/4 deg/g). Camera refit on the 3 training frames for each k; held-out values are diagnostics chosen after seeing held-out residuals, not an acceptance test.",
+  "runs": [
+   {
+    "rollGradientDegPerG": 0.0,
+    "camera": [
+     472.3330259434812,
+     18.20854932557196,
+     -0.6934101835585501,
+     1.8433015223110059
+    ],
+    "trainMedianPx": 11.197632550262838,
+    "heldoutMedianOfSceneMediansPx": 9.421667856915445,
+    "heldoutMeanOfSceneMediansPx": 15.200693773935592,
+    "scenes": {
+     "2020-07-29-L3-47.000": {
+      "fixedYawDy": 1.2260290837990835,
+      "baselineMedianPx": 11.176779642983321,
+      "fixedYawMedianPx": 8.500107504687978,
+      "perBoundaryDy": {
+       "paintL": 0.8470418480623986,
+       "paintR": 3.567604108945137
+      }
+     },
+     "2020-07-29-L3-55.000": {
+      "fixedYawDy": -0.11328862348050298,
+      "baselineMedianPx": 11.337516807115431,
+      "fixedYawMedianPx": 9.365134399372195,
+      "perBoundaryDy": {
+       "paintR": -0.11328862348050298
+      }
+     },
+     "2020-07-29-L3-68.000": {
+      "fixedYawDy": -1.687137789441374,
+      "baselineMedianPx": 8.047544832683709,
+      "fixedYawMedianPx": 3.2114090860103253,
+      "perBoundaryDy": {
+       "paintL": -1.2541121902054795,
+       "paintR": -2.078017670449808
+      }
+     },
+     "2020-07-29-L3-60.000": {
+      "fixedYawDy": -1.8266823700804735,
+      "baselineMedianPx": 9.557211559470684,
+      "fixedYawMedianPx": 9.303215320918351,
+      "perBoundaryDy": {
+       "paintL": -2.03368828401435,
+       "paintR": 1.4761640370774325
+      }
+     },
+     "2020-07-29-L3-64.367": {
+      "fixedYawDy": -2.047343194543169,
+      "baselineMedianPx": 9.286124154360207,
+      "fixedYawMedianPx": 2.9309351409469313,
+      "perBoundaryDy": {
+       "paintL": -2.047343194543169
+      }
+     },
+     "2020-07-30-L2-18.000": {
+      "fixedYawDy": -4.999999999999999,
+      "baselineMedianPx": 11.213837725984302,
+      "fixedYawMedianPx": 3.8666877201942462,
+      "perBoundaryDy": {
+       "paintL": -4.999999999999999,
+       "paintR": -2.874420986554789
+      }
+     },
+     "2020-07-30-L2-45.000": {
+      "fixedYawDy": 2.3680676644898244,
+      "baselineMedianPx": 33.306953436770755,
+      "fixedYawMedianPx": 7.090515483685579,
+      "perBoundaryDy": {
+       "paintR": 2.3680676644898244
+      }
+     },
+     "2020-07-30-L2-50.000": {
+      "fixedYawDy": 0.16463233956216847,
+      "baselineMedianPx": 8.980528438258538,
+      "fixedYawMedianPx": 6.846973645676347,
+      "perBoundaryDy": {
+       "paintR": 0.16463233956216847
+      }
+     },
+     "2020-07-30-L2-84.000": {
+      "fixedYawDy": -1.180624728887451,
+      "baselineMedianPx": 7.633316080568385,
+      "fixedYawMedianPx": 1.9626282705100069,
+      "perBoundaryDy": {
+       "paintL": -1.2065978268325228,
+       "paintR": -0.014400914631689847
+      }
+     },
+     "2020-07-30-L2-94.000": {
+      "fixedYawDy": 1.9642226991747942,
+      "baselineMedianPx": 54.49075089811503,
+      "fixedYawMedianPx": 23.833471800807928,
+      "perBoundaryDy": {
+       "paintL": 2.090431495618351,
+       "paintR": -4.9999999999999565
+      }
+     },
+     "2020-07-30-L2-112.000": {
+      "fixedYawDy": -1.2252932886195358,
+      "baselineMedianPx": 3.892352386269867,
+      "fixedYawMedianPx": 2.007581350381109,
+      "perBoundaryDy": {
+       "paintL": -1.2414767636920774,
+       "paintR": -0.17549738052151656
+      }
+     },
+     "2020-07-29-L3-52.387": {
+      "fixedYawDy": 0.023603171233930482,
+      "baselineMedianPx": 2.321054561503756,
+      "fixedYawMedianPx": 2.5420017458014983,
+      "perBoundaryDy": {
+       "paintL": 0.02669850850460594,
+       "paintR": 0.019200551203100293
+      }
+     },
+     "2020-07-30-L2-47.522": {
+      "fixedYawDy": 1.6495807366427124,
+      "baselineMedianPx": 11.324808498054377,
+      "fixedYawMedianPx": 3.0046084502273,
+      "perBoundaryDy": {
+       "paintL": 1.7109544386001434,
+       "paintR": 1.5099287065795697
+      }
+     },
+     "2020-07-30-L2-44.000": {
+      "fixedYawDy": 4.1388122840116495,
+      "baselineMedianPx": 15.134493241277205,
+      "fixedYawMedianPx": 3.4226363132509494,
+      "perBoundaryDy": {
+       "paintL": 3.1155313352065903,
+       "paintR": 4.140729823122633
+      }
+     },
+     "2020-07-30-L2-44.500": {
+      "fixedYawDy": 2.728527106786496,
+      "baselineMedianPx": 9.922180309323414,
+      "fixedYawMedianPx": 4.004735105032776,
+      "perBoundaryDy": {
+       "paintL": 2.073805277082979,
+       "paintR": 2.7315291067152283
+      }
+     },
+     "2020-07-30-L2-45.500": {
+      "fixedYawDy": -0.3664141136232901,
+      "baselineMedianPx": 5.625136450075136,
+      "fixedYawMedianPx": 6.3286499753209835,
+      "perBoundaryDy": {
+       "paintL": -0.5775581594245298,
+       "paintR": -0.24791249107379063
+      }
+     },
+     "2020-07-30-L2-46.000": {
+      "fixedYawDy": -1.1320080100766536,
+      "baselineMedianPx": 7.367782778726364,
+      "fixedYawMedianPx": 2.444226594427972,
+      "perBoundaryDy": {
+       "paintL": -0.7439661144855967,
+       "paintR": -1.2212163667882525
+      }
+     },
+     "2020-07-30-L2-93.000": {
+      "fixedYawDy": 1.3680130331904263,
+      "baselineMedianPx": 26.377288517838846,
+      "fixedYawMedianPx": 19.267810160653937,
+      "perBoundaryDy": {
+       "paintL": 1.4960003035936726,
+       "paintR": -4.999999999999989
+      }
+     },
+     "2020-07-30-L2-93.500": {
+      "fixedYawDy": 1.6424578311083606,
+      "baselineMedianPx": 25.379699299497325,
+      "fixedYawMedianPx": 20.602956058416684,
+      "perBoundaryDy": {
+       "paintL": 1.899984401972518,
+       "paintR": -4.999999999999971
+      }
+     },
+     "2020-07-30-L2-94.500": {
+      "fixedYawDy": 2.427100733403982,
+      "baselineMedianPx": 29.518716898396136,
+      "fixedYawMedianPx": 26.331549708138603,
+      "perBoundaryDy": {
+       "paintL": 3.6807623476300986,
+       "paintR": -4.99999999999988
+      }
+     },
+     "2020-07-30-L2-95.000": {
+      "fixedYawDy": 2.296944393206869,
+      "baselineMedianPx": 20.817872924108322,
+      "fixedYawMedianPx": 17.677998599796403,
+      "perBoundaryDy": {
+       "paintL": 2.8362480293644063,
+       "paintR": -4.999999999999255
+      }
+     }
+    }
+   },
+   {
+    "rollGradientDegPerG": 0.559,
+    "camera": [
+     469.908989315714,
+     18.308428176913754,
+     -0.7646627680840444,
+     1.3633916982321992
+    ],
+    "trainMedianPx": 10.957347015151871,
+    "heldoutMedianOfSceneMediansPx": 8.604624527716162,
+    "heldoutMeanOfSceneMediansPx": 14.40176967926324,
+    "scenes": {
+     "2020-07-29-L3-47.000": {
+      "fixedYawDy": 1.1483645465722767,
+      "baselineMedianPx": 10.879791428954919,
+      "fixedYawMedianPx": 8.501632723762938,
+      "perBoundaryDy": {
+       "paintL": 0.8117465392311,
+       "paintR": 3.531756062657554
+      }
+     },
+     "2020-07-29-L3-55.000": {
+      "fixedYawDy": -0.10840509999204251,
+      "baselineMedianPx": 11.210939486833155,
+      "fixedYawMedianPx": 9.286424302578965,
+      "perBoundaryDy": {
+       "paintR": -0.10840509999204251
+      }
+     },
+     "2020-07-29-L3-68.000": {
+      "fixedYawDy": -1.6081017924374832,
+      "baselineMedianPx": 7.627502501407752,
+      "fixedYawMedianPx": 2.915414340535701,
+      "perBoundaryDy": {
+       "paintL": -1.1768338111532808,
+       "paintR": -1.9503839917228256
+      }
+     },
+     "2020-07-29-L3-60.000": {
+      "fixedYawDy": -1.0412467691278018,
+      "baselineMedianPx": 7.990613572201198,
+      "fixedYawMedianPx": 8.644934107827185,
+      "perBoundaryDy": {
+       "paintL": -1.4040496590662248,
+       "paintR": 1.7358185318732267
+      }
+     },
+     "2020-07-29-L3-64.367": {
+      "fixedYawDy": -1.6268841277485033,
+      "baselineMedianPx": 6.727422774320688,
+      "fixedYawMedianPx": 2.891642465112648,
+      "perBoundaryDy": {
+       "paintL": -1.6268841277485033
+      }
+     },
+     "2020-07-30-L2-18.000": {
+      "fixedYawDy": -4.999999999999999,
+      "baselineMedianPx": 12.473219501864843,
+      "fixedYawMedianPx": 3.6133842218224266,
+      "perBoundaryDy": {
+       "paintL": -4.999999999999999,
+       "paintR": -3.417731961098757
+      }
+     },
+     "2020-07-30-L2-45.000": {
+      "fixedYawDy": 2.3729306987399377,
+      "baselineMedianPx": 33.40549567722409,
+      "fixedYawMedianPx": 6.980359334002182,
+      "perBoundaryDy": {
+       "paintR": 2.3729306987399377
+      }
+     },
+     "2020-07-30-L2-50.000": {
+      "fixedYawDy": 0.18118030710717525,
+      "baselineMedianPx": 9.218635483231127,
+      "fixedYawMedianPx": 6.997370313332652,
+      "perBoundaryDy": {
+       "paintR": 0.18118030710717525
+      }
+     },
+     "2020-07-30-L2-84.000": {
+      "fixedYawDy": -1.1769834161275943,
+      "baselineMedianPx": 7.840574198711779,
+      "fixedYawMedianPx": 2.5217161609949197,
+      "perBoundaryDy": {
+       "paintL": -1.2052793016934384,
+       "paintR": 0.16192439092049812
+      }
+     },
+     "2020-07-30-L2-94.000": {
+      "fixedYawDy": 2.063592251391798,
+      "baselineMedianPx": 49.095355062072635,
+      "fixedYawMedianPx": 20.3685038709862,
+      "perBoundaryDy": {
+       "paintL": 2.2118008552137276,
+       "paintR": -4.9999999999998685
+      }
+     },
+     "2020-07-30-L2-112.000": {
+      "fixedYawDy": -1.2023262300023976,
+      "baselineMedianPx": 3.039143236127985,
+      "fixedYawMedianPx": 2.7238967401017598,
+      "perBoundaryDy": {
+       "paintL": -1.224808681856816,
+       "paintR": 0.3934924586864251
+      }
+     },
+     "2020-07-29-L3-52.387": {
+      "fixedYawDy": 0.12821572480347368,
+      "baselineMedianPx": 2.655844604851054,
+      "fixedYawMedianPx": 2.549896320665737,
+      "perBoundaryDy": {
+       "paintL": 0.12716956851271502,
+       "paintR": 0.12955565208877806
+      }
+     },
+     "2020-07-30-L2-47.522": {
+      "fixedYawDy": 1.6888207073529038,
+      "baselineMedianPx": 11.571392682027012,
+      "fixedYawMedianPx": 3.1694936795393387,
+      "perBoundaryDy": {
+       "paintL": 1.746351672848931,
+       "paintR": 1.5610749089690803
+      }
+     },
+     "2020-07-30-L2-44.000": {
+      "fixedYawDy": 4.153878679739961,
+      "baselineMedianPx": 15.06742670477924,
+      "fixedYawMedianPx": 2.875632795486024,
+      "perBoundaryDy": {
+       "paintL": 2.7221972789547633,
+       "paintR": 4.156519004826737
+      }
+     },
+     "2020-07-30-L2-44.500": {
+      "fixedYawDy": 2.74101745510901,
+      "baselineMedianPx": 9.32335741112331,
+      "fixedYawMedianPx": 4.057553436607268,
+      "perBoundaryDy": {
+       "paintL": 1.6887501617615865,
+       "paintR": 2.745501568538573
+      }
+     },
+     "2020-07-30-L2-45.500": {
+      "fixedYawDy": -0.49496267444724523,
+      "baselineMedianPx": 5.983078722806461,
+      "fixedYawMedianPx": 6.1996306347002585,
+      "perBoundaryDy": {
+       "paintL": -0.7726039378470132,
+       "paintR": -0.2846075421910391
+      }
+     },
+     "2020-07-30-L2-46.000": {
+      "fixedYawDy": -1.2168419279659033,
+      "baselineMedianPx": 7.837414715329249,
+      "fixedYawMedianPx": 2.2139807461377536,
+      "perBoundaryDy": {
+       "paintL": -0.9041556039908332,
+       "paintR": -1.3039073980514584
+      }
+     },
+     "2020-07-30-L2-93.000": {
+      "fixedYawDy": 1.1867302457010265,
+      "baselineMedianPx": 19.53956714302034,
+      "fixedYawMedianPx": 18.972218759165848,
+      "perBoundaryDy": {
+       "paintL": 1.5565931647040856,
+       "paintR": -4.99999999999996
+      }
+     },
+     "2020-07-30-L2-93.500": {
+      "fixedYawDy": 1.702483765713065,
+      "baselineMedianPx": 17.299322982104535,
+      "fixedYawMedianPx": 17.699134685189726,
+      "perBoundaryDy": {
+       "paintL": 1.9876807943482386,
+       "paintR": -4.999999999999888
+      }
+     },
+     "2020-07-30-L2-94.500": {
+      "fixedYawDy": 2.6120534865163645,
+      "baselineMedianPx": 33.75416215490892,
+      "fixedYawMedianPx": 21.905951913631068,
+      "perBoundaryDy": {
+       "paintL": 3.620305830274951,
+       "paintR": -4.999999999998097
+      }
+     },
+     "2020-07-30-L2-95.000": {
+      "fixedYawDy": 2.6250630606586722,
+      "baselineMedianPx": 13.472336630407769,
+      "fixedYawMedianPx": 16.47613711537172,
+      "perBoundaryDy": {
+       "paintL": 3.262813900811089,
+       "paintR": -3.5345828177888796
+      }
+     }
+    }
+   },
+   {
+    "rollGradientDegPerG": 2.0,
+    "camera": [
+     461.2841557892177,
+     18.6470629613209,
+     -0.9710399947513327,
+     0.14928658487838548
+    ],
+    "trainMedianPx": 10.313624357713437,
+    "heldoutMedianOfSceneMediansPx": 9.409620170572488,
+    "heldoutMeanOfSceneMediansPx": 12.897428615188465,
+    "scenes": {
+     "2020-07-29-L3-47.000": {
+      "fixedYawDy": 1.0361002272348991,
+      "baselineMedianPx": 10.15127345095052,
+      "fixedYawMedianPx": 7.910384366510354,
+      "perBoundaryDy": {
+       "paintL": 0.7235889108235266,
+       "paintR": 3.3664855116671206
+      }
+     },
+     "2020-07-29-L3-55.000": {
+      "fixedYawDy": -0.09525029296752965,
+      "baselineMedianPx": 10.998677937432884,
+      "fixedYawMedianPx": 9.059089118894882,
+      "perBoundaryDy": {
+       "paintR": -0.09525029296752965
+      }
+     },
+     "2020-07-29-L3-68.000": {
+      "fixedYawDy": -1.4250244973198425,
+      "baselineMedianPx": 6.8384789875400225,
+      "fixedYawMedianPx": 2.77847076492766,
+      "perBoundaryDy": {
+       "paintL": -0.9838777316160012,
+       "paintR": -1.7020349350403368
+      }
+     },
+     "2020-07-29-L3-60.000": {
+      "fixedYawDy": 1.8158936515905157,
+      "baselineMedianPx": 8.819621023148336,
+      "fixedYawMedianPx": 4.2653130775947785,
+      "perBoundaryDy": {
+       "paintL": 0.8784984212743,
+       "paintR": 2.3040476999999124
+      }
+     },
+     "2020-07-29-L3-64.367": {
+      "fixedYawDy": -0.24316764049633607,
+      "baselineMedianPx": 3.041235008385273,
+      "fixedYawMedianPx": 2.811778382897351,
+      "perBoundaryDy": {
+       "paintL": -0.24316764049633607
+      }
+     },
+     "2020-07-30-L2-18.000": {
+      "fixedYawDy": -4.999999999999999,
+      "baselineMedianPx": 14.781374648626318,
+      "fixedYawMedianPx": 2.8029898264242346,
+      "perBoundaryDy": {
+       "paintL": -4.999999999999999,
+       "paintR": -4.778064581243044
+      }
+     },
+     "2020-07-30-L2-45.000": {
+      "fixedYawDy": 2.379269979791446,
+      "baselineMedianPx": 33.24778045717966,
+      "fixedYawMedianPx": 6.776820828320972,
+      "perBoundaryDy": {
+       "paintR": 2.379269979791446
+      }
+     },
+     "2020-07-30-L2-50.000": {
+      "fixedYawDy": 0.2196064248807201,
+      "baselineMedianPx": 9.99961931799664,
+      "fixedYawMedianPx": 7.129259771994129,
+      "perBoundaryDy": {
+       "paintR": 0.2196064248807201
+      }
+     },
+     "2020-07-30-L2-84.000": {
+      "fixedYawDy": -1.1705020091462741,
+      "baselineMedianPx": 8.128308202113539,
+      "fixedYawMedianPx": 3.334783100218481,
+      "perBoundaryDy": {
+       "paintL": -1.2039656381012052,
+       "paintR": 0.5018394162514433
+      }
+     },
+     "2020-07-30-L2-94.000": {
+      "fixedYawDy": 2.0237315203778232,
+      "baselineMedianPx": 29.233330007760784,
+      "fixedYawMedianPx": 9.759737672147432,
+      "perBoundaryDy": {
+       "paintL": 2.314860917043171,
+       "paintR": -0.6111137034888736
+      }
+     },
+     "2020-07-30-L2-112.000": {
+      "fixedYawDy": -1.1514487843468628,
+      "baselineMedianPx": 5.3789612612623285,
+      "fixedYawMedianPx": 2.3307993647611913,
+      "perBoundaryDy": {
+       "paintL": -1.181993241774705,
+       "paintR": 1.4881795520657626
+      }
+     },
+     "2020-07-29-L3-52.387": {
+      "fixedYawDy": 0.36020798723090175,
+      "baselineMedianPx": 4.223474590522776,
+      "fixedYawMedianPx": 2.5588035428282625,
+      "perBoundaryDy": {
+       "paintL": 0.3993495523184086,
+       "paintR": 0.3215713770275749
+      }
+     },
+     "2020-07-30-L2-47.522": {
+      "fixedYawDy": 1.7847035060531418,
+      "baselineMedianPx": 12.120581634889017,
+      "fixedYawMedianPx": 3.491301980088152,
+      "perBoundaryDy": {
+       "paintL": 1.841290368352456,
+       "paintR": 1.6692713731166953
+      }
+     },
+     "2020-07-30-L2-44.000": {
+      "fixedYawDy": 4.192771963700448,
+      "baselineMedianPx": 14.758615506134205,
+      "fixedYawMedianPx": 2.3129273324939335,
+      "perBoundaryDy": {
+       "paintL": 1.847076747570193,
+       "paintR": 4.1969291036506045
+      }
+     },
+     "2020-07-30-L2-44.500": {
+      "fixedYawDy": 2.7725654411971647,
+      "baselineMedianPx": 7.805942888104735,
+      "fixedYawMedianPx": 3.697401002482462,
+      "perBoundaryDy": {
+       "paintL": 0.7397132841979577,
+       "paintR": 2.7800242990671498
+      }
+     },
+     "2020-07-30-L2-45.500": {
+      "fixedYawDy": -0.8618292267431056,
+      "baselineMedianPx": 7.32763296729965,
+      "fixedYawMedianPx": 5.638593079313737,
+      "perBoundaryDy": {
+       "paintL": -1.2502832015687044,
+       "paintR": -0.41183222360761274
+      }
+     },
+     "2020-07-30-L2-46.000": {
+      "fixedYawDy": -1.4869194152784946,
+      "baselineMedianPx": 8.840561117898478,
+      "fixedYawMedianPx": 1.741797899220444,
+      "perBoundaryDy": {
+       "paintL": -1.2957977002374708,
+       "paintR": -1.5567181264039067
+      }
+     },
+     "2020-07-30-L2-93.000": {
+      "fixedYawDy": 1.3623424399460973,
+      "baselineMedianPx": 9.057852372041074,
+      "fixedYawMedianPx": 9.988540422198419,
+      "perBoundaryDy": {
+       "paintL": 1.5262872661059756,
+       "paintR": -2.153384322594866
+      }
+     },
+     "2020-07-30-L2-93.500": {
+      "fixedYawDy": 1.7508452275816206,
+      "baselineMedianPx": 6.046098648136589,
+      "fixedYawMedianPx": 8.73127651221187,
+      "perBoundaryDy": {
+       "paintL": 1.8337779414876465,
+       "paintR": -0.5346009079135456
+      }
+     },
+     "2020-07-30-L2-94.500": {
+      "fixedYawDy": 2.5884597245634735,
+      "baselineMedianPx": 31.529974774672326,
+      "fixedYawMedianPx": 8.039293420235415,
+      "perBoundaryDy": {
+       "paintL": 3.7237686326229795,
+       "paintR": 0.7999775427465973
+      }
+     },
+     "2020-07-30-L2-95.000": {
+      "fixedYawDy": 3.6554445362608194,
+      "baselineMedianPx": 5.439087720430058,
+      "fixedYawMedianPx": 12.684664759750781,
+      "perBoundaryDy": {
+       "paintL": 4.36876306712548,
+       "paintR": 0.7848478813083416
+      }
+     }
+    }
+   },
+   {
+    "rollGradientDegPerG": 4.0,
+    "camera": [
+     459.9184424689441,
+     18.832828086992293,
+     -0.8457962771385518,
+     -1.692388192378287
+    ],
+    "trainMedianPx": 8.142290129982431,
+    "heldoutMedianOfSceneMediansPx": 11.812845105037272,
+    "heldoutMeanOfSceneMediansPx": 14.499523849789322,
+    "scenes": {
+     "2020-07-29-L3-47.000": {
+      "fixedYawDy": 0.7814337964575719,
+      "baselineMedianPx": 8.971516118359302,
+      "fixedYawMedianPx": 8.653692414233454,
+      "perBoundaryDy": {
+       "paintL": 0.5298918833959695,
+       "paintR": 3.3820969423307967
+      }
+     },
+     "2020-07-29-L3-55.000": {
+      "fixedYawDy": -0.11354032578969618,
+      "baselineMedianPx": 9.648073722661627,
+      "fixedYawMedianPx": 8.691972164783007,
+      "perBoundaryDy": {
+       "paintR": -0.11354032578969618
+      }
+     },
+     "2020-07-29-L3-68.000": {
+      "fixedYawDy": -1.0867452815492955,
+      "baselineMedianPx": 4.802755981444662,
+      "fixedYawMedianPx": 2.275650671389781,
+      "perBoundaryDy": {
+       "paintL": -0.787668363012004,
+       "paintR": -1.208508846527247
+      }
+     },
+     "2020-07-29-L3-60.000": {
+      "fixedYawDy": 3.4108127541467597,
+      "baselineMedianPx": 17.22956245770943,
+      "fixedYawMedianPx": 5.684349076976786,
+      "perBoundaryDy": {
+       "paintL": 4.99999999999943,
+       "paintR": 3.0069586333833067
+      }
+     },
+     "2020-07-29-L3-64.367": {
+      "fixedYawDy": 2.365532237547747,
+      "baselineMedianPx": 8.153857576415458,
+      "fixedYawMedianPx": 1.9574072020667024,
+      "perBoundaryDy": {
+       "paintL": 2.365532237547747
+      }
+     },
+     "2020-07-30-L2-18.000": {
+      "fixedYawDy": -4.999999999999999,
+      "baselineMedianPx": 16.526930258800604,
+      "fixedYawMedianPx": 3.293679104989741,
+      "perBoundaryDy": {
+       "paintL": -4.999999999999999,
+       "paintR": -4.999999999999381
+      }
+     },
+     "2020-07-30-L2-45.000": {
+      "fixedYawDy": 2.3715140312611274,
+      "baselineMedianPx": 33.032867798114836,
+      "fixedYawMedianPx": 6.687732369018106,
+      "perBoundaryDy": {
+       "paintR": 2.3715140312611274
+      }
+     },
+     "2020-07-30-L2-50.000": {
+      "fixedYawDy": 0.23320307082850456,
+      "baselineMedianPx": 10.133021428163593,
+      "fixedYawMedianPx": 6.124850888223629,
+      "perBoundaryDy": {
+       "paintR": 0.23320307082850456
+      }
+     },
+     "2020-07-30-L2-84.000": {
+      "fixedYawDy": -1.2318876468758562,
+      "baselineMedianPx": 10.06348253484054,
+      "fixedYawMedianPx": 5.078476468191697,
+      "perBoundaryDy": {
+       "paintL": -1.2677469786314224,
+       "paintR": 1.4185055092485583
+      }
+     },
+     "2020-07-30-L2-94.000": {
+      "fixedYawDy": 2.9194929191444534,
+      "baselineMedianPx": 19.855134884620146,
+      "fixedYawMedianPx": 9.809027194671263,
+      "perBoundaryDy": {
+       "paintL": 2.6974918685356197,
+       "paintR": 4.999999999965666
+      }
+     },
+     "2020-07-30-L2-112.000": {
+      "fixedYawDy": -1.1702513357836968,
+      "baselineMedianPx": 10.034697252411057,
+      "fixedYawMedianPx": 1.8667942404739044,
+      "perBoundaryDy": {
+       "paintL": -1.201803045089393,
+       "paintR": 2.924844259241387
+      }
+     },
+     "2020-07-29-L3-52.387": {
+      "fixedYawDy": 0.7811283503351548,
+      "baselineMedianPx": 6.473015524906578,
+      "fixedYawMedianPx": 2.7268300078532204,
+      "perBoundaryDy": {
+       "paintL": 0.716238085085738,
+       "paintR": 0.8300328317995695
+      }
+     },
+     "2020-07-30-L2-47.522": {
+      "fixedYawDy": 1.9112465961725416,
+      "baselineMedianPx": 13.492668781910952,
+      "fixedYawMedianPx": 2.9118758977226276,
+      "perBoundaryDy": {
+       "paintL": 1.891448042630253,
+       "paintR": 1.944177206850723
+      }
+     },
+     "2020-07-30-L2-44.000": {
+      "fixedYawDy": 4.193017118115961,
+      "baselineMedianPx": 14.079583202832183,
+      "fixedYawMedianPx": 1.3861190974114,
+      "perBoundaryDy": {
+       "paintL": 0.6364747084768138,
+       "paintR": 4.199553303303335
+      }
+     },
+     "2020-07-30-L2-44.500": {
+      "fixedYawDy": 2.767727903965482,
+      "baselineMedianPx": 7.5310115185745445,
+      "fixedYawMedianPx": 4.541359374292102,
+      "perBoundaryDy": {
+       "paintL": -0.5338951078941051,
+       "paintR": 2.7793676951749187
+      }
+     },
+     "2020-07-30-L2-45.500": {
+      "fixedYawDy": -1.5057249528712064,
+      "baselineMedianPx": 9.10661167405442,
+      "fixedYawMedianPx": 5.4235066696074234,
+      "perBoundaryDy": {
+       "paintL": -1.9169797700654245,
+       "paintR": -0.4948875083281745
+      }
+     },
+     "2020-07-30-L2-46.000": {
+      "fixedYawDy": -1.8030562086165731,
+      "baselineMedianPx": 13.138955735615161,
+      "fixedYawMedianPx": 0.7565959949651225,
+      "perBoundaryDy": {
+       "paintL": -1.8524569112023952,
+       "paintR": -1.7760029771562682
+      }
+     },
+     "2020-07-30-L2-93.000": {
+      "fixedYawDy": 1.78840112054657,
+      "baselineMedianPx": 23.518424353319684,
+      "fixedYawMedianPx": 10.312403541248958,
+      "perBoundaryDy": {
+       "paintL": 1.6439473291586404,
+       "paintR": 4.56521704982599
+      }
+     },
+     "2020-07-30-L2-93.500": {
+      "fixedYawDy": 2.6522832587701206,
+      "baselineMedianPx": 23.104757294652252,
+      "fixedYawMedianPx": 13.611620406056009,
+      "perBoundaryDy": {
+       "paintL": 1.9473498755926857,
+       "paintR": 4.999999999998074
+      }
+     },
+     "2020-07-30-L2-94.500": {
+      "fixedYawDy": 4.968379825094104,
+      "baselineMedianPx": 24.27931164513728,
+      "fixedYawMedianPx": 6.251667139596708,
+      "perBoundaryDy": {
+       "paintL": 3.9975822336322584,
+       "paintR": 4.999999999999999
+      }
+     },
+     "2020-07-30-L2-95.000": {
+      "fixedYawDy": 4.803244385852651,
+      "baselineMedianPx": 33.92668930740154,
+      "fixedYawMedianPx": 6.472228479437442,
+      "perBoundaryDy": {
+       "paintL": 4.999999999999999,
+       "paintR": 4.298383801638739
+      }
+     }
+    }
+   }
+  ]
+ },
+ "lensDistortionSensitivity": {
+  "meaning": "Pinhole + one radial term k1 (x_d = x(1 + k1 r^2), normalised coords), 5 globals fit on the 3 training frames only. Diagnostic of the camera-model assumption; not adopted.",
+  "camera": [
+   525.56488703033,
+   17.319876603197976,
+   0.2512632188631292,
+   2.04061067909282,
+   -0.17094975708224985
+  ],
+  "activeBounds": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "jacobianSingularValues": [
+   61.1388826411793,
+   5.307998446159131,
+   4.374333230088166,
+   2.8037492618889814,
+   0.06724047993726287
+  ],
+  "trainMedianPx": 8.743200162916077,
+  "heldoutMedianOfSceneMediansPx": 12.550964397376351,
+  "heldoutMeanOfSceneMediansPx": 15.15288664534167,
+  "scenes": {
+   "2020-07-29-L3-47.000": {
+    "fixedYawDy": 1.1965007396014222,
+    "freeYawDy": 0.8114165410820277,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 10.166260858052716,
+    "fixedYawMedianPx": 3.0165861614403107,
+    "perBoundaryDy": {
+     "paintL": 1.088406252970149,
+     "paintR": 2.4996618461084457
+    }
+   },
+   "2020-07-29-L3-55.000": {
+    "fixedYawDy": -0.13893738652695833,
+    "freeYawDy": -0.44952044493335097,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 12.118028876708618,
+    "fixedYawMedianPx": 10.12554142581477,
+    "perBoundaryDy": {
+     "paintR": -0.13893738652695833
+    }
+   },
+   "2020-07-29-L3-68.000": {
+    "fixedYawDy": -1.5021227773656314,
+    "freeYawDy": -1.228523273336951,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 6.884595399016028,
+    "fixedYawMedianPx": 2.791879873158668,
+    "perBoundaryDy": {
+     "paintL": -1.0668648990806682,
+     "paintR": -3.3057053970999677
+    }
+   },
+   "2020-07-29-L3-60.000": {
+    "fixedYawDy": -0.07372664284404161,
+    "freeYawDy": -0.677762216904042,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 5.92719533464708,
+    "fixedYawMedianPx": 5.978819894597994,
+    "perBoundaryDy": {
+     "paintL": -0.6944927450227117,
+     "paintR": 2.1986012296703707
+    }
+   },
+   "2020-07-29-L3-64.367": {
+    "fixedYawDy": -1.5357879640702998,
+    "freeYawDy": -1.0927685700186545,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 6.984242660036654,
+    "fixedYawMedianPx": 0.820590323868849,
+    "perBoundaryDy": {
+     "paintL": -1.5357879640702998
+    }
+   },
+   "2020-07-30-L2-18.000": {
+    "fixedYawDy": -4.999999999999999,
+    "freeYawDy": -4.999999999999389,
+    "freeYawDyaw": -1.8380495216280164,
+    "baselineMedianPx": 18.964863001610198,
+    "fixedYawMedianPx": 4.462334652520096,
+    "perBoundaryDy": {
+     "paintL": -4.999999999999999,
+     "paintR": -4.999999999999959
+    }
+   },
+   "2020-07-30-L2-45.000": {
+    "fixedYawDy": 2.442336329786707,
+    "freeYawDy": 2.8049929538336493,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 36.64525713289383,
+    "fixedYawMedianPx": 6.483052720901447,
+    "perBoundaryDy": {
+     "paintR": 2.442336329786707
+    }
+   },
+   "2020-07-30-L2-50.000": {
+    "fixedYawDy": 0.18626437283475192,
+    "freeYawDy": -0.11429432565289203,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 9.48723732265858,
+    "fixedYawMedianPx": 7.787644502352737,
+    "perBoundaryDy": {
+     "paintR": 0.18626437283475192
+    }
+   },
+   "2020-07-30-L2-84.000": {
+    "fixedYawDy": -1.5682229861951325,
+    "freeYawDy": -1.2603008940303115,
+    "freeYawDyaw": -1.999999999999982,
+    "baselineMedianPx": 13.595439656221291,
+    "fixedYawMedianPx": 7.139129669555576,
+    "perBoundaryDy": {
+     "paintL": -1.5450878274598494,
+     "paintR": -4.999999999999642
+    }
+   },
+   "2020-07-30-L2-94.000": {
+    "fixedYawDy": -4.9999999999999645,
+    "freeYawDy": -4.999999545727136,
+    "freeYawDyaw": -0.4943134713436111,
+    "baselineMedianPx": 26.506993595206453,
+    "fixedYawMedianPx": 20.030994796917636,
+    "perBoundaryDy": {
+     "paintL": 2.209724315735883,
+     "paintR": -4.999999999999946
+    }
+   },
+   "2020-07-30-L2-112.000": {
+    "fixedYawDy": -1.5972122414186736,
+    "freeYawDy": -1.5118844190215044,
+    "freeYawDyaw": -0.5560345355054582,
+    "baselineMedianPx": 11.506489138531412,
+    "fixedYawMedianPx": 1.7249379586097766,
+    "perBoundaryDy": {
+     "paintL": -1.5859928877397005,
+     "paintR": -4.999999999999212
+    }
+   },
+   "2020-07-29-L3-52.387": {
+    "fixedYawDy": 0.4450065345960148,
+    "freeYawDy": 0.10134826668644008,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 6.602939502825418,
+    "fixedYawMedianPx": 4.505620958416917,
+    "perBoundaryDy": {
+     "paintL": 0.7961731682029543,
+     "paintR": -0.5045335421933769
+    }
+   },
+   "2020-07-30-L2-47.522": {
+    "fixedYawDy": 2.232225784995161,
+    "freeYawDy": 1.888857959984904,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 15.30820910878578,
+    "fixedYawMedianPx": 5.454383005084062,
+    "perBoundaryDy": {
+     "paintL": 2.6346320014647326,
+     "paintR": 1.349866307908295
+    }
+   },
+   "2020-07-30-L2-44.000": {
+    "fixedYawDy": 4.128869940099126,
+    "freeYawDy": 4.500281318173734,
+    "freeYawDyaw": -1.9272554120913719,
+    "baselineMedianPx": 19.393218607120396,
+    "fixedYawMedianPx": 2.3947040397760793,
+    "perBoundaryDy": {
+     "paintL": 4.999999999998965,
+     "paintR": 4.124101319634883
+    }
+   },
+   "2020-07-30-L2-44.500": {
+    "fixedYawDy": 2.727722458234972,
+    "freeYawDy": 3.086724641897318,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 16.75920403978179,
+    "fixedYawMedianPx": 3.7423746858566296,
+    "perBoundaryDy": {
+     "paintL": 4.163027538001225,
+     "paintR": 2.7207658948882893
+    }
+   },
+   "2020-07-30-L2-45.500": {
+    "fixedYawDy": -0.2177052677329969,
+    "freeYawDy": 0.21269849319767703,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 5.077099933128961,
+    "fixedYawMedianPx": 6.913413653127146,
+    "perBoundaryDy": {
+     "paintL": 0.6906750300487133,
+     "paintR": -0.3918903750280217
+    }
+   },
+   "2020-07-30-L2-46.000": {
+    "fixedYawDy": -1.739597574721069,
+    "freeYawDy": -2.144351798972652,
+    "freeYawDyaw": 1.9999999999999998,
+    "baselineMedianPx": 8.461133179909574,
+    "fixedYawMedianPx": 7.598865805942415,
+    "perBoundaryDy": {
+     "paintL": -0.609823453588459,
+     "paintR": -2.338137712172864
+    }
+   },
+   "2020-07-30-L2-93.000": {
+    "fixedYawDy": 1.022605640433761,
+    "freeYawDy": 1.337123379330681,
+    "freeYawDyaw": -1.999999999999989,
+    "baselineMedianPx": 38.15232601940714,
+    "fixedYawMedianPx": 17.39078911644959,
+    "perBoundaryDy": {
+     "paintL": 1.1052996361880898,
+     "paintR": -4.999999999999973
+    }
+   },
+   "2020-07-30-L2-93.500": {
+    "fixedYawDy": 1.2922299145397211,
+    "freeYawDy": 1.6027878093035406,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 40.42330757438687,
+    "fixedYawMedianPx": 17.689846260846725,
+    "perBoundaryDy": {
+     "paintL": 1.5098423622478983,
+     "paintR": -4.9999999999999485
+    }
+   },
+   "2020-07-30-L2-94.500": {
+    "fixedYawDy": -4.999999999999922,
+    "freeYawDy": -4.999999999999999,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 23.651717880919776,
+    "fixedYawMedianPx": 20.73890056878641,
+    "perBoundaryDy": {
+     "paintL": 4.58510037098858,
+     "paintR": -4.999999999999873
+    }
+   },
+   "2020-07-30-L2-95.000": {
+    "fixedYawDy": 2.30847232310105,
+    "freeYawDy": 2.5601817976151007,
+    "freeYawDyaw": -1.9999999999999998,
+    "baselineMedianPx": 16.51207457831356,
+    "fixedYawMedianPx": 9.564160402893958,
+    "perBoundaryDy": {
+     "paintL": 2.6145127755354105,
+     "paintR": -4.999999999999776
+    }
+   }
+  }
+ },
+ "hierarchicalBootstrap": {
+  "B": 300,
+  "meaning": "Resample training picks (per line) -> refit 4 camera globals -> resample scene picks -> fixed-yaw dy (0.05 m grid + parabolic refine). Captures pick noise in camera fit and scene; does NOT capture the common training-frame GPS/heading error or the camera lateral mount (see circularityInjection).",
+  "cameraParameterSd": [
+   28.04088356170842,
+   1.0434518271505224,
+   0.956249746730275,
+   0.6982952553072376
+  ],
+  "cameraParameterOrder": [
+   "f",
+   "pitchDeg",
+   "yawDeg",
+   "rollDeg"
+  ],
+  "fixedYawDyCi95": {
+   "2020-07-29-L3-60.000": [
+    -2.8474390185212446,
+    -0.2431876440149309
+   ],
+   "2020-07-29-L3-64.367": [
+    -3.0601243581451887,
+    -0.6975228823837022
+   ],
+   "2020-07-30-L2-18.000": [
+    -5.0,
+    -4.12227465515432
+   ],
+   "2020-07-30-L2-45.000": [
+    1.4973886839252004,
+    2.573031956461585
+   ],
+   "2020-07-30-L2-50.000": [
+    -0.1780432585534391,
+    0.567142233494461
+   ],
+   "2020-07-30-L2-84.000": [
+    -1.5416297466993154,
+    -0.7785681659101338
+   ],
+   "2020-07-30-L2-94.000": [
+    1.2019132424779118,
+    4.283940918210895
+   ],
+   "2020-07-30-L2-112.000": [
+    -1.5812281288684042,
+    -0.8086962691273719
+   ],
+   "2020-07-29-L3-52.387": [
+    -0.8295577543680274,
+    0.953557382834298
+   ],
+   "2020-07-30-L2-47.522": [
+    0.9024305725399789,
+    2.523824436376706
+   ],
+   "2020-07-30-L2-44.000": [
+    3.7620980464091205,
+    4.413666968908198
+   ],
+   "2020-07-30-L2-44.500": [
+    2.095636694759844,
+    2.993354667582017
+   ],
+   "2020-07-30-L2-45.500": [
+    -1.7466817633398082,
+    0.5646790175777117
+   ],
+   "2020-07-30-L2-46.000": [
+    -1.7883012300299148,
+    -0.499526777090953
+   ],
+   "2020-07-30-L2-93.000": [
+    0.72276747313041,
+    2.4774005437980358
+   ],
+   "2020-07-30-L2-93.500": [
+    0.9841779748208319,
+    3.076290697972698
+   ],
+   "2020-07-30-L2-94.500": [
+    0.9514571443374857,
+    5.0
+   ],
+   "2020-07-30-L2-95.000": [
+    1.6760858895773911,
+    3.515030567353575
+   ]
+  },
+  "fixedYawDySd": {
+   "2020-07-29-L3-60.000": 0.7018169668111593,
+   "2020-07-29-L3-64.367": 0.5823976035480035,
+   "2020-07-30-L2-18.000": 0.2713869290750577,
+   "2020-07-30-L2-45.000": 0.2787562205847956,
+   "2020-07-30-L2-50.000": 0.182848894768123,
+   "2020-07-30-L2-84.000": 0.20460711133510065,
+   "2020-07-30-L2-94.000": 0.7928221043594554,
+   "2020-07-30-L2-112.000": 0.18693311071186225,
+   "2020-07-29-L3-52.387": 0.4449351401221388,
+   "2020-07-30-L2-47.522": 0.42315717241485523,
+   "2020-07-30-L2-44.000": 0.19084312413981372,
+   "2020-07-30-L2-44.500": 0.2205972329502437,
+   "2020-07-30-L2-45.500": 0.6125866121734406,
+   "2020-07-30-L2-46.000": 0.335706653076874,
+   "2020-07-30-L2-93.000": 0.474189042657363,
+   "2020-07-30-L2-93.500": 0.5345897465142375,
+   "2020-07-30-L2-94.500": 1.0562356587923614,
+   "2020-07-30-L2-95.000": 0.46648190521950805
+  }
+ },
+ "runtimeSeconds": 723.9
+}

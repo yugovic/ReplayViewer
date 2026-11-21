@@ -1,0 +1,6298 @@
+{
+ "race": "fuji_aim_2020_07_30",
+ "definition": "I2 fusion trial, step 3b: does the IMU 'see' the 7/30 L2 3250-3900 m GPS anomaly?\n\nSliding GPS-outage probe: GPS positions are withheld in windows of W s (centres every 1.5 s along each lap,\nwindows of one smoother run >= 15 s apart); the likelihood-chosen smoother (fusedBest) bridges each window\nwith the IMU + GPS speed, anchored by GPS at both ends. Probe statistic per window = max |lateral| (track\nnormal) of withheld GPS fix minus bridged path. A short (< W) lateral GPS excursion that the IMU does not\nfollow shows up as a large probe value; a slow error (>> W) does not.",
+ "sector": [
+  3250.0,
+  3900.0
+ ],
+ "windows": {
+  "2s": {
+   "sessionMedianM": 0.085,
+   "sessionP90M": 0.219,
+   "sessionP99M": 0.451,
+   "perLap": {
+    "1": {
+     "sectorMedianM": 0.085,
+     "sectorMaxM": 0.274,
+     "sectorMaxStation": 3340.8,
+     "restMedianM": 0.081,
+     "restP90M": 0.21,
+     "restMaxM": 0.651,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.451
+    },
+    "2": {
+     "sectorMedianM": 0.09,
+     "sectorMaxM": 0.498,
+     "sectorMaxStation": 3619.2,
+     "restMedianM": 0.079,
+     "restP90M": 0.189,
+     "restMaxM": 0.332,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.523
+    },
+    "3": {
+     "sectorMedianM": 0.086,
+     "sectorMaxM": 0.254,
+     "sectorMaxStation": 3506.2,
+     "restMedianM": 0.068,
+     "restP90M": 0.251,
+     "restMaxM": 0.453,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.502
+    },
+    "4": {
+     "sectorMedianM": 0.103,
+     "sectorMaxM": 0.202,
+     "sectorMaxStation": 3306.8,
+     "restMedianM": 0.095,
+     "restP90M": 0.247,
+     "restMaxM": 0.36,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.498
+    },
+    "5": {
+     "sectorMedianM": 0.105,
+     "sectorMaxM": 0.317,
+     "sectorMaxStation": 3488.2,
+     "restMedianM": 0.081,
+     "restP90M": 0.258,
+     "restMaxM": 0.583,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.534
+    },
+    "6": {
+     "sectorMedianM": 0.099,
+     "sectorMaxM": 0.361,
+     "sectorMaxStation": 3568.5,
+     "restMedianM": 0.086,
+     "restP90M": 0.188,
+     "restMaxM": 0.371,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.461
+    }
+   },
+   "rows": {
+    "1": [
+     {
+      "tCentre": 2.0,
+      "station": 240.5,
+      "maxAbsLatM": 0.158,
+      "rmsLatM": 0.119
+     },
+     {
+      "tCentre": 3.5,
+      "station": 314.5,
+      "maxAbsLatM": 0.084,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 5.0,
+      "station": 390.0,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 6.5,
+      "station": 466.5,
+      "maxAbsLatM": 0.087,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 8.0,
+      "station": 543.8,
+      "maxAbsLatM": 0.052,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 9.5,
+      "station": 622.0,
+      "maxAbsLatM": 0.124,
+      "rmsLatM": 0.066
+     },
+     {
+      "tCentre": 11.0,
+      "station": 701.5,
+      "maxAbsLatM": 0.08,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 12.5,
+      "station": 775.2,
+      "maxAbsLatM": 0.289,
+      "rmsLatM": 0.129
+     },
+     {
+      "tCentre": 14.0,
+      "station": 831.0,
+      "maxAbsLatM": 0.32,
+      "rmsLatM": 0.223
+     },
+     {
+      "tCentre": 15.5,
+      "station": 868.0,
+      "maxAbsLatM": 0.18,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 17.0,
+      "station": 904.0,
+      "maxAbsLatM": 0.078,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 18.5,
+      "station": 938.5,
+      "maxAbsLatM": 0.289,
+      "rmsLatM": 0.166
+     },
+     {
+      "tCentre": 20.0,
+      "station": 973.8,
+      "maxAbsLatM": 0.11,
+      "rmsLatM": 0.074
+     },
+     {
+      "tCentre": 21.5,
+      "station": 1015.5,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 23.0,
+      "station": 1065.5,
+      "maxAbsLatM": 0.08,
+      "rmsLatM": 0.043
+     },
+     {
+      "tCentre": 24.5,
+      "station": 1118.0,
+      "maxAbsLatM": 0.061,
+      "rmsLatM": 0.036
+     },
+     {
+      "tCentre": 26.0,
+      "station": 1174.0,
+      "maxAbsLatM": 0.02,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 27.5,
+      "station": 1233.5,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 29.0,
+      "station": 1295.8,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.017
+     },
+     {
+      "tCentre": 30.5,
+      "station": 1360.0,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 32.0,
+      "station": 1416.2,
+      "maxAbsLatM": 0.139,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 33.5,
+      "station": 1474.2,
+      "maxAbsLatM": 0.204,
+      "rmsLatM": 0.12
+     },
+     {
+      "tCentre": 35.0,
+      "station": 1523.2,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 36.5,
+      "station": 1575.5,
+      "maxAbsLatM": 0.169,
+      "rmsLatM": 0.096
+     },
+     {
+      "tCentre": 38.0,
+      "station": 1631.2,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 39.5,
+      "station": 1687.5,
+      "maxAbsLatM": 0.174,
+      "rmsLatM": 0.118
+     },
+     {
+      "tCentre": 41.0,
+      "station": 1743.5,
+      "maxAbsLatM": 0.039,
+      "rmsLatM": 0.02
+     },
+     {
+      "tCentre": 42.5,
+      "station": 1797.8,
+      "maxAbsLatM": 0.171,
+      "rmsLatM": 0.12
+     },
+     {
+      "tCentre": 44.0,
+      "station": 1853.2,
+      "maxAbsLatM": 0.151,
+      "rmsLatM": 0.099
+     },
+     {
+      "tCentre": 45.5,
+      "station": 1907.2,
+      "maxAbsLatM": 0.105,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 47.0,
+      "station": 1961.8,
+      "maxAbsLatM": 0.651,
+      "rmsLatM": 0.39
+     },
+     {
+      "tCentre": 48.5,
+      "station": 2016.8,
+      "maxAbsLatM": 0.419,
+      "rmsLatM": 0.264
+     },
+     {
+      "tCentre": 50.0,
+      "station": 2070.0,
+      "maxAbsLatM": 0.119,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 51.5,
+      "station": 2109.0,
+      "maxAbsLatM": 0.179,
+      "rmsLatM": 0.114
+     },
+     {
+      "tCentre": 53.0,
+      "station": 2156.2,
+      "maxAbsLatM": 0.164,
+      "rmsLatM": 0.085
+     },
+     {
+      "tCentre": 54.5,
+      "station": 2199.8,
+      "maxAbsLatM": 0.111,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 56.0,
+      "station": 2238.5,
+      "maxAbsLatM": 0.081,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 57.5,
+      "station": 2281.8,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.109
+     },
+     {
+      "tCentre": 59.0,
+      "station": 2330.0,
+      "maxAbsLatM": 0.049,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 60.5,
+      "station": 2382.2,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.059
+     },
+     {
+      "tCentre": 62.0,
+      "station": 2437.8,
+      "maxAbsLatM": 0.124,
+      "rmsLatM": 0.063
+     },
+     {
+      "tCentre": 63.5,
+      "station": 2495.5,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 65.0,
+      "station": 2557.0,
+      "maxAbsLatM": 0.085,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 66.5,
+      "station": 2621.8,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 68.0,
+      "station": 2688.8,
+      "maxAbsLatM": 0.176,
+      "rmsLatM": 0.13
+     },
+     {
+      "tCentre": 69.5,
+      "station": 2757.2,
+      "maxAbsLatM": 0.042,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 71.0,
+      "station": 2828.8,
+      "maxAbsLatM": 0.458,
+      "rmsLatM": 0.304
+     },
+     {
+      "tCentre": 72.5,
+      "station": 2894.2,
+      "maxAbsLatM": 0.267,
+      "rmsLatM": 0.127
+     },
+     {
+      "tCentre": 74.0,
+      "station": 2940.2,
+      "maxAbsLatM": 0.184,
+      "rmsLatM": 0.12
+     },
+     {
+      "tCentre": 75.5,
+      "station": 2967.2,
+      "maxAbsLatM": 0.2,
+      "rmsLatM": 0.148
+     },
+     {
+      "tCentre": 77.0,
+      "station": 2994.2,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 78.5,
+      "station": 3021.5,
+      "maxAbsLatM": 0.056,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 80.0,
+      "station": 3057.0,
+      "maxAbsLatM": 0.139,
+      "rmsLatM": 0.089
+     },
+     {
+      "tCentre": 81.5,
+      "station": 3083.8,
+      "maxAbsLatM": 0.059,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 83.0,
+      "station": 3112.8,
+      "maxAbsLatM": 0.043,
+      "rmsLatM": 0.02
+     },
+     {
+      "tCentre": 84.5,
+      "station": 3145.0,
+      "maxAbsLatM": 0.081,
+      "rmsLatM": 0.045
+     },
+     {
+      "tCentre": 86.0,
+      "station": 3179.2,
+      "maxAbsLatM": 0.022,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 87.5,
+      "station": 3217.0,
+      "maxAbsLatM": 0.077,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 89.0,
+      "station": 3256.8,
+      "maxAbsLatM": 0.085,
+      "rmsLatM": 0.054
+     },
+     {
+      "tCentre": 90.5,
+      "station": 3300.2,
+      "maxAbsLatM": 0.166,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 92.0,
+      "station": 3340.8,
+      "maxAbsLatM": 0.274,
+      "rmsLatM": 0.188
+     },
+     {
+      "tCentre": 93.5,
+      "station": 3382.5,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 95.0,
+      "station": 3428.8,
+      "maxAbsLatM": 0.056,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 96.5,
+      "station": 3472.8,
+      "maxAbsLatM": 0.084,
+      "rmsLatM": 0.066
+     },
+     {
+      "tCentre": 98.0,
+      "station": 3511.8,
+      "maxAbsLatM": 0.131,
+      "rmsLatM": 0.083
+     },
+     {
+      "tCentre": 99.5,
+      "station": 3542.5,
+      "maxAbsLatM": 0.132,
+      "rmsLatM": 0.099
+     },
+     {
+      "tCentre": 101.0,
+      "station": 3570.2,
+      "maxAbsLatM": 0.085,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 102.5,
+      "station": 3604.2,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 104.0,
+      "station": 3641.2,
+      "maxAbsLatM": 0.033,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 105.5,
+      "station": 3683.5,
+      "maxAbsLatM": 0.043,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 107.0,
+      "station": 3729.2,
+      "maxAbsLatM": 0.059,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 108.5,
+      "station": 3769.8,
+      "maxAbsLatM": 0.129,
+      "rmsLatM": 0.082
+     },
+     {
+      "tCentre": 110.0,
+      "station": 3802.5,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 111.5,
+      "station": 3834.5,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 113.0,
+      "station": 3879.8,
+      "maxAbsLatM": 0.112,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 114.5,
+      "station": 3919.5,
+      "maxAbsLatM": 0.101,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 116.0,
+      "station": 3963.5,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.018
+     },
+     {
+      "tCentre": 117.5,
+      "station": 4012.2,
+      "maxAbsLatM": 0.053,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 119.0,
+      "station": 4063.8,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.035
+     },
+     {
+      "tCentre": 120.5,
+      "station": 4118.8,
+      "maxAbsLatM": 0.026,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 122.0,
+      "station": 4177.0,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 123.5,
+      "station": 4237.8,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 125.0,
+      "station": 4301.2,
+      "maxAbsLatM": 0.028,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 126.5,
+      "station": 4366.8,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 128.0,
+      "station": 4433.2,
+      "maxAbsLatM": 0.024,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 129.5,
+      "station": 4502.0,
+      "maxAbsLatM": 0.021,
+      "rmsLatM": 0.01
+     },
+     {
+      "tCentre": 131.0,
+      "station": 49.2,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.044
+     }
+    ],
+    "2": [
+     {
+      "tCentre": 2.0,
+      "station": 241.0,
+      "maxAbsLatM": 0.089,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 3.5,
+      "station": 317.0,
+      "maxAbsLatM": 0.093,
+      "rmsLatM": 0.054
+     },
+     {
+      "tCentre": 5.0,
+      "station": 394.2,
+      "maxAbsLatM": 0.035,
+      "rmsLatM": 0.02
+     },
+     {
+      "tCentre": 6.5,
+      "station": 472.2,
+      "maxAbsLatM": 0.101,
+      "rmsLatM": 0.061
+     },
+     {
+      "tCentre": 8.0,
+      "station": 551.2,
+      "maxAbsLatM": 0.152,
+      "rmsLatM": 0.104
+     },
+     {
+      "tCentre": 9.5,
+      "station": 631.5,
+      "maxAbsLatM": 0.084,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 11.0,
+      "station": 712.8,
+      "maxAbsLatM": 0.332,
+      "rmsLatM": 0.217
+     },
+     {
+      "tCentre": 12.5,
+      "station": 786.8,
+      "maxAbsLatM": 0.237,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 14.0,
+      "station": 840.0,
+      "maxAbsLatM": 0.174,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 15.5,
+      "station": 873.5,
+      "maxAbsLatM": 0.114,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 17.0,
+      "station": 914.0,
+      "maxAbsLatM": 0.138,
+      "rmsLatM": 0.077
+     },
+     {
+      "tCentre": 18.5,
+      "station": 946.8,
+      "maxAbsLatM": 0.209,
+      "rmsLatM": 0.131
+     },
+     {
+      "tCentre": 20.0,
+      "station": 984.5,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 21.5,
+      "station": 1028.5,
+      "maxAbsLatM": 0.017,
+      "rmsLatM": 0.007
+     },
+     {
+      "tCentre": 23.0,
+      "station": 1080.2,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.018
+     },
+     {
+      "tCentre": 24.5,
+      "station": 1134.2,
+      "maxAbsLatM": 0.059,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 26.0,
+      "station": 1192.0,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.017
+     },
+     {
+      "tCentre": 27.5,
+      "station": 1253.5,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 29.0,
+      "station": 1317.0,
+      "maxAbsLatM": 0.026,
+      "rmsLatM": 0.016
+     },
+     {
+      "tCentre": 30.5,
+      "station": 1381.0,
+      "maxAbsLatM": 0.074,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 32.0,
+      "station": 1434.2,
+      "maxAbsLatM": 0.121,
+      "rmsLatM": 0.075
+     },
+     {
+      "tCentre": 33.5,
+      "station": 1491.2,
+      "maxAbsLatM": 0.134,
+      "rmsLatM": 0.077
+     },
+     {
+      "tCentre": 35.0,
+      "station": 1543.2,
+      "maxAbsLatM": 0.203,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 36.5,
+      "station": 1600.0,
+      "maxAbsLatM": 0.079,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 38.0,
+      "station": 1657.5,
+      "maxAbsLatM": 0.079,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 39.5,
+      "station": 1715.2,
+      "maxAbsLatM": 0.086,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 41.0,
+      "station": 1770.8,
+      "maxAbsLatM": 0.109,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 42.5,
+      "station": 1825.0,
+      "maxAbsLatM": 0.168,
+      "rmsLatM": 0.098
+     },
+     {
+      "tCentre": 44.0,
+      "station": 1880.5,
+      "maxAbsLatM": 0.119,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 45.5,
+      "station": 1935.8,
+      "maxAbsLatM": 0.158,
+      "rmsLatM": 0.09
+     },
+     {
+      "tCentre": 47.0,
+      "station": 1989.8,
+      "maxAbsLatM": 0.285,
+      "rmsLatM": 0.139
+     },
+     {
+      "tCentre": 48.5,
+      "station": 2043.2,
+      "maxAbsLatM": 0.077,
+      "rmsLatM": 0.041
+     },
+     {
+      "tCentre": 50.0,
+      "station": 2086.2,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 51.5,
+      "station": 2120.5,
+      "maxAbsLatM": 0.061,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 53.0,
+      "station": 2162.8,
+      "maxAbsLatM": 0.055,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 54.5,
+      "station": 2198.8,
+      "maxAbsLatM": 0.08,
+      "rmsLatM": 0.042
+     },
+     {
+      "tCentre": 56.0,
+      "station": 2237.5,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.102
+     },
+     {
+      "tCentre": 57.5,
+      "station": 2281.0,
+      "maxAbsLatM": 0.095,
+      "rmsLatM": 0.059
+     },
+     {
+      "tCentre": 59.0,
+      "station": 2329.8,
+      "maxAbsLatM": 0.082,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 60.5,
+      "station": 2382.5,
+      "maxAbsLatM": 0.049,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 62.0,
+      "station": 2439.0,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.051
+     },
+     {
+      "tCentre": 63.5,
+      "station": 2498.5,
+      "maxAbsLatM": 0.142,
+      "rmsLatM": 0.097
+     },
+     {
+      "tCentre": 65.0,
+      "station": 2561.0,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 66.5,
+      "station": 2625.8,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.018
+     },
+     {
+      "tCentre": 68.0,
+      "station": 2693.8,
+      "maxAbsLatM": 0.119,
+      "rmsLatM": 0.087
+     },
+     {
+      "tCentre": 69.5,
+      "station": 2764.2,
+      "maxAbsLatM": 0.051,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 71.0,
+      "station": 2836.0,
+      "maxAbsLatM": 0.083,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 72.5,
+      "station": 2897.8,
+      "maxAbsLatM": 0.106,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 74.0,
+      "station": 2939.8,
+      "maxAbsLatM": 0.143,
+      "rmsLatM": 0.09
+     },
+     {
+      "tCentre": 75.5,
+      "station": 2965.8,
+      "maxAbsLatM": 0.112,
+      "rmsLatM": 0.061
+     },
+     {
+      "tCentre": 77.0,
+      "station": 2993.8,
+      "maxAbsLatM": 0.324,
+      "rmsLatM": 0.21
+     },
+     {
+      "tCentre": 78.5,
+      "station": 3021.0,
+      "maxAbsLatM": 0.214,
+      "rmsLatM": 0.155
+     },
+     {
+      "tCentre": 80.0,
+      "station": 3056.0,
+      "maxAbsLatM": 0.186,
+      "rmsLatM": 0.1
+     },
+     {
+      "tCentre": 81.5,
+      "station": 3088.0,
+      "maxAbsLatM": 0.072,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 83.0,
+      "station": 3123.8,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 84.5,
+      "station": 3160.8,
+      "maxAbsLatM": 0.044,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 86.0,
+      "station": 3200.8,
+      "maxAbsLatM": 0.051,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 87.5,
+      "station": 3243.2,
+      "maxAbsLatM": 0.187,
+      "rmsLatM": 0.118
+     },
+     {
+      "tCentre": 89.0,
+      "station": 3287.2,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 90.5,
+      "station": 3327.2,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 92.0,
+      "station": 3368.0,
+      "maxAbsLatM": 0.051,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 93.5,
+      "station": 3416.0,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 95.0,
+      "station": 3470.2,
+      "maxAbsLatM": 0.09,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 96.5,
+      "station": 3513.0,
+      "maxAbsLatM": 0.085,
+      "rmsLatM": 0.053
+     },
+     {
+      "tCentre": 98.0,
+      "station": 3544.5,
+      "maxAbsLatM": 0.137,
+      "rmsLatM": 0.067
+     },
+     {
+      "tCentre": 99.5,
+      "station": 3586.0,
+      "maxAbsLatM": 0.363,
+      "rmsLatM": 0.22
+     },
+     {
+      "tCentre": 101.0,
+      "station": 3619.2,
+      "maxAbsLatM": 0.498,
+      "rmsLatM": 0.302
+     },
+     {
+      "tCentre": 102.5,
+      "station": 3658.8,
+      "maxAbsLatM": 0.027,
+      "rmsLatM": 0.016
+     },
+     {
+      "tCentre": 104.0,
+      "station": 3703.0,
+      "maxAbsLatM": 0.092,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 105.5,
+      "station": 3750.0,
+      "maxAbsLatM": 0.057,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 107.0,
+      "station": 3790.2,
+      "maxAbsLatM": 0.305,
+      "rmsLatM": 0.201
+     },
+     {
+      "tCentre": 108.5,
+      "station": 3822.0,
+      "maxAbsLatM": 0.117,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 110.0,
+      "station": 3858.2,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 111.5,
+      "station": 3899.8,
+      "maxAbsLatM": 0.088,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 113.0,
+      "station": 3939.2,
+      "maxAbsLatM": 0.046,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 114.5,
+      "station": 3984.0,
+      "maxAbsLatM": 0.023,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 116.0,
+      "station": 4033.2,
+      "maxAbsLatM": 0.035,
+      "rmsLatM": 0.017
+     },
+     {
+      "tCentre": 117.5,
+      "station": 4085.0,
+      "maxAbsLatM": 0.043,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 119.0,
+      "station": 4140.2,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 120.5,
+      "station": 4198.5,
+      "maxAbsLatM": 0.018,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 122.0,
+      "station": 4259.5,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 123.5,
+      "station": 4322.8,
+      "maxAbsLatM": 0.047,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 125.0,
+      "station": 4387.2,
+      "maxAbsLatM": 0.057,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 126.5,
+      "station": 4453.2,
+      "maxAbsLatM": 0.033,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 128.0,
+      "station": 4512.0,
+      "maxAbsLatM": 0.021,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 129.5,
+      "station": 48.2,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.014
+     }
+    ],
+    "3": [
+     {
+      "tCentre": 2.0,
+      "station": 242.5,
+      "maxAbsLatM": 0.087,
+      "rmsLatM": 0.065
+     },
+     {
+      "tCentre": 3.5,
+      "station": 318.0,
+      "maxAbsLatM": 0.041,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 5.0,
+      "station": 395.0,
+      "maxAbsLatM": 0.059,
+      "rmsLatM": 0.027
+     },
+     {
+      "tCentre": 6.5,
+      "station": 472.5,
+      "maxAbsLatM": 0.119,
+      "rmsLatM": 0.067
+     },
+     {
+      "tCentre": 8.0,
+      "station": 549.8,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 9.5,
+      "station": 627.8,
+      "maxAbsLatM": 0.038,
+      "rmsLatM": 0.025
+     },
+     {
+      "tCentre": 11.0,
+      "station": 706.5,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 12.5,
+      "station": 779.8,
+      "maxAbsLatM": 0.097,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 14.0,
+      "station": 834.5,
+      "maxAbsLatM": 0.179,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 15.5,
+      "station": 871.0,
+      "maxAbsLatM": 0.122,
+      "rmsLatM": 0.074
+     },
+     {
+      "tCentre": 17.0,
+      "station": 907.0,
+      "maxAbsLatM": 0.123,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 18.5,
+      "station": 940.8,
+      "maxAbsLatM": 0.282,
+      "rmsLatM": 0.162
+     },
+     {
+      "tCentre": 20.0,
+      "station": 976.2,
+      "maxAbsLatM": 0.051,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 21.5,
+      "station": 1019.5,
+      "maxAbsLatM": 0.02,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 23.0,
+      "station": 1069.0,
+      "maxAbsLatM": 0.034,
+      "rmsLatM": 0.017
+     },
+     {
+      "tCentre": 24.5,
+      "station": 1121.8,
+      "maxAbsLatM": 0.059,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 26.0,
+      "station": 1178.5,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 27.5,
+      "station": 1238.0,
+      "maxAbsLatM": 0.019,
+      "rmsLatM": 0.01
+     },
+     {
+      "tCentre": 29.0,
+      "station": 1300.8,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.016
+     },
+     {
+      "tCentre": 30.5,
+      "station": 1365.2,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 32.0,
+      "station": 1419.0,
+      "maxAbsLatM": 0.186,
+      "rmsLatM": 0.116
+     },
+     {
+      "tCentre": 33.5,
+      "station": 1470.8,
+      "maxAbsLatM": 0.441,
+      "rmsLatM": 0.289
+     },
+     {
+      "tCentre": 35.0,
+      "station": 1519.5,
+      "maxAbsLatM": 0.071,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 36.5,
+      "station": 1572.5,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 38.0,
+      "station": 1629.5,
+      "maxAbsLatM": 0.149,
+      "rmsLatM": 0.088
+     },
+     {
+      "tCentre": 39.5,
+      "station": 1688.0,
+      "maxAbsLatM": 0.293,
+      "rmsLatM": 0.191
+     },
+     {
+      "tCentre": 41.0,
+      "station": 1746.5,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 42.5,
+      "station": 1802.8,
+      "maxAbsLatM": 0.344,
+      "rmsLatM": 0.228
+     },
+     {
+      "tCentre": 44.0,
+      "station": 1858.5,
+      "maxAbsLatM": 0.325,
+      "rmsLatM": 0.181
+     },
+     {
+      "tCentre": 45.5,
+      "station": 1916.0,
+      "maxAbsLatM": 0.453,
+      "rmsLatM": 0.268
+     },
+     {
+      "tCentre": 47.0,
+      "station": 1971.8,
+      "maxAbsLatM": 0.426,
+      "rmsLatM": 0.282
+     },
+     {
+      "tCentre": 48.5,
+      "station": 2027.0,
+      "maxAbsLatM": 0.149,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 50.0,
+      "station": 2079.0,
+      "maxAbsLatM": 0.247,
+      "rmsLatM": 0.126
+     },
+     {
+      "tCentre": 51.5,
+      "station": 2116.0,
+      "maxAbsLatM": 0.234,
+      "rmsLatM": 0.149
+     },
+     {
+      "tCentre": 53.0,
+      "station": 2162.8,
+      "maxAbsLatM": 0.167,
+      "rmsLatM": 0.095
+     },
+     {
+      "tCentre": 54.5,
+      "station": 2204.8,
+      "maxAbsLatM": 0.054,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 56.0,
+      "station": 2246.0,
+      "maxAbsLatM": 0.142,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 57.5,
+      "station": 2291.2,
+      "maxAbsLatM": 0.107,
+      "rmsLatM": 0.063
+     },
+     {
+      "tCentre": 59.0,
+      "station": 2340.5,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.035
+     },
+     {
+      "tCentre": 60.5,
+      "station": 2394.2,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.041
+     },
+     {
+      "tCentre": 62.0,
+      "station": 2451.5,
+      "maxAbsLatM": 0.18,
+      "rmsLatM": 0.129
+     },
+     {
+      "tCentre": 63.5,
+      "station": 2511.5,
+      "maxAbsLatM": 0.102,
+      "rmsLatM": 0.064
+     },
+     {
+      "tCentre": 65.0,
+      "station": 2574.8,
+      "maxAbsLatM": 0.116,
+      "rmsLatM": 0.081
+     },
+     {
+      "tCentre": 66.5,
+      "station": 2639.8,
+      "maxAbsLatM": 0.034,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 68.0,
+      "station": 2708.5,
+      "maxAbsLatM": 0.046,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 69.5,
+      "station": 2779.0,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 71.0,
+      "station": 2850.5,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 72.5,
+      "station": 2908.8,
+      "maxAbsLatM": 0.053,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 74.0,
+      "station": 2948.0,
+      "maxAbsLatM": 0.139,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 75.5,
+      "station": 2970.2,
+      "maxAbsLatM": 0.122,
+      "rmsLatM": 0.092
+     },
+     {
+      "tCentre": 77.0,
+      "station": 2994.8,
+      "maxAbsLatM": 0.166,
+      "rmsLatM": 0.097
+     },
+     {
+      "tCentre": 78.5,
+      "station": 3020.0,
+      "maxAbsLatM": 0.191,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 80.0,
+      "station": 3052.0,
+      "maxAbsLatM": 0.149,
+      "rmsLatM": 0.09
+     },
+     {
+      "tCentre": 81.5,
+      "station": 3083.5,
+      "maxAbsLatM": 0.167,
+      "rmsLatM": 0.099
+     },
+     {
+      "tCentre": 83.0,
+      "station": 3118.2,
+      "maxAbsLatM": 0.026,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 84.5,
+      "station": 3155.8,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 86.0,
+      "station": 3195.5,
+      "maxAbsLatM": 0.089,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 87.5,
+      "station": 3237.5,
+      "maxAbsLatM": 0.138,
+      "rmsLatM": 0.092
+     },
+     {
+      "tCentre": 89.0,
+      "station": 3279.2,
+      "maxAbsLatM": 0.095,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 90.5,
+      "station": 3321.2,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 92.0,
+      "station": 3361.0,
+      "maxAbsLatM": 0.077,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 93.5,
+      "station": 3407.8,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 95.0,
+      "station": 3460.8,
+      "maxAbsLatM": 0.113,
+      "rmsLatM": 0.075
+     },
+     {
+      "tCentre": 96.5,
+      "station": 3506.2,
+      "maxAbsLatM": 0.254,
+      "rmsLatM": 0.181
+     },
+     {
+      "tCentre": 98.0,
+      "station": 3539.0,
+      "maxAbsLatM": 0.095,
+      "rmsLatM": 0.052
+     },
+     {
+      "tCentre": 99.5,
+      "station": 3573.0,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 101.0,
+      "station": 3610.2,
+      "maxAbsLatM": 0.042,
+      "rmsLatM": 0.025
+     },
+     {
+      "tCentre": 102.5,
+      "station": 3649.2,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.034
+     },
+     {
+      "tCentre": 104.0,
+      "station": 3693.0,
+      "maxAbsLatM": 0.037,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 105.5,
+      "station": 3740.5,
+      "maxAbsLatM": 0.065,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 107.0,
+      "station": 3780.8,
+      "maxAbsLatM": 0.182,
+      "rmsLatM": 0.124
+     },
+     {
+      "tCentre": 108.5,
+      "station": 3813.0,
+      "maxAbsLatM": 0.071,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 110.0,
+      "station": 3850.2,
+      "maxAbsLatM": 0.138,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 111.5,
+      "station": 3896.2,
+      "maxAbsLatM": 0.163,
+      "rmsLatM": 0.1
+     },
+     {
+      "tCentre": 113.0,
+      "station": 3936.5,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 114.5,
+      "station": 3982.0,
+      "maxAbsLatM": 0.049,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 116.0,
+      "station": 4031.2,
+      "maxAbsLatM": 0.014,
+      "rmsLatM": 0.007
+     },
+     {
+      "tCentre": 117.5,
+      "station": 4083.8,
+      "maxAbsLatM": 0.016,
+      "rmsLatM": 0.007
+     },
+     {
+      "tCentre": 119.0,
+      "station": 4139.2,
+      "maxAbsLatM": 0.037,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 120.5,
+      "station": 4198.0,
+      "maxAbsLatM": 0.013,
+      "rmsLatM": 0.006
+     },
+     {
+      "tCentre": 122.0,
+      "station": 4259.5,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 123.5,
+      "station": 4323.2,
+      "maxAbsLatM": 0.04,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 125.0,
+      "station": 4388.0,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.018
+     },
+     {
+      "tCentre": 126.5,
+      "station": 4454.2,
+      "maxAbsLatM": 0.039,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 128.0,
+      "station": 4512.8,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 129.5,
+      "station": 49.2,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.028
+     }
+    ],
+    "4": [
+     {
+      "tCentre": 2.0,
+      "station": 241.8,
+      "maxAbsLatM": 0.066,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 3.5,
+      "station": 315.0,
+      "maxAbsLatM": 0.039,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 5.0,
+      "station": 388.5,
+      "maxAbsLatM": 0.022,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 6.5,
+      "station": 463.0,
+      "maxAbsLatM": 0.121,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 8.0,
+      "station": 538.5,
+      "maxAbsLatM": 0.051,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 9.5,
+      "station": 614.8,
+      "maxAbsLatM": 0.012,
+      "rmsLatM": 0.008
+     },
+     {
+      "tCentre": 11.0,
+      "station": 691.8,
+      "maxAbsLatM": 0.102,
+      "rmsLatM": 0.068
+     },
+     {
+      "tCentre": 12.5,
+      "station": 766.8,
+      "maxAbsLatM": 0.13,
+      "rmsLatM": 0.068
+     },
+     {
+      "tCentre": 14.0,
+      "station": 824.0,
+      "maxAbsLatM": 0.18,
+      "rmsLatM": 0.122
+     },
+     {
+      "tCentre": 15.5,
+      "station": 863.0,
+      "maxAbsLatM": 0.057,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 17.0,
+      "station": 898.0,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.085
+     },
+     {
+      "tCentre": 18.5,
+      "station": 934.8,
+      "maxAbsLatM": 0.204,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 20.0,
+      "station": 968.8,
+      "maxAbsLatM": 0.22,
+      "rmsLatM": 0.153
+     },
+     {
+      "tCentre": 21.5,
+      "station": 1010.0,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.017
+     },
+     {
+      "tCentre": 23.0,
+      "station": 1058.2,
+      "maxAbsLatM": 0.095,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 24.5,
+      "station": 1110.2,
+      "maxAbsLatM": 0.064,
+      "rmsLatM": 0.042
+     },
+     {
+      "tCentre": 26.0,
+      "station": 1165.2,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 27.5,
+      "station": 1223.5,
+      "maxAbsLatM": 0.047,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 29.0,
+      "station": 1285.2,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 30.5,
+      "station": 1349.2,
+      "maxAbsLatM": 0.035,
+      "rmsLatM": 0.02
+     },
+     {
+      "tCentre": 32.0,
+      "station": 1407.2,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 33.5,
+      "station": 1463.5,
+      "maxAbsLatM": 0.249,
+      "rmsLatM": 0.115
+     },
+     {
+      "tCentre": 35.0,
+      "station": 1514.2,
+      "maxAbsLatM": 0.345,
+      "rmsLatM": 0.243
+     },
+     {
+      "tCentre": 36.5,
+      "station": 1567.8,
+      "maxAbsLatM": 0.241,
+      "rmsLatM": 0.136
+     },
+     {
+      "tCentre": 38.0,
+      "station": 1625.2,
+      "maxAbsLatM": 0.122,
+      "rmsLatM": 0.077
+     },
+     {
+      "tCentre": 39.5,
+      "station": 1684.0,
+      "maxAbsLatM": 0.36,
+      "rmsLatM": 0.222
+     },
+     {
+      "tCentre": 41.0,
+      "station": 1743.2,
+      "maxAbsLatM": 0.246,
+      "rmsLatM": 0.14
+     },
+     {
+      "tCentre": 42.5,
+      "station": 1799.8,
+      "maxAbsLatM": 0.251,
+      "rmsLatM": 0.197
+     },
+     {
+      "tCentre": 44.0,
+      "station": 1855.0,
+      "maxAbsLatM": 0.279,
+      "rmsLatM": 0.15
+     },
+     {
+      "tCentre": 45.5,
+      "station": 1910.8,
+      "maxAbsLatM": 0.246,
+      "rmsLatM": 0.138
+     },
+     {
+      "tCentre": 47.0,
+      "station": 1967.2,
+      "maxAbsLatM": 0.298,
+      "rmsLatM": 0.166
+     },
+     {
+      "tCentre": 48.5,
+      "station": 2023.5,
+      "maxAbsLatM": 0.116,
+      "rmsLatM": 0.081
+     },
+     {
+      "tCentre": 50.0,
+      "station": 2076.5,
+      "maxAbsLatM": 0.222,
+      "rmsLatM": 0.138
+     },
+     {
+      "tCentre": 51.5,
+      "station": 2116.2,
+      "maxAbsLatM": 0.305,
+      "rmsLatM": 0.196
+     },
+     {
+      "tCentre": 53.0,
+      "station": 2166.5,
+      "maxAbsLatM": 0.225,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 54.5,
+      "station": 2206.0,
+      "maxAbsLatM": 0.054,
+      "rmsLatM": 0.026
+     },
+     {
+      "tCentre": 56.0,
+      "station": 2247.5,
+      "maxAbsLatM": 0.209,
+      "rmsLatM": 0.135
+     },
+     {
+      "tCentre": 57.5,
+      "station": 2293.8,
+      "maxAbsLatM": 0.037,
+      "rmsLatM": 0.018
+     },
+     {
+      "tCentre": 59.0,
+      "station": 2344.2,
+      "maxAbsLatM": 0.04,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 60.5,
+      "station": 2398.8,
+      "maxAbsLatM": 0.064,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 62.0,
+      "station": 2457.0,
+      "maxAbsLatM": 0.156,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 63.5,
+      "station": 2517.5,
+      "maxAbsLatM": 0.126,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 65.0,
+      "station": 2581.2,
+      "maxAbsLatM": 0.124,
+      "rmsLatM": 0.07
+     },
+     {
+      "tCentre": 66.5,
+      "station": 2646.8,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.08
+     },
+     {
+      "tCentre": 68.0,
+      "station": 2714.8,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 69.5,
+      "station": 2785.0,
+      "maxAbsLatM": 0.156,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 71.0,
+      "station": 2855.2,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 72.5,
+      "station": 2911.8,
+      "maxAbsLatM": 0.051,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 74.0,
+      "station": 2950.5,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 75.5,
+      "station": 2973.5,
+      "maxAbsLatM": 0.132,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 77.0,
+      "station": 3004.2,
+      "maxAbsLatM": 0.118,
+      "rmsLatM": 0.072
+     },
+     {
+      "tCentre": 78.5,
+      "station": 3034.0,
+      "maxAbsLatM": 0.117,
+      "rmsLatM": 0.078
+     },
+     {
+      "tCentre": 80.0,
+      "station": 3069.5,
+      "maxAbsLatM": 0.096,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 81.5,
+      "station": 3102.5,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.043
+     },
+     {
+      "tCentre": 83.0,
+      "station": 3141.0,
+      "maxAbsLatM": 0.071,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 84.5,
+      "station": 3180.0,
+      "maxAbsLatM": 0.038,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 86.0,
+      "station": 3222.0,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 87.5,
+      "station": 3265.2,
+      "maxAbsLatM": 0.137,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 89.0,
+      "station": 3306.8,
+      "maxAbsLatM": 0.202,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 90.5,
+      "station": 3344.2,
+      "maxAbsLatM": 0.153,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 92.0,
+      "station": 3388.2,
+      "maxAbsLatM": 0.121,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 93.5,
+      "station": 3439.5,
+      "maxAbsLatM": 0.064,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 95.0,
+      "station": 3490.5,
+      "maxAbsLatM": 0.087,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 96.5,
+      "station": 3527.2,
+      "maxAbsLatM": 0.135,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 98.0,
+      "station": 3558.0,
+      "maxAbsLatM": 0.101,
+      "rmsLatM": 0.045
+     },
+     {
+      "tCentre": 99.5,
+      "station": 3596.0,
+      "maxAbsLatM": 0.04,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 101.0,
+      "station": 3632.8,
+      "maxAbsLatM": 0.095,
+      "rmsLatM": 0.063
+     },
+     {
+      "tCentre": 102.5,
+      "station": 3675.5,
+      "maxAbsLatM": 0.042,
+      "rmsLatM": 0.025
+     },
+     {
+      "tCentre": 104.0,
+      "station": 3722.2,
+      "maxAbsLatM": 0.042,
+      "rmsLatM": 0.024
+     },
+     {
+      "tCentre": 105.5,
+      "station": 3768.2,
+      "maxAbsLatM": 0.175,
+      "rmsLatM": 0.107
+     },
+     {
+      "tCentre": 107.0,
+      "station": 3803.8,
+      "maxAbsLatM": 0.061,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 108.5,
+      "station": 3837.8,
+      "maxAbsLatM": 0.113,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 110.0,
+      "station": 3882.2,
+      "maxAbsLatM": 0.105,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 111.5,
+      "station": 3920.8,
+      "maxAbsLatM": 0.142,
+      "rmsLatM": 0.094
+     },
+     {
+      "tCentre": 113.0,
+      "station": 3964.0,
+      "maxAbsLatM": 0.023,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 114.5,
+      "station": 4011.8,
+      "maxAbsLatM": 0.023,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 116.0,
+      "station": 4062.8,
+      "maxAbsLatM": 0.015,
+      "rmsLatM": 0.009
+     },
+     {
+      "tCentre": 117.5,
+      "station": 4117.0,
+      "maxAbsLatM": 0.016,
+      "rmsLatM": 0.006
+     },
+     {
+      "tCentre": 119.0,
+      "station": 4174.5,
+      "maxAbsLatM": 0.016,
+      "rmsLatM": 0.009
+     },
+     {
+      "tCentre": 120.5,
+      "station": 4235.0,
+      "maxAbsLatM": 0.01,
+      "rmsLatM": 0.005
+     },
+     {
+      "tCentre": 122.0,
+      "station": 4298.2,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 123.5,
+      "station": 4362.8,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 125.0,
+      "station": 4428.2,
+      "maxAbsLatM": 0.044,
+      "rmsLatM": 0.026
+     },
+     {
+      "tCentre": 126.5,
+      "station": 4495.8,
+      "maxAbsLatM": 0.023,
+      "rmsLatM": 0.01
+     },
+     {
+      "tCentre": 128.0,
+      "station": 46.5,
+      "maxAbsLatM": 0.021,
+      "rmsLatM": 0.013
+     }
+    ],
+    "5": [
+     {
+      "tCentre": 2.0,
+      "station": 240.5,
+      "maxAbsLatM": 0.047,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 3.5,
+      "station": 314.8,
+      "maxAbsLatM": 0.086,
+      "rmsLatM": 0.052
+     },
+     {
+      "tCentre": 5.0,
+      "station": 389.5,
+      "maxAbsLatM": 0.088,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 6.5,
+      "station": 464.5,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.094
+     },
+     {
+      "tCentre": 8.0,
+      "station": 540.8,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.036
+     },
+     {
+      "tCentre": 9.5,
+      "station": 617.8,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 11.0,
+      "station": 695.5,
+      "maxAbsLatM": 0.042,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 12.5,
+      "station": 769.5,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.041
+     },
+     {
+      "tCentre": 14.0,
+      "station": 824.5,
+      "maxAbsLatM": 0.054,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 15.5,
+      "station": 863.0,
+      "maxAbsLatM": 0.027,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 17.0,
+      "station": 896.5,
+      "maxAbsLatM": 0.064,
+      "rmsLatM": 0.034
+     },
+     {
+      "tCentre": 18.5,
+      "station": 932.2,
+      "maxAbsLatM": 0.143,
+      "rmsLatM": 0.072
+     },
+     {
+      "tCentre": 20.0,
+      "station": 965.8,
+      "maxAbsLatM": 0.068,
+      "rmsLatM": 0.041
+     },
+     {
+      "tCentre": 21.5,
+      "station": 1007.0,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 23.0,
+      "station": 1054.2,
+      "maxAbsLatM": 0.078,
+      "rmsLatM": 0.036
+     },
+     {
+      "tCentre": 24.5,
+      "station": 1106.8,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 26.0,
+      "station": 1161.8,
+      "maxAbsLatM": 0.081,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 27.5,
+      "station": 1220.5,
+      "maxAbsLatM": 0.132,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 29.0,
+      "station": 1282.5,
+      "maxAbsLatM": 0.016,
+      "rmsLatM": 0.01
+     },
+     {
+      "tCentre": 30.5,
+      "station": 1346.8,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 32.0,
+      "station": 1406.2,
+      "maxAbsLatM": 0.114,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 33.5,
+      "station": 1462.5,
+      "maxAbsLatM": 0.566,
+      "rmsLatM": 0.335
+     },
+     {
+      "tCentre": 35.0,
+      "station": 1513.8,
+      "maxAbsLatM": 0.177,
+      "rmsLatM": 0.105
+     },
+     {
+      "tCentre": 36.5,
+      "station": 1569.0,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.053
+     },
+     {
+      "tCentre": 38.0,
+      "station": 1627.5,
+      "maxAbsLatM": 0.09,
+      "rmsLatM": 0.061
+     },
+     {
+      "tCentre": 39.5,
+      "station": 1687.0,
+      "maxAbsLatM": 0.405,
+      "rmsLatM": 0.252
+     },
+     {
+      "tCentre": 41.0,
+      "station": 1745.0,
+      "maxAbsLatM": 0.152,
+      "rmsLatM": 0.096
+     },
+     {
+      "tCentre": 42.5,
+      "station": 1801.8,
+      "maxAbsLatM": 0.583,
+      "rmsLatM": 0.331
+     },
+     {
+      "tCentre": 44.0,
+      "station": 1858.0,
+      "maxAbsLatM": 0.283,
+      "rmsLatM": 0.177
+     },
+     {
+      "tCentre": 45.5,
+      "station": 1912.8,
+      "maxAbsLatM": 0.348,
+      "rmsLatM": 0.216
+     },
+     {
+      "tCentre": 47.0,
+      "station": 1966.8,
+      "maxAbsLatM": 0.259,
+      "rmsLatM": 0.175
+     },
+     {
+      "tCentre": 48.5,
+      "station": 2021.2,
+      "maxAbsLatM": 0.072,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 50.0,
+      "station": 2075.0,
+      "maxAbsLatM": 0.258,
+      "rmsLatM": 0.152
+     },
+     {
+      "tCentre": 51.5,
+      "station": 2115.0,
+      "maxAbsLatM": 0.247,
+      "rmsLatM": 0.166
+     },
+     {
+      "tCentre": 53.0,
+      "station": 2166.5,
+      "maxAbsLatM": 0.207,
+      "rmsLatM": 0.108
+     },
+     {
+      "tCentre": 54.5,
+      "station": 2206.2,
+      "maxAbsLatM": 0.096,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 56.0,
+      "station": 2247.0,
+      "maxAbsLatM": 0.143,
+      "rmsLatM": 0.088
+     },
+     {
+      "tCentre": 57.5,
+      "station": 2292.8,
+      "maxAbsLatM": 0.153,
+      "rmsLatM": 0.105
+     },
+     {
+      "tCentre": 59.0,
+      "station": 2342.8,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.037
+     },
+     {
+      "tCentre": 60.5,
+      "station": 2397.0,
+      "maxAbsLatM": 0.082,
+      "rmsLatM": 0.043
+     },
+     {
+      "tCentre": 62.0,
+      "station": 2454.5,
+      "maxAbsLatM": 0.197,
+      "rmsLatM": 0.141
+     },
+     {
+      "tCentre": 63.5,
+      "station": 2514.5,
+      "maxAbsLatM": 0.077,
+      "rmsLatM": 0.054
+     },
+     {
+      "tCentre": 65.0,
+      "station": 2577.8,
+      "maxAbsLatM": 0.105,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 66.5,
+      "station": 2643.2,
+      "maxAbsLatM": 0.041,
+      "rmsLatM": 0.024
+     },
+     {
+      "tCentre": 68.0,
+      "station": 2712.2,
+      "maxAbsLatM": 0.162,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 69.5,
+      "station": 2782.5,
+      "maxAbsLatM": 0.044,
+      "rmsLatM": 0.025
+     },
+     {
+      "tCentre": 71.0,
+      "station": 2854.8,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.075
+     },
+     {
+      "tCentre": 72.5,
+      "station": 2912.5,
+      "maxAbsLatM": 0.135,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 74.0,
+      "station": 2951.0,
+      "maxAbsLatM": 0.127,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 75.5,
+      "station": 2976.8,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.034
+     },
+     {
+      "tCentre": 77.0,
+      "station": 3004.2,
+      "maxAbsLatM": 0.27,
+      "rmsLatM": 0.161
+     },
+     {
+      "tCentre": 78.5,
+      "station": 3031.8,
+      "maxAbsLatM": 0.188,
+      "rmsLatM": 0.123
+     },
+     {
+      "tCentre": 80.0,
+      "station": 3067.5,
+      "maxAbsLatM": 0.039,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 81.5,
+      "station": 3099.5,
+      "maxAbsLatM": 0.128,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 83.0,
+      "station": 3136.8,
+      "maxAbsLatM": 0.078,
+      "rmsLatM": 0.054
+     },
+     {
+      "tCentre": 84.5,
+      "station": 3175.8,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 86.0,
+      "station": 3218.0,
+      "maxAbsLatM": 0.076,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 87.5,
+      "station": 3258.2,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 89.0,
+      "station": 3303.8,
+      "maxAbsLatM": 0.152,
+      "rmsLatM": 0.097
+     },
+     {
+      "tCentre": 90.5,
+      "station": 3343.8,
+      "maxAbsLatM": 0.219,
+      "rmsLatM": 0.157
+     },
+     {
+      "tCentre": 92.0,
+      "station": 3388.2,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.016
+     },
+     {
+      "tCentre": 93.5,
+      "station": 3440.2,
+      "maxAbsLatM": 0.137,
+      "rmsLatM": 0.095
+     },
+     {
+      "tCentre": 95.0,
+      "station": 3488.2,
+      "maxAbsLatM": 0.317,
+      "rmsLatM": 0.227
+     },
+     {
+      "tCentre": 96.5,
+      "station": 3524.2,
+      "maxAbsLatM": 0.097,
+      "rmsLatM": 0.053
+     },
+     {
+      "tCentre": 98.0,
+      "station": 3557.8,
+      "maxAbsLatM": 0.172,
+      "rmsLatM": 0.124
+     },
+     {
+      "tCentre": 99.5,
+      "station": 3599.5,
+      "maxAbsLatM": 0.14,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 101.0,
+      "station": 3635.8,
+      "maxAbsLatM": 0.053,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 102.5,
+      "station": 3678.5,
+      "maxAbsLatM": 0.035,
+      "rmsLatM": 0.018
+     },
+     {
+      "tCentre": 104.0,
+      "station": 3725.2,
+      "maxAbsLatM": 0.109,
+      "rmsLatM": 0.059
+     },
+     {
+      "tCentre": 105.5,
+      "station": 3770.2,
+      "maxAbsLatM": 0.111,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 107.0,
+      "station": 3805.5,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 108.5,
+      "station": 3837.5,
+      "maxAbsLatM": 0.085,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 110.0,
+      "station": 3880.8,
+      "maxAbsLatM": 0.044,
+      "rmsLatM": 0.02
+     },
+     {
+      "tCentre": 111.5,
+      "station": 3919.8,
+      "maxAbsLatM": 0.162,
+      "rmsLatM": 0.115
+     },
+     {
+      "tCentre": 113.0,
+      "station": 3963.0,
+      "maxAbsLatM": 0.017,
+      "rmsLatM": 0.008
+     },
+     {
+      "tCentre": 114.5,
+      "station": 4011.0,
+      "maxAbsLatM": 0.016,
+      "rmsLatM": 0.008
+     },
+     {
+      "tCentre": 116.0,
+      "station": 4061.8,
+      "maxAbsLatM": 0.019,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 117.5,
+      "station": 4116.2,
+      "maxAbsLatM": 0.026,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 119.0,
+      "station": 4173.5,
+      "maxAbsLatM": 0.026,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 120.5,
+      "station": 4233.8,
+      "maxAbsLatM": 0.013,
+      "rmsLatM": 0.007
+     },
+     {
+      "tCentre": 122.0,
+      "station": 4296.5,
+      "maxAbsLatM": 0.043,
+      "rmsLatM": 0.026
+     },
+     {
+      "tCentre": 123.5,
+      "station": 4361.2,
+      "maxAbsLatM": 0.096,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 125.0,
+      "station": 4427.0,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 126.5,
+      "station": 4494.5,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 128.0,
+      "station": 45.0,
+      "maxAbsLatM": 0.061,
+      "rmsLatM": 0.033
+     }
+    ],
+    "6": [
+     {
+      "tCentre": 2.0,
+      "station": 239.5,
+      "maxAbsLatM": 0.177,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 3.5,
+      "station": 314.5,
+      "maxAbsLatM": 0.024,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 5.0,
+      "station": 389.5,
+      "maxAbsLatM": 0.018,
+      "rmsLatM": 0.009
+     },
+     {
+      "tCentre": 6.5,
+      "station": 465.5,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 8.0,
+      "station": 542.0,
+      "maxAbsLatM": 0.045,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 9.5,
+      "station": 619.5,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 11.0,
+      "station": 697.8,
+      "maxAbsLatM": 0.081,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 12.5,
+      "station": 774.2,
+      "maxAbsLatM": 0.078,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 14.0,
+      "station": 832.8,
+      "maxAbsLatM": 0.218,
+      "rmsLatM": 0.143
+     },
+     {
+      "tCentre": 15.5,
+      "station": 871.0,
+      "maxAbsLatM": 0.078,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 17.0,
+      "station": 905.0,
+      "maxAbsLatM": 0.182,
+      "rmsLatM": 0.1
+     },
+     {
+      "tCentre": 18.5,
+      "station": 937.2,
+      "maxAbsLatM": 0.188,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 20.0,
+      "station": 971.8,
+      "maxAbsLatM": 0.108,
+      "rmsLatM": 0.07
+     },
+     {
+      "tCentre": 21.5,
+      "station": 1014.0,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 23.0,
+      "station": 1062.8,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 24.5,
+      "station": 1115.5,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.016
+     },
+     {
+      "tCentre": 26.0,
+      "station": 1172.0,
+      "maxAbsLatM": 0.155,
+      "rmsLatM": 0.082
+     },
+     {
+      "tCentre": 27.5,
+      "station": 1231.5,
+      "maxAbsLatM": 0.138,
+      "rmsLatM": 0.078
+     },
+     {
+      "tCentre": 29.0,
+      "station": 1294.2,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.035
+     },
+     {
+      "tCentre": 30.5,
+      "station": 1358.8,
+      "maxAbsLatM": 0.093,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 32.0,
+      "station": 1414.2,
+      "maxAbsLatM": 0.192,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 33.5,
+      "station": 1470.2,
+      "maxAbsLatM": 0.196,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 35.0,
+      "station": 1520.8,
+      "maxAbsLatM": 0.129,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 36.5,
+      "station": 1576.2,
+      "maxAbsLatM": 0.104,
+      "rmsLatM": 0.066
+     },
+     {
+      "tCentre": 38.0,
+      "station": 1635.0,
+      "maxAbsLatM": 0.037,
+      "rmsLatM": 0.025
+     },
+     {
+      "tCentre": 39.5,
+      "station": 1693.8,
+      "maxAbsLatM": 0.151,
+      "rmsLatM": 0.07
+     },
+     {
+      "tCentre": 41.0,
+      "station": 1751.5,
+      "maxAbsLatM": 0.083,
+      "rmsLatM": 0.042
+     },
+     {
+      "tCentre": 42.5,
+      "station": 1807.2,
+      "maxAbsLatM": 0.189,
+      "rmsLatM": 0.125
+     },
+     {
+      "tCentre": 44.0,
+      "station": 1863.8,
+      "maxAbsLatM": 0.196,
+      "rmsLatM": 0.139
+     },
+     {
+      "tCentre": 45.5,
+      "station": 1920.0,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.091
+     },
+     {
+      "tCentre": 47.0,
+      "station": 1975.8,
+      "maxAbsLatM": 0.371,
+      "rmsLatM": 0.165
+     },
+     {
+      "tCentre": 48.5,
+      "station": 2032.0,
+      "maxAbsLatM": 0.229,
+      "rmsLatM": 0.134
+     },
+     {
+      "tCentre": 50.0,
+      "station": 2083.5,
+      "maxAbsLatM": 0.167,
+      "rmsLatM": 0.089
+     },
+     {
+      "tCentre": 51.5,
+      "station": 2119.5,
+      "maxAbsLatM": 0.113,
+      "rmsLatM": 0.055
+     },
+     {
+      "tCentre": 53.0,
+      "station": 2173.0,
+      "maxAbsLatM": 0.084,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 54.5,
+      "station": 2211.2,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 56.0,
+      "station": 2253.2,
+      "maxAbsLatM": 0.188,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 57.5,
+      "station": 2299.8,
+      "maxAbsLatM": 0.131,
+      "rmsLatM": 0.085
+     },
+     {
+      "tCentre": 59.0,
+      "station": 2351.2,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 60.5,
+      "station": 2405.8,
+      "maxAbsLatM": 0.124,
+      "rmsLatM": 0.075
+     },
+     {
+      "tCentre": 62.0,
+      "station": 2464.2,
+      "maxAbsLatM": 0.137,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 63.5,
+      "station": 2525.0,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 65.0,
+      "station": 2588.8,
+      "maxAbsLatM": 0.079,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 66.5,
+      "station": 2653.8,
+      "maxAbsLatM": 0.02,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 68.0,
+      "station": 2721.2,
+      "maxAbsLatM": 0.185,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 69.5,
+      "station": 2791.5,
+      "maxAbsLatM": 0.087,
+      "rmsLatM": 0.061
+     },
+     {
+      "tCentre": 71.0,
+      "station": 2862.8,
+      "maxAbsLatM": 0.097,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 72.5,
+      "station": 2917.5,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 74.0,
+      "station": 2954.5,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 75.5,
+      "station": 2978.5,
+      "maxAbsLatM": 0.068,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 77.0,
+      "station": 3006.8,
+      "maxAbsLatM": 0.179,
+      "rmsLatM": 0.104
+     },
+     {
+      "tCentre": 78.5,
+      "station": 3036.2,
+      "maxAbsLatM": 0.086,
+      "rmsLatM": 0.042
+     },
+     {
+      "tCentre": 80.0,
+      "station": 3071.0,
+      "maxAbsLatM": 0.054,
+      "rmsLatM": 0.024
+     },
+     {
+      "tCentre": 81.5,
+      "station": 3104.0,
+      "maxAbsLatM": 0.101,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 83.0,
+      "station": 3142.8,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.016
+     },
+     {
+      "tCentre": 84.5,
+      "station": 3182.2,
+      "maxAbsLatM": 0.062,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 86.0,
+      "station": 3224.5,
+      "maxAbsLatM": 0.17,
+      "rmsLatM": 0.108
+     },
+     {
+      "tCentre": 87.5,
+      "station": 3265.8,
+      "maxAbsLatM": 0.116,
+      "rmsLatM": 0.063
+     },
+     {
+      "tCentre": 89.0,
+      "station": 3310.8,
+      "maxAbsLatM": 0.079,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 90.5,
+      "station": 3351.2,
+      "maxAbsLatM": 0.149,
+      "rmsLatM": 0.091
+     },
+     {
+      "tCentre": 92.0,
+      "station": 3398.0,
+      "maxAbsLatM": 0.141,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 93.5,
+      "station": 3450.2,
+      "maxAbsLatM": 0.166,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 95.0,
+      "station": 3494.8,
+      "maxAbsLatM": 0.047,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 96.5,
+      "station": 3531.5,
+      "maxAbsLatM": 0.213,
+      "rmsLatM": 0.141
+     },
+     {
+      "tCentre": 98.0,
+      "station": 3568.5,
+      "maxAbsLatM": 0.361,
+      "rmsLatM": 0.246
+     },
+     {
+      "tCentre": 99.5,
+      "station": 3606.5,
+      "maxAbsLatM": 0.28,
+      "rmsLatM": 0.162
+     },
+     {
+      "tCentre": 101.0,
+      "station": 3644.0,
+      "maxAbsLatM": 0.039,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 102.5,
+      "station": 3687.5,
+      "maxAbsLatM": 0.027,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 104.0,
+      "station": 3734.0,
+      "maxAbsLatM": 0.04,
+      "rmsLatM": 0.024
+     },
+     {
+      "tCentre": 105.5,
+      "station": 3774.8,
+      "maxAbsLatM": 0.178,
+      "rmsLatM": 0.113
+     },
+     {
+      "tCentre": 107.0,
+      "station": 3808.0,
+      "maxAbsLatM": 0.081,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 108.5,
+      "station": 3845.2,
+      "maxAbsLatM": 0.068,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 110.0,
+      "station": 3891.2,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 111.5,
+      "station": 3931.0,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 113.0,
+      "station": 3975.8,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 114.5,
+      "station": 4024.0,
+      "maxAbsLatM": 0.024,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 116.0,
+      "station": 4075.2,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 117.5,
+      "station": 4129.8,
+      "maxAbsLatM": 0.039,
+      "rmsLatM": 0.024
+     },
+     {
+      "tCentre": 119.0,
+      "station": 4187.2,
+      "maxAbsLatM": 0.018,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 120.5,
+      "station": 4247.5,
+      "maxAbsLatM": 0.028,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 122.0,
+      "station": 4308.0,
+      "maxAbsLatM": 0.028,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 123.5,
+      "station": 4363.2,
+      "maxAbsLatM": 0.055,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 125.0,
+      "station": 4412.0,
+      "maxAbsLatM": 0.048,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 126.5,
+      "station": 4455.0,
+      "maxAbsLatM": 0.028,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 128.0,
+      "station": 4493.8,
+      "maxAbsLatM": 0.028,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 129.5,
+      "station": 4533.0,
+      "maxAbsLatM": 0.09,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 131.0,
+      "station": 20.8,
+      "maxAbsLatM": 0.12,
+      "rmsLatM": 0.074
+     },
+     {
+      "tCentre": 132.5,
+      "station": 37.8,
+      "maxAbsLatM": 0.066,
+      "rmsLatM": 0.043
+     },
+     {
+      "tCentre": 134.0,
+      "station": 58.5,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 135.5,
+      "station": 76.0,
+      "maxAbsLatM": 0.047,
+      "rmsLatM": 0.021
+     },
+     {
+      "tCentre": 137.0,
+      "station": 93.8,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.015
+     }
+    ]
+   }
+  },
+  "4s": {
+   "sessionMedianM": 0.267,
+   "sessionP90M": 0.649,
+   "sessionP99M": 1.025,
+   "perLap": {
+    "1": {
+     "sectorMedianM": 0.258,
+     "sectorMaxM": 0.451,
+     "sectorMaxStation": 3353.8,
+     "restMedianM": 0.283,
+     "restP90M": 0.678,
+     "restMaxM": 1.094,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.443
+    },
+    "2": {
+     "sectorMedianM": 0.304,
+     "sectorMaxM": 1.144,
+     "sectorMaxStation": 3632.2,
+     "restMedianM": 0.267,
+     "restP90M": 0.695,
+     "restMaxM": 0.943,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.63
+    },
+    "3": {
+     "sectorMedianM": 0.216,
+     "sectorMaxM": 0.592,
+     "sectorMaxStation": 3517.5,
+     "restMedianM": 0.213,
+     "restP90M": 0.641,
+     "restMaxM": 1.151,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.371
+    },
+    "4": {
+     "sectorMedianM": 0.216,
+     "sectorMaxM": 0.665,
+     "sectorMaxStation": 3457.5,
+     "restMedianM": 0.3,
+     "restP90M": 0.663,
+     "restMaxM": 0.882,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.403
+    },
+    "5": {
+     "sectorMedianM": 0.237,
+     "sectorMaxM": 0.589,
+     "sectorMaxStation": 3458.5,
+     "restMedianM": 0.352,
+     "restP90M": 0.694,
+     "restMaxM": 1.289,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.522
+    },
+    "6": {
+     "sectorMedianM": 0.336,
+     "sectorMaxM": 0.637,
+     "sectorMaxStation": 3542.5,
+     "restMedianM": 0.244,
+     "restP90M": 0.575,
+     "restMaxM": 0.968,
+     "sectorMeanPercentileVsOtherLapsSameStation": 0.635
+    }
+   },
+   "rows": {
+    "1": [
+     {
+      "tCentre": 4.0,
+      "station": 339.5,
+      "maxAbsLatM": 0.31,
+      "rmsLatM": 0.205
+     },
+     {
+      "tCentre": 5.5,
+      "station": 415.2,
+      "maxAbsLatM": 0.103,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 7.0,
+      "station": 492.0,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 8.5,
+      "station": 569.8,
+      "maxAbsLatM": 0.259,
+      "rmsLatM": 0.178
+     },
+     {
+      "tCentre": 10.0,
+      "station": 648.2,
+      "maxAbsLatM": 0.36,
+      "rmsLatM": 0.215
+     },
+     {
+      "tCentre": 11.5,
+      "station": 727.8,
+      "maxAbsLatM": 0.625,
+      "rmsLatM": 0.377
+     },
+     {
+      "tCentre": 13.0,
+      "station": 795.5,
+      "maxAbsLatM": 0.698,
+      "rmsLatM": 0.45
+     },
+     {
+      "tCentre": 14.5,
+      "station": 845.8,
+      "maxAbsLatM": 0.198,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 16.0,
+      "station": 879.0,
+      "maxAbsLatM": 0.274,
+      "rmsLatM": 0.18
+     },
+     {
+      "tCentre": 17.5,
+      "station": 917.5,
+      "maxAbsLatM": 0.326,
+      "rmsLatM": 0.163
+     },
+     {
+      "tCentre": 19.0,
+      "station": 949.2,
+      "maxAbsLatM": 0.403,
+      "rmsLatM": 0.194
+     },
+     {
+      "tCentre": 20.5,
+      "station": 986.8,
+      "maxAbsLatM": 0.342,
+      "rmsLatM": 0.232
+     },
+     {
+      "tCentre": 22.0,
+      "station": 1031.5,
+      "maxAbsLatM": 0.072,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 23.5,
+      "station": 1083.2,
+      "maxAbsLatM": 0.469,
+      "rmsLatM": 0.304
+     },
+     {
+      "tCentre": 25.0,
+      "station": 1136.2,
+      "maxAbsLatM": 0.283,
+      "rmsLatM": 0.174
+     },
+     {
+      "tCentre": 26.5,
+      "station": 1193.5,
+      "maxAbsLatM": 0.079,
+      "rmsLatM": 0.051
+     },
+     {
+      "tCentre": 28.0,
+      "station": 1254.0,
+      "maxAbsLatM": 0.04,
+      "rmsLatM": 0.02
+     },
+     {
+      "tCentre": 29.5,
+      "station": 1316.8,
+      "maxAbsLatM": 0.279,
+      "rmsLatM": 0.161
+     },
+     {
+      "tCentre": 31.0,
+      "station": 1380.2,
+      "maxAbsLatM": 0.153,
+      "rmsLatM": 0.079
+     },
+     {
+      "tCentre": 32.5,
+      "station": 1433.0,
+      "maxAbsLatM": 0.221,
+      "rmsLatM": 0.098
+     },
+     {
+      "tCentre": 34.0,
+      "station": 1490.8,
+      "maxAbsLatM": 0.236,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 35.5,
+      "station": 1540.8,
+      "maxAbsLatM": 1.094,
+      "rmsLatM": 0.673
+     },
+     {
+      "tCentre": 37.0,
+      "station": 1594.0,
+      "maxAbsLatM": 0.243,
+      "rmsLatM": 0.135
+     },
+     {
+      "tCentre": 38.5,
+      "station": 1650.0,
+      "maxAbsLatM": 0.589,
+      "rmsLatM": 0.36
+     },
+     {
+      "tCentre": 40.0,
+      "station": 1706.2,
+      "maxAbsLatM": 0.527,
+      "rmsLatM": 0.31
+     },
+     {
+      "tCentre": 41.5,
+      "station": 1761.5,
+      "maxAbsLatM": 0.41,
+      "rmsLatM": 0.224
+     },
+     {
+      "tCentre": 43.0,
+      "station": 1816.2,
+      "maxAbsLatM": 0.375,
+      "rmsLatM": 0.211
+     },
+     {
+      "tCentre": 44.5,
+      "station": 1870.8,
+      "maxAbsLatM": 0.137,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 46.0,
+      "station": 1925.8,
+      "maxAbsLatM": 0.743,
+      "rmsLatM": 0.368
+     },
+     {
+      "tCentre": 47.5,
+      "station": 1979.8,
+      "maxAbsLatM": 0.437,
+      "rmsLatM": 0.263
+     },
+     {
+      "tCentre": 49.0,
+      "station": 2035.2,
+      "maxAbsLatM": 0.994,
+      "rmsLatM": 0.549
+     },
+     {
+      "tCentre": 50.5,
+      "station": 2084.5,
+      "maxAbsLatM": 0.3,
+      "rmsLatM": 0.162
+     },
+     {
+      "tCentre": 52.0,
+      "station": 2120.0,
+      "maxAbsLatM": 0.274,
+      "rmsLatM": 0.144
+     },
+     {
+      "tCentre": 53.5,
+      "station": 2176.8,
+      "maxAbsLatM": 0.308,
+      "rmsLatM": 0.146
+     },
+     {
+      "tCentre": 55.0,
+      "station": 2212.2,
+      "maxAbsLatM": 0.098,
+      "rmsLatM": 0.035
+     },
+     {
+      "tCentre": 56.5,
+      "station": 2252.2,
+      "maxAbsLatM": 0.342,
+      "rmsLatM": 0.231
+     },
+     {
+      "tCentre": 58.0,
+      "station": 2297.5,
+      "maxAbsLatM": 0.555,
+      "rmsLatM": 0.338
+     },
+     {
+      "tCentre": 59.5,
+      "station": 2347.0,
+      "maxAbsLatM": 0.362,
+      "rmsLatM": 0.227
+     },
+     {
+      "tCentre": 61.0,
+      "station": 2400.2,
+      "maxAbsLatM": 0.437,
+      "rmsLatM": 0.295
+     },
+     {
+      "tCentre": 62.5,
+      "station": 2457.0,
+      "maxAbsLatM": 0.586,
+      "rmsLatM": 0.331
+     },
+     {
+      "tCentre": 64.0,
+      "station": 2515.5,
+      "maxAbsLatM": 0.64,
+      "rmsLatM": 0.434
+     },
+     {
+      "tCentre": 65.5,
+      "station": 2578.2,
+      "maxAbsLatM": 0.398,
+      "rmsLatM": 0.261
+     },
+     {
+      "tCentre": 67.0,
+      "station": 2643.8,
+      "maxAbsLatM": 0.664,
+      "rmsLatM": 0.423
+     },
+     {
+      "tCentre": 68.5,
+      "station": 2711.5,
+      "maxAbsLatM": 0.791,
+      "rmsLatM": 0.517
+     },
+     {
+      "tCentre": 70.0,
+      "station": 2781.0,
+      "maxAbsLatM": 0.961,
+      "rmsLatM": 0.675
+     },
+     {
+      "tCentre": 71.5,
+      "station": 2852.5,
+      "maxAbsLatM": 0.457,
+      "rmsLatM": 0.245
+     },
+     {
+      "tCentre": 73.0,
+      "station": 2911.5,
+      "maxAbsLatM": 0.867,
+      "rmsLatM": 0.584
+     },
+     {
+      "tCentre": 74.5,
+      "station": 2951.0,
+      "maxAbsLatM": 0.278,
+      "rmsLatM": 0.178
+     },
+     {
+      "tCentre": 76.0,
+      "station": 2974.8,
+      "maxAbsLatM": 0.298,
+      "rmsLatM": 0.168
+     },
+     {
+      "tCentre": 77.5,
+      "station": 3002.8,
+      "maxAbsLatM": 0.295,
+      "rmsLatM": 0.182
+     },
+     {
+      "tCentre": 79.0,
+      "station": 3033.5,
+      "maxAbsLatM": 0.21,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 80.5,
+      "station": 3067.2,
+      "maxAbsLatM": 0.199,
+      "rmsLatM": 0.124
+     },
+     {
+      "tCentre": 82.0,
+      "station": 3092.5,
+      "maxAbsLatM": 0.355,
+      "rmsLatM": 0.221
+     },
+     {
+      "tCentre": 83.5,
+      "station": 3123.5,
+      "maxAbsLatM": 0.166,
+      "rmsLatM": 0.089
+     },
+     {
+      "tCentre": 85.0,
+      "station": 3156.0,
+      "maxAbsLatM": 0.134,
+      "rmsLatM": 0.068
+     },
+     {
+      "tCentre": 86.5,
+      "station": 3191.5,
+      "maxAbsLatM": 0.207,
+      "rmsLatM": 0.141
+     },
+     {
+      "tCentre": 88.0,
+      "station": 3230.2,
+      "maxAbsLatM": 0.107,
+      "rmsLatM": 0.051
+     },
+     {
+      "tCentre": 89.5,
+      "station": 3271.2,
+      "maxAbsLatM": 0.189,
+      "rmsLatM": 0.095
+     },
+     {
+      "tCentre": 91.0,
+      "station": 3314.8,
+      "maxAbsLatM": 0.364,
+      "rmsLatM": 0.194
+     },
+     {
+      "tCentre": 92.5,
+      "station": 3353.8,
+      "maxAbsLatM": 0.451,
+      "rmsLatM": 0.291
+     },
+     {
+      "tCentre": 94.0,
+      "station": 3397.0,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 95.5,
+      "station": 3444.0,
+      "maxAbsLatM": 0.329,
+      "rmsLatM": 0.199
+     },
+     {
+      "tCentre": 97.0,
+      "station": 3485.8,
+      "maxAbsLatM": 0.374,
+      "rmsLatM": 0.245
+     },
+     {
+      "tCentre": 98.5,
+      "station": 3522.8,
+      "maxAbsLatM": 0.204,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 100.0,
+      "station": 3551.2,
+      "maxAbsLatM": 0.181,
+      "rmsLatM": 0.092
+     },
+     {
+      "tCentre": 101.5,
+      "station": 3582.8,
+      "maxAbsLatM": 0.141,
+      "rmsLatM": 0.07
+     },
+     {
+      "tCentre": 103.0,
+      "station": 3616.0,
+      "maxAbsLatM": 0.26,
+      "rmsLatM": 0.151
+     },
+     {
+      "tCentre": 104.5,
+      "station": 3654.8,
+      "maxAbsLatM": 0.115,
+      "rmsLatM": 0.066
+     },
+     {
+      "tCentre": 106.0,
+      "station": 3698.0,
+      "maxAbsLatM": 0.097,
+      "rmsLatM": 0.054
+     },
+     {
+      "tCentre": 107.5,
+      "station": 3744.2,
+      "maxAbsLatM": 0.275,
+      "rmsLatM": 0.172
+     },
+     {
+      "tCentre": 109.0,
+      "station": 3780.8,
+      "maxAbsLatM": 0.331,
+      "rmsLatM": 0.196
+     },
+     {
+      "tCentre": 110.5,
+      "station": 3813.0,
+      "maxAbsLatM": 0.218,
+      "rmsLatM": 0.113
+     },
+     {
+      "tCentre": 112.0,
+      "station": 3848.5,
+      "maxAbsLatM": 0.258,
+      "rmsLatM": 0.139
+     },
+     {
+      "tCentre": 113.5,
+      "station": 3893.2,
+      "maxAbsLatM": 0.384,
+      "rmsLatM": 0.264
+     },
+     {
+      "tCentre": 115.0,
+      "station": 3933.5,
+      "maxAbsLatM": 0.204,
+      "rmsLatM": 0.116
+     },
+     {
+      "tCentre": 116.5,
+      "station": 3979.2,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 118.0,
+      "station": 4029.0,
+      "maxAbsLatM": 0.076,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 119.5,
+      "station": 4081.8,
+      "maxAbsLatM": 0.142,
+      "rmsLatM": 0.087
+     },
+     {
+      "tCentre": 121.0,
+      "station": 4137.8,
+      "maxAbsLatM": 0.03,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 122.5,
+      "station": 4197.0,
+      "maxAbsLatM": 0.103,
+      "rmsLatM": 0.052
+     },
+     {
+      "tCentre": 124.0,
+      "station": 4258.8,
+      "maxAbsLatM": 0.066,
+      "rmsLatM": 0.035
+     },
+     {
+      "tCentre": 125.5,
+      "station": 4323.0,
+      "maxAbsLatM": 0.063,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 127.0,
+      "station": 4388.8,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 128.5,
+      "station": 4455.8,
+      "maxAbsLatM": 0.074,
+      "rmsLatM": 0.039
+     }
+    ],
+    "2": [
+     {
+      "tCentre": 4.0,
+      "station": 342.5,
+      "maxAbsLatM": 0.122,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 5.5,
+      "station": 420.0,
+      "maxAbsLatM": 0.129,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 7.0,
+      "station": 498.5,
+      "maxAbsLatM": 0.11,
+      "rmsLatM": 0.064
+     },
+     {
+      "tCentre": 8.5,
+      "station": 578.0,
+      "maxAbsLatM": 0.389,
+      "rmsLatM": 0.224
+     },
+     {
+      "tCentre": 10.0,
+      "station": 658.5,
+      "maxAbsLatM": 0.352,
+      "rmsLatM": 0.221
+     },
+     {
+      "tCentre": 11.5,
+      "station": 739.2,
+      "maxAbsLatM": 0.732,
+      "rmsLatM": 0.404
+     },
+     {
+      "tCentre": 13.0,
+      "station": 806.8,
+      "maxAbsLatM": 0.602,
+      "rmsLatM": 0.365
+     },
+     {
+      "tCentre": 14.5,
+      "station": 853.5,
+      "maxAbsLatM": 0.399,
+      "rmsLatM": 0.209
+     },
+     {
+      "tCentre": 16.0,
+      "station": 886.0,
+      "maxAbsLatM": 0.32,
+      "rmsLatM": 0.182
+     },
+     {
+      "tCentre": 17.5,
+      "station": 926.2,
+      "maxAbsLatM": 0.295,
+      "rmsLatM": 0.154
+     },
+     {
+      "tCentre": 19.0,
+      "station": 958.2,
+      "maxAbsLatM": 0.406,
+      "rmsLatM": 0.247
+     },
+     {
+      "tCentre": 20.5,
+      "station": 998.5,
+      "maxAbsLatM": 0.125,
+      "rmsLatM": 0.088
+     },
+     {
+      "tCentre": 22.0,
+      "station": 1044.8,
+      "maxAbsLatM": 0.126,
+      "rmsLatM": 0.063
+     },
+     {
+      "tCentre": 23.5,
+      "station": 1097.8,
+      "maxAbsLatM": 0.089,
+      "rmsLatM": 0.052
+     },
+     {
+      "tCentre": 25.0,
+      "station": 1153.2,
+      "maxAbsLatM": 0.2,
+      "rmsLatM": 0.129
+     },
+     {
+      "tCentre": 26.5,
+      "station": 1212.5,
+      "maxAbsLatM": 0.105,
+      "rmsLatM": 0.058
+     },
+     {
+      "tCentre": 28.0,
+      "station": 1274.2,
+      "maxAbsLatM": 0.102,
+      "rmsLatM": 0.067
+     },
+     {
+      "tCentre": 29.5,
+      "station": 1338.8,
+      "maxAbsLatM": 0.194,
+      "rmsLatM": 0.122
+     },
+     {
+      "tCentre": 31.0,
+      "station": 1399.8,
+      "maxAbsLatM": 0.148,
+      "rmsLatM": 0.059
+     },
+     {
+      "tCentre": 32.5,
+      "station": 1456.0,
+      "maxAbsLatM": 0.275,
+      "rmsLatM": 0.172
+     },
+     {
+      "tCentre": 34.0,
+      "station": 1508.2,
+      "maxAbsLatM": 0.763,
+      "rmsLatM": 0.436
+     },
+     {
+      "tCentre": 35.5,
+      "station": 1561.8,
+      "maxAbsLatM": 0.688,
+      "rmsLatM": 0.376
+     },
+     {
+      "tCentre": 37.0,
+      "station": 1619.5,
+      "maxAbsLatM": 0.145,
+      "rmsLatM": 0.087
+     },
+     {
+      "tCentre": 38.5,
+      "station": 1677.0,
+      "maxAbsLatM": 0.705,
+      "rmsLatM": 0.385
+     },
+     {
+      "tCentre": 40.0,
+      "station": 1734.0,
+      "maxAbsLatM": 0.53,
+      "rmsLatM": 0.344
+     },
+     {
+      "tCentre": 41.5,
+      "station": 1788.8,
+      "maxAbsLatM": 0.46,
+      "rmsLatM": 0.298
+     },
+     {
+      "tCentre": 43.0,
+      "station": 1843.2,
+      "maxAbsLatM": 0.397,
+      "rmsLatM": 0.242
+     },
+     {
+      "tCentre": 44.5,
+      "station": 1899.0,
+      "maxAbsLatM": 0.508,
+      "rmsLatM": 0.311
+     },
+     {
+      "tCentre": 46.0,
+      "station": 1953.8,
+      "maxAbsLatM": 0.36,
+      "rmsLatM": 0.207
+     },
+     {
+      "tCentre": 47.5,
+      "station": 2007.8,
+      "maxAbsLatM": 0.224,
+      "rmsLatM": 0.081
+     },
+     {
+      "tCentre": 49.0,
+      "station": 2059.2,
+      "maxAbsLatM": 0.288,
+      "rmsLatM": 0.191
+     },
+     {
+      "tCentre": 50.5,
+      "station": 2098.2,
+      "maxAbsLatM": 0.043,
+      "rmsLatM": 0.024
+     },
+     {
+      "tCentre": 52.0,
+      "station": 2131.0,
+      "maxAbsLatM": 0.093,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 53.5,
+      "station": 2175.5,
+      "maxAbsLatM": 0.155,
+      "rmsLatM": 0.071
+     },
+     {
+      "tCentre": 55.0,
+      "station": 2211.2,
+      "maxAbsLatM": 0.241,
+      "rmsLatM": 0.135
+     },
+     {
+      "tCentre": 56.5,
+      "station": 2251.0,
+      "maxAbsLatM": 0.523,
+      "rmsLatM": 0.352
+     },
+     {
+      "tCentre": 58.0,
+      "station": 2296.8,
+      "maxAbsLatM": 0.433,
+      "rmsLatM": 0.261
+     },
+     {
+      "tCentre": 59.5,
+      "station": 2346.8,
+      "maxAbsLatM": 0.193,
+      "rmsLatM": 0.122
+     },
+     {
+      "tCentre": 61.0,
+      "station": 2400.8,
+      "maxAbsLatM": 0.34,
+      "rmsLatM": 0.219
+     },
+     {
+      "tCentre": 62.5,
+      "station": 2458.5,
+      "maxAbsLatM": 0.743,
+      "rmsLatM": 0.468
+     },
+     {
+      "tCentre": 64.0,
+      "station": 2519.0,
+      "maxAbsLatM": 0.811,
+      "rmsLatM": 0.546
+     },
+     {
+      "tCentre": 65.5,
+      "station": 2582.2,
+      "maxAbsLatM": 0.618,
+      "rmsLatM": 0.394
+     },
+     {
+      "tCentre": 67.0,
+      "station": 2647.8,
+      "maxAbsLatM": 0.792,
+      "rmsLatM": 0.514
+     },
+     {
+      "tCentre": 68.5,
+      "station": 2717.5,
+      "maxAbsLatM": 0.943,
+      "rmsLatM": 0.609
+     },
+     {
+      "tCentre": 70.0,
+      "station": 2788.0,
+      "maxAbsLatM": 0.308,
+      "rmsLatM": 0.205
+     },
+     {
+      "tCentre": 71.5,
+      "station": 2858.8,
+      "maxAbsLatM": 0.16,
+      "rmsLatM": 0.081
+     },
+     {
+      "tCentre": 73.0,
+      "station": 2913.5,
+      "maxAbsLatM": 0.551,
+      "rmsLatM": 0.381
+     },
+     {
+      "tCentre": 74.5,
+      "station": 2950.0,
+      "maxAbsLatM": 0.218,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 76.0,
+      "station": 2972.2,
+      "maxAbsLatM": 0.283,
+      "rmsLatM": 0.176
+     },
+     {
+      "tCentre": 77.5,
+      "station": 3002.5,
+      "maxAbsLatM": 0.327,
+      "rmsLatM": 0.183
+     },
+     {
+      "tCentre": 79.0,
+      "station": 3031.5,
+      "maxAbsLatM": 0.415,
+      "rmsLatM": 0.232
+     },
+     {
+      "tCentre": 80.5,
+      "station": 3068.0,
+      "maxAbsLatM": 0.267,
+      "rmsLatM": 0.137
+     },
+     {
+      "tCentre": 82.0,
+      "station": 3099.8,
+      "maxAbsLatM": 0.148,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 83.5,
+      "station": 3135.8,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.059
+     },
+     {
+      "tCentre": 85.0,
+      "station": 3173.8,
+      "maxAbsLatM": 0.104,
+      "rmsLatM": 0.061
+     },
+     {
+      "tCentre": 86.5,
+      "station": 3215.0,
+      "maxAbsLatM": 0.313,
+      "rmsLatM": 0.201
+     },
+     {
+      "tCentre": 88.0,
+      "station": 3257.2,
+      "maxAbsLatM": 0.209,
+      "rmsLatM": 0.103
+     },
+     {
+      "tCentre": 89.5,
+      "station": 3301.2,
+      "maxAbsLatM": 0.212,
+      "rmsLatM": 0.129
+     },
+     {
+      "tCentre": 91.0,
+      "station": 3340.2,
+      "maxAbsLatM": 0.441,
+      "rmsLatM": 0.248
+     },
+     {
+      "tCentre": 92.5,
+      "station": 3383.5,
+      "maxAbsLatM": 0.216,
+      "rmsLatM": 0.114
+     },
+     {
+      "tCentre": 94.0,
+      "station": 3434.2,
+      "maxAbsLatM": 0.257,
+      "rmsLatM": 0.164
+     },
+     {
+      "tCentre": 95.5,
+      "station": 3486.5,
+      "maxAbsLatM": 0.205,
+      "rmsLatM": 0.113
+     },
+     {
+      "tCentre": 97.0,
+      "station": 3523.8,
+      "maxAbsLatM": 0.352,
+      "rmsLatM": 0.182
+     },
+     {
+      "tCentre": 98.5,
+      "station": 3555.2,
+      "maxAbsLatM": 0.575,
+      "rmsLatM": 0.313
+     },
+     {
+      "tCentre": 100.0,
+      "station": 3597.0,
+      "maxAbsLatM": 0.907,
+      "rmsLatM": 0.438
+     },
+     {
+      "tCentre": 101.5,
+      "station": 3632.2,
+      "maxAbsLatM": 1.144,
+      "rmsLatM": 0.651
+     },
+     {
+      "tCentre": 103.0,
+      "station": 3673.0,
+      "maxAbsLatM": 0.809,
+      "rmsLatM": 0.553
+     },
+     {
+      "tCentre": 104.5,
+      "station": 3718.2,
+      "maxAbsLatM": 0.216,
+      "rmsLatM": 0.151
+     },
+     {
+      "tCentre": 106.0,
+      "station": 3764.8,
+      "maxAbsLatM": 0.378,
+      "rmsLatM": 0.269
+     },
+     {
+      "tCentre": 107.5,
+      "station": 3801.5,
+      "maxAbsLatM": 0.443,
+      "rmsLatM": 0.248
+     },
+     {
+      "tCentre": 109.0,
+      "station": 3832.5,
+      "maxAbsLatM": 0.179,
+      "rmsLatM": 0.088
+     },
+     {
+      "tCentre": 110.5,
+      "station": 3873.5,
+      "maxAbsLatM": 0.185,
+      "rmsLatM": 0.116
+     },
+     {
+      "tCentre": 112.0,
+      "station": 3912.2,
+      "maxAbsLatM": 0.418,
+      "rmsLatM": 0.271
+     },
+     {
+      "tCentre": 113.5,
+      "station": 3953.5,
+      "maxAbsLatM": 0.144,
+      "rmsLatM": 0.088
+     },
+     {
+      "tCentre": 115.0,
+      "station": 4000.0,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.036
+     },
+     {
+      "tCentre": 116.5,
+      "station": 4050.0,
+      "maxAbsLatM": 0.085,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 118.0,
+      "station": 4103.0,
+      "maxAbsLatM": 0.075,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 119.5,
+      "station": 4159.2,
+      "maxAbsLatM": 0.044,
+      "rmsLatM": 0.025
+     },
+     {
+      "tCentre": 121.0,
+      "station": 4218.5,
+      "maxAbsLatM": 0.065,
+      "rmsLatM": 0.036
+     },
+     {
+      "tCentre": 122.5,
+      "station": 4280.2,
+      "maxAbsLatM": 0.047,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 124.0,
+      "station": 4344.2,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 125.5,
+      "station": 4409.2,
+      "maxAbsLatM": 0.093,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 127.0,
+      "station": 4466.8,
+      "maxAbsLatM": 0.176,
+      "rmsLatM": 0.112
+     }
+    ],
+    "3": [
+     {
+      "tCentre": 4.0,
+      "station": 343.5,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.064
+     },
+     {
+      "tCentre": 5.5,
+      "station": 420.5,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 7.0,
+      "station": 498.2,
+      "maxAbsLatM": 0.084,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 8.5,
+      "station": 575.8,
+      "maxAbsLatM": 0.13,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 10.0,
+      "station": 654.0,
+      "maxAbsLatM": 0.213,
+      "rmsLatM": 0.131
+     },
+     {
+      "tCentre": 11.5,
+      "station": 732.5,
+      "maxAbsLatM": 0.178,
+      "rmsLatM": 0.083
+     },
+     {
+      "tCentre": 13.0,
+      "station": 799.8,
+      "maxAbsLatM": 0.461,
+      "rmsLatM": 0.311
+     },
+     {
+      "tCentre": 14.5,
+      "station": 849.0,
+      "maxAbsLatM": 0.37,
+      "rmsLatM": 0.197
+     },
+     {
+      "tCentre": 16.0,
+      "station": 882.5,
+      "maxAbsLatM": 0.393,
+      "rmsLatM": 0.238
+     },
+     {
+      "tCentre": 17.5,
+      "station": 919.5,
+      "maxAbsLatM": 0.356,
+      "rmsLatM": 0.163
+     },
+     {
+      "tCentre": 19.0,
+      "station": 951.8,
+      "maxAbsLatM": 0.472,
+      "rmsLatM": 0.249
+     },
+     {
+      "tCentre": 20.5,
+      "station": 990.0,
+      "maxAbsLatM": 0.126,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 22.0,
+      "station": 1034.8,
+      "maxAbsLatM": 0.212,
+      "rmsLatM": 0.125
+     },
+     {
+      "tCentre": 23.5,
+      "station": 1086.8,
+      "maxAbsLatM": 0.123,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 25.0,
+      "station": 1140.2,
+      "maxAbsLatM": 0.201,
+      "rmsLatM": 0.122
+     },
+     {
+      "tCentre": 26.5,
+      "station": 1198.0,
+      "maxAbsLatM": 0.104,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 28.0,
+      "station": 1258.8,
+      "maxAbsLatM": 0.04,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 29.5,
+      "station": 1322.2,
+      "maxAbsLatM": 0.057,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 31.0,
+      "station": 1385.0,
+      "maxAbsLatM": 0.161,
+      "rmsLatM": 0.075
+     },
+     {
+      "tCentre": 32.5,
+      "station": 1433.5,
+      "maxAbsLatM": 0.605,
+      "rmsLatM": 0.335
+     },
+     {
+      "tCentre": 34.0,
+      "station": 1487.5,
+      "maxAbsLatM": 0.93,
+      "rmsLatM": 0.525
+     },
+     {
+      "tCentre": 35.5,
+      "station": 1536.8,
+      "maxAbsLatM": 0.141,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 37.0,
+      "station": 1591.5,
+      "maxAbsLatM": 0.179,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 38.5,
+      "station": 1649.0,
+      "maxAbsLatM": 0.6,
+      "rmsLatM": 0.4
+     },
+     {
+      "tCentre": 40.0,
+      "station": 1708.0,
+      "maxAbsLatM": 0.763,
+      "rmsLatM": 0.448
+     },
+     {
+      "tCentre": 41.5,
+      "station": 1765.2,
+      "maxAbsLatM": 0.417,
+      "rmsLatM": 0.248
+     },
+     {
+      "tCentre": 43.0,
+      "station": 1821.0,
+      "maxAbsLatM": 0.72,
+      "rmsLatM": 0.47
+     },
+     {
+      "tCentre": 44.5,
+      "station": 1877.5,
+      "maxAbsLatM": 0.592,
+      "rmsLatM": 0.263
+     },
+     {
+      "tCentre": 46.0,
+      "station": 1935.0,
+      "maxAbsLatM": 0.645,
+      "rmsLatM": 0.284
+     },
+     {
+      "tCentre": 47.5,
+      "station": 1989.8,
+      "maxAbsLatM": 0.379,
+      "rmsLatM": 0.155
+     },
+     {
+      "tCentre": 49.0,
+      "station": 2045.5,
+      "maxAbsLatM": 0.282,
+      "rmsLatM": 0.189
+     },
+     {
+      "tCentre": 50.5,
+      "station": 2093.2,
+      "maxAbsLatM": 0.249,
+      "rmsLatM": 0.096
+     },
+     {
+      "tCentre": 52.0,
+      "station": 2125.8,
+      "maxAbsLatM": 0.205,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 53.5,
+      "station": 2180.0,
+      "maxAbsLatM": 0.254,
+      "rmsLatM": 0.131
+     },
+     {
+      "tCentre": 55.0,
+      "station": 2218.2,
+      "maxAbsLatM": 0.336,
+      "rmsLatM": 0.216
+     },
+     {
+      "tCentre": 56.5,
+      "station": 2260.5,
+      "maxAbsLatM": 0.483,
+      "rmsLatM": 0.325
+     },
+     {
+      "tCentre": 58.0,
+      "station": 2307.2,
+      "maxAbsLatM": 0.45,
+      "rmsLatM": 0.284
+     },
+     {
+      "tCentre": 59.5,
+      "station": 2358.0,
+      "maxAbsLatM": 0.211,
+      "rmsLatM": 0.128
+     },
+     {
+      "tCentre": 61.0,
+      "station": 2412.8,
+      "maxAbsLatM": 0.732,
+      "rmsLatM": 0.488
+     },
+     {
+      "tCentre": 62.5,
+      "station": 2471.5,
+      "maxAbsLatM": 1.151,
+      "rmsLatM": 0.745
+     },
+     {
+      "tCentre": 64.0,
+      "station": 2532.2,
+      "maxAbsLatM": 0.973,
+      "rmsLatM": 0.642
+     },
+     {
+      "tCentre": 65.5,
+      "station": 2596.2,
+      "maxAbsLatM": 0.609,
+      "rmsLatM": 0.405
+     },
+     {
+      "tCentre": 67.0,
+      "station": 2661.8,
+      "maxAbsLatM": 0.638,
+      "rmsLatM": 0.407
+     },
+     {
+      "tCentre": 68.5,
+      "station": 2732.2,
+      "maxAbsLatM": 0.412,
+      "rmsLatM": 0.27
+     },
+     {
+      "tCentre": 70.0,
+      "station": 2802.8,
+      "maxAbsLatM": 0.397,
+      "rmsLatM": 0.248
+     },
+     {
+      "tCentre": 71.5,
+      "station": 2872.0,
+      "maxAbsLatM": 0.092,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 73.0,
+      "station": 2923.8,
+      "maxAbsLatM": 0.603,
+      "rmsLatM": 0.399
+     },
+     {
+      "tCentre": 74.5,
+      "station": 2957.2,
+      "maxAbsLatM": 0.231,
+      "rmsLatM": 0.129
+     },
+     {
+      "tCentre": 76.0,
+      "station": 2977.8,
+      "maxAbsLatM": 0.399,
+      "rmsLatM": 0.263
+     },
+     {
+      "tCentre": 77.5,
+      "station": 3002.8,
+      "maxAbsLatM": 0.549,
+      "rmsLatM": 0.317
+     },
+     {
+      "tCentre": 79.0,
+      "station": 3029.0,
+      "maxAbsLatM": 0.165,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 80.5,
+      "station": 3063.5,
+      "maxAbsLatM": 0.247,
+      "rmsLatM": 0.109
+     },
+     {
+      "tCentre": 82.0,
+      "station": 3094.2,
+      "maxAbsLatM": 0.197,
+      "rmsLatM": 0.095
+     },
+     {
+      "tCentre": 83.5,
+      "station": 3131.0,
+      "maxAbsLatM": 0.099,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 85.0,
+      "station": 3168.8,
+      "maxAbsLatM": 0.084,
+      "rmsLatM": 0.041
+     },
+     {
+      "tCentre": 86.5,
+      "station": 3209.5,
+      "maxAbsLatM": 0.201,
+      "rmsLatM": 0.13
+     },
+     {
+      "tCentre": 88.0,
+      "station": 3250.8,
+      "maxAbsLatM": 0.18,
+      "rmsLatM": 0.094
+     },
+     {
+      "tCentre": 89.5,
+      "station": 3293.8,
+      "maxAbsLatM": 0.175,
+      "rmsLatM": 0.076
+     },
+     {
+      "tCentre": 91.0,
+      "station": 3334.0,
+      "maxAbsLatM": 0.408,
+      "rmsLatM": 0.244
+     },
+     {
+      "tCentre": 92.5,
+      "station": 3375.5,
+      "maxAbsLatM": 0.209,
+      "rmsLatM": 0.128
+     },
+     {
+      "tCentre": 94.0,
+      "station": 3425.2,
+      "maxAbsLatM": 0.065,
+      "rmsLatM": 0.035
+     },
+     {
+      "tCentre": 95.5,
+      "station": 3477.8,
+      "maxAbsLatM": 0.552,
+      "rmsLatM": 0.364
+     },
+     {
+      "tCentre": 97.0,
+      "station": 3517.5,
+      "maxAbsLatM": 0.592,
+      "rmsLatM": 0.386
+     },
+     {
+      "tCentre": 98.5,
+      "station": 3548.5,
+      "maxAbsLatM": 0.305,
+      "rmsLatM": 0.199
+     },
+     {
+      "tCentre": 100.0,
+      "station": 3587.5,
+      "maxAbsLatM": 0.076,
+      "rmsLatM": 0.045
+     },
+     {
+      "tCentre": 101.5,
+      "station": 3622.8,
+      "maxAbsLatM": 0.339,
+      "rmsLatM": 0.216
+     },
+     {
+      "tCentre": 103.0,
+      "station": 3663.5,
+      "maxAbsLatM": 0.303,
+      "rmsLatM": 0.179
+     },
+     {
+      "tCentre": 104.5,
+      "station": 3708.5,
+      "maxAbsLatM": 0.078,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 106.0,
+      "station": 3755.5,
+      "maxAbsLatM": 0.216,
+      "rmsLatM": 0.127
+     },
+     {
+      "tCentre": 107.5,
+      "station": 3792.2,
+      "maxAbsLatM": 0.216,
+      "rmsLatM": 0.144
+     },
+     {
+      "tCentre": 109.0,
+      "station": 3823.8,
+      "maxAbsLatM": 0.228,
+      "rmsLatM": 0.114
+     },
+     {
+      "tCentre": 110.5,
+      "station": 3867.0,
+      "maxAbsLatM": 0.168,
+      "rmsLatM": 0.081
+     },
+     {
+      "tCentre": 112.0,
+      "station": 3909.0,
+      "maxAbsLatM": 0.417,
+      "rmsLatM": 0.291
+     },
+     {
+      "tCentre": 113.5,
+      "station": 3951.0,
+      "maxAbsLatM": 0.071,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 115.0,
+      "station": 3998.2,
+      "maxAbsLatM": 0.109,
+      "rmsLatM": 0.059
+     },
+     {
+      "tCentre": 116.5,
+      "station": 4048.2,
+      "maxAbsLatM": 0.054,
+      "rmsLatM": 0.029
+     },
+     {
+      "tCentre": 118.0,
+      "station": 4101.8,
+      "maxAbsLatM": 0.07,
+      "rmsLatM": 0.041
+     },
+     {
+      "tCentre": 119.5,
+      "station": 4158.5,
+      "maxAbsLatM": 0.052,
+      "rmsLatM": 0.026
+     },
+     {
+      "tCentre": 121.0,
+      "station": 4218.0,
+      "maxAbsLatM": 0.055,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 122.5,
+      "station": 4280.2,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.031
+     },
+     {
+      "tCentre": 124.0,
+      "station": 4344.8,
+      "maxAbsLatM": 0.097,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 125.5,
+      "station": 4409.8,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 127.0,
+      "station": 4467.2,
+      "maxAbsLatM": 0.068,
+      "rmsLatM": 0.033
+     }
+    ],
+    "4": [
+     {
+      "tCentre": 4.0,
+      "station": 339.5,
+      "maxAbsLatM": 0.087,
+      "rmsLatM": 0.044
+     },
+     {
+      "tCentre": 5.5,
+      "station": 413.5,
+      "maxAbsLatM": 0.129,
+      "rmsLatM": 0.073
+     },
+     {
+      "tCentre": 7.0,
+      "station": 488.0,
+      "maxAbsLatM": 0.153,
+      "rmsLatM": 0.052
+     },
+     {
+      "tCentre": 8.5,
+      "station": 564.0,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.038
+     },
+     {
+      "tCentre": 10.0,
+      "station": 640.5,
+      "maxAbsLatM": 0.197,
+      "rmsLatM": 0.131
+     },
+     {
+      "tCentre": 11.5,
+      "station": 717.2,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 13.0,
+      "station": 787.5,
+      "maxAbsLatM": 0.33,
+      "rmsLatM": 0.233
+     },
+     {
+      "tCentre": 14.5,
+      "station": 839.0,
+      "maxAbsLatM": 0.626,
+      "rmsLatM": 0.391
+     },
+     {
+      "tCentre": 16.0,
+      "station": 873.0,
+      "maxAbsLatM": 0.423,
+      "rmsLatM": 0.223
+     },
+     {
+      "tCentre": 17.5,
+      "station": 911.0,
+      "maxAbsLatM": 0.264,
+      "rmsLatM": 0.154
+     },
+     {
+      "tCentre": 19.0,
+      "station": 945.0,
+      "maxAbsLatM": 0.26,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 20.5,
+      "station": 981.8,
+      "maxAbsLatM": 0.302,
+      "rmsLatM": 0.179
+     },
+     {
+      "tCentre": 22.0,
+      "station": 1025.0,
+      "maxAbsLatM": 0.336,
+      "rmsLatM": 0.235
+     },
+     {
+      "tCentre": 23.5,
+      "station": 1076.0,
+      "maxAbsLatM": 0.268,
+      "rmsLatM": 0.141
+     },
+     {
+      "tCentre": 25.0,
+      "station": 1128.2,
+      "maxAbsLatM": 0.146,
+      "rmsLatM": 0.092
+     },
+     {
+      "tCentre": 26.5,
+      "station": 1184.2,
+      "maxAbsLatM": 0.081,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 28.0,
+      "station": 1244.0,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.03
+     },
+     {
+      "tCentre": 29.5,
+      "station": 1306.2,
+      "maxAbsLatM": 0.093,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 31.0,
+      "station": 1370.0,
+      "maxAbsLatM": 0.156,
+      "rmsLatM": 0.099
+     },
+     {
+      "tCentre": 32.5,
+      "station": 1424.2,
+      "maxAbsLatM": 0.388,
+      "rmsLatM": 0.239
+     },
+     {
+      "tCentre": 34.0,
+      "station": 1480.8,
+      "maxAbsLatM": 0.299,
+      "rmsLatM": 0.141
+     },
+     {
+      "tCentre": 35.5,
+      "station": 1531.8,
+      "maxAbsLatM": 0.7,
+      "rmsLatM": 0.373
+     },
+     {
+      "tCentre": 37.0,
+      "station": 1586.8,
+      "maxAbsLatM": 0.283,
+      "rmsLatM": 0.141
+     },
+     {
+      "tCentre": 38.5,
+      "station": 1644.8,
+      "maxAbsLatM": 0.526,
+      "rmsLatM": 0.331
+     },
+     {
+      "tCentre": 40.0,
+      "station": 1704.0,
+      "maxAbsLatM": 0.866,
+      "rmsLatM": 0.538
+     },
+     {
+      "tCentre": 41.5,
+      "station": 1762.5,
+      "maxAbsLatM": 0.35,
+      "rmsLatM": 0.162
+     },
+     {
+      "tCentre": 43.0,
+      "station": 1818.2,
+      "maxAbsLatM": 0.587,
+      "rmsLatM": 0.276
+     },
+     {
+      "tCentre": 44.5,
+      "station": 1873.2,
+      "maxAbsLatM": 0.538,
+      "rmsLatM": 0.297
+     },
+     {
+      "tCentre": 46.0,
+      "station": 1929.8,
+      "maxAbsLatM": 0.349,
+      "rmsLatM": 0.152
+     },
+     {
+      "tCentre": 47.5,
+      "station": 1985.8,
+      "maxAbsLatM": 0.411,
+      "rmsLatM": 0.228
+     },
+     {
+      "tCentre": 49.0,
+      "station": 2042.2,
+      "maxAbsLatM": 0.732,
+      "rmsLatM": 0.434
+     },
+     {
+      "tCentre": 50.5,
+      "station": 2091.2,
+      "maxAbsLatM": 0.353,
+      "rmsLatM": 0.195
+     },
+     {
+      "tCentre": 52.0,
+      "station": 2126.8,
+      "maxAbsLatM": 0.357,
+      "rmsLatM": 0.193
+     },
+     {
+      "tCentre": 53.5,
+      "station": 2181.2,
+      "maxAbsLatM": 0.436,
+      "rmsLatM": 0.177
+     },
+     {
+      "tCentre": 55.0,
+      "station": 2219.5,
+      "maxAbsLatM": 0.329,
+      "rmsLatM": 0.222
+     },
+     {
+      "tCentre": 56.5,
+      "station": 2262.5,
+      "maxAbsLatM": 0.532,
+      "rmsLatM": 0.332
+     },
+     {
+      "tCentre": 58.0,
+      "station": 2310.2,
+      "maxAbsLatM": 0.384,
+      "rmsLatM": 0.242
+     },
+     {
+      "tCentre": 59.5,
+      "station": 2362.2,
+      "maxAbsLatM": 0.462,
+      "rmsLatM": 0.288
+     },
+     {
+      "tCentre": 61.0,
+      "station": 2417.5,
+      "maxAbsLatM": 0.594,
+      "rmsLatM": 0.417
+     },
+     {
+      "tCentre": 62.5,
+      "station": 2477.2,
+      "maxAbsLatM": 0.882,
+      "rmsLatM": 0.57
+     },
+     {
+      "tCentre": 64.0,
+      "station": 2538.5,
+      "maxAbsLatM": 0.847,
+      "rmsLatM": 0.559
+     },
+     {
+      "tCentre": 65.5,
+      "station": 2603.2,
+      "maxAbsLatM": 0.469,
+      "rmsLatM": 0.312
+     },
+     {
+      "tCentre": 67.0,
+      "station": 2668.8,
+      "maxAbsLatM": 0.882,
+      "rmsLatM": 0.542
+     },
+     {
+      "tCentre": 68.5,
+      "station": 2737.8,
+      "maxAbsLatM": 0.458,
+      "rmsLatM": 0.331
+     },
+     {
+      "tCentre": 70.0,
+      "station": 2808.8,
+      "maxAbsLatM": 0.262,
+      "rmsLatM": 0.155
+     },
+     {
+      "tCentre": 71.5,
+      "station": 2876.0,
+      "maxAbsLatM": 0.106,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 73.0,
+      "station": 2926.8,
+      "maxAbsLatM": 0.848,
+      "rmsLatM": 0.545
+     },
+     {
+      "tCentre": 74.5,
+      "station": 2959.2,
+      "maxAbsLatM": 0.426,
+      "rmsLatM": 0.234
+     },
+     {
+      "tCentre": 76.0,
+      "station": 2985.8,
+      "maxAbsLatM": 0.452,
+      "rmsLatM": 0.279
+     },
+     {
+      "tCentre": 77.5,
+      "station": 3013.0,
+      "maxAbsLatM": 0.57,
+      "rmsLatM": 0.372
+     },
+     {
+      "tCentre": 79.0,
+      "station": 3045.2,
+      "maxAbsLatM": 0.232,
+      "rmsLatM": 0.114
+     },
+     {
+      "tCentre": 80.5,
+      "station": 3079.5,
+      "maxAbsLatM": 0.255,
+      "rmsLatM": 0.132
+     },
+     {
+      "tCentre": 82.0,
+      "station": 3114.8,
+      "maxAbsLatM": 0.121,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 83.5,
+      "station": 3153.2,
+      "maxAbsLatM": 0.287,
+      "rmsLatM": 0.172
+     },
+     {
+      "tCentre": 85.0,
+      "station": 3193.5,
+      "maxAbsLatM": 0.058,
+      "rmsLatM": 0.036
+     },
+     {
+      "tCentre": 86.5,
+      "station": 3236.5,
+      "maxAbsLatM": 0.216,
+      "rmsLatM": 0.138
+     },
+     {
+      "tCentre": 88.0,
+      "station": 3280.2,
+      "maxAbsLatM": 0.138,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 89.5,
+      "station": 3319.2,
+      "maxAbsLatM": 0.285,
+      "rmsLatM": 0.146
+     },
+     {
+      "tCentre": 91.0,
+      "station": 3358.0,
+      "maxAbsLatM": 0.185,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 92.5,
+      "station": 3404.5,
+      "maxAbsLatM": 0.214,
+      "rmsLatM": 0.131
+     },
+     {
+      "tCentre": 94.0,
+      "station": 3457.5,
+      "maxAbsLatM": 0.665,
+      "rmsLatM": 0.393
+     },
+     {
+      "tCentre": 95.5,
+      "station": 3504.2,
+      "maxAbsLatM": 0.252,
+      "rmsLatM": 0.136
+     },
+     {
+      "tCentre": 97.0,
+      "station": 3538.0,
+      "maxAbsLatM": 0.431,
+      "rmsLatM": 0.293
+     },
+     {
+      "tCentre": 98.5,
+      "station": 3571.5,
+      "maxAbsLatM": 0.122,
+      "rmsLatM": 0.072
+     },
+     {
+      "tCentre": 100.0,
+      "station": 3607.8,
+      "maxAbsLatM": 0.2,
+      "rmsLatM": 0.136
+     },
+     {
+      "tCentre": 101.5,
+      "station": 3646.5,
+      "maxAbsLatM": 0.091,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 103.0,
+      "station": 3690.5,
+      "maxAbsLatM": 0.113,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 104.5,
+      "station": 3738.5,
+      "maxAbsLatM": 0.166,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 106.0,
+      "station": 3780.8,
+      "maxAbsLatM": 0.22,
+      "rmsLatM": 0.108
+     },
+     {
+      "tCentre": 107.5,
+      "station": 3814.5,
+      "maxAbsLatM": 0.264,
+      "rmsLatM": 0.163
+     },
+     {
+      "tCentre": 109.0,
+      "station": 3852.0,
+      "maxAbsLatM": 0.218,
+      "rmsLatM": 0.122
+     },
+     {
+      "tCentre": 110.5,
+      "station": 3895.2,
+      "maxAbsLatM": 0.474,
+      "rmsLatM": 0.315
+     },
+     {
+      "tCentre": 112.0,
+      "station": 3934.5,
+      "maxAbsLatM": 0.37,
+      "rmsLatM": 0.245
+     },
+     {
+      "tCentre": 113.5,
+      "station": 3979.2,
+      "maxAbsLatM": 0.117,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 115.0,
+      "station": 4028.5,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.022
+     },
+     {
+      "tCentre": 116.5,
+      "station": 4080.5,
+      "maxAbsLatM": 0.032,
+      "rmsLatM": 0.012
+     },
+     {
+      "tCentre": 118.0,
+      "station": 4136.0,
+      "maxAbsLatM": 0.032,
+      "rmsLatM": 0.014
+     },
+     {
+      "tCentre": 119.5,
+      "station": 4194.5,
+      "maxAbsLatM": 0.025,
+      "rmsLatM": 0.011
+     },
+     {
+      "tCentre": 121.0,
+      "station": 4255.8,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.068
+     },
+     {
+      "tCentre": 122.5,
+      "station": 4319.8,
+      "maxAbsLatM": 0.098,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 124.0,
+      "station": 4384.5,
+      "maxAbsLatM": 0.06,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 125.5,
+      "station": 4450.8,
+      "maxAbsLatM": 0.052,
+      "rmsLatM": 0.027
+     }
+    ],
+    "5": [
+     {
+      "tCentre": 4.0,
+      "station": 339.5,
+      "maxAbsLatM": 0.183,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 5.5,
+      "station": 414.5,
+      "maxAbsLatM": 0.215,
+      "rmsLatM": 0.118
+     },
+     {
+      "tCentre": 7.0,
+      "station": 490.0,
+      "maxAbsLatM": 0.27,
+      "rmsLatM": 0.144
+     },
+     {
+      "tCentre": 8.5,
+      "station": 566.2,
+      "maxAbsLatM": 0.248,
+      "rmsLatM": 0.158
+     },
+     {
+      "tCentre": 10.0,
+      "station": 643.5,
+      "maxAbsLatM": 0.236,
+      "rmsLatM": 0.136
+     },
+     {
+      "tCentre": 11.5,
+      "station": 721.2,
+      "maxAbsLatM": 0.278,
+      "rmsLatM": 0.161
+     },
+     {
+      "tCentre": 13.0,
+      "station": 789.5,
+      "maxAbsLatM": 0.473,
+      "rmsLatM": 0.284
+     },
+     {
+      "tCentre": 14.5,
+      "station": 839.5,
+      "maxAbsLatM": 0.463,
+      "rmsLatM": 0.304
+     },
+     {
+      "tCentre": 16.0,
+      "station": 872.8,
+      "maxAbsLatM": 0.292,
+      "rmsLatM": 0.165
+     },
+     {
+      "tCentre": 17.5,
+      "station": 909.5,
+      "maxAbsLatM": 0.08,
+      "rmsLatM": 0.034
+     },
+     {
+      "tCentre": 19.0,
+      "station": 942.0,
+      "maxAbsLatM": 0.14,
+      "rmsLatM": 0.05
+     },
+     {
+      "tCentre": 20.5,
+      "station": 978.5,
+      "maxAbsLatM": 0.184,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 22.0,
+      "station": 1022.0,
+      "maxAbsLatM": 0.417,
+      "rmsLatM": 0.274
+     },
+     {
+      "tCentre": 23.5,
+      "station": 1072.0,
+      "maxAbsLatM": 0.286,
+      "rmsLatM": 0.192
+     },
+     {
+      "tCentre": 25.0,
+      "station": 1124.5,
+      "maxAbsLatM": 0.071,
+      "rmsLatM": 0.032
+     },
+     {
+      "tCentre": 26.5,
+      "station": 1181.0,
+      "maxAbsLatM": 0.18,
+      "rmsLatM": 0.081
+     },
+     {
+      "tCentre": 28.0,
+      "station": 1241.0,
+      "maxAbsLatM": 0.21,
+      "rmsLatM": 0.103
+     },
+     {
+      "tCentre": 29.5,
+      "station": 1303.8,
+      "maxAbsLatM": 0.125,
+      "rmsLatM": 0.067
+     },
+     {
+      "tCentre": 31.0,
+      "station": 1368.2,
+      "maxAbsLatM": 0.35,
+      "rmsLatM": 0.24
+     },
+     {
+      "tCentre": 32.5,
+      "station": 1423.2,
+      "maxAbsLatM": 0.672,
+      "rmsLatM": 0.318
+     },
+     {
+      "tCentre": 34.0,
+      "station": 1480.2,
+      "maxAbsLatM": 0.824,
+      "rmsLatM": 0.389
+     },
+     {
+      "tCentre": 35.5,
+      "station": 1531.8,
+      "maxAbsLatM": 0.403,
+      "rmsLatM": 0.238
+     },
+     {
+      "tCentre": 37.0,
+      "station": 1588.5,
+      "maxAbsLatM": 0.455,
+      "rmsLatM": 0.215
+     },
+     {
+      "tCentre": 38.5,
+      "station": 1647.5,
+      "maxAbsLatM": 0.542,
+      "rmsLatM": 0.381
+     },
+     {
+      "tCentre": 40.0,
+      "station": 1706.5,
+      "maxAbsLatM": 1.289,
+      "rmsLatM": 0.772
+     },
+     {
+      "tCentre": 41.5,
+      "station": 1764.0,
+      "maxAbsLatM": 0.69,
+      "rmsLatM": 0.357
+     },
+     {
+      "tCentre": 43.0,
+      "station": 1820.5,
+      "maxAbsLatM": 1.138,
+      "rmsLatM": 0.569
+     },
+     {
+      "tCentre": 44.5,
+      "station": 1876.2,
+      "maxAbsLatM": 0.668,
+      "rmsLatM": 0.405
+     },
+     {
+      "tCentre": 46.0,
+      "station": 1930.8,
+      "maxAbsLatM": 0.4,
+      "rmsLatM": 0.266
+     },
+     {
+      "tCentre": 47.5,
+      "station": 1984.5,
+      "maxAbsLatM": 0.358,
+      "rmsLatM": 0.2
+     },
+     {
+      "tCentre": 49.0,
+      "station": 2039.8,
+      "maxAbsLatM": 0.676,
+      "rmsLatM": 0.388
+     },
+     {
+      "tCentre": 50.5,
+      "station": 2090.0,
+      "maxAbsLatM": 0.455,
+      "rmsLatM": 0.221
+     },
+     {
+      "tCentre": 52.0,
+      "station": 2125.5,
+      "maxAbsLatM": 0.247,
+      "rmsLatM": 0.128
+     },
+     {
+      "tCentre": 53.5,
+      "station": 2181.5,
+      "maxAbsLatM": 0.434,
+      "rmsLatM": 0.184
+     },
+     {
+      "tCentre": 55.0,
+      "station": 2219.2,
+      "maxAbsLatM": 0.426,
+      "rmsLatM": 0.298
+     },
+     {
+      "tCentre": 56.5,
+      "station": 2262.0,
+      "maxAbsLatM": 0.879,
+      "rmsLatM": 0.588
+     },
+     {
+      "tCentre": 58.0,
+      "station": 2309.2,
+      "maxAbsLatM": 0.687,
+      "rmsLatM": 0.458
+     },
+     {
+      "tCentre": 59.5,
+      "station": 2360.2,
+      "maxAbsLatM": 0.355,
+      "rmsLatM": 0.208
+     },
+     {
+      "tCentre": 61.0,
+      "station": 2415.5,
+      "maxAbsLatM": 0.699,
+      "rmsLatM": 0.497
+     },
+     {
+      "tCentre": 62.5,
+      "station": 2474.5,
+      "maxAbsLatM": 1.026,
+      "rmsLatM": 0.663
+     },
+     {
+      "tCentre": 64.0,
+      "station": 2535.5,
+      "maxAbsLatM": 0.711,
+      "rmsLatM": 0.484
+     },
+     {
+      "tCentre": 65.5,
+      "station": 2599.5,
+      "maxAbsLatM": 0.522,
+      "rmsLatM": 0.329
+     },
+     {
+      "tCentre": 67.0,
+      "station": 2665.8,
+      "maxAbsLatM": 0.635,
+      "rmsLatM": 0.395
+     },
+     {
+      "tCentre": 68.5,
+      "station": 2735.8,
+      "maxAbsLatM": 0.549,
+      "rmsLatM": 0.327
+     },
+     {
+      "tCentre": 70.0,
+      "station": 2806.8,
+      "maxAbsLatM": 0.63,
+      "rmsLatM": 0.394
+     },
+     {
+      "tCentre": 71.5,
+      "station": 2876.5,
+      "maxAbsLatM": 0.187,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 73.0,
+      "station": 2927.2,
+      "maxAbsLatM": 0.513,
+      "rmsLatM": 0.303
+     },
+     {
+      "tCentre": 74.5,
+      "station": 2960.2,
+      "maxAbsLatM": 0.206,
+      "rmsLatM": 0.088
+     },
+     {
+      "tCentre": 76.0,
+      "station": 2987.2,
+      "maxAbsLatM": 0.412,
+      "rmsLatM": 0.25
+     },
+     {
+      "tCentre": 77.5,
+      "station": 3012.5,
+      "maxAbsLatM": 0.65,
+      "rmsLatM": 0.365
+     },
+     {
+      "tCentre": 79.0,
+      "station": 3042.0,
+      "maxAbsLatM": 0.356,
+      "rmsLatM": 0.193
+     },
+     {
+      "tCentre": 80.5,
+      "station": 3077.5,
+      "maxAbsLatM": 0.146,
+      "rmsLatM": 0.065
+     },
+     {
+      "tCentre": 82.0,
+      "station": 3111.8,
+      "maxAbsLatM": 0.205,
+      "rmsLatM": 0.099
+     },
+     {
+      "tCentre": 83.5,
+      "station": 3149.2,
+      "maxAbsLatM": 0.164,
+      "rmsLatM": 0.101
+     },
+     {
+      "tCentre": 85.0,
+      "station": 3189.5,
+      "maxAbsLatM": 0.133,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 86.5,
+      "station": 3231.8,
+      "maxAbsLatM": 0.101,
+      "rmsLatM": 0.047
+     },
+     {
+      "tCentre": 88.0,
+      "station": 3273.2,
+      "maxAbsLatM": 0.235,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 89.5,
+      "station": 3317.5,
+      "maxAbsLatM": 0.205,
+      "rmsLatM": 0.11
+     },
+     {
+      "tCentre": 91.0,
+      "station": 3357.5,
+      "maxAbsLatM": 0.452,
+      "rmsLatM": 0.281
+     },
+     {
+      "tCentre": 92.5,
+      "station": 3405.0,
+      "maxAbsLatM": 0.439,
+      "rmsLatM": 0.283
+     },
+     {
+      "tCentre": 94.0,
+      "station": 3458.5,
+      "maxAbsLatM": 0.589,
+      "rmsLatM": 0.398
+     },
+     {
+      "tCentre": 95.5,
+      "station": 3500.8,
+      "maxAbsLatM": 0.534,
+      "rmsLatM": 0.332
+     },
+     {
+      "tCentre": 97.0,
+      "station": 3535.5,
+      "maxAbsLatM": 0.157,
+      "rmsLatM": 0.092
+     },
+     {
+      "tCentre": 98.5,
+      "station": 3573.5,
+      "maxAbsLatM": 0.24,
+      "rmsLatM": 0.119
+     },
+     {
+      "tCentre": 100.0,
+      "station": 3610.8,
+      "maxAbsLatM": 0.404,
+      "rmsLatM": 0.232
+     },
+     {
+      "tCentre": 101.5,
+      "station": 3649.5,
+      "maxAbsLatM": 0.32,
+      "rmsLatM": 0.194
+     },
+     {
+      "tCentre": 103.0,
+      "station": 3693.5,
+      "maxAbsLatM": 0.104,
+      "rmsLatM": 0.068
+     },
+     {
+      "tCentre": 104.5,
+      "station": 3741.2,
+      "maxAbsLatM": 0.115,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 106.0,
+      "station": 3782.2,
+      "maxAbsLatM": 0.222,
+      "rmsLatM": 0.112
+     },
+     {
+      "tCentre": 107.5,
+      "station": 3815.5,
+      "maxAbsLatM": 0.178,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 109.0,
+      "station": 3851.2,
+      "maxAbsLatM": 0.211,
+      "rmsLatM": 0.116
+     },
+     {
+      "tCentre": 110.5,
+      "station": 3894.0,
+      "maxAbsLatM": 0.327,
+      "rmsLatM": 0.206
+     },
+     {
+      "tCentre": 112.0,
+      "station": 3933.5,
+      "maxAbsLatM": 0.487,
+      "rmsLatM": 0.318
+     },
+     {
+      "tCentre": 113.5,
+      "station": 3978.5,
+      "maxAbsLatM": 0.031,
+      "rmsLatM": 0.013
+     },
+     {
+      "tCentre": 115.0,
+      "station": 4027.8,
+      "maxAbsLatM": 0.032,
+      "rmsLatM": 0.019
+     },
+     {
+      "tCentre": 116.5,
+      "station": 4079.8,
+      "maxAbsLatM": 0.029,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 118.0,
+      "station": 4135.0,
+      "maxAbsLatM": 0.056,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 119.5,
+      "station": 4193.5,
+      "maxAbsLatM": 0.036,
+      "rmsLatM": 0.015
+     },
+     {
+      "tCentre": 121.0,
+      "station": 4254.5,
+      "maxAbsLatM": 0.148,
+      "rmsLatM": 0.093
+     },
+     {
+      "tCentre": 122.5,
+      "station": 4318.0,
+      "maxAbsLatM": 0.156,
+      "rmsLatM": 0.084
+     },
+     {
+      "tCentre": 124.0,
+      "station": 4383.0,
+      "maxAbsLatM": 0.19,
+      "rmsLatM": 0.09
+     },
+     {
+      "tCentre": 125.5,
+      "station": 4449.2,
+      "maxAbsLatM": 0.162,
+      "rmsLatM": 0.09
+     }
+    ],
+    "6": [
+     {
+      "tCentre": 4.0,
+      "station": 339.5,
+      "maxAbsLatM": 0.131,
+      "rmsLatM": 0.077
+     },
+     {
+      "tCentre": 5.5,
+      "station": 415.0,
+      "maxAbsLatM": 0.072,
+      "rmsLatM": 0.039
+     },
+     {
+      "tCentre": 7.0,
+      "station": 490.8,
+      "maxAbsLatM": 0.121,
+      "rmsLatM": 0.07
+     },
+     {
+      "tCentre": 8.5,
+      "station": 567.5,
+      "maxAbsLatM": 0.184,
+      "rmsLatM": 0.109
+     },
+     {
+      "tCentre": 10.0,
+      "station": 645.5,
+      "maxAbsLatM": 0.24,
+      "rmsLatM": 0.171
+     },
+     {
+      "tCentre": 11.5,
+      "station": 723.8,
+      "maxAbsLatM": 0.153,
+      "rmsLatM": 0.097
+     },
+     {
+      "tCentre": 13.0,
+      "station": 796.0,
+      "maxAbsLatM": 0.328,
+      "rmsLatM": 0.233
+     },
+     {
+      "tCentre": 14.5,
+      "station": 848.0,
+      "maxAbsLatM": 0.751,
+      "rmsLatM": 0.46
+     },
+     {
+      "tCentre": 16.0,
+      "station": 882.2,
+      "maxAbsLatM": 0.454,
+      "rmsLatM": 0.253
+     },
+     {
+      "tCentre": 17.5,
+      "station": 916.5,
+      "maxAbsLatM": 0.112,
+      "rmsLatM": 0.048
+     },
+     {
+      "tCentre": 19.0,
+      "station": 947.8,
+      "maxAbsLatM": 0.308,
+      "rmsLatM": 0.188
+     },
+     {
+      "tCentre": 20.5,
+      "station": 985.0,
+      "maxAbsLatM": 0.208,
+      "rmsLatM": 0.125
+     },
+     {
+      "tCentre": 22.0,
+      "station": 1029.5,
+      "maxAbsLatM": 0.25,
+      "rmsLatM": 0.152
+     },
+     {
+      "tCentre": 23.5,
+      "station": 1080.2,
+      "maxAbsLatM": 0.146,
+      "rmsLatM": 0.086
+     },
+     {
+      "tCentre": 25.0,
+      "station": 1133.8,
+      "maxAbsLatM": 0.173,
+      "rmsLatM": 0.096
+     },
+     {
+      "tCentre": 26.5,
+      "station": 1191.5,
+      "maxAbsLatM": 0.181,
+      "rmsLatM": 0.077
+     },
+     {
+      "tCentre": 28.0,
+      "station": 1252.0,
+      "maxAbsLatM": 0.075,
+      "rmsLatM": 0.045
+     },
+     {
+      "tCentre": 29.5,
+      "station": 1315.5,
+      "maxAbsLatM": 0.459,
+      "rmsLatM": 0.29
+     },
+     {
+      "tCentre": 31.0,
+      "station": 1378.8,
+      "maxAbsLatM": 0.321,
+      "rmsLatM": 0.21
+     },
+     {
+      "tCentre": 32.5,
+      "station": 1430.5,
+      "maxAbsLatM": 0.441,
+      "rmsLatM": 0.275
+     },
+     {
+      "tCentre": 34.0,
+      "station": 1487.2,
+      "maxAbsLatM": 0.58,
+      "rmsLatM": 0.35
+     },
+     {
+      "tCentre": 35.5,
+      "station": 1539.0,
+      "maxAbsLatM": 0.543,
+      "rmsLatM": 0.325
+     },
+     {
+      "tCentre": 37.0,
+      "station": 1596.0,
+      "maxAbsLatM": 0.217,
+      "rmsLatM": 0.124
+     },
+     {
+      "tCentre": 38.5,
+      "station": 1654.5,
+      "maxAbsLatM": 0.66,
+      "rmsLatM": 0.363
+     },
+     {
+      "tCentre": 40.0,
+      "station": 1713.2,
+      "maxAbsLatM": 0.437,
+      "rmsLatM": 0.229
+     },
+     {
+      "tCentre": 41.5,
+      "station": 1770.0,
+      "maxAbsLatM": 0.217,
+      "rmsLatM": 0.131
+     },
+     {
+      "tCentre": 43.0,
+      "station": 1826.0,
+      "maxAbsLatM": 0.22,
+      "rmsLatM": 0.117
+     },
+     {
+      "tCentre": 44.5,
+      "station": 1882.2,
+      "maxAbsLatM": 0.559,
+      "rmsLatM": 0.319
+     },
+     {
+      "tCentre": 46.0,
+      "station": 1938.8,
+      "maxAbsLatM": 0.703,
+      "rmsLatM": 0.42
+     },
+     {
+      "tCentre": 47.5,
+      "station": 1994.5,
+      "maxAbsLatM": 0.438,
+      "rmsLatM": 0.203
+     },
+     {
+      "tCentre": 49.0,
+      "station": 2050.8,
+      "maxAbsLatM": 0.229,
+      "rmsLatM": 0.104
+     },
+     {
+      "tCentre": 50.5,
+      "station": 2096.8,
+      "maxAbsLatM": 0.167,
+      "rmsLatM": 0.09
+     },
+     {
+      "tCentre": 52.0,
+      "station": 2130.5,
+      "maxAbsLatM": 0.12,
+      "rmsLatM": 0.046
+     },
+     {
+      "tCentre": 53.5,
+      "station": 2186.0,
+      "maxAbsLatM": 0.151,
+      "rmsLatM": 0.094
+     },
+     {
+      "tCentre": 55.0,
+      "station": 2224.8,
+      "maxAbsLatM": 0.349,
+      "rmsLatM": 0.242
+     },
+     {
+      "tCentre": 56.5,
+      "station": 2268.2,
+      "maxAbsLatM": 0.968,
+      "rmsLatM": 0.63
+     },
+     {
+      "tCentre": 58.0,
+      "station": 2316.5,
+      "maxAbsLatM": 0.501,
+      "rmsLatM": 0.326
+     },
+     {
+      "tCentre": 59.5,
+      "station": 2368.8,
+      "maxAbsLatM": 0.334,
+      "rmsLatM": 0.227
+     },
+     {
+      "tCentre": 61.0,
+      "station": 2424.8,
+      "maxAbsLatM": 0.596,
+      "rmsLatM": 0.388
+     },
+     {
+      "tCentre": 62.5,
+      "station": 2484.5,
+      "maxAbsLatM": 0.856,
+      "rmsLatM": 0.537
+     },
+     {
+      "tCentre": 64.0,
+      "station": 2546.0,
+      "maxAbsLatM": 0.547,
+      "rmsLatM": 0.363
+     },
+     {
+      "tCentre": 65.5,
+      "station": 2610.2,
+      "maxAbsLatM": 0.393,
+      "rmsLatM": 0.259
+     },
+     {
+      "tCentre": 67.0,
+      "station": 2675.8,
+      "maxAbsLatM": 0.578,
+      "rmsLatM": 0.365
+     },
+     {
+      "tCentre": 68.5,
+      "station": 2744.5,
+      "maxAbsLatM": 0.567,
+      "rmsLatM": 0.362
+     },
+     {
+      "tCentre": 70.0,
+      "station": 2815.5,
+      "maxAbsLatM": 0.186,
+      "rmsLatM": 0.096
+     },
+     {
+      "tCentre": 71.5,
+      "station": 2883.0,
+      "maxAbsLatM": 0.313,
+      "rmsLatM": 0.213
+     },
+     {
+      "tCentre": 73.0,
+      "station": 2931.8,
+      "maxAbsLatM": 0.565,
+      "rmsLatM": 0.334
+     },
+     {
+      "tCentre": 74.5,
+      "station": 2962.8,
+      "maxAbsLatM": 0.417,
+      "rmsLatM": 0.23
+     },
+     {
+      "tCentre": 76.0,
+      "station": 2989.2,
+      "maxAbsLatM": 0.37,
+      "rmsLatM": 0.238
+     },
+     {
+      "tCentre": 77.5,
+      "station": 3015.5,
+      "maxAbsLatM": 0.448,
+      "rmsLatM": 0.275
+     },
+     {
+      "tCentre": 79.0,
+      "station": 3048.5,
+      "maxAbsLatM": 0.226,
+      "rmsLatM": 0.135
+     },
+     {
+      "tCentre": 80.5,
+      "station": 3080.5,
+      "maxAbsLatM": 0.249,
+      "rmsLatM": 0.174
+     },
+     {
+      "tCentre": 82.0,
+      "station": 3116.8,
+      "maxAbsLatM": 0.119,
+      "rmsLatM": 0.056
+     },
+     {
+      "tCentre": 83.5,
+      "station": 3155.2,
+      "maxAbsLatM": 0.361,
+      "rmsLatM": 0.253
+     },
+     {
+      "tCentre": 85.0,
+      "station": 3196.0,
+      "maxAbsLatM": 0.251,
+      "rmsLatM": 0.186
+     },
+     {
+      "tCentre": 86.5,
+      "station": 3238.8,
+      "maxAbsLatM": 0.139,
+      "rmsLatM": 0.062
+     },
+     {
+      "tCentre": 88.0,
+      "station": 3281.5,
+      "maxAbsLatM": 0.307,
+      "rmsLatM": 0.153
+     },
+     {
+      "tCentre": 89.5,
+      "station": 3324.5,
+      "maxAbsLatM": 0.386,
+      "rmsLatM": 0.229
+     },
+     {
+      "tCentre": 91.0,
+      "station": 3366.0,
+      "maxAbsLatM": 0.178,
+      "rmsLatM": 0.082
+     },
+     {
+      "tCentre": 92.5,
+      "station": 3415.0,
+      "maxAbsLatM": 0.294,
+      "rmsLatM": 0.187
+     },
+     {
+      "tCentre": 94.0,
+      "station": 3466.5,
+      "maxAbsLatM": 0.427,
+      "rmsLatM": 0.239
+     },
+     {
+      "tCentre": 95.5,
+      "station": 3507.8,
+      "maxAbsLatM": 0.546,
+      "rmsLatM": 0.325
+     },
+     {
+      "tCentre": 97.0,
+      "station": 3542.5,
+      "maxAbsLatM": 0.637,
+      "rmsLatM": 0.339
+     },
+     {
+      "tCentre": 98.5,
+      "station": 3583.8,
+      "maxAbsLatM": 0.336,
+      "rmsLatM": 0.156
+     },
+     {
+      "tCentre": 100.0,
+      "station": 3618.2,
+      "maxAbsLatM": 0.351,
+      "rmsLatM": 0.172
+     },
+     {
+      "tCentre": 101.5,
+      "station": 3658.0,
+      "maxAbsLatM": 0.31,
+      "rmsLatM": 0.184
+     },
+     {
+      "tCentre": 103.0,
+      "station": 3702.5,
+      "maxAbsLatM": 0.336,
+      "rmsLatM": 0.195
+     },
+     {
+      "tCentre": 104.5,
+      "station": 3749.0,
+      "maxAbsLatM": 0.398,
+      "rmsLatM": 0.26
+     },
+     {
+      "tCentre": 106.0,
+      "station": 3786.5,
+      "maxAbsLatM": 0.263,
+      "rmsLatM": 0.183
+     },
+     {
+      "tCentre": 107.5,
+      "station": 3818.5,
+      "maxAbsLatM": 0.119,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 109.0,
+      "station": 3861.2,
+      "maxAbsLatM": 0.187,
+      "rmsLatM": 0.111
+     },
+     {
+      "tCentre": 110.5,
+      "station": 3903.8,
+      "maxAbsLatM": 0.478,
+      "rmsLatM": 0.276
+     },
+     {
+      "tCentre": 112.0,
+      "station": 3945.2,
+      "maxAbsLatM": 0.302,
+      "rmsLatM": 0.192
+     },
+     {
+      "tCentre": 113.5,
+      "station": 3991.5,
+      "maxAbsLatM": 0.098,
+      "rmsLatM": 0.051
+     },
+     {
+      "tCentre": 115.0,
+      "station": 4040.8,
+      "maxAbsLatM": 0.05,
+      "rmsLatM": 0.023
+     },
+     {
+      "tCentre": 116.5,
+      "station": 4093.0,
+      "maxAbsLatM": 0.122,
+      "rmsLatM": 0.064
+     },
+     {
+      "tCentre": 118.0,
+      "station": 4148.5,
+      "maxAbsLatM": 0.1,
+      "rmsLatM": 0.057
+     },
+     {
+      "tCentre": 119.5,
+      "station": 4207.0,
+      "maxAbsLatM": 0.053,
+      "rmsLatM": 0.028
+     },
+     {
+      "tCentre": 121.0,
+      "station": 4268.0,
+      "maxAbsLatM": 0.067,
+      "rmsLatM": 0.033
+     },
+     {
+      "tCentre": 122.5,
+      "station": 4327.0,
+      "maxAbsLatM": 0.109,
+      "rmsLatM": 0.06
+     },
+     {
+      "tCentre": 124.0,
+      "station": 4380.0,
+      "maxAbsLatM": 0.134,
+      "rmsLatM": 0.083
+     },
+     {
+      "tCentre": 125.5,
+      "station": 4427.0,
+      "maxAbsLatM": 0.15,
+      "rmsLatM": 0.091
+     },
+     {
+      "tCentre": 127.0,
+      "station": 4468.2,
+      "maxAbsLatM": 0.094,
+      "rmsLatM": 0.049
+     },
+     {
+      "tCentre": 128.5,
+      "station": 4506.8,
+      "maxAbsLatM": 0.069,
+      "rmsLatM": 0.04
+     },
+     {
+      "tCentre": 130.0,
+      "station": 4506.8,
+      "maxAbsLatM": 0.253,
+      "rmsLatM": 0.14
+     },
+     {
+      "tCentre": 131.5,
+      "station": 37.8,
+      "maxAbsLatM": 0.147,
+      "rmsLatM": 0.069
+     },
+     {
+      "tCentre": 133.0,
+      "station": 45.2,
+      "maxAbsLatM": 0.314,
+      "rmsLatM": 0.181
+     },
+     {
+      "tCentre": 134.5,
+      "station": 64.5,
+      "maxAbsLatM": 0.23,
+      "rmsLatM": 0.123
+     },
+     {
+      "tCentre": 136.0,
+      "station": 81.5,
+      "maxAbsLatM": 0.135,
+      "rmsLatM": 0.091
+     }
+    ]
+   }
+  }
+ }
+}

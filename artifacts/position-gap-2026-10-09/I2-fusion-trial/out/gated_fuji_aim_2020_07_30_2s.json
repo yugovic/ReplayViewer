@@ -1,0 +1,196 @@
+{
+ "race": "fuji_aim_2020_07_30",
+ "posthoc": true,
+ "window": "2s",
+ "thresholdM": 0.451,
+ "droppedWindows": {
+  "1": [
+   {
+    "tCentre": 47.0,
+    "station": 1961.8,
+    "maxAbsLatM": 0.651,
+    "rmsLatM": 0.39
+   },
+   {
+    "tCentre": 71.0,
+    "station": 2828.8,
+    "maxAbsLatM": 0.458,
+    "rmsLatM": 0.304
+   }
+  ],
+  "2": [
+   {
+    "tCentre": 101.0,
+    "station": 3619.2,
+    "maxAbsLatM": 0.498,
+    "rmsLatM": 0.302
+   }
+  ],
+  "3": [
+   {
+    "tCentre": 45.5,
+    "station": 1916.0,
+    "maxAbsLatM": 0.453,
+    "rmsLatM": 0.268
+   }
+  ],
+  "4": [],
+  "5": [
+   {
+    "tCentre": 33.5,
+    "station": 1462.5,
+    "maxAbsLatM": 0.566,
+    "rmsLatM": 0.335
+   },
+   {
+    "tCentre": 42.5,
+    "station": 1801.8,
+    "maxAbsLatM": 0.583,
+    "rmsLatM": 0.331
+   }
+  ],
+  "6": []
+ },
+ "fusedBest": {
+  "allLabels": {
+   "n": 58,
+   "strong": 17,
+   "silent": 41,
+   "contradictionCount": 4,
+   "contradictions": [
+    [
+     2,
+     "k21",
+     "strong",
+     1.772
+    ],
+    [
+     2,
+     "k23",
+     "strong",
+     0.274
+    ],
+    [
+     5,
+     "k9",
+     "silent",
+     -0.917
+    ],
+    [
+     5,
+     "k10",
+     "strong",
+     0.537
+    ]
+   ],
+   "auc": 0.871,
+   "withinKerbAuc": 0.889,
+   "withinKerbPairs": 27,
+   "unmeasurable": 0,
+   "strongMedianG": -0.308,
+   "silentMedianG": 0.917
+  },
+  "withoutAnomalyLabels": {
+   "n": 54,
+   "strong": 15,
+   "silent": 39,
+   "contradictionCount": 2,
+   "contradictions": [
+    [
+     5,
+     "k9",
+     "silent",
+     -0.917
+    ],
+    [
+     5,
+     "k10",
+     "strong",
+     0.537
+    ]
+   ],
+   "auc": 0.928,
+   "withinKerbAuc": 0.913,
+   "withinKerbPairs": 23,
+   "unmeasurable": 0,
+   "strongMedianG": -0.36,
+   "silentMedianG": 0.956
+  }
+ },
+ "gated": {
+  "allLabels": {
+   "n": 58,
+   "strong": 17,
+   "silent": 41,
+   "contradictionCount": 4,
+   "contradictions": [
+    [
+     2,
+     "k21",
+     "strong",
+     1.772
+    ],
+    [
+     2,
+     "k23",
+     "strong",
+     0.405
+    ],
+    [
+     5,
+     "k9",
+     "silent",
+     -0.917
+    ],
+    [
+     5,
+     "k10",
+     "strong",
+     0.537
+    ]
+   ],
+   "auc": 0.864,
+   "withinKerbAuc": 0.889,
+   "withinKerbPairs": 27,
+   "unmeasurable": 0,
+   "strongMedianG": -0.308,
+   "silentMedianG": 0.917
+  },
+  "withoutAnomalyLabels": {
+   "n": 54,
+   "strong": 15,
+   "silent": 39,
+   "contradictionCount": 2,
+   "contradictions": [
+    [
+     5,
+     "k9",
+     "silent",
+     -0.917
+    ],
+    [
+     5,
+     "k10",
+     "strong",
+     0.537
+    ]
+   ],
+   "auc": 0.928,
+   "withinKerbAuc": 0.913,
+   "withinKerbPairs": 23,
+   "unmeasurable": 0,
+   "strongMedianG": -0.36,
+   "silentMedianG": 0.956
+  }
+ },
+ "labelsWhoseGChanged": [
+  {
+   "lap": 2,
+   "kerb": "k23",
+   "cls": "strong",
+   "gFusedBest": 0.274,
+   "gGated": 0.405
+  }
+ ],
+ "note": "exploratory; n of affected labels is tiny, not a validated method"
+}
