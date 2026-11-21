@@ -7,6 +7,44 @@
 
 ---
 
+## 2026-11-21 09:31 — 調査の最新状況の確認とGitHubへの収録、新規クローンで位置合わせが外れる不具合の修正（完了・PRは未マージ）
+
+- 依頼/目的: 「これらの活動について最新の状況を確認した上で、最新の内容をGitHubにアップロードするようにしてください。」（GPSと3DCGの位置ずれ調査の一連）
+- 最新状況の確認: 公開済みの origin/master（7ebf89b、10/02の公開）と作業ツリーを照合した。未公開だったのは (1) 10/03の動画比較用カメラと路面メッシュ修正（未コミットのまま）、(2) 10/09の現状判定、(3) 10/22の正解イベント検証と3巡のレビュー、(4) それらのWORKLOG・BACKLOG・索引。
+- 判明した不具合: GitHubから取得し直すと位置合わせが無効になる。
+  - 原因: 照合用のSHA-256は作業ツリーのバイト列から記録されていた（geometry.json・track.json・gps_registration.json はCRLF、ラップJSONはLF）。`core.autocrlf=true`・`.gitattributes` なしのため、Gitを通すと改行が変わり、別のバイト列になる。
+  - 影響: origin/master を書き出して `scripts/quality/verify-fuji-gps-handoff.py` を実行すると、Windows既定（改行変換あり）で20件、改行変換なし（Linux・macOS・CI相当）で10件の照合失敗。ビューアは補正を無効にして「補正値が古い」と表示する。作業ツリーでは一致するため、これまで気付けなかった。
+- 対応:
+  - `.gitattributes` を新設。両レースのJSON、`public/data/tracks/fuji/track.json`、`cg_study/*.json`、`public/data/vehicles/*.json` を `-text`（改行変換なし）に指定し、18ファイルを生成時のバイト列のまま格納し直した。データの中身は変えていない（改行のみ）。
+  - 確認ツール `scripts/quality/check-fuji-hash-portability.py` を追加。`git -c core.autocrlf=true|false archive` で2通りに書き出し、既存の検証スクリプトを実行する。
+  - 注意点: `git archive` は既定で改行変換を適用する。改行変換なしの確認には `-c core.autocrlf=false` が要る（最初の確認はこれを付けずに行い、誤っていた）。
+- 公開範囲の判断:
+  - 収録: 10/09と10/22のHTML（画像の埋め込みなし）、証拠 `artifacts/position-gap-2026-10-09/`・`artifacts/kerb-event-truth-2026-10-22/`・`artifacts/review-loop-2026-10-22/`（ローカル限定の比較ページの写し2件は除外）、10/03の実装（`src/engine/cameras/` ほか）・レビュー文書・根拠JSON 19件。
+  - 収録しない: 車載動画から作ったフレームと比較ページ（再配布の許諾なし）、Esri・Bingの画像を含むページ、9月の旧HTMLと証拠、この調査と別件の変更（track-creator、追加6サーキットとその TRACK_CATALOG、toonパイプライン、事業系文書）、`.claude/`、`tmp/`。
+  - WORKLOG・BACKLOG・docs/README.md は、公開版にこの調査の行だけを足す方式（10/01・10/02と同じ。作業ツリーのファイルは変えず、インデックスへ直接登録）。
+  - 公開前の点検: 追加・変更331ファイル（30.8 MB）のコミット済みの内容を走査し、秘密情報・メールアドレス・ユーザーフォルダのパスの追加がないことを確認。PNG 40枚は全件を目視（グラフ・模式図・レポート画面のみで、動画の画素なし）。npz 10件は数値配列のみ（pickleなし）。
+  - ロガー原本のファイル名が証拠JSON 4件（`artifacts/position-gap-2026-10-09/R3-acquisition/` の3件と `verify/v4_gnss_forensics.json`）に含まれる。同じセッション名は2026-07-23から公開済み（ラップJSONの source_file など）のため、証拠は書き換えずに収録した。
+- 変更・生成ファイル（ブランチ `fuji-position-latest-2026-11-21`、PR https://github.com/yugovic/ReplayViewer/pull/1 ）:
+  - 86ac681: `.gitattributes`、データ17ファイルの再格納、`scripts/quality/check-fuji-hash-portability.py`、`artifacts/hash-portability-2026-11-21/`
+  - 1cbd571: 10/09・10/22の資料と証拠（269ファイル）、`.gitignore`
+  - cbd28bd: 動画比較用カメラ、縁石端での路面メッシュの切り詰め、レビュー文書と根拠JSON、関連スクリプト（38ファイル）
+  - a70a1b3: WORKLOG（10/02〜10/22の9エントリ）、BACKLOG（GPS-REG-20〜30、DATA-01）、docs/README.md（3行）
+  - 51abd5c: 車両プロファイル `public/data/vehicles/mazda2-dj.json` も `-text` に追加
+  - 8b2740c: `artifacts/hash-portability-2026-11-21/after-fix.json` を 51abd5c の結果に更新
+  - このエントリと BACKLOG の DATA-02・DATA-03 を追加するコミット
+- 検証（8b2740c を改行変換あり・なしの2通りに書き出して実行）:
+  - ハッシュ照合: 修正前の origin/master は失敗20件・10件、修正後は両方0件（`artifacts/hash-portability-2026-11-21/before-origin-master.json`・`after-fix.json`）。
+  - pytest: 8ファイル・78件合格（両方）。ディレクトリ指定では `scripts/quality/apex_kpi/similarity_test.py`（ローカルの作業ファイルが要る分析スクリプト）の収集で止まるため、`test_*.py` を指定して実行した。
+  - `verify-fuji-gps-handoff.py` 合格（両方）、tsc エラーなし（両方）、vitest 54ファイル・462件合格（両方）、本番ビルド成功（改行変換なし側）。
+  - 実ブラウザ: 改行変換なし側のビルドを `vite preview`（127.0.0.1:5202）で配信。7/29・7/30とも HUD は「位置合わせ ON」（「補正値が古い」「未検証」の表示なし）、コンソールエラーなし。
+  - 途中の失敗: 改行変換なしの書き出しで `test_kerb_registration.py` の入力照合（車両プロファイルのハッシュ）が失敗 → 51abd5c で解消。
+  - 実行していないもの: GitHubから実際に clone しての確認（`git archive` での書き出しで代替）。PRにCIは設定されていない（チェック0件）。
+- 未解決/残り:
+  - PR https://github.com/yugovic/ReplayViewer/pull/1 は未マージ。master への反映はマージ後。
+  - 別件の未コミット変更は作業ツリーに残したまま。
+  - 新規クローン相当の確認が自動化されていない（BACKLOG DATA-02）。pytest が分析スクリプトを誤って収集する（DATA-03）。
+  - 調査そのものの残りは BACKLOG GPS-REG-17〜30（動画の時刻差0.21秒を比較資料へ反映、k1コカ・コーラ縁石の個別確認、レンズ校正、次回走行での生観測GNSS ほか）。
+
 ## 2026-10-22 23:39 — Fableレビューによる結果の改善ループ（完了）
 
 - 依頼/目的: 「結果についてのレビュワーをFableで建ててループを回してさらに精度や品質などを上げる部分があるかチェックして改善していってください」。
